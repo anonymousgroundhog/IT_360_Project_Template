@@ -12,18 +12,20 @@ import sootup.java.bytecode.inputlocation.JavaClassPathAnalysisInputLocation;
 import sootup.java.core.JavaSootClass;
 import sootup.java.core.JavaSootMethod;
 import sootup.java.core.views.JavaView;
-
 import javax.xml.transform.Source;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
-
+import soot.options.Options;
 public class Main {
     public static void main(String[] args) {
+        Options.v().set_output_format(Options.output_format_j);
+        Options.v().whole_program();
         String path = "APK/banner_example.apk";
 //        SourceType this_source = new SourceType();
         Path pathToAPK = Paths.get(path);
         AnalysisInputLocation inputLocation = new ApkAnalysisInputLocation(pathToAPK, SourceType.Application);
+
         JavaView view = new JavaView(inputLocation);
 
         // get all classes
