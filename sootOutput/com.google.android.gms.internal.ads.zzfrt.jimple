@@ -1,0 +1,616 @@
+public final class com.google.android.gms.internal.ads.zzfrt extends java.lang.Object
+{
+
+    public static boolean zza(int)
+    {
+        int $i0;
+
+        $i0 := @parameter0: int;
+
+        $i0 = $i0 + -1;
+
+        lookupswitch($i0)
+        {
+            case 2: goto label2;
+            case 3: goto label1;
+            case 4: goto label2;
+            case 5: goto label2;
+            case 6: goto label2;
+            case 7: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return 0;
+
+     label2:
+        return 1;
+    }
+
+    public static final int zzb(android.content.Context, com.google.android.gms.internal.ads.zzfqr)
+    {
+        java.lang.Throwable $r10, $r11;
+        android.content.Context $r1;
+        byte[] $r7, $r8;
+        java.nio.ByteBuffer $r9;
+        short $s0, $s1;
+        byte $b3;
+        int $i2;
+        java.lang.String $r4;
+        boolean $z0;
+        java.io.IOException $r12;
+        java.io.FileInputStream $r16;
+        java.io.File $r2, $r13, $r14;
+        com.google.android.gms.internal.ads.zzfqr $r0;
+        java.util.regex.Pattern $r5;
+        com.google.android.gms.internal.ads.zzgcj $r15;
+        android.content.pm.ApplicationInfo $r3;
+        java.io.File[] $r6;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r0 := @parameter1: com.google.android.gms.internal.ads.zzfqr;
+
+        $r14 = new java.io.File;
+
+        $r13 = new java.io.File;
+
+        $r3 = virtualinvoke $r1.<android.content.Context: android.content.pm.ApplicationInfo getApplicationInfo()>();
+
+        $r4 = $r3.<android.content.pm.ApplicationInfo: java.lang.String dataDir>;
+
+        specialinvoke $r13.<java.io.File: void <init>(java.lang.String)>($r4);
+
+        specialinvoke $r14.<java.io.File: void <init>(java.io.File,java.lang.String)>($r13, "lib");
+
+        $z0 = virtualinvoke $r14.<java.io.File: boolean exists()>();
+
+        $s0 = 8;
+
+        if $z0 != 0 goto label01;
+
+        virtualinvoke $r0.<com.google.android.gms.internal.ads.zzfqr: com.google.android.gms.tasks.Task zzb(int,java.lang.String)>(5017, "No lib/");
+
+        $s1 = 1000;
+
+        goto label35;
+
+     label01:
+        $r15 = new com.google.android.gms.internal.ads.zzgcj;
+
+        $r5 = staticinvoke <java.util.regex.Pattern: java.util.regex.Pattern compile(java.lang.String,int)>(".*\\.so$", 2);
+
+        specialinvoke $r15.<com.google.android.gms.internal.ads.zzgcj: void <init>(java.util.regex.Pattern)>($r5);
+
+        $r6 = virtualinvoke $r14.<java.io.File: java.io.File[] listFiles(java.io.FilenameFilter)>($r15);
+
+        if $r6 == null goto label34;
+
+        $i2 = lengthof $r6;
+
+        if $i2 != 0 goto label02;
+
+        goto label34;
+
+     label02:
+        $r16 = new java.io.FileInputStream;
+
+        $r2 = $r6[0];
+
+     label03:
+        specialinvoke $r16.<java.io.FileInputStream: void <init>(java.io.File)>($r2);
+
+     label04:
+        $r7 = newarray (byte)[20];
+
+     label05:
+        $i2 = virtualinvoke $r16.<java.io.FileInputStream: int read(byte[])>($r7);
+
+     label06:
+        if $i2 != 20 goto label25;
+
+        $r8 = newarray (byte)[2];
+
+     label07:
+        $r8[0] = 0;
+
+        $r8[1] = 0;
+
+        $b3 = $r7[5];
+
+     label08:
+        $i2 = (int) $b3;
+
+        if $i2 != 2 goto label11;
+
+     label09:
+        staticinvoke <com.google.android.gms.internal.ads.zzfrt: void zzd(byte[],java.lang.String,android.content.Context,com.google.android.gms.internal.ads.zzfqr)>($r7, null, $r1, $r0);
+
+     label10:
+        goto label25;
+
+     label11:
+        $b3 = $r7[19];
+
+        $r8[0] = $b3;
+
+        $b3 = $r7[18];
+
+        $r8[1] = $b3;
+
+        $r9 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer wrap(byte[])>($r8);
+
+        $s1 = virtualinvoke $r9.<java.nio.ByteBuffer: short getShort()>();
+
+     label12:
+        $i2 = (int) $s1;
+
+        lookupswitch($i2)
+        {
+            case 3: goto label23;
+            case 40: goto label21;
+            case 62: goto label19;
+            case 183: goto label17;
+            case 243: goto label15;
+            default: goto label13;
+        };
+
+     label13:
+        staticinvoke <com.google.android.gms.internal.ads.zzfrt: void zzd(byte[],java.lang.String,android.content.Context,com.google.android.gms.internal.ads.zzfqr)>($r7, null, $r1, $r0);
+
+     label14:
+        goto label25;
+
+     label15:
+        virtualinvoke $r16.<java.io.FileInputStream: void close()>();
+
+     label16:
+        $s1 = 8;
+
+        goto label35;
+
+     label17:
+        virtualinvoke $r16.<java.io.FileInputStream: void close()>();
+
+     label18:
+        $s1 = 6;
+
+        goto label35;
+
+     label19:
+        virtualinvoke $r16.<java.io.FileInputStream: void close()>();
+
+     label20:
+        $s1 = 7;
+
+        goto label35;
+
+     label21:
+        virtualinvoke $r16.<java.io.FileInputStream: void close()>();
+
+     label22:
+        $s1 = 3;
+
+        goto label35;
+
+     label23:
+        virtualinvoke $r16.<java.io.FileInputStream: void close()>();
+
+     label24:
+        $s1 = 5;
+
+        goto label35;
+
+     label25:
+        virtualinvoke $r16.<java.io.FileInputStream: void close()>();
+
+     label26:
+        $s1 = 1;
+
+        goto label35;
+
+     label27:
+        $r10 := @caughtexception;
+
+     label28:
+        virtualinvoke $r16.<java.io.FileInputStream: void close()>();
+
+     label29:
+        goto label32;
+
+     label30:
+        $r11 := @caughtexception;
+
+     label31:
+        virtualinvoke $r10.<java.lang.Throwable: void addSuppressed(java.lang.Throwable)>($r11);
+
+     label32:
+        throw $r10;
+
+     label33:
+        $r12 := @caughtexception;
+
+        $r4 = virtualinvoke $r12.<java.io.IOException: java.lang.String toString()>();
+
+        staticinvoke <com.google.android.gms.internal.ads.zzfrt: void zzd(byte[],java.lang.String,android.content.Context,com.google.android.gms.internal.ads.zzfqr)>(null, $r4, $r1, $r0);
+
+        $s1 = 1;
+
+        goto label35;
+
+     label34:
+        virtualinvoke $r0.<com.google.android.gms.internal.ads.zzfqr: com.google.android.gms.tasks.Task zzb(int,java.lang.String)>(5017, "No .so");
+
+        $s1 = 1000;
+
+     label35:
+        if $s1 != 1000 goto label44;
+
+        $r4 = staticinvoke <com.google.android.gms.internal.ads.zzfrt: java.lang.String zzc(android.content.Context,com.google.android.gms.internal.ads.zzfqr)>($r1, $r0);
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r4);
+
+        if $z0 == 0 goto label36;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzfrt: void zzd(byte[],java.lang.String,android.content.Context,com.google.android.gms.internal.ads.zzfqr)>(null, "Empty dev arch", $r1, $r0);
+
+        $s0 = 1;
+
+        goto label45;
+
+     label36:
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("i686");
+
+        if $z0 != 0 goto label43;
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("x86");
+
+        if $z0 == 0 goto label37;
+
+        $s0 = 5;
+
+        goto label45;
+
+     label37:
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("x86_64");
+
+        if $z0 == 0 goto label38;
+
+        $s0 = 7;
+
+        goto label45;
+
+     label38:
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("arm64-v8a");
+
+        if $z0 == 0 goto label39;
+
+        $s0 = 6;
+
+        goto label45;
+
+     label39:
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("armeabi-v7a");
+
+        if $z0 != 0 goto label42;
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("armv71");
+
+        if $z0 == 0 goto label40;
+
+        $s0 = 3;
+
+        goto label45;
+
+     label40:
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("riscv64");
+
+        if $z0 == 0 goto label41;
+
+        goto label45;
+
+     label41:
+        staticinvoke <com.google.android.gms.internal.ads.zzfrt: void zzd(byte[],java.lang.String,android.content.Context,com.google.android.gms.internal.ads.zzfqr)>(null, $r4, $r1, $r0);
+
+        $s0 = 1;
+
+        goto label45;
+
+     label42:
+        $s0 = 3;
+
+        goto label45;
+
+     label43:
+        $s0 = 5;
+
+        goto label45;
+
+     label44:
+        $s0 = $s1;
+
+     label45:
+        lookupswitch($s0)
+        {
+            case 1: goto label52;
+            case 2: goto label46;
+            case 3: goto label51;
+            case 4: goto label46;
+            case 5: goto label50;
+            case 6: goto label49;
+            case 7: goto label48;
+            case 8: goto label47;
+            default: goto label46;
+        };
+
+     label46:
+        $r4 = "null";
+
+        goto label53;
+
+     label47:
+        $r4 = "RISCV64";
+
+        goto label53;
+
+     label48:
+        $r4 = "X86_64";
+
+        goto label53;
+
+     label49:
+        $r4 = "ARM64";
+
+        goto label53;
+
+     label50:
+        $r4 = "X86";
+
+        goto label53;
+
+     label51:
+        $r4 = "ARM7";
+
+        goto label53;
+
+     label52:
+        $r4 = "UNSUPPORTED";
+
+     label53:
+        virtualinvoke $r0.<com.google.android.gms.internal.ads.zzfqr: com.google.android.gms.tasks.Task zzb(int,java.lang.String)>(5018, $r4);
+
+        return $s0;
+
+        catch java.io.IOException from label03 to label04 with label33;
+        catch java.lang.Throwable from label05 to label06 with label27;
+        catch java.lang.Throwable from label07 to label08 with label27;
+        catch java.lang.Throwable from label09 to label10 with label27;
+        catch java.lang.Throwable from label11 to label12 with label27;
+        catch java.lang.Throwable from label13 to label14 with label27;
+        catch java.io.IOException from label15 to label16 with label33;
+        catch java.io.IOException from label17 to label18 with label33;
+        catch java.io.IOException from label19 to label20 with label33;
+        catch java.io.IOException from label21 to label22 with label33;
+        catch java.io.IOException from label23 to label24 with label33;
+        catch java.io.IOException from label25 to label26 with label33;
+        catch java.lang.Throwable from label28 to label29 with label30;
+        catch java.io.IOException from label31 to label33 with label33;
+    }
+
+    private static final java.lang.String zzc(android.content.Context, com.google.android.gms.internal.ads.zzfqr)
+    {
+        android.content.Context $r1;
+        com.google.android.gms.internal.ads.zzfxs $r5;
+        java.lang.IllegalAccessException $r10;
+        java.lang.String[] $r3;
+        java.lang.reflect.Field $r8;
+        java.util.HashSet $r2;
+        java.util.List $r4;
+        java.lang.NoSuchFieldException $r11;
+        int $i0;
+        java.lang.Class $r7;
+        java.lang.Object $r9;
+        com.google.android.gms.internal.ads.zzfqr $r0;
+        java.lang.String $r6;
+        boolean $z0;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r0 := @parameter1: com.google.android.gms.internal.ads.zzfqr;
+
+        $r2 = new java.util.HashSet;
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "i686";
+
+        $r3[1] = "armv71";
+
+        $r4 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r3);
+
+        specialinvoke $r2.<java.util.HashSet: void <init>(java.util.Collection)>($r4);
+
+        $r5 = <com.google.android.gms.internal.ads.zzfxs: com.google.android.gms.internal.ads.zzfxs zzu>;
+
+        $r6 = virtualinvoke $r5.<com.google.android.gms.internal.ads.zzfxs: java.lang.String zza()>();
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r6);
+
+        if $z0 != 0 goto label2;
+
+        $z0 = interfaceinvoke $r2.<java.util.Set: boolean contains(java.lang.Object)>($r6);
+
+        if $z0 != 0 goto label1;
+
+        goto label2;
+
+     label1:
+        return $r6;
+
+     label2:
+        $r7 = class "Landroid/os/Build;";
+
+     label3:
+        $r8 = virtualinvoke $r7.<java.lang.Class: java.lang.reflect.Field getField(java.lang.String)>("SUPPORTED_ABIS");
+
+        $r9 = virtualinvoke $r8.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>(null);
+
+     label4:
+        $r3 = (java.lang.String[]) $r9;
+
+        if $r3 == null goto label7;
+
+        $i0 = lengthof $r3;
+
+        if $i0 <= 0 goto label7;
+
+        $r6 = $r3[0];
+
+        return $r6;
+
+     label5:
+        $r10 := @caughtexception;
+
+        virtualinvoke $r0.<com.google.android.gms.internal.ads.zzfqr: com.google.android.gms.tasks.Task zzc(int,long,java.lang.Exception)>(2024, 0L, $r10);
+
+        goto label7;
+
+     label6:
+        $r11 := @caughtexception;
+
+        virtualinvoke $r0.<com.google.android.gms.internal.ads.zzfqr: com.google.android.gms.tasks.Task zzc(int,long,java.lang.Exception)>(2024, 0L, $r11);
+
+     label7:
+        $r6 = <android.os.Build: java.lang.String CPU_ABI>;
+
+        if $r6 == null goto label8;
+
+        $r6 = <android.os.Build: java.lang.String CPU_ABI>;
+
+        return $r6;
+
+     label8:
+        $r6 = <android.os.Build: java.lang.String CPU_ABI2>;
+
+        return $r6;
+
+        catch java.lang.NoSuchFieldException from label3 to label4 with label6;
+        catch java.lang.IllegalAccessException from label3 to label4 with label5;
+    }
+
+    private static final void zzd(byte[], java.lang.String, android.content.Context, com.google.android.gms.internal.ads.zzfqr)
+    {
+        byte[] $r1;
+        android.content.Context $r3;
+        com.google.android.gms.internal.ads.zzfxs $r5;
+        java.lang.IllegalAccessException $r11;
+        java.lang.String[] $r10;
+        java.lang.reflect.Field $r8;
+        java.lang.NoSuchFieldException $r12;
+        java.lang.StringBuilder $r4;
+        java.lang.Class $r7;
+        java.lang.Object $r9;
+        com.google.android.gms.internal.ads.zzfqr $r0;
+        java.lang.String $r2, $r6;
+
+        $r1 := @parameter0: byte[];
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: android.content.Context;
+
+        $r0 := @parameter3: com.google.android.gms.internal.ads.zzfqr;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("os.arch:");
+
+        $r5 = <com.google.android.gms.internal.ads.zzfxs: com.google.android.gms.internal.ads.zzfxs zzu>;
+
+        $r6 = virtualinvoke $r5.<com.google.android.gms.internal.ads.zzfxs: java.lang.String zza()>();
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(";");
+
+        $r7 = class "Landroid/os/Build;";
+
+     label1:
+        $r8 = virtualinvoke $r7.<java.lang.Class: java.lang.reflect.Field getField(java.lang.String)>("SUPPORTED_ABIS");
+
+        $r9 = virtualinvoke $r8.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>(null);
+
+     label2:
+        $r10 = (java.lang.String[]) $r9;
+
+        if $r10 == null goto label7;
+
+     label3:
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("supported_abis:");
+
+        $r6 = staticinvoke <java.util.Arrays: java.lang.String toString(java.lang.Object[])>($r10);
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(";");
+
+     label4:
+        goto label7;
+
+     label5:
+        $r11 := @caughtexception;
+
+        goto label7;
+
+     label6:
+        $r12 := @caughtexception;
+
+     label7:
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("CPU_ABI:");
+
+        $r6 = <android.os.Build: java.lang.String CPU_ABI>;
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(";CPU_ABI2:");
+
+        $r6 = <android.os.Build: java.lang.String CPU_ABI2>;
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(";");
+
+        if $r1 == null goto label8;
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ELF:");
+
+        $r6 = staticinvoke <java.util.Arrays: java.lang.String toString(byte[])>($r1);
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(";");
+
+     label8:
+        if $r2 == null goto label9;
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("dbg:");
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(";");
+
+     label9:
+        $r2 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r0.<com.google.android.gms.internal.ads.zzfqr: com.google.android.gms.tasks.Task zzb(int,java.lang.String)>(4007, $r2);
+
+        return;
+
+        catch java.lang.NoSuchFieldException from label1 to label2 with label6;
+        catch java.lang.NoSuchFieldException from label3 to label4 with label6;
+        catch java.lang.IllegalAccessException from label1 to label2 with label5;
+        catch java.lang.IllegalAccessException from label3 to label4 with label5;
+    }
+}

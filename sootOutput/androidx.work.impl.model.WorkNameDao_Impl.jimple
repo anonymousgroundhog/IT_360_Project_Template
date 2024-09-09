@@ -1,0 +1,230 @@
+public final class androidx.work.impl.model.WorkNameDao_Impl extends java.lang.Object implements androidx.work.impl.model.WorkNameDao
+{
+    private final androidx.room.RoomDatabase __db;
+    private final androidx.room.EntityInsertionAdapter __insertionAdapterOfWorkName;
+
+    public void <init>(androidx.room.RoomDatabase)
+    {
+        androidx.work.impl.model.WorkNameDao_Impl r0;
+        androidx.room.RoomDatabase $r1;
+        androidx.work.impl.model.WorkNameDao_Impl$1 $r2;
+
+        r0 := @this: androidx.work.impl.model.WorkNameDao_Impl;
+
+        $r1 := @parameter0: androidx.room.RoomDatabase;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.work.impl.model.WorkNameDao_Impl: androidx.room.RoomDatabase __db> = $r1;
+
+        $r2 = new androidx.work.impl.model.WorkNameDao_Impl$1;
+
+        specialinvoke $r2.<androidx.work.impl.model.WorkNameDao_Impl$1: void <init>(androidx.work.impl.model.WorkNameDao_Impl,androidx.room.RoomDatabase)>(r0, $r1);
+
+        r0.<androidx.work.impl.model.WorkNameDao_Impl: androidx.room.EntityInsertionAdapter __insertionAdapterOfWorkName> = $r2;
+
+        return;
+    }
+
+    public java.util.List getNamesForWorkSpecId(java.lang.String)
+    {
+        java.lang.Throwable r6;
+        androidx.room.RoomSQLiteQuery $r2;
+        androidx.room.RoomDatabase r3;
+        java.util.ArrayList r5;
+        androidx.work.impl.model.WorkNameDao_Impl r0;
+        int $i0;
+        java.lang.String $r1;
+        android.database.Cursor $r4;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.model.WorkNameDao_Impl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = staticinvoke <androidx.room.RoomSQLiteQuery: androidx.room.RoomSQLiteQuery acquire(java.lang.String,int)>("SELECT name FROM workname WHERE work_spec_id=?", 1);
+
+        if $r1 != null goto label1;
+
+        virtualinvoke $r2.<androidx.room.RoomSQLiteQuery: void bindNull(int)>(1);
+
+        goto label2;
+
+     label1:
+        virtualinvoke $r2.<androidx.room.RoomSQLiteQuery: void bindString(int,java.lang.String)>(1, $r1);
+
+     label2:
+        r3 = r0.<androidx.work.impl.model.WorkNameDao_Impl: androidx.room.RoomDatabase __db>;
+
+        virtualinvoke r3.<androidx.room.RoomDatabase: void assertNotSuspendingTransaction()>();
+
+        r3 = r0.<androidx.work.impl.model.WorkNameDao_Impl: androidx.room.RoomDatabase __db>;
+
+        $r4 = staticinvoke <androidx.room.util.DBUtil: android.database.Cursor query(androidx.room.RoomDatabase,androidx.sqlite.db.SupportSQLiteQuery,boolean,android.os.CancellationSignal)>(r3, $r2, 0, null);
+
+     label3:
+        r5 = new java.util.ArrayList;
+
+        $i0 = interfaceinvoke $r4.<android.database.Cursor: int getCount()>();
+
+        specialinvoke r5.<java.util.ArrayList: void <init>(int)>($i0);
+
+     label4:
+        $z0 = interfaceinvoke $r4.<android.database.Cursor: boolean moveToNext()>();
+
+     label5:
+        if $z0 == 0 goto label8;
+
+     label6:
+        $r1 = interfaceinvoke $r4.<android.database.Cursor: java.lang.String getString(int)>(0);
+
+        interfaceinvoke r5.<java.util.List: boolean add(java.lang.Object)>($r1);
+
+     label7:
+        goto label4;
+
+     label8:
+        interfaceinvoke $r4.<android.database.Cursor: void close()>();
+
+        virtualinvoke $r2.<androidx.room.RoomSQLiteQuery: void release()>();
+
+        return r5;
+
+     label9:
+        r6 := @caughtexception;
+
+        interfaceinvoke $r4.<android.database.Cursor: void close()>();
+
+        virtualinvoke $r2.<androidx.room.RoomSQLiteQuery: void release()>();
+
+        throw r6;
+
+        catch java.lang.Throwable from label3 to label5 with label9;
+        catch java.lang.Throwable from label6 to label7 with label9;
+    }
+
+    public java.util.List getWorkSpecIdsWithName(java.lang.String)
+    {
+        java.lang.Throwable r6;
+        androidx.room.RoomSQLiteQuery $r2;
+        androidx.room.RoomDatabase r3;
+        java.util.ArrayList r5;
+        androidx.work.impl.model.WorkNameDao_Impl r0;
+        int $i0;
+        java.lang.String $r1;
+        android.database.Cursor $r4;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.model.WorkNameDao_Impl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = staticinvoke <androidx.room.RoomSQLiteQuery: androidx.room.RoomSQLiteQuery acquire(java.lang.String,int)>("SELECT work_spec_id FROM workname WHERE name=?", 1);
+
+        if $r1 != null goto label1;
+
+        virtualinvoke $r2.<androidx.room.RoomSQLiteQuery: void bindNull(int)>(1);
+
+        goto label2;
+
+     label1:
+        virtualinvoke $r2.<androidx.room.RoomSQLiteQuery: void bindString(int,java.lang.String)>(1, $r1);
+
+     label2:
+        r3 = r0.<androidx.work.impl.model.WorkNameDao_Impl: androidx.room.RoomDatabase __db>;
+
+        virtualinvoke r3.<androidx.room.RoomDatabase: void assertNotSuspendingTransaction()>();
+
+        r3 = r0.<androidx.work.impl.model.WorkNameDao_Impl: androidx.room.RoomDatabase __db>;
+
+        $r4 = staticinvoke <androidx.room.util.DBUtil: android.database.Cursor query(androidx.room.RoomDatabase,androidx.sqlite.db.SupportSQLiteQuery,boolean,android.os.CancellationSignal)>(r3, $r2, 0, null);
+
+     label3:
+        r5 = new java.util.ArrayList;
+
+        $i0 = interfaceinvoke $r4.<android.database.Cursor: int getCount()>();
+
+        specialinvoke r5.<java.util.ArrayList: void <init>(int)>($i0);
+
+     label4:
+        $z0 = interfaceinvoke $r4.<android.database.Cursor: boolean moveToNext()>();
+
+     label5:
+        if $z0 == 0 goto label8;
+
+     label6:
+        $r1 = interfaceinvoke $r4.<android.database.Cursor: java.lang.String getString(int)>(0);
+
+        interfaceinvoke r5.<java.util.List: boolean add(java.lang.Object)>($r1);
+
+     label7:
+        goto label4;
+
+     label8:
+        interfaceinvoke $r4.<android.database.Cursor: void close()>();
+
+        virtualinvoke $r2.<androidx.room.RoomSQLiteQuery: void release()>();
+
+        return r5;
+
+     label9:
+        r6 := @caughtexception;
+
+        interfaceinvoke $r4.<android.database.Cursor: void close()>();
+
+        virtualinvoke $r2.<androidx.room.RoomSQLiteQuery: void release()>();
+
+        throw r6;
+
+        catch java.lang.Throwable from label3 to label5 with label9;
+        catch java.lang.Throwable from label6 to label7 with label9;
+    }
+
+    public void insert(androidx.work.impl.model.WorkName)
+    {
+        java.lang.Throwable $r4;
+        androidx.work.impl.model.WorkName $r1;
+        androidx.work.impl.model.WorkNameDao_Impl r0;
+        androidx.room.RoomDatabase $r2;
+        androidx.room.EntityInsertionAdapter $r3;
+
+        r0 := @this: androidx.work.impl.model.WorkNameDao_Impl;
+
+        $r1 := @parameter0: androidx.work.impl.model.WorkName;
+
+        $r2 = r0.<androidx.work.impl.model.WorkNameDao_Impl: androidx.room.RoomDatabase __db>;
+
+        virtualinvoke $r2.<androidx.room.RoomDatabase: void assertNotSuspendingTransaction()>();
+
+        $r2 = r0.<androidx.work.impl.model.WorkNameDao_Impl: androidx.room.RoomDatabase __db>;
+
+        virtualinvoke $r2.<androidx.room.RoomDatabase: void beginTransaction()>();
+
+     label1:
+        $r3 = r0.<androidx.work.impl.model.WorkNameDao_Impl: androidx.room.EntityInsertionAdapter __insertionAdapterOfWorkName>;
+
+        virtualinvoke $r3.<androidx.room.EntityInsertionAdapter: void insert(java.lang.Object)>($r1);
+
+        $r2 = r0.<androidx.work.impl.model.WorkNameDao_Impl: androidx.room.RoomDatabase __db>;
+
+        virtualinvoke $r2.<androidx.room.RoomDatabase: void setTransactionSuccessful()>();
+
+     label2:
+        $r2 = r0.<androidx.work.impl.model.WorkNameDao_Impl: androidx.room.RoomDatabase __db>;
+
+        virtualinvoke $r2.<androidx.room.RoomDatabase: void endTransaction()>();
+
+        return;
+
+     label3:
+        $r4 := @caughtexception;
+
+        $r2 = r0.<androidx.work.impl.model.WorkNameDao_Impl: androidx.room.RoomDatabase __db>;
+
+        virtualinvoke $r2.<androidx.room.RoomDatabase: void endTransaction()>();
+
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+}

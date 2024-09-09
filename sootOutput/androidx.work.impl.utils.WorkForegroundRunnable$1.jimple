@@ -1,0 +1,49 @@
+class androidx.work.impl.utils.WorkForegroundRunnable$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.work.impl.utils.WorkForegroundRunnable this$0;
+    final androidx.work.impl.utils.futures.SettableFuture val$foregroundFuture;
+
+    void <init>(androidx.work.impl.utils.WorkForegroundRunnable, androidx.work.impl.utils.futures.SettableFuture)
+    {
+        androidx.work.impl.utils.WorkForegroundRunnable $r1;
+        androidx.work.impl.utils.futures.SettableFuture $r2;
+        androidx.work.impl.utils.WorkForegroundRunnable$1 r0;
+
+        r0 := @this: androidx.work.impl.utils.WorkForegroundRunnable$1;
+
+        $r1 := @parameter0: androidx.work.impl.utils.WorkForegroundRunnable;
+
+        $r2 := @parameter1: androidx.work.impl.utils.futures.SettableFuture;
+
+        r0.<androidx.work.impl.utils.WorkForegroundRunnable$1: androidx.work.impl.utils.WorkForegroundRunnable this$0> = $r1;
+
+        r0.<androidx.work.impl.utils.WorkForegroundRunnable$1: androidx.work.impl.utils.futures.SettableFuture val$foregroundFuture> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.google.common.util.concurrent.ListenableFuture $r2;
+        androidx.work.impl.utils.WorkForegroundRunnable $r3;
+        androidx.work.ListenableWorker $r4;
+        androidx.work.impl.utils.futures.SettableFuture $r1;
+        androidx.work.impl.utils.WorkForegroundRunnable$1 r0;
+
+        r0 := @this: androidx.work.impl.utils.WorkForegroundRunnable$1;
+
+        $r1 = r0.<androidx.work.impl.utils.WorkForegroundRunnable$1: androidx.work.impl.utils.futures.SettableFuture val$foregroundFuture>;
+
+        $r3 = r0.<androidx.work.impl.utils.WorkForegroundRunnable$1: androidx.work.impl.utils.WorkForegroundRunnable this$0>;
+
+        $r4 = $r3.<androidx.work.impl.utils.WorkForegroundRunnable: androidx.work.ListenableWorker mWorker>;
+
+        $r2 = virtualinvoke $r4.<androidx.work.ListenableWorker: com.google.common.util.concurrent.ListenableFuture getForegroundInfoAsync()>();
+
+        virtualinvoke $r1.<androidx.work.impl.utils.futures.SettableFuture: boolean setFuture(com.google.common.util.concurrent.ListenableFuture)>($r2);
+
+        return;
+    }
+}

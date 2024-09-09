@@ -1,0 +1,2114 @@
+public class androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat extends java.lang.Object
+{
+    private static final boolean DBG_ANIMATOR_INFLATER;
+    private static final int MAX_NUM_POINTS;
+    private static final java.lang.String TAG;
+    private static final int TOGETHER;
+    private static final int VALUE_TYPE_COLOR;
+    private static final int VALUE_TYPE_FLOAT;
+    private static final int VALUE_TYPE_INT;
+    private static final int VALUE_TYPE_PATH;
+    private static final int VALUE_TYPE_UNDEFINED;
+
+    private void <init>()
+    {
+        androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat r0;
+
+        r0 := @this: androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private static android.animation.Animator createAnimatorFromXml(android.content.Context, android.content.res.Resources, android.content.res.Resources$Theme, org.xmlpull.v1.XmlPullParser, float) throws org.xmlpull.v1.XmlPullParserException, java.io.IOException
+    {
+        android.content.Context $r0;
+        android.util.AttributeSet $r4;
+        float $f0;
+        android.animation.Animator $r5;
+        android.content.res.Resources$Theme $r2;
+        android.content.res.Resources $r1;
+        org.xmlpull.v1.XmlPullParser $r3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: android.content.res.Resources;
+
+        $r2 := @parameter2: android.content.res.Resources$Theme;
+
+        $r3 := @parameter3: org.xmlpull.v1.XmlPullParser;
+
+        $f0 := @parameter4: float;
+
+        $r4 = staticinvoke <android.util.Xml: android.util.AttributeSet asAttributeSet(org.xmlpull.v1.XmlPullParser)>($r3);
+
+        $r5 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: android.animation.Animator createAnimatorFromXml(android.content.Context,android.content.res.Resources,android.content.res.Resources$Theme,org.xmlpull.v1.XmlPullParser,android.util.AttributeSet,android.animation.AnimatorSet,int,float)>($r0, $r1, $r2, $r3, $r4, null, 0, $f0);
+
+        return $r5;
+    }
+
+    private static android.animation.Animator createAnimatorFromXml(android.content.Context, android.content.res.Resources, android.content.res.Resources$Theme, org.xmlpull.v1.XmlPullParser, android.util.AttributeSet, android.animation.AnimatorSet, int, float) throws org.xmlpull.v1.XmlPullParserException, java.io.IOException
+    {
+        android.animation.PropertyValuesHolder[] $r14;
+        android.content.Context $r0;
+        android.animation.Animator r6, r20;
+        java.util.ArrayList r7;
+        android.content.res.TypedArray $r12;
+        android.util.AttributeSet $r4, $r13;
+        int[] r11;
+        int $i0, $i1, $i2, $i3;
+        android.animation.Animator[] r17;
+        android.animation.AnimatorSet $r5, r10;
+        java.lang.String $r8;
+        android.content.res.Resources$Theme $r2;
+        org.xmlpull.v1.XmlPullParser $r3;
+        boolean z0, $z1;
+        java.util.Iterator $r18;
+        java.lang.RuntimeException r15;
+        float $f0;
+        java.lang.StringBuilder r16;
+        java.lang.Object $r19;
+        android.content.res.Resources $r1;
+        android.animation.ValueAnimator $r9;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: android.content.res.Resources;
+
+        $r2 := @parameter2: android.content.res.Resources$Theme;
+
+        $r3 := @parameter3: org.xmlpull.v1.XmlPullParser;
+
+        $r4 := @parameter4: android.util.AttributeSet;
+
+        $r5 := @parameter5: android.animation.AnimatorSet;
+
+        $i0 := @parameter6: int;
+
+        $f0 := @parameter7: float;
+
+        $i1 = interfaceinvoke $r3.<org.xmlpull.v1.XmlPullParser: int getDepth()>();
+
+        r6 = null;
+
+        r7 = null;
+
+     label01:
+        $i2 = interfaceinvoke $r3.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+        if $i2 != 3 goto label03;
+
+        $i3 = interfaceinvoke $r3.<org.xmlpull.v1.XmlPullParser: int getDepth()>();
+
+        if $i3 <= $i1 goto label02;
+
+        goto label03;
+
+     label02:
+        goto label12;
+
+     label03:
+        if $i2 == 1 goto label12;
+
+        if $i2 == 2 goto label04;
+
+        goto label01;
+
+     label04:
+        $r8 = interfaceinvoke $r3.<org.xmlpull.v1.XmlPullParser: java.lang.String getName()>();
+
+        z0 = 0;
+
+        $z1 = virtualinvoke $r8.<java.lang.String: boolean equals(java.lang.Object)>("objectAnimator");
+
+        if $z1 == 0 goto label05;
+
+        r6 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: android.animation.ObjectAnimator loadObjectAnimator(android.content.Context,android.content.res.Resources,android.content.res.Resources$Theme,android.util.AttributeSet,float,org.xmlpull.v1.XmlPullParser)>($r0, $r1, $r2, $r4, $f0, $r3);
+
+        goto label09;
+
+     label05:
+        $z1 = virtualinvoke $r8.<java.lang.String: boolean equals(java.lang.Object)>("animator");
+
+        if $z1 == 0 goto label06;
+
+        r6 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: android.animation.ValueAnimator loadAnimator(android.content.Context,android.content.res.Resources,android.content.res.Resources$Theme,android.util.AttributeSet,android.animation.ValueAnimator,float,org.xmlpull.v1.XmlPullParser)>($r0, $r1, $r2, $r4, null, $f0, $r3);
+
+        goto label09;
+
+     label06:
+        $z1 = virtualinvoke $r8.<java.lang.String: boolean equals(java.lang.Object)>("set");
+
+        if $z1 == 0 goto label07;
+
+        r10 = new android.animation.AnimatorSet;
+
+        specialinvoke r10.<android.animation.AnimatorSet: void <init>()>();
+
+        r11 = <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_ANIMATOR_SET>;
+
+        $r12 = staticinvoke <androidx.core.content.res.TypedArrayUtils: android.content.res.TypedArray obtainAttributes(android.content.res.Resources,android.content.res.Resources$Theme,android.util.AttributeSet,int[])>($r1, $r2, $r4, r11);
+
+        $i2 = staticinvoke <androidx.core.content.res.TypedArrayUtils: int getNamedInt(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int,int)>($r12, $r3, "ordering", 0, 0);
+
+        staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: android.animation.Animator createAnimatorFromXml(android.content.Context,android.content.res.Resources,android.content.res.Resources$Theme,org.xmlpull.v1.XmlPullParser,android.util.AttributeSet,android.animation.AnimatorSet,int,float)>($r0, $r1, $r2, $r3, $r4, r10, $i2, $f0);
+
+        virtualinvoke $r12.<android.content.res.TypedArray: void recycle()>();
+
+        r6 = r10;
+
+        goto label09;
+
+     label07:
+        z0 = virtualinvoke $r8.<java.lang.String: boolean equals(java.lang.Object)>("propertyValuesHolder");
+
+        if z0 == 0 goto label11;
+
+        $r13 = staticinvoke <android.util.Xml: android.util.AttributeSet asAttributeSet(org.xmlpull.v1.XmlPullParser)>($r3);
+
+        $r14 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: android.animation.PropertyValuesHolder[] loadValues(android.content.Context,android.content.res.Resources,android.content.res.Resources$Theme,org.xmlpull.v1.XmlPullParser,android.util.AttributeSet)>($r0, $r1, $r2, $r3, $r13);
+
+        if $r14 == null goto label08;
+
+        z0 = r6 instanceof android.animation.ValueAnimator;
+
+        if z0 == 0 goto label08;
+
+        $r9 = (android.animation.ValueAnimator) r6;
+
+        virtualinvoke $r9.<android.animation.ValueAnimator: void setValues(android.animation.PropertyValuesHolder[])>($r14);
+
+     label08:
+        z0 = 1;
+
+     label09:
+        if $r5 == null goto label01;
+
+        if z0 != 0 goto label01;
+
+        if r7 != null goto label10;
+
+        r7 = new java.util.ArrayList;
+
+        specialinvoke r7.<java.util.ArrayList: void <init>()>();
+
+     label10:
+        virtualinvoke r7.<java.util.ArrayList: boolean add(java.lang.Object)>(r6);
+
+        goto label01;
+
+     label11:
+        r15 = new java.lang.RuntimeException;
+
+        r16 = new java.lang.StringBuilder;
+
+        specialinvoke r16.<java.lang.StringBuilder: void <init>()>();
+
+        r16 = virtualinvoke r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unknown animator name: ");
+
+        $r8 = interfaceinvoke $r3.<org.xmlpull.v1.XmlPullParser: java.lang.String getName()>();
+
+        r16 = virtualinvoke r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r8 = virtualinvoke r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r15.<java.lang.RuntimeException: void <init>(java.lang.String)>($r8);
+
+        throw r15;
+
+     label12:
+        if $r5 == null goto label16;
+
+        if r7 == null goto label16;
+
+        $i1 = virtualinvoke r7.<java.util.ArrayList: int size()>();
+
+        r17 = newarray (android.animation.Animator)[$i1];
+
+        $i1 = 0;
+
+        $r18 = virtualinvoke r7.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label13:
+        z0 = interfaceinvoke $r18.<java.util.Iterator: boolean hasNext()>();
+
+        if z0 == 0 goto label14;
+
+        $r19 = interfaceinvoke $r18.<java.util.Iterator: java.lang.Object next()>();
+
+        r20 = (android.animation.Animator) $r19;
+
+        r17[$i1] = r20;
+
+        $i1 = $i1 + 1;
+
+        goto label13;
+
+     label14:
+        if $i0 != 0 goto label15;
+
+        virtualinvoke $r5.<android.animation.AnimatorSet: void playTogether(android.animation.Animator[])>(r17);
+
+        return r6;
+
+     label15:
+        virtualinvoke $r5.<android.animation.AnimatorSet: void playSequentially(android.animation.Animator[])>(r17);
+
+     label16:
+        return r6;
+    }
+
+    private static android.animation.Keyframe createNewKeyframe(android.animation.Keyframe, float)
+    {
+        android.animation.Keyframe $r0;
+        float $f0;
+        java.lang.Class $r1, $r2;
+
+        $r0 := @parameter0: android.animation.Keyframe;
+
+        $f0 := @parameter1: float;
+
+        $r1 = virtualinvoke $r0.<android.animation.Keyframe: java.lang.Class getType()>();
+
+        $r2 = <java.lang.Float: java.lang.Class TYPE>;
+
+        if $r1 != $r2 goto label1;
+
+        $r0 = staticinvoke <android.animation.Keyframe: android.animation.Keyframe ofFloat(float)>($f0);
+
+        return $r0;
+
+     label1:
+        $r1 = virtualinvoke $r0.<android.animation.Keyframe: java.lang.Class getType()>();
+
+        $r2 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        if $r1 != $r2 goto label2;
+
+        $r0 = staticinvoke <android.animation.Keyframe: android.animation.Keyframe ofInt(float)>($f0);
+
+        return $r0;
+
+     label2:
+        $r0 = staticinvoke <android.animation.Keyframe: android.animation.Keyframe ofObject(float)>($f0);
+
+        return $r0;
+    }
+
+    private static void distributeKeyframes(android.animation.Keyframe[], float, int, int)
+    {
+        android.animation.Keyframe $r1, $r2;
+        android.animation.Keyframe[] $r0;
+        int $i0, $i1, i2;
+        float $f0, $f1;
+
+        $r0 := @parameter0: android.animation.Keyframe[];
+
+        $f0 := @parameter1: float;
+
+        $i0 := @parameter2: int;
+
+        $i1 := @parameter3: int;
+
+        i2 = $i1 - $i0;
+
+        i2 = i2 + 2;
+
+        $f1 = (float) i2;
+
+        $f0 = $f0 / $f1;
+
+     label1:
+        if $i0 > $i1 goto label2;
+
+        $r1 = $r0[$i0];
+
+        i2 = $i0 + -1;
+
+        $r2 = $r0[i2];
+
+        $f1 = virtualinvoke $r2.<android.animation.Keyframe: float getFraction()>();
+
+        $f1 = $f1 + $f0;
+
+        virtualinvoke $r1.<android.animation.Keyframe: void setFraction(float)>($f1);
+
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    private static void dumpKeyframes(java.lang.Object[], java.lang.String)
+    {
+        java.lang.Object[] $r0;
+        java.io.Serializable $r5;
+        byte $b2;
+        android.animation.Keyframe r3;
+        int i0, i1, $i3;
+        float $f0;
+        java.lang.Object r2;
+        java.lang.StringBuilder $r4, $r6;
+        java.lang.String $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: java.lang.Object[];
+
+        $r1 := @parameter1: java.lang.String;
+
+        if $r0 == null goto label6;
+
+        i0 = lengthof $r0;
+
+        if i0 != 0 goto label1;
+
+        return;
+
+     label1:
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("AnimatorInflater", $r1);
+
+        i0 = lengthof $r0;
+
+        i1 = 0;
+
+     label2:
+        if i1 >= i0 goto label6;
+
+        r2 = $r0[i1];
+
+        r3 = (android.animation.Keyframe) r2;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Keyframe ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": fraction ");
+
+        $f0 = virtualinvoke r3.<android.animation.Keyframe: float getFraction()>();
+
+        r2 = "null";
+
+        $b2 = $f0 cmpg 0.0F;
+
+        $i3 = (int) $b2;
+
+        if $i3 >= 0 goto label3;
+
+        $r5 = "null";
+
+        goto label4;
+
+     label3:
+        $f0 = virtualinvoke r3.<android.animation.Keyframe: float getFraction()>();
+
+        $r5 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>($f0);
+
+     label4:
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", , value : ");
+
+        $z0 = virtualinvoke r3.<android.animation.Keyframe: boolean hasValue()>();
+
+        if $z0 == 0 goto label5;
+
+        r2 = virtualinvoke r3.<android.animation.Keyframe: java.lang.Object getValue()>();
+
+     label5:
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r2);
+
+        $r1 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("AnimatorInflater", $r1);
+
+        i1 = i1 + 1;
+
+        goto label2;
+
+     label6:
+        return;
+    }
+
+    private static android.animation.PropertyValuesHolder getPVH(android.content.res.TypedArray, int, int, int, java.lang.String)
+    {
+        java.lang.Object[] r8;
+        float[] r13;
+        android.content.res.TypedArray $r0;
+        androidx.core.graphics.PathParser$PathDataNode[] $r5, $r6;
+        android.animation.PropertyValuesHolder $r9;
+        int[] $r14;
+        int i0, $i1, $i2, i3, i4, i5;
+        java.lang.String $r1, $r3, $r4;
+        boolean z0, z1, $z2;
+        androidx.vectordrawable.graphics.drawable.ArgbEvaluator r12;
+        android.util.TypedValue $r2;
+        android.view.InflateException r10;
+        androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat$PathDataEvaluator r7;
+        float $f0, $f1;
+        java.lang.StringBuilder r11;
+
+        $r0 := @parameter0: android.content.res.TypedArray;
+
+        i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $r1 := @parameter4: java.lang.String;
+
+        $r2 = virtualinvoke $r0.<android.content.res.TypedArray: android.util.TypedValue peekValue(int)>($i1);
+
+        if $r2 == null goto label01;
+
+        z0 = 1;
+
+        goto label02;
+
+     label01:
+        z0 = 0;
+
+     label02:
+        if z0 == 0 goto label03;
+
+        i3 = $r2.<android.util.TypedValue: int type>;
+
+        goto label04;
+
+     label03:
+        i3 = 0;
+
+     label04:
+        $r2 = virtualinvoke $r0.<android.content.res.TypedArray: android.util.TypedValue peekValue(int)>($i2);
+
+        if $r2 == null goto label05;
+
+        z1 = 1;
+
+        goto label06;
+
+     label05:
+        z1 = 0;
+
+     label06:
+        if z1 == 0 goto label07;
+
+        i4 = $r2.<android.util.TypedValue: int type>;
+
+        goto label08;
+
+     label07:
+        i4 = 0;
+
+     label08:
+        if i0 != 4 goto label12;
+
+        if z0 == 0 goto label09;
+
+        $z2 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: boolean isColorType(int)>(i3);
+
+        if $z2 != 0 goto label10;
+
+     label09:
+        if z1 == 0 goto label11;
+
+        $z2 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: boolean isColorType(int)>(i4);
+
+        if $z2 == 0 goto label11;
+
+     label10:
+        i5 = 3;
+
+        goto label13;
+
+     label11:
+        i5 = 0;
+
+        goto label13;
+
+     label12:
+        i5 = i0;
+
+     label13:
+        if i5 != 0 goto label14;
+
+        $z2 = 1;
+
+        goto label15;
+
+     label14:
+        $z2 = 0;
+
+     label15:
+        if i5 != 2 goto label24;
+
+        $r3 = virtualinvoke $r0.<android.content.res.TypedArray: java.lang.String getString(int)>($i1);
+
+        $r4 = virtualinvoke $r0.<android.content.res.TypedArray: java.lang.String getString(int)>($i2);
+
+        $r5 = staticinvoke <androidx.core.graphics.PathParser: androidx.core.graphics.PathParser$PathDataNode[] createNodesFromPathData(java.lang.String)>($r3);
+
+        $r6 = staticinvoke <androidx.core.graphics.PathParser: androidx.core.graphics.PathParser$PathDataNode[] createNodesFromPathData(java.lang.String)>($r4);
+
+        if $r5 != null goto label17;
+
+        if $r6 == null goto label16;
+
+        goto label17;
+
+     label16:
+        goto label22;
+
+     label17:
+        if $r5 == null goto label21;
+
+        r7 = new androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat$PathDataEvaluator;
+
+        specialinvoke r7.<androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat$PathDataEvaluator: void <init>()>();
+
+        if $r6 == null goto label19;
+
+        z1 = staticinvoke <androidx.core.graphics.PathParser: boolean canMorph(androidx.core.graphics.PathParser$PathDataNode[],androidx.core.graphics.PathParser$PathDataNode[])>($r5, $r6);
+
+        if z1 == 0 goto label18;
+
+        r8 = newarray (java.lang.Object)[2];
+
+        r8[0] = $r5;
+
+        r8[1] = $r6;
+
+        $r9 = staticinvoke <android.animation.PropertyValuesHolder: android.animation.PropertyValuesHolder ofObject(java.lang.String,android.animation.TypeEvaluator,java.lang.Object[])>($r1, r7, r8);
+
+        goto label20;
+
+     label18:
+        r10 = new android.view.InflateException;
+
+        r11 = new java.lang.StringBuilder;
+
+        specialinvoke r11.<java.lang.StringBuilder: void <init>()>();
+
+        r11 = virtualinvoke r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" Can\'t morph from ");
+
+        r11 = virtualinvoke r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        r11 = virtualinvoke r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" to ");
+
+        r11 = virtualinvoke r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r1 = virtualinvoke r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r10.<android.view.InflateException: void <init>(java.lang.String)>($r1);
+
+        throw r10;
+
+     label19:
+        r8 = newarray (java.lang.Object)[1];
+
+        r8[0] = $r5;
+
+        $r9 = staticinvoke <android.animation.PropertyValuesHolder: android.animation.PropertyValuesHolder ofObject(java.lang.String,android.animation.TypeEvaluator,java.lang.Object[])>($r1, r7, r8);
+
+     label20:
+        goto label23;
+
+     label21:
+        if $r6 == null goto label22;
+
+        r7 = new androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat$PathDataEvaluator;
+
+        specialinvoke r7.<androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat$PathDataEvaluator: void <init>()>();
+
+        r8 = newarray (java.lang.Object)[1];
+
+        r8[0] = $r6;
+
+        $r9 = staticinvoke <android.animation.PropertyValuesHolder: android.animation.PropertyValuesHolder ofObject(java.lang.String,android.animation.TypeEvaluator,java.lang.Object[])>($r1, r7, r8);
+
+        goto label23;
+
+     label22:
+        $r9 = null;
+
+     label23:
+        return $r9;
+
+     label24:
+        i0 = i4;
+
+        r12 = null;
+
+        if i5 != 3 goto label25;
+
+        r12 = staticinvoke <androidx.vectordrawable.graphics.drawable.ArgbEvaluator: androidx.vectordrawable.graphics.drawable.ArgbEvaluator getInstance()>();
+
+     label25:
+        if $z2 == 0 goto label35;
+
+        if z0 == 0 goto label31;
+
+        if i3 != 5 goto label26;
+
+        $f0 = virtualinvoke $r0.<android.content.res.TypedArray: float getDimension(int,float)>($i1, 0.0F);
+
+        goto label27;
+
+     label26:
+        $f0 = virtualinvoke $r0.<android.content.res.TypedArray: float getFloat(int,float)>($i1, 0.0F);
+
+     label27:
+        if z1 == 0 goto label30;
+
+        if i0 != 5 goto label28;
+
+        $f1 = virtualinvoke $r0.<android.content.res.TypedArray: float getDimension(int,float)>($i2, 0.0F);
+
+        goto label29;
+
+     label28:
+        $f1 = virtualinvoke $r0.<android.content.res.TypedArray: float getFloat(int,float)>($i2, 0.0F);
+
+     label29:
+        r13 = newarray (float)[2];
+
+        r13[0] = $f0;
+
+        r13[1] = $f1;
+
+        $r9 = staticinvoke <android.animation.PropertyValuesHolder: android.animation.PropertyValuesHolder ofFloat(java.lang.String,float[])>($r1, r13);
+
+        goto label34;
+
+     label30:
+        r13 = newarray (float)[1];
+
+        r13[0] = $f0;
+
+        $r9 = staticinvoke <android.animation.PropertyValuesHolder: android.animation.PropertyValuesHolder ofFloat(java.lang.String,float[])>($r1, r13);
+
+        goto label34;
+
+     label31:
+        if i0 != 5 goto label32;
+
+        $f0 = virtualinvoke $r0.<android.content.res.TypedArray: float getDimension(int,float)>($i2, 0.0F);
+
+        goto label33;
+
+     label32:
+        $f0 = virtualinvoke $r0.<android.content.res.TypedArray: float getFloat(int,float)>($i2, 0.0F);
+
+     label33:
+        r13 = newarray (float)[1];
+
+        r13[0] = $f0;
+
+        $r9 = staticinvoke <android.animation.PropertyValuesHolder: android.animation.PropertyValuesHolder ofFloat(java.lang.String,float[])>($r1, r13);
+
+     label34:
+        goto label48;
+
+     label35:
+        if z0 == 0 goto label43;
+
+        if i3 != 5 goto label36;
+
+        $f0 = virtualinvoke $r0.<android.content.res.TypedArray: float getDimension(int,float)>($i1, 0.0F);
+
+        $i1 = (int) $f0;
+
+        goto label38;
+
+     label36:
+        z0 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: boolean isColorType(int)>(i3);
+
+        if z0 == 0 goto label37;
+
+        $i1 = virtualinvoke $r0.<android.content.res.TypedArray: int getColor(int,int)>($i1, 0);
+
+        goto label38;
+
+     label37:
+        $i1 = virtualinvoke $r0.<android.content.res.TypedArray: int getInt(int,int)>($i1, 0);
+
+     label38:
+        if z1 == 0 goto label42;
+
+        if i0 != 5 goto label39;
+
+        $f0 = virtualinvoke $r0.<android.content.res.TypedArray: float getDimension(int,float)>($i2, 0.0F);
+
+        i0 = (int) $f0;
+
+        goto label41;
+
+     label39:
+        z1 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: boolean isColorType(int)>(i0);
+
+        if z1 == 0 goto label40;
+
+        i0 = virtualinvoke $r0.<android.content.res.TypedArray: int getColor(int,int)>($i2, 0);
+
+        goto label41;
+
+     label40:
+        i0 = virtualinvoke $r0.<android.content.res.TypedArray: int getInt(int,int)>($i2, 0);
+
+     label41:
+        $r14 = newarray (int)[2];
+
+        $r14[0] = $i1;
+
+        $r14[1] = i0;
+
+        $r9 = staticinvoke <android.animation.PropertyValuesHolder: android.animation.PropertyValuesHolder ofInt(java.lang.String,int[])>($r1, $r14);
+
+        goto label48;
+
+     label42:
+        $r14 = newarray (int)[1];
+
+        $r14[0] = $i1;
+
+        $r9 = staticinvoke <android.animation.PropertyValuesHolder: android.animation.PropertyValuesHolder ofInt(java.lang.String,int[])>($r1, $r14);
+
+        goto label48;
+
+     label43:
+        if z1 == 0 goto label47;
+
+        if i0 != 5 goto label44;
+
+        $f0 = virtualinvoke $r0.<android.content.res.TypedArray: float getDimension(int,float)>($i2, 0.0F);
+
+        i0 = (int) $f0;
+
+        goto label46;
+
+     label44:
+        z1 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: boolean isColorType(int)>(i0);
+
+        if z1 == 0 goto label45;
+
+        i0 = virtualinvoke $r0.<android.content.res.TypedArray: int getColor(int,int)>($i2, 0);
+
+        goto label46;
+
+     label45:
+        i0 = virtualinvoke $r0.<android.content.res.TypedArray: int getInt(int,int)>($i2, 0);
+
+     label46:
+        $r14 = newarray (int)[1];
+
+        $r14[0] = i0;
+
+        $r9 = staticinvoke <android.animation.PropertyValuesHolder: android.animation.PropertyValuesHolder ofInt(java.lang.String,int[])>($r1, $r14);
+
+        goto label48;
+
+     label47:
+        $r9 = null;
+
+     label48:
+        if $r9 == null goto label49;
+
+        if r12 == null goto label49;
+
+        virtualinvoke $r9.<android.animation.PropertyValuesHolder: void setEvaluator(android.animation.TypeEvaluator)>(r12);
+
+     label49:
+        return $r9;
+    }
+
+    private static int inferValueTypeFromValues(android.content.res.TypedArray, int, int)
+    {
+        android.util.TypedValue $r1;
+        int $i0, $i1, i2;
+        android.content.res.TypedArray $r0;
+        boolean z0, z1;
+
+        $r0 := @parameter0: android.content.res.TypedArray;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r1 = virtualinvoke $r0.<android.content.res.TypedArray: android.util.TypedValue peekValue(int)>($i0);
+
+        z0 = 1;
+
+        $i0 = 0;
+
+        if $r1 == null goto label01;
+
+        z1 = 1;
+
+        goto label02;
+
+     label01:
+        z1 = 0;
+
+     label02:
+        if z1 == 0 goto label03;
+
+        i2 = $r1.<android.util.TypedValue: int type>;
+
+        goto label04;
+
+     label03:
+        i2 = 0;
+
+     label04:
+        $r1 = virtualinvoke $r0.<android.content.res.TypedArray: android.util.TypedValue peekValue(int)>($i1);
+
+        if $r1 == null goto label05;
+
+        goto label06;
+
+     label05:
+        z0 = 0;
+
+     label06:
+        if z0 == 0 goto label07;
+
+        $i0 = $r1.<android.util.TypedValue: int type>;
+
+     label07:
+        if z1 == 0 goto label08;
+
+        z1 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: boolean isColorType(int)>(i2);
+
+        if z1 != 0 goto label09;
+
+     label08:
+        if z0 == 0 goto label10;
+
+        z0 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: boolean isColorType(int)>($i0);
+
+        if z0 == 0 goto label10;
+
+     label09:
+        return 3;
+
+     label10:
+        return 0;
+    }
+
+    private static int inferValueTypeOfKeyframe(android.content.res.Resources, android.content.res.Resources$Theme, android.util.AttributeSet, org.xmlpull.v1.XmlPullParser)
+    {
+        android.content.res.TypedArray $r5;
+        android.util.AttributeSet $r2;
+        android.util.TypedValue $r6;
+        byte b1;
+        int[] r4;
+        int i0;
+        android.content.res.Resources$Theme $r1;
+        android.content.res.Resources $r0;
+        org.xmlpull.v1.XmlPullParser $r3;
+        boolean z0;
+
+        $r0 := @parameter0: android.content.res.Resources;
+
+        $r1 := @parameter1: android.content.res.Resources$Theme;
+
+        $r2 := @parameter2: android.util.AttributeSet;
+
+        $r3 := @parameter3: org.xmlpull.v1.XmlPullParser;
+
+        r4 = <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_KEYFRAME>;
+
+        $r5 = staticinvoke <androidx.core.content.res.TypedArrayUtils: android.content.res.TypedArray obtainAttributes(android.content.res.Resources,android.content.res.Resources$Theme,android.util.AttributeSet,int[])>($r0, $r1, $r2, r4);
+
+        z0 = 0;
+
+        $r6 = staticinvoke <androidx.core.content.res.TypedArrayUtils: android.util.TypedValue peekNamedValue(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int)>($r5, $r3, "value", 0);
+
+        if $r6 == null goto label1;
+
+        z0 = 1;
+
+     label1:
+        if z0 == 0 goto label2;
+
+        i0 = $r6.<android.util.TypedValue: int type>;
+
+        z0 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: boolean isColorType(int)>(i0);
+
+        if z0 == 0 goto label2;
+
+        b1 = 3;
+
+        goto label3;
+
+     label2:
+        b1 = 0;
+
+     label3:
+        virtualinvoke $r5.<android.content.res.TypedArray: void recycle()>();
+
+        return b1;
+    }
+
+    private static boolean isColorType(int)
+    {
+        int $i0;
+
+        $i0 := @parameter0: int;
+
+        if $i0 < 28 goto label1;
+
+        if $i0 > 31 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static android.animation.Animator loadAnimator(android.content.Context, int) throws android.content.res.Resources$NotFoundException
+    {
+        android.content.Context $r0;
+        int $i0, i1;
+        android.animation.Animator $r1;
+        android.content.res.Resources$Theme $r3;
+        android.content.res.Resources $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i1 < 24 goto label1;
+
+        $r1 = staticinvoke <android.animation.AnimatorInflater: android.animation.Animator loadAnimator(android.content.Context,int)>($r0, $i0);
+
+        return $r1;
+
+     label1:
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        $r1 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: android.animation.Animator loadAnimator(android.content.Context,android.content.res.Resources,android.content.res.Resources$Theme,int)>($r0, $r2, $r3, $i0);
+
+        return $r1;
+    }
+
+    public static android.animation.Animator loadAnimator(android.content.Context, android.content.res.Resources, android.content.res.Resources$Theme, int) throws android.content.res.Resources$NotFoundException
+    {
+        android.content.Context $r0;
+        int $i0;
+        android.animation.Animator $r3;
+        android.content.res.Resources$Theme $r2;
+        android.content.res.Resources $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: android.content.res.Resources;
+
+        $r2 := @parameter2: android.content.res.Resources$Theme;
+
+        $i0 := @parameter3: int;
+
+        $r3 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: android.animation.Animator loadAnimator(android.content.Context,android.content.res.Resources,android.content.res.Resources$Theme,int,float)>($r0, $r1, $r2, $i0, 1.0F);
+
+        return $r3;
+    }
+
+    public static android.animation.Animator loadAnimator(android.content.Context, android.content.res.Resources, android.content.res.Resources$Theme, int, float) throws android.content.res.Resources$NotFoundException
+    {
+        java.lang.Throwable r6;
+        android.content.Context r0;
+        android.content.res.Resources$NotFoundException $r8;
+        android.content.res.XmlResourceParser r3, $r4;
+        java.io.IOException r7;
+        android.animation.Animator $r5;
+        org.xmlpull.v1.XmlPullParserException r11;
+        int i0;
+        float f0;
+        java.lang.StringBuilder $r9;
+        java.lang.String $r10;
+        android.content.res.Resources$Theme r2;
+        android.content.res.Resources r1;
+
+        r0 := @parameter0: android.content.Context;
+
+        r1 := @parameter1: android.content.res.Resources;
+
+        r2 := @parameter2: android.content.res.Resources$Theme;
+
+        i0 := @parameter3: int;
+
+        f0 := @parameter4: float;
+
+        r3 = null;
+
+     label01:
+        $r4 = virtualinvoke r1.<android.content.res.Resources: android.content.res.XmlResourceParser getAnimation(int)>(i0);
+
+     label02:
+        r3 = $r4;
+
+     label03:
+        $r5 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: android.animation.Animator createAnimatorFromXml(android.content.Context,android.content.res.Resources,android.content.res.Resources$Theme,org.xmlpull.v1.XmlPullParser,float)>(r0, r1, r2, $r4, f0);
+
+     label04:
+        if $r4 == null goto label12;
+
+        interfaceinvoke $r4.<android.content.res.XmlResourceParser: void close()>();
+
+        return $r5;
+
+     label05:
+        r6 := @caughtexception;
+
+        goto label10;
+
+     label06:
+        r7 := @caughtexception;
+
+     label07:
+        $r8 = new android.content.res.Resources$NotFoundException;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can\'t load animation resource ID #0x");
+
+        $r10 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>(i0);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r8.<android.content.res.Resources$NotFoundException: void <init>(java.lang.String)>($r10);
+
+        virtualinvoke $r8.<android.content.res.Resources$NotFoundException: java.lang.Throwable initCause(java.lang.Throwable)>(r7);
+
+        throw $r8;
+
+     label08:
+        r11 := @caughtexception;
+
+     label09:
+        $r8 = new android.content.res.Resources$NotFoundException;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can\'t load animation resource ID #0x");
+
+        $r10 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>(i0);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r8.<android.content.res.Resources$NotFoundException: void <init>(java.lang.String)>($r10);
+
+        virtualinvoke $r8.<android.content.res.Resources$NotFoundException: java.lang.Throwable initCause(java.lang.Throwable)>(r11);
+
+        throw $r8;
+
+     label10:
+        if r3 == null goto label11;
+
+        interfaceinvoke r3.<android.content.res.XmlResourceParser: void close()>();
+
+     label11:
+        throw r6;
+
+     label12:
+        return $r5;
+
+        catch org.xmlpull.v1.XmlPullParserException from label01 to label02 with label08;
+        catch org.xmlpull.v1.XmlPullParserException from label03 to label04 with label08;
+        catch java.io.IOException from label01 to label02 with label06;
+        catch java.io.IOException from label03 to label04 with label06;
+        catch java.lang.Throwable from label01 to label02 with label05;
+        catch java.lang.Throwable from label03 to label04 with label05;
+        catch java.lang.Throwable from label07 to label08 with label05;
+        catch java.lang.Throwable from label09 to label10 with label05;
+    }
+
+    private static android.animation.ValueAnimator loadAnimator(android.content.Context, android.content.res.Resources, android.content.res.Resources$Theme, android.util.AttributeSet, android.animation.ValueAnimator, float, org.xmlpull.v1.XmlPullParser) throws android.content.res.Resources$NotFoundException
+    {
+        android.content.Context $r0;
+        android.view.animation.Interpolator $r9;
+        android.content.res.TypedArray $r7, $r8;
+        android.util.AttributeSet $r3;
+        int[] r6;
+        int $i0;
+        float $f0;
+        android.content.res.Resources$Theme $r2;
+        android.content.res.Resources $r1;
+        org.xmlpull.v1.XmlPullParser $r4;
+        android.animation.ValueAnimator $r5;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: android.content.res.Resources;
+
+        $r2 := @parameter2: android.content.res.Resources$Theme;
+
+        $r3 := @parameter3: android.util.AttributeSet;
+
+        $r5 := @parameter4: android.animation.ValueAnimator;
+
+        $f0 := @parameter5: float;
+
+        $r4 := @parameter6: org.xmlpull.v1.XmlPullParser;
+
+        r6 = <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_ANIMATOR>;
+
+        $r7 = staticinvoke <androidx.core.content.res.TypedArrayUtils: android.content.res.TypedArray obtainAttributes(android.content.res.Resources,android.content.res.Resources$Theme,android.util.AttributeSet,int[])>($r1, $r2, $r3, r6);
+
+        r6 = <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_PROPERTY_ANIMATOR>;
+
+        $r8 = staticinvoke <androidx.core.content.res.TypedArrayUtils: android.content.res.TypedArray obtainAttributes(android.content.res.Resources,android.content.res.Resources$Theme,android.util.AttributeSet,int[])>($r1, $r2, $r3, r6);
+
+        if $r5 != null goto label1;
+
+        $r5 = new android.animation.ValueAnimator;
+
+        specialinvoke $r5.<android.animation.ValueAnimator: void <init>()>();
+
+     label1:
+        staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: void parseAnimatorFromTypeArray(android.animation.ValueAnimator,android.content.res.TypedArray,android.content.res.TypedArray,float,org.xmlpull.v1.XmlPullParser)>($r5, $r7, $r8, $f0, $r4);
+
+        $i0 = staticinvoke <androidx.core.content.res.TypedArrayUtils: int getNamedResourceId(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int,int)>($r7, $r4, "interpolator", 0, 0);
+
+        if $i0 <= 0 goto label2;
+
+        $r9 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimationUtilsCompat: android.view.animation.Interpolator loadInterpolator(android.content.Context,int)>($r0, $i0);
+
+        virtualinvoke $r5.<android.animation.ValueAnimator: void setInterpolator(android.animation.TimeInterpolator)>($r9);
+
+     label2:
+        virtualinvoke $r7.<android.content.res.TypedArray: void recycle()>();
+
+        if $r8 == null goto label3;
+
+        virtualinvoke $r8.<android.content.res.TypedArray: void recycle()>();
+
+     label3:
+        return $r5;
+    }
+
+    private static android.animation.Keyframe loadKeyframe(android.content.Context, android.content.res.Resources, android.content.res.Resources$Theme, android.util.AttributeSet, int, org.xmlpull.v1.XmlPullParser) throws org.xmlpull.v1.XmlPullParserException, java.io.IOException
+    {
+        android.content.Context $r0;
+        android.view.animation.Interpolator $r9;
+        android.content.res.TypedArray $r6;
+        android.util.AttributeSet $r3;
+        android.util.TypedValue $r8;
+        int[] r5;
+        android.animation.Keyframe r7;
+        int $i0;
+        float $f0, $f1;
+        android.content.res.Resources$Theme $r2;
+        android.content.res.Resources $r1;
+        org.xmlpull.v1.XmlPullParser $r4;
+        boolean z0, $z1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: android.content.res.Resources;
+
+        $r2 := @parameter2: android.content.res.Resources$Theme;
+
+        $r3 := @parameter3: android.util.AttributeSet;
+
+        $i0 := @parameter4: int;
+
+        $r4 := @parameter5: org.xmlpull.v1.XmlPullParser;
+
+        r5 = <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_KEYFRAME>;
+
+        $r6 = staticinvoke <androidx.core.content.res.TypedArrayUtils: android.content.res.TypedArray obtainAttributes(android.content.res.Resources,android.content.res.Resources$Theme,android.util.AttributeSet,int[])>($r1, $r2, $r3, r5);
+
+        r7 = null;
+
+        $f0 = staticinvoke <androidx.core.content.res.TypedArrayUtils: float getNamedFloat(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int,float)>($r6, $r4, "fraction", 3, -1.0F);
+
+        $r8 = staticinvoke <androidx.core.content.res.TypedArrayUtils: android.util.TypedValue peekNamedValue(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int)>($r6, $r4, "value", 0);
+
+        if $r8 == null goto label01;
+
+        z0 = 1;
+
+        goto label02;
+
+     label01:
+        z0 = 0;
+
+     label02:
+        if $i0 != 4 goto label04;
+
+        if z0 == 0 goto label03;
+
+        $i0 = $r8.<android.util.TypedValue: int type>;
+
+        $z1 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: boolean isColorType(int)>($i0);
+
+        if $z1 == 0 goto label03;
+
+        $i0 = 3;
+
+        goto label04;
+
+     label03:
+        $i0 = 0;
+
+     label04:
+        if z0 == 0 goto label09;
+
+        lookupswitch($i0)
+        {
+            case 0: goto label07;
+            case 1: goto label06;
+            case 2: goto label05;
+            case 3: goto label06;
+            default: goto label05;
+        };
+
+     label05:
+        goto label08;
+
+     label06:
+        $i0 = staticinvoke <androidx.core.content.res.TypedArrayUtils: int getNamedInt(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int,int)>($r6, $r4, "value", 0, 0);
+
+        r7 = staticinvoke <android.animation.Keyframe: android.animation.Keyframe ofInt(float,int)>($f0, $i0);
+
+        goto label08;
+
+     label07:
+        $f1 = staticinvoke <androidx.core.content.res.TypedArrayUtils: float getNamedFloat(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int,float)>($r6, $r4, "value", 0, 0.0F);
+
+        r7 = staticinvoke <android.animation.Keyframe: android.animation.Keyframe ofFloat(float,float)>($f0, $f1);
+
+     label08:
+        goto label11;
+
+     label09:
+        if $i0 != 0 goto label10;
+
+        r7 = staticinvoke <android.animation.Keyframe: android.animation.Keyframe ofFloat(float)>($f0);
+
+        goto label11;
+
+     label10:
+        r7 = staticinvoke <android.animation.Keyframe: android.animation.Keyframe ofInt(float)>($f0);
+
+     label11:
+        $i0 = staticinvoke <androidx.core.content.res.TypedArrayUtils: int getNamedResourceId(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int,int)>($r6, $r4, "interpolator", 1, 0);
+
+        if $i0 <= 0 goto label12;
+
+        $r9 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimationUtilsCompat: android.view.animation.Interpolator loadInterpolator(android.content.Context,int)>($r0, $i0);
+
+        virtualinvoke r7.<android.animation.Keyframe: void setInterpolator(android.animation.TimeInterpolator)>($r9);
+
+     label12:
+        virtualinvoke $r6.<android.content.res.TypedArray: void recycle()>();
+
+        return r7;
+    }
+
+    private static android.animation.ObjectAnimator loadObjectAnimator(android.content.Context, android.content.res.Resources, android.content.res.Resources$Theme, android.util.AttributeSet, float, org.xmlpull.v1.XmlPullParser) throws android.content.res.Resources$NotFoundException
+    {
+        android.content.Context $r0;
+        android.util.AttributeSet $r3;
+        android.animation.ObjectAnimator r5;
+        float $f0;
+        android.content.res.Resources$Theme $r2;
+        android.content.res.Resources $r1;
+        org.xmlpull.v1.XmlPullParser $r4;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: android.content.res.Resources;
+
+        $r2 := @parameter2: android.content.res.Resources$Theme;
+
+        $r3 := @parameter3: android.util.AttributeSet;
+
+        $f0 := @parameter4: float;
+
+        $r4 := @parameter5: org.xmlpull.v1.XmlPullParser;
+
+        r5 = new android.animation.ObjectAnimator;
+
+        specialinvoke r5.<android.animation.ObjectAnimator: void <init>()>();
+
+        staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: android.animation.ValueAnimator loadAnimator(android.content.Context,android.content.res.Resources,android.content.res.Resources$Theme,android.util.AttributeSet,android.animation.ValueAnimator,float,org.xmlpull.v1.XmlPullParser)>($r0, $r1, $r2, $r3, r5, $f0, $r4);
+
+        return r5;
+    }
+
+    private static android.animation.PropertyValuesHolder loadPvh(android.content.Context, android.content.res.Resources, android.content.res.Resources$Theme, org.xmlpull.v1.XmlPullParser, java.lang.String, int) throws org.xmlpull.v1.XmlPullParserException, java.io.IOException
+    {
+        android.content.Context $r0;
+        java.util.ArrayList r5, $r14;
+        android.animation.PropertyValuesHolder $r12;
+        android.util.AttributeSet $r7;
+        byte b4;
+        android.animation.Keyframe $r8, r10;
+        int $i0, $i1, $i2, i3, i5, i6, i7;
+        java.lang.String $r4, $r6;
+        android.content.res.Resources$Theme $r2;
+        org.xmlpull.v1.XmlPullParser $r3;
+        boolean $z0;
+        androidx.vectordrawable.graphics.drawable.ArgbEvaluator $r13;
+        android.animation.Keyframe[] r11;
+        float $f0, $f1;
+        java.lang.Object $r9;
+        android.content.res.Resources $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: android.content.res.Resources;
+
+        $r2 := @parameter2: android.content.res.Resources$Theme;
+
+        $r3 := @parameter3: org.xmlpull.v1.XmlPullParser;
+
+        $r4 := @parameter4: java.lang.String;
+
+        $i0 := @parameter5: int;
+
+        r5 = null;
+
+     label01:
+        $i1 = interfaceinvoke $r3.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+        if $i1 == 3 goto label06;
+
+        if $i1 == 1 goto label06;
+
+        $r6 = interfaceinvoke $r3.<org.xmlpull.v1.XmlPullParser: java.lang.String getName()>();
+
+        $z0 = virtualinvoke $r6.<java.lang.String: boolean equals(java.lang.Object)>("keyframe");
+
+        if $z0 == 0 goto label05;
+
+        if $i0 != 4 goto label02;
+
+        $r7 = staticinvoke <android.util.Xml: android.util.AttributeSet asAttributeSet(org.xmlpull.v1.XmlPullParser)>($r3);
+
+        $i0 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: int inferValueTypeOfKeyframe(android.content.res.Resources,android.content.res.Resources$Theme,android.util.AttributeSet,org.xmlpull.v1.XmlPullParser)>($r1, $r2, $r7, $r3);
+
+        goto label02;
+
+     label02:
+        $r7 = staticinvoke <android.util.Xml: android.util.AttributeSet asAttributeSet(org.xmlpull.v1.XmlPullParser)>($r3);
+
+        $r8 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: android.animation.Keyframe loadKeyframe(android.content.Context,android.content.res.Resources,android.content.res.Resources$Theme,android.util.AttributeSet,int,org.xmlpull.v1.XmlPullParser)>($r0, $r1, $r2, $r7, $i0, $r3);
+
+        if $r8 == null goto label04;
+
+        if r5 != null goto label03;
+
+        $r14 = new java.util.ArrayList;
+
+        specialinvoke $r14.<java.util.ArrayList: void <init>()>();
+
+        r5 = $r14;
+
+     label03:
+        virtualinvoke r5.<java.util.ArrayList: boolean add(java.lang.Object)>($r8);
+
+     label04:
+        interfaceinvoke $r3.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+        goto label01;
+
+     label05:
+        goto label01;
+
+     label06:
+        if r5 == null goto label20;
+
+        $i2 = virtualinvoke r5.<java.util.ArrayList: int size()>();
+
+        $i1 = $i2;
+
+        if $i2 <= 0 goto label19;
+
+        $r9 = virtualinvoke r5.<java.util.ArrayList: java.lang.Object get(int)>(0);
+
+        $r8 = (android.animation.Keyframe) $r9;
+
+        i3 = $i2 + -1;
+
+        $r9 = virtualinvoke r5.<java.util.ArrayList: java.lang.Object get(int)>(i3);
+
+        r10 = (android.animation.Keyframe) $r9;
+
+        $f0 = virtualinvoke r10.<android.animation.Keyframe: float getFraction()>();
+
+        b4 = $f0 cmpg 1.0F;
+
+        i3 = (int) b4;
+
+        if i3 >= 0 goto label08;
+
+        b4 = $f0 cmpg 0.0F;
+
+        i3 = (int) b4;
+
+        if i3 >= 0 goto label07;
+
+        virtualinvoke r10.<android.animation.Keyframe: void setFraction(float)>(1.0F);
+
+        goto label08;
+
+     label07:
+        $i1 = virtualinvoke r5.<java.util.ArrayList: int size()>();
+
+        r10 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: android.animation.Keyframe createNewKeyframe(android.animation.Keyframe,float)>(r10, 1.0F);
+
+        virtualinvoke r5.<java.util.ArrayList: void add(int,java.lang.Object)>($i1, r10);
+
+        $i1 = $i2 + 1;
+
+     label08:
+        $f0 = virtualinvoke $r8.<android.animation.Keyframe: float getFraction()>();
+
+        b4 = $f0 cmpl 0.0F;
+
+        if b4 == 0 goto label10;
+
+        b4 = $f0 cmpg 0.0F;
+
+        $i2 = (int) b4;
+
+        if $i2 >= 0 goto label09;
+
+        virtualinvoke $r8.<android.animation.Keyframe: void setFraction(float)>(0.0F);
+
+        goto label10;
+
+     label09:
+        $r8 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: android.animation.Keyframe createNewKeyframe(android.animation.Keyframe,float)>($r8, 0.0F);
+
+        virtualinvoke r5.<java.util.ArrayList: void add(int,java.lang.Object)>(0, $r8);
+
+        $i1 = $i1 + 1;
+
+     label10:
+        r11 = newarray (android.animation.Keyframe)[$i1];
+
+        virtualinvoke r5.<java.util.ArrayList: java.lang.Object[] toArray(java.lang.Object[])>(r11);
+
+        $i2 = 0;
+
+     label11:
+        if $i2 >= $i1 goto label18;
+
+        $r8 = r11[$i2];
+
+        $f0 = virtualinvoke $r8.<android.animation.Keyframe: float getFraction()>();
+
+        b4 = $f0 cmpg 0.0F;
+
+        i3 = (int) b4;
+
+        if i3 >= 0 goto label17;
+
+        if $i2 != 0 goto label12;
+
+        virtualinvoke $r8.<android.animation.Keyframe: void setFraction(float)>(0.0F);
+
+        goto label17;
+
+     label12:
+        i3 = $i1 + -1;
+
+        if $i2 != i3 goto label13;
+
+        virtualinvoke $r8.<android.animation.Keyframe: void setFraction(float)>(1.0F);
+
+        goto label17;
+
+     label13:
+        i3 = $i2;
+
+        i6 = $i2 + 1;
+
+        i5 = $i2;
+
+     label14:
+        i7 = $i1 + -1;
+
+        if i6 >= i7 goto label16;
+
+        $r8 = r11[i6];
+
+        $f0 = virtualinvoke $r8.<android.animation.Keyframe: float getFraction()>();
+
+        b4 = $f0 cmpl 0.0F;
+
+        i7 = (int) b4;
+
+        if i7 < 0 goto label15;
+
+        goto label16;
+
+     label15:
+        i5 = i6;
+
+        i6 = i6 + 1;
+
+        goto label14;
+
+     label16:
+        i6 = i5 + 1;
+
+        $r8 = r11[i6];
+
+        $f0 = virtualinvoke $r8.<android.animation.Keyframe: float getFraction()>();
+
+        i6 = i3 + -1;
+
+        $r8 = r11[i6];
+
+        $f1 = virtualinvoke $r8.<android.animation.Keyframe: float getFraction()>();
+
+        $f0 = $f0 - $f1;
+
+        staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: void distributeKeyframes(android.animation.Keyframe[],float,int,int)>(r11, $f0, i3, i5);
+
+        goto label17;
+
+     label17:
+        $i2 = $i2 + 1;
+
+        goto label11;
+
+     label18:
+        $r12 = staticinvoke <android.animation.PropertyValuesHolder: android.animation.PropertyValuesHolder ofKeyframe(java.lang.String,android.animation.Keyframe[])>($r4, r11);
+
+        if $i0 != 3 goto label21;
+
+        $r13 = staticinvoke <androidx.vectordrawable.graphics.drawable.ArgbEvaluator: androidx.vectordrawable.graphics.drawable.ArgbEvaluator getInstance()>();
+
+        virtualinvoke $r12.<android.animation.PropertyValuesHolder: void setEvaluator(android.animation.TypeEvaluator)>($r13);
+
+        return $r12;
+
+     label19:
+        goto label20;
+
+     label20:
+        return null;
+
+     label21:
+        return $r12;
+    }
+
+    private static android.animation.PropertyValuesHolder[] loadValues(android.content.Context, android.content.res.Resources, android.content.res.Resources$Theme, org.xmlpull.v1.XmlPullParser, android.util.AttributeSet) throws org.xmlpull.v1.XmlPullParserException, java.io.IOException
+    {
+        android.animation.PropertyValuesHolder[] r11;
+        android.content.Context $r0;
+        java.util.ArrayList r5;
+        android.content.res.TypedArray $r8;
+        android.animation.PropertyValuesHolder $r9, r10;
+        android.util.AttributeSet $r4;
+        int[] r7;
+        int $i0, i1;
+        java.lang.String $r6;
+        android.content.res.Resources$Theme $r2;
+        org.xmlpull.v1.XmlPullParser $r3;
+        boolean $z0;
+        java.lang.Object $r12;
+        android.content.res.Resources $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: android.content.res.Resources;
+
+        $r2 := @parameter2: android.content.res.Resources$Theme;
+
+        $r3 := @parameter3: org.xmlpull.v1.XmlPullParser;
+
+        $r4 := @parameter4: android.util.AttributeSet;
+
+        r5 = null;
+
+     label01:
+        $i0 = interfaceinvoke $r3.<org.xmlpull.v1.XmlPullParser: int getEventType()>();
+
+        if $i0 == 3 goto label07;
+
+        if $i0 == 1 goto label07;
+
+        if $i0 == 2 goto label02;
+
+        interfaceinvoke $r3.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+        goto label01;
+
+     label02:
+        $r6 = interfaceinvoke $r3.<org.xmlpull.v1.XmlPullParser: java.lang.String getName()>();
+
+        $z0 = virtualinvoke $r6.<java.lang.String: boolean equals(java.lang.Object)>("propertyValuesHolder");
+
+        if $z0 == 0 goto label06;
+
+        r7 = <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_PROPERTY_VALUES_HOLDER>;
+
+        $r8 = staticinvoke <androidx.core.content.res.TypedArrayUtils: android.content.res.TypedArray obtainAttributes(android.content.res.Resources,android.content.res.Resources$Theme,android.util.AttributeSet,int[])>($r1, $r2, $r4, r7);
+
+        $r6 = staticinvoke <androidx.core.content.res.TypedArrayUtils: java.lang.String getNamedString(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int)>($r8, $r3, "propertyName", 3);
+
+        $i0 = staticinvoke <androidx.core.content.res.TypedArrayUtils: int getNamedInt(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int,int)>($r8, $r3, "valueType", 2, 4);
+
+        $r9 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: android.animation.PropertyValuesHolder loadPvh(android.content.Context,android.content.res.Resources,android.content.res.Resources$Theme,org.xmlpull.v1.XmlPullParser,java.lang.String,int)>($r0, $r1, $r2, $r3, $r6, $i0);
+
+        r10 = $r9;
+
+        if $r9 != null goto label03;
+
+        r10 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: android.animation.PropertyValuesHolder getPVH(android.content.res.TypedArray,int,int,int,java.lang.String)>($r8, $i0, 0, 1, $r6);
+
+        goto label03;
+
+     label03:
+        if r10 == null goto label05;
+
+        if r5 != null goto label04;
+
+        r5 = new java.util.ArrayList;
+
+        specialinvoke r5.<java.util.ArrayList: void <init>()>();
+
+     label04:
+        virtualinvoke r5.<java.util.ArrayList: boolean add(java.lang.Object)>(r10);
+
+     label05:
+        virtualinvoke $r8.<android.content.res.TypedArray: void recycle()>();
+
+        goto label06;
+
+     label06:
+        interfaceinvoke $r3.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+        goto label01;
+
+     label07:
+        if r5 == null goto label09;
+
+        $i0 = virtualinvoke r5.<java.util.ArrayList: int size()>();
+
+        r11 = newarray (android.animation.PropertyValuesHolder)[$i0];
+
+        i1 = 0;
+
+     label08:
+        if i1 >= $i0 goto label10;
+
+        $r12 = virtualinvoke r5.<java.util.ArrayList: java.lang.Object get(int)>(i1);
+
+        $r9 = (android.animation.PropertyValuesHolder) $r12;
+
+        r11[i1] = $r9;
+
+        i1 = i1 + 1;
+
+        goto label08;
+
+     label09:
+        return null;
+
+     label10:
+        return r11;
+    }
+
+    private static void parseAnimatorFromTypeArray(android.animation.ValueAnimator, android.content.res.TypedArray, android.content.res.TypedArray, float, org.xmlpull.v1.XmlPullParser)
+    {
+        android.animation.PropertyValuesHolder[] $r5;
+        long l1, l2;
+        android.content.res.TypedArray $r1, $r2;
+        android.animation.PropertyValuesHolder $r4;
+        int $i0, $i3;
+        float $f0;
+        android.animation.ValueAnimator $r0;
+        org.xmlpull.v1.XmlPullParser $r3;
+        boolean $z0;
+
+        $r0 := @parameter0: android.animation.ValueAnimator;
+
+        $r1 := @parameter1: android.content.res.TypedArray;
+
+        $r2 := @parameter2: android.content.res.TypedArray;
+
+        $f0 := @parameter3: float;
+
+        $r3 := @parameter4: org.xmlpull.v1.XmlPullParser;
+
+        $i0 = staticinvoke <androidx.core.content.res.TypedArrayUtils: int getNamedInt(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int,int)>($r1, $r3, "duration", 1, 300);
+
+        l1 = (long) $i0;
+
+        $i0 = staticinvoke <androidx.core.content.res.TypedArrayUtils: int getNamedInt(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int,int)>($r1, $r3, "startOffset", 2, 0);
+
+        l2 = (long) $i0;
+
+        $i3 = staticinvoke <androidx.core.content.res.TypedArrayUtils: int getNamedInt(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int,int)>($r1, $r3, "valueType", 7, 4);
+
+        $i0 = $i3;
+
+        $z0 = staticinvoke <androidx.core.content.res.TypedArrayUtils: boolean hasAttribute(org.xmlpull.v1.XmlPullParser,java.lang.String)>($r3, "valueFrom");
+
+        if $z0 == 0 goto label2;
+
+        $z0 = staticinvoke <androidx.core.content.res.TypedArrayUtils: boolean hasAttribute(org.xmlpull.v1.XmlPullParser,java.lang.String)>($r3, "valueTo");
+
+        if $z0 == 0 goto label2;
+
+        if $i3 != 4 goto label1;
+
+        $i0 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: int inferValueTypeFromValues(android.content.res.TypedArray,int,int)>($r1, 5, 6);
+
+     label1:
+        $r4 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: android.animation.PropertyValuesHolder getPVH(android.content.res.TypedArray,int,int,int,java.lang.String)>($r1, $i0, 5, 6, "");
+
+        if $r4 == null goto label2;
+
+        $r5 = newarray (android.animation.PropertyValuesHolder)[1];
+
+        $r5[0] = $r4;
+
+        virtualinvoke $r0.<android.animation.ValueAnimator: void setValues(android.animation.PropertyValuesHolder[])>($r5);
+
+     label2:
+        virtualinvoke $r0.<android.animation.ValueAnimator: android.animation.ValueAnimator setDuration(long)>(l1);
+
+        virtualinvoke $r0.<android.animation.ValueAnimator: void setStartDelay(long)>(l2);
+
+        $i3 = staticinvoke <androidx.core.content.res.TypedArrayUtils: int getNamedInt(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int,int)>($r1, $r3, "repeatCount", 3, 0);
+
+        virtualinvoke $r0.<android.animation.ValueAnimator: void setRepeatCount(int)>($i3);
+
+        $i3 = staticinvoke <androidx.core.content.res.TypedArrayUtils: int getNamedInt(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int,int)>($r1, $r3, "repeatMode", 4, 1);
+
+        virtualinvoke $r0.<android.animation.ValueAnimator: void setRepeatMode(int)>($i3);
+
+        if $r2 == null goto label3;
+
+        staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: void setupObjectAnimator(android.animation.ValueAnimator,android.content.res.TypedArray,int,float,org.xmlpull.v1.XmlPullParser)>($r0, $r2, $i0, $f0, $r3);
+
+     label3:
+        return;
+    }
+
+    private static void setupObjectAnimator(android.animation.ValueAnimator, android.content.res.TypedArray, int, float, org.xmlpull.v1.XmlPullParser)
+    {
+        android.graphics.Path $r9;
+        android.animation.ObjectAnimator r3;
+        android.content.res.TypedArray $r1;
+        android.view.InflateException r7;
+        int $i0;
+        float $f0;
+        java.lang.StringBuilder $r8;
+        java.lang.String $r4, $r5, $r6;
+        android.animation.ValueAnimator $r0;
+        org.xmlpull.v1.XmlPullParser $r2;
+
+        $r0 := @parameter0: android.animation.ValueAnimator;
+
+        $r1 := @parameter1: android.content.res.TypedArray;
+
+        $i0 := @parameter2: int;
+
+        $f0 := @parameter3: float;
+
+        $r2 := @parameter4: org.xmlpull.v1.XmlPullParser;
+
+        r3 = (android.animation.ObjectAnimator) $r0;
+
+        $r4 = staticinvoke <androidx.core.content.res.TypedArrayUtils: java.lang.String getNamedString(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int)>($r1, $r2, "pathData", 1);
+
+        if $r4 == null goto label4;
+
+        $r5 = staticinvoke <androidx.core.content.res.TypedArrayUtils: java.lang.String getNamedString(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int)>($r1, $r2, "propertyXName", 2);
+
+        $r6 = staticinvoke <androidx.core.content.res.TypedArrayUtils: java.lang.String getNamedString(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int)>($r1, $r2, "propertyYName", 3);
+
+        if $i0 == 2 goto label1;
+
+        if $i0 != 4 goto label1;
+
+     label1:
+        if $r5 != null goto label3;
+
+        if $r6 == null goto label2;
+
+        goto label3;
+
+     label2:
+        r7 = new android.view.InflateException;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r1.<android.content.res.TypedArray: java.lang.String getPositionDescription()>();
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" propertyXName or propertyYName is needed for PathData");
+
+        $r4 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r7.<android.view.InflateException: void <init>(java.lang.String)>($r4);
+
+        throw r7;
+
+     label3:
+        $r9 = staticinvoke <androidx.core.graphics.PathParser: android.graphics.Path createPathFromPathData(java.lang.String)>($r4);
+
+        $f0 = 0.5F * $f0;
+
+        staticinvoke <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: void setupPathMotion(android.graphics.Path,android.animation.ObjectAnimator,float,java.lang.String,java.lang.String)>($r9, r3, $f0, $r5, $r6);
+
+        return;
+
+     label4:
+        $r4 = staticinvoke <androidx.core.content.res.TypedArrayUtils: java.lang.String getNamedString(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int)>($r1, $r2, "propertyName", 0);
+
+        virtualinvoke r3.<android.animation.ObjectAnimator: void setPropertyName(java.lang.String)>($r4);
+
+        return;
+    }
+
+    private static void setupPathMotion(android.graphics.Path, android.animation.ObjectAnimator, float, java.lang.String, java.lang.String)
+    {
+        android.animation.PropertyValuesHolder[] r13;
+        android.graphics.Path $r0, r7;
+        java.lang.Float $r8;
+        float[] r5, r6, r9;
+        java.util.ArrayList $r15;
+        android.animation.PropertyValuesHolder r11, r12;
+        byte b5;
+        int i0, i1, i2, i3, $i4;
+        java.lang.String $r2, $r3;
+        boolean $z0;
+        android.animation.ObjectAnimator $r1;
+        android.graphics.PathMeasure r4, $r14;
+        float $f0, f1, $f2;
+        java.lang.Object $r10;
+
+        $r0 := @parameter0: android.graphics.Path;
+
+        $r1 := @parameter1: android.animation.ObjectAnimator;
+
+        $f0 := @parameter2: float;
+
+        $r2 := @parameter3: java.lang.String;
+
+        $r3 := @parameter4: java.lang.String;
+
+        r7 = $r0;
+
+        $r14 = new android.graphics.PathMeasure;
+
+        r4 = $r14;
+
+        specialinvoke $r14.<android.graphics.PathMeasure: void <init>(android.graphics.Path,boolean)>($r0, 0);
+
+        f1 = 0.0F;
+
+        $r15 = new java.util.ArrayList;
+
+        specialinvoke $r15.<java.util.ArrayList: void <init>()>();
+
+        $r8 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>(0.0F);
+
+        virtualinvoke $r15.<java.util.ArrayList: boolean add(java.lang.Object)>($r8);
+
+     label1:
+        $f2 = virtualinvoke r4.<android.graphics.PathMeasure: float getLength()>();
+
+        f1 = f1 + $f2;
+
+        $r8 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>(f1);
+
+        virtualinvoke $r15.<java.util.ArrayList: boolean add(java.lang.Object)>($r8);
+
+        $z0 = virtualinvoke r4.<android.graphics.PathMeasure: boolean nextContour()>();
+
+        if $z0 != 0 goto label9;
+
+        $r14 = new android.graphics.PathMeasure;
+
+        r4 = $r14;
+
+        specialinvoke $r14.<android.graphics.PathMeasure: void <init>(android.graphics.Path,boolean)>(r7, 0);
+
+        $f0 = f1 / $f0;
+
+        i0 = (int) $f0;
+
+        i0 = i0 + 1;
+
+        i0 = staticinvoke <java.lang.Math: int min(int,int)>(100, i0);
+
+        r9 = newarray (float)[i0];
+
+        r5 = newarray (float)[i0];
+
+        r6 = newarray (float)[2];
+
+        i1 = 0;
+
+        i2 = i0 + -1;
+
+        $f0 = (float) i2;
+
+        $f0 = f1 / $f0;
+
+        f1 = 0.0F;
+
+        i2 = 0;
+
+     label2:
+        if i2 >= i0 goto label4;
+
+        $r10 = virtualinvoke $r15.<java.util.ArrayList: java.lang.Object get(int)>(i1);
+
+        $r8 = (java.lang.Float) $r10;
+
+        $f2 = virtualinvoke $r8.<java.lang.Float: float floatValue()>();
+
+        $f2 = f1 - $f2;
+
+        virtualinvoke r4.<android.graphics.PathMeasure: boolean getPosTan(float,float[],float[])>($f2, r6, null);
+
+        $f2 = r6[0];
+
+        r9[i2] = $f2;
+
+        $f2 = r6[1];
+
+        r5[i2] = $f2;
+
+        f1 = f1 + $f0;
+
+        i3 = i1 + 1;
+
+        $i4 = virtualinvoke $r15.<java.util.ArrayList: int size()>();
+
+        if i3 >= $i4 goto label3;
+
+        i3 = i1 + 1;
+
+        $r10 = virtualinvoke $r15.<java.util.ArrayList: java.lang.Object get(int)>(i3);
+
+        $r8 = (java.lang.Float) $r10;
+
+        $f2 = virtualinvoke $r8.<java.lang.Float: float floatValue()>();
+
+        b5 = f1 cmpl $f2;
+
+        i3 = (int) b5;
+
+        if i3 <= 0 goto label3;
+
+        i1 = i1 + 1;
+
+        virtualinvoke r4.<android.graphics.PathMeasure: boolean nextContour()>();
+
+     label3:
+        i2 = i2 + 1;
+
+        goto label2;
+
+     label4:
+        r11 = null;
+
+        r12 = null;
+
+        if $r2 == null goto label5;
+
+        r11 = staticinvoke <android.animation.PropertyValuesHolder: android.animation.PropertyValuesHolder ofFloat(java.lang.String,float[])>($r2, r9);
+
+     label5:
+        if $r3 == null goto label6;
+
+        r12 = staticinvoke <android.animation.PropertyValuesHolder: android.animation.PropertyValuesHolder ofFloat(java.lang.String,float[])>($r3, r5);
+
+     label6:
+        if r11 != null goto label7;
+
+        r13 = newarray (android.animation.PropertyValuesHolder)[1];
+
+        r13[0] = r12;
+
+        virtualinvoke $r1.<android.animation.ObjectAnimator: void setValues(android.animation.PropertyValuesHolder[])>(r13);
+
+        return;
+
+     label7:
+        if r12 != null goto label8;
+
+        r13 = newarray (android.animation.PropertyValuesHolder)[1];
+
+        r13[0] = r11;
+
+        virtualinvoke $r1.<android.animation.ObjectAnimator: void setValues(android.animation.PropertyValuesHolder[])>(r13);
+
+        return;
+
+     label8:
+        r13 = newarray (android.animation.PropertyValuesHolder)[2];
+
+        r13[0] = r11;
+
+        r13[1] = r12;
+
+        virtualinvoke $r1.<android.animation.ObjectAnimator: void setValues(android.animation.PropertyValuesHolder[])>(r13);
+
+        return;
+
+     label9:
+        r7 = $r0;
+
+        goto label1;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: int VALUE_TYPE_UNDEFINED> = 4;
+
+        <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: int VALUE_TYPE_PATH> = 2;
+
+        <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: int VALUE_TYPE_INT> = 1;
+
+        <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: int VALUE_TYPE_FLOAT> = 0;
+
+        <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: int VALUE_TYPE_COLOR> = 3;
+
+        <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: int TOGETHER> = 0;
+
+        <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: java.lang.String TAG> = "AnimatorInflater";
+
+        <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: int MAX_NUM_POINTS> = 100;
+
+        <androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat: boolean DBG_ANIMATOR_INFLATER> = 0;
+
+        return;
+    }
+}

@@ -1,0 +1,40 @@
+class androidx.browser.trusted.TrustedWebActivityServiceConnection$1 extends android.support.customtabs.trusted.ITrustedWebActivityCallback$Stub
+{
+    final androidx.browser.trusted.TrustedWebActivityCallback val$callback;
+
+    void <init>(androidx.browser.trusted.TrustedWebActivityCallback)
+    {
+        androidx.browser.trusted.TrustedWebActivityCallback $r1;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$1 r0;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection$1;
+
+        $r1 := @parameter0: androidx.browser.trusted.TrustedWebActivityCallback;
+
+        r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$1: androidx.browser.trusted.TrustedWebActivityCallback val$callback> = $r1;
+
+        specialinvoke r0.<android.support.customtabs.trusted.ITrustedWebActivityCallback$Stub: void <init>()>();
+
+        return;
+    }
+
+    public void onExtraCallback(java.lang.String, android.os.Bundle) throws android.os.RemoteException
+    {
+        android.os.Bundle $r2;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$1 r0;
+        java.lang.String $r1;
+        androidx.browser.trusted.TrustedWebActivityCallback $r3;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection$1;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: android.os.Bundle;
+
+        $r3 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$1: androidx.browser.trusted.TrustedWebActivityCallback val$callback>;
+
+        virtualinvoke $r3.<androidx.browser.trusted.TrustedWebActivityCallback: void onExtraCallback(java.lang.String,android.os.Bundle)>($r1, $r2);
+
+        return;
+    }
+}

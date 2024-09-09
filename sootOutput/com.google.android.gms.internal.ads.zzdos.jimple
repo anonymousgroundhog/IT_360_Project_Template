@@ -1,0 +1,133 @@
+public final class com.google.android.gms.internal.ads.zzdos extends java.lang.Object implements android.view.ViewTreeObserver$OnScrollChangedListener
+{
+    public final android.view.View zza;
+    public final com.google.android.gms.internal.ads.zzcjk zzb;
+    public final java.lang.String zzc;
+    public final android.view.WindowManager$LayoutParams zzd;
+    public final int zze;
+    public final android.view.WindowManager zzf;
+
+    public void <init>(android.view.View, com.google.android.gms.internal.ads.zzcjk, java.lang.String, android.view.WindowManager$LayoutParams, int, android.view.WindowManager)
+    {
+        com.google.android.gms.internal.ads.zzcjk $r2;
+        int $i0;
+        android.view.WindowManager $r5;
+        android.view.View $r1;
+        com.google.android.gms.internal.ads.zzdos r0;
+        java.lang.String $r3;
+        android.view.WindowManager$LayoutParams $r4;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdos;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: com.google.android.gms.internal.ads.zzcjk;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: android.view.WindowManager$LayoutParams;
+
+        $i0 := @parameter4: int;
+
+        $r5 := @parameter5: android.view.WindowManager;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzdos: android.view.View zza> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzdos: com.google.android.gms.internal.ads.zzcjk zzb> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzdos: java.lang.String zzc> = $r3;
+
+        r0.<com.google.android.gms.internal.ads.zzdos: android.view.WindowManager$LayoutParams zzd> = $r4;
+
+        r0.<com.google.android.gms.internal.ads.zzdos: int zze> = $i0;
+
+        r0.<com.google.android.gms.internal.ads.zzdos: android.view.WindowManager zzf> = $r5;
+
+        return;
+    }
+
+    public final void onScrollChanged()
+    {
+        android.graphics.Rect $r2;
+        com.google.android.gms.internal.ads.zzcjk $r4;
+        android.view.WindowManager $r8;
+        android.os.IBinder $r5;
+        int $i0, $i1;
+        android.view.View $r3;
+        com.google.android.gms.internal.ads.zzdos r0;
+        java.lang.String $r6, $r7;
+        android.view.WindowManager$LayoutParams $r1;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdos;
+
+        $r2 = new android.graphics.Rect;
+
+        specialinvoke $r2.<android.graphics.Rect: void <init>()>();
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzdos: android.view.View zza>;
+
+        $z0 = virtualinvoke $r3.<android.view.View: boolean getGlobalVisibleRect(android.graphics.Rect)>($r2);
+
+        if $z0 == 0 goto label5;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzdos: com.google.android.gms.internal.ads.zzcjk zzb>;
+
+        $r3 = interfaceinvoke $r4.<com.google.android.gms.internal.ads.zzcjk: android.view.View zzF()>();
+
+        $r5 = virtualinvoke $r3.<android.view.View: android.os.IBinder getWindowToken()>();
+
+        if $r5 != null goto label1;
+
+        return;
+
+     label1:
+        $i0 = r0.<com.google.android.gms.internal.ads.zzdos: int zze>;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzdos: android.view.WindowManager$LayoutParams zzd>;
+
+        $r6 = r0.<com.google.android.gms.internal.ads.zzdos: java.lang.String zzc>;
+
+        $r7 = "1";
+
+        $z0 = virtualinvoke $r7.<java.lang.String: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 != 0 goto label3;
+
+        $r7 = "2";
+
+        $z0 = virtualinvoke $r7.<java.lang.String: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 == 0 goto label2;
+
+        goto label3;
+
+     label2:
+        $i1 = $r2.<android.graphics.Rect: int top>;
+
+        $i0 = $i1 - $i0;
+
+        $r1.<android.view.WindowManager$LayoutParams: int y> = $i0;
+
+        goto label4;
+
+     label3:
+        $i1 = $r2.<android.graphics.Rect: int bottom>;
+
+        $i0 = $i1 - $i0;
+
+        $r1.<android.view.WindowManager$LayoutParams: int y> = $i0;
+
+     label4:
+        $r8 = r0.<com.google.android.gms.internal.ads.zzdos: android.view.WindowManager zzf>;
+
+        $r3 = interfaceinvoke $r4.<com.google.android.gms.internal.ads.zzcjk: android.view.View zzF()>();
+
+        interfaceinvoke $r8.<android.view.WindowManager: void updateViewLayout(android.view.View,android.view.ViewGroup$LayoutParams)>($r3, $r1);
+
+     label5:
+        return;
+    }
+}

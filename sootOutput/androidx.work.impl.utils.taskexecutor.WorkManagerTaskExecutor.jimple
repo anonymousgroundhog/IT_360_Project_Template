@@ -1,0 +1,102 @@
+public class androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor extends java.lang.Object implements androidx.work.impl.utils.taskexecutor.TaskExecutor
+{
+    private final androidx.work.impl.utils.SerialExecutor mBackgroundExecutor;
+    private final java.util.concurrent.Executor mMainThreadExecutor;
+    private final android.os.Handler mMainThreadHandler;
+
+    public void <init>(java.util.concurrent.Executor)
+    {
+        androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor$1 $r4;
+        androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor r0;
+        java.util.concurrent.Executor $r1;
+        android.os.Looper $r2;
+        android.os.Handler $r3;
+        androidx.work.impl.utils.SerialExecutor $r5;
+
+        r0 := @this: androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = new android.os.Handler;
+
+        $r2 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        specialinvoke $r3.<android.os.Handler: void <init>(android.os.Looper)>($r2);
+
+        r0.<androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor: android.os.Handler mMainThreadHandler> = $r3;
+
+        $r4 = new androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor$1;
+
+        specialinvoke $r4.<androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor$1: void <init>(androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor)>(r0);
+
+        r0.<androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor: java.util.concurrent.Executor mMainThreadExecutor> = $r4;
+
+        $r5 = new androidx.work.impl.utils.SerialExecutor;
+
+        specialinvoke $r5.<androidx.work.impl.utils.SerialExecutor: void <init>(java.util.concurrent.Executor)>($r1);
+
+        r0.<androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor: androidx.work.impl.utils.SerialExecutor mBackgroundExecutor> = $r5;
+
+        return;
+    }
+
+    public void executeOnBackgroundThread(java.lang.Runnable)
+    {
+        androidx.work.impl.utils.SerialExecutor $r2;
+        androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor r0;
+        java.lang.Runnable $r1;
+
+        r0 := @this: androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor;
+
+        $r1 := @parameter0: java.lang.Runnable;
+
+        $r2 = r0.<androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor: androidx.work.impl.utils.SerialExecutor mBackgroundExecutor>;
+
+        virtualinvoke $r2.<androidx.work.impl.utils.SerialExecutor: void execute(java.lang.Runnable)>($r1);
+
+        return;
+    }
+
+    public androidx.work.impl.utils.SerialExecutor getBackgroundExecutor()
+    {
+        androidx.work.impl.utils.SerialExecutor r1;
+        androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor r0;
+
+        r0 := @this: androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor;
+
+        r1 = r0.<androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor: androidx.work.impl.utils.SerialExecutor mBackgroundExecutor>;
+
+        return r1;
+    }
+
+    public java.util.concurrent.Executor getMainThreadExecutor()
+    {
+        androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor r0;
+        java.util.concurrent.Executor r1;
+
+        r0 := @this: androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor;
+
+        r1 = r0.<androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor: java.util.concurrent.Executor mMainThreadExecutor>;
+
+        return r1;
+    }
+
+    public void postToMainThread(java.lang.Runnable)
+    {
+        androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor r0;
+        java.lang.Runnable $r1;
+        android.os.Handler $r2;
+
+        r0 := @this: androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor;
+
+        $r1 := @parameter0: java.lang.Runnable;
+
+        $r2 = r0.<androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor: android.os.Handler mMainThreadHandler>;
+
+        virtualinvoke $r2.<android.os.Handler: boolean post(java.lang.Runnable)>($r1);
+
+        return;
+    }
+}

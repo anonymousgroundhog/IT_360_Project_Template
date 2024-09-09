@@ -1,0 +1,302 @@
+public final class com.google.android.gms.internal.ads.zzbjb extends com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable
+{
+    public static final android.os.Parcelable$Creator CREATOR;
+    public final int zza;
+    public final boolean zzb;
+    public final int zzc;
+    public final boolean zzd;
+    public final int zze;
+    public final com.google.android.gms.ads.internal.client.zzfk zzf;
+    public final boolean zzg;
+    public final int zzh;
+    public final int zzi;
+    public final boolean zzj;
+    public final int zzk;
+
+    static void <clinit>()
+    {
+        com.google.android.gms.internal.ads.zzbjc $r0;
+
+        $r0 = new com.google.android.gms.internal.ads.zzbjc;
+
+        specialinvoke $r0.<com.google.android.gms.internal.ads.zzbjc: void <init>()>();
+
+        <com.google.android.gms.internal.ads.zzbjb: android.os.Parcelable$Creator CREATOR> = $r0;
+
+        return;
+    }
+
+    public void <init>(int, boolean, int, boolean, int, com.google.android.gms.ads.internal.client.zzfk, boolean, int, int, boolean, int)
+    {
+        com.google.android.gms.ads.internal.client.zzfk $r1;
+        com.google.android.gms.internal.ads.zzbjb r0;
+        int $i0, $i1, $i2, $i3, $i4, $i5;
+        boolean $z0, $z1, $z2, $z3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbjb;
+
+        $i0 := @parameter0: int;
+
+        $z0 := @parameter1: boolean;
+
+        $i1 := @parameter2: int;
+
+        $z1 := @parameter3: boolean;
+
+        $i2 := @parameter4: int;
+
+        $r1 := @parameter5: com.google.android.gms.ads.internal.client.zzfk;
+
+        $z2 := @parameter6: boolean;
+
+        $i3 := @parameter7: int;
+
+        $i4 := @parameter8: int;
+
+        $z3 := @parameter9: boolean;
+
+        $i5 := @parameter10: int;
+
+        specialinvoke r0.<com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzbjb: int zza> = $i0;
+
+        r0.<com.google.android.gms.internal.ads.zzbjb: boolean zzb> = $z0;
+
+        r0.<com.google.android.gms.internal.ads.zzbjb: int zzc> = $i1;
+
+        r0.<com.google.android.gms.internal.ads.zzbjb: boolean zzd> = $z1;
+
+        r0.<com.google.android.gms.internal.ads.zzbjb: int zze> = $i2;
+
+        r0.<com.google.android.gms.internal.ads.zzbjb: com.google.android.gms.ads.internal.client.zzfk zzf> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzbjb: boolean zzg> = $z2;
+
+        r0.<com.google.android.gms.internal.ads.zzbjb: int zzh> = $i3;
+
+        r0.<com.google.android.gms.internal.ads.zzbjb: boolean zzj> = $z3;
+
+        r0.<com.google.android.gms.internal.ads.zzbjb: int zzi> = $i4;
+
+        r0.<com.google.android.gms.internal.ads.zzbjb: int zzk> = $i5;
+
+        return;
+    }
+
+    public void <init>(com.google.android.gms.ads.formats.NativeAdOptions)
+    {
+        com.google.android.gms.ads.formats.NativeAdOptions $r1;
+        com.google.android.gms.ads.internal.client.zzfk $r3;
+        com.google.android.gms.internal.ads.zzbjb r0;
+        com.google.android.gms.ads.VideoOptions $r2;
+        int $i0, $i1, $i2;
+        boolean $z0, $z1, $z2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbjb;
+
+        $r1 := @parameter0: com.google.android.gms.ads.formats.NativeAdOptions;
+
+        $z0 = virtualinvoke $r1.<com.google.android.gms.ads.formats.NativeAdOptions: boolean shouldReturnUrlsForImageAssets()>();
+
+        $i0 = virtualinvoke $r1.<com.google.android.gms.ads.formats.NativeAdOptions: int getImageOrientation()>();
+
+        $z1 = virtualinvoke $r1.<com.google.android.gms.ads.formats.NativeAdOptions: boolean shouldRequestMultipleImages()>();
+
+        $i1 = virtualinvoke $r1.<com.google.android.gms.ads.formats.NativeAdOptions: int getAdChoicesPlacement()>();
+
+        $r2 = virtualinvoke $r1.<com.google.android.gms.ads.formats.NativeAdOptions: com.google.android.gms.ads.VideoOptions getVideoOptions()>();
+
+        if $r2 == null goto label1;
+
+        $r3 = new com.google.android.gms.ads.internal.client.zzfk;
+
+        $r2 = virtualinvoke $r1.<com.google.android.gms.ads.formats.NativeAdOptions: com.google.android.gms.ads.VideoOptions getVideoOptions()>();
+
+        specialinvoke $r3.<com.google.android.gms.ads.internal.client.zzfk: void <init>(com.google.android.gms.ads.VideoOptions)>($r2);
+
+        goto label2;
+
+     label1:
+        $r3 = null;
+
+     label2:
+        $z2 = virtualinvoke $r1.<com.google.android.gms.ads.formats.NativeAdOptions: boolean zza()>();
+
+        $i2 = virtualinvoke $r1.<com.google.android.gms.ads.formats.NativeAdOptions: int getMediaAspectRatio()>();
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzbjb: void <init>(int,boolean,int,boolean,int,com.google.android.gms.ads.internal.client.zzfk,boolean,int,int,boolean,int)>(4, $z0, $i0, $z1, $i1, $r3, $z2, $i2, 0, 0, 0);
+
+        return;
+    }
+
+    public static com.google.android.gms.ads.nativead.NativeAdOptions zza(com.google.android.gms.internal.ads.zzbjb)
+    {
+        com.google.android.gms.ads.internal.client.zzfk $r3;
+        com.google.android.gms.internal.ads.zzbjb $r1;
+        com.google.android.gms.ads.nativead.NativeAdOptions $r2;
+        com.google.android.gms.ads.VideoOptions $r4;
+        byte $b1;
+        int $i0;
+        com.google.android.gms.ads.nativead.NativeAdOptions$Builder $r0;
+        boolean $z0;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzbjb;
+
+        $r0 = new com.google.android.gms.ads.nativead.NativeAdOptions$Builder;
+
+        specialinvoke $r0.<com.google.android.gms.ads.nativead.NativeAdOptions$Builder: void <init>()>();
+
+        if $r1 != null goto label1;
+
+        $r2 = virtualinvoke $r0.<com.google.android.gms.ads.nativead.NativeAdOptions$Builder: com.google.android.gms.ads.nativead.NativeAdOptions build()>();
+
+        return $r2;
+
+     label1:
+        $i0 = $r1.<com.google.android.gms.internal.ads.zzbjb: int zza>;
+
+        lookupswitch($i0)
+        {
+            case 2: goto label8;
+            case 3: goto label7;
+            case 4: goto label3;
+            default: goto label2;
+        };
+
+     label2:
+        goto label9;
+
+     label3:
+        $z0 = $r1.<com.google.android.gms.internal.ads.zzbjb: boolean zzg>;
+
+        virtualinvoke $r0.<com.google.android.gms.ads.nativead.NativeAdOptions$Builder: com.google.android.gms.ads.nativead.NativeAdOptions$Builder setRequestCustomMuteThisAd(boolean)>($z0);
+
+        $i0 = $r1.<com.google.android.gms.internal.ads.zzbjb: int zzh>;
+
+        virtualinvoke $r0.<com.google.android.gms.ads.nativead.NativeAdOptions$Builder: com.google.android.gms.ads.nativead.NativeAdOptions$Builder setMediaAspectRatio(int)>($i0);
+
+        $i0 = $r1.<com.google.android.gms.internal.ads.zzbjb: int zzi>;
+
+        $z0 = $r1.<com.google.android.gms.internal.ads.zzbjb: boolean zzj>;
+
+        virtualinvoke $r0.<com.google.android.gms.ads.nativead.NativeAdOptions$Builder: com.google.android.gms.ads.nativead.NativeAdOptions$Builder enableCustomClickGestureDirection(int,boolean)>($i0, $z0);
+
+        $i0 = $r1.<com.google.android.gms.internal.ads.zzbjb: int zzk>;
+
+        $b1 = 1;
+
+        if $i0 != 0 goto label4;
+
+        goto label6;
+
+     label4:
+        if $i0 != 2 goto label5;
+
+        $b1 = 3;
+
+        goto label6;
+
+     label5:
+        if $i0 != 1 goto label6;
+
+        $b1 = 2;
+
+     label6:
+        virtualinvoke $r0.<com.google.android.gms.ads.nativead.NativeAdOptions$Builder: com.google.android.gms.ads.nativead.NativeAdOptions$Builder zzi(int)>($b1);
+
+     label7:
+        $r3 = $r1.<com.google.android.gms.internal.ads.zzbjb: com.google.android.gms.ads.internal.client.zzfk zzf>;
+
+        if $r3 == null goto label8;
+
+        $r4 = new com.google.android.gms.ads.VideoOptions;
+
+        specialinvoke $r4.<com.google.android.gms.ads.VideoOptions: void <init>(com.google.android.gms.ads.internal.client.zzfk)>($r3);
+
+        virtualinvoke $r0.<com.google.android.gms.ads.nativead.NativeAdOptions$Builder: com.google.android.gms.ads.nativead.NativeAdOptions$Builder setVideoOptions(com.google.android.gms.ads.VideoOptions)>($r4);
+
+     label8:
+        $i0 = $r1.<com.google.android.gms.internal.ads.zzbjb: int zze>;
+
+        virtualinvoke $r0.<com.google.android.gms.ads.nativead.NativeAdOptions$Builder: com.google.android.gms.ads.nativead.NativeAdOptions$Builder setAdChoicesPlacement(int)>($i0);
+
+     label9:
+        $z0 = $r1.<com.google.android.gms.internal.ads.zzbjb: boolean zzb>;
+
+        virtualinvoke $r0.<com.google.android.gms.ads.nativead.NativeAdOptions$Builder: com.google.android.gms.ads.nativead.NativeAdOptions$Builder setReturnUrlsForImageAssets(boolean)>($z0);
+
+        $z0 = $r1.<com.google.android.gms.internal.ads.zzbjb: boolean zzd>;
+
+        virtualinvoke $r0.<com.google.android.gms.ads.nativead.NativeAdOptions$Builder: com.google.android.gms.ads.nativead.NativeAdOptions$Builder setRequestMultipleImages(boolean)>($z0);
+
+        $r2 = virtualinvoke $r0.<com.google.android.gms.ads.nativead.NativeAdOptions$Builder: com.google.android.gms.ads.nativead.NativeAdOptions build()>();
+
+        return $r2;
+    }
+
+    public final void writeToParcel(android.os.Parcel, int)
+    {
+        com.google.android.gms.ads.internal.client.zzfk $r2;
+        com.google.android.gms.internal.ads.zzbjb r0;
+        int $i0, $i1, $i2;
+        android.os.Parcel $r1;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbjb;
+
+        $r1 := @parameter0: android.os.Parcel;
+
+        $i1 := @parameter1: int;
+
+        $i2 = r0.<com.google.android.gms.internal.ads.zzbjb: int zza>;
+
+        $i0 = staticinvoke <com.google.android.gms.common.internal.safeparcel.SafeParcelWriter: int beginObjectHeader(android.os.Parcel)>($r1);
+
+        staticinvoke <com.google.android.gms.common.internal.safeparcel.SafeParcelWriter: void writeInt(android.os.Parcel,int,int)>($r1, 1, $i2);
+
+        $z0 = r0.<com.google.android.gms.internal.ads.zzbjb: boolean zzb>;
+
+        staticinvoke <com.google.android.gms.common.internal.safeparcel.SafeParcelWriter: void writeBoolean(android.os.Parcel,int,boolean)>($r1, 2, $z0);
+
+        $i2 = r0.<com.google.android.gms.internal.ads.zzbjb: int zzc>;
+
+        staticinvoke <com.google.android.gms.common.internal.safeparcel.SafeParcelWriter: void writeInt(android.os.Parcel,int,int)>($r1, 3, $i2);
+
+        $z0 = r0.<com.google.android.gms.internal.ads.zzbjb: boolean zzd>;
+
+        staticinvoke <com.google.android.gms.common.internal.safeparcel.SafeParcelWriter: void writeBoolean(android.os.Parcel,int,boolean)>($r1, 4, $z0);
+
+        $i2 = r0.<com.google.android.gms.internal.ads.zzbjb: int zze>;
+
+        staticinvoke <com.google.android.gms.common.internal.safeparcel.SafeParcelWriter: void writeInt(android.os.Parcel,int,int)>($r1, 5, $i2);
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzbjb: com.google.android.gms.ads.internal.client.zzfk zzf>;
+
+        staticinvoke <com.google.android.gms.common.internal.safeparcel.SafeParcelWriter: void writeParcelable(android.os.Parcel,int,android.os.Parcelable,int,boolean)>($r1, 6, $r2, $i1, 0);
+
+        $z0 = r0.<com.google.android.gms.internal.ads.zzbjb: boolean zzg>;
+
+        staticinvoke <com.google.android.gms.common.internal.safeparcel.SafeParcelWriter: void writeBoolean(android.os.Parcel,int,boolean)>($r1, 7, $z0);
+
+        $i1 = r0.<com.google.android.gms.internal.ads.zzbjb: int zzh>;
+
+        staticinvoke <com.google.android.gms.common.internal.safeparcel.SafeParcelWriter: void writeInt(android.os.Parcel,int,int)>($r1, 8, $i1);
+
+        $i1 = r0.<com.google.android.gms.internal.ads.zzbjb: int zzi>;
+
+        staticinvoke <com.google.android.gms.common.internal.safeparcel.SafeParcelWriter: void writeInt(android.os.Parcel,int,int)>($r1, 9, $i1);
+
+        $z0 = r0.<com.google.android.gms.internal.ads.zzbjb: boolean zzj>;
+
+        staticinvoke <com.google.android.gms.common.internal.safeparcel.SafeParcelWriter: void writeBoolean(android.os.Parcel,int,boolean)>($r1, 10, $z0);
+
+        $i1 = r0.<com.google.android.gms.internal.ads.zzbjb: int zzk>;
+
+        staticinvoke <com.google.android.gms.common.internal.safeparcel.SafeParcelWriter: void writeInt(android.os.Parcel,int,int)>($r1, 11, $i1);
+
+        staticinvoke <com.google.android.gms.common.internal.safeparcel.SafeParcelWriter: void finishObjectHeader(android.os.Parcel,int)>($r1, $i0);
+
+        return;
+    }
+}

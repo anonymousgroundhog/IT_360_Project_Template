@@ -1,0 +1,585 @@
+public final class androidx.work.Data$Builder extends java.lang.Object
+{
+    private java.util.Map mValues;
+
+    public void <init>()
+    {
+        java.util.HashMap $r1;
+        androidx.work.Data$Builder r0;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.HashMap;
+
+        specialinvoke $r1.<java.util.HashMap: void <init>()>();
+
+        r0.<androidx.work.Data$Builder: java.util.Map mValues> = $r1;
+
+        return;
+    }
+
+    public androidx.work.Data build()
+    {
+        androidx.work.Data$Builder r0;
+        androidx.work.Data r1;
+        java.util.Map $r2;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        r1 = new androidx.work.Data;
+
+        $r2 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        specialinvoke r1.<androidx.work.Data: void <init>(java.util.Map)>($r2);
+
+        staticinvoke <androidx.work.Data: byte[] toByteArrayInternal(androidx.work.Data)>(r1);
+
+        return r1;
+    }
+
+    public androidx.work.Data$Builder put(java.lang.String, java.lang.Object)
+    {
+        byte[] $r7;
+        java.lang.Object[] $r18;
+        double[] $r15;
+        float[] $r13;
+        long[] $r11;
+        int[] $r9;
+        java.util.Map r3;
+        java.lang.String $r1;
+        java.lang.Long[] $r12;
+        boolean[] $r5;
+        java.lang.Double[] $r16;
+        java.lang.IllegalArgumentException $r17;
+        java.lang.Boolean[] $r6;
+        java.lang.Byte[] $r8;
+        androidx.work.Data$Builder r0;
+        java.lang.Object $r2;
+        java.lang.Class $r4;
+        java.lang.Integer[] $r10;
+        java.lang.Float[] $r14;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        if $r2 != null goto label1;
+
+        r3 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        interfaceinvoke r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, null);
+
+        return r0;
+
+     label1:
+        $r4 = virtualinvoke $r2.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r4 == class "Ljava/lang/Boolean;" goto label9;
+
+        if $r4 == class "Ljava/lang/Byte;" goto label9;
+
+        if $r4 == class "Ljava/lang/Integer;" goto label9;
+
+        if $r4 == class "Ljava/lang/Long;" goto label9;
+
+        if $r4 == class "Ljava/lang/Float;" goto label9;
+
+        if $r4 == class "Ljava/lang/Double;" goto label9;
+
+        if $r4 == class "Ljava/lang/String;" goto label9;
+
+        if $r4 == class "[Ljava/lang/Boolean;" goto label9;
+
+        if $r4 == class "[Ljava/lang/Byte;" goto label9;
+
+        if $r4 == class "[Ljava/lang/Integer;" goto label9;
+
+        if $r4 == class "[Ljava/lang/Long;" goto label9;
+
+        if $r4 == class "[Ljava/lang/Float;" goto label9;
+
+        if $r4 == class "[Ljava/lang/Double;" goto label9;
+
+        if $r4 != class "[Ljava/lang/String;" goto label2;
+
+        goto label9;
+
+     label2:
+        if $r4 != class "[Z" goto label3;
+
+        r3 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r5 = (boolean[]) $r2;
+
+        $r6 = staticinvoke <androidx.work.Data: java.lang.Boolean[] convertPrimitiveBooleanArray(boolean[])>($r5);
+
+        interfaceinvoke r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r6);
+
+        return r0;
+
+     label3:
+        if $r4 != class "[B" goto label4;
+
+        r3 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r7 = (byte[]) $r2;
+
+        $r8 = staticinvoke <androidx.work.Data: java.lang.Byte[] convertPrimitiveByteArray(byte[])>($r7);
+
+        interfaceinvoke r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r8);
+
+        return r0;
+
+     label4:
+        if $r4 != class "[I" goto label5;
+
+        r3 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r9 = (int[]) $r2;
+
+        $r10 = staticinvoke <androidx.work.Data: java.lang.Integer[] convertPrimitiveIntArray(int[])>($r9);
+
+        interfaceinvoke r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r10);
+
+        return r0;
+
+     label5:
+        if $r4 != class "[J" goto label6;
+
+        r3 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r11 = (long[]) $r2;
+
+        $r12 = staticinvoke <androidx.work.Data: java.lang.Long[] convertPrimitiveLongArray(long[])>($r11);
+
+        interfaceinvoke r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r12);
+
+        return r0;
+
+     label6:
+        if $r4 != class "[F" goto label7;
+
+        r3 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r13 = (float[]) $r2;
+
+        $r14 = staticinvoke <androidx.work.Data: java.lang.Float[] convertPrimitiveFloatArray(float[])>($r13);
+
+        interfaceinvoke r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r14);
+
+        return r0;
+
+     label7:
+        if $r4 != class "[D" goto label8;
+
+        r3 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r15 = (double[]) $r2;
+
+        $r16 = staticinvoke <androidx.work.Data: java.lang.Double[] convertPrimitiveDoubleArray(double[])>($r15);
+
+        interfaceinvoke r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r16);
+
+        return r0;
+
+     label8:
+        $r17 = new java.lang.IllegalArgumentException;
+
+        $r18 = newarray (java.lang.Object)[2];
+
+        $r18[0] = $r1;
+
+        $r18[1] = $r4;
+
+        $r1 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Key %s has invalid type %s", $r18);
+
+        specialinvoke $r17.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r1);
+
+        throw $r17;
+
+     label9:
+        r3 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        interfaceinvoke r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        return r0;
+    }
+
+    public androidx.work.Data$Builder putAll(androidx.work.Data)
+    {
+        androidx.work.Data$Builder r0;
+        androidx.work.Data $r1;
+        java.util.Map $r2;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        $r1 := @parameter0: androidx.work.Data;
+
+        $r2 = $r1.<androidx.work.Data: java.util.Map mValues>;
+
+        virtualinvoke r0.<androidx.work.Data$Builder: androidx.work.Data$Builder putAll(java.util.Map)>($r2);
+
+        return r0;
+    }
+
+    public androidx.work.Data$Builder putAll(java.util.Map)
+    {
+        java.util.Map$Entry r5;
+        java.util.Iterator $r3;
+        java.util.Set $r2;
+        androidx.work.Data$Builder r0;
+        java.util.Map r1;
+        java.lang.Object $r4;
+        java.lang.String r6;
+        boolean $z0;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        r1 := @parameter0: java.util.Map;
+
+        $r2 = interfaceinvoke r1.<java.util.Map: java.util.Set entrySet()>();
+
+        $r3 = interfaceinvoke $r2.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (java.util.Map$Entry) $r4;
+
+        $r4 = interfaceinvoke r5.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        r6 = (java.lang.String) $r4;
+
+        $r4 = interfaceinvoke r5.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        virtualinvoke r0.<androidx.work.Data$Builder: androidx.work.Data$Builder put(java.lang.String,java.lang.Object)>(r6, $r4);
+
+        goto label1;
+
+     label2:
+        return r0;
+    }
+
+    public androidx.work.Data$Builder putBoolean(java.lang.String, boolean)
+    {
+        androidx.work.Data$Builder r0;
+        java.util.Map $r2;
+        java.lang.Boolean $r3;
+        java.lang.String $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $z0 := @parameter1: boolean;
+
+        $r2 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r3 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        interfaceinvoke $r2.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r3);
+
+        return r0;
+    }
+
+    public androidx.work.Data$Builder putBooleanArray(java.lang.String, boolean[])
+    {
+        androidx.work.Data$Builder r0;
+        java.util.Map $r3;
+        boolean[] $r2;
+        java.lang.String $r1;
+        java.lang.Boolean[] $r4;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: boolean[];
+
+        $r3 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r4 = staticinvoke <androidx.work.Data: java.lang.Boolean[] convertPrimitiveBooleanArray(boolean[])>($r2);
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r4);
+
+        return r0;
+    }
+
+    public androidx.work.Data$Builder putByte(java.lang.String, byte)
+    {
+        androidx.work.Data$Builder r0;
+        byte $b0;
+        java.util.Map $r2;
+        java.lang.String $r1;
+        java.lang.Byte $r3;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $b0 := @parameter1: byte;
+
+        $r2 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r3 = staticinvoke <java.lang.Byte: java.lang.Byte valueOf(byte)>($b0);
+
+        interfaceinvoke $r2.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r3);
+
+        return r0;
+    }
+
+    public androidx.work.Data$Builder putByteArray(java.lang.String, byte[])
+    {
+        byte[] $r2;
+        java.lang.Byte[] $r4;
+        androidx.work.Data$Builder r0;
+        java.util.Map $r3;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: byte[];
+
+        $r3 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r4 = staticinvoke <androidx.work.Data: java.lang.Byte[] convertPrimitiveByteArray(byte[])>($r2);
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r4);
+
+        return r0;
+    }
+
+    public androidx.work.Data$Builder putDouble(java.lang.String, double)
+    {
+        androidx.work.Data$Builder r0;
+        java.lang.Double $r3;
+        java.util.Map $r2;
+        java.lang.String $r1;
+        double $d0;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $d0 := @parameter1: double;
+
+        $r2 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r3 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>($d0);
+
+        interfaceinvoke $r2.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r3);
+
+        return r0;
+    }
+
+    public androidx.work.Data$Builder putDoubleArray(java.lang.String, double[])
+    {
+        androidx.work.Data$Builder r0;
+        java.util.Map $r3;
+        double[] $r2;
+        java.lang.Double[] $r4;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: double[];
+
+        $r3 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r4 = staticinvoke <androidx.work.Data: java.lang.Double[] convertPrimitiveDoubleArray(double[])>($r2);
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r4);
+
+        return r0;
+    }
+
+    public androidx.work.Data$Builder putFloat(java.lang.String, float)
+    {
+        java.lang.Float $r3;
+        androidx.work.Data$Builder r0;
+        java.util.Map $r2;
+        float $f0;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $f0 := @parameter1: float;
+
+        $r2 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r3 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>($f0);
+
+        interfaceinvoke $r2.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r3);
+
+        return r0;
+    }
+
+    public androidx.work.Data$Builder putFloatArray(java.lang.String, float[])
+    {
+        androidx.work.Data$Builder r0;
+        java.util.Map $r3;
+        float[] $r2;
+        java.lang.String $r1;
+        java.lang.Float[] $r4;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: float[];
+
+        $r3 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r4 = staticinvoke <androidx.work.Data: java.lang.Float[] convertPrimitiveFloatArray(float[])>($r2);
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r4);
+
+        return r0;
+    }
+
+    public androidx.work.Data$Builder putInt(java.lang.String, int)
+    {
+        androidx.work.Data$Builder r0;
+        java.util.Map $r2;
+        int $i0;
+        java.lang.String $r1;
+        java.lang.Integer $r3;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r2 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        interfaceinvoke $r2.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r3);
+
+        return r0;
+    }
+
+    public androidx.work.Data$Builder putIntArray(java.lang.String, int[])
+    {
+        androidx.work.Data$Builder r0;
+        int[] $r2;
+        java.util.Map $r3;
+        java.lang.String $r1;
+        java.lang.Integer[] $r4;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: int[];
+
+        $r3 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r4 = staticinvoke <androidx.work.Data: java.lang.Integer[] convertPrimitiveIntArray(int[])>($r2);
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r4);
+
+        return r0;
+    }
+
+    public androidx.work.Data$Builder putLong(java.lang.String, long)
+    {
+        androidx.work.Data$Builder r0;
+        java.lang.Long $r3;
+        java.util.Map $r2;
+        long $l0;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $l0 := @parameter1: long;
+
+        $r2 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r3 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+        interfaceinvoke $r2.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r3);
+
+        return r0;
+    }
+
+    public androidx.work.Data$Builder putLongArray(java.lang.String, long[])
+    {
+        java.lang.Long[] $r4;
+        long[] $r2;
+        androidx.work.Data$Builder r0;
+        java.util.Map $r3;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: long[];
+
+        $r3 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        $r4 = staticinvoke <androidx.work.Data: java.lang.Long[] convertPrimitiveLongArray(long[])>($r2);
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r4);
+
+        return r0;
+    }
+
+    public androidx.work.Data$Builder putString(java.lang.String, java.lang.String)
+    {
+        androidx.work.Data$Builder r0;
+        java.util.Map $r3;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        return r0;
+    }
+
+    public androidx.work.Data$Builder putStringArray(java.lang.String, java.lang.String[])
+    {
+        androidx.work.Data$Builder r0;
+        java.util.Map $r3;
+        java.lang.String[] $r2;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.Data$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String[];
+
+        $r3 = r0.<androidx.work.Data$Builder: java.util.Map mValues>;
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        return r0;
+    }
+}

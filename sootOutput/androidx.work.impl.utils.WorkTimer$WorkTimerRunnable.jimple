@@ -1,0 +1,120 @@
+public class androidx.work.impl.utils.WorkTimer$WorkTimerRunnable extends java.lang.Object implements java.lang.Runnable
+{
+    static final java.lang.String TAG;
+    private final java.lang.String mWorkSpecId;
+    private final androidx.work.impl.utils.WorkTimer mWorkTimer;
+
+    void <init>(androidx.work.impl.utils.WorkTimer, java.lang.String)
+    {
+        androidx.work.impl.utils.WorkTimer $r1;
+        androidx.work.impl.utils.WorkTimer$WorkTimerRunnable r0;
+        java.lang.String $r2;
+
+        r0 := @this: androidx.work.impl.utils.WorkTimer$WorkTimerRunnable;
+
+        $r1 := @parameter0: androidx.work.impl.utils.WorkTimer;
+
+        $r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.work.impl.utils.WorkTimer$WorkTimerRunnable: androidx.work.impl.utils.WorkTimer mWorkTimer> = $r1;
+
+        r0.<androidx.work.impl.utils.WorkTimer$WorkTimerRunnable: java.lang.String mWorkSpecId> = $r2;
+
+        return;
+    }
+
+    public void run()
+    {
+        java.lang.Throwable r11;
+        androidx.work.impl.utils.WorkTimer $r2;
+        java.lang.Object[] $r9;
+        androidx.work.Logger $r8;
+        androidx.work.impl.utils.WorkTimer$WorkTimerRunnable r0, r6;
+        androidx.work.impl.utils.WorkTimer$TimeLimitExceededListener r7;
+        java.util.Map r4;
+        java.lang.Throwable[] $r10;
+        java.lang.Object $r3, $r5;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.impl.utils.WorkTimer$WorkTimerRunnable;
+
+        $r2 = r0.<androidx.work.impl.utils.WorkTimer$WorkTimerRunnable: androidx.work.impl.utils.WorkTimer mWorkTimer>;
+
+        $r3 = $r2.<androidx.work.impl.utils.WorkTimer: java.lang.Object mLock>;
+
+        entermonitor $r3;
+
+     label1:
+        $r2 = r0.<androidx.work.impl.utils.WorkTimer$WorkTimerRunnable: androidx.work.impl.utils.WorkTimer mWorkTimer>;
+
+        r4 = $r2.<androidx.work.impl.utils.WorkTimer: java.util.Map mTimerMap>;
+
+        $r1 = r0.<androidx.work.impl.utils.WorkTimer$WorkTimerRunnable: java.lang.String mWorkSpecId>;
+
+        $r5 = interfaceinvoke r4.<java.util.Map: java.lang.Object remove(java.lang.Object)>($r1);
+
+        r6 = (androidx.work.impl.utils.WorkTimer$WorkTimerRunnable) $r5;
+
+        if r6 == null goto label3;
+
+        $r2 = r0.<androidx.work.impl.utils.WorkTimer$WorkTimerRunnable: androidx.work.impl.utils.WorkTimer mWorkTimer>;
+
+        r4 = $r2.<androidx.work.impl.utils.WorkTimer: java.util.Map mListeners>;
+
+        $r1 = r0.<androidx.work.impl.utils.WorkTimer$WorkTimerRunnable: java.lang.String mWorkSpecId>;
+
+        $r5 = interfaceinvoke r4.<java.util.Map: java.lang.Object remove(java.lang.Object)>($r1);
+
+        r7 = (androidx.work.impl.utils.WorkTimer$TimeLimitExceededListener) $r5;
+
+        if r7 == null goto label2;
+
+        $r1 = r0.<androidx.work.impl.utils.WorkTimer$WorkTimerRunnable: java.lang.String mWorkSpecId>;
+
+        interfaceinvoke r7.<androidx.work.impl.utils.WorkTimer$TimeLimitExceededListener: void onTimeLimitExceeded(java.lang.String)>($r1);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r8 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r9 = newarray (java.lang.Object)[1];
+
+        $r1 = r0.<androidx.work.impl.utils.WorkTimer$WorkTimerRunnable: java.lang.String mWorkSpecId>;
+
+        $r9[0] = $r1;
+
+        $r1 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Timer with %s is already marked as complete.", $r9);
+
+        $r10 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r8.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>("WrkTimerRunnable", $r1, $r10);
+
+     label4:
+        exitmonitor $r3;
+
+     label5:
+        return;
+
+     label6:
+        r11 := @caughtexception;
+
+        exitmonitor $r3;
+
+     label7:
+        throw r11;
+
+        catch java.lang.Throwable from label1 to label5 with label6;
+        catch java.lang.Throwable from label6 to label7 with label6;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.work.impl.utils.WorkTimer$WorkTimerRunnable: java.lang.String TAG> = "WrkTimerRunnable";
+
+        return;
+    }
+}

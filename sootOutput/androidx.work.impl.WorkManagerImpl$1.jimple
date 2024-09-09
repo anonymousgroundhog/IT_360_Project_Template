@@ -1,0 +1,69 @@
+class androidx.work.impl.WorkManagerImpl$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.work.impl.WorkManagerImpl this$0;
+    final androidx.work.impl.utils.futures.SettableFuture val$future;
+    final androidx.work.impl.utils.PreferenceUtils val$preferenceUtils;
+
+    void <init>(androidx.work.impl.WorkManagerImpl, androidx.work.impl.utils.futures.SettableFuture, androidx.work.impl.utils.PreferenceUtils)
+    {
+        androidx.work.impl.WorkManagerImpl $r1;
+        androidx.work.impl.utils.PreferenceUtils $r3;
+        androidx.work.impl.WorkManagerImpl$1 r0;
+        androidx.work.impl.utils.futures.SettableFuture $r2;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl$1;
+
+        $r1 := @parameter0: androidx.work.impl.WorkManagerImpl;
+
+        $r2 := @parameter1: androidx.work.impl.utils.futures.SettableFuture;
+
+        $r3 := @parameter2: androidx.work.impl.utils.PreferenceUtils;
+
+        r0.<androidx.work.impl.WorkManagerImpl$1: androidx.work.impl.WorkManagerImpl this$0> = $r1;
+
+        r0.<androidx.work.impl.WorkManagerImpl$1: androidx.work.impl.utils.futures.SettableFuture val$future> = $r2;
+
+        r0.<androidx.work.impl.WorkManagerImpl$1: androidx.work.impl.utils.PreferenceUtils val$preferenceUtils> = $r3;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        java.lang.Throwable r4;
+        java.lang.Long $r3;
+        androidx.work.impl.utils.PreferenceUtils $r2;
+        long $l0;
+        androidx.work.impl.WorkManagerImpl$1 r0;
+        androidx.work.impl.utils.futures.SettableFuture r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl$1;
+
+     label1:
+        r1 = r0.<androidx.work.impl.WorkManagerImpl$1: androidx.work.impl.utils.futures.SettableFuture val$future>;
+
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl$1: androidx.work.impl.utils.PreferenceUtils val$preferenceUtils>;
+
+        $l0 = virtualinvoke $r2.<androidx.work.impl.utils.PreferenceUtils: long getLastCancelAllTimeMillis()>();
+
+        $r3 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+        virtualinvoke r1.<androidx.work.impl.utils.futures.SettableFuture: boolean set(java.lang.Object)>($r3);
+
+     label2:
+        return;
+
+     label3:
+        r4 := @caughtexception;
+
+        r1 = r0.<androidx.work.impl.WorkManagerImpl$1: androidx.work.impl.utils.futures.SettableFuture val$future>;
+
+        virtualinvoke r1.<androidx.work.impl.utils.futures.SettableFuture: boolean setException(java.lang.Throwable)>(r4);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+}

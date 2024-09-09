@@ -1,0 +1,122 @@
+public final class com.google.android.gms.internal.ads.zzfqg extends java.lang.Object
+{
+    private final java.util.concurrent.BlockingQueue zza;
+    private final java.util.concurrent.ThreadPoolExecutor zzb;
+    private final java.util.ArrayDeque zzc;
+    private com.google.android.gms.internal.ads.zzfqf zzd;
+
+    public void <init>()
+    {
+        java.util.concurrent.TimeUnit $r1;
+        java.util.concurrent.ThreadPoolExecutor $r5;
+        java.util.concurrent.BlockingQueue $r2;
+        java.util.ArrayDeque $r3;
+        java.util.concurrent.LinkedBlockingQueue $r4;
+        com.google.android.gms.internal.ads.zzfqg r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfqg;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = new java.util.ArrayDeque;
+
+        specialinvoke $r3.<java.util.ArrayDeque: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzfqg: java.util.ArrayDeque zzc> = $r3;
+
+        r0.<com.google.android.gms.internal.ads.zzfqg: com.google.android.gms.internal.ads.zzfqf zzd> = null;
+
+        $r4 = new java.util.concurrent.LinkedBlockingQueue;
+
+        specialinvoke $r4.<java.util.concurrent.LinkedBlockingQueue: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzfqg: java.util.concurrent.BlockingQueue zza> = $r4;
+
+        $r5 = new java.util.concurrent.ThreadPoolExecutor;
+
+        $r1 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzfqg: java.util.concurrent.BlockingQueue zza>;
+
+        specialinvoke $r5.<java.util.concurrent.ThreadPoolExecutor: void <init>(int,int,long,java.util.concurrent.TimeUnit,java.util.concurrent.BlockingQueue)>(1, 1, 1L, $r1, $r2);
+
+        r0.<com.google.android.gms.internal.ads.zzfqg: java.util.concurrent.ThreadPoolExecutor zzb> = $r5;
+
+        return;
+    }
+
+    private final void zzc()
+    {
+        java.lang.Object[] $r5;
+        java.util.concurrent.ThreadPoolExecutor $r1;
+        java.lang.Object $r2;
+        java.util.ArrayDeque $r3;
+        com.google.android.gms.internal.ads.zzfqg r0;
+        com.google.android.gms.internal.ads.zzfqf $r4;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfqg;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzfqg: java.util.ArrayDeque zzc>;
+
+        $r2 = virtualinvoke $r3.<java.util.ArrayDeque: java.lang.Object poll()>();
+
+        $r4 = (com.google.android.gms.internal.ads.zzfqf) $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzfqg: com.google.android.gms.internal.ads.zzfqf zzd> = $r4;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzfqg: com.google.android.gms.internal.ads.zzfqf zzd>;
+
+        if $r4 == null goto label1;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfqg: java.util.concurrent.ThreadPoolExecutor zzb>;
+
+        $r5 = newarray (java.lang.Object)[0];
+
+        virtualinvoke $r4.<com.google.android.gms.internal.ads.zzfqf: android.os.AsyncTask executeOnExecutor(java.util.concurrent.Executor,java.lang.Object[])>($r1, $r5);
+
+     label1:
+        return;
+    }
+
+    public final void zza(com.google.android.gms.internal.ads.zzfqf)
+    {
+        com.google.android.gms.internal.ads.zzfqg r0;
+        com.google.android.gms.internal.ads.zzfqf $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfqg;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzfqf;
+
+        r0.<com.google.android.gms.internal.ads.zzfqg: com.google.android.gms.internal.ads.zzfqf zzd> = null;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzfqg: void zzc()>();
+
+        return;
+    }
+
+    public final void zzb(com.google.android.gms.internal.ads.zzfqf)
+    {
+        java.util.ArrayDeque $r1;
+        com.google.android.gms.internal.ads.zzfqg r0;
+        com.google.android.gms.internal.ads.zzfqf $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfqg;
+
+        $r2 := @parameter0: com.google.android.gms.internal.ads.zzfqf;
+
+        virtualinvoke $r2.<com.google.android.gms.internal.ads.zzfqf: void zzb(com.google.android.gms.internal.ads.zzfqg)>(r0);
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfqg: java.util.ArrayDeque zzc>;
+
+        virtualinvoke $r1.<java.util.ArrayDeque: boolean add(java.lang.Object)>($r2);
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzfqg: com.google.android.gms.internal.ads.zzfqf zzd>;
+
+        if $r2 != null goto label1;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzfqg: void zzc()>();
+
+     label1:
+        return;
+    }
+}

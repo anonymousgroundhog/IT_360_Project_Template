@@ -1,0 +1,63 @@
+public final class androidx.core.animation.AnimatorKt$addPauseListener$listener$1 extends java.lang.Object implements android.animation.Animator$AnimatorPauseListener
+{
+    final kotlin.jvm.functions.Function1 $onPause;
+    final kotlin.jvm.functions.Function1 $onResume;
+
+    public void <init>(kotlin.jvm.functions.Function1, kotlin.jvm.functions.Function1)
+    {
+        androidx.core.animation.AnimatorKt$addPauseListener$listener$1 r0;
+        kotlin.jvm.functions.Function1 $r1, $r2;
+
+        r0 := @this: androidx.core.animation.AnimatorKt$addPauseListener$listener$1;
+
+        $r1 := @parameter0: kotlin.jvm.functions.Function1;
+
+        $r2 := @parameter1: kotlin.jvm.functions.Function1;
+
+        r0.<androidx.core.animation.AnimatorKt$addPauseListener$listener$1: kotlin.jvm.functions.Function1 $onPause> = $r1;
+
+        r0.<androidx.core.animation.AnimatorKt$addPauseListener$listener$1: kotlin.jvm.functions.Function1 $onResume> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onAnimationPause(android.animation.Animator)
+    {
+        androidx.core.animation.AnimatorKt$addPauseListener$listener$1 r0;
+        kotlin.jvm.functions.Function1 $r2;
+        android.animation.Animator $r1;
+
+        r0 := @this: androidx.core.animation.AnimatorKt$addPauseListener$listener$1;
+
+        $r1 := @parameter0: android.animation.Animator;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "animator");
+
+        $r2 = r0.<androidx.core.animation.AnimatorKt$addPauseListener$listener$1: kotlin.jvm.functions.Function1 $onPause>;
+
+        interfaceinvoke $r2.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void onAnimationResume(android.animation.Animator)
+    {
+        androidx.core.animation.AnimatorKt$addPauseListener$listener$1 r0;
+        kotlin.jvm.functions.Function1 $r2;
+        android.animation.Animator $r1;
+
+        r0 := @this: androidx.core.animation.AnimatorKt$addPauseListener$listener$1;
+
+        $r1 := @parameter0: android.animation.Animator;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "animator");
+
+        $r2 = r0.<androidx.core.animation.AnimatorKt$addPauseListener$listener$1: kotlin.jvm.functions.Function1 $onResume>;
+
+        interfaceinvoke $r2.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r1);
+
+        return;
+    }
+}

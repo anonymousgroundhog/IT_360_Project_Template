@@ -1,0 +1,219 @@
+public class androidx.work.impl.constraints.NetworkState extends java.lang.Object
+{
+    private boolean mIsConnected;
+    private boolean mIsMetered;
+    private boolean mIsNotRoaming;
+    private boolean mIsValidated;
+
+    public void <init>(boolean, boolean, boolean, boolean)
+    {
+        androidx.work.impl.constraints.NetworkState r0;
+        boolean $z0, $z1, $z2, $z3;
+
+        r0 := @this: androidx.work.impl.constraints.NetworkState;
+
+        $z0 := @parameter0: boolean;
+
+        $z1 := @parameter1: boolean;
+
+        $z2 := @parameter2: boolean;
+
+        $z3 := @parameter3: boolean;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.work.impl.constraints.NetworkState: boolean mIsConnected> = $z0;
+
+        r0.<androidx.work.impl.constraints.NetworkState: boolean mIsValidated> = $z1;
+
+        r0.<androidx.work.impl.constraints.NetworkState: boolean mIsMetered> = $z2;
+
+        r0.<androidx.work.impl.constraints.NetworkState: boolean mIsNotRoaming> = $z3;
+
+        return;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.work.impl.constraints.NetworkState r0, r2;
+        java.lang.Object $r1;
+        boolean z0, $z1;
+
+        r0 := @this: androidx.work.impl.constraints.NetworkState;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if r0 != $r1 goto label1;
+
+        return 1;
+
+     label1:
+        z0 = $r1 instanceof androidx.work.impl.constraints.NetworkState;
+
+        if z0 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        r2 = (androidx.work.impl.constraints.NetworkState) $r1;
+
+        z0 = r0.<androidx.work.impl.constraints.NetworkState: boolean mIsConnected>;
+
+        $z1 = r2.<androidx.work.impl.constraints.NetworkState: boolean mIsConnected>;
+
+        if z0 != $z1 goto label3;
+
+        z0 = r0.<androidx.work.impl.constraints.NetworkState: boolean mIsValidated>;
+
+        $z1 = r2.<androidx.work.impl.constraints.NetworkState: boolean mIsValidated>;
+
+        if z0 != $z1 goto label3;
+
+        z0 = r0.<androidx.work.impl.constraints.NetworkState: boolean mIsMetered>;
+
+        $z1 = r2.<androidx.work.impl.constraints.NetworkState: boolean mIsMetered>;
+
+        if z0 != $z1 goto label3;
+
+        z0 = r0.<androidx.work.impl.constraints.NetworkState: boolean mIsNotRoaming>;
+
+        $z1 = r2.<androidx.work.impl.constraints.NetworkState: boolean mIsNotRoaming>;
+
+        if z0 != $z1 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public int hashCode()
+    {
+        int i0;
+        androidx.work.impl.constraints.NetworkState r0;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.NetworkState;
+
+        i0 = 0;
+
+        $z0 = r0.<androidx.work.impl.constraints.NetworkState: boolean mIsConnected>;
+
+        if $z0 == 0 goto label1;
+
+        i0 = 1;
+
+     label1:
+        $z0 = r0.<androidx.work.impl.constraints.NetworkState: boolean mIsValidated>;
+
+        if $z0 == 0 goto label2;
+
+        i0 = i0 + 16;
+
+     label2:
+        $z0 = r0.<androidx.work.impl.constraints.NetworkState: boolean mIsMetered>;
+
+        if $z0 == 0 goto label3;
+
+        i0 = i0 + 256;
+
+     label3:
+        $z0 = r0.<androidx.work.impl.constraints.NetworkState: boolean mIsNotRoaming>;
+
+        if $z0 == 0 goto label4;
+
+        i0 = i0 + 4096;
+
+     label4:
+        return i0;
+    }
+
+    public boolean isConnected()
+    {
+        androidx.work.impl.constraints.NetworkState r0;
+        boolean z0;
+
+        r0 := @this: androidx.work.impl.constraints.NetworkState;
+
+        z0 = r0.<androidx.work.impl.constraints.NetworkState: boolean mIsConnected>;
+
+        return z0;
+    }
+
+    public boolean isMetered()
+    {
+        androidx.work.impl.constraints.NetworkState r0;
+        boolean z0;
+
+        r0 := @this: androidx.work.impl.constraints.NetworkState;
+
+        z0 = r0.<androidx.work.impl.constraints.NetworkState: boolean mIsMetered>;
+
+        return z0;
+    }
+
+    public boolean isNotRoaming()
+    {
+        androidx.work.impl.constraints.NetworkState r0;
+        boolean z0;
+
+        r0 := @this: androidx.work.impl.constraints.NetworkState;
+
+        z0 = r0.<androidx.work.impl.constraints.NetworkState: boolean mIsNotRoaming>;
+
+        return z0;
+    }
+
+    public boolean isValidated()
+    {
+        androidx.work.impl.constraints.NetworkState r0;
+        boolean z0;
+
+        r0 := @this: androidx.work.impl.constraints.NetworkState;
+
+        z0 = r0.<androidx.work.impl.constraints.NetworkState: boolean mIsValidated>;
+
+        return z0;
+    }
+
+    public java.lang.String toString()
+    {
+        java.lang.Object[] $r5;
+        androidx.work.impl.constraints.NetworkState r0;
+        java.lang.Boolean $r1, $r2, $r3, $r4;
+        java.lang.String $r6;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.NetworkState;
+
+        $z0 = r0.<androidx.work.impl.constraints.NetworkState: boolean mIsConnected>;
+
+        $r1 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        $z0 = r0.<androidx.work.impl.constraints.NetworkState: boolean mIsValidated>;
+
+        $r2 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        $z0 = r0.<androidx.work.impl.constraints.NetworkState: boolean mIsMetered>;
+
+        $r3 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        $z0 = r0.<androidx.work.impl.constraints.NetworkState: boolean mIsNotRoaming>;
+
+        $r4 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        $r5 = newarray (java.lang.Object)[4];
+
+        $r5[0] = $r1;
+
+        $r5[1] = $r2;
+
+        $r5[2] = $r3;
+
+        $r5[3] = $r4;
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("[ Connected=%b Validated=%b Metered=%b NotRoaming=%b ]", $r5);
+
+        return $r6;
+    }
+}

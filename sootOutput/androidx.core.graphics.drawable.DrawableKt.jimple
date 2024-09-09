@@ -1,0 +1,338 @@
+public final class androidx.core.graphics.drawable.DrawableKt extends java.lang.Object
+{
+
+    public static final android.graphics.Bitmap toBitmap(android.graphics.drawable.Drawable, int, int, android.graphics.Bitmap$Config)
+    {
+        android.graphics.Rect $r6;
+        android.graphics.drawable.BitmapDrawable $r2;
+        java.lang.IllegalArgumentException $r5;
+        android.graphics.drawable.Drawable $r0;
+        android.graphics.Bitmap$Config $r1, $r4;
+        android.graphics.Bitmap $r3;
+        int $i0, $i1, $i2, $i3, $i4, $i5;
+        android.graphics.Canvas $r7;
+        boolean $z0;
+
+        $r0 := @parameter0: android.graphics.drawable.Drawable;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r1 := @parameter3: android.graphics.Bitmap$Config;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $z0 = $r0 instanceof android.graphics.drawable.BitmapDrawable;
+
+        if $z0 == 0 goto label4;
+
+        $r2 = (android.graphics.drawable.BitmapDrawable) $r0;
+
+        $r3 = virtualinvoke $r2.<android.graphics.drawable.BitmapDrawable: android.graphics.Bitmap getBitmap()>();
+
+        if $r3 == null goto label3;
+
+        if $r1 == null goto label1;
+
+        $r2 = (android.graphics.drawable.BitmapDrawable) $r0;
+
+        $r3 = virtualinvoke $r2.<android.graphics.drawable.BitmapDrawable: android.graphics.Bitmap getBitmap()>();
+
+        $r4 = virtualinvoke $r3.<android.graphics.Bitmap: android.graphics.Bitmap$Config getConfig()>();
+
+        if $r4 != $r1 goto label4;
+
+     label1:
+        $r2 = (android.graphics.drawable.BitmapDrawable) $r0;
+
+        $r3 = virtualinvoke $r2.<android.graphics.drawable.BitmapDrawable: android.graphics.Bitmap getBitmap()>();
+
+        $i2 = virtualinvoke $r3.<android.graphics.Bitmap: int getWidth()>();
+
+        if $i0 != $i2 goto label2;
+
+        $r2 = (android.graphics.drawable.BitmapDrawable) $r0;
+
+        $r3 = virtualinvoke $r2.<android.graphics.drawable.BitmapDrawable: android.graphics.Bitmap getBitmap()>();
+
+        $i2 = virtualinvoke $r3.<android.graphics.Bitmap: int getHeight()>();
+
+        if $i1 != $i2 goto label2;
+
+        $r2 = (android.graphics.drawable.BitmapDrawable) $r0;
+
+        $r3 = virtualinvoke $r2.<android.graphics.drawable.BitmapDrawable: android.graphics.Bitmap getBitmap()>();
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r3, "bitmap");
+
+        return $r3;
+
+     label2:
+        $r2 = (android.graphics.drawable.BitmapDrawable) $r0;
+
+        $r3 = virtualinvoke $r2.<android.graphics.drawable.BitmapDrawable: android.graphics.Bitmap getBitmap()>();
+
+        $r3 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createScaledBitmap(android.graphics.Bitmap,int,int,boolean)>($r3, $i0, $i1, 1);
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r3, "createScaledBitmap(bitmap, width, height, true)");
+
+        return $r3;
+
+     label3:
+        $r5 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("bitmap is null");
+
+        throw $r5;
+
+     label4:
+        $r6 = virtualinvoke $r0.<android.graphics.drawable.Drawable: android.graphics.Rect getBounds()>();
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r6, "bounds");
+
+        $i2 = $r6.<android.graphics.Rect: int left>;
+
+        $i3 = $r6.<android.graphics.Rect: int top>;
+
+        $i4 = $r6.<android.graphics.Rect: int right>;
+
+        $i5 = $r6.<android.graphics.Rect: int bottom>;
+
+        if $r1 != null goto label5;
+
+        $r1 = <android.graphics.Bitmap$Config: android.graphics.Bitmap$Config ARGB_8888>;
+
+        goto label5;
+
+     label5:
+        $r3 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createBitmap(int,int,android.graphics.Bitmap$Config)>($i0, $i1, $r1);
+
+        virtualinvoke $r0.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>(0, 0, $i0, $i1);
+
+        $r7 = new android.graphics.Canvas;
+
+        specialinvoke $r7.<android.graphics.Canvas: void <init>(android.graphics.Bitmap)>($r3);
+
+        virtualinvoke $r0.<android.graphics.drawable.Drawable: void draw(android.graphics.Canvas)>($r7);
+
+        virtualinvoke $r0.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>($i2, $i3, $i4, $i5);
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r3, "bitmap");
+
+        return $r3;
+    }
+
+    public static android.graphics.Bitmap toBitmap$default(android.graphics.drawable.Drawable, int, int, android.graphics.Bitmap$Config, int, java.lang.Object)
+    {
+        android.graphics.drawable.Drawable $r0;
+        android.graphics.Bitmap$Config $r1;
+        android.graphics.Bitmap $r3;
+        int $i0, $i1, $i2, $i3;
+        java.lang.Object $r2;
+
+        $r0 := @parameter0: android.graphics.drawable.Drawable;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r1 := @parameter3: android.graphics.Bitmap$Config;
+
+        $i2 := @parameter4: int;
+
+        $r2 := @parameter5: java.lang.Object;
+
+        $i3 = $i2 & 1;
+
+        if $i3 == 0 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.graphics.drawable.Drawable: int getIntrinsicWidth()>();
+
+     label1:
+        $i3 = $i2 & 2;
+
+        if $i3 == 0 goto label2;
+
+        $i1 = virtualinvoke $r0.<android.graphics.drawable.Drawable: int getIntrinsicHeight()>();
+
+     label2:
+        $i2 = $i2 & 4;
+
+        if $i2 == 0 goto label3;
+
+        $r1 = null;
+
+     label3:
+        $r3 = staticinvoke <androidx.core.graphics.drawable.DrawableKt: android.graphics.Bitmap toBitmap(android.graphics.drawable.Drawable,int,int,android.graphics.Bitmap$Config)>($r0, $i0, $i1, $r1);
+
+        return $r3;
+    }
+
+    public static final android.graphics.Bitmap toBitmapOrNull(android.graphics.drawable.Drawable, int, int, android.graphics.Bitmap$Config)
+    {
+        android.graphics.Bitmap $r3;
+        int $i0, $i1;
+        android.graphics.drawable.BitmapDrawable $r2;
+        android.graphics.drawable.Drawable $r0;
+        android.graphics.Bitmap$Config $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.graphics.drawable.Drawable;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r1 := @parameter3: android.graphics.Bitmap$Config;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $z0 = $r0 instanceof android.graphics.drawable.BitmapDrawable;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = (android.graphics.drawable.BitmapDrawable) $r0;
+
+        $r3 = virtualinvoke $r2.<android.graphics.drawable.BitmapDrawable: android.graphics.Bitmap getBitmap()>();
+
+        if $r3 != null goto label1;
+
+        return null;
+
+     label1:
+        $r3 = staticinvoke <androidx.core.graphics.drawable.DrawableKt: android.graphics.Bitmap toBitmap(android.graphics.drawable.Drawable,int,int,android.graphics.Bitmap$Config)>($r0, $i0, $i1, $r1);
+
+        return $r3;
+    }
+
+    public static android.graphics.Bitmap toBitmapOrNull$default(android.graphics.drawable.Drawable, int, int, android.graphics.Bitmap$Config, int, java.lang.Object)
+    {
+        android.graphics.drawable.Drawable $r0;
+        android.graphics.Bitmap$Config $r1;
+        android.graphics.Bitmap $r3;
+        int $i0, $i1, $i2, $i3;
+        java.lang.Object $r2;
+
+        $r0 := @parameter0: android.graphics.drawable.Drawable;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r1 := @parameter3: android.graphics.Bitmap$Config;
+
+        $i2 := @parameter4: int;
+
+        $r2 := @parameter5: java.lang.Object;
+
+        $i3 = $i2 & 1;
+
+        if $i3 == 0 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.graphics.drawable.Drawable: int getIntrinsicWidth()>();
+
+     label1:
+        $i3 = $i2 & 2;
+
+        if $i3 == 0 goto label2;
+
+        $i1 = virtualinvoke $r0.<android.graphics.drawable.Drawable: int getIntrinsicHeight()>();
+
+     label2:
+        $i2 = $i2 & 4;
+
+        if $i2 == 0 goto label3;
+
+        $r1 = null;
+
+     label3:
+        $r3 = staticinvoke <androidx.core.graphics.drawable.DrawableKt: android.graphics.Bitmap toBitmapOrNull(android.graphics.drawable.Drawable,int,int,android.graphics.Bitmap$Config)>($r0, $i0, $i1, $r1);
+
+        return $r3;
+    }
+
+    public static final void updateBounds(android.graphics.drawable.Drawable, int, int, int, int)
+    {
+        int $i0, $i1, $i2, $i3;
+        android.graphics.drawable.Drawable $r0;
+
+        $r0 := @parameter0: android.graphics.drawable.Drawable;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        virtualinvoke $r0.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+    }
+
+    public static void updateBounds$default(android.graphics.drawable.Drawable, int, int, int, int, int, java.lang.Object)
+    {
+        android.graphics.Rect $r2;
+        android.graphics.drawable.Drawable $r0;
+        int $i0, $i1, $i2, $i3, $i4, $i5;
+        java.lang.Object $r1;
+
+        $r0 := @parameter0: android.graphics.drawable.Drawable;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $i4 := @parameter5: int;
+
+        $r1 := @parameter6: java.lang.Object;
+
+        $i5 = $i4 & 1;
+
+        if $i5 == 0 goto label1;
+
+        $r2 = virtualinvoke $r0.<android.graphics.drawable.Drawable: android.graphics.Rect getBounds()>();
+
+        $i0 = $r2.<android.graphics.Rect: int left>;
+
+     label1:
+        $i5 = $i4 & 2;
+
+        if $i5 == 0 goto label2;
+
+        $r2 = virtualinvoke $r0.<android.graphics.drawable.Drawable: android.graphics.Rect getBounds()>();
+
+        $i1 = $r2.<android.graphics.Rect: int top>;
+
+     label2:
+        $i5 = $i4 & 4;
+
+        if $i5 == 0 goto label3;
+
+        $r2 = virtualinvoke $r0.<android.graphics.drawable.Drawable: android.graphics.Rect getBounds()>();
+
+        $i2 = $r2.<android.graphics.Rect: int right>;
+
+     label3:
+        $i4 = $i4 & 8;
+
+        if $i4 == 0 goto label4;
+
+        $r2 = virtualinvoke $r0.<android.graphics.drawable.Drawable: android.graphics.Rect getBounds()>();
+
+        $i3 = $r2.<android.graphics.Rect: int bottom>;
+
+     label4:
+        staticinvoke <androidx.core.graphics.drawable.DrawableKt: void updateBounds(android.graphics.drawable.Drawable,int,int,int,int)>($r0, $i0, $i1, $i2, $i3);
+
+        return;
+    }
+}

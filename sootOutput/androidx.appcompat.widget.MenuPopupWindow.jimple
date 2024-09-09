@@ -1,0 +1,268 @@
+public class androidx.appcompat.widget.MenuPopupWindow extends androidx.appcompat.widget.ListPopupWindow implements androidx.appcompat.widget.MenuItemHoverListener
+{
+    private static final java.lang.String TAG;
+    private static java.lang.reflect.Method sSetTouchModalMethod;
+    private androidx.appcompat.widget.MenuItemHoverListener mHoverListener;
+
+    static void <clinit>()
+    {
+        java.lang.NoSuchMethodException r4;
+        int i0;
+        java.lang.Class[] $r3;
+        java.lang.Class $r0, r2;
+        java.lang.reflect.Method $r1;
+
+        <androidx.appcompat.widget.MenuPopupWindow: java.lang.String TAG> = "MenuPopupWindow";
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 > 28 goto label3;
+
+        r2 = class "Landroid/widget/PopupWindow;";
+
+        $r3 = newarray (java.lang.Class)[1];
+
+        $r0 = <java.lang.Boolean: java.lang.Class TYPE>;
+
+        $r3[0] = $r0;
+
+     label1:
+        $r1 = virtualinvoke r2.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("setTouchModal", $r3);
+
+     label2:
+        <androidx.appcompat.widget.MenuPopupWindow: java.lang.reflect.Method sSetTouchModalMethod> = $r1;
+
+     label3:
+        return;
+
+     label4:
+        r4 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("MenuPopupWindow", "Could not find method setTouchModal() on PopupWindow. Oh well.");
+
+        return;
+
+        catch java.lang.NoSuchMethodException from label1 to label2 with label4;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int, int)
+    {
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+        int $i0, $i1;
+        androidx.appcompat.widget.MenuPopupWindow r0;
+
+        r0 := @this: androidx.appcompat.widget.MenuPopupWindow;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        $i0 := @parameter2: int;
+
+        $i1 := @parameter3: int;
+
+        specialinvoke r0.<androidx.appcompat.widget.ListPopupWindow: void <init>(android.content.Context,android.util.AttributeSet,int,int)>($r1, $r2, $i0, $i1);
+
+        return;
+    }
+
+    androidx.appcompat.widget.DropDownListView createDropDownListView(android.content.Context, boolean)
+    {
+        android.content.Context $r1;
+        androidx.appcompat.widget.MenuPopupWindow r0;
+        androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView r2;
+        boolean $z0;
+
+        r0 := @this: androidx.appcompat.widget.MenuPopupWindow;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $z0 := @parameter1: boolean;
+
+        r2 = new androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView;
+
+        specialinvoke r2.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: void <init>(android.content.Context,boolean)>($r1, $z0);
+
+        virtualinvoke r2.<androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView: void setHoverListener(androidx.appcompat.widget.MenuItemHoverListener)>(r0);
+
+        return r2;
+    }
+
+    public void onItemHoverEnter(androidx.appcompat.view.menu.MenuBuilder, android.view.MenuItem)
+    {
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+        androidx.appcompat.widget.MenuItemHoverListener $r3;
+        androidx.appcompat.widget.MenuPopupWindow r0;
+        android.view.MenuItem $r2;
+
+        r0 := @this: androidx.appcompat.widget.MenuPopupWindow;
+
+        $r1 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $r2 := @parameter1: android.view.MenuItem;
+
+        $r3 = r0.<androidx.appcompat.widget.MenuPopupWindow: androidx.appcompat.widget.MenuItemHoverListener mHoverListener>;
+
+        if $r3 == null goto label1;
+
+        $r3 = r0.<androidx.appcompat.widget.MenuPopupWindow: androidx.appcompat.widget.MenuItemHoverListener mHoverListener>;
+
+        interfaceinvoke $r3.<androidx.appcompat.widget.MenuItemHoverListener: void onItemHoverEnter(androidx.appcompat.view.menu.MenuBuilder,android.view.MenuItem)>($r1, $r2);
+
+     label1:
+        return;
+    }
+
+    public void onItemHoverExit(androidx.appcompat.view.menu.MenuBuilder, android.view.MenuItem)
+    {
+        androidx.appcompat.view.menu.MenuBuilder $r1;
+        androidx.appcompat.widget.MenuItemHoverListener $r3;
+        androidx.appcompat.widget.MenuPopupWindow r0;
+        android.view.MenuItem $r2;
+
+        r0 := @this: androidx.appcompat.widget.MenuPopupWindow;
+
+        $r1 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $r2 := @parameter1: android.view.MenuItem;
+
+        $r3 = r0.<androidx.appcompat.widget.MenuPopupWindow: androidx.appcompat.widget.MenuItemHoverListener mHoverListener>;
+
+        if $r3 == null goto label1;
+
+        $r3 = r0.<androidx.appcompat.widget.MenuPopupWindow: androidx.appcompat.widget.MenuItemHoverListener mHoverListener>;
+
+        interfaceinvoke $r3.<androidx.appcompat.widget.MenuItemHoverListener: void onItemHoverExit(androidx.appcompat.view.menu.MenuBuilder,android.view.MenuItem)>($r1, $r2);
+
+     label1:
+        return;
+    }
+
+    public void setEnterTransition(java.lang.Object)
+    {
+        int $i0;
+        android.widget.PopupWindow $r2;
+        java.lang.Object $r1;
+        android.transition.Transition $r3;
+        androidx.appcompat.widget.MenuPopupWindow r0;
+
+        r0 := @this: androidx.appcompat.widget.MenuPopupWindow;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 23 goto label1;
+
+        $r2 = r0.<androidx.appcompat.widget.MenuPopupWindow: android.widget.PopupWindow mPopup>;
+
+        $r3 = (android.transition.Transition) $r1;
+
+        virtualinvoke $r2.<android.widget.PopupWindow: void setEnterTransition(android.transition.Transition)>($r3);
+
+     label1:
+        return;
+    }
+
+    public void setExitTransition(java.lang.Object)
+    {
+        int $i0;
+        android.widget.PopupWindow $r2;
+        java.lang.Object $r1;
+        android.transition.Transition $r3;
+        androidx.appcompat.widget.MenuPopupWindow r0;
+
+        r0 := @this: androidx.appcompat.widget.MenuPopupWindow;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 23 goto label1;
+
+        $r2 = r0.<androidx.appcompat.widget.MenuPopupWindow: android.widget.PopupWindow mPopup>;
+
+        $r3 = (android.transition.Transition) $r1;
+
+        virtualinvoke $r2.<android.widget.PopupWindow: void setExitTransition(android.transition.Transition)>($r3);
+
+     label1:
+        return;
+    }
+
+    public void setHoverListener(androidx.appcompat.widget.MenuItemHoverListener)
+    {
+        androidx.appcompat.widget.MenuItemHoverListener $r1;
+        androidx.appcompat.widget.MenuPopupWindow r0;
+
+        r0 := @this: androidx.appcompat.widget.MenuPopupWindow;
+
+        $r1 := @parameter0: androidx.appcompat.widget.MenuItemHoverListener;
+
+        r0.<androidx.appcompat.widget.MenuPopupWindow: androidx.appcompat.widget.MenuItemHoverListener mHoverListener> = $r1;
+
+        return;
+    }
+
+    public void setTouchModal(boolean)
+    {
+        java.lang.Object[] $r4;
+        android.widget.PopupWindow $r3;
+        androidx.appcompat.widget.MenuPopupWindow r0;
+        java.lang.Exception r5;
+        int i0;
+        java.lang.Boolean $r1;
+        java.lang.reflect.Method r2;
+        boolean $z0;
+
+        r0 := @this: androidx.appcompat.widget.MenuPopupWindow;
+
+        $z0 := @parameter0: boolean;
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 > 28 goto label7;
+
+        r2 = <androidx.appcompat.widget.MenuPopupWindow: java.lang.reflect.Method sSetTouchModalMethod>;
+
+        if r2 == null goto label8;
+
+        r2 = <androidx.appcompat.widget.MenuPopupWindow: java.lang.reflect.Method sSetTouchModalMethod>;
+
+     label1:
+        $r3 = r0.<androidx.appcompat.widget.MenuPopupWindow: android.widget.PopupWindow mPopup>;
+
+     label2:
+        $r4 = newarray (java.lang.Object)[1];
+
+     label3:
+        $r1 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        $r4[0] = $r1;
+
+        virtualinvoke r2.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r3, $r4);
+
+     label4:
+        goto label6;
+
+     label5:
+        r5 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("MenuPopupWindow", "Could not invoke setTouchModal() on PopupWindow. Oh well.");
+
+     label6:
+        return;
+
+     label7:
+        $r3 = r0.<androidx.appcompat.widget.MenuPopupWindow: android.widget.PopupWindow mPopup>;
+
+        virtualinvoke $r3.<android.widget.PopupWindow: void setTouchModal(boolean)>($z0);
+
+     label8:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label5;
+        catch java.lang.Exception from label3 to label4 with label5;
+    }
+}

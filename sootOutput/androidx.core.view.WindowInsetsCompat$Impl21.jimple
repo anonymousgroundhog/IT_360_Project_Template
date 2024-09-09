@@ -1,0 +1,148 @@
+class androidx.core.view.WindowInsetsCompat$Impl21 extends androidx.core.view.WindowInsetsCompat$Impl20
+{
+    private androidx.core.graphics.Insets mStableInsets;
+
+    void <init>(androidx.core.view.WindowInsetsCompat, android.view.WindowInsets)
+    {
+        androidx.core.view.WindowInsetsCompat$Impl21 r0;
+        androidx.core.view.WindowInsetsCompat $r1;
+        android.view.WindowInsets $r2;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$Impl21;
+
+        $r1 := @parameter0: androidx.core.view.WindowInsetsCompat;
+
+        $r2 := @parameter1: android.view.WindowInsets;
+
+        specialinvoke r0.<androidx.core.view.WindowInsetsCompat$Impl20: void <init>(androidx.core.view.WindowInsetsCompat,android.view.WindowInsets)>($r1, $r2);
+
+        r0.<androidx.core.view.WindowInsetsCompat$Impl21: androidx.core.graphics.Insets mStableInsets> = null;
+
+        return;
+    }
+
+    void <init>(androidx.core.view.WindowInsetsCompat, androidx.core.view.WindowInsetsCompat$Impl21)
+    {
+        androidx.core.view.WindowInsetsCompat$Impl21 r0, $r2;
+        androidx.core.graphics.Insets $r3;
+        androidx.core.view.WindowInsetsCompat $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$Impl21;
+
+        $r1 := @parameter0: androidx.core.view.WindowInsetsCompat;
+
+        $r2 := @parameter1: androidx.core.view.WindowInsetsCompat$Impl21;
+
+        specialinvoke r0.<androidx.core.view.WindowInsetsCompat$Impl20: void <init>(androidx.core.view.WindowInsetsCompat,androidx.core.view.WindowInsetsCompat$Impl20)>($r1, $r2);
+
+        r0.<androidx.core.view.WindowInsetsCompat$Impl21: androidx.core.graphics.Insets mStableInsets> = null;
+
+        $r3 = $r2.<androidx.core.view.WindowInsetsCompat$Impl21: androidx.core.graphics.Insets mStableInsets>;
+
+        r0.<androidx.core.view.WindowInsetsCompat$Impl21: androidx.core.graphics.Insets mStableInsets> = $r3;
+
+        return;
+    }
+
+    androidx.core.view.WindowInsetsCompat consumeStableInsets()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl21 r0;
+        androidx.core.view.WindowInsetsCompat $r2;
+        android.view.WindowInsets $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$Impl21;
+
+        $r1 = r0.<androidx.core.view.WindowInsetsCompat$Impl21: android.view.WindowInsets mPlatformInsets>;
+
+        $r1 = virtualinvoke $r1.<android.view.WindowInsets: android.view.WindowInsets consumeStableInsets()>();
+
+        $r2 = staticinvoke <androidx.core.view.WindowInsetsCompat: androidx.core.view.WindowInsetsCompat toWindowInsetsCompat(android.view.WindowInsets)>($r1);
+
+        return $r2;
+    }
+
+    androidx.core.view.WindowInsetsCompat consumeSystemWindowInsets()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl21 r0;
+        androidx.core.view.WindowInsetsCompat $r2;
+        android.view.WindowInsets $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$Impl21;
+
+        $r1 = r0.<androidx.core.view.WindowInsetsCompat$Impl21: android.view.WindowInsets mPlatformInsets>;
+
+        $r1 = virtualinvoke $r1.<android.view.WindowInsets: android.view.WindowInsets consumeSystemWindowInsets()>();
+
+        $r2 = staticinvoke <androidx.core.view.WindowInsetsCompat: androidx.core.view.WindowInsetsCompat toWindowInsetsCompat(android.view.WindowInsets)>($r1);
+
+        return $r2;
+    }
+
+    final androidx.core.graphics.Insets getStableInsets()
+    {
+        android.view.WindowInsets $r2;
+        int $i0, $i1, $i2, $i3;
+        androidx.core.view.WindowInsetsCompat$Impl21 r0;
+        androidx.core.graphics.Insets $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$Impl21;
+
+        $r1 = r0.<androidx.core.view.WindowInsetsCompat$Impl21: androidx.core.graphics.Insets mStableInsets>;
+
+        if $r1 != null goto label1;
+
+        $r2 = r0.<androidx.core.view.WindowInsetsCompat$Impl21: android.view.WindowInsets mPlatformInsets>;
+
+        $i0 = virtualinvoke $r2.<android.view.WindowInsets: int getStableInsetLeft()>();
+
+        $r2 = r0.<androidx.core.view.WindowInsetsCompat$Impl21: android.view.WindowInsets mPlatformInsets>;
+
+        $i1 = virtualinvoke $r2.<android.view.WindowInsets: int getStableInsetTop()>();
+
+        $r2 = r0.<androidx.core.view.WindowInsetsCompat$Impl21: android.view.WindowInsets mPlatformInsets>;
+
+        $i2 = virtualinvoke $r2.<android.view.WindowInsets: int getStableInsetRight()>();
+
+        $r2 = r0.<androidx.core.view.WindowInsetsCompat$Impl21: android.view.WindowInsets mPlatformInsets>;
+
+        $i3 = virtualinvoke $r2.<android.view.WindowInsets: int getStableInsetBottom()>();
+
+        $r1 = staticinvoke <androidx.core.graphics.Insets: androidx.core.graphics.Insets of(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        r0.<androidx.core.view.WindowInsetsCompat$Impl21: androidx.core.graphics.Insets mStableInsets> = $r1;
+
+     label1:
+        $r1 = r0.<androidx.core.view.WindowInsetsCompat$Impl21: androidx.core.graphics.Insets mStableInsets>;
+
+        return $r1;
+    }
+
+    boolean isConsumed()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl21 r0;
+        boolean $z0;
+        android.view.WindowInsets $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$Impl21;
+
+        $r1 = r0.<androidx.core.view.WindowInsetsCompat$Impl21: android.view.WindowInsets mPlatformInsets>;
+
+        $z0 = virtualinvoke $r1.<android.view.WindowInsets: boolean isConsumed()>();
+
+        return $z0;
+    }
+
+    public void setStableInsets(androidx.core.graphics.Insets)
+    {
+        androidx.core.view.WindowInsetsCompat$Impl21 r0;
+        androidx.core.graphics.Insets $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$Impl21;
+
+        $r1 := @parameter0: androidx.core.graphics.Insets;
+
+        r0.<androidx.core.view.WindowInsetsCompat$Impl21: androidx.core.graphics.Insets mStableInsets> = $r1;
+
+        return;
+    }
+}

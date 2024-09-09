@@ -1,0 +1,216 @@
+final class androidx.core.view.ContentInfoCompat$CompatImpl extends java.lang.Object implements androidx.core.view.ContentInfoCompat$Compat
+{
+    private final android.content.ClipData mClip;
+    private final android.os.Bundle mExtras;
+    private final int mFlags;
+    private final android.net.Uri mLinkUri;
+    private final int mSource;
+
+    void <init>(androidx.core.view.ContentInfoCompat$BuilderCompatImpl)
+    {
+        androidx.core.view.ContentInfoCompat$CompatImpl r0;
+        android.content.ClipData $r2;
+        android.os.Bundle $r5;
+        androidx.core.view.ContentInfoCompat$BuilderCompatImpl $r1;
+        int $i0;
+        android.net.Uri $r4;
+        java.lang.Object $r3;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat$CompatImpl;
+
+        $r1 := @parameter0: androidx.core.view.ContentInfoCompat$BuilderCompatImpl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = $r1.<androidx.core.view.ContentInfoCompat$BuilderCompatImpl: android.content.ClipData mClip>;
+
+        $r3 = staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r2);
+
+        $r2 = (android.content.ClipData) $r3;
+
+        r0.<androidx.core.view.ContentInfoCompat$CompatImpl: android.content.ClipData mClip> = $r2;
+
+        $i0 = $r1.<androidx.core.view.ContentInfoCompat$BuilderCompatImpl: int mSource>;
+
+        $i0 = staticinvoke <androidx.core.util.Preconditions: int checkArgumentInRange(int,int,int,java.lang.String)>($i0, 0, 5, "source");
+
+        r0.<androidx.core.view.ContentInfoCompat$CompatImpl: int mSource> = $i0;
+
+        $i0 = $r1.<androidx.core.view.ContentInfoCompat$BuilderCompatImpl: int mFlags>;
+
+        $i0 = staticinvoke <androidx.core.util.Preconditions: int checkFlagsArgument(int,int)>($i0, 1);
+
+        r0.<androidx.core.view.ContentInfoCompat$CompatImpl: int mFlags> = $i0;
+
+        $r4 = $r1.<androidx.core.view.ContentInfoCompat$BuilderCompatImpl: android.net.Uri mLinkUri>;
+
+        r0.<androidx.core.view.ContentInfoCompat$CompatImpl: android.net.Uri mLinkUri> = $r4;
+
+        $r5 = $r1.<androidx.core.view.ContentInfoCompat$BuilderCompatImpl: android.os.Bundle mExtras>;
+
+        r0.<androidx.core.view.ContentInfoCompat$CompatImpl: android.os.Bundle mExtras> = $r5;
+
+        return;
+    }
+
+    public android.content.ClipData getClip()
+    {
+        androidx.core.view.ContentInfoCompat$CompatImpl r0;
+        android.content.ClipData r1;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat$CompatImpl;
+
+        r1 = r0.<androidx.core.view.ContentInfoCompat$CompatImpl: android.content.ClipData mClip>;
+
+        return r1;
+    }
+
+    public android.os.Bundle getExtras()
+    {
+        androidx.core.view.ContentInfoCompat$CompatImpl r0;
+        android.os.Bundle r1;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat$CompatImpl;
+
+        r1 = r0.<androidx.core.view.ContentInfoCompat$CompatImpl: android.os.Bundle mExtras>;
+
+        return r1;
+    }
+
+    public int getFlags()
+    {
+        androidx.core.view.ContentInfoCompat$CompatImpl r0;
+        int i0;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat$CompatImpl;
+
+        i0 = r0.<androidx.core.view.ContentInfoCompat$CompatImpl: int mFlags>;
+
+        return i0;
+    }
+
+    public android.net.Uri getLinkUri()
+    {
+        androidx.core.view.ContentInfoCompat$CompatImpl r0;
+        android.net.Uri r1;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat$CompatImpl;
+
+        r1 = r0.<androidx.core.view.ContentInfoCompat$CompatImpl: android.net.Uri mLinkUri>;
+
+        return r1;
+    }
+
+    public int getSource()
+    {
+        androidx.core.view.ContentInfoCompat$CompatImpl r0;
+        int i0;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat$CompatImpl;
+
+        i0 = r0.<androidx.core.view.ContentInfoCompat$CompatImpl: int mSource>;
+
+        return i0;
+    }
+
+    public android.view.ContentInfo getWrapped()
+    {
+        androidx.core.view.ContentInfoCompat$CompatImpl r0;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat$CompatImpl;
+
+        return null;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.core.view.ContentInfoCompat$CompatImpl r0;
+        android.os.Bundle $r8;
+        android.net.Uri $r5;
+        android.content.ClipData $r2;
+        int $i0;
+        android.content.ClipDescription $r3;
+        java.lang.StringBuilder $r1, $r7;
+        java.lang.String $r4, $r6;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat$CompatImpl;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ContentInfoCompat{clip=");
+
+        $r2 = r0.<androidx.core.view.ContentInfoCompat$CompatImpl: android.content.ClipData mClip>;
+
+        $r3 = virtualinvoke $r2.<android.content.ClipData: android.content.ClipDescription getDescription()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", source=");
+
+        $i0 = r0.<androidx.core.view.ContentInfoCompat$CompatImpl: int mSource>;
+
+        $r4 = staticinvoke <androidx.core.view.ContentInfoCompat: java.lang.String sourceToString(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", flags=");
+
+        $i0 = r0.<androidx.core.view.ContentInfoCompat$CompatImpl: int mFlags>;
+
+        $r4 = staticinvoke <androidx.core.view.ContentInfoCompat: java.lang.String flagsToString(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = r0.<androidx.core.view.ContentInfoCompat$CompatImpl: android.net.Uri mLinkUri>;
+
+        $r4 = "";
+
+        if $r5 != null goto label1;
+
+        $r6 = "";
+
+        goto label2;
+
+     label1:
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", hasLinkUri(");
+
+        $r5 = r0.<androidx.core.view.ContentInfoCompat$CompatImpl: android.net.Uri mLinkUri>;
+
+        $r6 = virtualinvoke $r5.<android.net.Uri: java.lang.String toString()>();
+
+        $i0 = virtualinvoke $r6.<java.lang.String: int length()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r6 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label2:
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r8 = r0.<androidx.core.view.ContentInfoCompat$CompatImpl: android.os.Bundle mExtras>;
+
+        if $r8 != null goto label3;
+
+        goto label4;
+
+     label3:
+        $r4 = ", hasExtras";
+
+     label4:
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("}");
+
+        $r4 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r4;
+    }
+}

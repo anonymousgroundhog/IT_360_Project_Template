@@ -1,0 +1,256 @@
+public final class com.google.android.gms.internal.ads.zzgf extends java.lang.Object implements com.google.android.gms.internal.ads.zzbx
+{
+    public static final android.os.Parcelable$Creator CREATOR;
+    public final float zza;
+    public final float zzb;
+
+    static void <clinit>()
+    {
+        com.google.android.gms.internal.ads.zzgd $r0;
+
+        $r0 = new com.google.android.gms.internal.ads.zzgd;
+
+        specialinvoke $r0.<com.google.android.gms.internal.ads.zzgd: void <init>()>();
+
+        <com.google.android.gms.internal.ads.zzgf: android.os.Parcelable$Creator CREATOR> = $r0;
+
+        return;
+    }
+
+    public void <init>(float, float)
+    {
+        com.google.android.gms.internal.ads.zzgf r0;
+        byte $b0;
+        int $i1;
+        float $f0, $f1;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgf;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $z0 = 0;
+
+        $b0 = $f0 cmpl -90.0F;
+
+        $i1 = (int) $b0;
+
+        if $i1 < 0 goto label1;
+
+        $b0 = $f0 cmpg 90.0F;
+
+        $i1 = (int) $b0;
+
+        if $i1 > 0 goto label1;
+
+        $b0 = $f1 cmpl -180.0F;
+
+        $i1 = (int) $b0;
+
+        if $i1 < 0 goto label1;
+
+        $b0 = $f1 cmpg 180.0F;
+
+        $i1 = (int) $b0;
+
+        if $i1 > 0 goto label1;
+
+        $z0 = 1;
+
+     label1:
+        staticinvoke <com.google.android.gms.internal.ads.zzek: void zze(boolean,java.lang.Object)>($z0, "Invalid latitude or longitude");
+
+        r0.<com.google.android.gms.internal.ads.zzgf: float zza> = $f0;
+
+        r0.<com.google.android.gms.internal.ads.zzgf: float zzb> = $f1;
+
+        return;
+    }
+
+    void <init>(android.os.Parcel, com.google.android.gms.internal.ads.zzge)
+    {
+        com.google.android.gms.internal.ads.zzgf r0;
+        com.google.android.gms.internal.ads.zzge $r2;
+        float $f0;
+        android.os.Parcel $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgf;
+
+        $r1 := @parameter0: android.os.Parcel;
+
+        $r2 := @parameter1: com.google.android.gms.internal.ads.zzge;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $f0 = virtualinvoke $r1.<android.os.Parcel: float readFloat()>();
+
+        r0.<com.google.android.gms.internal.ads.zzgf: float zza> = $f0;
+
+        $f0 = virtualinvoke $r1.<android.os.Parcel: float readFloat()>();
+
+        r0.<com.google.android.gms.internal.ads.zzgf: float zzb> = $f0;
+
+        return;
+    }
+
+    public final int describeContents()
+    {
+        com.google.android.gms.internal.ads.zzgf r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgf;
+
+        return 0;
+    }
+
+    public final boolean equals(java.lang.Object)
+    {
+        com.google.android.gms.internal.ads.zzgf r0, $r4;
+        byte $b0;
+        float $f0, $f1;
+        java.lang.Object $r1;
+        java.lang.Class $r2, $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgf;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if r0 != $r1 goto label1;
+
+        return 1;
+
+     label1:
+        if $r1 == null goto label3;
+
+        $r2 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r2 == $r3 goto label2;
+
+        return 0;
+
+     label2:
+        $r4 = (com.google.android.gms.internal.ads.zzgf) $r1;
+
+        $f0 = r0.<com.google.android.gms.internal.ads.zzgf: float zza>;
+
+        $f1 = $r4.<com.google.android.gms.internal.ads.zzgf: float zza>;
+
+        $b0 = $f0 cmpl $f1;
+
+        if $b0 != 0 goto label3;
+
+        $f0 = r0.<com.google.android.gms.internal.ads.zzgf: float zzb>;
+
+        $f1 = $r4.<com.google.android.gms.internal.ads.zzgf: float zzb>;
+
+        $b0 = $f0 cmpl $f1;
+
+        if $b0 != 0 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public final int hashCode()
+    {
+        com.google.android.gms.internal.ads.zzgf r0;
+        java.lang.Float $r1;
+        int $i0, $i1;
+        float $f0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgf;
+
+        $f0 = r0.<com.google.android.gms.internal.ads.zzgf: float zza>;
+
+        $r1 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>($f0);
+
+        $i0 = virtualinvoke $r1.<java.lang.Float: int hashCode()>();
+
+        $i1 = $i0 + 527;
+
+        $f0 = r0.<com.google.android.gms.internal.ads.zzgf: float zzb>;
+
+        $r1 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>($f0);
+
+        $i0 = virtualinvoke $r1.<java.lang.Float: int hashCode()>();
+
+        $i1 = $i1 * 31;
+
+        $i0 = $i1 + $i0;
+
+        return $i0;
+    }
+
+    public final java.lang.String toString()
+    {
+        com.google.android.gms.internal.ads.zzgf r0;
+        float $f0;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgf;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("xyz: latitude=");
+
+        $f0 = r0.<com.google.android.gms.internal.ads.zzgf: float zza>;
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($f0);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", longitude=");
+
+        $f0 = r0.<com.google.android.gms.internal.ads.zzgf: float zzb>;
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($f0);
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r1;
+    }
+
+    public final void writeToParcel(android.os.Parcel, int)
+    {
+        com.google.android.gms.internal.ads.zzgf r0;
+        int $i0;
+        float $f0;
+        android.os.Parcel $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgf;
+
+        $r1 := @parameter0: android.os.Parcel;
+
+        $i0 := @parameter1: int;
+
+        $f0 = r0.<com.google.android.gms.internal.ads.zzgf: float zza>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeFloat(float)>($f0);
+
+        $f0 = r0.<com.google.android.gms.internal.ads.zzgf: float zzb>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeFloat(float)>($f0);
+
+        return;
+    }
+
+    public final void zza(com.google.android.gms.internal.ads.zzbt)
+    {
+        com.google.android.gms.internal.ads.zzgf r0;
+        com.google.android.gms.internal.ads.zzbt $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgf;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzbt;
+
+        return;
+    }
+}

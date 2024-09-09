@@ -1,0 +1,148 @@
+class androidx.core.view.WindowInsetsAnimationCompat$Impl extends java.lang.Object
+{
+    private float mAlpha;
+    private final long mDurationMillis;
+    private float mFraction;
+    private final android.view.animation.Interpolator mInterpolator;
+    private final int mTypeMask;
+
+    void <init>(int, android.view.animation.Interpolator, long)
+    {
+        androidx.core.view.WindowInsetsAnimationCompat$Impl r0;
+        android.view.animation.Interpolator $r1;
+        int $i0;
+        long $l1;
+
+        r0 := @this: androidx.core.view.WindowInsetsAnimationCompat$Impl;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.view.animation.Interpolator;
+
+        $l1 := @parameter2: long;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.view.WindowInsetsAnimationCompat$Impl: int mTypeMask> = $i0;
+
+        r0.<androidx.core.view.WindowInsetsAnimationCompat$Impl: android.view.animation.Interpolator mInterpolator> = $r1;
+
+        r0.<androidx.core.view.WindowInsetsAnimationCompat$Impl: long mDurationMillis> = $l1;
+
+        return;
+    }
+
+    public float getAlpha()
+    {
+        float f0;
+        androidx.core.view.WindowInsetsAnimationCompat$Impl r0;
+
+        r0 := @this: androidx.core.view.WindowInsetsAnimationCompat$Impl;
+
+        f0 = r0.<androidx.core.view.WindowInsetsAnimationCompat$Impl: float mAlpha>;
+
+        return f0;
+    }
+
+    public long getDurationMillis()
+    {
+        androidx.core.view.WindowInsetsAnimationCompat$Impl r0;
+        long l0;
+
+        r0 := @this: androidx.core.view.WindowInsetsAnimationCompat$Impl;
+
+        l0 = r0.<androidx.core.view.WindowInsetsAnimationCompat$Impl: long mDurationMillis>;
+
+        return l0;
+    }
+
+    public float getFraction()
+    {
+        float f0;
+        androidx.core.view.WindowInsetsAnimationCompat$Impl r0;
+
+        r0 := @this: androidx.core.view.WindowInsetsAnimationCompat$Impl;
+
+        f0 = r0.<androidx.core.view.WindowInsetsAnimationCompat$Impl: float mFraction>;
+
+        return f0;
+    }
+
+    public float getInterpolatedFraction()
+    {
+        float $f0;
+        androidx.core.view.WindowInsetsAnimationCompat$Impl r0;
+        android.view.animation.Interpolator $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsAnimationCompat$Impl;
+
+        $r1 = r0.<androidx.core.view.WindowInsetsAnimationCompat$Impl: android.view.animation.Interpolator mInterpolator>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<androidx.core.view.WindowInsetsAnimationCompat$Impl: android.view.animation.Interpolator mInterpolator>;
+
+        $f0 = r0.<androidx.core.view.WindowInsetsAnimationCompat$Impl: float mFraction>;
+
+        $f0 = interfaceinvoke $r1.<android.view.animation.Interpolator: float getInterpolation(float)>($f0);
+
+        return $f0;
+
+     label1:
+        $f0 = r0.<androidx.core.view.WindowInsetsAnimationCompat$Impl: float mFraction>;
+
+        return $f0;
+    }
+
+    public android.view.animation.Interpolator getInterpolator()
+    {
+        androidx.core.view.WindowInsetsAnimationCompat$Impl r0;
+        android.view.animation.Interpolator r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsAnimationCompat$Impl;
+
+        r1 = r0.<androidx.core.view.WindowInsetsAnimationCompat$Impl: android.view.animation.Interpolator mInterpolator>;
+
+        return r1;
+    }
+
+    public int getTypeMask()
+    {
+        int i0;
+        androidx.core.view.WindowInsetsAnimationCompat$Impl r0;
+
+        r0 := @this: androidx.core.view.WindowInsetsAnimationCompat$Impl;
+
+        i0 = r0.<androidx.core.view.WindowInsetsAnimationCompat$Impl: int mTypeMask>;
+
+        return i0;
+    }
+
+    public void setAlpha(float)
+    {
+        float $f0;
+        androidx.core.view.WindowInsetsAnimationCompat$Impl r0;
+
+        r0 := @this: androidx.core.view.WindowInsetsAnimationCompat$Impl;
+
+        $f0 := @parameter0: float;
+
+        r0.<androidx.core.view.WindowInsetsAnimationCompat$Impl: float mAlpha> = $f0;
+
+        return;
+    }
+
+    public void setFraction(float)
+    {
+        float $f0;
+        androidx.core.view.WindowInsetsAnimationCompat$Impl r0;
+
+        r0 := @this: androidx.core.view.WindowInsetsAnimationCompat$Impl;
+
+        $f0 := @parameter0: float;
+
+        r0.<androidx.core.view.WindowInsetsAnimationCompat$Impl: float mFraction> = $f0;
+
+        return;
+    }
+}

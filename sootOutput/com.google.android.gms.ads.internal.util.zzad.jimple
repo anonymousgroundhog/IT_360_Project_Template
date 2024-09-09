@@ -1,0 +1,397 @@
+public final class com.google.android.gms.ads.internal.util.zzad extends java.lang.Object
+{
+
+    public static android.os.Bundle zza(android.content.Context, java.lang.String, android.content.SharedPreferences$OnSharedPreferenceChangeListener)
+    {
+        android.content.Context $r2;
+        android.os.Bundle $r4;
+        android.content.SharedPreferences$OnSharedPreferenceChangeListener $r1;
+        android.content.SharedPreferences $r3;
+        java.lang.String $r0;
+        boolean $z0;
+
+        $r2 := @parameter0: android.content.Context;
+
+        $r0 := @parameter1: java.lang.String;
+
+        $r1 := @parameter2: android.content.SharedPreferences$OnSharedPreferenceChangeListener;
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r0);
+
+        if $z0 == 0 goto label1;
+
+        $r4 = <android.os.Bundle: android.os.Bundle EMPTY>;
+
+        return $r4;
+
+     label1:
+        $r3 = staticinvoke <android.preference.PreferenceManager: android.content.SharedPreferences getDefaultSharedPreferences(android.content.Context)>($r2);
+
+        interfaceinvoke $r3.<android.content.SharedPreferences: void registerOnSharedPreferenceChangeListener(android.content.SharedPreferences$OnSharedPreferenceChangeListener)>($r1);
+
+        $r4 = staticinvoke <com.google.android.gms.ads.internal.util.zzad: android.os.Bundle zzb(android.content.Context,java.lang.String)>($r2, $r0);
+
+        return $r4;
+    }
+
+    public static android.os.Bundle zzb(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.lang.Float $r16;
+        android.os.Bundle $r4, $r18;
+        com.google.android.gms.internal.ads.zzfwp $r7;
+        long $l3;
+        java.lang.Integer $r14;
+        org.json.JSONException $r3;
+        org.json.JSONObject $r5;
+        byte $b2;
+        java.lang.Long $r15;
+        java.util.Map $r12;
+        int $i0, $i1;
+        java.lang.Boolean $r13;
+        java.lang.String $r1, $r6;
+        boolean $z0;
+        com.google.android.gms.internal.ads.zzfxr $r8;
+        java.util.List $r9;
+        android.content.SharedPreferences $r11;
+        float $f0;
+        java.lang.Object $r10;
+        org.json.JSONArray $r2, $r17;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r1);
+
+        if $z0 == 0 goto label01;
+
+        $r2 = null;
+
+        goto label05;
+
+     label01:
+        $r17 = new org.json.JSONArray;
+
+        $r2 = $r17;
+
+     label02:
+        specialinvoke $r17.<org.json.JSONArray: void <init>(java.lang.String)>($r1);
+
+     label03:
+        goto label05;
+
+     label04:
+        $r3 := @caughtexception;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzf(java.lang.String,java.lang.Throwable)>("JSON parsing error", $r3);
+
+        $r2 = null;
+
+     label05:
+        if $r2 != null goto label06;
+
+        $r4 = <android.os.Bundle: android.os.Bundle EMPTY>;
+
+        return $r4;
+
+     label06:
+        $r18 = new android.os.Bundle;
+
+        specialinvoke $r18.<android.os.Bundle: void <init>()>();
+
+        $i0 = 0;
+
+     label07:
+        $i1 = virtualinvoke $r2.<org.json.JSONArray: int length()>();
+
+        if $i0 >= $i1 goto label25;
+
+        $r5 = virtualinvoke $r2.<org.json.JSONArray: org.json.JSONObject optJSONObject(int)>($i0);
+
+        $r1 = virtualinvoke $r5.<org.json.JSONObject: java.lang.String optString(java.lang.String)>("bk");
+
+        $r6 = virtualinvoke $r5.<org.json.JSONObject: java.lang.String optString(java.lang.String)>("sk");
+
+        $i1 = virtualinvoke $r5.<org.json.JSONObject: int optInt(java.lang.String,int)>("type", -1);
+
+        lookupswitch($i1)
+        {
+            case 0: goto label11;
+            case 1: goto label10;
+            case 2: goto label09;
+            default: goto label08;
+        };
+
+     label08:
+        $b2 = 0;
+
+        goto label12;
+
+     label09:
+        $b2 = 3;
+
+        goto label12;
+
+     label10:
+        $b2 = 2;
+
+        goto label12;
+
+     label11:
+        $b2 = 1;
+
+     label12:
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r1);
+
+        if $z0 != 0 goto label24;
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r6);
+
+        if $z0 != 0 goto label24;
+
+        if $b2 != 0 goto label13;
+
+        goto label24;
+
+     label13:
+        $r7 = staticinvoke <com.google.android.gms.internal.ads.zzfwp: com.google.android.gms.internal.ads.zzfwp zzc(char)>(47);
+
+        $r8 = staticinvoke <com.google.android.gms.internal.ads.zzfxr: com.google.android.gms.internal.ads.zzfxr zzc(com.google.android.gms.internal.ads.zzfwp)>($r7);
+
+        $r9 = virtualinvoke $r8.<com.google.android.gms.internal.ads.zzfxr: java.util.List zzf(java.lang.CharSequence)>($r6);
+
+        $i1 = interfaceinvoke $r9.<java.util.List: int size()>();
+
+        if $i1 > 2 goto label17;
+
+        $z0 = interfaceinvoke $r9.<java.util.List: boolean isEmpty()>();
+
+        if $z0 == 0 goto label14;
+
+        $r10 = null;
+
+        goto label18;
+
+     label14:
+        $i1 = interfaceinvoke $r9.<java.util.List: int size()>();
+
+        if $i1 != 1 goto label15;
+
+        $r11 = staticinvoke <android.preference.PreferenceManager: android.content.SharedPreferences getDefaultSharedPreferences(android.content.Context)>($r0);
+
+        $r10 = interfaceinvoke $r9.<java.util.List: java.lang.Object get(int)>(0);
+
+        $r6 = (java.lang.String) $r10;
+
+        goto label16;
+
+     label15:
+        $r10 = interfaceinvoke $r9.<java.util.List: java.lang.Object get(int)>(0);
+
+        $r6 = (java.lang.String) $r10;
+
+        $r11 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r6, 0);
+
+        $r10 = interfaceinvoke $r9.<java.util.List: java.lang.Object get(int)>(1);
+
+        $r6 = (java.lang.String) $r10;
+
+     label16:
+        $r12 = interfaceinvoke $r11.<android.content.SharedPreferences: java.util.Map getAll()>();
+
+        $r10 = interfaceinvoke $r12.<java.util.Map: java.lang.Object get(java.lang.Object)>($r6);
+
+        goto label18;
+
+     label17:
+        $r10 = null;
+
+     label18:
+        if $r10 == null goto label24;
+
+        $i1 = $b2 + -1;
+
+        lookupswitch($i1)
+        {
+            case 0: goto label23;
+            case 1: goto label20;
+            default: goto label19;
+        };
+
+     label19:
+        $z0 = $r10 instanceof java.lang.Boolean;
+
+        if $z0 == 0 goto label24;
+
+        $r13 = (java.lang.Boolean) $r10;
+
+        $z0 = virtualinvoke $r13.<java.lang.Boolean: boolean booleanValue()>();
+
+        virtualinvoke $r18.<android.os.Bundle: void putBoolean(java.lang.String,boolean)>($r1, $z0);
+
+        goto label24;
+
+     label20:
+        $z0 = $r10 instanceof java.lang.Integer;
+
+        if $z0 == 0 goto label21;
+
+        $r14 = (java.lang.Integer) $r10;
+
+        $i1 = virtualinvoke $r14.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke $r18.<android.os.Bundle: void putInt(java.lang.String,int)>($r1, $i1);
+
+        goto label24;
+
+     label21:
+        $z0 = $r10 instanceof java.lang.Long;
+
+        if $z0 == 0 goto label22;
+
+        $r15 = (java.lang.Long) $r10;
+
+        $l3 = virtualinvoke $r15.<java.lang.Long: long longValue()>();
+
+        virtualinvoke $r18.<android.os.Bundle: void putLong(java.lang.String,long)>($r1, $l3);
+
+        goto label24;
+
+     label22:
+        $z0 = $r10 instanceof java.lang.Float;
+
+        if $z0 == 0 goto label24;
+
+        $r16 = (java.lang.Float) $r10;
+
+        $f0 = virtualinvoke $r16.<java.lang.Float: float floatValue()>();
+
+        virtualinvoke $r18.<android.os.Bundle: void putFloat(java.lang.String,float)>($r1, $f0);
+
+        goto label24;
+
+     label23:
+        $z0 = $r10 instanceof java.lang.String;
+
+        if $z0 == 0 goto label24;
+
+        $r6 = (java.lang.String) $r10;
+
+        virtualinvoke $r18.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>($r1, $r6);
+
+     label24:
+        $i0 = $i0 + 1;
+
+        goto label07;
+
+     label25:
+        return $r18;
+
+        catch org.json.JSONException from label02 to label03 with label04;
+    }
+
+    public static void zzc(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.io.IOException $r7;
+        com.google.android.gms.internal.ads.zzfuf $r6;
+        com.google.android.gms.internal.ads.zzbga $r2;
+        com.google.android.gms.internal.ads.zzbfu $r1;
+        com.google.android.gms.internal.ads.zzfue $r5;
+        java.lang.Boolean $r4;
+        java.lang.Object $r3;
+        boolean $z0;
+        com.google.android.gms.internal.ads.zzcdl $r8;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzgj>;
+
+        $r2 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r1);
+
+        $r4 = (java.lang.Boolean) $r3;
+
+        $z0 = virtualinvoke $r4.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label01;
+
+        if $r0 == null goto label01;
+
+        virtualinvoke $r0.<android.content.Context: boolean deleteDatabase(java.lang.String)>("OfflineUpload.db");
+
+     label01:
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzfue: com.google.android.gms.internal.ads.zzfue zzj(android.content.Context)>($r0);
+
+        $r6 = staticinvoke <com.google.android.gms.internal.ads.zzfuf: com.google.android.gms.internal.ads.zzfuf zzi(android.content.Context)>($r0);
+
+        virtualinvoke $r5.<com.google.android.gms.internal.ads.zzfue: void zzk()>();
+
+        virtualinvoke $r5.<com.google.android.gms.internal.ads.zzfue: void zzl()>();
+
+        virtualinvoke $r6.<com.google.android.gms.internal.ads.zzfuf: void zzj()>();
+
+     label02:
+        $r1 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzcP>;
+
+     label03:
+        $r2 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r1);
+
+     label04:
+        $r4 = (java.lang.Boolean) $r3;
+
+     label05:
+        $z0 = virtualinvoke $r4.<java.lang.Boolean: boolean booleanValue()>();
+
+     label06:
+        if $z0 == 0 goto label08;
+
+     label07:
+        virtualinvoke $r6.<com.google.android.gms.internal.ads.zzfuf: void zzk()>();
+
+     label08:
+        $r1 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzcQ>;
+
+     label09:
+        $r2 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r1);
+
+     label10:
+        $r4 = (java.lang.Boolean) $r3;
+
+     label11:
+        $z0 = virtualinvoke $r4.<java.lang.Boolean: boolean booleanValue()>();
+
+     label12:
+        if $z0 == 0 goto label16;
+
+     label13:
+        virtualinvoke $r6.<com.google.android.gms.internal.ads.zzfuf: void zzl()>();
+
+     label14:
+        return;
+
+     label15:
+        $r7 := @caughtexception;
+
+        $r8 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzcdl zzo()>();
+
+        virtualinvoke $r8.<com.google.android.gms.internal.ads.zzcdl: void zzw(java.lang.Throwable,java.lang.String)>($r7, "clearStorageOnIdlessMode");
+
+     label16:
+        return;
+
+        catch java.io.IOException from label01 to label02 with label15;
+        catch java.io.IOException from label03 to label04 with label15;
+        catch java.io.IOException from label05 to label06 with label15;
+        catch java.io.IOException from label07 to label08 with label15;
+        catch java.io.IOException from label09 to label10 with label15;
+        catch java.io.IOException from label11 to label12 with label15;
+        catch java.io.IOException from label13 to label14 with label15;
+    }
+}

@@ -1,0 +1,79 @@
+public final class androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Companion extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Companion r0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Companion;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void <init>(kotlin.jvm.internal.DefaultConstructorMarker)
+    {
+        kotlin.jvm.internal.DefaultConstructorMarker $r1;
+        androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Companion r0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Companion;
+
+        $r1 := @parameter0: kotlin.jvm.internal.DefaultConstructorMarker;
+
+        specialinvoke r0.<androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Companion: void <init>()>();
+
+        return;
+    }
+
+    public final androidx.privacysandbox.ads.adservices.measurement.MeasurementManager obtain(android.content.Context)
+    {
+        android.content.Context $r1;
+        androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Api33Ext5Impl $r5;
+        androidx.privacysandbox.ads.adservices.measurement.MeasurementManager $r6;
+        androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Companion r0;
+        androidx.privacysandbox.ads.adservices.internal.AdServicesInfo $r3;
+        int $i0;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r4;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Companion;
+
+        $r1 := @parameter0: android.content.Context;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "context");
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("AdServicesInfo.version=");
+
+        $r3 = <androidx.privacysandbox.ads.adservices.internal.AdServicesInfo: androidx.privacysandbox.ads.adservices.internal.AdServicesInfo INSTANCE>;
+
+        $i0 = virtualinvoke $r3.<androidx.privacysandbox.ads.adservices.internal.AdServicesInfo: int version()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MeasurementManager", $r4);
+
+        $r3 = <androidx.privacysandbox.ads.adservices.internal.AdServicesInfo: androidx.privacysandbox.ads.adservices.internal.AdServicesInfo INSTANCE>;
+
+        $i0 = virtualinvoke $r3.<androidx.privacysandbox.ads.adservices.internal.AdServicesInfo: int version()>();
+
+        if $i0 < 5 goto label1;
+
+        $r5 = new androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Api33Ext5Impl;
+
+        specialinvoke $r5.<androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Api33Ext5Impl: void <init>(android.content.Context)>($r1);
+
+        $r6 = (androidx.privacysandbox.ads.adservices.measurement.MeasurementManager) $r5;
+
+        return $r6;
+
+     label1:
+        return null;
+    }
+}

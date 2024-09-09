@@ -1,0 +1,85 @@
+final class com.google.android.gms.internal.ads.zzgan extends java.util.AbstractSequentialList implements java.io.Serializable
+{
+    final java.util.List zza;
+    final com.google.android.gms.internal.ads.zzfws zzb;
+
+    void <init>(java.util.List, com.google.android.gms.internal.ads.zzfws)
+    {
+        com.google.android.gms.internal.ads.zzfws $r2;
+        java.util.List $r1;
+        com.google.android.gms.internal.ads.zzgan r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgan;
+
+        $r1 := @parameter0: java.util.List;
+
+        $r2 := @parameter1: com.google.android.gms.internal.ads.zzfws;
+
+        specialinvoke r0.<java.util.AbstractSequentialList: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzgan: java.util.List zza> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzgan: com.google.android.gms.internal.ads.zzfws zzb> = $r2;
+
+        return;
+    }
+
+    public final java.util.ListIterator listIterator(int)
+    {
+        java.util.List $r1;
+        java.util.ListIterator $r3;
+        com.google.android.gms.internal.ads.zzgan r0;
+        com.google.android.gms.internal.ads.zzgam $r2;
+        int $i0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgan;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgan: java.util.List zza>;
+
+        $r2 = new com.google.android.gms.internal.ads.zzgam;
+
+        $r3 = interfaceinvoke $r1.<java.util.List: java.util.ListIterator listIterator(int)>($i0);
+
+        specialinvoke $r2.<com.google.android.gms.internal.ads.zzgam: void <init>(com.google.android.gms.internal.ads.zzgan,java.util.ListIterator)>(r0, $r3);
+
+        return $r2;
+    }
+
+    protected final void removeRange(int, int)
+    {
+        java.util.List $r1;
+        com.google.android.gms.internal.ads.zzgan r0;
+        int $i0, $i1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgan;
+
+        $i1 := @parameter0: int;
+
+        $i0 := @parameter1: int;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgan: java.util.List zza>;
+
+        $r1 = interfaceinvoke $r1.<java.util.List: java.util.List subList(int,int)>($i1, $i0);
+
+        interfaceinvoke $r1.<java.util.List: void clear()>();
+
+        return;
+    }
+
+    public final int size()
+    {
+        int $i0;
+        java.util.List $r1;
+        com.google.android.gms.internal.ads.zzgan r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgan;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgan: java.util.List zza>;
+
+        $i0 = interfaceinvoke $r1.<java.util.List: int size()>();
+
+        return $i0;
+    }
+}

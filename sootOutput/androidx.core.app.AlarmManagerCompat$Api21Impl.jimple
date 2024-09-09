@@ -1,0 +1,51 @@
+class androidx.core.app.AlarmManagerCompat$Api21Impl extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.app.AlarmManagerCompat$Api21Impl r0;
+
+        r0 := @this: androidx.core.app.AlarmManagerCompat$Api21Impl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static android.app.AlarmManager$AlarmClockInfo createAlarmClockInfo(long, android.app.PendingIntent)
+    {
+        long $l0;
+        android.app.PendingIntent $r0;
+        android.app.AlarmManager$AlarmClockInfo $r1;
+
+        $l0 := @parameter0: long;
+
+        $r0 := @parameter1: android.app.PendingIntent;
+
+        $r1 = new android.app.AlarmManager$AlarmClockInfo;
+
+        specialinvoke $r1.<android.app.AlarmManager$AlarmClockInfo: void <init>(long,android.app.PendingIntent)>($l0, $r0);
+
+        return $r1;
+    }
+
+    static void setAlarmClock(android.app.AlarmManager, java.lang.Object, android.app.PendingIntent)
+    {
+        android.app.AlarmManager $r0;
+        java.lang.Object $r1;
+        android.app.PendingIntent $r2;
+        android.app.AlarmManager$AlarmClockInfo $r3;
+
+        $r0 := @parameter0: android.app.AlarmManager;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        $r2 := @parameter2: android.app.PendingIntent;
+
+        $r3 = (android.app.AlarmManager$AlarmClockInfo) $r1;
+
+        virtualinvoke $r0.<android.app.AlarmManager: void setAlarmClock(android.app.AlarmManager$AlarmClockInfo,android.app.PendingIntent)>($r3, $r2);
+
+        return;
+    }
+}

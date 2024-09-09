@@ -1,0 +1,40 @@
+public final class androidx.core.content.res.ResourcesCompat$ThemeCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.content.res.ResourcesCompat$ThemeCompat r0;
+
+        r0 := @this: androidx.core.content.res.ResourcesCompat$ThemeCompat;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void rebase(android.content.res.Resources$Theme)
+    {
+        int $i0;
+        android.content.res.Resources$Theme $r0;
+
+        $r0 := @parameter0: android.content.res.Resources$Theme;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 29 goto label1;
+
+        staticinvoke <androidx.core.content.res.ResourcesCompat$ThemeCompat$Api29Impl: void rebase(android.content.res.Resources$Theme)>($r0);
+
+        return;
+
+     label1:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 23 goto label2;
+
+        staticinvoke <androidx.core.content.res.ResourcesCompat$ThemeCompat$Api23Impl: void rebase(android.content.res.Resources$Theme)>($r0);
+
+     label2:
+        return;
+    }
+}

@@ -1,0 +1,702 @@
+public abstract class androidx.room.RoomDatabase extends java.lang.Object
+{
+    private static final java.lang.String DB_IMPL_SUFFIX;
+    public static final int MAX_BIND_PARAMETER_CNT;
+    private boolean mAllowMainThreadQueries;
+    private final java.util.Map mBackingFieldMap;
+    protected java.util.List mCallbacks;
+    private final java.util.concurrent.locks.ReentrantReadWriteLock mCloseLock;
+    protected volatile androidx.sqlite.db.SupportSQLiteDatabase mDatabase;
+    private final androidx.room.InvalidationTracker mInvalidationTracker;
+    private androidx.sqlite.db.SupportSQLiteOpenHelper mOpenHelper;
+    private java.util.concurrent.Executor mQueryExecutor;
+    private final java.lang.ThreadLocal mSuspendingTransactionId;
+    private java.util.concurrent.Executor mTransactionExecutor;
+    boolean mWriteAheadLoggingEnabled;
+
+    public void <init>()
+    {
+        androidx.room.InvalidationTracker $r1;
+        java.lang.ThreadLocal $r3;
+        androidx.room.RoomDatabase r0;
+        java.util.concurrent.ConcurrentHashMap $r4;
+        java.util.concurrent.locks.ReentrantReadWriteLock $r2;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new java.util.concurrent.locks.ReentrantReadWriteLock;
+
+        specialinvoke $r2.<java.util.concurrent.locks.ReentrantReadWriteLock: void <init>()>();
+
+        r0.<androidx.room.RoomDatabase: java.util.concurrent.locks.ReentrantReadWriteLock mCloseLock> = $r2;
+
+        $r3 = new java.lang.ThreadLocal;
+
+        specialinvoke $r3.<java.lang.ThreadLocal: void <init>()>();
+
+        r0.<androidx.room.RoomDatabase: java.lang.ThreadLocal mSuspendingTransactionId> = $r3;
+
+        $r4 = new java.util.concurrent.ConcurrentHashMap;
+
+        specialinvoke $r4.<java.util.concurrent.ConcurrentHashMap: void <init>()>();
+
+        r0.<androidx.room.RoomDatabase: java.util.Map mBackingFieldMap> = $r4;
+
+        $r1 = virtualinvoke r0.<androidx.room.RoomDatabase: androidx.room.InvalidationTracker createInvalidationTracker()>();
+
+        r0.<androidx.room.RoomDatabase: androidx.room.InvalidationTracker mInvalidationTracker> = $r1;
+
+        return;
+    }
+
+    private static boolean isMainThread()
+    {
+        android.os.Looper $r0;
+        java.lang.Thread $r1, $r2;
+
+        $r0 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        $r1 = virtualinvoke $r0.<android.os.Looper: java.lang.Thread getThread()>();
+
+        $r2 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        if $r1 != $r2 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void assertNotMainThread()
+    {
+        java.lang.IllegalStateException $r1;
+        androidx.room.RoomDatabase r0;
+        boolean $z0;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        $z0 = r0.<androidx.room.RoomDatabase: boolean mAllowMainThreadQueries>;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $z0 = staticinvoke <androidx.room.RoomDatabase: boolean isMainThread()>();
+
+        if $z0 != 0 goto label2;
+
+        return;
+
+     label2:
+        $r1 = new java.lang.IllegalStateException;
+
+        specialinvoke $r1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Cannot access database on the main thread since it may potentially lock the UI for a long period of time.");
+
+        throw $r1;
+    }
+
+    public void assertNotSuspendingTransaction()
+    {
+        java.lang.IllegalStateException $r3;
+        java.lang.ThreadLocal $r1;
+        androidx.room.RoomDatabase r0;
+        java.lang.Object $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        $z0 = virtualinvoke r0.<androidx.room.RoomDatabase: boolean inTransaction()>();
+
+        if $z0 != 0 goto label2;
+
+        $r1 = r0.<androidx.room.RoomDatabase: java.lang.ThreadLocal mSuspendingTransactionId>;
+
+        $r2 = virtualinvoke $r1.<java.lang.ThreadLocal: java.lang.Object get()>();
+
+        if $r2 != null goto label1;
+
+        return;
+
+     label1:
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Cannot access database on a different coroutine context inherited from a suspending transaction.");
+
+        throw $r3;
+
+     label2:
+        return;
+    }
+
+    public void beginTransaction()
+    {
+        androidx.room.InvalidationTracker $r1;
+        androidx.sqlite.db.SupportSQLiteDatabase $r2;
+        androidx.room.RoomDatabase r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper r3;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        virtualinvoke r0.<androidx.room.RoomDatabase: void assertNotMainThread()>();
+
+        r3 = r0.<androidx.room.RoomDatabase: androidx.sqlite.db.SupportSQLiteOpenHelper mOpenHelper>;
+
+        $r2 = interfaceinvoke r3.<androidx.sqlite.db.SupportSQLiteOpenHelper: androidx.sqlite.db.SupportSQLiteDatabase getWritableDatabase()>();
+
+        $r1 = r0.<androidx.room.RoomDatabase: androidx.room.InvalidationTracker mInvalidationTracker>;
+
+        virtualinvoke $r1.<androidx.room.InvalidationTracker: void syncTriggers(androidx.sqlite.db.SupportSQLiteDatabase)>($r2);
+
+        interfaceinvoke $r2.<androidx.sqlite.db.SupportSQLiteDatabase: void beginTransaction()>();
+
+        return;
+    }
+
+    public abstract void clearAllTables();
+
+    public void close()
+    {
+        androidx.room.InvalidationTracker $r3;
+        java.lang.Throwable $r5;
+        androidx.room.RoomDatabase r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper $r4;
+        java.util.concurrent.locks.ReentrantReadWriteLock r1;
+        java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        $z0 = virtualinvoke r0.<androidx.room.RoomDatabase: boolean isOpen()>();
+
+        if $z0 == 0 goto label4;
+
+        r1 = r0.<androidx.room.RoomDatabase: java.util.concurrent.locks.ReentrantReadWriteLock mCloseLock>;
+
+        $r2 = virtualinvoke r1.<java.util.concurrent.locks.ReentrantReadWriteLock: java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock writeLock()>();
+
+     label1:
+        interfaceinvoke $r2.<java.util.concurrent.locks.Lock: void lock()>();
+
+        $r3 = r0.<androidx.room.RoomDatabase: androidx.room.InvalidationTracker mInvalidationTracker>;
+
+        virtualinvoke $r3.<androidx.room.InvalidationTracker: void stopMultiInstanceInvalidation()>();
+
+        $r4 = r0.<androidx.room.RoomDatabase: androidx.sqlite.db.SupportSQLiteOpenHelper mOpenHelper>;
+
+        interfaceinvoke $r4.<androidx.sqlite.db.SupportSQLiteOpenHelper: void close()>();
+
+     label2:
+        interfaceinvoke $r2.<java.util.concurrent.locks.Lock: void unlock()>();
+
+        return;
+
+     label3:
+        $r5 := @caughtexception;
+
+        interfaceinvoke $r2.<java.util.concurrent.locks.Lock: void unlock()>();
+
+        throw $r5;
+
+     label4:
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public androidx.sqlite.db.SupportSQLiteStatement compileStatement(java.lang.String)
+    {
+        androidx.sqlite.db.SupportSQLiteDatabase $r3;
+        androidx.room.RoomDatabase r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper $r2;
+        java.lang.String $r1;
+        androidx.sqlite.db.SupportSQLiteStatement $r4;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        $r1 := @parameter0: java.lang.String;
+
+        virtualinvoke r0.<androidx.room.RoomDatabase: void assertNotMainThread()>();
+
+        virtualinvoke r0.<androidx.room.RoomDatabase: void assertNotSuspendingTransaction()>();
+
+        $r2 = r0.<androidx.room.RoomDatabase: androidx.sqlite.db.SupportSQLiteOpenHelper mOpenHelper>;
+
+        $r3 = interfaceinvoke $r2.<androidx.sqlite.db.SupportSQLiteOpenHelper: androidx.sqlite.db.SupportSQLiteDatabase getWritableDatabase()>();
+
+        $r4 = interfaceinvoke $r3.<androidx.sqlite.db.SupportSQLiteDatabase: androidx.sqlite.db.SupportSQLiteStatement compileStatement(java.lang.String)>($r1);
+
+        return $r4;
+    }
+
+    protected abstract androidx.room.InvalidationTracker createInvalidationTracker();
+
+    protected abstract androidx.sqlite.db.SupportSQLiteOpenHelper createOpenHelper(androidx.room.DatabaseConfiguration);
+
+    public void endTransaction()
+    {
+        androidx.room.InvalidationTracker $r3;
+        androidx.sqlite.db.SupportSQLiteDatabase $r2;
+        androidx.room.RoomDatabase r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        $r1 = r0.<androidx.room.RoomDatabase: androidx.sqlite.db.SupportSQLiteOpenHelper mOpenHelper>;
+
+        $r2 = interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteOpenHelper: androidx.sqlite.db.SupportSQLiteDatabase getWritableDatabase()>();
+
+        interfaceinvoke $r2.<androidx.sqlite.db.SupportSQLiteDatabase: void endTransaction()>();
+
+        $z0 = virtualinvoke r0.<androidx.room.RoomDatabase: boolean inTransaction()>();
+
+        if $z0 != 0 goto label1;
+
+        $r3 = r0.<androidx.room.RoomDatabase: androidx.room.InvalidationTracker mInvalidationTracker>;
+
+        virtualinvoke $r3.<androidx.room.InvalidationTracker: void refreshVersionsAsync()>();
+
+     label1:
+        return;
+    }
+
+    java.util.Map getBackingFieldMap()
+    {
+        androidx.room.RoomDatabase r0;
+        java.util.Map r1;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        r1 = r0.<androidx.room.RoomDatabase: java.util.Map mBackingFieldMap>;
+
+        return r1;
+    }
+
+    java.util.concurrent.locks.Lock getCloseLock()
+    {
+        java.util.concurrent.locks.ReentrantReadWriteLock $r2;
+        androidx.room.RoomDatabase r0;
+        java.util.concurrent.locks.ReentrantReadWriteLock$ReadLock $r1;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        $r2 = r0.<androidx.room.RoomDatabase: java.util.concurrent.locks.ReentrantReadWriteLock mCloseLock>;
+
+        $r1 = virtualinvoke $r2.<java.util.concurrent.locks.ReentrantReadWriteLock: java.util.concurrent.locks.ReentrantReadWriteLock$ReadLock readLock()>();
+
+        return $r1;
+    }
+
+    public androidx.room.InvalidationTracker getInvalidationTracker()
+    {
+        androidx.room.InvalidationTracker r1;
+        androidx.room.RoomDatabase r0;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        r1 = r0.<androidx.room.RoomDatabase: androidx.room.InvalidationTracker mInvalidationTracker>;
+
+        return r1;
+    }
+
+    public androidx.sqlite.db.SupportSQLiteOpenHelper getOpenHelper()
+    {
+        androidx.room.RoomDatabase r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper r1;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        r1 = r0.<androidx.room.RoomDatabase: androidx.sqlite.db.SupportSQLiteOpenHelper mOpenHelper>;
+
+        return r1;
+    }
+
+    public java.util.concurrent.Executor getQueryExecutor()
+    {
+        androidx.room.RoomDatabase r0;
+        java.util.concurrent.Executor r1;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        r1 = r0.<androidx.room.RoomDatabase: java.util.concurrent.Executor mQueryExecutor>;
+
+        return r1;
+    }
+
+    java.lang.ThreadLocal getSuspendingTransactionId()
+    {
+        java.lang.ThreadLocal r1;
+        androidx.room.RoomDatabase r0;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        r1 = r0.<androidx.room.RoomDatabase: java.lang.ThreadLocal mSuspendingTransactionId>;
+
+        return r1;
+    }
+
+    public java.util.concurrent.Executor getTransactionExecutor()
+    {
+        androidx.room.RoomDatabase r0;
+        java.util.concurrent.Executor r1;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        r1 = r0.<androidx.room.RoomDatabase: java.util.concurrent.Executor mTransactionExecutor>;
+
+        return r1;
+    }
+
+    public boolean inTransaction()
+    {
+        androidx.sqlite.db.SupportSQLiteDatabase $r2;
+        androidx.room.RoomDatabase r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        $r1 = r0.<androidx.room.RoomDatabase: androidx.sqlite.db.SupportSQLiteOpenHelper mOpenHelper>;
+
+        $r2 = interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteOpenHelper: androidx.sqlite.db.SupportSQLiteDatabase getWritableDatabase()>();
+
+        $z0 = interfaceinvoke $r2.<androidx.sqlite.db.SupportSQLiteDatabase: boolean inTransaction()>();
+
+        return $z0;
+    }
+
+    public void init(androidx.room.DatabaseConfiguration)
+    {
+        androidx.room.TransactionExecutor $r9;
+        androidx.room.InvalidationTracker $r10;
+        android.content.Context $r11;
+        androidx.room.RoomDatabase r0;
+        androidx.room.SQLiteCopyOpenHelper r4;
+        java.util.concurrent.Executor $r8;
+        androidx.room.RoomDatabase$JournalMode $r5, $r6;
+        java.util.List $r7;
+        androidx.sqlite.db.SupportSQLiteOpenHelper $r3;
+        androidx.room.DatabaseConfiguration $r1;
+        java.lang.String $r2;
+        boolean z0, $z1;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        $r1 := @parameter0: androidx.room.DatabaseConfiguration;
+
+        $r3 = virtualinvoke r0.<androidx.room.RoomDatabase: androidx.sqlite.db.SupportSQLiteOpenHelper createOpenHelper(androidx.room.DatabaseConfiguration)>($r1);
+
+        r0.<androidx.room.RoomDatabase: androidx.sqlite.db.SupportSQLiteOpenHelper mOpenHelper> = $r3;
+
+        $r3 = r0.<androidx.room.RoomDatabase: androidx.sqlite.db.SupportSQLiteOpenHelper mOpenHelper>;
+
+        z0 = $r3 instanceof androidx.room.SQLiteCopyOpenHelper;
+
+        if z0 == 0 goto label1;
+
+        $r3 = r0.<androidx.room.RoomDatabase: androidx.sqlite.db.SupportSQLiteOpenHelper mOpenHelper>;
+
+        r4 = (androidx.room.SQLiteCopyOpenHelper) $r3;
+
+        virtualinvoke r4.<androidx.room.SQLiteCopyOpenHelper: void setDatabaseConfiguration(androidx.room.DatabaseConfiguration)>($r1);
+
+     label1:
+        $r5 = $r1.<androidx.room.DatabaseConfiguration: androidx.room.RoomDatabase$JournalMode journalMode>;
+
+        $r6 = <androidx.room.RoomDatabase$JournalMode: androidx.room.RoomDatabase$JournalMode WRITE_AHEAD_LOGGING>;
+
+        if $r5 != $r6 goto label2;
+
+        z0 = 1;
+
+        goto label3;
+
+     label2:
+        z0 = 0;
+
+     label3:
+        $r3 = r0.<androidx.room.RoomDatabase: androidx.sqlite.db.SupportSQLiteOpenHelper mOpenHelper>;
+
+        interfaceinvoke $r3.<androidx.sqlite.db.SupportSQLiteOpenHelper: void setWriteAheadLoggingEnabled(boolean)>(z0);
+
+        $r7 = $r1.<androidx.room.DatabaseConfiguration: java.util.List callbacks>;
+
+        r0.<androidx.room.RoomDatabase: java.util.List mCallbacks> = $r7;
+
+        $r8 = $r1.<androidx.room.DatabaseConfiguration: java.util.concurrent.Executor queryExecutor>;
+
+        r0.<androidx.room.RoomDatabase: java.util.concurrent.Executor mQueryExecutor> = $r8;
+
+        $r9 = new androidx.room.TransactionExecutor;
+
+        $r8 = $r1.<androidx.room.DatabaseConfiguration: java.util.concurrent.Executor transactionExecutor>;
+
+        specialinvoke $r9.<androidx.room.TransactionExecutor: void <init>(java.util.concurrent.Executor)>($r8);
+
+        r0.<androidx.room.RoomDatabase: java.util.concurrent.Executor mTransactionExecutor> = $r9;
+
+        $z1 = $r1.<androidx.room.DatabaseConfiguration: boolean allowMainThreadQueries>;
+
+        r0.<androidx.room.RoomDatabase: boolean mAllowMainThreadQueries> = $z1;
+
+        r0.<androidx.room.RoomDatabase: boolean mWriteAheadLoggingEnabled> = z0;
+
+        z0 = $r1.<androidx.room.DatabaseConfiguration: boolean multiInstanceInvalidation>;
+
+        if z0 == 0 goto label4;
+
+        $r10 = r0.<androidx.room.RoomDatabase: androidx.room.InvalidationTracker mInvalidationTracker>;
+
+        $r11 = $r1.<androidx.room.DatabaseConfiguration: android.content.Context context>;
+
+        $r2 = $r1.<androidx.room.DatabaseConfiguration: java.lang.String name>;
+
+        virtualinvoke $r10.<androidx.room.InvalidationTracker: void startMultiInstanceInvalidation(android.content.Context,java.lang.String)>($r11, $r2);
+
+     label4:
+        return;
+    }
+
+    protected void internalInitInvalidationTracker(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        androidx.room.InvalidationTracker $r2;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        androidx.room.RoomDatabase r0;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        $r2 = r0.<androidx.room.RoomDatabase: androidx.room.InvalidationTracker mInvalidationTracker>;
+
+        virtualinvoke $r2.<androidx.room.InvalidationTracker: void internalInit(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        return;
+    }
+
+    public boolean isOpen()
+    {
+        androidx.sqlite.db.SupportSQLiteDatabase r1;
+        androidx.room.RoomDatabase r0;
+        boolean $z0;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        r1 = r0.<androidx.room.RoomDatabase: androidx.sqlite.db.SupportSQLiteDatabase mDatabase>;
+
+        if r1 == null goto label1;
+
+        $z0 = interfaceinvoke r1.<androidx.sqlite.db.SupportSQLiteDatabase: boolean isOpen()>();
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public android.database.Cursor query(androidx.sqlite.db.SupportSQLiteQuery)
+    {
+        androidx.room.RoomDatabase r0;
+        androidx.sqlite.db.SupportSQLiteQuery $r1;
+        android.database.Cursor $r2;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteQuery;
+
+        $r2 = virtualinvoke r0.<androidx.room.RoomDatabase: android.database.Cursor query(androidx.sqlite.db.SupportSQLiteQuery,android.os.CancellationSignal)>($r1, null);
+
+        return $r2;
+    }
+
+    public android.database.Cursor query(androidx.sqlite.db.SupportSQLiteQuery, android.os.CancellationSignal)
+    {
+        androidx.sqlite.db.SupportSQLiteDatabase $r4;
+        androidx.room.RoomDatabase r0;
+        androidx.sqlite.db.SupportSQLiteQuery $r1;
+        androidx.sqlite.db.SupportSQLiteOpenHelper $r3;
+        android.os.CancellationSignal $r2;
+        android.database.Cursor $r5;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteQuery;
+
+        $r2 := @parameter1: android.os.CancellationSignal;
+
+        virtualinvoke r0.<androidx.room.RoomDatabase: void assertNotMainThread()>();
+
+        virtualinvoke r0.<androidx.room.RoomDatabase: void assertNotSuspendingTransaction()>();
+
+        if $r2 == null goto label1;
+
+        $r3 = r0.<androidx.room.RoomDatabase: androidx.sqlite.db.SupportSQLiteOpenHelper mOpenHelper>;
+
+        $r4 = interfaceinvoke $r3.<androidx.sqlite.db.SupportSQLiteOpenHelper: androidx.sqlite.db.SupportSQLiteDatabase getWritableDatabase()>();
+
+        $r5 = interfaceinvoke $r4.<androidx.sqlite.db.SupportSQLiteDatabase: android.database.Cursor query(androidx.sqlite.db.SupportSQLiteQuery,android.os.CancellationSignal)>($r1, $r2);
+
+        return $r5;
+
+     label1:
+        $r3 = r0.<androidx.room.RoomDatabase: androidx.sqlite.db.SupportSQLiteOpenHelper mOpenHelper>;
+
+        $r4 = interfaceinvoke $r3.<androidx.sqlite.db.SupportSQLiteOpenHelper: androidx.sqlite.db.SupportSQLiteDatabase getWritableDatabase()>();
+
+        $r5 = interfaceinvoke $r4.<androidx.sqlite.db.SupportSQLiteDatabase: android.database.Cursor query(androidx.sqlite.db.SupportSQLiteQuery)>($r1);
+
+        return $r5;
+    }
+
+    public android.database.Cursor query(java.lang.String, java.lang.Object[])
+    {
+        java.lang.Object[] $r2;
+        androidx.sqlite.db.SupportSQLiteDatabase $r5;
+        androidx.room.RoomDatabase r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper $r4;
+        java.lang.String $r1;
+        androidx.sqlite.db.SimpleSQLiteQuery $r3;
+        android.database.Cursor $r6;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.Object[];
+
+        $r4 = r0.<androidx.room.RoomDatabase: androidx.sqlite.db.SupportSQLiteOpenHelper mOpenHelper>;
+
+        $r5 = interfaceinvoke $r4.<androidx.sqlite.db.SupportSQLiteOpenHelper: androidx.sqlite.db.SupportSQLiteDatabase getWritableDatabase()>();
+
+        $r3 = new androidx.sqlite.db.SimpleSQLiteQuery;
+
+        specialinvoke $r3.<androidx.sqlite.db.SimpleSQLiteQuery: void <init>(java.lang.String,java.lang.Object[])>($r1, $r2);
+
+        $r6 = interfaceinvoke $r5.<androidx.sqlite.db.SupportSQLiteDatabase: android.database.Cursor query(androidx.sqlite.db.SupportSQLiteQuery)>($r3);
+
+        return $r6;
+    }
+
+    public java.lang.Object runInTransaction(java.util.concurrent.Callable)
+    {
+        java.lang.Throwable r3;
+        androidx.room.RoomDatabase r0;
+        java.util.concurrent.Callable r1;
+        java.lang.Object $r2;
+        java.lang.RuntimeException r5;
+        java.lang.Exception r4;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        r1 := @parameter0: java.util.concurrent.Callable;
+
+        virtualinvoke r0.<androidx.room.RoomDatabase: void beginTransaction()>();
+
+     label1:
+        $r2 = interfaceinvoke r1.<java.util.concurrent.Callable: java.lang.Object call()>();
+
+        virtualinvoke r0.<androidx.room.RoomDatabase: void setTransactionSuccessful()>();
+
+     label2:
+        virtualinvoke r0.<androidx.room.RoomDatabase: void endTransaction()>();
+
+        return $r2;
+
+     label3:
+        r3 := @caughtexception;
+
+        goto label9;
+
+     label4:
+        r4 := @caughtexception;
+
+     label5:
+        staticinvoke <androidx.room.util.SneakyThrow: void reThrow(java.lang.Exception)>(r4);
+
+     label6:
+        virtualinvoke r0.<androidx.room.RoomDatabase: void endTransaction()>();
+
+        return null;
+
+     label7:
+        r5 := @caughtexception;
+
+     label8:
+        throw r5;
+
+     label9:
+        virtualinvoke r0.<androidx.room.RoomDatabase: void endTransaction()>();
+
+        throw r3;
+
+        catch java.lang.RuntimeException from label1 to label2 with label7;
+        catch java.lang.Exception from label1 to label2 with label4;
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label5 to label6 with label3;
+        catch java.lang.Throwable from label8 to label9 with label3;
+    }
+
+    public void runInTransaction(java.lang.Runnable)
+    {
+        java.lang.Throwable $r2;
+        androidx.room.RoomDatabase r0;
+        java.lang.Runnable $r1;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        $r1 := @parameter0: java.lang.Runnable;
+
+        virtualinvoke r0.<androidx.room.RoomDatabase: void beginTransaction()>();
+
+     label1:
+        interfaceinvoke $r1.<java.lang.Runnable: void run()>();
+
+        virtualinvoke r0.<androidx.room.RoomDatabase: void setTransactionSuccessful()>();
+
+     label2:
+        virtualinvoke r0.<androidx.room.RoomDatabase: void endTransaction()>();
+
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        virtualinvoke r0.<androidx.room.RoomDatabase: void endTransaction()>();
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public void setTransactionSuccessful()
+    {
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        androidx.room.RoomDatabase r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper $r2;
+
+        r0 := @this: androidx.room.RoomDatabase;
+
+        $r2 = r0.<androidx.room.RoomDatabase: androidx.sqlite.db.SupportSQLiteOpenHelper mOpenHelper>;
+
+        $r1 = interfaceinvoke $r2.<androidx.sqlite.db.SupportSQLiteOpenHelper: androidx.sqlite.db.SupportSQLiteDatabase getWritableDatabase()>();
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void setTransactionSuccessful()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.room.RoomDatabase: int MAX_BIND_PARAMETER_CNT> = 999;
+
+        <androidx.room.RoomDatabase: java.lang.String DB_IMPL_SUFFIX> = "_Impl";
+
+        return;
+    }
+}

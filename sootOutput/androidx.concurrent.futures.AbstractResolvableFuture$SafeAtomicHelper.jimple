@@ -1,0 +1,148 @@
+final class androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper extends androidx.concurrent.futures.AbstractResolvableFuture$AtomicHelper
+{
+    final java.util.concurrent.atomic.AtomicReferenceFieldUpdater listenersUpdater;
+    final java.util.concurrent.atomic.AtomicReferenceFieldUpdater valueUpdater;
+    final java.util.concurrent.atomic.AtomicReferenceFieldUpdater waiterNextUpdater;
+    final java.util.concurrent.atomic.AtomicReferenceFieldUpdater waiterThreadUpdater;
+    final java.util.concurrent.atomic.AtomicReferenceFieldUpdater waitersUpdater;
+
+    void <init>(java.util.concurrent.atomic.AtomicReferenceFieldUpdater, java.util.concurrent.atomic.AtomicReferenceFieldUpdater, java.util.concurrent.atomic.AtomicReferenceFieldUpdater, java.util.concurrent.atomic.AtomicReferenceFieldUpdater, java.util.concurrent.atomic.AtomicReferenceFieldUpdater)
+    {
+        androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper r0;
+        java.util.concurrent.atomic.AtomicReferenceFieldUpdater r1, r2, r3, r4, r5;
+
+        r0 := @this: androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper;
+
+        r1 := @parameter0: java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+
+        r2 := @parameter1: java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+
+        r3 := @parameter2: java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+
+        r4 := @parameter3: java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+
+        r5 := @parameter4: java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+
+        specialinvoke r0.<androidx.concurrent.futures.AbstractResolvableFuture$AtomicHelper: void <init>(androidx.concurrent.futures.AbstractResolvableFuture$1)>(null);
+
+        r0.<androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper: java.util.concurrent.atomic.AtomicReferenceFieldUpdater waiterThreadUpdater> = r1;
+
+        r0.<androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper: java.util.concurrent.atomic.AtomicReferenceFieldUpdater waiterNextUpdater> = r2;
+
+        r0.<androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper: java.util.concurrent.atomic.AtomicReferenceFieldUpdater waitersUpdater> = r3;
+
+        r0.<androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper: java.util.concurrent.atomic.AtomicReferenceFieldUpdater listenersUpdater> = r4;
+
+        r0.<androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper: java.util.concurrent.atomic.AtomicReferenceFieldUpdater valueUpdater> = r5;
+
+        return;
+    }
+
+    boolean casListeners(androidx.concurrent.futures.AbstractResolvableFuture, androidx.concurrent.futures.AbstractResolvableFuture$Listener, androidx.concurrent.futures.AbstractResolvableFuture$Listener)
+    {
+        androidx.concurrent.futures.AbstractResolvableFuture$Listener $r2, $r3;
+        androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper r0;
+        java.util.concurrent.atomic.AtomicReferenceFieldUpdater $r4;
+        androidx.concurrent.futures.AbstractResolvableFuture r1;
+        boolean $z0;
+
+        r0 := @this: androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper;
+
+        r1 := @parameter0: androidx.concurrent.futures.AbstractResolvableFuture;
+
+        $r2 := @parameter1: androidx.concurrent.futures.AbstractResolvableFuture$Listener;
+
+        $r3 := @parameter2: androidx.concurrent.futures.AbstractResolvableFuture$Listener;
+
+        $r4 = r0.<androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper: java.util.concurrent.atomic.AtomicReferenceFieldUpdater listenersUpdater>;
+
+        $z0 = staticinvoke <androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper$$ExternalSyntheticBackportWithForwarding0: boolean m(java.util.concurrent.atomic.AtomicReferenceFieldUpdater,java.lang.Object,java.lang.Object,java.lang.Object)>($r4, r1, $r2, $r3);
+
+        return $z0;
+    }
+
+    boolean casValue(androidx.concurrent.futures.AbstractResolvableFuture, java.lang.Object, java.lang.Object)
+    {
+        androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper r0;
+        java.util.concurrent.atomic.AtomicReferenceFieldUpdater $r4;
+        androidx.concurrent.futures.AbstractResolvableFuture r1;
+        java.lang.Object $r2, $r3;
+        boolean $z0;
+
+        r0 := @this: androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper;
+
+        r1 := @parameter0: androidx.concurrent.futures.AbstractResolvableFuture;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 := @parameter2: java.lang.Object;
+
+        $r4 = r0.<androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper: java.util.concurrent.atomic.AtomicReferenceFieldUpdater valueUpdater>;
+
+        $z0 = staticinvoke <androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper$$ExternalSyntheticBackportWithForwarding0: boolean m(java.util.concurrent.atomic.AtomicReferenceFieldUpdater,java.lang.Object,java.lang.Object,java.lang.Object)>($r4, r1, $r2, $r3);
+
+        return $z0;
+    }
+
+    boolean casWaiters(androidx.concurrent.futures.AbstractResolvableFuture, androidx.concurrent.futures.AbstractResolvableFuture$Waiter, androidx.concurrent.futures.AbstractResolvableFuture$Waiter)
+    {
+        androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper r0;
+        java.util.concurrent.atomic.AtomicReferenceFieldUpdater $r4;
+        androidx.concurrent.futures.AbstractResolvableFuture r1;
+        androidx.concurrent.futures.AbstractResolvableFuture$Waiter $r2, $r3;
+        boolean $z0;
+
+        r0 := @this: androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper;
+
+        r1 := @parameter0: androidx.concurrent.futures.AbstractResolvableFuture;
+
+        $r2 := @parameter1: androidx.concurrent.futures.AbstractResolvableFuture$Waiter;
+
+        $r3 := @parameter2: androidx.concurrent.futures.AbstractResolvableFuture$Waiter;
+
+        $r4 = r0.<androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper: java.util.concurrent.atomic.AtomicReferenceFieldUpdater waitersUpdater>;
+
+        $z0 = staticinvoke <androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper$$ExternalSyntheticBackportWithForwarding0: boolean m(java.util.concurrent.atomic.AtomicReferenceFieldUpdater,java.lang.Object,java.lang.Object,java.lang.Object)>($r4, r1, $r2, $r3);
+
+        return $z0;
+    }
+
+    void putNext(androidx.concurrent.futures.AbstractResolvableFuture$Waiter, androidx.concurrent.futures.AbstractResolvableFuture$Waiter)
+    {
+        androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper r0;
+        java.util.concurrent.atomic.AtomicReferenceFieldUpdater $r3;
+        androidx.concurrent.futures.AbstractResolvableFuture$Waiter $r1, $r2;
+
+        r0 := @this: androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper;
+
+        $r1 := @parameter0: androidx.concurrent.futures.AbstractResolvableFuture$Waiter;
+
+        $r2 := @parameter1: androidx.concurrent.futures.AbstractResolvableFuture$Waiter;
+
+        $r3 = r0.<androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper: java.util.concurrent.atomic.AtomicReferenceFieldUpdater waiterNextUpdater>;
+
+        virtualinvoke $r3.<java.util.concurrent.atomic.AtomicReferenceFieldUpdater: void lazySet(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        return;
+    }
+
+    void putThread(androidx.concurrent.futures.AbstractResolvableFuture$Waiter, java.lang.Thread)
+    {
+        androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper r0;
+        java.util.concurrent.atomic.AtomicReferenceFieldUpdater $r3;
+        java.lang.Thread $r2;
+        androidx.concurrent.futures.AbstractResolvableFuture$Waiter $r1;
+
+        r0 := @this: androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper;
+
+        $r1 := @parameter0: androidx.concurrent.futures.AbstractResolvableFuture$Waiter;
+
+        $r2 := @parameter1: java.lang.Thread;
+
+        $r3 = r0.<androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper: java.util.concurrent.atomic.AtomicReferenceFieldUpdater waiterThreadUpdater>;
+
+        virtualinvoke $r3.<java.util.concurrent.atomic.AtomicReferenceFieldUpdater: void lazySet(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        return;
+    }
+}

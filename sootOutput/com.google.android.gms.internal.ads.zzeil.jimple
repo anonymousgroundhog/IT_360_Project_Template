@@ -1,0 +1,65 @@
+public final class com.google.android.gms.internal.ads.zzeil extends java.lang.Object
+{
+    private final android.content.Context zza;
+
+    void <init>(android.content.Context)
+    {
+        android.content.Context $r1;
+        com.google.android.gms.internal.ads.zzeil r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzeil;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzeil: android.content.Context zza> = $r1;
+
+        return;
+    }
+
+    public final com.google.common.util.concurrent.ListenableFuture zza(boolean)
+    {
+        android.content.Context $r3;
+        java.lang.IllegalStateException $r6;
+        androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures $r4;
+        com.google.common.util.concurrent.ListenableFuture $r5;
+        androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest$Builder $r1;
+        com.google.android.gms.internal.ads.zzeil r0;
+        androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest $r2;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzeil;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = new androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest$Builder;
+
+        specialinvoke $r1.<androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest$Builder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest$Builder: androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest$Builder setAdsSdkName(java.lang.String)>("com.google.android.gms.ads");
+
+        $r1 = virtualinvoke $r1.<androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest$Builder: androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest$Builder setShouldRecordObservation(boolean)>($z0);
+
+        $r2 = virtualinvoke $r1.<androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest$Builder: androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest build()>();
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzeil: android.content.Context zza>;
+
+        $r4 = staticinvoke <androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures: androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures 'from'(android.content.Context)>($r3);
+
+        if $r4 == null goto label1;
+
+        $r5 = virtualinvoke $r4.<androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures: com.google.common.util.concurrent.ListenableFuture getTopicsAsync(androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest)>($r2);
+
+        return $r5;
+
+     label1:
+        $r6 = new java.lang.IllegalStateException;
+
+        specialinvoke $r6.<java.lang.IllegalStateException: void <init>()>();
+
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzgen: com.google.common.util.concurrent.ListenableFuture zzg(java.lang.Throwable)>($r6);
+
+        return $r5;
+    }
+}

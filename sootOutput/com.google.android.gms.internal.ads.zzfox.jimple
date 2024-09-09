@@ -1,0 +1,267 @@
+public class com.google.android.gms.internal.ads.zzfox extends java.lang.Object implements android.app.Application$ActivityLifecycleCallbacks
+{
+    protected boolean zza;
+    private boolean zzb;
+    private com.google.android.gms.internal.ads.zzfow zzc;
+
+    public void <init>()
+    {
+        com.google.android.gms.internal.ads.zzfox r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfox;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private final void zza(boolean)
+    {
+        com.google.android.gms.internal.ads.zzfox r0;
+        com.google.android.gms.internal.ads.zzfow $r1;
+        boolean $z0, $z1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfox;
+
+        $z0 := @parameter0: boolean;
+
+        $z1 = r0.<com.google.android.gms.internal.ads.zzfox: boolean zza>;
+
+        if $z1 == $z0 goto label1;
+
+        r0.<com.google.android.gms.internal.ads.zzfox: boolean zza> = $z0;
+
+        $z1 = r0.<com.google.android.gms.internal.ads.zzfox: boolean zzb>;
+
+        if $z1 == 0 goto label1;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzfox: void zzb(boolean)>($z0);
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfox: com.google.android.gms.internal.ads.zzfow zzc>;
+
+        if $r1 == null goto label1;
+
+        interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzfow: void zzc(boolean)>($z0);
+
+     label1:
+        return;
+    }
+
+    private final boolean zzh()
+    {
+        android.app.ActivityManager$RunningAppProcessInfo $r1;
+        com.google.android.gms.internal.ads.zzfox r0;
+        int $i0;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfox;
+
+        $r1 = new android.app.ActivityManager$RunningAppProcessInfo;
+
+        specialinvoke $r1.<android.app.ActivityManager$RunningAppProcessInfo: void <init>()>();
+
+        staticinvoke <android.app.ActivityManager: void getMyMemoryState(android.app.ActivityManager$RunningAppProcessInfo)>($r1);
+
+        $i0 = $r1.<android.app.ActivityManager$RunningAppProcessInfo: int importance>;
+
+        if $i0 != 100 goto label1;
+
+        goto label2;
+
+     label1:
+        $z0 = virtualinvoke r0.<com.google.android.gms.internal.ads.zzfox: boolean zzc()>();
+
+        if $z0 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        return 1;
+    }
+
+    public final void onActivityCreated(android.app.Activity, android.os.Bundle)
+    {
+        com.google.android.gms.internal.ads.zzfox r0;
+        android.os.Bundle $r2;
+        android.app.Activity $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfox;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $r2 := @parameter1: android.os.Bundle;
+
+        return;
+    }
+
+    public final void onActivityDestroyed(android.app.Activity)
+    {
+        com.google.android.gms.internal.ads.zzfox r0;
+        android.app.Activity $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfox;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        return;
+    }
+
+    public final void onActivityPaused(android.app.Activity)
+    {
+        com.google.android.gms.internal.ads.zzfox r0;
+        android.app.Activity $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfox;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        return;
+    }
+
+    public final void onActivityResumed(android.app.Activity)
+    {
+        com.google.android.gms.internal.ads.zzfox r0;
+        android.app.Activity $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfox;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        return;
+    }
+
+    public final void onActivitySaveInstanceState(android.app.Activity, android.os.Bundle)
+    {
+        com.google.android.gms.internal.ads.zzfox r0;
+        android.os.Bundle $r2;
+        android.app.Activity $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfox;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $r2 := @parameter1: android.os.Bundle;
+
+        return;
+    }
+
+    public final void onActivityStarted(android.app.Activity)
+    {
+        com.google.android.gms.internal.ads.zzfox r0;
+        android.app.Activity $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfox;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzfox: void zza(boolean)>(1);
+
+        return;
+    }
+
+    public final void onActivityStopped(android.app.Activity)
+    {
+        com.google.android.gms.internal.ads.zzfox r0;
+        android.app.Activity $r1;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfox;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $z0 = specialinvoke r0.<com.google.android.gms.internal.ads.zzfox: boolean zzh()>();
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzfox: void zza(boolean)>($z0);
+
+        return;
+    }
+
+    protected void zzb(boolean)
+    {
+        com.google.android.gms.internal.ads.zzfox r0;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfox;
+
+        $z0 := @parameter0: boolean;
+
+        return;
+    }
+
+    protected boolean zzc()
+    {
+        com.google.android.gms.internal.ads.zzfox r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfox;
+
+        return 0;
+    }
+
+    public final void zzd(android.content.Context)
+    {
+        android.content.Context $r1;
+        com.google.android.gms.internal.ads.zzfox r0;
+        android.app.Application $r2;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfox;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $z0 = $r1 instanceof android.app.Application;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = (android.app.Application) $r1;
+
+        virtualinvoke $r2.<android.app.Application: void registerActivityLifecycleCallbacks(android.app.Application$ActivityLifecycleCallbacks)>(r0);
+
+     label1:
+        return;
+    }
+
+    public final void zze(com.google.android.gms.internal.ads.zzfow)
+    {
+        com.google.android.gms.internal.ads.zzfox r0;
+        com.google.android.gms.internal.ads.zzfow $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfox;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzfow;
+
+        r0.<com.google.android.gms.internal.ads.zzfox: com.google.android.gms.internal.ads.zzfow zzc> = $r1;
+
+        return;
+    }
+
+    public final void zzf()
+    {
+        com.google.android.gms.internal.ads.zzfox r0;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfox;
+
+        r0.<com.google.android.gms.internal.ads.zzfox: boolean zzb> = 1;
+
+        $z0 = specialinvoke r0.<com.google.android.gms.internal.ads.zzfox: boolean zzh()>();
+
+        r0.<com.google.android.gms.internal.ads.zzfox: boolean zza> = $z0;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzfox: void zzb(boolean)>($z0);
+
+        return;
+    }
+
+    public final void zzg()
+    {
+        com.google.android.gms.internal.ads.zzfox r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfox;
+
+        r0.<com.google.android.gms.internal.ads.zzfox: boolean zzb> = 0;
+
+        r0.<com.google.android.gms.internal.ads.zzfox: com.google.android.gms.internal.ads.zzfow zzc> = null;
+
+        return;
+    }
+}

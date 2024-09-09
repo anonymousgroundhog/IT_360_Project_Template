@@ -1,0 +1,182 @@
+public final class com.google.android.gms.internal.ads.zzgpa extends java.lang.Object
+{
+    private static final java.lang.ThreadLocal zza;
+
+    static void <clinit>()
+    {
+        com.google.android.gms.internal.ads.zzgoz $r0;
+
+        $r0 = new com.google.android.gms.internal.ads.zzgoz;
+
+        specialinvoke $r0.<com.google.android.gms.internal.ads.zzgoz: void <init>()>();
+
+        <com.google.android.gms.internal.ads.zzgpa: java.lang.ThreadLocal zza> = $r0;
+
+        return;
+    }
+
+    static java.security.SecureRandom zza()
+    {
+        java.security.SecureRandom $r0;
+
+        $r0 = staticinvoke <com.google.android.gms.internal.ads.zzgpa: java.security.SecureRandom zzc()>();
+
+        virtualinvoke $r0.<java.security.SecureRandom: long nextLong()>();
+
+        return $r0;
+    }
+
+    public static byte[] zzb(int)
+    {
+        java.security.SecureRandom $r3;
+        byte[] $r1;
+        java.lang.ThreadLocal $r2;
+        int $i0;
+        java.lang.Object $r0;
+
+        $i0 := @parameter0: int;
+
+        $r1 = newarray (byte)[$i0];
+
+        $r2 = <com.google.android.gms.internal.ads.zzgpa: java.lang.ThreadLocal zza>;
+
+        $r0 = virtualinvoke $r2.<java.lang.ThreadLocal: java.lang.Object get()>();
+
+        $r3 = (java.security.SecureRandom) $r0;
+
+        virtualinvoke $r3.<java.security.SecureRandom: void nextBytes(byte[])>($r1);
+
+        return $r1;
+    }
+
+    private static java.security.SecureRandom zzc()
+    {
+        java.lang.Object[] $r7;
+        java.lang.Class[] $r0;
+        java.lang.Exception $r11;
+        java.security.Provider $r9;
+        java.security.SecureRandom $r1;
+        java.security.GeneralSecurityException $r2, $r3, $r4, $r10;
+        java.lang.Class $r5;
+        java.lang.Object $r8;
+        java.lang.reflect.Method $r6;
+
+     label01:
+        $r1 = staticinvoke <java.security.SecureRandom: java.security.SecureRandom getInstance(java.lang.String,java.lang.String)>("SHA1PRNG", "GmsCore_OpenSSL");
+
+     label02:
+        return $r1;
+
+     label03:
+        $r2 := @caughtexception;
+
+     label04:
+        $r1 = staticinvoke <java.security.SecureRandom: java.security.SecureRandom getInstance(java.lang.String,java.lang.String)>("SHA1PRNG", "AndroidOpenSSL");
+
+     label05:
+        return $r1;
+
+     label06:
+        $r3 := @caughtexception;
+
+     label07:
+        $r1 = staticinvoke <java.security.SecureRandom: java.security.SecureRandom getInstance(java.lang.String,java.lang.String)>("SHA1PRNG", "Conscrypt");
+
+     label08:
+        return $r1;
+
+     label09:
+        $r4 := @caughtexception;
+
+     label10:
+        $r5 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("org.conscrypt.Conscrypt");
+
+     label11:
+        $r0 = newarray (java.lang.Class)[0];
+
+     label12:
+        $r6 = virtualinvoke $r5.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("newProvider", $r0);
+
+     label13:
+        $r7 = newarray (java.lang.Object)[0];
+
+     label14:
+        $r8 = virtualinvoke $r6.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r7);
+
+     label15:
+        $r9 = (java.security.Provider) $r8;
+
+     label16:
+        $r1 = staticinvoke <java.security.SecureRandom: java.security.SecureRandom getInstance(java.lang.String,java.security.Provider)>("SHA1PRNG", $r9);
+
+     label17:
+        return $r1;
+
+     label18:
+        $r10 := @caughtexception;
+
+        goto label26;
+
+     label19:
+        $r11 := @caughtexception;
+
+        goto label24;
+
+     label20:
+        $r11 := @caughtexception;
+
+        goto label24;
+
+     label21:
+        $r11 := @caughtexception;
+
+        goto label24;
+
+     label22:
+        $r11 := @caughtexception;
+
+        goto label24;
+
+     label23:
+        $r11 := @caughtexception;
+
+     label24:
+        $r2 = new java.security.GeneralSecurityException;
+
+     label25:
+        specialinvoke $r2.<java.security.GeneralSecurityException: void <init>(java.lang.String,java.lang.Throwable)>("Failed to get Conscrypt provider", $r11);
+
+        throw $r2;
+
+     label26:
+        $r1 = new java.security.SecureRandom;
+
+        specialinvoke $r1.<java.security.SecureRandom: void <init>()>();
+
+        return $r1;
+
+        catch java.security.GeneralSecurityException from label01 to label02 with label03;
+        catch java.security.GeneralSecurityException from label04 to label05 with label06;
+        catch java.security.GeneralSecurityException from label07 to label08 with label09;
+        catch java.lang.ClassNotFoundException from label10 to label11 with label23;
+        catch java.lang.ClassNotFoundException from label12 to label13 with label23;
+        catch java.lang.ClassNotFoundException from label14 to label15 with label23;
+        catch java.lang.NoSuchMethodException from label10 to label11 with label22;
+        catch java.lang.NoSuchMethodException from label12 to label13 with label22;
+        catch java.lang.NoSuchMethodException from label14 to label15 with label22;
+        catch java.lang.IllegalArgumentException from label10 to label11 with label21;
+        catch java.lang.IllegalArgumentException from label12 to label13 with label21;
+        catch java.lang.IllegalArgumentException from label14 to label15 with label21;
+        catch java.lang.reflect.InvocationTargetException from label10 to label11 with label20;
+        catch java.lang.reflect.InvocationTargetException from label12 to label13 with label20;
+        catch java.lang.reflect.InvocationTargetException from label14 to label15 with label20;
+        catch java.lang.IllegalAccessException from label10 to label11 with label19;
+        catch java.lang.IllegalAccessException from label12 to label13 with label19;
+        catch java.lang.IllegalAccessException from label14 to label15 with label19;
+        catch java.security.GeneralSecurityException from label10 to label11 with label18;
+        catch java.security.GeneralSecurityException from label12 to label13 with label18;
+        catch java.security.GeneralSecurityException from label14 to label15 with label18;
+        catch java.security.GeneralSecurityException from label16 to label17 with label18;
+        catch java.security.GeneralSecurityException from label25 to label26 with label18;
+    }
+}

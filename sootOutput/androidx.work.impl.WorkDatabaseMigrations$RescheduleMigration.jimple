@@ -1,0 +1,70 @@
+public class androidx.work.impl.WorkDatabaseMigrations$RescheduleMigration extends androidx.room.migration.Migration
+{
+    final android.content.Context mContext;
+
+    public void <init>(android.content.Context, int, int)
+    {
+        android.content.Context $r1;
+        androidx.work.impl.WorkDatabaseMigrations$RescheduleMigration r0;
+        int $i0, $i1;
+
+        r0 := @this: androidx.work.impl.WorkDatabaseMigrations$RescheduleMigration;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        specialinvoke r0.<androidx.room.migration.Migration: void <init>(int,int)>($i0, $i1);
+
+        r0.<androidx.work.impl.WorkDatabaseMigrations$RescheduleMigration: android.content.Context mContext> = $r1;
+
+        return;
+    }
+
+    public void migrate(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        android.content.SharedPreferences$Editor $r6;
+        android.content.Context r4;
+        java.lang.Object[] $r3;
+        java.lang.Integer $r2;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        android.content.SharedPreferences $r5;
+        androidx.work.impl.WorkDatabaseMigrations$RescheduleMigration r0;
+        int i0;
+
+        r0 := @this: androidx.work.impl.WorkDatabaseMigrations$RescheduleMigration;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        i0 = r0.<androidx.work.impl.WorkDatabaseMigrations$RescheduleMigration: int endVersion>;
+
+        if i0 < 10 goto label1;
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(1);
+
+        $r3 = newarray (java.lang.Object)[2];
+
+        $r3[0] = "reschedule_needed";
+
+        $r3[1] = $r2;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String,java.lang.Object[])>("INSERT OR REPLACE INTO `Preference` (`key`, `long_value`) VALUES (@key, @long_value)", $r3);
+
+        return;
+
+     label1:
+        r4 = r0.<androidx.work.impl.WorkDatabaseMigrations$RescheduleMigration: android.content.Context mContext>;
+
+        $r5 = virtualinvoke r4.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("androidx.work.util.preferences", 0);
+
+        $r6 = interfaceinvoke $r5.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r6 = interfaceinvoke $r6.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putBoolean(java.lang.String,boolean)>("reschedule_needed", 1);
+
+        interfaceinvoke $r6.<android.content.SharedPreferences$Editor: void apply()>();
+
+        return;
+    }
+}

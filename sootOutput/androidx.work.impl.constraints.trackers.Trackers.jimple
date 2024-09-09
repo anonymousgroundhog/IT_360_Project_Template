@@ -1,0 +1,172 @@
+public class androidx.work.impl.constraints.trackers.Trackers extends java.lang.Object
+{
+    private static androidx.work.impl.constraints.trackers.Trackers sInstance;
+    private androidx.work.impl.constraints.trackers.BatteryChargingTracker mBatteryChargingTracker;
+    private androidx.work.impl.constraints.trackers.BatteryNotLowTracker mBatteryNotLowTracker;
+    private androidx.work.impl.constraints.trackers.NetworkStateTracker mNetworkStateTracker;
+    private androidx.work.impl.constraints.trackers.StorageNotLowTracker mStorageNotLowTracker;
+
+    private void <init>(android.content.Context, androidx.work.impl.utils.taskexecutor.TaskExecutor)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r2;
+        android.content.Context $r1;
+        androidx.work.impl.constraints.trackers.BatteryNotLowTracker $r4;
+        androidx.work.impl.constraints.trackers.BatteryChargingTracker $r3;
+        androidx.work.impl.constraints.trackers.Trackers r0;
+        androidx.work.impl.constraints.trackers.NetworkStateTracker $r5;
+        androidx.work.impl.constraints.trackers.StorageNotLowTracker $r6;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.Trackers;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.work.impl.utils.taskexecutor.TaskExecutor;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        $r3 = new androidx.work.impl.constraints.trackers.BatteryChargingTracker;
+
+        specialinvoke $r3.<androidx.work.impl.constraints.trackers.BatteryChargingTracker: void <init>(android.content.Context,androidx.work.impl.utils.taskexecutor.TaskExecutor)>($r1, $r2);
+
+        r0.<androidx.work.impl.constraints.trackers.Trackers: androidx.work.impl.constraints.trackers.BatteryChargingTracker mBatteryChargingTracker> = $r3;
+
+        $r4 = new androidx.work.impl.constraints.trackers.BatteryNotLowTracker;
+
+        specialinvoke $r4.<androidx.work.impl.constraints.trackers.BatteryNotLowTracker: void <init>(android.content.Context,androidx.work.impl.utils.taskexecutor.TaskExecutor)>($r1, $r2);
+
+        r0.<androidx.work.impl.constraints.trackers.Trackers: androidx.work.impl.constraints.trackers.BatteryNotLowTracker mBatteryNotLowTracker> = $r4;
+
+        $r5 = new androidx.work.impl.constraints.trackers.NetworkStateTracker;
+
+        specialinvoke $r5.<androidx.work.impl.constraints.trackers.NetworkStateTracker: void <init>(android.content.Context,androidx.work.impl.utils.taskexecutor.TaskExecutor)>($r1, $r2);
+
+        r0.<androidx.work.impl.constraints.trackers.Trackers: androidx.work.impl.constraints.trackers.NetworkStateTracker mNetworkStateTracker> = $r5;
+
+        $r6 = new androidx.work.impl.constraints.trackers.StorageNotLowTracker;
+
+        specialinvoke $r6.<androidx.work.impl.constraints.trackers.StorageNotLowTracker: void <init>(android.content.Context,androidx.work.impl.utils.taskexecutor.TaskExecutor)>($r1, $r2);
+
+        r0.<androidx.work.impl.constraints.trackers.Trackers: androidx.work.impl.constraints.trackers.StorageNotLowTracker mStorageNotLowTracker> = $r6;
+
+        return;
+    }
+
+    public static androidx.work.impl.constraints.trackers.Trackers getInstance(android.content.Context, androidx.work.impl.utils.taskexecutor.TaskExecutor)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r0;
+        java.lang.Throwable $r3;
+        android.content.Context $r1;
+        androidx.work.impl.constraints.trackers.Trackers $r2;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r0 := @parameter1: androidx.work.impl.utils.taskexecutor.TaskExecutor;
+
+        entermonitor class "Landroidx/work/impl/constraints/trackers/Trackers;";
+
+     label1:
+        $r2 = <androidx.work.impl.constraints.trackers.Trackers: androidx.work.impl.constraints.trackers.Trackers sInstance>;
+
+        if $r2 != null goto label2;
+
+        $r2 = new androidx.work.impl.constraints.trackers.Trackers;
+
+        specialinvoke $r2.<androidx.work.impl.constraints.trackers.Trackers: void <init>(android.content.Context,androidx.work.impl.utils.taskexecutor.TaskExecutor)>($r1, $r0);
+
+        <androidx.work.impl.constraints.trackers.Trackers: androidx.work.impl.constraints.trackers.Trackers sInstance> = $r2;
+
+     label2:
+        $r2 = <androidx.work.impl.constraints.trackers.Trackers: androidx.work.impl.constraints.trackers.Trackers sInstance>;
+
+     label3:
+        exitmonitor class "Landroidx/work/impl/constraints/trackers/Trackers;";
+
+        return $r2;
+
+     label4:
+        $r3 := @caughtexception;
+
+        exitmonitor class "Landroidx/work/impl/constraints/trackers/Trackers;";
+
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+    }
+
+    public static void setInstance(androidx.work.impl.constraints.trackers.Trackers)
+    {
+        androidx.work.impl.constraints.trackers.Trackers $r0;
+        java.lang.Throwable $r1;
+
+        $r0 := @parameter0: androidx.work.impl.constraints.trackers.Trackers;
+
+        entermonitor class "Landroidx/work/impl/constraints/trackers/Trackers;";
+
+     label1:
+        <androidx.work.impl.constraints.trackers.Trackers: androidx.work.impl.constraints.trackers.Trackers sInstance> = $r0;
+
+     label2:
+        exitmonitor class "Landroidx/work/impl/constraints/trackers/Trackers;";
+
+        return;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor class "Landroidx/work/impl/constraints/trackers/Trackers;";
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public androidx.work.impl.constraints.trackers.BatteryChargingTracker getBatteryChargingTracker()
+    {
+        androidx.work.impl.constraints.trackers.Trackers r0;
+        androidx.work.impl.constraints.trackers.BatteryChargingTracker r1;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.Trackers;
+
+        r1 = r0.<androidx.work.impl.constraints.trackers.Trackers: androidx.work.impl.constraints.trackers.BatteryChargingTracker mBatteryChargingTracker>;
+
+        return r1;
+    }
+
+    public androidx.work.impl.constraints.trackers.BatteryNotLowTracker getBatteryNotLowTracker()
+    {
+        androidx.work.impl.constraints.trackers.Trackers r0;
+        androidx.work.impl.constraints.trackers.BatteryNotLowTracker r1;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.Trackers;
+
+        r1 = r0.<androidx.work.impl.constraints.trackers.Trackers: androidx.work.impl.constraints.trackers.BatteryNotLowTracker mBatteryNotLowTracker>;
+
+        return r1;
+    }
+
+    public androidx.work.impl.constraints.trackers.NetworkStateTracker getNetworkStateTracker()
+    {
+        androidx.work.impl.constraints.trackers.Trackers r0;
+        androidx.work.impl.constraints.trackers.NetworkStateTracker r1;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.Trackers;
+
+        r1 = r0.<androidx.work.impl.constraints.trackers.Trackers: androidx.work.impl.constraints.trackers.NetworkStateTracker mNetworkStateTracker>;
+
+        return r1;
+    }
+
+    public androidx.work.impl.constraints.trackers.StorageNotLowTracker getStorageNotLowTracker()
+    {
+        androidx.work.impl.constraints.trackers.Trackers r0;
+        androidx.work.impl.constraints.trackers.StorageNotLowTracker r1;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.Trackers;
+
+        r1 = r0.<androidx.work.impl.constraints.trackers.Trackers: androidx.work.impl.constraints.trackers.StorageNotLowTracker mStorageNotLowTracker>;
+
+        return r1;
+    }
+}

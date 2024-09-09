@@ -1,0 +1,60 @@
+class kotlin.io.encoding.StreamEncodingKt__Base64IOStreamKt extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        kotlin.io.encoding.StreamEncodingKt__Base64IOStreamKt r0;
+
+        r0 := @this: kotlin.io.encoding.StreamEncodingKt__Base64IOStreamKt;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static final java.io.InputStream decodingWith(java.io.InputStream, kotlin.io.encoding.Base64)
+    {
+        kotlin.io.encoding.Base64 $r1;
+        kotlin.io.encoding.DecodeInputStream $r2;
+        java.io.InputStream $r0;
+
+        $r0 := @parameter0: java.io.InputStream;
+
+        $r1 := @parameter1: kotlin.io.encoding.Base64;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "base64");
+
+        $r2 = new kotlin.io.encoding.DecodeInputStream;
+
+        specialinvoke $r2.<kotlin.io.encoding.DecodeInputStream: void <init>(java.io.InputStream,kotlin.io.encoding.Base64)>($r0, $r1);
+
+        $r0 = (java.io.InputStream) $r2;
+
+        return $r0;
+    }
+
+    public static final java.io.OutputStream encodingWith(java.io.OutputStream, kotlin.io.encoding.Base64)
+    {
+        java.io.OutputStream $r0;
+        kotlin.io.encoding.Base64 $r1;
+        kotlin.io.encoding.EncodeOutputStream $r2;
+
+        $r0 := @parameter0: java.io.OutputStream;
+
+        $r1 := @parameter1: kotlin.io.encoding.Base64;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "base64");
+
+        $r2 = new kotlin.io.encoding.EncodeOutputStream;
+
+        specialinvoke $r2.<kotlin.io.encoding.EncodeOutputStream: void <init>(java.io.OutputStream,kotlin.io.encoding.Base64)>($r0, $r1);
+
+        $r0 = (java.io.OutputStream) $r2;
+
+        return $r0;
+    }
+}

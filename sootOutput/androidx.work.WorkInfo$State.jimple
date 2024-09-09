@@ -1,0 +1,155 @@
+public final enum class androidx.work.WorkInfo$State extends java.lang.Enum
+{
+    private static final androidx.work.WorkInfo$State[] $VALUES;
+    public static final enum androidx.work.WorkInfo$State BLOCKED;
+    public static final enum androidx.work.WorkInfo$State CANCELLED;
+    public static final enum androidx.work.WorkInfo$State ENQUEUED;
+    public static final enum androidx.work.WorkInfo$State FAILED;
+    public static final enum androidx.work.WorkInfo$State RUNNING;
+    public static final enum androidx.work.WorkInfo$State SUCCEEDED;
+
+    static void <clinit>()
+    {
+        androidx.work.WorkInfo$State[] $r1;
+        androidx.work.WorkInfo$State $r0;
+
+        $r0 = new androidx.work.WorkInfo$State;
+
+        specialinvoke $r0.<androidx.work.WorkInfo$State: void <init>(java.lang.String,int)>("ENQUEUED", 0);
+
+        <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State ENQUEUED> = $r0;
+
+        $r0 = new androidx.work.WorkInfo$State;
+
+        specialinvoke $r0.<androidx.work.WorkInfo$State: void <init>(java.lang.String,int)>("RUNNING", 1);
+
+        <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State RUNNING> = $r0;
+
+        $r0 = new androidx.work.WorkInfo$State;
+
+        specialinvoke $r0.<androidx.work.WorkInfo$State: void <init>(java.lang.String,int)>("SUCCEEDED", 2);
+
+        <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State SUCCEEDED> = $r0;
+
+        $r0 = new androidx.work.WorkInfo$State;
+
+        specialinvoke $r0.<androidx.work.WorkInfo$State: void <init>(java.lang.String,int)>("FAILED", 3);
+
+        <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State FAILED> = $r0;
+
+        $r0 = new androidx.work.WorkInfo$State;
+
+        specialinvoke $r0.<androidx.work.WorkInfo$State: void <init>(java.lang.String,int)>("BLOCKED", 4);
+
+        <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State BLOCKED> = $r0;
+
+        $r0 = new androidx.work.WorkInfo$State;
+
+        specialinvoke $r0.<androidx.work.WorkInfo$State: void <init>(java.lang.String,int)>("CANCELLED", 5);
+
+        <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State CANCELLED> = $r0;
+
+        $r1 = newarray (androidx.work.WorkInfo$State)[6];
+
+        $r0 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State ENQUEUED>;
+
+        $r1[0] = $r0;
+
+        $r0 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State RUNNING>;
+
+        $r1[1] = $r0;
+
+        $r0 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State SUCCEEDED>;
+
+        $r1[2] = $r0;
+
+        $r0 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State FAILED>;
+
+        $r1[3] = $r0;
+
+        $r0 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State BLOCKED>;
+
+        $r1[4] = $r0;
+
+        $r0 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State CANCELLED>;
+
+        $r1[5] = $r0;
+
+        <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State[] $VALUES> = $r1;
+
+        return;
+    }
+
+    private void <init>(java.lang.String, int)
+    {
+        int $i0;
+        java.lang.String $r1;
+        androidx.work.WorkInfo$State r0;
+
+        r0 := @this: androidx.work.WorkInfo$State;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<java.lang.Enum: void <init>(java.lang.String,int)>($r1, $i0);
+
+        return;
+    }
+
+    public static androidx.work.WorkInfo$State valueOf(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.lang.Enum $r1;
+        androidx.work.WorkInfo$State $r2;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "Landroidx/work/WorkInfo$State;", $r0);
+
+        $r2 = (androidx.work.WorkInfo$State) $r1;
+
+        return $r2;
+    }
+
+    public static androidx.work.WorkInfo$State[] values()
+    {
+        java.lang.Object $r0;
+        androidx.work.WorkInfo$State[] $r1;
+
+        $r1 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State[] $VALUES>;
+
+        $r0 = virtualinvoke $r1.<java.lang.Object: java.lang.Object clone()>();
+
+        $r1 = (androidx.work.WorkInfo$State[]) $r0;
+
+        return $r1;
+    }
+
+    public boolean isFinished()
+    {
+        androidx.work.WorkInfo$State r0, $r1;
+
+        r0 := @this: androidx.work.WorkInfo$State;
+
+        $r1 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State SUCCEEDED>;
+
+        if r0 == $r1 goto label2;
+
+        $r1 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State FAILED>;
+
+        if r0 == $r1 goto label2;
+
+        $r1 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State CANCELLED>;
+
+        if r0 != $r1 goto label1;
+
+        goto label2;
+
+     label1:
+        return 0;
+
+     label2:
+        return 1;
+    }
+}

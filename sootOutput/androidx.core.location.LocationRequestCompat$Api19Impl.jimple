@@ -1,0 +1,420 @@
+class androidx.core.location.LocationRequestCompat$Api19Impl extends java.lang.Object
+{
+    private static java.lang.reflect.Method sCreateFromDeprecatedProviderMethod;
+    private static java.lang.Class sLocationRequestClass;
+    private static java.lang.reflect.Method sSetExpireInMethod;
+    private static java.lang.reflect.Method sSetFastestIntervalMethod;
+    private static java.lang.reflect.Method sSetNumUpdatesMethod;
+    private static java.lang.reflect.Method sSetQualityMethod;
+
+    private void <init>()
+    {
+        androidx.core.location.LocationRequestCompat$Api19Impl r0;
+
+        r0 := @this: androidx.core.location.LocationRequestCompat$Api19Impl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.lang.Object toLocationRequest(androidx.core.location.LocationRequestCompat, java.lang.String)
+    {
+        java.lang.Float $r8;
+        java.lang.Object[] $r6;
+        java.lang.NoSuchMethodException r15;
+        androidx.core.location.LocationRequestCompat $r0;
+        long $l0;
+        java.lang.Integer $r11;
+        byte $b2;
+        java.lang.Long $r7;
+        int $i1;
+        java.lang.Boolean $r9;
+        java.lang.String $r1;
+        java.lang.reflect.Method r4;
+        java.lang.IllegalAccessException r13;
+        java.lang.Class[] $r2;
+        java.lang.reflect.InvocationTargetException r14;
+        float $f0;
+        java.lang.Class r3, $r5;
+        java.lang.Object $r10;
+        java.lang.ClassNotFoundException r12;
+
+        $r0 := @parameter0: androidx.core.location.LocationRequestCompat;
+
+        $r1 := @parameter1: java.lang.String;
+
+        r3 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.Class sLocationRequestClass>;
+
+        if r3 != null goto label03;
+
+     label01:
+        r3 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("android.location.LocationRequest");
+
+     label02:
+        <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.Class sLocationRequestClass> = r3;
+
+     label03:
+        r4 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sCreateFromDeprecatedProviderMethod>;
+
+        if r4 != null goto label07;
+
+        r3 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.Class sLocationRequestClass>;
+
+        $r2 = newarray (java.lang.Class)[4];
+
+        $r2[0] = class "Ljava/lang/String;";
+
+        $r5 = <java.lang.Long: java.lang.Class TYPE>;
+
+        $r2[1] = $r5;
+
+        $r5 = <java.lang.Float: java.lang.Class TYPE>;
+
+        $r2[2] = $r5;
+
+        $r5 = <java.lang.Boolean: java.lang.Class TYPE>;
+
+        $r2[3] = $r5;
+
+     label04:
+        r4 = virtualinvoke r3.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("createFromDeprecatedProvider", $r2);
+
+     label05:
+        <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sCreateFromDeprecatedProviderMethod> = r4;
+
+        r4 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sCreateFromDeprecatedProviderMethod>;
+
+     label06:
+        virtualinvoke r4.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label07:
+        r4 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sCreateFromDeprecatedProviderMethod>;
+
+        $r6 = newarray (java.lang.Object)[4];
+
+        $r6[0] = $r1;
+
+     label08:
+        $l0 = virtualinvoke $r0.<androidx.core.location.LocationRequestCompat: long getIntervalMillis()>();
+
+        $r7 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+     label09:
+        $r6[1] = $r7;
+
+     label10:
+        $f0 = virtualinvoke $r0.<androidx.core.location.LocationRequestCompat: float getMinUpdateDistanceMeters()>();
+
+        $r8 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>($f0);
+
+     label11:
+        $r6[2] = $r8;
+
+     label12:
+        $r9 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+     label13:
+        $r6[3] = $r9;
+
+     label14:
+        $r10 = virtualinvoke r4.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r6);
+
+     label15:
+        if $r10 != null goto label16;
+
+        return null;
+
+     label16:
+        r4 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sSetQualityMethod>;
+
+        if r4 != null goto label20;
+
+        r3 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.Class sLocationRequestClass>;
+
+        $r2 = newarray (java.lang.Class)[1];
+
+        $r5 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $r2[0] = $r5;
+
+     label17:
+        r4 = virtualinvoke r3.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("setQuality", $r2);
+
+     label18:
+        <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sSetQualityMethod> = r4;
+
+        r4 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sSetQualityMethod>;
+
+     label19:
+        virtualinvoke r4.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label20:
+        r4 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sSetQualityMethod>;
+
+        $r6 = newarray (java.lang.Object)[1];
+
+     label21:
+        $i1 = virtualinvoke $r0.<androidx.core.location.LocationRequestCompat: int getQuality()>();
+
+        $r11 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i1);
+
+     label22:
+        $r6[0] = $r11;
+
+     label23:
+        virtualinvoke r4.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r10, $r6);
+
+     label24:
+        r4 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sSetFastestIntervalMethod>;
+
+        if r4 != null goto label28;
+
+        r3 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.Class sLocationRequestClass>;
+
+        $r2 = newarray (java.lang.Class)[1];
+
+        $r5 = <java.lang.Long: java.lang.Class TYPE>;
+
+        $r2[0] = $r5;
+
+     label25:
+        r4 = virtualinvoke r3.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("setFastestInterval", $r2);
+
+     label26:
+        <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sSetFastestIntervalMethod> = r4;
+
+        r4 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sSetFastestIntervalMethod>;
+
+     label27:
+        virtualinvoke r4.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label28:
+        r4 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sSetFastestIntervalMethod>;
+
+        $r6 = newarray (java.lang.Object)[1];
+
+     label29:
+        $l0 = virtualinvoke $r0.<androidx.core.location.LocationRequestCompat: long getMinUpdateIntervalMillis()>();
+
+        $r7 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+     label30:
+        $r6[0] = $r7;
+
+     label31:
+        virtualinvoke r4.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r10, $r6);
+
+        $i1 = virtualinvoke $r0.<androidx.core.location.LocationRequestCompat: int getMaxUpdates()>();
+
+     label32:
+        if $i1 >= 2147483647 goto label40;
+
+        r4 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sSetNumUpdatesMethod>;
+
+        if r4 != null goto label36;
+
+        r3 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.Class sLocationRequestClass>;
+
+        $r2 = newarray (java.lang.Class)[1];
+
+        $r5 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $r2[0] = $r5;
+
+     label33:
+        r4 = virtualinvoke r3.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("setNumUpdates", $r2);
+
+     label34:
+        <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sSetNumUpdatesMethod> = r4;
+
+        r4 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sSetNumUpdatesMethod>;
+
+     label35:
+        virtualinvoke r4.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label36:
+        r4 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sSetNumUpdatesMethod>;
+
+        $r6 = newarray (java.lang.Object)[1];
+
+     label37:
+        $i1 = virtualinvoke $r0.<androidx.core.location.LocationRequestCompat: int getMaxUpdates()>();
+
+        $r11 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i1);
+
+     label38:
+        $r6[0] = $r11;
+
+     label39:
+        virtualinvoke r4.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r10, $r6);
+
+     label40:
+        $l0 = virtualinvoke $r0.<androidx.core.location.LocationRequestCompat: long getDurationMillis()>();
+
+     label41:
+        $b2 = $l0 cmp 9223372036854775807L;
+
+        $i1 = (int) $b2;
+
+        if $i1 >= 0 goto label54;
+
+        r4 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sSetExpireInMethod>;
+
+        if r4 != null goto label45;
+
+        r3 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.Class sLocationRequestClass>;
+
+        $r2 = newarray (java.lang.Class)[1];
+
+        $r5 = <java.lang.Long: java.lang.Class TYPE>;
+
+        $r2[0] = $r5;
+
+     label42:
+        r4 = virtualinvoke r3.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("setExpireIn", $r2);
+
+     label43:
+        <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sSetExpireInMethod> = r4;
+
+        r4 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sSetExpireInMethod>;
+
+     label44:
+        virtualinvoke r4.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label45:
+        r4 = <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.reflect.Method sSetExpireInMethod>;
+
+        $r6 = newarray (java.lang.Object)[1];
+
+     label46:
+        $l0 = virtualinvoke $r0.<androidx.core.location.LocationRequestCompat: long getDurationMillis()>();
+
+        $r7 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+     label47:
+        $r6[0] = $r7;
+
+     label48:
+        virtualinvoke r4.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r10, $r6);
+
+     label49:
+        return $r10;
+
+     label50:
+        r12 := @caughtexception;
+
+        return null;
+
+     label51:
+        r13 := @caughtexception;
+
+        return null;
+
+     label52:
+        r14 := @caughtexception;
+
+        return null;
+
+     label53:
+        r15 := @caughtexception;
+
+        return null;
+
+     label54:
+        return $r10;
+
+        catch java.lang.NoSuchMethodException from label01 to label02 with label53;
+        catch java.lang.NoSuchMethodException from label04 to label05 with label53;
+        catch java.lang.NoSuchMethodException from label06 to label07 with label53;
+        catch java.lang.NoSuchMethodException from label08 to label09 with label53;
+        catch java.lang.NoSuchMethodException from label10 to label11 with label53;
+        catch java.lang.NoSuchMethodException from label12 to label13 with label53;
+        catch java.lang.NoSuchMethodException from label14 to label15 with label53;
+        catch java.lang.NoSuchMethodException from label17 to label18 with label53;
+        catch java.lang.NoSuchMethodException from label19 to label20 with label53;
+        catch java.lang.NoSuchMethodException from label21 to label22 with label53;
+        catch java.lang.NoSuchMethodException from label23 to label24 with label53;
+        catch java.lang.NoSuchMethodException from label25 to label26 with label53;
+        catch java.lang.NoSuchMethodException from label27 to label28 with label53;
+        catch java.lang.NoSuchMethodException from label29 to label30 with label53;
+        catch java.lang.NoSuchMethodException from label31 to label32 with label53;
+        catch java.lang.NoSuchMethodException from label33 to label34 with label53;
+        catch java.lang.NoSuchMethodException from label35 to label36 with label53;
+        catch java.lang.NoSuchMethodException from label37 to label38 with label53;
+        catch java.lang.NoSuchMethodException from label39 to label41 with label53;
+        catch java.lang.NoSuchMethodException from label42 to label43 with label53;
+        catch java.lang.NoSuchMethodException from label44 to label45 with label53;
+        catch java.lang.NoSuchMethodException from label46 to label47 with label53;
+        catch java.lang.NoSuchMethodException from label48 to label49 with label53;
+        catch java.lang.reflect.InvocationTargetException from label01 to label02 with label52;
+        catch java.lang.reflect.InvocationTargetException from label04 to label05 with label52;
+        catch java.lang.reflect.InvocationTargetException from label06 to label07 with label52;
+        catch java.lang.reflect.InvocationTargetException from label08 to label09 with label52;
+        catch java.lang.reflect.InvocationTargetException from label10 to label11 with label52;
+        catch java.lang.reflect.InvocationTargetException from label12 to label13 with label52;
+        catch java.lang.reflect.InvocationTargetException from label14 to label15 with label52;
+        catch java.lang.reflect.InvocationTargetException from label17 to label18 with label52;
+        catch java.lang.reflect.InvocationTargetException from label19 to label20 with label52;
+        catch java.lang.reflect.InvocationTargetException from label21 to label22 with label52;
+        catch java.lang.reflect.InvocationTargetException from label23 to label24 with label52;
+        catch java.lang.reflect.InvocationTargetException from label25 to label26 with label52;
+        catch java.lang.reflect.InvocationTargetException from label27 to label28 with label52;
+        catch java.lang.reflect.InvocationTargetException from label29 to label30 with label52;
+        catch java.lang.reflect.InvocationTargetException from label31 to label32 with label52;
+        catch java.lang.reflect.InvocationTargetException from label33 to label34 with label52;
+        catch java.lang.reflect.InvocationTargetException from label35 to label36 with label52;
+        catch java.lang.reflect.InvocationTargetException from label37 to label38 with label52;
+        catch java.lang.reflect.InvocationTargetException from label39 to label41 with label52;
+        catch java.lang.reflect.InvocationTargetException from label42 to label43 with label52;
+        catch java.lang.reflect.InvocationTargetException from label44 to label45 with label52;
+        catch java.lang.reflect.InvocationTargetException from label46 to label47 with label52;
+        catch java.lang.reflect.InvocationTargetException from label48 to label49 with label52;
+        catch java.lang.IllegalAccessException from label01 to label02 with label51;
+        catch java.lang.IllegalAccessException from label04 to label05 with label51;
+        catch java.lang.IllegalAccessException from label06 to label07 with label51;
+        catch java.lang.IllegalAccessException from label08 to label09 with label51;
+        catch java.lang.IllegalAccessException from label10 to label11 with label51;
+        catch java.lang.IllegalAccessException from label12 to label13 with label51;
+        catch java.lang.IllegalAccessException from label14 to label15 with label51;
+        catch java.lang.IllegalAccessException from label17 to label18 with label51;
+        catch java.lang.IllegalAccessException from label19 to label20 with label51;
+        catch java.lang.IllegalAccessException from label21 to label22 with label51;
+        catch java.lang.IllegalAccessException from label23 to label24 with label51;
+        catch java.lang.IllegalAccessException from label25 to label26 with label51;
+        catch java.lang.IllegalAccessException from label27 to label28 with label51;
+        catch java.lang.IllegalAccessException from label29 to label30 with label51;
+        catch java.lang.IllegalAccessException from label31 to label32 with label51;
+        catch java.lang.IllegalAccessException from label33 to label34 with label51;
+        catch java.lang.IllegalAccessException from label35 to label36 with label51;
+        catch java.lang.IllegalAccessException from label37 to label38 with label51;
+        catch java.lang.IllegalAccessException from label39 to label41 with label51;
+        catch java.lang.IllegalAccessException from label42 to label43 with label51;
+        catch java.lang.IllegalAccessException from label44 to label45 with label51;
+        catch java.lang.IllegalAccessException from label46 to label47 with label51;
+        catch java.lang.IllegalAccessException from label48 to label49 with label51;
+        catch java.lang.ClassNotFoundException from label01 to label02 with label50;
+        catch java.lang.ClassNotFoundException from label04 to label05 with label50;
+        catch java.lang.ClassNotFoundException from label06 to label07 with label50;
+        catch java.lang.ClassNotFoundException from label08 to label09 with label50;
+        catch java.lang.ClassNotFoundException from label10 to label11 with label50;
+        catch java.lang.ClassNotFoundException from label12 to label13 with label50;
+        catch java.lang.ClassNotFoundException from label14 to label15 with label50;
+        catch java.lang.ClassNotFoundException from label17 to label18 with label50;
+        catch java.lang.ClassNotFoundException from label19 to label20 with label50;
+        catch java.lang.ClassNotFoundException from label21 to label22 with label50;
+        catch java.lang.ClassNotFoundException from label23 to label24 with label50;
+        catch java.lang.ClassNotFoundException from label25 to label26 with label50;
+        catch java.lang.ClassNotFoundException from label27 to label28 with label50;
+        catch java.lang.ClassNotFoundException from label29 to label30 with label50;
+        catch java.lang.ClassNotFoundException from label31 to label32 with label50;
+        catch java.lang.ClassNotFoundException from label33 to label34 with label50;
+        catch java.lang.ClassNotFoundException from label35 to label36 with label50;
+        catch java.lang.ClassNotFoundException from label37 to label38 with label50;
+        catch java.lang.ClassNotFoundException from label39 to label41 with label50;
+        catch java.lang.ClassNotFoundException from label42 to label43 with label50;
+        catch java.lang.ClassNotFoundException from label44 to label45 with label50;
+        catch java.lang.ClassNotFoundException from label46 to label47 with label50;
+        catch java.lang.ClassNotFoundException from label48 to label49 with label50;
+    }
+}

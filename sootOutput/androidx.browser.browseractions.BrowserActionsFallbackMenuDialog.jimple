@@ -1,0 +1,178 @@
+class androidx.browser.browseractions.BrowserActionsFallbackMenuDialog extends android.app.Dialog
+{
+    private static final long ENTER_ANIMATION_DURATION_MS;
+    private static final long EXIT_ANIMATION_DURATION_MS;
+    private final android.view.View mContentView;
+
+    void <init>(android.content.Context, android.view.View)
+    {
+        android.content.Context $r1;
+        android.view.View $r2;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuDialog r0;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsFallbackMenuDialog;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.view.View;
+
+        specialinvoke r0.<android.app.Dialog: void <init>(android.content.Context)>($r1);
+
+        r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuDialog: android.view.View mContentView> = $r2;
+
+        return;
+    }
+
+    static void access$001(androidx.browser.browseractions.BrowserActionsFallbackMenuDialog)
+    {
+        androidx.browser.browseractions.BrowserActionsFallbackMenuDialog $r0;
+
+        $r0 := @parameter0: androidx.browser.browseractions.BrowserActionsFallbackMenuDialog;
+
+        specialinvoke $r0.<android.app.Dialog: void dismiss()>();
+
+        return;
+    }
+
+    private void startAnimation(boolean)
+    {
+        androidx.interpolator.view.animation.LinearOutSlowInInterpolator $r3;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuDialog$1 $r4;
+        long l0;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuDialog r0;
+        float f0, f1;
+        android.view.View $r1;
+        android.view.ViewPropertyAnimator $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsFallbackMenuDialog;
+
+        $z0 := @parameter0: boolean;
+
+        f0 = 0.0F;
+
+        if $z0 == 0 goto label1;
+
+        f1 = 0.0F;
+
+        goto label2;
+
+     label1:
+        f1 = 1.0F;
+
+     label2:
+        if $z0 == 0 goto label3;
+
+        f0 = 1.0F;
+
+     label3:
+        if $z0 == 0 goto label4;
+
+        l0 = 250L;
+
+        goto label5;
+
+     label4:
+        l0 = 150L;
+
+     label5:
+        $r1 = r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuDialog: android.view.View mContentView>;
+
+        virtualinvoke $r1.<android.view.View: void setScaleX(float)>(f1);
+
+        $r1 = r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuDialog: android.view.View mContentView>;
+
+        virtualinvoke $r1.<android.view.View: void setScaleY(float)>(f1);
+
+        $r1 = r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuDialog: android.view.View mContentView>;
+
+        $r2 = virtualinvoke $r1.<android.view.View: android.view.ViewPropertyAnimator animate()>();
+
+        $r2 = virtualinvoke $r2.<android.view.ViewPropertyAnimator: android.view.ViewPropertyAnimator scaleX(float)>(f0);
+
+        $r2 = virtualinvoke $r2.<android.view.ViewPropertyAnimator: android.view.ViewPropertyAnimator scaleY(float)>(f0);
+
+        $r2 = virtualinvoke $r2.<android.view.ViewPropertyAnimator: android.view.ViewPropertyAnimator setDuration(long)>(l0);
+
+        $r3 = new androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
+
+        specialinvoke $r3.<androidx.interpolator.view.animation.LinearOutSlowInInterpolator: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<android.view.ViewPropertyAnimator: android.view.ViewPropertyAnimator setInterpolator(android.animation.TimeInterpolator)>($r3);
+
+        $r4 = new androidx.browser.browseractions.BrowserActionsFallbackMenuDialog$1;
+
+        specialinvoke $r4.<androidx.browser.browseractions.BrowserActionsFallbackMenuDialog$1: void <init>(androidx.browser.browseractions.BrowserActionsFallbackMenuDialog,boolean)>(r0, $z0);
+
+        $r2 = virtualinvoke $r2.<android.view.ViewPropertyAnimator: android.view.ViewPropertyAnimator setListener(android.animation.Animator$AnimatorListener)>($r4);
+
+        virtualinvoke $r2.<android.view.ViewPropertyAnimator: void start()>();
+
+        return;
+    }
+
+    public void dismiss()
+    {
+        androidx.browser.browseractions.BrowserActionsFallbackMenuDialog r0;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsFallbackMenuDialog;
+
+        specialinvoke r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuDialog: void startAnimation(boolean)>(0);
+
+        return;
+    }
+
+    public boolean onTouchEvent(android.view.MotionEvent)
+    {
+        int $i0;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuDialog r0;
+        android.view.MotionEvent $r1;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsFallbackMenuDialog;
+
+        $r1 := @parameter0: android.view.MotionEvent;
+
+        $i0 = virtualinvoke $r1.<android.view.MotionEvent: int getAction()>();
+
+        if $i0 != 0 goto label1;
+
+        virtualinvoke r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuDialog: void dismiss()>();
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void show()
+    {
+        android.graphics.drawable.ColorDrawable $r2;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuDialog r0;
+        android.view.Window $r1;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsFallbackMenuDialog;
+
+        $r1 = virtualinvoke r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuDialog: android.view.Window getWindow()>();
+
+        $r2 = new android.graphics.drawable.ColorDrawable;
+
+        specialinvoke $r2.<android.graphics.drawable.ColorDrawable: void <init>(int)>(0);
+
+        virtualinvoke $r1.<android.view.Window: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($r2);
+
+        specialinvoke r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuDialog: void startAnimation(boolean)>(1);
+
+        specialinvoke r0.<android.app.Dialog: void show()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.browser.browseractions.BrowserActionsFallbackMenuDialog: long EXIT_ANIMATION_DURATION_MS> = 150L;
+
+        <androidx.browser.browseractions.BrowserActionsFallbackMenuDialog: long ENTER_ANIMATION_DURATION_MS> = 250L;
+
+        return;
+    }
+}

@@ -1,0 +1,263 @@
+public abstract class androidx.work.impl.constraints.controllers.ConstraintController extends java.lang.Object implements androidx.work.impl.constraints.ConstraintListener
+{
+    private androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback mCallback;
+    private java.lang.Object mCurrentValue;
+    private final java.util.List mMatchingWorkSpecIds;
+    private androidx.work.impl.constraints.trackers.ConstraintTracker mTracker;
+
+    void <init>(androidx.work.impl.constraints.trackers.ConstraintTracker)
+    {
+        androidx.work.impl.constraints.controllers.ConstraintController r0;
+        androidx.work.impl.constraints.trackers.ConstraintTracker r1;
+        java.util.ArrayList $r2;
+
+        r0 := @this: androidx.work.impl.constraints.controllers.ConstraintController;
+
+        r1 := @parameter0: androidx.work.impl.constraints.trackers.ConstraintTracker;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        r0.<androidx.work.impl.constraints.controllers.ConstraintController: java.util.List mMatchingWorkSpecIds> = $r2;
+
+        r0.<androidx.work.impl.constraints.controllers.ConstraintController: androidx.work.impl.constraints.trackers.ConstraintTracker mTracker> = r1;
+
+        return;
+    }
+
+    private void updateCallback(androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback, java.lang.Object)
+    {
+        androidx.work.impl.constraints.controllers.ConstraintController r0;
+        java.util.List $r3;
+        androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback $r1;
+        java.lang.Object r2;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.controllers.ConstraintController;
+
+        $r1 := @parameter0: androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback;
+
+        r2 := @parameter1: java.lang.Object;
+
+        $r3 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: java.util.List mMatchingWorkSpecIds>;
+
+        $z0 = interfaceinvoke $r3.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label4;
+
+        if $r1 != null goto label1;
+
+        return;
+
+     label1:
+        if r2 == null goto label3;
+
+        $z0 = virtualinvoke r0.<androidx.work.impl.constraints.controllers.ConstraintController: boolean isConstrained(java.lang.Object)>(r2);
+
+        if $z0 == 0 goto label2;
+
+        goto label3;
+
+     label2:
+        $r3 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: java.util.List mMatchingWorkSpecIds>;
+
+        interfaceinvoke $r1.<androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback: void onConstraintMet(java.util.List)>($r3);
+
+        return;
+
+     label3:
+        $r3 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: java.util.List mMatchingWorkSpecIds>;
+
+        interfaceinvoke $r1.<androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback: void onConstraintNotMet(java.util.List)>($r3);
+
+     label4:
+        return;
+    }
+
+    abstract boolean hasConstraint(androidx.work.impl.model.WorkSpec);
+
+    abstract boolean isConstrained(java.lang.Object);
+
+    public boolean isWorkSpecConstrained(java.lang.String)
+    {
+        androidx.work.impl.constraints.controllers.ConstraintController r0;
+        java.util.List $r3;
+        java.lang.Object $r2;
+        java.lang.String $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.controllers.ConstraintController;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: java.lang.Object mCurrentValue>;
+
+        if $r2 == null goto label1;
+
+        $r2 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: java.lang.Object mCurrentValue>;
+
+        $z0 = virtualinvoke r0.<androidx.work.impl.constraints.controllers.ConstraintController: boolean isConstrained(java.lang.Object)>($r2);
+
+        if $z0 == 0 goto label1;
+
+        $r3 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: java.util.List mMatchingWorkSpecIds>;
+
+        $z0 = interfaceinvoke $r3.<java.util.List: boolean contains(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void onConstraintChanged(java.lang.Object)
+    {
+        androidx.work.impl.constraints.controllers.ConstraintController r0;
+        java.lang.Object r1;
+        androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback $r2;
+
+        r0 := @this: androidx.work.impl.constraints.controllers.ConstraintController;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r0.<androidx.work.impl.constraints.controllers.ConstraintController: java.lang.Object mCurrentValue> = r1;
+
+        $r2 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback mCallback>;
+
+        r1 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: java.lang.Object mCurrentValue>;
+
+        specialinvoke r0.<androidx.work.impl.constraints.controllers.ConstraintController: void updateCallback(androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback,java.lang.Object)>($r2, r1);
+
+        return;
+    }
+
+    public void replace(java.lang.Iterable)
+    {
+        java.util.Iterator $r4;
+        java.lang.Iterable r1;
+        androidx.work.impl.model.WorkSpec r6;
+        androidx.work.impl.constraints.controllers.ConstraintController r0;
+        java.util.List $r3;
+        androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback $r8;
+        androidx.work.impl.constraints.trackers.ConstraintTracker $r7;
+        java.lang.Object $r5;
+        java.lang.String $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.controllers.ConstraintController;
+
+        r1 := @parameter0: java.lang.Iterable;
+
+        $r3 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: java.util.List mMatchingWorkSpecIds>;
+
+        interfaceinvoke $r3.<java.util.List: void clear()>();
+
+        $r4 = interfaceinvoke r1.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (androidx.work.impl.model.WorkSpec) $r5;
+
+        $z0 = virtualinvoke r0.<androidx.work.impl.constraints.controllers.ConstraintController: boolean hasConstraint(androidx.work.impl.model.WorkSpec)>(r6);
+
+        if $z0 == 0 goto label1;
+
+        $r3 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: java.util.List mMatchingWorkSpecIds>;
+
+        $r2 = r6.<androidx.work.impl.model.WorkSpec: java.lang.String id>;
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r2);
+
+        goto label1;
+
+     label2:
+        $r3 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: java.util.List mMatchingWorkSpecIds>;
+
+        $z0 = interfaceinvoke $r3.<java.util.List: boolean isEmpty()>();
+
+        if $z0 == 0 goto label3;
+
+        $r7 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: androidx.work.impl.constraints.trackers.ConstraintTracker mTracker>;
+
+        virtualinvoke $r7.<androidx.work.impl.constraints.trackers.ConstraintTracker: void removeListener(androidx.work.impl.constraints.ConstraintListener)>(r0);
+
+        goto label4;
+
+     label3:
+        $r7 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: androidx.work.impl.constraints.trackers.ConstraintTracker mTracker>;
+
+        virtualinvoke $r7.<androidx.work.impl.constraints.trackers.ConstraintTracker: void addListener(androidx.work.impl.constraints.ConstraintListener)>(r0);
+
+     label4:
+        $r8 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback mCallback>;
+
+        $r5 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: java.lang.Object mCurrentValue>;
+
+        specialinvoke r0.<androidx.work.impl.constraints.controllers.ConstraintController: void updateCallback(androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback,java.lang.Object)>($r8, $r5);
+
+        return;
+    }
+
+    public void reset()
+    {
+        androidx.work.impl.constraints.controllers.ConstraintController r0;
+        java.util.List $r1;
+        androidx.work.impl.constraints.trackers.ConstraintTracker $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.controllers.ConstraintController;
+
+        $r1 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: java.util.List mMatchingWorkSpecIds>;
+
+        $z0 = interfaceinvoke $r1.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label1;
+
+        $r1 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: java.util.List mMatchingWorkSpecIds>;
+
+        interfaceinvoke $r1.<java.util.List: void clear()>();
+
+        $r2 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: androidx.work.impl.constraints.trackers.ConstraintTracker mTracker>;
+
+        virtualinvoke $r2.<androidx.work.impl.constraints.trackers.ConstraintTracker: void removeListener(androidx.work.impl.constraints.ConstraintListener)>(r0);
+
+     label1:
+        return;
+    }
+
+    public void setCallback(androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback)
+    {
+        androidx.work.impl.constraints.controllers.ConstraintController r0;
+        androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback $r1, $r3;
+        java.lang.Object $r2;
+
+        r0 := @this: androidx.work.impl.constraints.controllers.ConstraintController;
+
+        $r1 := @parameter0: androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback;
+
+        $r3 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback mCallback>;
+
+        if $r3 == $r1 goto label1;
+
+        r0.<androidx.work.impl.constraints.controllers.ConstraintController: androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback mCallback> = $r1;
+
+        $r1 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback mCallback>;
+
+        $r2 = r0.<androidx.work.impl.constraints.controllers.ConstraintController: java.lang.Object mCurrentValue>;
+
+        specialinvoke r0.<androidx.work.impl.constraints.controllers.ConstraintController: void updateCallback(androidx.work.impl.constraints.controllers.ConstraintController$OnConstraintUpdatedCallback,java.lang.Object)>($r1, $r2);
+
+     label1:
+        return;
+    }
+}

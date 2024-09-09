@@ -1,0 +1,514 @@
+public final class com.google.android.gms.internal.ads.zzfgp extends java.lang.Object
+{
+    public final java.util.List zza;
+    public final java.lang.String zzb;
+    public final int zzc;
+    public final java.lang.String zzd;
+    public final int zze;
+    public final long zzf;
+    public final boolean zzg;
+    public final java.lang.String zzh;
+    public final com.google.android.gms.internal.ads.zzfgo zzi;
+    public final android.os.Bundle zzj;
+    public final java.lang.String zzk;
+    public final java.lang.String zzl;
+    public final java.lang.String zzm;
+    public final org.json.JSONObject zzn;
+    public final java.lang.String zzo;
+    public final int zzp;
+
+    void <init>(android.util.JsonReader) throws java.lang.IllegalStateException, java.io.IOException, org.json.JSONException, java.lang.NumberFormatException
+    {
+        java.lang.IllegalStateException $r24;
+        android.os.Bundle $r3, $r23;
+        org.json.JSONException $r26;
+        org.json.JSONObject $r4, $r22;
+        byte $b4;
+        java.lang.Long $r28;
+        com.google.android.gms.internal.ads.zzbhm $r27;
+        boolean $z0, $z1;
+        android.util.JsonToken $r20, $r21;
+        java.util.List $r2;
+        android.util.JsonReader $r1;
+        long $l2;
+        com.google.android.gms.internal.ads.zzbga $r16;
+        com.google.android.gms.internal.ads.zzbfu $r15;
+        int $i0, $i1, $i3;
+        java.lang.Boolean $r18;
+        java.lang.String $r5, $r6, $r7, $r8, $r9, $r10, $r12, $r13, $r14, $r19;
+        java.io.IOException $r25;
+        com.google.android.gms.internal.ads.zzfgp r0;
+        java.lang.Object $r17;
+        com.google.android.gms.internal.ads.zzfgo $r11, $r29;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfgp;
+
+        $r1 := @parameter0: android.util.JsonReader;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        $r23 = new android.os.Bundle;
+
+        specialinvoke $r23.<android.os.Bundle: void <init>()>();
+
+        $r22 = new org.json.JSONObject;
+
+        specialinvoke $r22.<org.json.JSONObject: void <init>()>();
+
+        virtualinvoke $r1.<android.util.JsonReader: void beginObject()>();
+
+        $r5 = "";
+
+        $r6 = "";
+
+        $r7 = "";
+
+        $r8 = "";
+
+        $r9 = "";
+
+        $r10 = "";
+
+        $r11 = null;
+
+        $i0 = 0;
+
+        $z0 = 0;
+
+        $i1 = 0;
+
+        $l2 = 0L;
+
+        $i3 = 1;
+
+        $r4 = $r22;
+
+        $r12 = "";
+
+        $r3 = $r23;
+
+     label01:
+        $z1 = virtualinvoke $r1.<android.util.JsonReader: boolean hasNext()>();
+
+        if $z1 == 0 goto label32;
+
+        $r13 = virtualinvoke $r1.<android.util.JsonReader: java.lang.String nextName()>();
+
+        $r14 = "nofill_urls";
+
+        $z1 = virtualinvoke $r14.<java.lang.String: boolean equals(java.lang.Object)>($r13);
+
+        if $z1 == 0 goto label02;
+
+        $r2 = staticinvoke <com.google.android.gms.ads.internal.util.zzbw: java.util.List zzd(android.util.JsonReader)>($r1);
+
+        goto label01;
+
+     label02:
+        $r14 = "refresh_interval";
+
+        $z1 = virtualinvoke $r14.<java.lang.String: boolean equals(java.lang.Object)>($r13);
+
+        if $z1 == 0 goto label03;
+
+        $i1 = virtualinvoke $r1.<android.util.JsonReader: int nextInt()>();
+
+        goto label01;
+
+     label03:
+        $r14 = "gws_query_id";
+
+        $z1 = virtualinvoke $r14.<java.lang.String: boolean equals(java.lang.Object)>($r13);
+
+        if $z1 == 0 goto label04;
+
+        $r5 = virtualinvoke $r1.<android.util.JsonReader: java.lang.String nextString()>();
+
+        goto label01;
+
+     label04:
+        $r14 = "analytics_query_ad_event_id";
+
+        $z1 = virtualinvoke $r14.<java.lang.String: boolean equals(java.lang.Object)>($r13);
+
+        if $z1 == 0 goto label05;
+
+        $r12 = virtualinvoke $r1.<android.util.JsonReader: java.lang.String nextString()>();
+
+        goto label01;
+
+     label05:
+        $r14 = "is_idless";
+
+        $z1 = virtualinvoke $r14.<java.lang.String: boolean equals(java.lang.Object)>($r13);
+
+        if $z1 == 0 goto label06;
+
+        $z0 = virtualinvoke $r1.<android.util.JsonReader: boolean nextBoolean()>();
+
+        goto label01;
+
+     label06:
+        $r14 = "response_code";
+
+        $z1 = virtualinvoke $r14.<java.lang.String: boolean equals(java.lang.Object)>($r13);
+
+        if $z1 == 0 goto label07;
+
+        $i0 = virtualinvoke $r1.<android.util.JsonReader: int nextInt()>();
+
+        goto label01;
+
+     label07:
+        $r14 = "latency";
+
+        $z1 = virtualinvoke $r14.<java.lang.String: boolean equals(java.lang.Object)>($r13);
+
+        if $z1 == 0 goto label08;
+
+        $l2 = virtualinvoke $r1.<android.util.JsonReader: long nextLong()>();
+
+        goto label01;
+
+     label08:
+        $r15 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzig>;
+
+        $r14 = $r10;
+
+        $r16 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r17 = virtualinvoke $r16.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r15);
+
+        $r18 = (java.lang.Boolean) $r17;
+
+        $z1 = virtualinvoke $r18.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z1 == 0 goto label11;
+
+        $r19 = "public_error";
+
+        $z1 = virtualinvoke $r19.<java.lang.String: boolean equals(java.lang.Object)>($r13);
+
+        if $z1 == 0 goto label10;
+
+        $r20 = virtualinvoke $r1.<android.util.JsonReader: android.util.JsonToken peek()>();
+
+        $r21 = <android.util.JsonToken: android.util.JsonToken BEGIN_OBJECT>;
+
+        if $r20 != $r21 goto label09;
+
+        $r29 = new com.google.android.gms.internal.ads.zzfgo;
+
+        specialinvoke $r29.<com.google.android.gms.internal.ads.zzfgo: void <init>(android.util.JsonReader)>($r1);
+
+        $r11 = $r29;
+
+        goto label01;
+
+     label09:
+        goto label11;
+
+     label10:
+        goto label11;
+
+     label11:
+        $r10 = "bidding_data";
+
+        $z1 = virtualinvoke $r10.<java.lang.String: boolean equals(java.lang.Object)>($r13);
+
+        if $z1 == 0 goto label12;
+
+        $r6 = virtualinvoke $r1.<android.util.JsonReader: java.lang.String nextString()>();
+
+        $r10 = $r14;
+
+        goto label01;
+
+     label12:
+        $r15 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzjU>;
+
+        $r16 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r17 = virtualinvoke $r16.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r15);
+
+        $r18 = (java.lang.Boolean) $r17;
+
+        $z1 = virtualinvoke $r18.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z1 == 0 goto label13;
+
+        $z1 = staticinvoke <java.util.Objects: boolean equals(java.lang.Object,java.lang.Object)>($r13, "topics_should_record_observation");
+
+        if $z1 == 0 goto label13;
+
+        virtualinvoke $r1.<android.util.JsonReader: boolean nextBoolean()>();
+
+        goto label31;
+
+     label13:
+        $r10 = "adapter_response_replacement_key";
+
+        $z1 = virtualinvoke $r10.<java.lang.String: boolean equals(java.lang.Object)>($r13);
+
+        if $z1 == 0 goto label14;
+
+        $r10 = virtualinvoke $r1.<android.util.JsonReader: java.lang.String nextString()>();
+
+        goto label01;
+
+     label14:
+        $r10 = "response_info_extras";
+
+        $z1 = virtualinvoke $r10.<java.lang.String: boolean equals(java.lang.Object)>($r13);
+
+        if $z1 == 0 goto label23;
+
+        $r15 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzgQ>;
+
+        $r16 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r17 = virtualinvoke $r16.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r15);
+
+        $r18 = (java.lang.Boolean) $r17;
+
+        $z1 = virtualinvoke $r18.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z1 == 0 goto label22;
+
+     label15:
+        $r22 = staticinvoke <com.google.android.gms.ads.internal.util.zzbw: org.json.JSONObject zzh(android.util.JsonReader)>($r1);
+
+        $r23 = staticinvoke <com.google.android.gms.ads.internal.util.zzbw: android.os.Bundle zza(org.json.JSONObject)>($r22);
+
+     label16:
+        if $r23 == null goto label17;
+
+        $r3 = $r23;
+
+     label17:
+        $r10 = $r14;
+
+        goto label01;
+
+     label18:
+        $r24 := @caughtexception;
+
+        virtualinvoke $r1.<android.util.JsonReader: void skipValue()>();
+
+        goto label31;
+
+     label19:
+        $r25 := @caughtexception;
+
+        goto label21;
+
+     label20:
+        $r26 := @caughtexception;
+
+     label21:
+        goto label31;
+
+     label22:
+        virtualinvoke $r1.<android.util.JsonReader: void skipValue()>();
+
+        goto label31;
+
+     label23:
+        $r10 = "adRequestPostBody";
+
+        $z1 = virtualinvoke $r10.<java.lang.String: boolean equals(java.lang.Object)>($r13);
+
+        if $z1 == 0 goto label25;
+
+        $r15 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzjg>;
+
+        $r16 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r17 = virtualinvoke $r16.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r15);
+
+        $r18 = (java.lang.Boolean) $r17;
+
+        $z1 = virtualinvoke $r18.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z1 == 0 goto label24;
+
+        $r8 = virtualinvoke $r1.<android.util.JsonReader: java.lang.String nextString()>();
+
+        $r10 = $r14;
+
+        goto label01;
+
+     label24:
+        virtualinvoke $r1.<android.util.JsonReader: void skipValue()>();
+
+        goto label31;
+
+     label25:
+        $r10 = "adRequestUrl";
+
+        $z1 = virtualinvoke $r10.<java.lang.String: boolean equals(java.lang.Object)>($r13);
+
+        if $z1 == 0 goto label27;
+
+        $r15 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzjg>;
+
+        $r16 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r17 = virtualinvoke $r16.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r15);
+
+        $r18 = (java.lang.Boolean) $r17;
+
+        $z1 = virtualinvoke $r18.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z1 == 0 goto label26;
+
+        $r7 = virtualinvoke $r1.<android.util.JsonReader: java.lang.String nextString()>();
+
+        $r10 = $r14;
+
+        goto label01;
+
+     label26:
+        virtualinvoke $r1.<android.util.JsonReader: void skipValue()>();
+
+        goto label31;
+
+     label27:
+        $r15 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzjh>;
+
+        $r16 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r17 = virtualinvoke $r16.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r15);
+
+        $r18 = (java.lang.Boolean) $r17;
+
+        $z1 = virtualinvoke $r18.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z1 == 0 goto label28;
+
+        $z1 = staticinvoke <java.util.Objects: boolean equals(java.lang.Object,java.lang.Object)>($r13, "adResponseBody");
+
+        if $z1 == 0 goto label28;
+
+        $r9 = virtualinvoke $r1.<android.util.JsonReader: java.lang.String nextString()>();
+
+        $r10 = $r14;
+
+        goto label01;
+
+     label28:
+        $r15 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzjh>;
+
+        $r16 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r17 = virtualinvoke $r16.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r15);
+
+        $r18 = (java.lang.Boolean) $r17;
+
+        $z1 = virtualinvoke $r18.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z1 == 0 goto label29;
+
+        $z1 = staticinvoke <java.util.Objects: boolean equals(java.lang.Object,java.lang.Object)>($r13, "adResponseHeaders");
+
+        if $z1 == 0 goto label29;
+
+        $r4 = staticinvoke <com.google.android.gms.ads.internal.util.zzbw: org.json.JSONObject zzh(android.util.JsonReader)>($r1);
+
+        $r10 = $r14;
+
+        goto label01;
+
+     label29:
+        $z1 = staticinvoke <java.util.Objects: boolean equals(java.lang.Object,java.lang.Object)>($r13, "max_parallel_renderers");
+
+        if $z1 == 0 goto label30;
+
+        $i3 = virtualinvoke $r1.<android.util.JsonReader: int nextInt()>();
+
+        $i3 = staticinvoke <java.lang.Math: int max(int,int)>(1, $i3);
+
+        $r10 = $r14;
+
+        goto label01;
+
+     label30:
+        virtualinvoke $r1.<android.util.JsonReader: void skipValue()>();
+
+     label31:
+        $r10 = $r14;
+
+        goto label01;
+
+     label32:
+        virtualinvoke $r1.<android.util.JsonReader: void endObject()>();
+
+        r0.<com.google.android.gms.internal.ads.zzfgp: java.util.List zza> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzfgp: int zzc> = $i1;
+
+        r0.<com.google.android.gms.internal.ads.zzfgp: java.lang.String zzb> = $r5;
+
+        r0.<com.google.android.gms.internal.ads.zzfgp: java.lang.String zzd> = $r12;
+
+        r0.<com.google.android.gms.internal.ads.zzfgp: int zze> = $i0;
+
+        r0.<com.google.android.gms.internal.ads.zzfgp: long zzf> = $l2;
+
+        r0.<com.google.android.gms.internal.ads.zzfgp: com.google.android.gms.internal.ads.zzfgo zzi> = $r11;
+
+        r0.<com.google.android.gms.internal.ads.zzfgp: boolean zzg> = $z0;
+
+        r0.<com.google.android.gms.internal.ads.zzfgp: java.lang.String zzh> = $r6;
+
+        r0.<com.google.android.gms.internal.ads.zzfgp: android.os.Bundle zzj> = $r3;
+
+        r0.<com.google.android.gms.internal.ads.zzfgp: java.lang.String zzk> = $r7;
+
+        r0.<com.google.android.gms.internal.ads.zzfgp: java.lang.String zzl> = $r8;
+
+        r0.<com.google.android.gms.internal.ads.zzfgp: java.lang.String zzm> = $r9;
+
+        r0.<com.google.android.gms.internal.ads.zzfgp: org.json.JSONObject zzn> = $r4;
+
+        r0.<com.google.android.gms.internal.ads.zzfgp: java.lang.String zzo> = $r10;
+
+        $r27 = <com.google.android.gms.internal.ads.zzbif: com.google.android.gms.internal.ads.zzbhm zza>;
+
+        $r17 = virtualinvoke $r27.<com.google.android.gms.internal.ads.zzbhm: java.lang.Object zze()>();
+
+        $r28 = (java.lang.Long) $r17;
+
+        $l2 = virtualinvoke $r28.<java.lang.Long: long longValue()>();
+
+        $b4 = $l2 cmp 0L;
+
+        $i0 = (int) $b4;
+
+        if $i0 <= 0 goto label33;
+
+        $r27 = <com.google.android.gms.internal.ads.zzbif: com.google.android.gms.internal.ads.zzbhm zza>;
+
+        $r17 = virtualinvoke $r27.<com.google.android.gms.internal.ads.zzbhm: java.lang.Object zze()>();
+
+        $r28 = (java.lang.Long) $r17;
+
+        $i0 = virtualinvoke $r28.<java.lang.Long: int intValue()>();
+
+        goto label34;
+
+     label33:
+        $i0 = $i3;
+
+     label34:
+        r0.<com.google.android.gms.internal.ads.zzfgp: int zzp> = $i0;
+
+        return;
+
+        catch org.json.JSONException from label15 to label16 with label20;
+        catch java.io.IOException from label15 to label16 with label19;
+        catch java.lang.IllegalStateException from label15 to label16 with label18;
+    }
+}

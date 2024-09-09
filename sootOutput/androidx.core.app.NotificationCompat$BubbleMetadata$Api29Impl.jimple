@@ -1,0 +1,158 @@
+class androidx.core.app.NotificationCompat$BubbleMetadata$Api29Impl extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.app.NotificationCompat$BubbleMetadata$Api29Impl r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata$Api29Impl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static androidx.core.app.NotificationCompat$BubbleMetadata fromPlatform(android.app.Notification$BubbleMetadata)
+    {
+        android.app.Notification$BubbleMetadata $r0;
+        androidx.core.app.NotificationCompat$BubbleMetadata $r5;
+        androidx.core.app.NotificationCompat$BubbleMetadata$Builder r2;
+        android.app.PendingIntent $r1;
+        androidx.core.graphics.drawable.IconCompat $r4;
+        int $i0;
+        android.graphics.drawable.Icon $r3;
+        boolean $z0;
+
+        $r0 := @parameter0: android.app.Notification$BubbleMetadata;
+
+        if $r0 != null goto label1;
+
+        return null;
+
+     label1:
+        $r1 = virtualinvoke $r0.<android.app.Notification$BubbleMetadata: android.app.PendingIntent getIntent()>();
+
+        if $r1 != null goto label2;
+
+        return null;
+
+     label2:
+        r2 = new androidx.core.app.NotificationCompat$BubbleMetadata$Builder;
+
+        $r1 = virtualinvoke $r0.<android.app.Notification$BubbleMetadata: android.app.PendingIntent getIntent()>();
+
+        $r3 = virtualinvoke $r0.<android.app.Notification$BubbleMetadata: android.graphics.drawable.Icon getIcon()>();
+
+        $r4 = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createFromIcon(android.graphics.drawable.Icon)>($r3);
+
+        specialinvoke r2.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: void <init>(android.app.PendingIntent,androidx.core.graphics.drawable.IconCompat)>($r1, $r4);
+
+        $z0 = virtualinvoke $r0.<android.app.Notification$BubbleMetadata: boolean getAutoExpandBubble()>();
+
+        r2 = virtualinvoke r2.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: androidx.core.app.NotificationCompat$BubbleMetadata$Builder setAutoExpandBubble(boolean)>($z0);
+
+        $r1 = virtualinvoke $r0.<android.app.Notification$BubbleMetadata: android.app.PendingIntent getDeleteIntent()>();
+
+        r2 = virtualinvoke r2.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: androidx.core.app.NotificationCompat$BubbleMetadata$Builder setDeleteIntent(android.app.PendingIntent)>($r1);
+
+        $z0 = virtualinvoke $r0.<android.app.Notification$BubbleMetadata: boolean isNotificationSuppressed()>();
+
+        r2 = virtualinvoke r2.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: androidx.core.app.NotificationCompat$BubbleMetadata$Builder setSuppressNotification(boolean)>($z0);
+
+        $i0 = virtualinvoke $r0.<android.app.Notification$BubbleMetadata: int getDesiredHeight()>();
+
+        if $i0 == 0 goto label3;
+
+        $i0 = virtualinvoke $r0.<android.app.Notification$BubbleMetadata: int getDesiredHeight()>();
+
+        virtualinvoke r2.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: androidx.core.app.NotificationCompat$BubbleMetadata$Builder setDesiredHeight(int)>($i0);
+
+     label3:
+        $i0 = virtualinvoke $r0.<android.app.Notification$BubbleMetadata: int getDesiredHeightResId()>();
+
+        if $i0 == 0 goto label4;
+
+        $i0 = virtualinvoke $r0.<android.app.Notification$BubbleMetadata: int getDesiredHeightResId()>();
+
+        virtualinvoke r2.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: androidx.core.app.NotificationCompat$BubbleMetadata$Builder setDesiredHeightResId(int)>($i0);
+
+     label4:
+        $r5 = virtualinvoke r2.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: androidx.core.app.NotificationCompat$BubbleMetadata build()>();
+
+        return $r5;
+    }
+
+    static android.app.Notification$BubbleMetadata toPlatform(androidx.core.app.NotificationCompat$BubbleMetadata)
+    {
+        androidx.core.app.NotificationCompat$BubbleMetadata $r0;
+        android.app.Notification$BubbleMetadata $r5;
+        android.app.PendingIntent $r1;
+        android.app.Notification$BubbleMetadata$Builder r2;
+        androidx.core.graphics.drawable.IconCompat $r3;
+        int $i0;
+        android.graphics.drawable.Icon $r4;
+        boolean $z0;
+
+        $r0 := @parameter0: androidx.core.app.NotificationCompat$BubbleMetadata;
+
+        if $r0 != null goto label1;
+
+        return null;
+
+     label1:
+        $r1 = virtualinvoke $r0.<androidx.core.app.NotificationCompat$BubbleMetadata: android.app.PendingIntent getIntent()>();
+
+        if $r1 != null goto label2;
+
+        return null;
+
+     label2:
+        r2 = new android.app.Notification$BubbleMetadata$Builder;
+
+        specialinvoke r2.<android.app.Notification$BubbleMetadata$Builder: void <init>()>();
+
+        $r3 = virtualinvoke $r0.<androidx.core.app.NotificationCompat$BubbleMetadata: androidx.core.graphics.drawable.IconCompat getIcon()>();
+
+        $r4 = virtualinvoke $r3.<androidx.core.graphics.drawable.IconCompat: android.graphics.drawable.Icon toIcon()>();
+
+        r2 = virtualinvoke r2.<android.app.Notification$BubbleMetadata$Builder: android.app.Notification$BubbleMetadata$Builder setIcon(android.graphics.drawable.Icon)>($r4);
+
+        $r1 = virtualinvoke $r0.<androidx.core.app.NotificationCompat$BubbleMetadata: android.app.PendingIntent getIntent()>();
+
+        r2 = virtualinvoke r2.<android.app.Notification$BubbleMetadata$Builder: android.app.Notification$BubbleMetadata$Builder setIntent(android.app.PendingIntent)>($r1);
+
+        $r1 = virtualinvoke $r0.<androidx.core.app.NotificationCompat$BubbleMetadata: android.app.PendingIntent getDeleteIntent()>();
+
+        r2 = virtualinvoke r2.<android.app.Notification$BubbleMetadata$Builder: android.app.Notification$BubbleMetadata$Builder setDeleteIntent(android.app.PendingIntent)>($r1);
+
+        $z0 = virtualinvoke $r0.<androidx.core.app.NotificationCompat$BubbleMetadata: boolean getAutoExpandBubble()>();
+
+        r2 = virtualinvoke r2.<android.app.Notification$BubbleMetadata$Builder: android.app.Notification$BubbleMetadata$Builder setAutoExpandBubble(boolean)>($z0);
+
+        $z0 = virtualinvoke $r0.<androidx.core.app.NotificationCompat$BubbleMetadata: boolean isNotificationSuppressed()>();
+
+        r2 = virtualinvoke r2.<android.app.Notification$BubbleMetadata$Builder: android.app.Notification$BubbleMetadata$Builder setSuppressNotification(boolean)>($z0);
+
+        $i0 = virtualinvoke $r0.<androidx.core.app.NotificationCompat$BubbleMetadata: int getDesiredHeight()>();
+
+        if $i0 == 0 goto label3;
+
+        $i0 = virtualinvoke $r0.<androidx.core.app.NotificationCompat$BubbleMetadata: int getDesiredHeight()>();
+
+        virtualinvoke r2.<android.app.Notification$BubbleMetadata$Builder: android.app.Notification$BubbleMetadata$Builder setDesiredHeight(int)>($i0);
+
+     label3:
+        $i0 = virtualinvoke $r0.<androidx.core.app.NotificationCompat$BubbleMetadata: int getDesiredHeightResId()>();
+
+        if $i0 == 0 goto label4;
+
+        $i0 = virtualinvoke $r0.<androidx.core.app.NotificationCompat$BubbleMetadata: int getDesiredHeightResId()>();
+
+        virtualinvoke r2.<android.app.Notification$BubbleMetadata$Builder: android.app.Notification$BubbleMetadata$Builder setDesiredHeightResId(int)>($i0);
+
+     label4:
+        $r5 = virtualinvoke r2.<android.app.Notification$BubbleMetadata$Builder: android.app.Notification$BubbleMetadata build()>();
+
+        return $r5;
+    }
+}

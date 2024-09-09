@@ -1,0 +1,261 @@
+class androidx.core.view.WindowInsetsCompat$BuilderImpl20 extends androidx.core.view.WindowInsetsCompat$BuilderImpl
+{
+    private static java.lang.reflect.Constructor sConstructor;
+    private static boolean sConstructorFetched;
+    private static java.lang.reflect.Field sConsumedField;
+    private static boolean sConsumedFieldFetched;
+    private android.view.WindowInsets mPlatformInsets;
+    private androidx.core.graphics.Insets mStableInsets;
+
+    static void <clinit>()
+    {
+        <androidx.core.view.WindowInsetsCompat$BuilderImpl20: boolean sConsumedFieldFetched> = 0;
+
+        <androidx.core.view.WindowInsetsCompat$BuilderImpl20: boolean sConstructorFetched> = 0;
+
+        return;
+    }
+
+    void <init>()
+    {
+        androidx.core.view.WindowInsetsCompat$BuilderImpl20 r0;
+        android.view.WindowInsets $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl20;
+
+        specialinvoke r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: void <init>()>();
+
+        $r1 = staticinvoke <androidx.core.view.WindowInsetsCompat$BuilderImpl20: android.view.WindowInsets createWindowInsetsInstance()>();
+
+        r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl20: android.view.WindowInsets mPlatformInsets> = $r1;
+
+        return;
+    }
+
+    void <init>(androidx.core.view.WindowInsetsCompat)
+    {
+        androidx.core.view.WindowInsetsCompat$BuilderImpl20 r0;
+        androidx.core.view.WindowInsetsCompat $r1;
+        android.view.WindowInsets $r2;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl20;
+
+        $r1 := @parameter0: androidx.core.view.WindowInsetsCompat;
+
+        specialinvoke r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: void <init>(androidx.core.view.WindowInsetsCompat)>($r1);
+
+        $r2 = virtualinvoke $r1.<androidx.core.view.WindowInsetsCompat: android.view.WindowInsets toWindowInsets()>();
+
+        r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl20: android.view.WindowInsets mPlatformInsets> = $r2;
+
+        return;
+    }
+
+    private static android.view.WindowInsets createWindowInsetsInstance()
+    {
+        android.graphics.Rect $r11;
+        java.lang.Object[] $r10;
+        java.lang.Class[] $r7;
+        java.lang.ReflectiveOperationException r2, r6, r9, r12;
+        java.lang.reflect.Field $r1;
+        java.lang.reflect.Constructor $r8;
+        android.view.WindowInsets r4, $r5;
+        java.lang.Class r0;
+        java.lang.Object $r3;
+        boolean z0;
+
+        z0 = <androidx.core.view.WindowInsetsCompat$BuilderImpl20: boolean sConsumedFieldFetched>;
+
+        if z0 != 0 goto label05;
+
+        r0 = class "Landroid/view/WindowInsets;";
+
+     label01:
+        $r1 = virtualinvoke r0.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("CONSUMED");
+
+     label02:
+        <androidx.core.view.WindowInsetsCompat$BuilderImpl20: java.lang.reflect.Field sConsumedField> = $r1;
+
+        goto label04;
+
+     label03:
+        r2 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)>("WindowInsetsCompat", "Could not retrieve WindowInsets.CONSUMED field", r2);
+
+     label04:
+        <androidx.core.view.WindowInsetsCompat$BuilderImpl20: boolean sConsumedFieldFetched> = 1;
+
+     label05:
+        $r1 = <androidx.core.view.WindowInsetsCompat$BuilderImpl20: java.lang.reflect.Field sConsumedField>;
+
+        if $r1 == null goto label12;
+
+        $r1 = <androidx.core.view.WindowInsetsCompat$BuilderImpl20: java.lang.reflect.Field sConsumedField>;
+
+     label06:
+        $r3 = virtualinvoke $r1.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>(null);
+
+     label07:
+        r4 = (android.view.WindowInsets) $r3;
+
+        if r4 == null goto label10;
+
+        $r5 = new android.view.WindowInsets;
+
+     label08:
+        specialinvoke $r5.<android.view.WindowInsets: void <init>(android.view.WindowInsets)>(r4);
+
+     label09:
+        return $r5;
+
+     label10:
+        goto label12;
+
+     label11:
+        r6 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)>("WindowInsetsCompat", "Could not get value from WindowInsets.CONSUMED field", r6);
+
+     label12:
+        z0 = <androidx.core.view.WindowInsetsCompat$BuilderImpl20: boolean sConstructorFetched>;
+
+        if z0 != 0 goto label17;
+
+        r0 = class "Landroid/view/WindowInsets;";
+
+        $r7 = newarray (java.lang.Class)[1];
+
+        $r7[0] = class "Landroid/graphics/Rect;";
+
+     label13:
+        $r8 = virtualinvoke r0.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>($r7);
+
+     label14:
+        <androidx.core.view.WindowInsetsCompat$BuilderImpl20: java.lang.reflect.Constructor sConstructor> = $r8;
+
+        goto label16;
+
+     label15:
+        r9 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)>("WindowInsetsCompat", "Could not retrieve WindowInsets(Rect) constructor", r9);
+
+     label16:
+        <androidx.core.view.WindowInsetsCompat$BuilderImpl20: boolean sConstructorFetched> = 1;
+
+     label17:
+        $r8 = <androidx.core.view.WindowInsetsCompat$BuilderImpl20: java.lang.reflect.Constructor sConstructor>;
+
+        if $r8 == null goto label23;
+
+        $r8 = <androidx.core.view.WindowInsetsCompat$BuilderImpl20: java.lang.reflect.Constructor sConstructor>;
+
+        $r10 = newarray (java.lang.Object)[1];
+
+        $r11 = new android.graphics.Rect;
+
+     label18:
+        specialinvoke $r11.<android.graphics.Rect: void <init>()>();
+
+     label19:
+        $r10[0] = $r11;
+
+     label20:
+        $r3 = virtualinvoke $r8.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r10);
+
+     label21:
+        r4 = (android.view.WindowInsets) $r3;
+
+        return r4;
+
+     label22:
+        r12 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)>("WindowInsetsCompat", "Could not invoke WindowInsets(Rect) constructor", r12);
+
+     label23:
+        return null;
+
+        catch java.lang.ReflectiveOperationException from label01 to label02 with label03;
+        catch java.lang.ReflectiveOperationException from label06 to label07 with label11;
+        catch java.lang.ReflectiveOperationException from label08 to label09 with label11;
+        catch java.lang.ReflectiveOperationException from label13 to label14 with label15;
+        catch java.lang.ReflectiveOperationException from label18 to label19 with label22;
+        catch java.lang.ReflectiveOperationException from label20 to label21 with label22;
+    }
+
+    androidx.core.view.WindowInsetsCompat build()
+    {
+        androidx.core.graphics.Insets[] $r3;
+        android.view.WindowInsets r2;
+        androidx.core.graphics.Insets $r4;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl20 r0;
+        androidx.core.view.WindowInsetsCompat $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl20;
+
+        virtualinvoke r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl20: void applyInsetTypes()>();
+
+        r2 = r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl20: android.view.WindowInsets mPlatformInsets>;
+
+        $r1 = staticinvoke <androidx.core.view.WindowInsetsCompat: androidx.core.view.WindowInsetsCompat toWindowInsetsCompat(android.view.WindowInsets)>(r2);
+
+        $r3 = r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl20: androidx.core.graphics.Insets[] mInsetsTypeMask>;
+
+        virtualinvoke $r1.<androidx.core.view.WindowInsetsCompat: void setOverriddenInsets(androidx.core.graphics.Insets[])>($r3);
+
+        $r4 = r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl20: androidx.core.graphics.Insets mStableInsets>;
+
+        virtualinvoke $r1.<androidx.core.view.WindowInsetsCompat: void setStableInsets(androidx.core.graphics.Insets)>($r4);
+
+        return $r1;
+    }
+
+    void setStableInsets(androidx.core.graphics.Insets)
+    {
+        androidx.core.graphics.Insets $r1;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl20 r0;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl20;
+
+        $r1 := @parameter0: androidx.core.graphics.Insets;
+
+        r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl20: androidx.core.graphics.Insets mStableInsets> = $r1;
+
+        return;
+    }
+
+    void setSystemWindowInsets(androidx.core.graphics.Insets)
+    {
+        android.view.WindowInsets $r2;
+        int $i0, $i1, $i2, $i3;
+        androidx.core.graphics.Insets $r1;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl20 r0;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl20;
+
+        $r1 := @parameter0: androidx.core.graphics.Insets;
+
+        $r2 = r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl20: android.view.WindowInsets mPlatformInsets>;
+
+        if $r2 == null goto label1;
+
+        $r2 = r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl20: android.view.WindowInsets mPlatformInsets>;
+
+        $i0 = $r1.<androidx.core.graphics.Insets: int left>;
+
+        $i1 = $r1.<androidx.core.graphics.Insets: int top>;
+
+        $i2 = $r1.<androidx.core.graphics.Insets: int right>;
+
+        $i3 = $r1.<androidx.core.graphics.Insets: int bottom>;
+
+        $r2 = virtualinvoke $r2.<android.view.WindowInsets: android.view.WindowInsets replaceSystemWindowInsets(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl20: android.view.WindowInsets mPlatformInsets> = $r2;
+
+     label1:
+        return;
+    }
+}

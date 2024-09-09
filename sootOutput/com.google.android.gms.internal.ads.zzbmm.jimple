@@ -1,0 +1,53 @@
+final class com.google.android.gms.internal.ads.zzbmm extends java.lang.Object implements com.google.android.gms.internal.ads.zzbng
+{
+
+    void <init>()
+    {
+        com.google.android.gms.internal.ads.zzbmm r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbmm;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public final volatile void zza(java.lang.Object, java.util.Map)
+    {
+        com.google.android.gms.internal.ads.zzbmm r0;
+        org.json.JSONObject $r5;
+        com.google.android.gms.internal.ads.zzcjk $r3;
+        java.util.Map $r2;
+        com.google.android.gms.internal.ads.zzbja $r4;
+        java.lang.Object $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbmm;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.util.Map;
+
+        $r3 = (com.google.android.gms.internal.ads.zzcjk) $r1;
+
+        $r4 = interfaceinvoke $r3.<com.google.android.gms.internal.ads.zzcjk: com.google.android.gms.internal.ads.zzbja zzK()>();
+
+        if $r4 == null goto label1;
+
+        $r5 = interfaceinvoke $r4.<com.google.android.gms.internal.ads.zzbja: org.json.JSONObject zzb()>();
+
+        if $r5 == null goto label1;
+
+        interfaceinvoke $r3.<com.google.android.gms.internal.ads.zzcjk: void zze(java.lang.String,org.json.JSONObject)>("nativeClickMetaReady", $r5);
+
+        return;
+
+     label1:
+        $r5 = new org.json.JSONObject;
+
+        specialinvoke $r5.<org.json.JSONObject: void <init>()>();
+
+        interfaceinvoke $r3.<com.google.android.gms.internal.ads.zzcjk: void zze(java.lang.String,org.json.JSONObject)>("nativeClickMetaReady", $r5);
+
+        return;
+    }
+}

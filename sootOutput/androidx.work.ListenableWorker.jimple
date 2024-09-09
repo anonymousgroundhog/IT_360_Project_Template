@@ -1,0 +1,370 @@
+public abstract class androidx.work.ListenableWorker extends java.lang.Object
+{
+    private android.content.Context mAppContext;
+    private boolean mRunInForeground;
+    private volatile boolean mStopped;
+    private boolean mUsed;
+    private androidx.work.WorkerParameters mWorkerParams;
+
+    public void <init>(android.content.Context, androidx.work.WorkerParameters)
+    {
+        android.content.Context $r1;
+        androidx.work.WorkerParameters $r2;
+        androidx.work.ListenableWorker r0;
+        java.lang.IllegalArgumentException $r3;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.work.WorkerParameters;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        if $r1 == null goto label2;
+
+        if $r2 == null goto label1;
+
+        r0.<androidx.work.ListenableWorker: android.content.Context mAppContext> = $r1;
+
+        r0.<androidx.work.ListenableWorker: androidx.work.WorkerParameters mWorkerParams> = $r2;
+
+        return;
+
+     label1:
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("WorkerParameters is null");
+
+        throw $r3;
+
+     label2:
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Application Context is null");
+
+        throw $r3;
+    }
+
+    public final android.content.Context getApplicationContext()
+    {
+        androidx.work.ListenableWorker r0;
+        android.content.Context r1;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        r1 = r0.<androidx.work.ListenableWorker: android.content.Context mAppContext>;
+
+        return r1;
+    }
+
+    public java.util.concurrent.Executor getBackgroundExecutor()
+    {
+        androidx.work.WorkerParameters $r2;
+        androidx.work.ListenableWorker r0;
+        java.util.concurrent.Executor $r1;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        $r2 = r0.<androidx.work.ListenableWorker: androidx.work.WorkerParameters mWorkerParams>;
+
+        $r1 = virtualinvoke $r2.<androidx.work.WorkerParameters: java.util.concurrent.Executor getBackgroundExecutor()>();
+
+        return $r1;
+    }
+
+    public com.google.common.util.concurrent.ListenableFuture getForegroundInfoAsync()
+    {
+        androidx.work.ListenableWorker r0;
+        java.lang.IllegalStateException $r1;
+        androidx.work.impl.utils.futures.SettableFuture $r2;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        $r2 = staticinvoke <androidx.work.impl.utils.futures.SettableFuture: androidx.work.impl.utils.futures.SettableFuture create()>();
+
+        $r1 = new java.lang.IllegalStateException;
+
+        specialinvoke $r1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Expedited WorkRequests require a ListenableWorker to provide an implementation for `getForegroundInfoAsync()`");
+
+        virtualinvoke $r2.<androidx.work.impl.utils.futures.SettableFuture: boolean setException(java.lang.Throwable)>($r1);
+
+        return $r2;
+    }
+
+    public final java.util.UUID getId()
+    {
+        androidx.work.WorkerParameters $r2;
+        androidx.work.ListenableWorker r0;
+        java.util.UUID $r1;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        $r2 = r0.<androidx.work.ListenableWorker: androidx.work.WorkerParameters mWorkerParams>;
+
+        $r1 = virtualinvoke $r2.<androidx.work.WorkerParameters: java.util.UUID getId()>();
+
+        return $r1;
+    }
+
+    public final androidx.work.Data getInputData()
+    {
+        androidx.work.WorkerParameters $r2;
+        androidx.work.ListenableWorker r0;
+        androidx.work.Data $r1;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        $r2 = r0.<androidx.work.ListenableWorker: androidx.work.WorkerParameters mWorkerParams>;
+
+        $r1 = virtualinvoke $r2.<androidx.work.WorkerParameters: androidx.work.Data getInputData()>();
+
+        return $r1;
+    }
+
+    public final android.net.Network getNetwork()
+    {
+        androidx.work.WorkerParameters $r2;
+        androidx.work.ListenableWorker r0;
+        android.net.Network $r1;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        $r2 = r0.<androidx.work.ListenableWorker: androidx.work.WorkerParameters mWorkerParams>;
+
+        $r1 = virtualinvoke $r2.<androidx.work.WorkerParameters: android.net.Network getNetwork()>();
+
+        return $r1;
+    }
+
+    public final int getRunAttemptCount()
+    {
+        int $i0;
+        androidx.work.WorkerParameters $r1;
+        androidx.work.ListenableWorker r0;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        $r1 = r0.<androidx.work.ListenableWorker: androidx.work.WorkerParameters mWorkerParams>;
+
+        $i0 = virtualinvoke $r1.<androidx.work.WorkerParameters: int getRunAttemptCount()>();
+
+        return $i0;
+    }
+
+    public final java.util.Set getTags()
+    {
+        androidx.work.WorkerParameters $r2;
+        androidx.work.ListenableWorker r0;
+        java.util.Set $r1;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        $r2 = r0.<androidx.work.ListenableWorker: androidx.work.WorkerParameters mWorkerParams>;
+
+        $r1 = virtualinvoke $r2.<androidx.work.WorkerParameters: java.util.Set getTags()>();
+
+        return $r1;
+    }
+
+    public androidx.work.impl.utils.taskexecutor.TaskExecutor getTaskExecutor()
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r1;
+        androidx.work.WorkerParameters $r2;
+        androidx.work.ListenableWorker r0;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        $r2 = r0.<androidx.work.ListenableWorker: androidx.work.WorkerParameters mWorkerParams>;
+
+        $r1 = virtualinvoke $r2.<androidx.work.WorkerParameters: androidx.work.impl.utils.taskexecutor.TaskExecutor getTaskExecutor()>();
+
+        return $r1;
+    }
+
+    public final java.util.List getTriggeredContentAuthorities()
+    {
+        androidx.work.WorkerParameters $r2;
+        androidx.work.ListenableWorker r0;
+        java.util.List $r1;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        $r2 = r0.<androidx.work.ListenableWorker: androidx.work.WorkerParameters mWorkerParams>;
+
+        $r1 = virtualinvoke $r2.<androidx.work.WorkerParameters: java.util.List getTriggeredContentAuthorities()>();
+
+        return $r1;
+    }
+
+    public final java.util.List getTriggeredContentUris()
+    {
+        androidx.work.WorkerParameters $r2;
+        androidx.work.ListenableWorker r0;
+        java.util.List $r1;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        $r2 = r0.<androidx.work.ListenableWorker: androidx.work.WorkerParameters mWorkerParams>;
+
+        $r1 = virtualinvoke $r2.<androidx.work.WorkerParameters: java.util.List getTriggeredContentUris()>();
+
+        return $r1;
+    }
+
+    public androidx.work.WorkerFactory getWorkerFactory()
+    {
+        androidx.work.WorkerParameters $r2;
+        androidx.work.ListenableWorker r0;
+        androidx.work.WorkerFactory $r1;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        $r2 = r0.<androidx.work.ListenableWorker: androidx.work.WorkerParameters mWorkerParams>;
+
+        $r1 = virtualinvoke $r2.<androidx.work.WorkerParameters: androidx.work.WorkerFactory getWorkerFactory()>();
+
+        return $r1;
+    }
+
+    public boolean isRunInForeground()
+    {
+        androidx.work.ListenableWorker r0;
+        boolean z0;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        z0 = r0.<androidx.work.ListenableWorker: boolean mRunInForeground>;
+
+        return z0;
+    }
+
+    public final boolean isStopped()
+    {
+        androidx.work.ListenableWorker r0;
+        boolean z0;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        z0 = r0.<androidx.work.ListenableWorker: boolean mStopped>;
+
+        return z0;
+    }
+
+    public final boolean isUsed()
+    {
+        androidx.work.ListenableWorker r0;
+        boolean z0;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        z0 = r0.<androidx.work.ListenableWorker: boolean mUsed>;
+
+        return z0;
+    }
+
+    public void onStopped()
+    {
+        androidx.work.ListenableWorker r0;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        return;
+    }
+
+    public final com.google.common.util.concurrent.ListenableFuture setForegroundAsync(androidx.work.ForegroundInfo)
+    {
+        android.content.Context $r4;
+        com.google.common.util.concurrent.ListenableFuture $r6;
+        androidx.work.ForegroundInfo $r1;
+        androidx.work.ForegroundUpdater $r3;
+        androidx.work.WorkerParameters $r2;
+        androidx.work.ListenableWorker r0;
+        java.util.UUID $r5;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        $r1 := @parameter0: androidx.work.ForegroundInfo;
+
+        r0.<androidx.work.ListenableWorker: boolean mRunInForeground> = 1;
+
+        $r2 = r0.<androidx.work.ListenableWorker: androidx.work.WorkerParameters mWorkerParams>;
+
+        $r3 = virtualinvoke $r2.<androidx.work.WorkerParameters: androidx.work.ForegroundUpdater getForegroundUpdater()>();
+
+        $r4 = virtualinvoke r0.<androidx.work.ListenableWorker: android.content.Context getApplicationContext()>();
+
+        $r5 = virtualinvoke r0.<androidx.work.ListenableWorker: java.util.UUID getId()>();
+
+        $r6 = interfaceinvoke $r3.<androidx.work.ForegroundUpdater: com.google.common.util.concurrent.ListenableFuture setForegroundAsync(android.content.Context,java.util.UUID,androidx.work.ForegroundInfo)>($r4, $r5, $r1);
+
+        return $r6;
+    }
+
+    public com.google.common.util.concurrent.ListenableFuture setProgressAsync(androidx.work.Data)
+    {
+        androidx.work.ProgressUpdater $r3;
+        android.content.Context $r4;
+        com.google.common.util.concurrent.ListenableFuture $r6;
+        androidx.work.WorkerParameters $r2;
+        androidx.work.ListenableWorker r0;
+        java.util.UUID $r5;
+        androidx.work.Data $r1;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        $r1 := @parameter0: androidx.work.Data;
+
+        $r2 = r0.<androidx.work.ListenableWorker: androidx.work.WorkerParameters mWorkerParams>;
+
+        $r3 = virtualinvoke $r2.<androidx.work.WorkerParameters: androidx.work.ProgressUpdater getProgressUpdater()>();
+
+        $r4 = virtualinvoke r0.<androidx.work.ListenableWorker: android.content.Context getApplicationContext()>();
+
+        $r5 = virtualinvoke r0.<androidx.work.ListenableWorker: java.util.UUID getId()>();
+
+        $r6 = interfaceinvoke $r3.<androidx.work.ProgressUpdater: com.google.common.util.concurrent.ListenableFuture updateProgress(android.content.Context,java.util.UUID,androidx.work.Data)>($r4, $r5, $r1);
+
+        return $r6;
+    }
+
+    public void setRunInForeground(boolean)
+    {
+        androidx.work.ListenableWorker r0;
+        boolean $z0;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.work.ListenableWorker: boolean mRunInForeground> = $z0;
+
+        return;
+    }
+
+    public final void setUsed()
+    {
+        androidx.work.ListenableWorker r0;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        r0.<androidx.work.ListenableWorker: boolean mUsed> = 1;
+
+        return;
+    }
+
+    public abstract com.google.common.util.concurrent.ListenableFuture startWork();
+
+    public final void stop()
+    {
+        androidx.work.ListenableWorker r0;
+
+        r0 := @this: androidx.work.ListenableWorker;
+
+        r0.<androidx.work.ListenableWorker: boolean mStopped> = 1;
+
+        virtualinvoke r0.<androidx.work.ListenableWorker: void onStopped()>();
+
+        return;
+    }
+}

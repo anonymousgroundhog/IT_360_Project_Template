@@ -1,0 +1,207 @@
+public final class com.google.android.gms.internal.ads.zzgpw extends java.lang.Object
+{
+    private java.lang.Integer zza;
+    private java.lang.Integer zzb;
+    private com.google.android.gms.internal.ads.zzgpx zzc;
+
+    private void <init>()
+    {
+        com.google.android.gms.internal.ads.zzgpw r0;
+        java.lang.NullPointerException r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgpw;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzgpw: java.lang.Integer zza> = null;
+
+        r0.<com.google.android.gms.internal.ads.zzgpw: java.lang.Integer zzb> = null;
+
+        r1 = new java.lang.NullPointerException;
+
+        specialinvoke r1.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+        throw r1;
+    }
+
+    void <init>(com.google.android.gms.internal.ads.zzgpv)
+    {
+        com.google.android.gms.internal.ads.zzgpx $r2;
+        com.google.android.gms.internal.ads.zzgpw r0;
+        com.google.android.gms.internal.ads.zzgpv $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgpw;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzgpv;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzgpw: java.lang.Integer zza> = null;
+
+        r0.<com.google.android.gms.internal.ads.zzgpw: java.lang.Integer zzb> = null;
+
+        $r2 = <com.google.android.gms.internal.ads.zzgpx: com.google.android.gms.internal.ads.zzgpx zzd>;
+
+        r0.<com.google.android.gms.internal.ads.zzgpw: com.google.android.gms.internal.ads.zzgpx zzc> = $r2;
+
+        return;
+    }
+
+    public final com.google.android.gms.internal.ads.zzgpw zza(int) throws java.security.GeneralSecurityException
+    {
+        java.lang.Object[] $r3;
+        int $i0;
+        java.lang.String $r4;
+        com.google.android.gms.internal.ads.zzgpw r0;
+        java.lang.Integer $r2;
+        java.security.InvalidAlgorithmParameterException $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgpw;
+
+        $i0 := @parameter0: int;
+
+        if $i0 == 16 goto label2;
+
+        if $i0 != 32 goto label1;
+
+        goto label2;
+
+     label1:
+        $i0 = $i0 * 8;
+
+        $r1 = new java.security.InvalidAlgorithmParameterException;
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r3 = newarray (java.lang.Object)[1];
+
+        $r3[0] = $r2;
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Invalid key size %d; only 128-bit and 256-bit AES keys are supported", $r3);
+
+        specialinvoke $r1.<java.security.InvalidAlgorithmParameterException: void <init>(java.lang.String)>($r4);
+
+        throw $r1;
+
+     label2:
+        $r2 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        r0.<com.google.android.gms.internal.ads.zzgpw: java.lang.Integer zza> = $r2;
+
+        return r0;
+    }
+
+    public final com.google.android.gms.internal.ads.zzgpw zzb(int) throws java.security.GeneralSecurityException
+    {
+        java.security.GeneralSecurityException $r3;
+        int $i0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r4;
+        com.google.android.gms.internal.ads.zzgpw r0;
+        java.lang.Integer $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgpw;
+
+        $i0 := @parameter0: int;
+
+        if $i0 < 10 goto label1;
+
+        if $i0 > 16 goto label1;
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        r0.<com.google.android.gms.internal.ads.zzgpw: java.lang.Integer zzb> = $r2;
+
+        return r0;
+
+     label1:
+        $r3 = new java.security.GeneralSecurityException;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Invalid tag size for AesCmacParameters: ");
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r4 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r3.<java.security.GeneralSecurityException: void <init>(java.lang.String)>($r4);
+
+        throw $r3;
+    }
+
+    public final com.google.android.gms.internal.ads.zzgpw zzc(com.google.android.gms.internal.ads.zzgpx)
+    {
+        com.google.android.gms.internal.ads.zzgpx $r1;
+        com.google.android.gms.internal.ads.zzgpw r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgpw;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzgpx;
+
+        r0.<com.google.android.gms.internal.ads.zzgpw: com.google.android.gms.internal.ads.zzgpx zzc> = $r1;
+
+        return r0;
+    }
+
+    public final com.google.android.gms.internal.ads.zzgpz zzd() throws java.security.GeneralSecurityException
+    {
+        java.lang.Integer $r2, $r3;
+        com.google.android.gms.internal.ads.zzgpz $r4;
+        com.google.android.gms.internal.ads.zzgpx $r1;
+        java.security.GeneralSecurityException $r5;
+        int $i0, $i1;
+        com.google.android.gms.internal.ads.zzgpw r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgpw;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzgpw: java.lang.Integer zza>;
+
+        if $r2 == null goto label3;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzgpw: java.lang.Integer zzb>;
+
+        if $r3 == null goto label2;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgpw: com.google.android.gms.internal.ads.zzgpx zzc>;
+
+        if $r1 == null goto label1;
+
+        $r4 = new com.google.android.gms.internal.ads.zzgpz;
+
+        $i0 = virtualinvoke $r2.<java.lang.Integer: int intValue()>();
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzgpw: java.lang.Integer zzb>;
+
+        $i1 = virtualinvoke $r2.<java.lang.Integer: int intValue()>();
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgpw: com.google.android.gms.internal.ads.zzgpx zzc>;
+
+        specialinvoke $r4.<com.google.android.gms.internal.ads.zzgpz: void <init>(int,int,com.google.android.gms.internal.ads.zzgpx,com.google.android.gms.internal.ads.zzgpy)>($i0, $i1, $r1, null);
+
+        return $r4;
+
+     label1:
+        $r5 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r5.<java.security.GeneralSecurityException: void <init>(java.lang.String)>("variant not set");
+
+        throw $r5;
+
+     label2:
+        $r5 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r5.<java.security.GeneralSecurityException: void <init>(java.lang.String)>("tag size not set");
+
+        throw $r5;
+
+     label3:
+        $r5 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r5.<java.security.GeneralSecurityException: void <init>(java.lang.String)>("key size not set");
+
+        throw $r5;
+    }
+}

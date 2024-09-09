@@ -1,0 +1,870 @@
+final class com.google.android.gms.ads.nonagon.signalgeneration.zzw extends java.lang.Object implements com.google.android.gms.internal.ads.zzgej
+{
+    final com.google.common.util.concurrent.ListenableFuture zza;
+    final com.google.android.gms.internal.ads.zzccx zzb;
+    final com.google.android.gms.internal.ads.zzccq zzc;
+    final com.google.android.gms.internal.ads.zzfmo zzd;
+    final long zze;
+    final com.google.android.gms.ads.nonagon.signalgeneration.zzaa zzf;
+
+    void <init>(com.google.android.gms.ads.nonagon.signalgeneration.zzaa, com.google.common.util.concurrent.ListenableFuture, com.google.android.gms.internal.ads.zzccx, com.google.android.gms.internal.ads.zzccq, com.google.android.gms.internal.ads.zzfmo, long)
+    {
+        com.google.android.gms.ads.nonagon.signalgeneration.zzw r0;
+        com.google.android.gms.internal.ads.zzccq $r4;
+        com.google.android.gms.ads.nonagon.signalgeneration.zzaa $r1;
+        com.google.common.util.concurrent.ListenableFuture $r2;
+        com.google.android.gms.internal.ads.zzccx $r3;
+        com.google.android.gms.internal.ads.zzfmo $r5;
+        long $l0;
+
+        r0 := @this: com.google.android.gms.ads.nonagon.signalgeneration.zzw;
+
+        $r1 := @parameter0: com.google.android.gms.ads.nonagon.signalgeneration.zzaa;
+
+        $r2 := @parameter1: com.google.common.util.concurrent.ListenableFuture;
+
+        $r3 := @parameter2: com.google.android.gms.internal.ads.zzccx;
+
+        $r4 := @parameter3: com.google.android.gms.internal.ads.zzccq;
+
+        $r5 := @parameter4: com.google.android.gms.internal.ads.zzfmo;
+
+        $l0 := @parameter5: long;
+
+        r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.common.util.concurrent.ListenableFuture zza> = $r2;
+
+        r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzccx zzb> = $r3;
+
+        r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzccq zzc> = $r4;
+
+        r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzfmo zzd> = $r5;
+
+        r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: long zze> = $l0;
+
+        r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.ads.nonagon.signalgeneration.zzaa zzf> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public final void zza(java.lang.Throwable)
+    {
+        java.lang.Throwable $r1;
+        com.google.common.util.concurrent.ListenableFuture $r13;
+        android.util.Pair $r9, $r10;
+        long $l0, $l1;
+        com.google.android.gms.internal.ads.zzdwk $r7;
+        android.os.RemoteException $r22;
+        com.google.android.gms.ads.nonagon.signalgeneration.zzw r0;
+        com.google.android.gms.ads.nonagon.signalgeneration.zzaa $r6;
+        java.lang.Boolean $r18;
+        java.lang.String $r3, $r4, $r11;
+        com.google.android.gms.internal.ads.zzbhm $r16;
+        com.google.android.gms.internal.ads.zzdwa $r8;
+        com.google.android.gms.internal.ads.zzcdl $r5;
+        boolean $z0;
+        com.google.android.gms.common.util.Clock $r2;
+        com.google.android.gms.internal.ads.zzccx $r14;
+        com.google.android.gms.internal.ads.zzccq $r21;
+        android.util.Pair[] $r12;
+        com.google.android.gms.internal.ads.zzfmz $r15;
+        java.lang.Object $r17;
+        com.google.android.gms.internal.ads.zzfmo $r19;
+        java.lang.StringBuilder $r20;
+
+        r0 := @this: com.google.android.gms.ads.nonagon.signalgeneration.zzw;
+
+        $r1 := @parameter0: java.lang.Throwable;
+
+        $r2 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.common.util.Clock zzB()>();
+
+        $l0 = interfaceinvoke $r2.<com.google.android.gms.common.util.Clock: long currentTimeMillis()>();
+
+        $l1 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: long zze>;
+
+        $l0 = $l0 - $l1;
+
+        $r3 = virtualinvoke $r1.<java.lang.Throwable: java.lang.String getMessage()>();
+
+        $r4 = $r3;
+
+        $r5 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzcdl zzo()>();
+
+        virtualinvoke $r5.<com.google.android.gms.internal.ads.zzcdl: void zzw(java.lang.Throwable,java.lang.String)>($r1, "SignalGeneratorImpl.generateSignals");
+
+        $r6 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.ads.nonagon.signalgeneration.zzaa zzf>;
+
+        $r7 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: com.google.android.gms.internal.ads.zzdwk zzq(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r6);
+
+        $r8 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: com.google.android.gms.internal.ads.zzdwa zzp(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r6);
+
+        $r9 = new android.util.Pair;
+
+        specialinvoke $r9.<android.util.Pair: void <init>(java.lang.Object,java.lang.Object)>("sgf_reason", $r3);
+
+        $r10 = new android.util.Pair;
+
+        $r11 = staticinvoke <java.lang.String: java.lang.String valueOf(long)>($l0);
+
+        specialinvoke $r10.<android.util.Pair: void <init>(java.lang.Object,java.lang.Object)>("tqgt", $r11);
+
+        $r12 = newarray (android.util.Pair)[2];
+
+        $r12[0] = $r9;
+
+        $r12[1] = $r10;
+
+        staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzf: void zzc(com.google.android.gms.internal.ads.zzdwk,com.google.android.gms.internal.ads.zzdwa,java.lang.String,android.util.Pair[])>($r7, $r8, "sgf", $r12);
+
+        $r13 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.common.util.concurrent.ListenableFuture zza>;
+
+        $r14 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzccx zzb>;
+
+        $r15 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: com.google.android.gms.internal.ads.zzfmz zzs(com.google.common.util.concurrent.ListenableFuture,com.google.android.gms.internal.ads.zzccx)>($r13, $r14);
+
+        $r16 = <com.google.android.gms.internal.ads.zzbht: com.google.android.gms.internal.ads.zzbhm zze>;
+
+        $r17 = virtualinvoke $r16.<com.google.android.gms.internal.ads.zzbhm: java.lang.Object zze()>();
+
+        $r18 = (java.lang.Boolean) $r17;
+
+        $z0 = virtualinvoke $r18.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label01;
+
+        if $r15 == null goto label01;
+
+        $r19 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzfmo zzd>;
+
+        interfaceinvoke $r19.<com.google.android.gms.internal.ads.zzfmo: com.google.android.gms.internal.ads.zzfmo zzg(java.lang.Throwable)>($r1);
+
+        interfaceinvoke $r19.<com.google.android.gms.internal.ads.zzfmo: com.google.android.gms.internal.ads.zzfmo zzf(boolean)>(0);
+
+        virtualinvoke $r15.<com.google.android.gms.internal.ads.zzfmz: com.google.android.gms.internal.ads.zzfmz zza(com.google.android.gms.internal.ads.zzfmo)>($r19);
+
+        virtualinvoke $r15.<com.google.android.gms.internal.ads.zzfmz: void zzg()>();
+
+     label01:
+        $r11 = "Unknown format is no longer supported.";
+
+     label02:
+        $z0 = virtualinvoke $r11.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+     label03:
+        if $z0 == 0 goto label04;
+
+        goto label07;
+
+     label04:
+        $r20 = new java.lang.StringBuilder;
+
+     label05:
+        specialinvoke $r20.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Internal error. ");
+
+        virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label06:
+        $r4 = $r3;
+
+     label07:
+        $r21 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzccq zzc>;
+
+     label08:
+        interfaceinvoke $r21.<com.google.android.gms.internal.ads.zzccq: void zzb(java.lang.String)>($r4);
+
+     label09:
+        return;
+
+     label10:
+        $r22 := @caughtexception;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzh(java.lang.String,java.lang.Throwable)>("", $r22);
+
+        return;
+
+        catch android.os.RemoteException from label02 to label03 with label10;
+        catch android.os.RemoteException from label05 to label06 with label10;
+        catch android.os.RemoteException from label08 to label09 with label10;
+    }
+
+    public final volatile void zzb(java.lang.Object)
+    {
+        android.os.Bundle $r23;
+        com.google.android.gms.ads.nonagon.signalgeneration.zzw r0;
+        org.json.JSONException $r29, $r32;
+        org.json.JSONObject $r22, $r35;
+        java.util.concurrent.atomic.AtomicInteger $r24;
+        com.google.android.gms.internal.ads.zzbhm $r15;
+        boolean $z0;
+        com.google.android.gms.common.util.Clock $r17;
+        com.google.android.gms.internal.ads.zzccx $r5;
+        com.google.android.gms.internal.ads.zzccq $r12;
+        com.google.android.gms.internal.ads.zzfmz $r6;
+        com.google.android.gms.internal.ads.zzfmo $r16;
+        java.lang.StringBuilder $r36;
+        com.google.android.gms.ads.internal.util.zzt $r25;
+        com.google.android.gms.ads.nonagon.signalgeneration.zzam $r4;
+        java.lang.Throwable $r30;
+        android.content.Context $r27;
+        com.google.common.util.concurrent.ListenableFuture $r3;
+        android.util.Pair $r21, $r34;
+        java.util.concurrent.atomic.AtomicBoolean $r8;
+        android.os.RemoteException $r13, $r31;
+        long $l0, $l1;
+        com.google.android.gms.internal.ads.zzdwk $r18;
+        com.google.android.gms.internal.ads.zzbga $r10;
+        com.google.android.gms.internal.ads.zzbfu $r9;
+        com.google.android.gms.ads.nonagon.signalgeneration.zzaa $r7, $r26;
+        int $i2;
+        java.lang.Boolean $r11;
+        java.lang.String $r2, $r14;
+        com.google.android.gms.internal.ads.zzdwa $r19;
+        com.google.android.gms.internal.ads.zzcdl $r33;
+        android.util.Pair[] $r20;
+        java.lang.Object $r1;
+        com.google.android.gms.internal.ads.zzcei $r28;
+
+        r0 := @this: com.google.android.gms.ads.nonagon.signalgeneration.zzw;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = "QueryInfo generation has been disabled.";
+
+        $r3 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.common.util.concurrent.ListenableFuture zza>;
+
+        $r4 = (com.google.android.gms.ads.nonagon.signalgeneration.zzam) $r1;
+
+        $r5 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzccx zzb>;
+
+        $r6 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: com.google.android.gms.internal.ads.zzfmz zzs(com.google.common.util.concurrent.ListenableFuture,com.google.android.gms.internal.ads.zzccx)>($r3, $r5);
+
+        $r7 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.ads.nonagon.signalgeneration.zzaa zzf>;
+
+        $r8 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: java.util.concurrent.atomic.AtomicBoolean zzE(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+        virtualinvoke $r8.<java.util.concurrent.atomic.AtomicBoolean: void set(boolean)>(1);
+
+        $r9 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzhD>;
+
+        $r10 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r1 = virtualinvoke $r10.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r9);
+
+        $r11 = (java.lang.Boolean) $r1;
+
+        $z0 = virtualinvoke $r11.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label005;
+
+        $r12 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzccq zzc>;
+
+     label001:
+        interfaceinvoke $r12.<com.google.android.gms.internal.ads.zzccq: void zzb(java.lang.String)>("QueryInfo generation has been disabled.");
+
+     label002:
+        goto label004;
+
+     label003:
+        $r13 := @caughtexception;
+
+        $r14 = virtualinvoke $r13.<java.lang.Object: java.lang.String toString()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.String: java.lang.String concat(java.lang.String)>($r14);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzg(java.lang.String)>($r2);
+
+     label004:
+        $r15 = <com.google.android.gms.internal.ads.zzbht: com.google.android.gms.internal.ads.zzbhm zze>;
+
+        $r1 = virtualinvoke $r15.<com.google.android.gms.internal.ads.zzbhm: java.lang.Object zze()>();
+
+        $r11 = (java.lang.Boolean) $r1;
+
+        $z0 = virtualinvoke $r11.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label104;
+
+        if $r6 == null goto label107;
+
+        $r16 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzfmo zzd>;
+
+        interfaceinvoke $r16.<com.google.android.gms.internal.ads.zzfmo: com.google.android.gms.internal.ads.zzfmo zzc(java.lang.String)>("QueryInfo generation has been disabled.");
+
+        interfaceinvoke $r16.<com.google.android.gms.internal.ads.zzfmo: com.google.android.gms.internal.ads.zzfmo zzf(boolean)>(0);
+
+        virtualinvoke $r6.<com.google.android.gms.internal.ads.zzfmz: com.google.android.gms.internal.ads.zzfmz zza(com.google.android.gms.internal.ads.zzfmo)>($r16);
+
+        virtualinvoke $r6.<com.google.android.gms.internal.ads.zzfmz: void zzg()>();
+
+        return;
+
+     label005:
+        $r17 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.common.util.Clock zzB()>();
+
+        $l0 = interfaceinvoke $r17.<com.google.android.gms.common.util.Clock: long currentTimeMillis()>();
+
+        $l1 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: long zze>;
+
+        $l0 = $l0 - $l1;
+
+        if $r4 != null goto label018;
+
+     label006:
+        $r12 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzccq zzc>;
+
+     label007:
+        interfaceinvoke $r12.<com.google.android.gms.internal.ads.zzccq: void zzc(java.lang.String,java.lang.String,android.os.Bundle)>(null, null, null);
+
+     label008:
+        $r7 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.ads.nonagon.signalgeneration.zzaa zzf>;
+
+     label009:
+        $r18 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: com.google.android.gms.internal.ads.zzdwk zzq(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+        $r19 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: com.google.android.gms.internal.ads.zzdwa zzp(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+     label010:
+        $r20 = newarray (android.util.Pair)[1];
+
+        $r34 = new android.util.Pair;
+
+     label011:
+        specialinvoke $r34.<android.util.Pair: void <init>(java.lang.Object,java.lang.Object)>("rid", "-1");
+
+     label012:
+        $r20[0] = $r34;
+
+     label013:
+        staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzf: void zzc(com.google.android.gms.internal.ads.zzdwk,com.google.android.gms.internal.ads.zzdwa,java.lang.String,android.util.Pair[])>($r18, $r19, "sgs", $r20);
+
+     label014:
+        $r16 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzfmo zzd>;
+
+     label015:
+        interfaceinvoke $r16.<com.google.android.gms.internal.ads.zzfmo: com.google.android.gms.internal.ads.zzfmo zzf(boolean)>(1);
+
+     label016:
+        $r15 = <com.google.android.gms.internal.ads.zzbht: com.google.android.gms.internal.ads.zzbhm zze>;
+
+        $r1 = virtualinvoke $r15.<com.google.android.gms.internal.ads.zzbhm: java.lang.Object zze()>();
+
+        $r11 = (java.lang.Boolean) $r1;
+
+        $z0 = virtualinvoke $r11.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label107;
+
+        if $r6 == null goto label107;
+
+     label017:
+        $r16 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzfmo zzd>;
+
+        virtualinvoke $r6.<com.google.android.gms.internal.ads.zzfmz: com.google.android.gms.internal.ads.zzfmz zza(com.google.android.gms.internal.ads.zzfmo)>($r16);
+
+        virtualinvoke $r6.<com.google.android.gms.internal.ads.zzfmz: void zzg()>();
+
+        return;
+
+     label018:
+        $r35 = new org.json.JSONObject;
+
+     label019:
+        $r2 = $r4.<com.google.android.gms.ads.nonagon.signalgeneration.zzam: java.lang.String zzb>;
+
+     label020:
+        specialinvoke $r35.<org.json.JSONObject: void <init>(java.lang.String)>($r2);
+
+     label021:
+        $r2 = virtualinvoke $r35.<org.json.JSONObject: java.lang.String optString(java.lang.String,java.lang.String)>("request_id", "");
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r2);
+
+     label022:
+        if $z0 == 0 goto label035;
+
+     label023:
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>("The request ID is empty in request JSON.");
+
+     label024:
+        $r12 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzccq zzc>;
+
+     label025:
+        interfaceinvoke $r12.<com.google.android.gms.internal.ads.zzccq: void zzb(java.lang.String)>("Internal error: request ID is empty in request JSON.");
+
+     label026:
+        $r7 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.ads.nonagon.signalgeneration.zzaa zzf>;
+
+     label027:
+        $r18 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: com.google.android.gms.internal.ads.zzdwk zzq(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+        $r19 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: com.google.android.gms.internal.ads.zzdwa zzp(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+     label028:
+        $r20 = newarray (android.util.Pair)[1];
+
+        $r34 = new android.util.Pair;
+
+     label029:
+        specialinvoke $r34.<android.util.Pair: void <init>(java.lang.Object,java.lang.Object)>("sgf_reason", "rid_missing");
+
+     label030:
+        $r20[0] = $r34;
+
+     label031:
+        staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzf: void zzc(com.google.android.gms.internal.ads.zzdwk,com.google.android.gms.internal.ads.zzdwa,java.lang.String,android.util.Pair[])>($r18, $r19, "sgf", $r20);
+
+     label032:
+        $r16 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzfmo zzd>;
+
+     label033:
+        interfaceinvoke $r16.<com.google.android.gms.internal.ads.zzfmo: com.google.android.gms.internal.ads.zzfmo zzc(java.lang.String)>("Request ID empty");
+
+        interfaceinvoke $r16.<com.google.android.gms.internal.ads.zzfmo: com.google.android.gms.internal.ads.zzfmo zzf(boolean)>(0);
+
+     label034:
+        $r15 = <com.google.android.gms.internal.ads.zzbht: com.google.android.gms.internal.ads.zzbhm zze>;
+
+        $r1 = virtualinvoke $r15.<com.google.android.gms.internal.ads.zzbhm: java.lang.Object zze()>();
+
+        $r11 = (java.lang.Boolean) $r1;
+
+        $z0 = virtualinvoke $r11.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label107;
+
+        if $r6 == null goto label107;
+
+        goto label017;
+
+     label035:
+        $r7 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.ads.nonagon.signalgeneration.zzaa zzf>;
+
+        $r14 = $r4.<com.google.android.gms.ads.nonagon.signalgeneration.zzam: java.lang.String zzb>;
+
+     label036:
+        $r19 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: com.google.android.gms.internal.ads.zzdwa zzp(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+        staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: void zzK(com.google.android.gms.ads.nonagon.signalgeneration.zzaa,java.lang.String,java.lang.String,com.google.android.gms.internal.ads.zzdwa)>($r7, $r2, $r14, $r19);
+
+     label037:
+        $r23 = $r4.<com.google.android.gms.ads.nonagon.signalgeneration.zzam: android.os.Bundle zzc>;
+
+        $r7 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.ads.nonagon.signalgeneration.zzaa zzf>;
+
+     label038:
+        $z0 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: boolean zzN(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+     label039:
+        if $z0 == 0 goto label045;
+
+        if $r23 == null goto label045;
+
+     label040:
+        $r2 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: java.lang.String zzz(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+     label041:
+        $i2 = virtualinvoke $r23.<android.os.Bundle: int getInt(java.lang.String,int)>($r2, -1);
+
+     label042:
+        if $i2 != -1 goto label045;
+
+     label043:
+        $r7 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.ads.nonagon.signalgeneration.zzaa zzf>;
+
+     label044:
+        $r2 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: java.lang.String zzz(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+        $r24 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: java.util.concurrent.atomic.AtomicInteger zzG(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+        $i2 = virtualinvoke $r24.<java.util.concurrent.atomic.AtomicInteger: int get()>();
+
+        virtualinvoke $r23.<android.os.Bundle: void putInt(java.lang.String,int)>($r2, $i2);
+
+     label045:
+        $r7 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.ads.nonagon.signalgeneration.zzaa zzf>;
+
+     label046:
+        $z0 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: boolean zzO(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+     label047:
+        if $z0 == 0 goto label061;
+
+        if $r23 == null goto label061;
+
+     label048:
+        $r2 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: java.lang.String zzB(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+        $r2 = virtualinvoke $r23.<android.os.Bundle: java.lang.String getString(java.lang.String)>($r2);
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r2);
+
+     label049:
+        if $z0 == 0 goto label061;
+
+     label050:
+        $r7 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.ads.nonagon.signalgeneration.zzaa zzf>;
+
+     label051:
+        $r2 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: java.lang.String zzA(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r2);
+
+     label052:
+        if $z0 == 0 goto label059;
+
+     label053:
+        $r7 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.ads.nonagon.signalgeneration.zzaa zzf>;
+
+     label054:
+        $r25 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.ads.internal.util.zzt zzp()>();
+
+     label055:
+        $r26 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.ads.nonagon.signalgeneration.zzaa zzf>;
+
+     label056:
+        $r27 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: android.content.Context zzc(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r26);
+
+        $r28 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: com.google.android.gms.internal.ads.zzcei zzo(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r26);
+
+     label057:
+        $r2 = $r28.<com.google.android.gms.internal.ads.zzcei: java.lang.String zza>;
+
+     label058:
+        $r2 = virtualinvoke $r25.<com.google.android.gms.ads.internal.util.zzt: java.lang.String zzc(android.content.Context,java.lang.String)>($r27, $r2);
+
+        staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: void zzH(com.google.android.gms.ads.nonagon.signalgeneration.zzaa,java.lang.String)>($r7, $r2);
+
+     label059:
+        $r7 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.ads.nonagon.signalgeneration.zzaa zzf>;
+
+     label060:
+        $r2 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: java.lang.String zzB(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+        $r14 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: java.lang.String zzA(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+        virtualinvoke $r23.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>($r2, $r14);
+
+     label061:
+        $r12 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzccq zzc>;
+
+        $r2 = $r4.<com.google.android.gms.ads.nonagon.signalgeneration.zzam: java.lang.String zza>;
+
+        $r14 = $r4.<com.google.android.gms.ads.nonagon.signalgeneration.zzam: java.lang.String zzb>;
+
+     label062:
+        interfaceinvoke $r12.<com.google.android.gms.internal.ads.zzccq: void zzc(java.lang.String,java.lang.String,android.os.Bundle)>($r2, $r14, $r23);
+
+     label063:
+        $r7 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.ads.nonagon.signalgeneration.zzaa zzf>;
+
+     label064:
+        $r18 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: com.google.android.gms.internal.ads.zzdwk zzq(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+        $r19 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: com.google.android.gms.internal.ads.zzdwa zzp(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+     label065:
+        $r20 = newarray (android.util.Pair)[2];
+
+        $r34 = new android.util.Pair;
+
+     label066:
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(long)>($l0);
+
+        specialinvoke $r34.<android.util.Pair: void <init>(java.lang.Object,java.lang.Object)>("tqgt", $r2);
+
+     label067:
+        $r20[0] = $r34;
+
+        $r34 = new android.util.Pair;
+
+     label068:
+        $r21 = $r34;
+
+        $r2 = "na";
+
+     label069:
+        $r9 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzju>;
+
+     label070:
+        $r10 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r1 = virtualinvoke $r10.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r9);
+
+     label071:
+        $r11 = (java.lang.Boolean) $r1;
+
+     label072:
+        $z0 = virtualinvoke $r11.<java.lang.Boolean: boolean booleanValue()>();
+
+     label073:
+        if $z0 != 0 goto label074;
+
+        goto label079;
+
+     label074:
+        $r22 = virtualinvoke $r35.<org.json.JSONObject: org.json.JSONObject getJSONObject(java.lang.String)>("extras");
+
+        $z0 = virtualinvoke $r22.<org.json.JSONObject: boolean getBoolean(java.lang.String)>("accept_3p_cookie");
+
+     label075:
+        if $z0 == 0 goto label076;
+
+        $r2 = "1";
+
+        goto label079;
+
+     label076:
+        $r2 = "0";
+
+        goto label079;
+
+     label077:
+        $r29 := @caughtexception;
+
+     label078:
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzh(java.lang.String,java.lang.Throwable)>("Error retrieving JSONObject from the requestJson, ", $r29);
+
+     label079:
+        specialinvoke $r34.<android.util.Pair: void <init>(java.lang.Object,java.lang.Object)>("tpc", $r2);
+
+     label080:
+        $r20[1] = $r21;
+
+     label081:
+        staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzf: void zzc(com.google.android.gms.internal.ads.zzdwk,com.google.android.gms.internal.ads.zzdwa,java.lang.String,android.util.Pair[])>($r18, $r19, "sgs", $r20);
+
+     label082:
+        $r16 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzfmo zzd>;
+
+     label083:
+        interfaceinvoke $r16.<com.google.android.gms.internal.ads.zzfmo: com.google.android.gms.internal.ads.zzfmo zzf(boolean)>(1);
+
+     label084:
+        $r15 = <com.google.android.gms.internal.ads.zzbht: com.google.android.gms.internal.ads.zzbhm zze>;
+
+        $r1 = virtualinvoke $r15.<com.google.android.gms.internal.ads.zzbhm: java.lang.Object zze()>();
+
+        $r11 = (java.lang.Boolean) $r1;
+
+        $z0 = virtualinvoke $r11.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label107;
+
+        if $r6 == null goto label107;
+
+        goto label017;
+
+     label085:
+        $r30 := @caughtexception;
+
+        goto label105;
+
+     label086:
+        $r31 := @caughtexception;
+
+        goto label102;
+
+     label087:
+        $r32 := @caughtexception;
+
+     label088:
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>("Failed to create JSON object from the request string.");
+
+     label089:
+        $r12 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzccq zzc>;
+
+     label090:
+        $r2 = virtualinvoke $r32.<java.lang.Object: java.lang.String toString()>();
+
+     label091:
+        $r36 = new java.lang.StringBuilder;
+
+     label092:
+        specialinvoke $r36.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r36.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Internal error for request JSON: ");
+
+        virtualinvoke $r36.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r36.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke $r12.<com.google.android.gms.internal.ads.zzccq: void zzb(java.lang.String)>($r2);
+
+     label093:
+        $r7 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.ads.nonagon.signalgeneration.zzaa zzf>;
+
+     label094:
+        $r18 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: com.google.android.gms.internal.ads.zzdwk zzq(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+        $r19 = staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzaa: com.google.android.gms.internal.ads.zzdwa zzp(com.google.android.gms.ads.nonagon.signalgeneration.zzaa)>($r7);
+
+     label095:
+        $r20 = newarray (android.util.Pair)[1];
+
+        $r34 = new android.util.Pair;
+
+     label096:
+        specialinvoke $r34.<android.util.Pair: void <init>(java.lang.Object,java.lang.Object)>("sgf_reason", "request_invalid");
+
+     label097:
+        $r20[0] = $r34;
+
+     label098:
+        staticinvoke <com.google.android.gms.ads.nonagon.signalgeneration.zzf: void zzc(com.google.android.gms.internal.ads.zzdwk,com.google.android.gms.internal.ads.zzdwa,java.lang.String,android.util.Pair[])>($r18, $r19, "sgf", $r20);
+
+     label099:
+        $r16 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzfmo zzd>;
+
+     label100:
+        interfaceinvoke $r16.<com.google.android.gms.internal.ads.zzfmo: com.google.android.gms.internal.ads.zzfmo zzg(java.lang.Throwable)>($r32);
+
+        interfaceinvoke $r16.<com.google.android.gms.internal.ads.zzfmo: com.google.android.gms.internal.ads.zzfmo zzf(boolean)>(0);
+
+        $r33 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzcdl zzo()>();
+
+        virtualinvoke $r33.<com.google.android.gms.internal.ads.zzcdl: void zzw(java.lang.Throwable,java.lang.String)>($r32, "SignalGeneratorImpl.generateSignals.onSuccess");
+
+     label101:
+        $r15 = <com.google.android.gms.internal.ads.zzbht: com.google.android.gms.internal.ads.zzbhm zze>;
+
+        $r1 = virtualinvoke $r15.<com.google.android.gms.internal.ads.zzbhm: java.lang.Object zze()>();
+
+        $r11 = (java.lang.Boolean) $r1;
+
+        $z0 = virtualinvoke $r11.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label107;
+
+        if $r6 == null goto label107;
+
+        goto label017;
+
+     label102:
+        $r16 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzfmo zzd>;
+
+        interfaceinvoke $r16.<com.google.android.gms.internal.ads.zzfmo: com.google.android.gms.internal.ads.zzfmo zzg(java.lang.Throwable)>($r31);
+
+        interfaceinvoke $r16.<com.google.android.gms.internal.ads.zzfmo: com.google.android.gms.internal.ads.zzfmo zzf(boolean)>(0);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzh(java.lang.String,java.lang.Throwable)>("", $r31);
+
+        $r33 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzcdl zzo()>();
+
+        virtualinvoke $r33.<com.google.android.gms.internal.ads.zzcdl: void zzw(java.lang.Throwable,java.lang.String)>($r31, "SignalGeneratorImpl.generateSignals.onSuccess");
+
+     label103:
+        $r15 = <com.google.android.gms.internal.ads.zzbht: com.google.android.gms.internal.ads.zzbhm zze>;
+
+        $r1 = virtualinvoke $r15.<com.google.android.gms.internal.ads.zzbhm: java.lang.Object zze()>();
+
+        $r11 = (java.lang.Boolean) $r1;
+
+        $z0 = virtualinvoke $r11.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label107;
+
+        if $r6 == null goto label107;
+
+        goto label017;
+
+     label104:
+        return;
+
+     label105:
+        $r15 = <com.google.android.gms.internal.ads.zzbht: com.google.android.gms.internal.ads.zzbhm zze>;
+
+        $r1 = virtualinvoke $r15.<com.google.android.gms.internal.ads.zzbhm: java.lang.Object zze()>();
+
+        $r11 = (java.lang.Boolean) $r1;
+
+        $z0 = virtualinvoke $r11.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label106;
+
+        if $r6 == null goto label106;
+
+        $r16 = r0.<com.google.android.gms.ads.nonagon.signalgeneration.zzw: com.google.android.gms.internal.ads.zzfmo zzd>;
+
+        virtualinvoke $r6.<com.google.android.gms.internal.ads.zzfmz: com.google.android.gms.internal.ads.zzfmz zza(com.google.android.gms.internal.ads.zzfmo)>($r16);
+
+        virtualinvoke $r6.<com.google.android.gms.internal.ads.zzfmz: void zzg()>();
+
+     label106:
+        throw $r30;
+
+     label107:
+        return;
+
+        catch android.os.RemoteException from label001 to label002 with label003;
+        catch android.os.RemoteException from label007 to label008 with label086;
+        catch android.os.RemoteException from label009 to label010 with label086;
+        catch android.os.RemoteException from label011 to label012 with label086;
+        catch android.os.RemoteException from label013 to label014 with label086;
+        catch android.os.RemoteException from label015 to label016 with label086;
+        catch java.lang.Throwable from label006 to label011 with label085;
+        catch java.lang.Throwable from label011 to label016 with label085;
+        catch org.json.JSONException from label020 to label021 with label087;
+        catch android.os.RemoteException from label020 to label021 with label086;
+        catch java.lang.Throwable from label018 to label019 with label085;
+        catch java.lang.Throwable from label019 to label021 with label085;
+        catch android.os.RemoteException from label021 to label022 with label086;
+        catch android.os.RemoteException from label023 to label024 with label086;
+        catch android.os.RemoteException from label025 to label026 with label086;
+        catch android.os.RemoteException from label027 to label028 with label086;
+        catch android.os.RemoteException from label029 to label030 with label086;
+        catch android.os.RemoteException from label031 to label032 with label086;
+        catch android.os.RemoteException from label033 to label034 with label086;
+        catch java.lang.Throwable from label021 to label022 with label085;
+        catch java.lang.Throwable from label023 to label029 with label085;
+        catch java.lang.Throwable from label029 to label034 with label085;
+        catch android.os.RemoteException from label036 to label037 with label086;
+        catch android.os.RemoteException from label038 to label039 with label086;
+        catch android.os.RemoteException from label040 to label041 with label086;
+        catch android.os.RemoteException from label041 to label042 with label086;
+        catch android.os.RemoteException from label044 to label045 with label086;
+        catch android.os.RemoteException from label046 to label047 with label086;
+        catch android.os.RemoteException from label048 to label049 with label086;
+        catch android.os.RemoteException from label051 to label052 with label086;
+        catch android.os.RemoteException from label054 to label055 with label086;
+        catch android.os.RemoteException from label056 to label057 with label086;
+        catch android.os.RemoteException from label058 to label059 with label086;
+        catch android.os.RemoteException from label060 to label061 with label086;
+        catch android.os.RemoteException from label062 to label063 with label086;
+        catch android.os.RemoteException from label064 to label065 with label086;
+        catch android.os.RemoteException from label066 to label067 with label086;
+        catch android.os.RemoteException from label070 to label071 with label086;
+        catch android.os.RemoteException from label072 to label073 with label086;
+        catch java.lang.Throwable from label035 to label039 with label085;
+        catch java.lang.Throwable from label040 to label041 with label085;
+        catch java.lang.Throwable from label041 to label042 with label085;
+        catch java.lang.Throwable from label043 to label047 with label085;
+        catch java.lang.Throwable from label048 to label049 with label085;
+        catch java.lang.Throwable from label050 to label052 with label085;
+        catch java.lang.Throwable from label053 to label066 with label085;
+        catch java.lang.Throwable from label066 to label068 with label085;
+        catch java.lang.Throwable from label069 to label073 with label085;
+        catch org.json.JSONException from label074 to label075 with label077;
+        catch android.os.RemoteException from label074 to label075 with label086;
+        catch java.lang.Throwable from label074 to label075 with label085;
+        catch android.os.RemoteException from label078 to label080 with label086;
+        catch android.os.RemoteException from label081 to label082 with label086;
+        catch android.os.RemoteException from label083 to label084 with label086;
+        catch java.lang.Throwable from label078 to label084 with label085;
+        catch android.os.RemoteException from label088 to label089 with label086;
+        catch android.os.RemoteException from label090 to label091 with label086;
+        catch android.os.RemoteException from label092 to label093 with label086;
+        catch android.os.RemoteException from label094 to label095 with label086;
+        catch android.os.RemoteException from label096 to label097 with label086;
+        catch android.os.RemoteException from label098 to label099 with label086;
+        catch android.os.RemoteException from label100 to label101 with label086;
+        catch java.lang.Throwable from label088 to label092 with label085;
+        catch java.lang.Throwable from label092 to label096 with label085;
+        catch java.lang.Throwable from label096 to label101 with label085;
+        catch java.lang.Throwable from label102 to label103 with label085;
+    }
+}

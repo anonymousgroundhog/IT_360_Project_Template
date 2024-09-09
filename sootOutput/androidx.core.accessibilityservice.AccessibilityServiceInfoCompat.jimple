@@ -1,0 +1,227 @@
+public final class androidx.core.accessibilityservice.AccessibilityServiceInfoCompat extends java.lang.Object
+{
+    public static final int CAPABILITY_CAN_FILTER_KEY_EVENTS;
+    public static final int CAPABILITY_CAN_REQUEST_ENHANCED_WEB_ACCESSIBILITY;
+    public static final int CAPABILITY_CAN_REQUEST_TOUCH_EXPLORATION;
+    public static final int CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT;
+    public static final int FEEDBACK_ALL_MASK;
+    public static final int FEEDBACK_BRAILLE;
+    public static final int FLAG_INCLUDE_NOT_IMPORTANT_VIEWS;
+    public static final int FLAG_REPORT_VIEW_IDS;
+    public static final int FLAG_REQUEST_ENHANCED_WEB_ACCESSIBILITY;
+    public static final int FLAG_REQUEST_FILTER_KEY_EVENTS;
+    public static final int FLAG_REQUEST_TOUCH_EXPLORATION_MODE;
+
+    private void <init>()
+    {
+        androidx.core.accessibilityservice.AccessibilityServiceInfoCompat r0;
+
+        r0 := @this: androidx.core.accessibilityservice.AccessibilityServiceInfoCompat;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.lang.String capabilityToString(int)
+    {
+        int $i0;
+
+        $i0 := @parameter0: int;
+
+        lookupswitch($i0)
+        {
+            case 1: goto label5;
+            case 2: goto label4;
+            case 4: goto label3;
+            case 8: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return "UNKNOWN";
+
+     label2:
+        return "CAPABILITY_CAN_FILTER_KEY_EVENTS";
+
+     label3:
+        return "CAPABILITY_CAN_REQUEST_ENHANCED_WEB_ACCESSIBILITY";
+
+     label4:
+        return "CAPABILITY_CAN_REQUEST_TOUCH_EXPLORATION";
+
+     label5:
+        return "CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT";
+    }
+
+    public static java.lang.String feedbackTypeToString(int)
+    {
+        int $i0, $i1, $i2;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r0;
+
+        $i0 := @parameter0: int;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[");
+
+     label1:
+        if $i0 <= 0 goto label9;
+
+        $i1 = staticinvoke <java.lang.Integer: int numberOfTrailingZeros(int)>($i0);
+
+        $i1 = 1 << $i1;
+
+        $i2 = $i1 ^ -1;
+
+        $i0 = $i0 & $i2;
+
+        $i2 = virtualinvoke $r1.<java.lang.StringBuilder: int length()>();
+
+        if $i2 <= 1 goto label2;
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", ");
+
+     label2:
+        lookupswitch($i1)
+        {
+            case 1: goto label8;
+            case 2: goto label7;
+            case 4: goto label6;
+            case 8: goto label5;
+            case 16: goto label4;
+            default: goto label3;
+        };
+
+     label3:
+        goto label1;
+
+     label4:
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("FEEDBACK_GENERIC");
+
+        goto label1;
+
+     label5:
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("FEEDBACK_VISUAL");
+
+        goto label1;
+
+     label6:
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("FEEDBACK_AUDIBLE");
+
+        goto label1;
+
+     label7:
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("FEEDBACK_HAPTIC");
+
+        goto label1;
+
+     label8:
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("FEEDBACK_SPOKEN");
+
+        goto label1;
+
+     label9:
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r0 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r0;
+    }
+
+    public static java.lang.String flagToString(int)
+    {
+        int $i0;
+
+        $i0 := @parameter0: int;
+
+        lookupswitch($i0)
+        {
+            case 1: goto label7;
+            case 2: goto label6;
+            case 4: goto label5;
+            case 8: goto label4;
+            case 16: goto label3;
+            case 32: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return null;
+
+     label2:
+        return "FLAG_REQUEST_FILTER_KEY_EVENTS";
+
+     label3:
+        return "FLAG_REPORT_VIEW_IDS";
+
+     label4:
+        return "FLAG_REQUEST_ENHANCED_WEB_ACCESSIBILITY";
+
+     label5:
+        return "FLAG_REQUEST_TOUCH_EXPLORATION_MODE";
+
+     label6:
+        return "FLAG_INCLUDE_NOT_IMPORTANT_VIEWS";
+
+     label7:
+        return "DEFAULT";
+    }
+
+    public static int getCapabilities(android.accessibilityservice.AccessibilityServiceInfo)
+    {
+        int $i0;
+        android.accessibilityservice.AccessibilityServiceInfo $r0;
+
+        $r0 := @parameter0: android.accessibilityservice.AccessibilityServiceInfo;
+
+        $i0 = virtualinvoke $r0.<android.accessibilityservice.AccessibilityServiceInfo: int getCapabilities()>();
+
+        return $i0;
+    }
+
+    public static java.lang.String loadDescription(android.accessibilityservice.AccessibilityServiceInfo, android.content.pm.PackageManager)
+    {
+        android.accessibilityservice.AccessibilityServiceInfo $r0;
+        java.lang.String $r2;
+        android.content.pm.PackageManager $r1;
+
+        $r0 := @parameter0: android.accessibilityservice.AccessibilityServiceInfo;
+
+        $r1 := @parameter1: android.content.pm.PackageManager;
+
+        $r2 = virtualinvoke $r0.<android.accessibilityservice.AccessibilityServiceInfo: java.lang.String loadDescription(android.content.pm.PackageManager)>($r1);
+
+        return $r2;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.accessibilityservice.AccessibilityServiceInfoCompat: int FLAG_REQUEST_TOUCH_EXPLORATION_MODE> = 4;
+
+        <androidx.core.accessibilityservice.AccessibilityServiceInfoCompat: int FLAG_REQUEST_FILTER_KEY_EVENTS> = 32;
+
+        <androidx.core.accessibilityservice.AccessibilityServiceInfoCompat: int FLAG_REQUEST_ENHANCED_WEB_ACCESSIBILITY> = 8;
+
+        <androidx.core.accessibilityservice.AccessibilityServiceInfoCompat: int FLAG_REPORT_VIEW_IDS> = 16;
+
+        <androidx.core.accessibilityservice.AccessibilityServiceInfoCompat: int FLAG_INCLUDE_NOT_IMPORTANT_VIEWS> = 2;
+
+        <androidx.core.accessibilityservice.AccessibilityServiceInfoCompat: int FEEDBACK_BRAILLE> = 32;
+
+        <androidx.core.accessibilityservice.AccessibilityServiceInfoCompat: int FEEDBACK_ALL_MASK> = -1;
+
+        <androidx.core.accessibilityservice.AccessibilityServiceInfoCompat: int CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT> = 1;
+
+        <androidx.core.accessibilityservice.AccessibilityServiceInfoCompat: int CAPABILITY_CAN_REQUEST_TOUCH_EXPLORATION> = 2;
+
+        <androidx.core.accessibilityservice.AccessibilityServiceInfoCompat: int CAPABILITY_CAN_REQUEST_ENHANCED_WEB_ACCESSIBILITY> = 4;
+
+        <androidx.core.accessibilityservice.AccessibilityServiceInfoCompat: int CAPABILITY_CAN_FILTER_KEY_EVENTS> = 8;
+
+        return;
+    }
+}

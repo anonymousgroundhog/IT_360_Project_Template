@@ -1,0 +1,46 @@
+class com.google.common.collect.Iterables$5 extends com.google.common.collect.FluentIterable
+{
+    final java.lang.Iterable val$fromIterable;
+    final com.google.common.base.Function val$function;
+
+    void <init>(java.lang.Iterable, com.google.common.base.Function)
+    {
+        com.google.common.collect.Iterables$5 r0;
+        com.google.common.base.Function $r2;
+        java.lang.Iterable $r1;
+
+        r0 := @this: com.google.common.collect.Iterables$5;
+
+        $r1 := @parameter0: java.lang.Iterable;
+
+        $r2 := @parameter1: com.google.common.base.Function;
+
+        r0.<com.google.common.collect.Iterables$5: java.lang.Iterable val$fromIterable> = $r1;
+
+        r0.<com.google.common.collect.Iterables$5: com.google.common.base.Function val$function> = $r2;
+
+        specialinvoke r0.<com.google.common.collect.FluentIterable: void <init>()>();
+
+        return;
+    }
+
+    public java.util.Iterator iterator()
+    {
+        com.google.common.collect.Iterables$5 r0;
+        com.google.common.base.Function $r1;
+        java.util.Iterator $r3;
+        java.lang.Iterable $r2;
+
+        r0 := @this: com.google.common.collect.Iterables$5;
+
+        $r2 = r0.<com.google.common.collect.Iterables$5: java.lang.Iterable val$fromIterable>;
+
+        $r3 = interfaceinvoke $r2.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+        $r1 = r0.<com.google.common.collect.Iterables$5: com.google.common.base.Function val$function>;
+
+        $r3 = staticinvoke <com.google.common.collect.Iterators: java.util.Iterator transform(java.util.Iterator,com.google.common.base.Function)>($r3, $r1);
+
+        return $r3;
+    }
+}

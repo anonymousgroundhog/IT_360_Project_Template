@@ -1,0 +1,94 @@
+public final class com.google.android.gms.internal.ads.zzenc extends java.lang.Object implements com.google.android.gms.internal.ads.zzeip
+{
+    private final java.util.Map zza;
+    private final com.google.android.gms.internal.ads.zzdua zzb;
+
+    public void <init>(com.google.android.gms.internal.ads.zzdua)
+    {
+        com.google.android.gms.internal.ads.zzenc r0;
+        com.google.android.gms.internal.ads.zzdua $r1;
+        java.util.HashMap $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzenc;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzdua;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new java.util.HashMap;
+
+        specialinvoke $r2.<java.util.HashMap: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzenc: java.util.Map zza> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzenc: com.google.android.gms.internal.ads.zzdua zzb> = $r1;
+
+        return;
+    }
+
+    public final com.google.android.gms.internal.ads.zzeiq zza(java.lang.String, org.json.JSONObject) throws com.google.android.gms.internal.ads.zzfho
+    {
+        java.lang.Throwable $r9;
+        com.google.android.gms.internal.ads.zzekk $r1;
+        com.google.android.gms.internal.ads.zzfif $r8;
+        com.google.android.gms.internal.ads.zzenc r0;
+        com.google.android.gms.internal.ads.zzdua $r7;
+        org.json.JSONObject $r3;
+        java.util.Map $r4;
+        java.lang.Object $r5;
+        java.lang.String $r2;
+        com.google.android.gms.internal.ads.zzeiq $r6;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzenc;
+
+        $r2 := @parameter0: java.lang.String;
+
+        $r3 := @parameter1: org.json.JSONObject;
+
+        entermonitor r0;
+
+     label1:
+        $r4 = r0.<com.google.android.gms.internal.ads.zzenc: java.util.Map zza>;
+
+        $r5 = interfaceinvoke $r4.<java.util.Map: java.lang.Object get(java.lang.Object)>($r2);
+
+        $r6 = (com.google.android.gms.internal.ads.zzeiq) $r5;
+
+        if $r6 != null goto label2;
+
+        $r7 = r0.<com.google.android.gms.internal.ads.zzenc: com.google.android.gms.internal.ads.zzdua zzb>;
+
+        $r8 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzdua: com.google.android.gms.internal.ads.zzfif zzc(java.lang.String,org.json.JSONObject)>($r2, $r3);
+
+        $r6 = new com.google.android.gms.internal.ads.zzeiq;
+
+        $r1 = new com.google.android.gms.internal.ads.zzekk;
+
+        specialinvoke $r1.<com.google.android.gms.internal.ads.zzekk: void <init>()>();
+
+        specialinvoke $r6.<com.google.android.gms.internal.ads.zzeiq: void <init>(java.lang.Object,com.google.android.gms.internal.ads.zzdch,java.lang.String)>($r8, $r1, $r2);
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzenc: java.util.Map zza>;
+
+        interfaceinvoke $r4.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r2, $r6);
+
+        goto label2;
+
+     label2:
+        exitmonitor r0;
+
+     label3:
+        return $r6;
+
+     label4:
+        $r9 := @caughtexception;
+
+        exitmonitor r0;
+
+     label5:
+        throw $r9;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+        catch java.lang.Throwable from label4 to label5 with label4;
+    }
+}

@@ -1,0 +1,59 @@
+class androidx.room.RoomTrackingLiveData$2 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.room.RoomTrackingLiveData this$0;
+
+    void <init>(androidx.room.RoomTrackingLiveData)
+    {
+        androidx.room.RoomTrackingLiveData $r1;
+        androidx.room.RoomTrackingLiveData$2 r0;
+
+        r0 := @this: androidx.room.RoomTrackingLiveData$2;
+
+        $r1 := @parameter0: androidx.room.RoomTrackingLiveData;
+
+        r0.<androidx.room.RoomTrackingLiveData$2: androidx.room.RoomTrackingLiveData this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.room.RoomTrackingLiveData$2 r0;
+        java.util.concurrent.Executor $r3;
+        java.util.concurrent.atomic.AtomicBoolean $r2;
+        androidx.room.RoomTrackingLiveData r1;
+        java.lang.Runnable $r4;
+        boolean $z0, $z1;
+
+        r0 := @this: androidx.room.RoomTrackingLiveData$2;
+
+        r1 = r0.<androidx.room.RoomTrackingLiveData$2: androidx.room.RoomTrackingLiveData this$0>;
+
+        $z0 = virtualinvoke r1.<androidx.room.RoomTrackingLiveData: boolean hasActiveObservers()>();
+
+        r1 = r0.<androidx.room.RoomTrackingLiveData$2: androidx.room.RoomTrackingLiveData this$0>;
+
+        $r2 = r1.<androidx.room.RoomTrackingLiveData: java.util.concurrent.atomic.AtomicBoolean mInvalid>;
+
+        $z1 = virtualinvoke $r2.<java.util.concurrent.atomic.AtomicBoolean: boolean compareAndSet(boolean,boolean)>(0, 1);
+
+        if $z1 == 0 goto label1;
+
+        if $z0 == 0 goto label1;
+
+        r1 = r0.<androidx.room.RoomTrackingLiveData$2: androidx.room.RoomTrackingLiveData this$0>;
+
+        $r3 = virtualinvoke r1.<androidx.room.RoomTrackingLiveData: java.util.concurrent.Executor getQueryExecutor()>();
+
+        r1 = r0.<androidx.room.RoomTrackingLiveData$2: androidx.room.RoomTrackingLiveData this$0>;
+
+        $r4 = r1.<androidx.room.RoomTrackingLiveData: java.lang.Runnable mRefreshRunnable>;
+
+        interfaceinvoke $r3.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r4);
+
+     label1:
+        return;
+    }
+}

@@ -1,0 +1,213 @@
+public final class androidx.core.util.AtomicFileKt extends java.lang.Object
+{
+
+    public static final byte[] readBytes(android.util.AtomicFile)
+    {
+        byte[] $r1;
+        android.util.AtomicFile $r0;
+
+        $r0 := @parameter0: android.util.AtomicFile;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = virtualinvoke $r0.<android.util.AtomicFile: byte[] readFully()>();
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r1, "readFully()");
+
+        return $r1;
+    }
+
+    public static final java.lang.String readText(android.util.AtomicFile, java.nio.charset.Charset)
+    {
+        byte[] $r2;
+        java.nio.charset.Charset $r1;
+        java.lang.String $r3;
+        android.util.AtomicFile $r0;
+
+        $r0 := @parameter0: android.util.AtomicFile;
+
+        $r1 := @parameter1: java.nio.charset.Charset;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "charset");
+
+        $r2 = virtualinvoke $r0.<android.util.AtomicFile: byte[] readFully()>();
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r2, "readFully()");
+
+        $r3 = new java.lang.String;
+
+        specialinvoke $r3.<java.lang.String: void <init>(byte[],java.nio.charset.Charset)>($r2, $r1);
+
+        return $r3;
+    }
+
+    public static java.lang.String readText$default(android.util.AtomicFile, java.nio.charset.Charset, int, java.lang.Object)
+    {
+        java.nio.charset.Charset $r3;
+        int $i0;
+        java.lang.Object $r0;
+        java.lang.String $r1;
+        android.util.AtomicFile $r2;
+
+        $r2 := @parameter0: android.util.AtomicFile;
+
+        $r3 := @parameter1: java.nio.charset.Charset;
+
+        $i0 := @parameter2: int;
+
+        $r0 := @parameter3: java.lang.Object;
+
+        $i0 = $i0 & 1;
+
+        if $i0 == 0 goto label1;
+
+        $r3 = <kotlin.text.Charsets: java.nio.charset.Charset UTF_8>;
+
+     label1:
+        $r1 = staticinvoke <androidx.core.util.AtomicFileKt: java.lang.String readText(android.util.AtomicFile,java.nio.charset.Charset)>($r2, $r3);
+
+        return $r1;
+    }
+
+    public static final void tryWrite(android.util.AtomicFile, kotlin.jvm.functions.Function1)
+    {
+        java.lang.Throwable $r3;
+        java.io.FileOutputStream $r2;
+        kotlin.jvm.functions.Function1 $r1;
+        android.util.AtomicFile $r0;
+
+        $r0 := @parameter0: android.util.AtomicFile;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        $r2 = virtualinvoke $r0.<android.util.AtomicFile: java.io.FileOutputStream startWrite()>();
+
+     label1:
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r2, "stream");
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r2);
+
+     label2:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.util.AtomicFile: void finishWrite(java.io.FileOutputStream)>($r2);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.util.AtomicFile: void failWrite(java.io.FileOutputStream)>($r2);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static final void writeBytes(android.util.AtomicFile, byte[])
+    {
+        java.lang.Throwable r3;
+        byte[] $r1;
+        java.io.FileOutputStream $r2;
+        android.util.AtomicFile $r0;
+
+        $r0 := @parameter0: android.util.AtomicFile;
+
+        $r1 := @parameter1: byte[];
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "array");
+
+        $r2 = virtualinvoke $r0.<android.util.AtomicFile: java.io.FileOutputStream startWrite()>();
+
+     label1:
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r2, "stream");
+
+        virtualinvoke $r2.<java.io.FileOutputStream: void write(byte[])>($r1);
+
+     label2:
+        virtualinvoke $r0.<android.util.AtomicFile: void finishWrite(java.io.FileOutputStream)>($r2);
+
+        return;
+
+     label3:
+        r3 := @caughtexception;
+
+        virtualinvoke $r0.<android.util.AtomicFile: void failWrite(java.io.FileOutputStream)>($r2);
+
+        throw r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static final void writeText(android.util.AtomicFile, java.lang.String, java.nio.charset.Charset)
+    {
+        byte[] $r3;
+        java.nio.charset.Charset $r2;
+        java.lang.String $r1;
+        android.util.AtomicFile $r0;
+
+        $r0 := @parameter0: android.util.AtomicFile;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 := @parameter2: java.nio.charset.Charset;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "text");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r2, "charset");
+
+        $r3 = virtualinvoke $r1.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($r2);
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r3, "this as java.lang.String).getBytes(charset)");
+
+        staticinvoke <androidx.core.util.AtomicFileKt: void writeBytes(android.util.AtomicFile,byte[])>($r0, $r3);
+
+        return;
+    }
+
+    public static void writeText$default(android.util.AtomicFile, java.lang.String, java.nio.charset.Charset, int, java.lang.Object)
+    {
+        java.nio.charset.Charset $r3;
+        int $i0;
+        java.lang.Object $r2;
+        java.lang.String $r1;
+        android.util.AtomicFile $r0;
+
+        $r0 := @parameter0: android.util.AtomicFile;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.nio.charset.Charset;
+
+        $i0 := @parameter3: int;
+
+        $r2 := @parameter4: java.lang.Object;
+
+        $i0 = $i0 & 2;
+
+        if $i0 == 0 goto label1;
+
+        $r3 = <kotlin.text.Charsets: java.nio.charset.Charset UTF_8>;
+
+     label1:
+        staticinvoke <androidx.core.util.AtomicFileKt: void writeText(android.util.AtomicFile,java.lang.String,java.nio.charset.Charset)>($r0, $r1, $r3);
+
+        return;
+    }
+}

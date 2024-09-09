@@ -1,0 +1,72 @@
+class com.google.common.reflect.TypeResolver$WildcardCapturer$1 extends com.google.common.reflect.TypeResolver$WildcardCapturer
+{
+    final java.lang.reflect.TypeVariable val$typeParam;
+
+    void <init>(com.google.common.reflect.TypeResolver$WildcardCapturer, java.util.concurrent.atomic.AtomicInteger, java.lang.reflect.TypeVariable)
+    {
+        java.util.concurrent.atomic.AtomicInteger $r2;
+        com.google.common.reflect.TypeResolver$WildcardCapturer$1 r0;
+        java.lang.reflect.TypeVariable $r3;
+        com.google.common.reflect.TypeResolver$WildcardCapturer $r1;
+
+        r0 := @this: com.google.common.reflect.TypeResolver$WildcardCapturer$1;
+
+        $r1 := @parameter0: com.google.common.reflect.TypeResolver$WildcardCapturer;
+
+        $r2 := @parameter1: java.util.concurrent.atomic.AtomicInteger;
+
+        $r3 := @parameter2: java.lang.reflect.TypeVariable;
+
+        r0.<com.google.common.reflect.TypeResolver$WildcardCapturer$1: java.lang.reflect.TypeVariable val$typeParam> = $r3;
+
+        specialinvoke r0.<com.google.common.reflect.TypeResolver$WildcardCapturer: void <init>(java.util.concurrent.atomic.AtomicInteger,com.google.common.reflect.TypeResolver$1)>($r2, null);
+
+        return;
+    }
+
+    java.lang.reflect.TypeVariable captureAsTypeVariable(java.lang.reflect.Type[])
+    {
+        java.util.List $r3;
+        java.lang.Object[] $r5;
+        com.google.common.reflect.TypeResolver$WildcardCapturer$1 r0;
+        java.lang.reflect.TypeVariable $r4;
+        java.lang.reflect.Type[] $r1;
+        int $i0;
+        java.util.LinkedHashSet r2;
+
+        r0 := @this: com.google.common.reflect.TypeResolver$WildcardCapturer$1;
+
+        $r1 := @parameter0: java.lang.reflect.Type[];
+
+        r2 = new java.util.LinkedHashSet;
+
+        $r3 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r1);
+
+        specialinvoke r2.<java.util.LinkedHashSet: void <init>(java.util.Collection)>($r3);
+
+        $r4 = r0.<com.google.common.reflect.TypeResolver$WildcardCapturer$1: java.lang.reflect.TypeVariable val$typeParam>;
+
+        $r1 = interfaceinvoke $r4.<java.lang.reflect.TypeVariable: java.lang.reflect.Type[] getBounds()>();
+
+        $r3 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r1);
+
+        interfaceinvoke r2.<java.util.Set: boolean addAll(java.util.Collection)>($r3);
+
+        $i0 = interfaceinvoke r2.<java.util.Set: int size()>();
+
+        if $i0 <= 1 goto label1;
+
+        interfaceinvoke r2.<java.util.Set: boolean remove(java.lang.Object)>(class "Ljava/lang/Object;");
+
+     label1:
+        $r1 = newarray (java.lang.reflect.Type)[0];
+
+        $r5 = interfaceinvoke r2.<java.util.Set: java.lang.Object[] toArray(java.lang.Object[])>($r1);
+
+        $r1 = (java.lang.reflect.Type[]) $r5;
+
+        $r4 = specialinvoke r0.<com.google.common.reflect.TypeResolver$WildcardCapturer: java.lang.reflect.TypeVariable captureAsTypeVariable(java.lang.reflect.Type[])>($r1);
+
+        return $r4;
+    }
+}

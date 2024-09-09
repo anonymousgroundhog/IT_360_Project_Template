@@ -1,0 +1,272 @@
+class androidx.core.location.LocationManagerCompat$GpsStatusTransport extends java.lang.Object implements android.location.GpsStatus$Listener
+{
+    final androidx.core.location.GnssStatusCompat$Callback mCallback;
+    volatile java.util.concurrent.Executor mExecutor;
+    private final android.location.LocationManager mLocationManager;
+
+    void <init>(android.location.LocationManager, androidx.core.location.GnssStatusCompat$Callback)
+    {
+        androidx.core.location.LocationManagerCompat$GpsStatusTransport r0;
+        androidx.core.location.GnssStatusCompat$Callback $r2;
+        android.location.LocationManager $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$GpsStatusTransport;
+
+        $r1 := @parameter0: android.location.LocationManager;
+
+        $r2 := @parameter1: androidx.core.location.GnssStatusCompat$Callback;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        if $r2 == null goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        staticinvoke <androidx.core.util.Preconditions: void checkArgument(boolean,java.lang.Object)>($z0, "invalid null callback");
+
+        r0.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: android.location.LocationManager mLocationManager> = $r1;
+
+        r0.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: androidx.core.location.GnssStatusCompat$Callback mCallback> = $r2;
+
+        return;
+    }
+
+    void lambda$onGpsStatusChanged$0$androidx-core-location-LocationManagerCompat$GpsStatusTransport(java.util.concurrent.Executor)
+    {
+        java.util.concurrent.Executor $r1, $r2;
+        androidx.core.location.LocationManagerCompat$GpsStatusTransport r0;
+        androidx.core.location.GnssStatusCompat$Callback $r3;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$GpsStatusTransport;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        $r2 = r0.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: java.util.concurrent.Executor mExecutor>;
+
+        if $r2 == $r1 goto label1;
+
+        return;
+
+     label1:
+        $r3 = r0.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: androidx.core.location.GnssStatusCompat$Callback mCallback>;
+
+        virtualinvoke $r3.<androidx.core.location.GnssStatusCompat$Callback: void onStarted()>();
+
+        return;
+    }
+
+    void lambda$onGpsStatusChanged$1$androidx-core-location-LocationManagerCompat$GpsStatusTransport(java.util.concurrent.Executor)
+    {
+        java.util.concurrent.Executor $r1, $r2;
+        androidx.core.location.LocationManagerCompat$GpsStatusTransport r0;
+        androidx.core.location.GnssStatusCompat$Callback $r3;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$GpsStatusTransport;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        $r2 = r0.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: java.util.concurrent.Executor mExecutor>;
+
+        if $r2 == $r1 goto label1;
+
+        return;
+
+     label1:
+        $r3 = r0.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: androidx.core.location.GnssStatusCompat$Callback mCallback>;
+
+        virtualinvoke $r3.<androidx.core.location.GnssStatusCompat$Callback: void onStopped()>();
+
+        return;
+    }
+
+    void lambda$onGpsStatusChanged$2$androidx-core-location-LocationManagerCompat$GpsStatusTransport(java.util.concurrent.Executor, int)
+    {
+        java.util.concurrent.Executor $r1, $r2;
+        androidx.core.location.LocationManagerCompat$GpsStatusTransport r0;
+        int $i0;
+        androidx.core.location.GnssStatusCompat$Callback $r3;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$GpsStatusTransport;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        $i0 := @parameter1: int;
+
+        $r2 = r0.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: java.util.concurrent.Executor mExecutor>;
+
+        if $r2 == $r1 goto label1;
+
+        return;
+
+     label1:
+        $r3 = r0.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: androidx.core.location.GnssStatusCompat$Callback mCallback>;
+
+        virtualinvoke $r3.<androidx.core.location.GnssStatusCompat$Callback: void onFirstFix(int)>($i0);
+
+        return;
+    }
+
+    void lambda$onGpsStatusChanged$3$androidx-core-location-LocationManagerCompat$GpsStatusTransport(java.util.concurrent.Executor, androidx.core.location.GnssStatusCompat)
+    {
+        java.util.concurrent.Executor $r1, $r3;
+        androidx.core.location.LocationManagerCompat$GpsStatusTransport r0;
+        androidx.core.location.GnssStatusCompat$Callback $r4;
+        androidx.core.location.GnssStatusCompat $r2;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$GpsStatusTransport;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        $r2 := @parameter1: androidx.core.location.GnssStatusCompat;
+
+        $r3 = r0.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: java.util.concurrent.Executor mExecutor>;
+
+        if $r3 == $r1 goto label1;
+
+        return;
+
+     label1:
+        $r4 = r0.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: androidx.core.location.GnssStatusCompat$Callback mCallback>;
+
+        virtualinvoke $r4.<androidx.core.location.GnssStatusCompat$Callback: void onSatelliteStatusChanged(androidx.core.location.GnssStatusCompat)>($r2);
+
+        return;
+    }
+
+    public void onGpsStatusChanged(int)
+    {
+        java.util.concurrent.Executor r1;
+        androidx.core.location.LocationManagerCompat$GpsStatusTransport$$ExternalSyntheticLambda3 $r5;
+        androidx.core.location.LocationManagerCompat$GpsStatusTransport$$ExternalSyntheticLambda1 r7;
+        androidx.core.location.LocationManagerCompat$GpsStatusTransport$$ExternalSyntheticLambda2 $r6;
+        androidx.core.location.LocationManagerCompat$GpsStatusTransport$$ExternalSyntheticLambda0 r8;
+        androidx.core.location.GnssStatusCompat $r4;
+        android.location.GpsStatus $r3;
+        androidx.core.location.LocationManagerCompat$GpsStatusTransport r0;
+        int $i0;
+        android.location.LocationManager r2;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$GpsStatusTransport;
+
+        $i0 := @parameter0: int;
+
+        r1 = r0.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: java.util.concurrent.Executor mExecutor>;
+
+        if r1 != null goto label1;
+
+        return;
+
+     label1:
+        lookupswitch($i0)
+        {
+            case 1: goto label6;
+            case 2: goto label5;
+            case 3: goto label4;
+            case 4: goto label3;
+            default: goto label2;
+        };
+
+     label2:
+        return;
+
+     label3:
+        r2 = r0.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: android.location.LocationManager mLocationManager>;
+
+        $r3 = virtualinvoke r2.<android.location.LocationManager: android.location.GpsStatus getGpsStatus(android.location.GpsStatus)>(null);
+
+        if $r3 == null goto label7;
+
+        $r4 = staticinvoke <androidx.core.location.GnssStatusCompat: androidx.core.location.GnssStatusCompat wrap(android.location.GpsStatus)>($r3);
+
+        $r5 = new androidx.core.location.LocationManagerCompat$GpsStatusTransport$$ExternalSyntheticLambda3;
+
+        specialinvoke $r5.<androidx.core.location.LocationManagerCompat$GpsStatusTransport$$ExternalSyntheticLambda3: void <init>(androidx.core.location.LocationManagerCompat$GpsStatusTransport,java.util.concurrent.Executor,androidx.core.location.GnssStatusCompat)>(r0, r1, $r4);
+
+        interfaceinvoke r1.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r5);
+
+        return;
+
+     label4:
+        r2 = r0.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: android.location.LocationManager mLocationManager>;
+
+        $r3 = virtualinvoke r2.<android.location.LocationManager: android.location.GpsStatus getGpsStatus(android.location.GpsStatus)>(null);
+
+        if $r3 == null goto label7;
+
+        $i0 = virtualinvoke $r3.<android.location.GpsStatus: int getTimeToFirstFix()>();
+
+        $r6 = new androidx.core.location.LocationManagerCompat$GpsStatusTransport$$ExternalSyntheticLambda2;
+
+        specialinvoke $r6.<androidx.core.location.LocationManagerCompat$GpsStatusTransport$$ExternalSyntheticLambda2: void <init>(androidx.core.location.LocationManagerCompat$GpsStatusTransport,java.util.concurrent.Executor,int)>(r0, r1, $i0);
+
+        interfaceinvoke r1.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r6);
+
+        return;
+
+     label5:
+        r7 = new androidx.core.location.LocationManagerCompat$GpsStatusTransport$$ExternalSyntheticLambda1;
+
+        specialinvoke r7.<androidx.core.location.LocationManagerCompat$GpsStatusTransport$$ExternalSyntheticLambda1: void <init>(androidx.core.location.LocationManagerCompat$GpsStatusTransport,java.util.concurrent.Executor)>(r0, r1);
+
+        interfaceinvoke r1.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>(r7);
+
+        return;
+
+     label6:
+        r8 = new androidx.core.location.LocationManagerCompat$GpsStatusTransport$$ExternalSyntheticLambda0;
+
+        specialinvoke r8.<androidx.core.location.LocationManagerCompat$GpsStatusTransport$$ExternalSyntheticLambda0: void <init>(androidx.core.location.LocationManagerCompat$GpsStatusTransport,java.util.concurrent.Executor)>(r0, r1);
+
+        interfaceinvoke r1.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>(r8);
+
+     label7:
+        return;
+    }
+
+    public void register(java.util.concurrent.Executor)
+    {
+        java.util.concurrent.Executor $r1, $r2;
+        androidx.core.location.LocationManagerCompat$GpsStatusTransport r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$GpsStatusTransport;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        $r2 = r0.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: java.util.concurrent.Executor mExecutor>;
+
+        if $r2 != null goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        staticinvoke <androidx.core.util.Preconditions: void checkState(boolean)>($z0);
+
+        r0.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: java.util.concurrent.Executor mExecutor> = $r1;
+
+        return;
+    }
+
+    public void unregister()
+    {
+        androidx.core.location.LocationManagerCompat$GpsStatusTransport r0;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$GpsStatusTransport;
+
+        r0.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: java.util.concurrent.Executor mExecutor> = null;
+
+        return;
+    }
+}

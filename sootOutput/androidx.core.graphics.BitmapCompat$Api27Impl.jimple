@@ -1,0 +1,137 @@
+class androidx.core.graphics.BitmapCompat$Api27Impl extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.graphics.BitmapCompat$Api27Impl r0;
+
+        r0 := @this: androidx.core.graphics.BitmapCompat$Api27Impl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static android.graphics.Bitmap copyBitmapIfHardware(android.graphics.Bitmap)
+    {
+        android.graphics.Bitmap $r0;
+        int $i0;
+        android.graphics.Bitmap$Config $r1, $r2;
+
+        $r0 := @parameter0: android.graphics.Bitmap;
+
+        $r1 = virtualinvoke $r0.<android.graphics.Bitmap: android.graphics.Bitmap$Config getConfig()>();
+
+        $r2 = <android.graphics.Bitmap$Config: android.graphics.Bitmap$Config HARDWARE>;
+
+        if $r1 != $r2 goto label2;
+
+        $r1 = <android.graphics.Bitmap$Config: android.graphics.Bitmap$Config ARGB_8888>;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 31 goto label1;
+
+        $r1 = staticinvoke <androidx.core.graphics.BitmapCompat$Api31Impl: android.graphics.Bitmap$Config getHardwareBitmapConfig(android.graphics.Bitmap)>($r0);
+
+     label1:
+        $r0 = virtualinvoke $r0.<android.graphics.Bitmap: android.graphics.Bitmap copy(android.graphics.Bitmap$Config,boolean)>($r1, 1);
+
+     label2:
+        return $r0;
+    }
+
+    static android.graphics.Bitmap createBitmapWithSourceColorspace(int, int, android.graphics.Bitmap, boolean)
+    {
+        android.graphics.ColorSpace$Named r3;
+        android.graphics.Bitmap$Config $r1, $r6, $r7;
+        android.graphics.Bitmap $r0;
+        int $i0, $i1, $i2;
+        android.graphics.ColorSpace $r2, $r4, $r5;
+        boolean $z0;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r0 := @parameter2: android.graphics.Bitmap;
+
+        $z0 := @parameter3: boolean;
+
+        $r1 = virtualinvoke $r0.<android.graphics.Bitmap: android.graphics.Bitmap$Config getConfig()>();
+
+        $r2 = virtualinvoke $r0.<android.graphics.Bitmap: android.graphics.ColorSpace getColorSpace()>();
+
+        r3 = <android.graphics.ColorSpace$Named: android.graphics.ColorSpace$Named LINEAR_EXTENDED_SRGB>;
+
+        $r4 = staticinvoke <android.graphics.ColorSpace: android.graphics.ColorSpace get(android.graphics.ColorSpace$Named)>(r3);
+
+        if $z0 == 0 goto label1;
+
+        $r5 = virtualinvoke $r0.<android.graphics.Bitmap: android.graphics.ColorSpace getColorSpace()>();
+
+        $z0 = virtualinvoke $r5.<android.graphics.ColorSpace: boolean equals(java.lang.Object)>($r4);
+
+        if $z0 != 0 goto label1;
+
+        $r1 = <android.graphics.Bitmap$Config: android.graphics.Bitmap$Config RGBA_F16>;
+
+        $r2 = $r4;
+
+        goto label2;
+
+     label1:
+        $r6 = virtualinvoke $r0.<android.graphics.Bitmap: android.graphics.Bitmap$Config getConfig()>();
+
+        $r7 = <android.graphics.Bitmap$Config: android.graphics.Bitmap$Config HARDWARE>;
+
+        if $r6 != $r7 goto label2;
+
+        $r1 = <android.graphics.Bitmap$Config: android.graphics.Bitmap$Config ARGB_8888>;
+
+        $i2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i2 < 31 goto label2;
+
+        $r1 = staticinvoke <androidx.core.graphics.BitmapCompat$Api31Impl: android.graphics.Bitmap$Config getHardwareBitmapConfig(android.graphics.Bitmap)>($r0);
+
+     label2:
+        $z0 = virtualinvoke $r0.<android.graphics.Bitmap: boolean hasAlpha()>();
+
+        $r0 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createBitmap(int,int,android.graphics.Bitmap$Config,boolean,android.graphics.ColorSpace)>($i0, $i1, $r1, $z0, $r2);
+
+        return $r0;
+    }
+
+    static boolean isAlreadyF16AndLinear(android.graphics.Bitmap)
+    {
+        android.graphics.Bitmap $r0;
+        android.graphics.ColorSpace$Named r2;
+        android.graphics.ColorSpace $r3, $r5;
+        android.graphics.Bitmap$Config $r1, $r4;
+        boolean $z0;
+
+        $r0 := @parameter0: android.graphics.Bitmap;
+
+        r2 = <android.graphics.ColorSpace$Named: android.graphics.ColorSpace$Named LINEAR_EXTENDED_SRGB>;
+
+        $r3 = staticinvoke <android.graphics.ColorSpace: android.graphics.ColorSpace get(android.graphics.ColorSpace$Named)>(r2);
+
+        $r4 = virtualinvoke $r0.<android.graphics.Bitmap: android.graphics.Bitmap$Config getConfig()>();
+
+        $r1 = <android.graphics.Bitmap$Config: android.graphics.Bitmap$Config RGBA_F16>;
+
+        if $r4 != $r1 goto label1;
+
+        $r5 = virtualinvoke $r0.<android.graphics.Bitmap: android.graphics.ColorSpace getColorSpace()>();
+
+        $z0 = virtualinvoke $r5.<android.graphics.ColorSpace: boolean equals(java.lang.Object)>($r3);
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+}

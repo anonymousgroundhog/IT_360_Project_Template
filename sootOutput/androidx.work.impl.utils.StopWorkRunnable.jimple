@@ -1,0 +1,172 @@
+public class androidx.work.impl.utils.StopWorkRunnable extends java.lang.Object implements java.lang.Runnable
+{
+    private static final java.lang.String TAG;
+    private final boolean mStopInForeground;
+    private final androidx.work.impl.WorkManagerImpl mWorkManagerImpl;
+    private final java.lang.String mWorkSpecId;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+
+        $r0 = staticinvoke <androidx.work.Logger: java.lang.String tagWithPrefix(java.lang.String)>("StopWorkRunnable");
+
+        <androidx.work.impl.utils.StopWorkRunnable: java.lang.String TAG> = $r0;
+
+        return;
+    }
+
+    public void <init>(androidx.work.impl.WorkManagerImpl, java.lang.String, boolean)
+    {
+        androidx.work.impl.utils.StopWorkRunnable r0;
+        androidx.work.impl.WorkManagerImpl $r1;
+        java.lang.String $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.utils.StopWorkRunnable;
+
+        $r1 := @parameter0: androidx.work.impl.WorkManagerImpl;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $z0 := @parameter2: boolean;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.work.impl.utils.StopWorkRunnable: androidx.work.impl.WorkManagerImpl mWorkManagerImpl> = $r1;
+
+        r0.<androidx.work.impl.utils.StopWorkRunnable: java.lang.String mWorkSpecId> = $r2;
+
+        r0.<androidx.work.impl.utils.StopWorkRunnable: boolean mStopInForeground> = $z0;
+
+        return;
+    }
+
+    public void run()
+    {
+        java.lang.Throwable r14;
+        androidx.work.impl.utils.StopWorkRunnable r0;
+        java.lang.Object[] $r10;
+        java.lang.String[] $r8;
+        androidx.work.impl.Processor $r3;
+        androidx.work.Logger $r9;
+        androidx.work.impl.WorkDatabase $r2;
+        java.lang.Boolean $r12;
+        java.lang.String r5, $r11;
+        boolean $z0, z1;
+        androidx.work.impl.model.WorkSpecDao $r4;
+        androidx.work.WorkInfo$State $r6, $r7;
+        java.lang.Throwable[] $r13;
+        androidx.work.impl.WorkManagerImpl r1;
+
+        r0 := @this: androidx.work.impl.utils.StopWorkRunnable;
+
+        r1 = r0.<androidx.work.impl.utils.StopWorkRunnable: androidx.work.impl.WorkManagerImpl mWorkManagerImpl>;
+
+        $r2 = virtualinvoke r1.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkDatabase getWorkDatabase()>();
+
+        r1 = r0.<androidx.work.impl.utils.StopWorkRunnable: androidx.work.impl.WorkManagerImpl mWorkManagerImpl>;
+
+        $r3 = virtualinvoke r1.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.Processor getProcessor()>();
+
+        $r4 = virtualinvoke $r2.<androidx.work.impl.WorkDatabase: androidx.work.impl.model.WorkSpecDao workSpecDao()>();
+
+        virtualinvoke $r2.<androidx.work.impl.WorkDatabase: void beginTransaction()>();
+
+     label01:
+        r5 = r0.<androidx.work.impl.utils.StopWorkRunnable: java.lang.String mWorkSpecId>;
+
+        $z0 = virtualinvoke $r3.<androidx.work.impl.Processor: boolean isEnqueuedInForeground(java.lang.String)>(r5);
+
+        z1 = r0.<androidx.work.impl.utils.StopWorkRunnable: boolean mStopInForeground>;
+
+     label02:
+        if z1 == 0 goto label05;
+
+     label03:
+        r1 = r0.<androidx.work.impl.utils.StopWorkRunnable: androidx.work.impl.WorkManagerImpl mWorkManagerImpl>;
+
+        $r3 = virtualinvoke r1.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.Processor getProcessor()>();
+
+        r5 = r0.<androidx.work.impl.utils.StopWorkRunnable: java.lang.String mWorkSpecId>;
+
+        $z0 = virtualinvoke $r3.<androidx.work.impl.Processor: boolean stopForegroundWork(java.lang.String)>(r5);
+
+     label04:
+        goto label10;
+
+     label05:
+        if $z0 != 0 goto label09;
+
+     label06:
+        r5 = r0.<androidx.work.impl.utils.StopWorkRunnable: java.lang.String mWorkSpecId>;
+
+        $r6 = interfaceinvoke $r4.<androidx.work.impl.model.WorkSpecDao: androidx.work.WorkInfo$State getState(java.lang.String)>(r5);
+
+        $r7 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State RUNNING>;
+
+     label07:
+        if $r6 != $r7 goto label09;
+
+     label08:
+        $r6 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State ENQUEUED>;
+
+        $r8 = newarray (java.lang.String)[1];
+
+        r5 = r0.<androidx.work.impl.utils.StopWorkRunnable: java.lang.String mWorkSpecId>;
+
+        $r8[0] = r5;
+
+        interfaceinvoke $r4.<androidx.work.impl.model.WorkSpecDao: int setState(androidx.work.WorkInfo$State,java.lang.String[])>($r6, $r8);
+
+     label09:
+        r1 = r0.<androidx.work.impl.utils.StopWorkRunnable: androidx.work.impl.WorkManagerImpl mWorkManagerImpl>;
+
+        $r3 = virtualinvoke r1.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.Processor getProcessor()>();
+
+        r5 = r0.<androidx.work.impl.utils.StopWorkRunnable: java.lang.String mWorkSpecId>;
+
+        $z0 = virtualinvoke $r3.<androidx.work.impl.Processor: boolean stopWork(java.lang.String)>(r5);
+
+     label10:
+        $r9 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r5 = <androidx.work.impl.utils.StopWorkRunnable: java.lang.String TAG>;
+
+        $r10 = newarray (java.lang.Object)[2];
+
+        $r11 = r0.<androidx.work.impl.utils.StopWorkRunnable: java.lang.String mWorkSpecId>;
+
+        $r10[0] = $r11;
+
+        $r12 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        $r10[1] = $r12;
+
+        $r11 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("StopWorkRunnable for %s; Processor.stopWork = %s", $r10);
+
+        $r13 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r9.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>(r5, $r11, $r13);
+
+        virtualinvoke $r2.<androidx.work.impl.WorkDatabase: void setTransactionSuccessful()>();
+
+     label11:
+        virtualinvoke $r2.<androidx.work.impl.WorkDatabase: void endTransaction()>();
+
+        return;
+
+     label12:
+        r14 := @caughtexception;
+
+        virtualinvoke $r2.<androidx.work.impl.WorkDatabase: void endTransaction()>();
+
+        throw r14;
+
+        catch java.lang.Throwable from label01 to label02 with label12;
+        catch java.lang.Throwable from label03 to label04 with label12;
+        catch java.lang.Throwable from label06 to label07 with label12;
+        catch java.lang.Throwable from label08 to label10 with label12;
+        catch java.lang.Throwable from label10 to label11 with label12;
+    }
+}

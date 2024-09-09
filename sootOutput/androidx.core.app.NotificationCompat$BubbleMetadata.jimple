@@ -1,0 +1,288 @@
+public final class androidx.core.app.NotificationCompat$BubbleMetadata extends java.lang.Object
+{
+    private static final int FLAG_AUTO_EXPAND_BUBBLE;
+    private static final int FLAG_SUPPRESS_NOTIFICATION;
+    private android.app.PendingIntent mDeleteIntent;
+    private int mDesiredHeight;
+    private int mDesiredHeightResId;
+    private int mFlags;
+    private androidx.core.graphics.drawable.IconCompat mIcon;
+    private android.app.PendingIntent mPendingIntent;
+    private java.lang.String mShortcutId;
+
+    private void <init>(android.app.PendingIntent, android.app.PendingIntent, androidx.core.graphics.drawable.IconCompat, int, int, int, java.lang.String)
+    {
+        androidx.core.app.NotificationCompat$BubbleMetadata r0;
+        android.app.PendingIntent $r1, $r2;
+        androidx.core.graphics.drawable.IconCompat $r3;
+        int $i0, $i1, $i2;
+        java.lang.String $r4;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata;
+
+        $r1 := @parameter0: android.app.PendingIntent;
+
+        $r2 := @parameter1: android.app.PendingIntent;
+
+        $r3 := @parameter2: androidx.core.graphics.drawable.IconCompat;
+
+        $i0 := @parameter3: int;
+
+        $i1 := @parameter4: int;
+
+        $i2 := @parameter5: int;
+
+        $r4 := @parameter6: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata: android.app.PendingIntent mPendingIntent> = $r1;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata: androidx.core.graphics.drawable.IconCompat mIcon> = $r3;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata: int mDesiredHeight> = $i0;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata: int mDesiredHeightResId> = $i1;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata: android.app.PendingIntent mDeleteIntent> = $r2;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata: int mFlags> = $i2;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata: java.lang.String mShortcutId> = $r4;
+
+        return;
+    }
+
+    void <init>(android.app.PendingIntent, android.app.PendingIntent, androidx.core.graphics.drawable.IconCompat, int, int, int, java.lang.String, androidx.core.app.NotificationCompat$1)
+    {
+        androidx.core.app.NotificationCompat$BubbleMetadata r0;
+        android.app.PendingIntent $r1, $r2;
+        androidx.core.app.NotificationCompat$1 $r5;
+        androidx.core.graphics.drawable.IconCompat $r3;
+        int $i0, $i1, $i2;
+        java.lang.String $r4;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata;
+
+        $r1 := @parameter0: android.app.PendingIntent;
+
+        $r2 := @parameter1: android.app.PendingIntent;
+
+        $r3 := @parameter2: androidx.core.graphics.drawable.IconCompat;
+
+        $i0 := @parameter3: int;
+
+        $i1 := @parameter4: int;
+
+        $i2 := @parameter5: int;
+
+        $r4 := @parameter6: java.lang.String;
+
+        $r5 := @parameter7: androidx.core.app.NotificationCompat$1;
+
+        specialinvoke r0.<androidx.core.app.NotificationCompat$BubbleMetadata: void <init>(android.app.PendingIntent,android.app.PendingIntent,androidx.core.graphics.drawable.IconCompat,int,int,int,java.lang.String)>($r1, $r2, $r3, $i0, $i1, $i2, $r4);
+
+        return;
+    }
+
+    public static androidx.core.app.NotificationCompat$BubbleMetadata fromPlatform(android.app.Notification$BubbleMetadata)
+    {
+        int $i0;
+        android.app.Notification$BubbleMetadata $r0;
+        androidx.core.app.NotificationCompat$BubbleMetadata $r1;
+
+        $r0 := @parameter0: android.app.Notification$BubbleMetadata;
+
+        if $r0 != null goto label1;
+
+        return null;
+
+     label1:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 30 goto label2;
+
+        $r1 = staticinvoke <androidx.core.app.NotificationCompat$BubbleMetadata$Api30Impl: androidx.core.app.NotificationCompat$BubbleMetadata fromPlatform(android.app.Notification$BubbleMetadata)>($r0);
+
+        return $r1;
+
+     label2:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 != 29 goto label3;
+
+        $r1 = staticinvoke <androidx.core.app.NotificationCompat$BubbleMetadata$Api29Impl: androidx.core.app.NotificationCompat$BubbleMetadata fromPlatform(android.app.Notification$BubbleMetadata)>($r0);
+
+        return $r1;
+
+     label3:
+        return null;
+    }
+
+    public static android.app.Notification$BubbleMetadata toPlatform(androidx.core.app.NotificationCompat$BubbleMetadata)
+    {
+        int $i0;
+        androidx.core.app.NotificationCompat$BubbleMetadata $r0;
+        android.app.Notification$BubbleMetadata $r1;
+
+        $r0 := @parameter0: androidx.core.app.NotificationCompat$BubbleMetadata;
+
+        if $r0 != null goto label1;
+
+        return null;
+
+     label1:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 30 goto label2;
+
+        $r1 = staticinvoke <androidx.core.app.NotificationCompat$BubbleMetadata$Api30Impl: android.app.Notification$BubbleMetadata toPlatform(androidx.core.app.NotificationCompat$BubbleMetadata)>($r0);
+
+        return $r1;
+
+     label2:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 != 29 goto label3;
+
+        $r1 = staticinvoke <androidx.core.app.NotificationCompat$BubbleMetadata$Api29Impl: android.app.Notification$BubbleMetadata toPlatform(androidx.core.app.NotificationCompat$BubbleMetadata)>($r0);
+
+        return $r1;
+
+     label3:
+        return null;
+    }
+
+    public boolean getAutoExpandBubble()
+    {
+        int $i0;
+        androidx.core.app.NotificationCompat$BubbleMetadata r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata;
+
+        $i0 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata: int mFlags>;
+
+        $i0 = $i0 & 1;
+
+        if $i0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public android.app.PendingIntent getDeleteIntent()
+    {
+        android.app.PendingIntent r1;
+        androidx.core.app.NotificationCompat$BubbleMetadata r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata;
+
+        r1 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata: android.app.PendingIntent mDeleteIntent>;
+
+        return r1;
+    }
+
+    public int getDesiredHeight()
+    {
+        int i0;
+        androidx.core.app.NotificationCompat$BubbleMetadata r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata;
+
+        i0 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata: int mDesiredHeight>;
+
+        return i0;
+    }
+
+    public int getDesiredHeightResId()
+    {
+        int i0;
+        androidx.core.app.NotificationCompat$BubbleMetadata r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata;
+
+        i0 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata: int mDesiredHeightResId>;
+
+        return i0;
+    }
+
+    public androidx.core.graphics.drawable.IconCompat getIcon()
+    {
+        androidx.core.app.NotificationCompat$BubbleMetadata r0;
+        androidx.core.graphics.drawable.IconCompat r1;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata;
+
+        r1 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        return r1;
+    }
+
+    public android.app.PendingIntent getIntent()
+    {
+        android.app.PendingIntent r1;
+        androidx.core.app.NotificationCompat$BubbleMetadata r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata;
+
+        r1 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata: android.app.PendingIntent mPendingIntent>;
+
+        return r1;
+    }
+
+    public java.lang.String getShortcutId()
+    {
+        java.lang.String r1;
+        androidx.core.app.NotificationCompat$BubbleMetadata r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata;
+
+        r1 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata: java.lang.String mShortcutId>;
+
+        return r1;
+    }
+
+    public boolean isNotificationSuppressed()
+    {
+        int $i0;
+        androidx.core.app.NotificationCompat$BubbleMetadata r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata;
+
+        $i0 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata: int mFlags>;
+
+        $i0 = $i0 & 2;
+
+        if $i0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void setFlags(int)
+    {
+        int $i0;
+        androidx.core.app.NotificationCompat$BubbleMetadata r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata;
+
+        $i0 := @parameter0: int;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata: int mFlags> = $i0;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.app.NotificationCompat$BubbleMetadata: int FLAG_SUPPRESS_NOTIFICATION> = 2;
+
+        <androidx.core.app.NotificationCompat$BubbleMetadata: int FLAG_AUTO_EXPAND_BUBBLE> = 1;
+
+        return;
+    }
+}

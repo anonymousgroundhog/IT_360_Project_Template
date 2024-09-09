@@ -1,0 +1,202 @@
+public final class androidx.core.net.UriCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.net.UriCompat r0;
+
+        r0 := @this: androidx.core.net.UriCompat;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.lang.String toSafeString(android.net.Uri)
+    {
+        android.net.Uri $r0;
+        char $c2;
+        int $i0, $i1;
+        java.lang.StringBuilder r4, r5, $r6;
+        java.lang.String $r1, $r2, r3;
+        boolean $z0;
+
+        $r0 := @parameter0: android.net.Uri;
+
+        $r1 = virtualinvoke $r0.<android.net.Uri: java.lang.String getScheme()>();
+
+        $r2 = virtualinvoke $r0.<android.net.Uri: java.lang.String getSchemeSpecificPart()>();
+
+        r3 = $r2;
+
+        if $r1 == null goto label12;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("tel");
+
+        if $z0 != 0 goto label06;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("sip");
+
+        if $z0 != 0 goto label06;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("sms");
+
+        if $z0 != 0 goto label06;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("smsto");
+
+        if $z0 != 0 goto label06;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("mailto");
+
+        if $z0 != 0 goto label06;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("nfc");
+
+        if $z0 == 0 goto label01;
+
+        goto label06;
+
+     label01:
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("http");
+
+        if $z0 != 0 goto label02;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("https");
+
+        if $z0 != 0 goto label02;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("ftp");
+
+        if $z0 != 0 goto label02;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("rtsp");
+
+        if $z0 == 0 goto label12;
+
+     label02:
+        r5 = new java.lang.StringBuilder;
+
+        specialinvoke r5.<java.lang.StringBuilder: void <init>()>();
+
+        r4 = virtualinvoke r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("//");
+
+        r3 = virtualinvoke $r0.<android.net.Uri: java.lang.String getHost()>();
+
+        $r2 = "";
+
+        if r3 == null goto label03;
+
+        r3 = virtualinvoke $r0.<android.net.Uri: java.lang.String getHost()>();
+
+        goto label04;
+
+     label03:
+        r3 = "";
+
+     label04:
+        r4 = virtualinvoke r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        $i0 = virtualinvoke $r0.<android.net.Uri: int getPort()>();
+
+        if $i0 == -1 goto label05;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        r5 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $i0 = virtualinvoke $r0.<android.net.Uri: int getPort()>();
+
+        r5 = virtualinvoke r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r2 = virtualinvoke r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label05:
+        r4 = virtualinvoke r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        r4 = virtualinvoke r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/...");
+
+        r3 = virtualinvoke r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        goto label12;
+
+     label06:
+        r5 = new java.lang.StringBuilder;
+
+        r4 = r5;
+
+        specialinvoke r5.<java.lang.StringBuilder: void <init>(int)>(64);
+
+        virtualinvoke r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        virtualinvoke r5.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(58);
+
+        if $r2 == null goto label11;
+
+        $i0 = 0;
+
+     label07:
+        $i1 = virtualinvoke $r2.<java.lang.String: int length()>();
+
+        if $i0 >= $i1 goto label11;
+
+        $c2 = virtualinvoke $r2.<java.lang.String: char charAt(int)>($i0);
+
+        $i1 = (int) $c2;
+
+        if $i1 == 45 goto label09;
+
+        $i1 = (int) $c2;
+
+        if $i1 == 64 goto label09;
+
+        $i1 = (int) $c2;
+
+        if $i1 != 46 goto label08;
+
+        goto label09;
+
+     label08:
+        virtualinvoke r4.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(120);
+
+        goto label10;
+
+     label09:
+        virtualinvoke r4.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>($c2);
+
+     label10:
+        $i0 = $i0 + 1;
+
+        goto label07;
+
+     label11:
+        $r1 = virtualinvoke r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r1;
+
+     label12:
+        r5 = new java.lang.StringBuilder;
+
+        r4 = r5;
+
+        specialinvoke r5.<java.lang.StringBuilder: void <init>(int)>(64);
+
+        if $r1 == null goto label13;
+
+        virtualinvoke r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        virtualinvoke r5.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(58);
+
+     label13:
+        if r3 == null goto label14;
+
+        virtualinvoke r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+     label14:
+        $r1 = virtualinvoke r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r1;
+    }
+}

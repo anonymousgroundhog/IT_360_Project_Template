@@ -1,0 +1,531 @@
+public class androidx.core.util.AtomicFile extends java.lang.Object
+{
+    private static final java.lang.String LOG_TAG;
+    private final java.io.File mBaseName;
+    private final java.io.File mLegacyBackupName;
+    private final java.io.File mNewName;
+
+    public void <init>(java.io.File)
+    {
+        androidx.core.util.AtomicFile r0;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r4;
+        java.io.File $r1, $r2;
+
+        r0 := @this: androidx.core.util.AtomicFile;
+
+        $r1 := @parameter0: java.io.File;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.util.AtomicFile: java.io.File mBaseName> = $r1;
+
+        $r2 = new java.io.File;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r1.<java.io.File: java.lang.String getPath()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".new");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>($r4);
+
+        r0.<androidx.core.util.AtomicFile: java.io.File mNewName> = $r2;
+
+        $r2 = new java.io.File;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r1.<java.io.File: java.lang.String getPath()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".bak");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>($r4);
+
+        r0.<androidx.core.util.AtomicFile: java.io.File mLegacyBackupName> = $r2;
+
+        return;
+    }
+
+    private static void rename(java.io.File, java.io.File)
+    {
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+        java.io.File $r0, $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: java.io.File;
+
+        $r1 := @parameter1: java.io.File;
+
+        $z0 = virtualinvoke $r1.<java.io.File: boolean isDirectory()>();
+
+        if $z0 == 0 goto label1;
+
+        $z0 = virtualinvoke $r1.<java.io.File: boolean delete()>();
+
+        if $z0 != 0 goto label1;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to delete file which is a directory ");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("AtomicFile", $r3);
+
+     label1:
+        $z0 = virtualinvoke $r0.<java.io.File: boolean renameTo(java.io.File)>($r1);
+
+        if $z0 != 0 goto label2;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to rename ");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r0);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" to ");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("AtomicFile", $r3);
+
+     label2:
+        return;
+    }
+
+    private static boolean sync(java.io.FileOutputStream)
+    {
+        java.io.FileOutputStream $r0;
+        java.io.IOException $r2;
+        java.io.FileDescriptor $r1;
+
+        $r0 := @parameter0: java.io.FileOutputStream;
+
+     label1:
+        $r1 = virtualinvoke $r0.<java.io.FileOutputStream: java.io.FileDescriptor getFD()>();
+
+        virtualinvoke $r1.<java.io.FileDescriptor: void sync()>();
+
+     label2:
+        return 1;
+
+     label3:
+        $r2 := @caughtexception;
+
+        return 0;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void delete()
+    {
+        androidx.core.util.AtomicFile r0;
+        java.io.File $r1;
+
+        r0 := @this: androidx.core.util.AtomicFile;
+
+        $r1 = r0.<androidx.core.util.AtomicFile: java.io.File mBaseName>;
+
+        virtualinvoke $r1.<java.io.File: boolean delete()>();
+
+        $r1 = r0.<androidx.core.util.AtomicFile: java.io.File mNewName>;
+
+        virtualinvoke $r1.<java.io.File: boolean delete()>();
+
+        $r1 = r0.<androidx.core.util.AtomicFile: java.io.File mLegacyBackupName>;
+
+        virtualinvoke $r1.<java.io.File: boolean delete()>();
+
+        return;
+    }
+
+    public void failWrite(java.io.FileOutputStream)
+    {
+        androidx.core.util.AtomicFile r0;
+        java.io.FileOutputStream $r1;
+        java.io.IOException r2;
+        java.lang.StringBuilder r4;
+        java.lang.String $r5;
+        java.io.File r3;
+        boolean $z0;
+
+        r0 := @this: androidx.core.util.AtomicFile;
+
+        $r1 := @parameter0: java.io.FileOutputStream;
+
+        if $r1 != null goto label1;
+
+        return;
+
+     label1:
+        $z0 = staticinvoke <androidx.core.util.AtomicFile: boolean sync(java.io.FileOutputStream)>($r1);
+
+        if $z0 != 0 goto label2;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("AtomicFile", "Failed to sync file output stream");
+
+     label2:
+        virtualinvoke $r1.<java.io.FileOutputStream: void close()>();
+
+     label3:
+        goto label5;
+
+     label4:
+        r2 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("AtomicFile", "Failed to close file output stream", r2);
+
+     label5:
+        r3 = r0.<androidx.core.util.AtomicFile: java.io.File mNewName>;
+
+        $z0 = virtualinvoke r3.<java.io.File: boolean delete()>();
+
+        if $z0 != 0 goto label6;
+
+        r4 = new java.lang.StringBuilder;
+
+        specialinvoke r4.<java.lang.StringBuilder: void <init>()>();
+
+        r4 = virtualinvoke r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to delete new file ");
+
+        r3 = r0.<androidx.core.util.AtomicFile: java.io.File mNewName>;
+
+        r4 = virtualinvoke r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r3);
+
+        $r5 = virtualinvoke r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("AtomicFile", $r5);
+
+     label6:
+        return;
+
+        catch java.io.IOException from label2 to label3 with label4;
+    }
+
+    public void finishWrite(java.io.FileOutputStream)
+    {
+        androidx.core.util.AtomicFile r0;
+        java.io.FileOutputStream $r1;
+        java.io.IOException r2;
+        java.io.File r3, $r4;
+        boolean $z0;
+
+        r0 := @this: androidx.core.util.AtomicFile;
+
+        $r1 := @parameter0: java.io.FileOutputStream;
+
+        if $r1 != null goto label1;
+
+        return;
+
+     label1:
+        $z0 = staticinvoke <androidx.core.util.AtomicFile: boolean sync(java.io.FileOutputStream)>($r1);
+
+        if $z0 != 0 goto label2;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("AtomicFile", "Failed to sync file output stream");
+
+     label2:
+        virtualinvoke $r1.<java.io.FileOutputStream: void close()>();
+
+     label3:
+        goto label5;
+
+     label4:
+        r2 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("AtomicFile", "Failed to close file output stream", r2);
+
+     label5:
+        r3 = r0.<androidx.core.util.AtomicFile: java.io.File mNewName>;
+
+        $r4 = r0.<androidx.core.util.AtomicFile: java.io.File mBaseName>;
+
+        staticinvoke <androidx.core.util.AtomicFile: void rename(java.io.File,java.io.File)>(r3, $r4);
+
+        return;
+
+        catch java.io.IOException from label2 to label3 with label4;
+    }
+
+    public java.io.File getBaseFile()
+    {
+        androidx.core.util.AtomicFile r0;
+        java.io.File r1;
+
+        r0 := @this: androidx.core.util.AtomicFile;
+
+        r1 = r0.<androidx.core.util.AtomicFile: java.io.File mBaseName>;
+
+        return r1;
+    }
+
+    public java.io.FileInputStream openRead() throws java.io.FileNotFoundException
+    {
+        androidx.core.util.AtomicFile r0;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r4;
+        java.io.FileInputStream $r5;
+        java.io.File $r1, $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.core.util.AtomicFile;
+
+        $r1 = r0.<androidx.core.util.AtomicFile: java.io.File mLegacyBackupName>;
+
+        $z0 = virtualinvoke $r1.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<androidx.core.util.AtomicFile: java.io.File mLegacyBackupName>;
+
+        $r2 = r0.<androidx.core.util.AtomicFile: java.io.File mBaseName>;
+
+        staticinvoke <androidx.core.util.AtomicFile: void rename(java.io.File,java.io.File)>($r1, $r2);
+
+     label1:
+        $r1 = r0.<androidx.core.util.AtomicFile: java.io.File mNewName>;
+
+        $z0 = virtualinvoke $r1.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label2;
+
+        $r1 = r0.<androidx.core.util.AtomicFile: java.io.File mBaseName>;
+
+        $z0 = virtualinvoke $r1.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label2;
+
+        $r1 = r0.<androidx.core.util.AtomicFile: java.io.File mNewName>;
+
+        $z0 = virtualinvoke $r1.<java.io.File: boolean delete()>();
+
+        if $z0 != 0 goto label2;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to delete outdated new file ");
+
+        $r1 = r0.<androidx.core.util.AtomicFile: java.io.File mNewName>;
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("AtomicFile", $r4);
+
+     label2:
+        $r5 = new java.io.FileInputStream;
+
+        $r1 = r0.<androidx.core.util.AtomicFile: java.io.File mBaseName>;
+
+        specialinvoke $r5.<java.io.FileInputStream: void <init>(java.io.File)>($r1);
+
+        return $r5;
+    }
+
+    public byte[] readFully() throws java.io.IOException
+    {
+        java.lang.Throwable r4;
+        byte[] r2, r3;
+        java.io.FileInputStream $r1;
+        androidx.core.util.AtomicFile r0;
+        int i0, $i1, i2;
+
+        r0 := @this: androidx.core.util.AtomicFile;
+
+        $r1 = virtualinvoke r0.<androidx.core.util.AtomicFile: java.io.FileInputStream openRead()>();
+
+        i0 = 0;
+
+     label01:
+        $i1 = virtualinvoke $r1.<java.io.FileInputStream: int available()>();
+
+        r2 = newarray (byte)[$i1];
+
+     label02:
+        $i1 = lengthof r2;
+
+     label03:
+        $i1 = $i1 - i0;
+
+     label04:
+        $i1 = virtualinvoke $r1.<java.io.FileInputStream: int read(byte[],int,int)>(r2, i0, $i1);
+
+     label05:
+        if $i1 > 0 goto label06;
+
+        virtualinvoke $r1.<java.io.FileInputStream: void close()>();
+
+        return r2;
+
+     label06:
+        i0 = i0 + $i1;
+
+     label07:
+        $i1 = virtualinvoke $r1.<java.io.FileInputStream: int available()>();
+
+        i2 = lengthof r2;
+
+     label08:
+        i2 = i2 - i0;
+
+        if $i1 <= i2 goto label02;
+
+        $i1 = i0 + $i1;
+
+     label09:
+        r3 = newarray (byte)[$i1];
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(r2, 0, r3, 0, i0);
+
+     label10:
+        r2 = r3;
+
+        goto label02;
+
+     label11:
+        r4 := @caughtexception;
+
+        virtualinvoke $r1.<java.io.FileInputStream: void close()>();
+
+        throw r4;
+
+        catch java.lang.Throwable from label01 to label03 with label11;
+        catch java.lang.Throwable from label04 to label05 with label11;
+        catch java.lang.Throwable from label07 to label08 with label11;
+        catch java.lang.Throwable from label09 to label10 with label11;
+    }
+
+    public java.io.FileOutputStream startWrite() throws java.io.IOException
+    {
+        java.io.FileOutputStream r3;
+        java.io.IOException $r6;
+        java.io.File r1, r2;
+        java.io.FileNotFoundException r4, r5;
+        androidx.core.util.AtomicFile r0;
+        java.lang.StringBuilder $r7;
+        java.lang.String $r8;
+        boolean $z0;
+
+        r0 := @this: androidx.core.util.AtomicFile;
+
+        r1 = r0.<androidx.core.util.AtomicFile: java.io.File mLegacyBackupName>;
+
+        $z0 = virtualinvoke r1.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label1;
+
+        r1 = r0.<androidx.core.util.AtomicFile: java.io.File mLegacyBackupName>;
+
+        r2 = r0.<androidx.core.util.AtomicFile: java.io.File mBaseName>;
+
+        staticinvoke <androidx.core.util.AtomicFile: void rename(java.io.File,java.io.File)>(r1, r2);
+
+     label1:
+        r3 = new java.io.FileOutputStream;
+
+        r1 = r0.<androidx.core.util.AtomicFile: java.io.File mNewName>;
+
+     label2:
+        specialinvoke r3.<java.io.FileOutputStream: void <init>(java.io.File)>(r1);
+
+     label3:
+        return r3;
+
+     label4:
+        r4 := @caughtexception;
+
+        r1 = r0.<androidx.core.util.AtomicFile: java.io.File mNewName>;
+
+        r1 = virtualinvoke r1.<java.io.File: java.io.File getParentFile()>();
+
+        $z0 = virtualinvoke r1.<java.io.File: boolean mkdirs()>();
+
+        if $z0 == 0 goto label8;
+
+        r3 = new java.io.FileOutputStream;
+
+        r1 = r0.<androidx.core.util.AtomicFile: java.io.File mNewName>;
+
+     label5:
+        specialinvoke r3.<java.io.FileOutputStream: void <init>(java.io.File)>(r1);
+
+     label6:
+        return r3;
+
+     label7:
+        r5 := @caughtexception;
+
+        $r6 = new java.io.IOException;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to create new file ");
+
+        r1 = r0.<androidx.core.util.AtomicFile: java.io.File mNewName>;
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r6.<java.io.IOException: void <init>(java.lang.String,java.lang.Throwable)>($r8, r5);
+
+        throw $r6;
+
+     label8:
+        $r6 = new java.io.IOException;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to create directory for ");
+
+        r1 = r0.<androidx.core.util.AtomicFile: java.io.File mNewName>;
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r6.<java.io.IOException: void <init>(java.lang.String)>($r8);
+
+        throw $r6;
+
+        catch java.io.FileNotFoundException from label2 to label3 with label4;
+        catch java.io.FileNotFoundException from label5 to label6 with label7;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.util.AtomicFile: java.lang.String LOG_TAG> = "AtomicFile";
+
+        return;
+    }
+}

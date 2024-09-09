@@ -1,0 +1,98 @@
+class androidx.core.location.LocationManagerCompat$GnssStatusTransport extends android.location.GnssStatus$Callback
+{
+    final androidx.core.location.GnssStatusCompat$Callback mCallback;
+
+    void <init>(androidx.core.location.GnssStatusCompat$Callback)
+    {
+        androidx.core.location.LocationManagerCompat$GnssStatusTransport r0;
+        androidx.core.location.GnssStatusCompat$Callback $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$GnssStatusTransport;
+
+        $r1 := @parameter0: androidx.core.location.GnssStatusCompat$Callback;
+
+        specialinvoke r0.<android.location.GnssStatus$Callback: void <init>()>();
+
+        if $r1 == null goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        staticinvoke <androidx.core.util.Preconditions: void checkArgument(boolean,java.lang.Object)>($z0, "invalid null callback");
+
+        r0.<androidx.core.location.LocationManagerCompat$GnssStatusTransport: androidx.core.location.GnssStatusCompat$Callback mCallback> = $r1;
+
+        return;
+    }
+
+    public void onFirstFix(int)
+    {
+        androidx.core.location.LocationManagerCompat$GnssStatusTransport r0;
+        int $i0;
+        androidx.core.location.GnssStatusCompat$Callback $r1;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$GnssStatusTransport;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.core.location.LocationManagerCompat$GnssStatusTransport: androidx.core.location.GnssStatusCompat$Callback mCallback>;
+
+        virtualinvoke $r1.<androidx.core.location.GnssStatusCompat$Callback: void onFirstFix(int)>($i0);
+
+        return;
+    }
+
+    public void onSatelliteStatusChanged(android.location.GnssStatus)
+    {
+        androidx.core.location.LocationManagerCompat$GnssStatusTransport r0;
+        androidx.core.location.GnssStatusCompat$Callback $r2;
+        android.location.GnssStatus $r1;
+        androidx.core.location.GnssStatusCompat $r3;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$GnssStatusTransport;
+
+        $r1 := @parameter0: android.location.GnssStatus;
+
+        $r2 = r0.<androidx.core.location.LocationManagerCompat$GnssStatusTransport: androidx.core.location.GnssStatusCompat$Callback mCallback>;
+
+        $r3 = staticinvoke <androidx.core.location.GnssStatusCompat: androidx.core.location.GnssStatusCompat wrap(android.location.GnssStatus)>($r1);
+
+        virtualinvoke $r2.<androidx.core.location.GnssStatusCompat$Callback: void onSatelliteStatusChanged(androidx.core.location.GnssStatusCompat)>($r3);
+
+        return;
+    }
+
+    public void onStarted()
+    {
+        androidx.core.location.LocationManagerCompat$GnssStatusTransport r0;
+        androidx.core.location.GnssStatusCompat$Callback $r1;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$GnssStatusTransport;
+
+        $r1 = r0.<androidx.core.location.LocationManagerCompat$GnssStatusTransport: androidx.core.location.GnssStatusCompat$Callback mCallback>;
+
+        virtualinvoke $r1.<androidx.core.location.GnssStatusCompat$Callback: void onStarted()>();
+
+        return;
+    }
+
+    public void onStopped()
+    {
+        androidx.core.location.LocationManagerCompat$GnssStatusTransport r0;
+        androidx.core.location.GnssStatusCompat$Callback $r1;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$GnssStatusTransport;
+
+        $r1 = r0.<androidx.core.location.LocationManagerCompat$GnssStatusTransport: androidx.core.location.GnssStatusCompat$Callback mCallback>;
+
+        virtualinvoke $r1.<androidx.core.location.GnssStatusCompat$Callback: void onStopped()>();
+
+        return;
+    }
+}

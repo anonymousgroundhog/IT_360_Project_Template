@@ -1,0 +1,864 @@
+public class com.google.android.gms.common.util.WorkSourceUtil extends java.lang.Object
+{
+    private static final int zza;
+    private static final java.lang.reflect.Method zzb;
+    private static final java.lang.reflect.Method zzc;
+    private static final java.lang.reflect.Method zzd;
+    private static final java.lang.reflect.Method zze;
+    private static final java.lang.reflect.Method zzf;
+    private static final java.lang.reflect.Method zzg;
+    private static final java.lang.reflect.Method zzh;
+    private static final java.lang.reflect.Method zzi;
+    private static java.lang.Boolean zzj;
+
+    static void <clinit>()
+    {
+        int $i0;
+        java.lang.reflect.Method $r3, $r11;
+        boolean $z0;
+        java.lang.Class[] $r1;
+        java.lang.Exception $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r12, $r13;
+        java.lang.Class $r0, $r2;
+
+        $i0 = staticinvoke <android.os.Process: int myUid()>();
+
+        <com.google.android.gms.common.util.WorkSourceUtil: int zza> = $i0;
+
+        $r0 = class "Landroid/os/WorkSource;";
+
+        $r1 = newarray (java.lang.Class)[1];
+
+        $r2 = <java.lang.Integer: java.lang.Class TYPE>;
+
+     label01:
+        $r1[0] = $r2;
+
+        $r3 = virtualinvoke $r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("add", $r1);
+
+     label02:
+        goto label04;
+
+     label03:
+        $r4 := @caughtexception;
+
+        $r3 = null;
+
+     label04:
+        <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zzb> = $r3;
+
+        $z0 = staticinvoke <com.google.android.gms.common.util.PlatformVersion: boolean isAtLeastJellyBeanMR2()>();
+
+        if $z0 == 0 goto label08;
+
+        $r0 = class "Landroid/os/WorkSource;";
+
+        $r1 = newarray (java.lang.Class)[2];
+
+        $r2 = <java.lang.Integer: java.lang.Class TYPE>;
+
+     label05:
+        $r1[0] = $r2;
+
+        $r1[1] = class "Ljava/lang/String;";
+
+        $r3 = virtualinvoke $r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("add", $r1);
+
+     label06:
+        goto label09;
+
+     label07:
+        $r5 := @caughtexception;
+
+     label08:
+        $r3 = null;
+
+     label09:
+        <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zzc> = $r3;
+
+        $r0 = class "Landroid/os/WorkSource;";
+
+        $r1 = newarray (java.lang.Class)[0];
+
+     label10:
+        $r3 = virtualinvoke $r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("size", $r1);
+
+     label11:
+        goto label13;
+
+     label12:
+        $r6 := @caughtexception;
+
+        $r3 = null;
+
+     label13:
+        <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zzd> = $r3;
+
+        $r0 = class "Landroid/os/WorkSource;";
+
+        $r1 = newarray (java.lang.Class)[1];
+
+        $r2 = <java.lang.Integer: java.lang.Class TYPE>;
+
+     label14:
+        $r1[0] = $r2;
+
+        $r3 = virtualinvoke $r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("get", $r1);
+
+     label15:
+        goto label17;
+
+     label16:
+        $r7 := @caughtexception;
+
+        $r3 = null;
+
+     label17:
+        <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zze> = $r3;
+
+        $z0 = staticinvoke <com.google.android.gms.common.util.PlatformVersion: boolean isAtLeastJellyBeanMR2()>();
+
+        if $z0 == 0 goto label21;
+
+        $r0 = class "Landroid/os/WorkSource;";
+
+        $r1 = newarray (java.lang.Class)[1];
+
+        $r2 = <java.lang.Integer: java.lang.Class TYPE>;
+
+     label18:
+        $r1[0] = $r2;
+
+        $r3 = virtualinvoke $r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getName", $r1);
+
+     label19:
+        goto label22;
+
+     label20:
+        $r8 := @caughtexception;
+
+     label21:
+        $r3 = null;
+
+     label22:
+        <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zzf> = $r3;
+
+        $z0 = staticinvoke <com.google.android.gms.common.util.PlatformVersion: boolean isAtLeastP()>();
+
+        if $z0 == 0 goto label26;
+
+        $r0 = class "Landroid/os/WorkSource;";
+
+        $r1 = newarray (java.lang.Class)[0];
+
+     label23:
+        $r3 = virtualinvoke $r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("createWorkChain", $r1);
+
+     label24:
+        goto label27;
+
+     label25:
+        $r9 := @caughtexception;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("WorkSourceUtil", "Missing WorkChain API createWorkChain", $r9);
+
+        $r3 = null;
+
+        goto label27;
+
+     label26:
+        $r3 = null;
+
+     label27:
+        <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zzg> = $r3;
+
+        $z0 = staticinvoke <com.google.android.gms.common.util.PlatformVersion: boolean isAtLeastP()>();
+
+        if $z0 == 0 goto label33;
+
+     label28:
+        $r0 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("android.os.WorkSource$WorkChain");
+
+     label29:
+        $r1 = newarray (java.lang.Class)[2];
+
+        $r2 = <java.lang.Integer: java.lang.Class TYPE>;
+
+     label30:
+        $r1[0] = $r2;
+
+        $r1[1] = class "Ljava/lang/String;";
+
+        $r3 = virtualinvoke $r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("addNode", $r1);
+
+     label31:
+        goto label34;
+
+     label32:
+        $r10 := @caughtexception;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("WorkSourceUtil", "Missing WorkChain class", $r10);
+
+        $r3 = null;
+
+        goto label34;
+
+     label33:
+        $r3 = null;
+
+     label34:
+        <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zzh> = $r3;
+
+        $z0 = staticinvoke <com.google.android.gms.common.util.PlatformVersion: boolean isAtLeastP()>();
+
+        if $z0 == 0 goto label41;
+
+        $r0 = class "Landroid/os/WorkSource;";
+
+        $r1 = newarray (java.lang.Class)[0];
+
+     label35:
+        $r3 = virtualinvoke $r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("isEmpty", $r1);
+
+     label36:
+        $r11 = $r3;
+
+     label37:
+        virtualinvoke $r3.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label38:
+        goto label42;
+
+     label39:
+        $r12 := @caughtexception;
+
+        goto label42;
+
+     label40:
+        $r13 := @caughtexception;
+
+        $r11 = null;
+
+        goto label42;
+
+     label41:
+        $r11 = null;
+
+     label42:
+        <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zzi> = $r11;
+
+        <com.google.android.gms.common.util.WorkSourceUtil: java.lang.Boolean zzj> = null;
+
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label03;
+        catch java.lang.Exception from label05 to label06 with label07;
+        catch java.lang.Exception from label10 to label11 with label12;
+        catch java.lang.Exception from label14 to label15 with label16;
+        catch java.lang.Exception from label18 to label19 with label20;
+        catch java.lang.Exception from label23 to label24 with label25;
+        catch java.lang.Exception from label28 to label29 with label32;
+        catch java.lang.Exception from label30 to label31 with label32;
+        catch java.lang.Exception from label35 to label36 with label40;
+        catch java.lang.Exception from label37 to label38 with label39;
+    }
+
+    private void <init>()
+    {
+        com.google.android.gms.common.util.WorkSourceUtil r0;
+
+        r0 := @this: com.google.android.gms.common.util.WorkSourceUtil;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void add(android.os.WorkSource, int, java.lang.String)
+    {
+        java.lang.Object[] $r3;
+        android.os.WorkSource $r0;
+        java.lang.Integer $r4;
+        java.lang.Exception $r5, $r6;
+        int $i0;
+        java.lang.String $r1;
+        java.lang.reflect.Method $r2;
+
+        $r0 := @parameter0: android.os.WorkSource;
+
+        $i0 := @parameter1: int;
+
+        $r1 := @parameter2: java.lang.String;
+
+        $r2 = <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zzc>;
+
+        if $r2 == null goto label5;
+
+        if $r1 != null goto label1;
+
+        $r1 = "";
+
+     label1:
+        $r3 = newarray (java.lang.Object)[2];
+
+     label2:
+        $r4 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r3[0] = $r4;
+
+        $r3[1] = $r1;
+
+        virtualinvoke $r2.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r0, $r3);
+
+     label3:
+        return;
+
+     label4:
+        $r5 := @caughtexception;
+
+        staticinvoke <android.util.Log: int wtf(java.lang.String,java.lang.String,java.lang.Throwable)>("WorkSourceUtil", "Unable to assign blame through WorkSource", $r5);
+
+        return;
+
+     label5:
+        $r2 = <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zzb>;
+
+        if $r2 == null goto label9;
+
+        $r3 = newarray (java.lang.Object)[1];
+
+     label6:
+        $r4 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r3[0] = $r4;
+
+        virtualinvoke $r2.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r0, $r3);
+
+     label7:
+        return;
+
+     label8:
+        $r6 := @caughtexception;
+
+        staticinvoke <android.util.Log: int wtf(java.lang.String,java.lang.String,java.lang.Throwable)>("WorkSourceUtil", "Unable to assign blame through WorkSource", $r6);
+
+     label9:
+        return;
+
+        catch java.lang.Exception from label2 to label3 with label4;
+        catch java.lang.Exception from label6 to label7 with label8;
+    }
+
+    public static android.os.WorkSource fromPackage(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r1;
+        android.content.pm.PackageManager $r2;
+        android.content.pm.PackageManager$NameNotFoundException $r7;
+        com.google.android.gms.common.wrappers.PackageManagerWrapper $r3;
+        android.os.WorkSource $r6;
+        int $i0;
+        java.lang.String $r0, $r5;
+        android.content.pm.ApplicationInfo $r4;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r0 := @parameter1: java.lang.String;
+
+        if $r1 == null goto label5;
+
+        $r2 = virtualinvoke $r1.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        if $r2 == null goto label5;
+
+        if $r0 == null goto label5;
+
+     label1:
+        $r3 = staticinvoke <com.google.android.gms.common.wrappers.Wrappers: com.google.android.gms.common.wrappers.PackageManagerWrapper packageManager(android.content.Context)>($r1);
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.common.wrappers.PackageManagerWrapper: android.content.pm.ApplicationInfo getApplicationInfo(java.lang.String,int)>($r0, 0);
+
+     label2:
+        if $r4 != null goto label3;
+
+        $r5 = "Could not get applicationInfo from package: ";
+
+        $r0 = virtualinvoke $r5.<java.lang.String: java.lang.String concat(java.lang.String)>($r0);
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("WorkSourceUtil", $r0);
+
+        return null;
+
+     label3:
+        $i0 = $r4.<android.content.pm.ApplicationInfo: int uid>;
+
+        $r6 = new android.os.WorkSource;
+
+        specialinvoke $r6.<android.os.WorkSource: void <init>()>();
+
+        staticinvoke <com.google.android.gms.common.util.WorkSourceUtil: void add(android.os.WorkSource,int,java.lang.String)>($r6, $i0, $r0);
+
+        return $r6;
+
+     label4:
+        $r7 := @caughtexception;
+
+        $r5 = "Could not find package: ";
+
+        $r0 = virtualinvoke $r5.<java.lang.String: java.lang.String concat(java.lang.String)>($r0);
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("WorkSourceUtil", $r0);
+
+     label5:
+        return null;
+
+        catch android.content.pm.PackageManager$NameNotFoundException from label1 to label2 with label4;
+    }
+
+    public static android.os.WorkSource fromPackageAndModuleExperimentalPi(android.content.Context, java.lang.String, java.lang.String)
+    {
+        android.content.Context $r1;
+        java.lang.Object[] $r0;
+        android.content.pm.PackageManager $r4;
+        android.content.pm.PackageManager$NameNotFoundException $r8;
+        com.google.android.gms.common.wrappers.PackageManagerWrapper $r5;
+        java.lang.Integer $r12;
+        int $i0, $i1;
+        java.lang.String $r2, $r3, $r7;
+        java.lang.reflect.Method $r9, $r10;
+        android.os.WorkSource $r14;
+        java.lang.Exception $r13;
+        java.lang.Object $r11;
+        android.content.pm.ApplicationInfo $r6;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+        if $r1 == null goto label17;
+
+        $r4 = virtualinvoke $r1.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        if $r4 == null goto label17;
+
+        if $r3 == null goto label17;
+
+        if $r2 != null goto label01;
+
+        goto label17;
+
+     label01:
+        $i0 = -1;
+
+     label02:
+        $r5 = staticinvoke <com.google.android.gms.common.wrappers.Wrappers: com.google.android.gms.common.wrappers.PackageManagerWrapper packageManager(android.content.Context)>($r1);
+
+        $r6 = virtualinvoke $r5.<com.google.android.gms.common.wrappers.PackageManagerWrapper: android.content.pm.ApplicationInfo getApplicationInfo(java.lang.String,int)>($r2, 0);
+
+     label03:
+        if $r6 != null goto label04;
+
+        $r7 = "Could not get applicationInfo from package: ";
+
+        $r7 = virtualinvoke $r7.<java.lang.String: java.lang.String concat(java.lang.String)>($r2);
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("WorkSourceUtil", $r7);
+
+        goto label06;
+
+     label04:
+        $i0 = $r6.<android.content.pm.ApplicationInfo: int uid>;
+
+        goto label06;
+
+     label05:
+        $r8 := @caughtexception;
+
+        $r7 = "Could not find package: ";
+
+        $r7 = virtualinvoke $r7.<java.lang.String: java.lang.String concat(java.lang.String)>($r2);
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("WorkSourceUtil", $r7);
+
+     label06:
+        if $i0 >= 0 goto label07;
+
+        return null;
+
+     label07:
+        $r14 = new android.os.WorkSource;
+
+        specialinvoke $r14.<android.os.WorkSource: void <init>()>();
+
+        $r9 = <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zzg>;
+
+        if $r9 == null goto label16;
+
+        $r10 = <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zzh>;
+
+        if $r10 != null goto label08;
+
+        goto label16;
+
+     label08:
+        $r0 = newarray (java.lang.Object)[0];
+
+     label09:
+        $r11 = virtualinvoke $r9.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r14, $r0);
+
+     label10:
+        $i1 = <com.google.android.gms.common.util.WorkSourceUtil: int zza>;
+
+        if $i0 == $i1 goto label12;
+
+        $r9 = <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zzh>;
+
+        $r0 = newarray (java.lang.Object)[2];
+
+     label11:
+        $r12 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r0[0] = $r12;
+
+        $r0[1] = $r2;
+
+        virtualinvoke $r9.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r11, $r0);
+
+     label12:
+        $r9 = <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zzh>;
+
+        $r0 = newarray (java.lang.Object)[2];
+
+        $i0 = <com.google.android.gms.common.util.WorkSourceUtil: int zza>;
+
+     label13:
+        $r12 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r0[0] = $r12;
+
+        $r0[1] = $r3;
+
+        virtualinvoke $r9.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r11, $r0);
+
+     label14:
+        return $r14;
+
+     label15:
+        $r13 := @caughtexception;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("WorkSourceUtil", "Unable to assign chained blame through WorkSource", $r13);
+
+        return $r14;
+
+     label16:
+        staticinvoke <com.google.android.gms.common.util.WorkSourceUtil: void add(android.os.WorkSource,int,java.lang.String)>($r14, $i0, $r2);
+
+        return $r14;
+
+     label17:
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("WorkSourceUtil", "Unexpected null arguments");
+
+        return null;
+
+        catch android.content.pm.PackageManager$NameNotFoundException from label02 to label03 with label05;
+        catch java.lang.Exception from label09 to label10 with label15;
+        catch java.lang.Exception from label11 to label12 with label15;
+        catch java.lang.Exception from label13 to label14 with label15;
+    }
+
+    public static int get(android.os.WorkSource, int)
+    {
+        java.lang.Object[] $r2;
+        int $i0;
+        java.lang.Object $r4;
+        android.os.WorkSource $r0;
+        java.lang.reflect.Method $r1;
+        java.lang.Integer $r3;
+        java.lang.Exception $r5;
+
+        $r0 := @parameter0: android.os.WorkSource;
+
+        $i0 := @parameter1: int;
+
+        $r1 = <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zze>;
+
+        if $r1 == null goto label4;
+
+        $r2 = newarray (java.lang.Object)[1];
+
+     label1:
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r2[0] = $r3;
+
+        $r4 = virtualinvoke $r1.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r0, $r2);
+
+        staticinvoke <com.google.android.gms.common.internal.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r4);
+
+        $r3 = (java.lang.Integer) $r4;
+
+        $i0 = virtualinvoke $r3.<java.lang.Integer: int intValue()>();
+
+     label2:
+        return $i0;
+
+     label3:
+        $r5 := @caughtexception;
+
+        staticinvoke <android.util.Log: int wtf(java.lang.String,java.lang.String,java.lang.Throwable)>("WorkSourceUtil", "Unable to assign blame through WorkSource", $r5);
+
+     label4:
+        return 0;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public static java.lang.String getName(android.os.WorkSource, int)
+    {
+        java.lang.Object[] $r2;
+        android.os.WorkSource $r0;
+        java.lang.Integer $r3;
+        java.lang.Exception $r6;
+        int $i0;
+        java.lang.Object $r4;
+        java.lang.String $r5;
+        java.lang.reflect.Method $r1;
+
+        $r0 := @parameter0: android.os.WorkSource;
+
+        $i0 := @parameter1: int;
+
+        $r1 = <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zzf>;
+
+        if $r1 == null goto label4;
+
+        $r2 = newarray (java.lang.Object)[1];
+
+     label1:
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r2[0] = $r3;
+
+        $r4 = virtualinvoke $r1.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r0, $r2);
+
+        $r5 = (java.lang.String) $r4;
+
+     label2:
+        return $r5;
+
+     label3:
+        $r6 := @caughtexception;
+
+        staticinvoke <android.util.Log: int wtf(java.lang.String,java.lang.String,java.lang.Throwable)>("WorkSourceUtil", "Unable to assign blame through WorkSource", $r6);
+
+     label4:
+        return null;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public static java.util.List getNames(android.os.WorkSource)
+    {
+        int $i0, $i1;
+        java.lang.String $r2;
+        android.os.WorkSource $r0;
+        java.util.ArrayList $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.os.WorkSource;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        $i0 = 0;
+
+        if $r0 != null goto label1;
+
+        $i1 = 0;
+
+        goto label2;
+
+     label1:
+        $i1 = staticinvoke <com.google.android.gms.common.util.WorkSourceUtil: int size(android.os.WorkSource)>($r0);
+
+     label2:
+        if $i1 == 0 goto label5;
+
+     label3:
+        if $i0 >= $i1 goto label5;
+
+        $r2 = staticinvoke <com.google.android.gms.common.util.WorkSourceUtil: java.lang.String getName(android.os.WorkSource,int)>($r0, $i0);
+
+        $z0 = staticinvoke <com.google.android.gms.common.util.Strings: boolean isEmptyOrWhitespace(java.lang.String)>($r2);
+
+        if $z0 != 0 goto label4;
+
+        staticinvoke <com.google.android.gms.common.internal.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r2);
+
+        interfaceinvoke $r1.<java.util.List: boolean add(java.lang.Object)>($r2);
+
+     label4:
+        $i0 = $i0 + 1;
+
+        goto label3;
+
+     label5:
+        return $r1;
+    }
+
+    public static boolean hasWorkSourcePermission(android.content.Context)
+    {
+        java.lang.Throwable $r2;
+        android.content.Context $r0;
+        int $i0;
+        java.lang.Boolean $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        entermonitor class "Lcom/google/android/gms/common/util/WorkSourceUtil;";
+
+     label1:
+        $r1 = <com.google.android.gms.common.util.WorkSourceUtil: java.lang.Boolean zzj>;
+
+        if $r1 == null goto label3;
+
+        $z0 = virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+     label2:
+        exitmonitor class "Lcom/google/android/gms/common/util/WorkSourceUtil;";
+
+        return $z0;
+
+     label3:
+        $z0 = 0;
+
+        if $r0 != null goto label4;
+
+        exitmonitor class "Lcom/google/android/gms/common/util/WorkSourceUtil;";
+
+        return 0;
+
+     label4:
+        $i0 = staticinvoke <androidx.core.content.ContextCompat: int checkSelfPermission(android.content.Context,java.lang.String)>($r0, "android.permission.UPDATE_DEVICE_STATS");
+
+        if $i0 != 0 goto label5;
+
+        $z0 = 1;
+
+        goto label5;
+
+     label5:
+        $r1 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        <com.google.android.gms.common.util.WorkSourceUtil: java.lang.Boolean zzj> = $r1;
+
+        $z0 = virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+     label6:
+        exitmonitor class "Lcom/google/android/gms/common/util/WorkSourceUtil;";
+
+        return $z0;
+
+     label7:
+        $r2 := @caughtexception;
+
+        exitmonitor class "Lcom/google/android/gms/common/util/WorkSourceUtil;";
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label7;
+        catch java.lang.Throwable from label4 to label6 with label7;
+    }
+
+    public static boolean isEmpty(android.os.WorkSource)
+    {
+        java.lang.Object[] $r2;
+        android.os.WorkSource $r0;
+        java.lang.Exception $r5;
+        int $i0;
+        java.lang.Boolean $r4;
+        java.lang.Object $r3;
+        java.lang.reflect.Method $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.os.WorkSource;
+
+        $r1 = <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zzi>;
+
+        if $r1 == null goto label4;
+
+        $r2 = newarray (java.lang.Object)[0];
+
+     label1:
+        $r3 = virtualinvoke $r1.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r0, $r2);
+
+        staticinvoke <com.google.android.gms.common.internal.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r3);
+
+        $r4 = (java.lang.Boolean) $r3;
+
+        $z0 = virtualinvoke $r4.<java.lang.Boolean: boolean booleanValue()>();
+
+     label2:
+        return $z0;
+
+     label3:
+        $r5 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("WorkSourceUtil", "Unable to check WorkSource emptiness", $r5);
+
+     label4:
+        $i0 = staticinvoke <com.google.android.gms.common.util.WorkSourceUtil: int size(android.os.WorkSource)>($r0);
+
+        if $i0 != 0 goto label5;
+
+        return 1;
+
+     label5:
+        return 0;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public static int size(android.os.WorkSource)
+    {
+        java.lang.Object[] $r2;
+        int $i0;
+        java.lang.Object $r3;
+        android.os.WorkSource $r0;
+        java.lang.reflect.Method $r1;
+        java.lang.Integer $r4;
+        java.lang.Exception $r5;
+
+        $r0 := @parameter0: android.os.WorkSource;
+
+        $r1 = <com.google.android.gms.common.util.WorkSourceUtil: java.lang.reflect.Method zzd>;
+
+        if $r1 == null goto label4;
+
+        $r2 = newarray (java.lang.Object)[0];
+
+     label1:
+        $r3 = virtualinvoke $r1.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r0, $r2);
+
+        staticinvoke <com.google.android.gms.common.internal.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r3);
+
+        $r4 = (java.lang.Integer) $r3;
+
+        $i0 = virtualinvoke $r4.<java.lang.Integer: int intValue()>();
+
+     label2:
+        return $i0;
+
+     label3:
+        $r5 := @caughtexception;
+
+        staticinvoke <android.util.Log: int wtf(java.lang.String,java.lang.String,java.lang.Throwable)>("WorkSourceUtil", "Unable to assign blame through WorkSource", $r5);
+
+     label4:
+        return 0;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+}

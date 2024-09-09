@@ -1,0 +1,118 @@
+class androidx.room.TransactionExecutor extends java.lang.Object implements java.util.concurrent.Executor
+{
+    private java.lang.Runnable mActive;
+    private final java.util.concurrent.Executor mExecutor;
+    private final java.util.ArrayDeque mTasks;
+
+    void <init>(java.util.concurrent.Executor)
+    {
+        androidx.room.TransactionExecutor r0;
+        java.util.ArrayDeque $r2;
+        java.util.concurrent.Executor $r1;
+
+        r0 := @this: androidx.room.TransactionExecutor;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new java.util.ArrayDeque;
+
+        specialinvoke $r2.<java.util.ArrayDeque: void <init>()>();
+
+        r0.<androidx.room.TransactionExecutor: java.util.ArrayDeque mTasks> = $r2;
+
+        r0.<androidx.room.TransactionExecutor: java.util.concurrent.Executor mExecutor> = $r1;
+
+        return;
+    }
+
+    public void execute(java.lang.Runnable)
+    {
+        androidx.room.TransactionExecutor r0;
+        java.lang.Throwable $r4;
+        androidx.room.TransactionExecutor$1 $r1;
+        java.util.ArrayDeque $r3;
+        java.lang.Runnable $r2;
+
+        r0 := @this: androidx.room.TransactionExecutor;
+
+        $r2 := @parameter0: java.lang.Runnable;
+
+        entermonitor r0;
+
+     label1:
+        $r3 = r0.<androidx.room.TransactionExecutor: java.util.ArrayDeque mTasks>;
+
+        $r1 = new androidx.room.TransactionExecutor$1;
+
+        specialinvoke $r1.<androidx.room.TransactionExecutor$1: void <init>(androidx.room.TransactionExecutor,java.lang.Runnable)>(r0, $r2);
+
+        virtualinvoke $r3.<java.util.ArrayDeque: boolean offer(java.lang.Object)>($r1);
+
+        $r2 = r0.<androidx.room.TransactionExecutor: java.lang.Runnable mActive>;
+
+        if $r2 != null goto label2;
+
+        virtualinvoke r0.<androidx.room.TransactionExecutor: void scheduleNext()>();
+
+     label2:
+        exitmonitor r0;
+
+        return;
+
+     label3:
+        $r4 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    void scheduleNext()
+    {
+        androidx.room.TransactionExecutor r0;
+        java.lang.Throwable $r5;
+        java.util.concurrent.Executor $r4;
+        java.lang.Object $r2;
+        java.util.ArrayDeque $r3;
+        java.lang.Runnable $r1;
+
+        r0 := @this: androidx.room.TransactionExecutor;
+
+        entermonitor r0;
+
+     label1:
+        $r3 = r0.<androidx.room.TransactionExecutor: java.util.ArrayDeque mTasks>;
+
+        $r2 = virtualinvoke $r3.<java.util.ArrayDeque: java.lang.Object poll()>();
+
+        $r1 = (java.lang.Runnable) $r2;
+
+        r0.<androidx.room.TransactionExecutor: java.lang.Runnable mActive> = $r1;
+
+        if $r1 == null goto label2;
+
+        $r4 = r0.<androidx.room.TransactionExecutor: java.util.concurrent.Executor mExecutor>;
+
+        $r1 = r0.<androidx.room.TransactionExecutor: java.lang.Runnable mActive>;
+
+        interfaceinvoke $r4.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r1);
+
+     label2:
+        exitmonitor r0;
+
+        return;
+
+     label3:
+        $r5 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r5;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+}

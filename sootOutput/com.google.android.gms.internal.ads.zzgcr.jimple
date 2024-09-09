@@ -1,0 +1,65 @@
+final class com.google.android.gms.internal.ads.zzgcr extends java.lang.Object
+{
+
+    static long zza(java.lang.String, long)
+    {
+        byte $b1;
+        int $i2;
+        long $l0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r0;
+        java.lang.IllegalArgumentException $r2;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $l0 := @parameter1: long;
+
+        $b1 = $l0 cmp 0L;
+
+        $i2 = (int) $b1;
+
+        if $i2 < 0 goto label1;
+
+        return $l0;
+
+     label1:
+        $r2 = new java.lang.IllegalArgumentException;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" (");
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") must be >= 0");
+
+        $r0 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r0);
+
+        throw $r2;
+    }
+
+    static void zzb(boolean)
+    {
+        java.lang.ArithmeticException $r0;
+        boolean $z0;
+
+        $z0 := @parameter0: boolean;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $r0 = new java.lang.ArithmeticException;
+
+        specialinvoke $r0.<java.lang.ArithmeticException: void <init>(java.lang.String)>("mode was UNNECESSARY, but rounding was necessary");
+
+        throw $r0;
+    }
+}

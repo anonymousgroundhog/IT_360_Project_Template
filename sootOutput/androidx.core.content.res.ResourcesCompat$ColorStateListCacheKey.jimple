@@ -1,0 +1,104 @@
+final class androidx.core.content.res.ResourcesCompat$ColorStateListCacheKey extends java.lang.Object
+{
+    final android.content.res.Resources mResources;
+    final android.content.res.Resources$Theme mTheme;
+
+    void <init>(android.content.res.Resources, android.content.res.Resources$Theme)
+    {
+        androidx.core.content.res.ResourcesCompat$ColorStateListCacheKey r0;
+        android.content.res.Resources$Theme $r2;
+        android.content.res.Resources $r1;
+
+        r0 := @this: androidx.core.content.res.ResourcesCompat$ColorStateListCacheKey;
+
+        $r1 := @parameter0: android.content.res.Resources;
+
+        $r2 := @parameter1: android.content.res.Resources$Theme;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.content.res.ResourcesCompat$ColorStateListCacheKey: android.content.res.Resources mResources> = $r1;
+
+        r0.<androidx.core.content.res.ResourcesCompat$ColorStateListCacheKey: android.content.res.Resources$Theme mTheme> = $r2;
+
+        return;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.core.content.res.ResourcesCompat$ColorStateListCacheKey r0, r4;
+        java.lang.Object $r1;
+        java.lang.Class $r2, $r3;
+        android.content.res.Resources$Theme $r7, $r8;
+        android.content.res.Resources $r5, $r6;
+        boolean $z0;
+
+        r0 := @this: androidx.core.content.res.ResourcesCompat$ColorStateListCacheKey;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if r0 != $r1 goto label1;
+
+        return 1;
+
+     label1:
+        if $r1 == null goto label3;
+
+        $r2 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r2 == $r3 goto label2;
+
+        return 0;
+
+     label2:
+        r4 = (androidx.core.content.res.ResourcesCompat$ColorStateListCacheKey) $r1;
+
+        $r5 = r0.<androidx.core.content.res.ResourcesCompat$ColorStateListCacheKey: android.content.res.Resources mResources>;
+
+        $r6 = r4.<androidx.core.content.res.ResourcesCompat$ColorStateListCacheKey: android.content.res.Resources mResources>;
+
+        $z0 = virtualinvoke $r5.<java.lang.Object: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 == 0 goto label3;
+
+        $r7 = r0.<androidx.core.content.res.ResourcesCompat$ColorStateListCacheKey: android.content.res.Resources$Theme mTheme>;
+
+        $r8 = r4.<androidx.core.content.res.ResourcesCompat$ColorStateListCacheKey: android.content.res.Resources$Theme mTheme>;
+
+        $z0 = staticinvoke <androidx.core.util.ObjectsCompat: boolean equals(java.lang.Object,java.lang.Object)>($r7, $r8);
+
+        if $z0 == 0 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public int hashCode()
+    {
+        androidx.core.content.res.ResourcesCompat$ColorStateListCacheKey r0;
+        java.lang.Object[] $r3;
+        int $i0;
+        android.content.res.Resources$Theme $r1;
+        android.content.res.Resources $r2;
+
+        r0 := @this: androidx.core.content.res.ResourcesCompat$ColorStateListCacheKey;
+
+        $r2 = r0.<androidx.core.content.res.ResourcesCompat$ColorStateListCacheKey: android.content.res.Resources mResources>;
+
+        $r1 = r0.<androidx.core.content.res.ResourcesCompat$ColorStateListCacheKey: android.content.res.Resources$Theme mTheme>;
+
+        $r3 = newarray (java.lang.Object)[2];
+
+        $r3[0] = $r2;
+
+        $r3[1] = $r1;
+
+        $i0 = staticinvoke <androidx.core.util.ObjectsCompat: int hash(java.lang.Object[])>($r3);
+
+        return $i0;
+    }
+}

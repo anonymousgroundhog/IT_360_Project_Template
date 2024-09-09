@@ -1,0 +1,551 @@
+public class androidx.core.app.NotificationChannelCompat extends java.lang.Object
+{
+    public static final java.lang.String DEFAULT_CHANNEL_ID;
+    private static final int DEFAULT_LIGHT_COLOR;
+    private static final boolean DEFAULT_SHOW_BADGE;
+    android.media.AudioAttributes mAudioAttributes;
+    private boolean mBypassDnd;
+    private boolean mCanBubble;
+    java.lang.String mConversationId;
+    java.lang.String mDescription;
+    java.lang.String mGroupId;
+    final java.lang.String mId;
+    int mImportance;
+    private boolean mImportantConversation;
+    int mLightColor;
+    boolean mLights;
+    private int mLockscreenVisibility;
+    java.lang.CharSequence mName;
+    java.lang.String mParentId;
+    boolean mShowBadge;
+    android.net.Uri mSound;
+    boolean mVibrationEnabled;
+    long[] mVibrationPattern;
+
+    void <init>(android.app.NotificationChannel)
+    {
+        java.lang.CharSequence $r3;
+        android.net.Uri $r4;
+        androidx.core.app.NotificationChannelCompat r0;
+        long[] $r6;
+        android.app.NotificationChannel $r1;
+        int $i0;
+        android.media.AudioAttributes $r5;
+        java.lang.String $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        $r1 := @parameter0: android.app.NotificationChannel;
+
+        $r2 = virtualinvoke $r1.<android.app.NotificationChannel: java.lang.String getId()>();
+
+        $i0 = virtualinvoke $r1.<android.app.NotificationChannel: int getImportance()>();
+
+        specialinvoke r0.<androidx.core.app.NotificationChannelCompat: void <init>(java.lang.String,int)>($r2, $i0);
+
+        $r3 = virtualinvoke $r1.<android.app.NotificationChannel: java.lang.CharSequence getName()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: java.lang.CharSequence mName> = $r3;
+
+        $r2 = virtualinvoke $r1.<android.app.NotificationChannel: java.lang.String getDescription()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mDescription> = $r2;
+
+        $r2 = virtualinvoke $r1.<android.app.NotificationChannel: java.lang.String getGroup()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mGroupId> = $r2;
+
+        $z0 = virtualinvoke $r1.<android.app.NotificationChannel: boolean canShowBadge()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: boolean mShowBadge> = $z0;
+
+        $r4 = virtualinvoke $r1.<android.app.NotificationChannel: android.net.Uri getSound()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: android.net.Uri mSound> = $r4;
+
+        $r5 = virtualinvoke $r1.<android.app.NotificationChannel: android.media.AudioAttributes getAudioAttributes()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: android.media.AudioAttributes mAudioAttributes> = $r5;
+
+        $z0 = virtualinvoke $r1.<android.app.NotificationChannel: boolean shouldShowLights()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: boolean mLights> = $z0;
+
+        $i0 = virtualinvoke $r1.<android.app.NotificationChannel: int getLightColor()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: int mLightColor> = $i0;
+
+        $z0 = virtualinvoke $r1.<android.app.NotificationChannel: boolean shouldVibrate()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: boolean mVibrationEnabled> = $z0;
+
+        $r6 = virtualinvoke $r1.<android.app.NotificationChannel: long[] getVibrationPattern()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: long[] mVibrationPattern> = $r6;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 30 goto label1;
+
+        $r2 = virtualinvoke $r1.<android.app.NotificationChannel: java.lang.String getParentChannelId()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mParentId> = $r2;
+
+        $r2 = virtualinvoke $r1.<android.app.NotificationChannel: java.lang.String getConversationId()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mConversationId> = $r2;
+
+     label1:
+        $z0 = virtualinvoke $r1.<android.app.NotificationChannel: boolean canBypassDnd()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: boolean mBypassDnd> = $z0;
+
+        $i0 = virtualinvoke $r1.<android.app.NotificationChannel: int getLockscreenVisibility()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: int mLockscreenVisibility> = $i0;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 29 goto label2;
+
+        $z0 = virtualinvoke $r1.<android.app.NotificationChannel: boolean canBubble()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: boolean mCanBubble> = $z0;
+
+     label2:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 30 goto label3;
+
+        $z0 = virtualinvoke $r1.<android.app.NotificationChannel: boolean isImportantConversation()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: boolean mImportantConversation> = $z0;
+
+     label3:
+        return;
+    }
+
+    void <init>(java.lang.String, int)
+    {
+        int $i0;
+        android.net.Uri $r3;
+        androidx.core.app.NotificationChannelCompat r0;
+        android.media.AudioAttributes $r4;
+        java.lang.Object $r2;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.app.NotificationChannelCompat: boolean mShowBadge> = 1;
+
+        $r3 = <android.provider.Settings$System: android.net.Uri DEFAULT_NOTIFICATION_URI>;
+
+        r0.<androidx.core.app.NotificationChannelCompat: android.net.Uri mSound> = $r3;
+
+        r0.<androidx.core.app.NotificationChannelCompat: int mLightColor> = 0;
+
+        $r2 = staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r1);
+
+        $r1 = (java.lang.String) $r2;
+
+        r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mId> = $r1;
+
+        r0.<androidx.core.app.NotificationChannelCompat: int mImportance> = $i0;
+
+        $r4 = <android.app.Notification: android.media.AudioAttributes AUDIO_ATTRIBUTES_DEFAULT>;
+
+        r0.<androidx.core.app.NotificationChannelCompat: android.media.AudioAttributes mAudioAttributes> = $r4;
+
+        return;
+    }
+
+    public boolean canBubble()
+    {
+        androidx.core.app.NotificationChannelCompat r0;
+        boolean z0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        z0 = r0.<androidx.core.app.NotificationChannelCompat: boolean mCanBubble>;
+
+        return z0;
+    }
+
+    public boolean canBypassDnd()
+    {
+        androidx.core.app.NotificationChannelCompat r0;
+        boolean z0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        z0 = r0.<androidx.core.app.NotificationChannelCompat: boolean mBypassDnd>;
+
+        return z0;
+    }
+
+    public boolean canShowBadge()
+    {
+        androidx.core.app.NotificationChannelCompat r0;
+        boolean z0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        z0 = r0.<androidx.core.app.NotificationChannelCompat: boolean mShowBadge>;
+
+        return z0;
+    }
+
+    public android.media.AudioAttributes getAudioAttributes()
+    {
+        androidx.core.app.NotificationChannelCompat r0;
+        android.media.AudioAttributes r1;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        r1 = r0.<androidx.core.app.NotificationChannelCompat: android.media.AudioAttributes mAudioAttributes>;
+
+        return r1;
+    }
+
+    public java.lang.String getConversationId()
+    {
+        androidx.core.app.NotificationChannelCompat r0;
+        java.lang.String r1;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        r1 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mConversationId>;
+
+        return r1;
+    }
+
+    public java.lang.String getDescription()
+    {
+        androidx.core.app.NotificationChannelCompat r0;
+        java.lang.String r1;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        r1 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mDescription>;
+
+        return r1;
+    }
+
+    public java.lang.String getGroup()
+    {
+        androidx.core.app.NotificationChannelCompat r0;
+        java.lang.String r1;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        r1 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mGroupId>;
+
+        return r1;
+    }
+
+    public java.lang.String getId()
+    {
+        androidx.core.app.NotificationChannelCompat r0;
+        java.lang.String r1;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        r1 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mId>;
+
+        return r1;
+    }
+
+    public int getImportance()
+    {
+        int i0;
+        androidx.core.app.NotificationChannelCompat r0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        i0 = r0.<androidx.core.app.NotificationChannelCompat: int mImportance>;
+
+        return i0;
+    }
+
+    public int getLightColor()
+    {
+        int i0;
+        androidx.core.app.NotificationChannelCompat r0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        i0 = r0.<androidx.core.app.NotificationChannelCompat: int mLightColor>;
+
+        return i0;
+    }
+
+    public int getLockscreenVisibility()
+    {
+        int i0;
+        androidx.core.app.NotificationChannelCompat r0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        i0 = r0.<androidx.core.app.NotificationChannelCompat: int mLockscreenVisibility>;
+
+        return i0;
+    }
+
+    public java.lang.CharSequence getName()
+    {
+        androidx.core.app.NotificationChannelCompat r0;
+        java.lang.CharSequence r1;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        r1 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.CharSequence mName>;
+
+        return r1;
+    }
+
+    android.app.NotificationChannel getNotificationChannel()
+    {
+        java.lang.CharSequence $r3;
+        android.net.Uri $r4;
+        androidx.core.app.NotificationChannelCompat r0;
+        long[] $r6;
+        int $i0;
+        android.app.NotificationChannel r1;
+        android.media.AudioAttributes $r5;
+        java.lang.String $r2, $r7;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 >= 26 goto label1;
+
+        return null;
+
+     label1:
+        r1 = new android.app.NotificationChannel;
+
+        $r2 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mId>;
+
+        $r3 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.CharSequence mName>;
+
+        $i0 = r0.<androidx.core.app.NotificationChannelCompat: int mImportance>;
+
+        specialinvoke r1.<android.app.NotificationChannel: void <init>(java.lang.String,java.lang.CharSequence,int)>($r2, $r3, $i0);
+
+        $r2 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mDescription>;
+
+        virtualinvoke r1.<android.app.NotificationChannel: void setDescription(java.lang.String)>($r2);
+
+        $r2 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mGroupId>;
+
+        virtualinvoke r1.<android.app.NotificationChannel: void setGroup(java.lang.String)>($r2);
+
+        $z0 = r0.<androidx.core.app.NotificationChannelCompat: boolean mShowBadge>;
+
+        virtualinvoke r1.<android.app.NotificationChannel: void setShowBadge(boolean)>($z0);
+
+        $r4 = r0.<androidx.core.app.NotificationChannelCompat: android.net.Uri mSound>;
+
+        $r5 = r0.<androidx.core.app.NotificationChannelCompat: android.media.AudioAttributes mAudioAttributes>;
+
+        virtualinvoke r1.<android.app.NotificationChannel: void setSound(android.net.Uri,android.media.AudioAttributes)>($r4, $r5);
+
+        $z0 = r0.<androidx.core.app.NotificationChannelCompat: boolean mLights>;
+
+        virtualinvoke r1.<android.app.NotificationChannel: void enableLights(boolean)>($z0);
+
+        $i0 = r0.<androidx.core.app.NotificationChannelCompat: int mLightColor>;
+
+        virtualinvoke r1.<android.app.NotificationChannel: void setLightColor(int)>($i0);
+
+        $r6 = r0.<androidx.core.app.NotificationChannelCompat: long[] mVibrationPattern>;
+
+        virtualinvoke r1.<android.app.NotificationChannel: void setVibrationPattern(long[])>($r6);
+
+        $z0 = r0.<androidx.core.app.NotificationChannelCompat: boolean mVibrationEnabled>;
+
+        virtualinvoke r1.<android.app.NotificationChannel: void enableVibration(boolean)>($z0);
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 30 goto label2;
+
+        $r2 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mParentId>;
+
+        if $r2 == null goto label2;
+
+        $r2 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mConversationId>;
+
+        if $r2 == null goto label2;
+
+        $r2 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mParentId>;
+
+        $r7 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mConversationId>;
+
+        virtualinvoke r1.<android.app.NotificationChannel: void setConversationId(java.lang.String,java.lang.String)>($r2, $r7);
+
+     label2:
+        return r1;
+    }
+
+    public java.lang.String getParentChannelId()
+    {
+        androidx.core.app.NotificationChannelCompat r0;
+        java.lang.String r1;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        r1 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mParentId>;
+
+        return r1;
+    }
+
+    public android.net.Uri getSound()
+    {
+        android.net.Uri r1;
+        androidx.core.app.NotificationChannelCompat r0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        r1 = r0.<androidx.core.app.NotificationChannelCompat: android.net.Uri mSound>;
+
+        return r1;
+    }
+
+    public long[] getVibrationPattern()
+    {
+        androidx.core.app.NotificationChannelCompat r0;
+        long[] r1;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        r1 = r0.<androidx.core.app.NotificationChannelCompat: long[] mVibrationPattern>;
+
+        return r1;
+    }
+
+    public boolean isImportantConversation()
+    {
+        androidx.core.app.NotificationChannelCompat r0;
+        boolean z0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        z0 = r0.<androidx.core.app.NotificationChannelCompat: boolean mImportantConversation>;
+
+        return z0;
+    }
+
+    public boolean shouldShowLights()
+    {
+        androidx.core.app.NotificationChannelCompat r0;
+        boolean z0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        z0 = r0.<androidx.core.app.NotificationChannelCompat: boolean mLights>;
+
+        return z0;
+    }
+
+    public boolean shouldVibrate()
+    {
+        androidx.core.app.NotificationChannelCompat r0;
+        boolean z0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        z0 = r0.<androidx.core.app.NotificationChannelCompat: boolean mVibrationEnabled>;
+
+        return z0;
+    }
+
+    public androidx.core.app.NotificationChannelCompat$Builder toBuilder()
+    {
+        java.lang.CharSequence $r3;
+        android.net.Uri $r4;
+        androidx.core.app.NotificationChannelCompat r0;
+        long[] $r6;
+        int $i0;
+        android.media.AudioAttributes $r5;
+        java.lang.String $r2, $r7;
+        androidx.core.app.NotificationChannelCompat$Builder $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat;
+
+        $r1 = new androidx.core.app.NotificationChannelCompat$Builder;
+
+        $r2 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mId>;
+
+        $i0 = r0.<androidx.core.app.NotificationChannelCompat: int mImportance>;
+
+        specialinvoke $r1.<androidx.core.app.NotificationChannelCompat$Builder: void <init>(java.lang.String,int)>($r2, $i0);
+
+        $r3 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.CharSequence mName>;
+
+        $r1 = virtualinvoke $r1.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat$Builder setName(java.lang.CharSequence)>($r3);
+
+        $r2 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mDescription>;
+
+        $r1 = virtualinvoke $r1.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat$Builder setDescription(java.lang.String)>($r2);
+
+        $r2 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mGroupId>;
+
+        $r1 = virtualinvoke $r1.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat$Builder setGroup(java.lang.String)>($r2);
+
+        $z0 = r0.<androidx.core.app.NotificationChannelCompat: boolean mShowBadge>;
+
+        $r1 = virtualinvoke $r1.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat$Builder setShowBadge(boolean)>($z0);
+
+        $r4 = r0.<androidx.core.app.NotificationChannelCompat: android.net.Uri mSound>;
+
+        $r5 = r0.<androidx.core.app.NotificationChannelCompat: android.media.AudioAttributes mAudioAttributes>;
+
+        $r1 = virtualinvoke $r1.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat$Builder setSound(android.net.Uri,android.media.AudioAttributes)>($r4, $r5);
+
+        $z0 = r0.<androidx.core.app.NotificationChannelCompat: boolean mLights>;
+
+        $r1 = virtualinvoke $r1.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat$Builder setLightsEnabled(boolean)>($z0);
+
+        $i0 = r0.<androidx.core.app.NotificationChannelCompat: int mLightColor>;
+
+        $r1 = virtualinvoke $r1.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat$Builder setLightColor(int)>($i0);
+
+        $z0 = r0.<androidx.core.app.NotificationChannelCompat: boolean mVibrationEnabled>;
+
+        $r1 = virtualinvoke $r1.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat$Builder setVibrationEnabled(boolean)>($z0);
+
+        $r6 = r0.<androidx.core.app.NotificationChannelCompat: long[] mVibrationPattern>;
+
+        $r1 = virtualinvoke $r1.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat$Builder setVibrationPattern(long[])>($r6);
+
+        $r2 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mParentId>;
+
+        $r7 = r0.<androidx.core.app.NotificationChannelCompat: java.lang.String mConversationId>;
+
+        $r1 = virtualinvoke $r1.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat$Builder setConversationId(java.lang.String,java.lang.String)>($r2, $r7);
+
+        return $r1;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.app.NotificationChannelCompat: boolean DEFAULT_SHOW_BADGE> = 1;
+
+        <androidx.core.app.NotificationChannelCompat: int DEFAULT_LIGHT_COLOR> = 0;
+
+        <androidx.core.app.NotificationChannelCompat: java.lang.String DEFAULT_CHANNEL_ID> = "miscellaneous";
+
+        return;
+    }
+}

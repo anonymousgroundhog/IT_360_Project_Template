@@ -1,0 +1,834 @@
+final class com.google.common.hash.FarmHashFingerprint64 extends com.google.common.hash.AbstractNonStreamingHashFunction
+{
+    static final com.google.common.hash.HashFunction FARMHASH_FINGERPRINT_64;
+    private static final long K0;
+    private static final long K1;
+    private static final long K2;
+
+    static void <clinit>()
+    {
+        com.google.common.hash.FarmHashFingerprint64 $r0;
+
+        <com.google.common.hash.FarmHashFingerprint64: long K2> = -7286425919675154353L;
+
+        <com.google.common.hash.FarmHashFingerprint64: long K1> = -5435081209227447693L;
+
+        <com.google.common.hash.FarmHashFingerprint64: long K0> = -4348849565147123417L;
+
+        $r0 = new com.google.common.hash.FarmHashFingerprint64;
+
+        specialinvoke $r0.<com.google.common.hash.FarmHashFingerprint64: void <init>()>();
+
+        <com.google.common.hash.FarmHashFingerprint64: com.google.common.hash.HashFunction FARMHASH_FINGERPRINT_64> = $r0;
+
+        return;
+    }
+
+    void <init>()
+    {
+        com.google.common.hash.FarmHashFingerprint64 r0;
+
+        r0 := @this: com.google.common.hash.FarmHashFingerprint64;
+
+        specialinvoke r0.<com.google.common.hash.AbstractNonStreamingHashFunction: void <init>()>();
+
+        return;
+    }
+
+    static long fingerprint(byte[], int, int)
+    {
+        byte[] $r0;
+        int $i0, $i1;
+        long $l2;
+
+        $r0 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        if $i1 > 32 goto label2;
+
+        if $i1 > 16 goto label1;
+
+        $l2 = staticinvoke <com.google.common.hash.FarmHashFingerprint64: long hashLength0to16(byte[],int,int)>($r0, $i0, $i1);
+
+        return $l2;
+
+     label1:
+        $l2 = staticinvoke <com.google.common.hash.FarmHashFingerprint64: long hashLength17to32(byte[],int,int)>($r0, $i0, $i1);
+
+        return $l2;
+
+     label2:
+        if $i1 > 64 goto label3;
+
+        $l2 = staticinvoke <com.google.common.hash.FarmHashFingerprint64: long hashLength33To64(byte[],int,int)>($r0, $i0, $i1);
+
+        return $l2;
+
+     label3:
+        $l2 = staticinvoke <com.google.common.hash.FarmHashFingerprint64: long hashLength65Plus(byte[],int,int)>($r0, $i0, $i1);
+
+        return $l2;
+    }
+
+    private static long hashLength0to16(byte[], int, int)
+    {
+        byte[] $r0;
+        long l2, l3, l5, l6;
+        short s10, $s11;
+        byte b7, b8, b9;
+        int $i0, $i1, i4;
+
+        $r0 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        if $i1 < 8 goto label1;
+
+        i4 = $i1 * 2;
+
+        l5 = (long) i4;
+
+        l5 = l5 + -7286425919675154353L;
+
+        l2 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, $i0);
+
+        l6 = -7286425919675154353L + l2;
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 - 8;
+
+        l3 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, $i0);
+
+        l2 = staticinvoke <java.lang.Long: long rotateRight(long,int)>(l3, 37);
+
+        l2 = l2 * l5;
+
+        l2 = l2 + l6;
+
+        l6 = staticinvoke <java.lang.Long: long rotateRight(long,int)>(l6, 25);
+
+        l3 = l6 + l3;
+
+        l3 = l3 * l5;
+
+        l5 = staticinvoke <com.google.common.hash.FarmHashFingerprint64: long hashLength16(long,long,long)>(l2, l3, l5);
+
+        return l5;
+
+     label1:
+        if $i1 < 4 goto label2;
+
+        i4 = $i1 * 2;
+
+        l5 = (long) i4;
+
+        l5 = l5 + -7286425919675154353L;
+
+        i4 = staticinvoke <com.google.common.hash.LittleEndianByteArray: int load32(byte[],int)>($r0, $i0);
+
+        l2 = (long) i4;
+
+        l3 = l2 & 4294967295L;
+
+        l2 = (long) $i1;
+
+        l3 = l3 << 3;
+
+        l2 = l2 + l3;
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 - 4;
+
+        $i0 = staticinvoke <com.google.common.hash.LittleEndianByteArray: int load32(byte[],int)>($r0, $i0);
+
+        l3 = (long) $i0;
+
+        l3 = l3 & 4294967295L;
+
+        l5 = staticinvoke <com.google.common.hash.FarmHashFingerprint64: long hashLength16(long,long,long)>(l2, l3, l5);
+
+        return l5;
+
+     label2:
+        if $i1 <= 0 goto label3;
+
+        b7 = $r0[$i0];
+
+        i4 = $i1 >> 1;
+
+        i4 = $i0 + i4;
+
+        b8 = $r0[i4];
+
+        i4 = $i1 + -1;
+
+        $i0 = $i0 + i4;
+
+        b9 = $r0[$i0];
+
+        s10 = (short) b7;
+
+        s10 = s10 & 255;
+
+        $s11 = (short) b8;
+
+        $s11 = $s11 & 255;
+
+        $i0 = (int) $s11;
+
+        $i0 = $i0 << 8;
+
+        i4 = (int) s10;
+
+        $i0 = i4 + $i0;
+
+        s10 = (short) b9;
+
+        s10 = s10 & 255;
+
+        i4 = (int) s10;
+
+        i4 = i4 << 2;
+
+        $i1 = i4 + $i1;
+
+        l5 = (long) $i0;
+
+        l5 = l5 * -7286425919675154353L;
+
+        l2 = (long) $i1;
+
+        l2 = l2 * -4348849565147123417L;
+
+        l5 = l5 ^ l2;
+
+        l5 = staticinvoke <com.google.common.hash.FarmHashFingerprint64: long shiftMix(long)>(l5);
+
+        l5 = l5 * -7286425919675154353L;
+
+        return l5;
+
+     label3:
+        return -7286425919675154353L;
+    }
+
+    private static long hashLength16(long, long, long)
+    {
+        long $l0, $l1, $l2, l3;
+
+        $l0 := @parameter0: long;
+
+        $l1 := @parameter1: long;
+
+        $l2 := @parameter2: long;
+
+        $l0 = $l0 ^ $l1;
+
+        $l0 = $l0 * $l2;
+
+        l3 = $l0 >>> 47;
+
+        $l0 = $l0 ^ l3;
+
+        $l0 = $l1 ^ $l0;
+
+        $l1 = $l0 * $l2;
+
+        $l0 = $l1 >>> 47;
+
+        $l0 = $l1 ^ $l0;
+
+        $l0 = $l0 * $l2;
+
+        return $l0;
+    }
+
+    private static long hashLength17to32(byte[], int, int)
+    {
+        byte[] $r0;
+        long l2, l3, l5, $l6, $l7, $l8, $l9;
+        int $i0, $i1, i4;
+
+        $r0 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        i4 = $i1 * 2;
+
+        l5 = (long) i4;
+
+        l5 = l5 + -7286425919675154353L;
+
+        l2 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, $i0);
+
+        l2 = l2 * -5435081209227447693L;
+
+        i4 = $i0 + 8;
+
+        $l6 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, i4);
+
+        i4 = $i0 + $i1;
+
+        i4 = i4 + -8;
+
+        $l7 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, i4);
+
+        $l7 = $l7 * l5;
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 + -16;
+
+        l3 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, $i0);
+
+        l3 = l3 * -7286425919675154353L;
+
+        $l8 = l2 + $l6;
+
+        $l8 = staticinvoke <java.lang.Long: long rotateRight(long,int)>($l8, 43);
+
+        $l9 = staticinvoke <java.lang.Long: long rotateRight(long,int)>($l7, 30);
+
+        $l8 = $l8 + $l9;
+
+        l3 = $l8 + l3;
+
+        $l6 = -7286425919675154353L + $l6;
+
+        $l6 = staticinvoke <java.lang.Long: long rotateRight(long,int)>($l6, 18);
+
+        l2 = $l6 + l2;
+
+        l2 = l2 + $l7;
+
+        l5 = staticinvoke <com.google.common.hash.FarmHashFingerprint64: long hashLength16(long,long,long)>(l3, l2, l5);
+
+        return l5;
+    }
+
+    private static long hashLength33To64(byte[], int, int)
+    {
+        byte[] $r0;
+        long l2, l3, l4, l5, l7, $l8, $l9, $l10;
+        int $i0, $i1, i6;
+
+        $r0 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        i6 = $i1 * 2;
+
+        l7 = (long) i6;
+
+        l7 = l7 + -7286425919675154353L;
+
+        l2 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, $i0);
+
+        l2 = l2 * -7286425919675154353L;
+
+        i6 = $i0 + 8;
+
+        $l8 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, i6);
+
+        i6 = $i0 + $i1;
+
+        i6 = i6 + -8;
+
+        l4 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, i6);
+
+        l4 = l4 * l7;
+
+        i6 = $i0 + $i1;
+
+        i6 = i6 + -16;
+
+        l3 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, i6);
+
+        l3 = l3 * -7286425919675154353L;
+
+        l5 = l2 + $l8;
+
+        l5 = staticinvoke <java.lang.Long: long rotateRight(long,int)>(l5, 43);
+
+        $l9 = staticinvoke <java.lang.Long: long rotateRight(long,int)>(l4, 30);
+
+        l5 = l5 + $l9;
+
+        l3 = l5 + l3;
+
+        $l8 = -7286425919675154353L + $l8;
+
+        $l8 = staticinvoke <java.lang.Long: long rotateRight(long,int)>($l8, 18);
+
+        $l8 = $l8 + l2;
+
+        l4 = $l8 + l4;
+
+        l5 = staticinvoke <com.google.common.hash.FarmHashFingerprint64: long hashLength16(long,long,long)>(l3, l4, l7);
+
+        i6 = $i0 + 16;
+
+        l4 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, i6);
+
+        l4 = l4 * l7;
+
+        i6 = $i0 + 24;
+
+        $l8 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, i6);
+
+        i6 = $i0 + $i1;
+
+        i6 = i6 + -32;
+
+        $l9 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, i6);
+
+        l3 = l3 + $l9;
+
+        l3 = l3 * l7;
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 + -24;
+
+        $l9 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, $i0);
+
+        l5 = l5 + $l9;
+
+        l5 = l5 * l7;
+
+        $l9 = l4 + $l8;
+
+        $l9 = staticinvoke <java.lang.Long: long rotateRight(long,int)>($l9, 43);
+
+        $l10 = staticinvoke <java.lang.Long: long rotateRight(long,int)>(l3, 30);
+
+        $l9 = $l9 + $l10;
+
+        l5 = $l9 + l5;
+
+        l2 = $l8 + l2;
+
+        l2 = staticinvoke <java.lang.Long: long rotateRight(long,int)>(l2, 18);
+
+        l2 = l4 + l2;
+
+        l2 = l2 + l3;
+
+        l7 = staticinvoke <com.google.common.hash.FarmHashFingerprint64: long hashLength16(long,long,long)>(l5, l2, l7);
+
+        return l7;
+    }
+
+    private static long hashLength65Plus(byte[], int, int)
+    {
+        byte[] $r0;
+        long l3, $l4, l5, l6, $l7, l11;
+        long[] r1, r2;
+        int $i0, $i1, i2, i8, $i9, i10;
+
+        $r0 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        l3 = (long) 81;
+
+        l5 = (long) 81;
+
+        l5 = l5 * -5435081209227447693L;
+
+        l6 = l5 + 113L;
+
+        l5 = l6 * -7286425919675154353L;
+
+        l5 = l5 + 113L;
+
+        l5 = staticinvoke <com.google.common.hash.FarmHashFingerprint64: long shiftMix(long)>(l5);
+
+        l5 = l5 * -7286425919675154353L;
+
+        r2 = newarray (long)[2];
+
+        r1 = newarray (long)[2];
+
+        l3 = -7286425919675154353L * l3;
+
+        $l7 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, $i0);
+
+        i2 = $i1 + -1;
+
+        i2 = i2 / 64;
+
+        i2 = i2 * 64;
+
+        i8 = $i0 + i2;
+
+        i2 = $i1 + -1;
+
+        i2 = i2 & 63;
+
+        i2 = i2 + i8;
+
+        i2 = i2 + -63;
+
+        $l7 = l3 + $l7;
+
+     label1:
+        l3 = $l7 + l6;
+
+        $l7 = r2[0];
+
+        l3 = l3 + $l7;
+
+        $i9 = $i0 + 8;
+
+        $l7 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, $i9);
+
+        l3 = l3 + $l7;
+
+        l3 = staticinvoke <java.lang.Long: long rotateRight(long,int)>(l3, 37);
+
+        l3 = l3 * -5435081209227447693L;
+
+        $l7 = r2[1];
+
+        l6 = $l7 + l6;
+
+        $i9 = $i0 + 48;
+
+        $l7 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, $i9);
+
+        l6 = l6 + $l7;
+
+        l6 = staticinvoke <java.lang.Long: long rotateRight(long,int)>(l6, 42);
+
+        $l7 = l6 * -5435081209227447693L;
+
+        l6 = r1[1];
+
+        l6 = l3 ^ l6;
+
+        l3 = r2[0];
+
+        $i9 = $i0 + 40;
+
+        $l4 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, $i9);
+
+        l3 = l3 + $l4;
+
+        l3 = $l7 + l3;
+
+        $l7 = r1[0];
+
+        l5 = $l7 + l5;
+
+        l5 = staticinvoke <java.lang.Long: long rotateRight(long,int)>(l5, 33);
+
+        $l7 = l5 * -5435081209227447693L;
+
+        l5 = r2[1];
+
+        l5 = l5 * -5435081209227447693L;
+
+        $l4 = r1[0];
+
+        $l4 = l6 + $l4;
+
+        staticinvoke <com.google.common.hash.FarmHashFingerprint64: void weakHashLength32WithSeeds(byte[],int,long,long,long[])>($r0, $i0, l5, $l4, r2);
+
+        $i9 = $i0 + 32;
+
+        l5 = r1[1];
+
+        l5 = $l7 + l5;
+
+        i10 = $i0 + 16;
+
+        $l4 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, i10);
+
+        $l4 = l3 + $l4;
+
+        staticinvoke <com.google.common.hash.FarmHashFingerprint64: void weakHashLength32WithSeeds(byte[],int,long,long,long[])>($r0, $i9, l5, $l4, r1);
+
+        l5 = l6;
+
+        $i0 = $i0 + 64;
+
+        if $i0 != i8 goto label2;
+
+        l5 = 255L & l6;
+
+        l5 = l5 << 1;
+
+        l5 = -5435081209227447693L + l5;
+
+        $l4 = r1[0];
+
+        $i0 = $i1 + -1;
+
+        $i0 = $i0 & 63;
+
+        l11 = (long) $i0;
+
+        $l4 = $l4 + l11;
+
+        r1[0] = $l4;
+
+        $l4 = r2[0];
+
+        l11 = r1[0];
+
+        $l4 = $l4 + l11;
+
+        r2[0] = $l4;
+
+        $l4 = r1[0];
+
+        l11 = r2[0];
+
+        $l4 = $l4 + l11;
+
+        r1[0] = $l4;
+
+        $l7 = $l7 + l3;
+
+        $l4 = r2[0];
+
+        $l7 = $l7 + $l4;
+
+        $i0 = i2 + 8;
+
+        $l4 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, $i0);
+
+        $l7 = $l7 + $l4;
+
+        $l7 = staticinvoke <java.lang.Long: long rotateRight(long,int)>($l7, 37);
+
+        $l7 = $l7 * l5;
+
+        $l4 = r2[1];
+
+        l3 = l3 + $l4;
+
+        $i0 = i2 + 48;
+
+        $l4 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, $i0);
+
+        l3 = l3 + $l4;
+
+        l3 = staticinvoke <java.lang.Long: long rotateRight(long,int)>(l3, 42);
+
+        $l4 = l3 * l5;
+
+        l3 = r1[1];
+
+        l3 = l3 * 9L;
+
+        l3 = $l7 ^ l3;
+
+        $l7 = r2[0];
+
+        $l7 = $l7 * 9L;
+
+        $i0 = i2 + 40;
+
+        l11 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, $i0);
+
+        $l7 = $l7 + l11;
+
+        $l7 = $l4 + $l7;
+
+        $l4 = r1[0];
+
+        l6 = l6 + $l4;
+
+        l6 = staticinvoke <java.lang.Long: long rotateRight(long,int)>(l6, 33);
+
+        l6 = l6 * l5;
+
+        $l4 = r2[1];
+
+        $l4 = $l4 * l5;
+
+        l11 = r1[0];
+
+        l11 = l3 + l11;
+
+        staticinvoke <com.google.common.hash.FarmHashFingerprint64: void weakHashLength32WithSeeds(byte[],int,long,long,long[])>($r0, i2, $l4, l11, r2);
+
+        $i0 = i2 + 32;
+
+        $l4 = r1[1];
+
+        $l4 = l6 + $l4;
+
+        $i1 = i2 + 16;
+
+        l11 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, $i1);
+
+        l11 = l11 + $l7;
+
+        staticinvoke <com.google.common.hash.FarmHashFingerprint64: void weakHashLength32WithSeeds(byte[],int,long,long,long[])>($r0, $i0, $l4, l11, r1);
+
+        $l4 = r2[0];
+
+        l11 = r1[0];
+
+        $l4 = staticinvoke <com.google.common.hash.FarmHashFingerprint64: long hashLength16(long,long,long)>($l4, l11, l5);
+
+        $l7 = staticinvoke <com.google.common.hash.FarmHashFingerprint64: long shiftMix(long)>($l7);
+
+        $l7 = $l7 * -4348849565147123417L;
+
+        $l7 = $l4 + $l7;
+
+        l3 = $l7 + l3;
+
+        $l7 = r2[1];
+
+        $l4 = r1[1];
+
+        $l7 = staticinvoke <com.google.common.hash.FarmHashFingerprint64: long hashLength16(long,long,long)>($l7, $l4, l5);
+
+        l6 = $l7 + l6;
+
+        l5 = staticinvoke <com.google.common.hash.FarmHashFingerprint64: long hashLength16(long,long,long)>(l3, l6, l5);
+
+        return l5;
+
+     label2:
+        l6 = l3;
+
+        goto label1;
+    }
+
+    private static long shiftMix(long)
+    {
+        long $l0, $l1;
+
+        $l0 := @parameter0: long;
+
+        $l1 = $l0 >>> 47;
+
+        $l0 = $l1 ^ $l0;
+
+        return $l0;
+    }
+
+    private static void weakHashLength32WithSeeds(byte[], int, long, long, long[])
+    {
+        byte[] $r0;
+        long $l1, $l2, $l3, $l5, $l6, $l7;
+        long[] $r1;
+        int $i0, i4;
+
+        $r0 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $l1 := @parameter2: long;
+
+        $l2 := @parameter3: long;
+
+        $r1 := @parameter4: long[];
+
+        $l3 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, $i0);
+
+        i4 = $i0 + 8;
+
+        $l5 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, i4);
+
+        i4 = $i0 + 16;
+
+        $l6 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, i4);
+
+        $i0 = $i0 + 24;
+
+        $l7 = staticinvoke <com.google.common.hash.LittleEndianByteArray: long load64(byte[],int)>($r0, $i0);
+
+        $l1 = $l1 + $l3;
+
+        $l2 = $l2 + $l1;
+
+        $l2 = $l2 + $l7;
+
+        $l2 = staticinvoke <java.lang.Long: long rotateRight(long,int)>($l2, 21);
+
+        $l5 = $l1 + $l5;
+
+        $l6 = $l5 + $l6;
+
+        $l5 = staticinvoke <java.lang.Long: long rotateRight(long,int)>($l6, 44);
+
+        $l2 = $l2 + $l5;
+
+        $l7 = $l6 + $l7;
+
+        $r1[0] = $l7;
+
+        $l1 = $l2 + $l1;
+
+        $r1[1] = $l1;
+
+        return;
+    }
+
+    public int bits()
+    {
+        com.google.common.hash.FarmHashFingerprint64 r0;
+
+        r0 := @this: com.google.common.hash.FarmHashFingerprint64;
+
+        return 64;
+    }
+
+    public com.google.common.hash.HashCode hashBytes(byte[], int, int)
+    {
+        byte[] $r1;
+        com.google.common.hash.HashCode $r2;
+        long $l4;
+        com.google.common.hash.FarmHashFingerprint64 r0;
+        int $i0, $i1, $i2, $i3;
+
+        r0 := @this: com.google.common.hash.FarmHashFingerprint64;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i3 = $i0 + $i1;
+
+        $i2 = lengthof $r1;
+
+        staticinvoke <com.google.common.base.Preconditions: void checkPositionIndexes(int,int,int)>($i0, $i3, $i2);
+
+        $l4 = staticinvoke <com.google.common.hash.FarmHashFingerprint64: long fingerprint(byte[],int,int)>($r1, $i0, $i1);
+
+        $r2 = staticinvoke <com.google.common.hash.HashCode: com.google.common.hash.HashCode fromLong(long)>($l4);
+
+        return $r2;
+    }
+
+    public java.lang.String toString()
+    {
+        com.google.common.hash.FarmHashFingerprint64 r0;
+
+        r0 := @this: com.google.common.hash.FarmHashFingerprint64;
+
+        return "Hashing.farmHashFingerprint64()";
+    }
+}

@@ -1,0 +1,253 @@
+public abstract class androidx.work.impl.WorkDatabase extends androidx.room.RoomDatabase
+{
+    private static final java.lang.String PRUNE_SQL_FORMAT_PREFIX;
+    private static final java.lang.String PRUNE_SQL_FORMAT_SUFFIX;
+    private static final long PRUNE_THRESHOLD_MILLIS;
+
+    static void <clinit>()
+    {
+        java.util.concurrent.TimeUnit $r0;
+        long $l0;
+
+        <androidx.work.impl.WorkDatabase: java.lang.String PRUNE_SQL_FORMAT_SUFFIX> = " AND (SELECT COUNT(*)=0 FROM dependency WHERE     prerequisite_id=id AND     work_spec_id NOT IN         (SELECT id FROM workspec WHERE state IN (2, 3, 5)))";
+
+        <androidx.work.impl.WorkDatabase: java.lang.String PRUNE_SQL_FORMAT_PREFIX> = "DELETE FROM workspec WHERE state IN (2, 3, 5) AND (period_start_time + minimum_retention_duration) < ";
+
+        $r0 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit DAYS>;
+
+        $l0 = virtualinvoke $r0.<java.util.concurrent.TimeUnit: long toMillis(long)>(1L);
+
+        <androidx.work.impl.WorkDatabase: long PRUNE_THRESHOLD_MILLIS> = $l0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        androidx.work.impl.WorkDatabase r0;
+
+        r0 := @this: androidx.work.impl.WorkDatabase;
+
+        specialinvoke r0.<androidx.room.RoomDatabase: void <init>()>();
+
+        return;
+    }
+
+    public static androidx.work.impl.WorkDatabase create(android.content.Context, java.util.concurrent.Executor, boolean)
+    {
+        android.content.Context $r0;
+        androidx.room.RoomDatabase $r11;
+        java.util.concurrent.Executor $r1;
+        androidx.room.RoomDatabase$Builder $r2, $r4;
+        androidx.room.migration.Migration[] $r7;
+        androidx.work.impl.WorkDatabase r12;
+        androidx.work.impl.WorkDatabaseMigrations$RescheduleMigration $r9;
+        androidx.room.RoomDatabase$Callback $r6;
+        androidx.work.impl.WorkDatabaseMigrations$WorkMigration9To10 $r10;
+        java.lang.String $r3;
+        androidx.work.impl.WorkDatabase$1 $r5;
+        androidx.room.migration.Migration $r8;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.util.concurrent.Executor;
+
+        $z0 := @parameter2: boolean;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = staticinvoke <androidx.room.Room: androidx.room.RoomDatabase$Builder inMemoryDatabaseBuilder(android.content.Context,java.lang.Class)>($r0, class "Landroidx/work/impl/WorkDatabase;");
+
+        $r2 = virtualinvoke $r2.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$Builder allowMainThreadQueries()>();
+
+        goto label2;
+
+     label1:
+        $r3 = staticinvoke <androidx.work.impl.WorkDatabasePathHelper: java.lang.String getWorkDatabaseName()>();
+
+        $r4 = staticinvoke <androidx.room.Room: androidx.room.RoomDatabase$Builder databaseBuilder(android.content.Context,java.lang.Class,java.lang.String)>($r0, class "Landroidx/work/impl/WorkDatabase;", $r3);
+
+        $r2 = $r4;
+
+        $r5 = new androidx.work.impl.WorkDatabase$1;
+
+        specialinvoke $r5.<androidx.work.impl.WorkDatabase$1: void <init>(android.content.Context)>($r0);
+
+        virtualinvoke $r4.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$Builder openHelperFactory(androidx.sqlite.db.SupportSQLiteOpenHelper$Factory)>($r5);
+
+     label2:
+        $r2 = virtualinvoke $r2.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$Builder setQueryExecutor(java.util.concurrent.Executor)>($r1);
+
+        $r6 = staticinvoke <androidx.work.impl.WorkDatabase: androidx.room.RoomDatabase$Callback generateCleanupCallback()>();
+
+        $r2 = virtualinvoke $r2.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$Builder addCallback(androidx.room.RoomDatabase$Callback)>($r6);
+
+        $r7 = newarray (androidx.room.migration.Migration)[1];
+
+        $r8 = <androidx.work.impl.WorkDatabaseMigrations: androidx.room.migration.Migration MIGRATION_1_2>;
+
+        $r7[0] = $r8;
+
+        $r2 = virtualinvoke $r2.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$Builder addMigrations(androidx.room.migration.Migration[])>($r7);
+
+        $r7 = newarray (androidx.room.migration.Migration)[1];
+
+        $r9 = new androidx.work.impl.WorkDatabaseMigrations$RescheduleMigration;
+
+        specialinvoke $r9.<androidx.work.impl.WorkDatabaseMigrations$RescheduleMigration: void <init>(android.content.Context,int,int)>($r0, 2, 3);
+
+        $r7[0] = $r9;
+
+        $r2 = virtualinvoke $r2.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$Builder addMigrations(androidx.room.migration.Migration[])>($r7);
+
+        $r7 = newarray (androidx.room.migration.Migration)[1];
+
+        $r8 = <androidx.work.impl.WorkDatabaseMigrations: androidx.room.migration.Migration MIGRATION_3_4>;
+
+        $r7[0] = $r8;
+
+        $r2 = virtualinvoke $r2.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$Builder addMigrations(androidx.room.migration.Migration[])>($r7);
+
+        $r7 = newarray (androidx.room.migration.Migration)[1];
+
+        $r8 = <androidx.work.impl.WorkDatabaseMigrations: androidx.room.migration.Migration MIGRATION_4_5>;
+
+        $r7[0] = $r8;
+
+        $r2 = virtualinvoke $r2.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$Builder addMigrations(androidx.room.migration.Migration[])>($r7);
+
+        $r7 = newarray (androidx.room.migration.Migration)[1];
+
+        $r9 = new androidx.work.impl.WorkDatabaseMigrations$RescheduleMigration;
+
+        specialinvoke $r9.<androidx.work.impl.WorkDatabaseMigrations$RescheduleMigration: void <init>(android.content.Context,int,int)>($r0, 5, 6);
+
+        $r7[0] = $r9;
+
+        $r2 = virtualinvoke $r2.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$Builder addMigrations(androidx.room.migration.Migration[])>($r7);
+
+        $r7 = newarray (androidx.room.migration.Migration)[1];
+
+        $r8 = <androidx.work.impl.WorkDatabaseMigrations: androidx.room.migration.Migration MIGRATION_6_7>;
+
+        $r7[0] = $r8;
+
+        $r2 = virtualinvoke $r2.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$Builder addMigrations(androidx.room.migration.Migration[])>($r7);
+
+        $r7 = newarray (androidx.room.migration.Migration)[1];
+
+        $r8 = <androidx.work.impl.WorkDatabaseMigrations: androidx.room.migration.Migration MIGRATION_7_8>;
+
+        $r7[0] = $r8;
+
+        $r2 = virtualinvoke $r2.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$Builder addMigrations(androidx.room.migration.Migration[])>($r7);
+
+        $r7 = newarray (androidx.room.migration.Migration)[1];
+
+        $r8 = <androidx.work.impl.WorkDatabaseMigrations: androidx.room.migration.Migration MIGRATION_8_9>;
+
+        $r7[0] = $r8;
+
+        $r2 = virtualinvoke $r2.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$Builder addMigrations(androidx.room.migration.Migration[])>($r7);
+
+        $r7 = newarray (androidx.room.migration.Migration)[1];
+
+        $r10 = new androidx.work.impl.WorkDatabaseMigrations$WorkMigration9To10;
+
+        specialinvoke $r10.<androidx.work.impl.WorkDatabaseMigrations$WorkMigration9To10: void <init>(android.content.Context)>($r0);
+
+        $r7[0] = $r10;
+
+        $r2 = virtualinvoke $r2.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$Builder addMigrations(androidx.room.migration.Migration[])>($r7);
+
+        $r7 = newarray (androidx.room.migration.Migration)[1];
+
+        $r9 = new androidx.work.impl.WorkDatabaseMigrations$RescheduleMigration;
+
+        specialinvoke $r9.<androidx.work.impl.WorkDatabaseMigrations$RescheduleMigration: void <init>(android.content.Context,int,int)>($r0, 10, 11);
+
+        $r7[0] = $r9;
+
+        $r2 = virtualinvoke $r2.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$Builder addMigrations(androidx.room.migration.Migration[])>($r7);
+
+        $r7 = newarray (androidx.room.migration.Migration)[1];
+
+        $r8 = <androidx.work.impl.WorkDatabaseMigrations: androidx.room.migration.Migration MIGRATION_11_12>;
+
+        $r7[0] = $r8;
+
+        $r2 = virtualinvoke $r2.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$Builder addMigrations(androidx.room.migration.Migration[])>($r7);
+
+        $r2 = virtualinvoke $r2.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$Builder fallbackToDestructiveMigration()>();
+
+        $r11 = virtualinvoke $r2.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase build()>();
+
+        r12 = (androidx.work.impl.WorkDatabase) $r11;
+
+        return r12;
+    }
+
+    static androidx.room.RoomDatabase$Callback generateCleanupCallback()
+    {
+        androidx.work.impl.WorkDatabase$2 $r0;
+
+        $r0 = new androidx.work.impl.WorkDatabase$2;
+
+        specialinvoke $r0.<androidx.work.impl.WorkDatabase$2: void <init>()>();
+
+        return $r0;
+    }
+
+    static long getPruneDate()
+    {
+        long $l0, $l1;
+
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l0 = <androidx.work.impl.WorkDatabase: long PRUNE_THRESHOLD_MILLIS>;
+
+        $l0 = $l1 - $l0;
+
+        return $l0;
+    }
+
+    static java.lang.String getPruneSQL()
+    {
+        java.lang.StringBuilder $r0;
+        long $l0;
+        java.lang.String $r1;
+
+        $r0 = new java.lang.StringBuilder;
+
+        specialinvoke $r0.<java.lang.StringBuilder: void <init>()>();
+
+        $r0 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("DELETE FROM workspec WHERE state IN (2, 3, 5) AND (period_start_time + minimum_retention_duration) < ");
+
+        $l0 = staticinvoke <androidx.work.impl.WorkDatabase: long getPruneDate()>();
+
+        $r0 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        $r0 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" AND (SELECT COUNT(*)=0 FROM dependency WHERE     prerequisite_id=id AND     work_spec_id NOT IN         (SELECT id FROM workspec WHERE state IN (2, 3, 5)))");
+
+        $r1 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r1;
+    }
+
+    public abstract androidx.work.impl.model.DependencyDao dependencyDao();
+
+    public abstract androidx.work.impl.model.PreferenceDao preferenceDao();
+
+    public abstract androidx.work.impl.model.RawWorkInfoDao rawWorkInfoDao();
+
+    public abstract androidx.work.impl.model.SystemIdInfoDao systemIdInfoDao();
+
+    public abstract androidx.work.impl.model.WorkNameDao workNameDao();
+
+    public abstract androidx.work.impl.model.WorkProgressDao workProgressDao();
+
+    public abstract androidx.work.impl.model.WorkSpecDao workSpecDao();
+
+    public abstract androidx.work.impl.model.WorkTagDao workTagDao();
+}

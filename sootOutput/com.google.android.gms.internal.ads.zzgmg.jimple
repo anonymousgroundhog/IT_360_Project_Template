@@ -1,0 +1,183 @@
+public final class com.google.android.gms.internal.ads.zzgmg extends java.lang.Object
+{
+    private static final java.lang.ThreadLocal zza;
+    private final javax.crypto.SecretKey zzb;
+
+    static void <clinit>()
+    {
+        com.google.android.gms.internal.ads.zzgmf $r0;
+
+        $r0 = new com.google.android.gms.internal.ads.zzgmf;
+
+        specialinvoke $r0.<com.google.android.gms.internal.ads.zzgmf: void <init>()>();
+
+        <com.google.android.gms.internal.ads.zzgmg: java.lang.ThreadLocal zza> = $r0;
+
+        return;
+    }
+
+    public void <init>(byte[], boolean) throws java.security.GeneralSecurityException
+    {
+        com.google.android.gms.internal.ads.zzgmg r0;
+        byte[] $r1;
+        java.security.GeneralSecurityException $r3;
+        int $i0;
+        javax.crypto.spec.SecretKeySpec $r2;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgmg;
+
+        $r1 := @parameter0: byte[];
+
+        $z0 := @parameter1: boolean;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $z0 = staticinvoke <com.google.android.gms.internal.ads.zzgmv: boolean zza(int)>(2);
+
+        if $z0 == 0 goto label1;
+
+        $i0 = lengthof $r1;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzgxo: void zza(int)>($i0);
+
+        $r2 = new javax.crypto.spec.SecretKeySpec;
+
+        specialinvoke $r2.<javax.crypto.spec.SecretKeySpec: void <init>(byte[],java.lang.String)>($r1, "AES");
+
+        r0.<com.google.android.gms.internal.ads.zzgmg: javax.crypto.SecretKey zzb> = $r2;
+
+        return;
+
+     label1:
+        $r3 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r3.<java.security.GeneralSecurityException: void <init>(java.lang.String)>("Can not use AES-GCM in FIPS-mode, as BoringCrypto module is not available.");
+
+        throw $r3;
+    }
+
+    public final byte[] zza(byte[], byte[], byte[]) throws java.security.GeneralSecurityException
+    {
+        com.google.android.gms.internal.ads.zzgmg r0;
+        byte[] $r1, $r2, $r3;
+        java.lang.Integer $r7;
+        javax.crypto.Cipher $r10;
+        java.nio.ByteBuffer $r4, $r5;
+        java.security.GeneralSecurityException $r13;
+        int $i0, $i1;
+        java.lang.String $r6;
+        boolean $z0;
+        java.lang.ThreadLocal $r8;
+        java.lang.Object $r9;
+        javax.crypto.SecretKey $r11;
+        javax.crypto.spec.GCMParameterSpec $r12;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgmg;
+
+        $r2 := @parameter0: byte[];
+
+        $r3 := @parameter1: byte[];
+
+        $r1 := @parameter2: byte[];
+
+        $i0 = lengthof $r2;
+
+        if $i0 != 12 goto label7;
+
+        $i0 = lengthof $r3;
+
+        if $i0 < 28 goto label6;
+
+        $r4 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer wrap(byte[])>($r2);
+
+        $r5 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer wrap(byte[],int,int)>($r3, 0, 12);
+
+        $z0 = virtualinvoke $r4.<java.nio.ByteBuffer: boolean equals(java.lang.Object)>($r5);
+
+        if $z0 == 0 goto label5;
+
+        $r6 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("java.vendor");
+
+        $z0 = staticinvoke <java.util.Objects: boolean equals(java.lang.Object,java.lang.Object)>($r6, "The Android Project");
+
+        if $z0 != 0 goto label1;
+
+        $r7 = null;
+
+        goto label2;
+
+     label1:
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        $r7 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i1);
+
+     label2:
+        if $r7 == null goto label3;
+
+        virtualinvoke $r7.<java.lang.Integer: int intValue()>();
+
+     label3:
+        $r12 = new javax.crypto.spec.GCMParameterSpec;
+
+        specialinvoke $r12.<javax.crypto.spec.GCMParameterSpec: void <init>(int,byte[],int,int)>(128, $r2, 0, 12);
+
+        $r8 = <com.google.android.gms.internal.ads.zzgmg: java.lang.ThreadLocal zza>;
+
+        $r9 = virtualinvoke $r8.<java.lang.ThreadLocal: java.lang.Object get()>();
+
+        $r10 = (javax.crypto.Cipher) $r9;
+
+        $r11 = r0.<com.google.android.gms.internal.ads.zzgmg: javax.crypto.SecretKey zzb>;
+
+        virtualinvoke $r10.<javax.crypto.Cipher: void init(int,java.security.Key,java.security.spec.AlgorithmParameterSpec)>(2, $r11, $r12);
+
+        if $r1 == null goto label4;
+
+        $i1 = lengthof $r1;
+
+        if $i1 == 0 goto label4;
+
+        $r8 = <com.google.android.gms.internal.ads.zzgmg: java.lang.ThreadLocal zza>;
+
+        $r9 = virtualinvoke $r8.<java.lang.ThreadLocal: java.lang.Object get()>();
+
+        $r10 = (javax.crypto.Cipher) $r9;
+
+        virtualinvoke $r10.<javax.crypto.Cipher: void updateAAD(byte[])>($r1);
+
+     label4:
+        $i0 = $i0 + -12;
+
+        $r8 = <com.google.android.gms.internal.ads.zzgmg: java.lang.ThreadLocal zza>;
+
+        $r9 = virtualinvoke $r8.<java.lang.ThreadLocal: java.lang.Object get()>();
+
+        $r10 = (javax.crypto.Cipher) $r9;
+
+        $r2 = virtualinvoke $r10.<javax.crypto.Cipher: byte[] doFinal(byte[],int,int)>($r3, 12, $i0);
+
+        return $r2;
+
+     label5:
+        $r13 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r13.<java.security.GeneralSecurityException: void <init>(java.lang.String)>("iv does not match prepended iv");
+
+        throw $r13;
+
+     label6:
+        $r13 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r13.<java.security.GeneralSecurityException: void <init>(java.lang.String)>("ciphertext too short");
+
+        throw $r13;
+
+     label7:
+        $r13 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r13.<java.security.GeneralSecurityException: void <init>(java.lang.String)>("iv is wrong size");
+
+        throw $r13;
+    }
+}

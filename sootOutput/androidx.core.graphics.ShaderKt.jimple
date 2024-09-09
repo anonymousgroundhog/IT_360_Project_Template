@@ -1,0 +1,30 @@
+public final class androidx.core.graphics.ShaderKt extends java.lang.Object
+{
+
+    public static final void transform(android.graphics.Shader, kotlin.jvm.functions.Function1)
+    {
+        android.graphics.Shader $r0;
+        kotlin.jvm.functions.Function1 $r1;
+        android.graphics.Matrix r2;
+
+        $r0 := @parameter0: android.graphics.Shader;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        r2 = new android.graphics.Matrix;
+
+        specialinvoke r2.<android.graphics.Matrix: void <init>()>();
+
+        virtualinvoke $r0.<android.graphics.Shader: boolean getLocalMatrix(android.graphics.Matrix)>(r2);
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>(r2);
+
+        virtualinvoke $r0.<android.graphics.Shader: void setLocalMatrix(android.graphics.Matrix)>(r2);
+
+        return;
+    }
+}

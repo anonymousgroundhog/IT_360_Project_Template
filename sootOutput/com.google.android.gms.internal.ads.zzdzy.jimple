@@ -1,0 +1,322 @@
+public final class com.google.android.gms.internal.ads.zzdzy extends java.lang.Object
+{
+
+    void <init>()
+    {
+        com.google.android.gms.internal.ads.zzdzy r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdzy;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static final void zza(android.content.Context, android.view.ViewGroup, com.google.android.gms.ads.AdView)
+    {
+        android.content.Context $r2;
+        android.widget.LinearLayout $r3;
+        com.google.android.gms.ads.AdView $r1;
+        android.view.ViewGroup $r0;
+
+        $r2 := @parameter0: android.content.Context;
+
+        $r0 := @parameter1: android.view.ViewGroup;
+
+        $r1 := @parameter2: com.google.android.gms.ads.AdView;
+
+        $r3 = new android.widget.LinearLayout;
+
+        specialinvoke $r3.<android.widget.LinearLayout: void <init>(android.content.Context)>($r2);
+
+        virtualinvoke $r3.<android.widget.LinearLayout: void setTag(java.lang.Object)>("layout");
+
+        staticinvoke <com.google.android.gms.internal.ads.zzdzy: void zzf(android.view.View,int,int)>($r3, -1, -1);
+
+        virtualinvoke $r3.<android.widget.LinearLayout: void setGravity(int)>(17);
+
+        virtualinvoke $r3.<android.widget.LinearLayout: void addView(android.view.View)>($r1);
+
+        virtualinvoke $r1.<com.google.android.gms.ads.AdView: void setTag(java.lang.Object)>("ad_view");
+
+        virtualinvoke $r0.<android.view.ViewGroup: void addView(android.view.View)>($r3);
+
+        return;
+    }
+
+    public static final void zzb(android.content.Context, android.view.ViewGroup, com.google.android.gms.ads.nativead.NativeAd)
+    {
+        android.content.Context $r1;
+        com.google.android.gms.ads.nativead.NativeAdView $r7;
+        android.widget.LinearLayout $r8;
+        com.google.android.gms.ads.nativead.NativeAd $r0;
+        android.view.ViewGroup $r2;
+        android.widget.TextView $r6;
+        int $i0;
+        com.google.android.gms.ads.nativead.MediaView $r9;
+        java.lang.String $r5;
+        com.google.android.gms.internal.ads.zzcdl $r3;
+        android.content.res.Resources $r4;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.view.ViewGroup;
+
+        $r0 := @parameter2: com.google.android.gms.ads.nativead.NativeAd;
+
+        $r7 = new com.google.android.gms.ads.nativead.NativeAdView;
+
+        specialinvoke $r7.<com.google.android.gms.ads.nativead.NativeAdView: void <init>(android.content.Context)>($r1);
+
+        virtualinvoke $r7.<com.google.android.gms.ads.nativead.NativeAdView: void setTag(java.lang.Object)>("ad_view_tag");
+
+        staticinvoke <com.google.android.gms.internal.ads.zzdzy: void zzf(android.view.View,int,int)>($r7, -1, -1);
+
+        virtualinvoke $r2.<android.view.ViewGroup: void addView(android.view.View)>($r7);
+
+        $r8 = new android.widget.LinearLayout;
+
+        specialinvoke $r8.<android.widget.LinearLayout: void <init>(android.content.Context)>($r1);
+
+        virtualinvoke $r8.<android.widget.LinearLayout: void setTag(java.lang.Object)>("layout_tag");
+
+        virtualinvoke $r8.<android.widget.LinearLayout: void setOrientation(int)>(1);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzdzy: void zzf(android.view.View,int,int)>($r8, -1, -1);
+
+        virtualinvoke $r8.<android.widget.LinearLayout: void setBackgroundColor(int)>(-1);
+
+        virtualinvoke $r7.<com.google.android.gms.ads.nativead.NativeAdView: void addView(android.view.View)>($r8);
+
+        $r3 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzcdl zzo()>();
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzcdl: android.content.res.Resources zze()>();
+
+        if $r4 != null goto label1;
+
+        $r5 = "Headline";
+
+        goto label2;
+
+     label1:
+        $i0 = <com.google.android.gms.ads.impl.R$string: int native_headline>;
+
+        $r5 = virtualinvoke $r4.<android.content.res.Resources: java.lang.String getString(int)>($i0);
+
+     label2:
+        $r6 = staticinvoke <com.google.android.gms.internal.ads.zzdzy: android.widget.TextView zzc(android.content.Context,java.lang.String,java.lang.String)>($r1, $r5, "headline_header_tag");
+
+        virtualinvoke $r8.<android.widget.LinearLayout: void addView(android.view.View)>($r6);
+
+        $r5 = virtualinvoke $r0.<com.google.android.gms.ads.nativead.NativeAd: java.lang.String getHeadline()>();
+
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzfxt: java.lang.String zzc(java.lang.String)>($r5);
+
+        $r6 = staticinvoke <com.google.android.gms.internal.ads.zzdzy: android.widget.TextView zzd(android.content.Context,java.lang.String,java.lang.String)>($r1, $r5, "headline_tag");
+
+        virtualinvoke $r7.<com.google.android.gms.ads.nativead.NativeAdView: void setHeadlineView(android.view.View)>($r6);
+
+        virtualinvoke $r8.<android.widget.LinearLayout: void addView(android.view.View)>($r6);
+
+        if $r4 != null goto label3;
+
+        $r5 = "Body";
+
+        goto label4;
+
+     label3:
+        $i0 = <com.google.android.gms.ads.impl.R$string: int native_body>;
+
+        $r5 = virtualinvoke $r4.<android.content.res.Resources: java.lang.String getString(int)>($i0);
+
+     label4:
+        $r6 = staticinvoke <com.google.android.gms.internal.ads.zzdzy: android.widget.TextView zzc(android.content.Context,java.lang.String,java.lang.String)>($r1, $r5, "body_header_tag");
+
+        virtualinvoke $r8.<android.widget.LinearLayout: void addView(android.view.View)>($r6);
+
+        $r5 = virtualinvoke $r0.<com.google.android.gms.ads.nativead.NativeAd: java.lang.String getBody()>();
+
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzfxt: java.lang.String zzc(java.lang.String)>($r5);
+
+        $r6 = staticinvoke <com.google.android.gms.internal.ads.zzdzy: android.widget.TextView zzd(android.content.Context,java.lang.String,java.lang.String)>($r1, $r5, "body_tag");
+
+        virtualinvoke $r7.<com.google.android.gms.ads.nativead.NativeAdView: void setBodyView(android.view.View)>($r6);
+
+        virtualinvoke $r8.<android.widget.LinearLayout: void addView(android.view.View)>($r6);
+
+        if $r4 != null goto label5;
+
+        $r5 = "Media View";
+
+        goto label6;
+
+     label5:
+        $i0 = <com.google.android.gms.ads.impl.R$string: int native_media_view>;
+
+        $r5 = virtualinvoke $r4.<android.content.res.Resources: java.lang.String getString(int)>($i0);
+
+     label6:
+        $r6 = staticinvoke <com.google.android.gms.internal.ads.zzdzy: android.widget.TextView zzc(android.content.Context,java.lang.String,java.lang.String)>($r1, $r5, "media_view_header_tag");
+
+        virtualinvoke $r8.<android.widget.LinearLayout: void addView(android.view.View)>($r6);
+
+        $r9 = new com.google.android.gms.ads.nativead.MediaView;
+
+        specialinvoke $r9.<com.google.android.gms.ads.nativead.MediaView: void <init>(android.content.Context)>($r1);
+
+        virtualinvoke $r9.<com.google.android.gms.ads.nativead.MediaView: void setTag(java.lang.Object)>("media_view_tag");
+
+        virtualinvoke $r7.<com.google.android.gms.ads.nativead.NativeAdView: void setMediaView(com.google.android.gms.ads.nativead.MediaView)>($r9);
+
+        virtualinvoke $r8.<android.widget.LinearLayout: void addView(android.view.View)>($r9);
+
+        virtualinvoke $r7.<com.google.android.gms.ads.nativead.NativeAdView: void setNativeAd(com.google.android.gms.ads.nativead.NativeAd)>($r0);
+
+        return;
+    }
+
+    private static android.widget.TextView zzc(android.content.Context, java.lang.String, java.lang.String)
+    {
+        android.content.Context $r3;
+        android.widget.TextView $r2;
+        java.lang.String $r0, $r1;
+
+        $r3 := @parameter0: android.content.Context;
+
+        $r0 := @parameter1: java.lang.String;
+
+        $r1 := @parameter2: java.lang.String;
+
+        $r2 = staticinvoke <com.google.android.gms.internal.ads.zzdzy: android.widget.TextView zze(android.content.Context,java.lang.String,int,int,float,java.lang.String)>($r3, $r0, 16973894, -9210245, 0.0F, $r1);
+
+        return $r2;
+    }
+
+    private static android.widget.TextView zzd(android.content.Context, java.lang.String, java.lang.String)
+    {
+        android.content.Context $r3;
+        android.widget.TextView $r2;
+        java.lang.String $r0, $r1;
+
+        $r3 := @parameter0: android.content.Context;
+
+        $r0 := @parameter1: java.lang.String;
+
+        $r1 := @parameter2: java.lang.String;
+
+        $r2 = staticinvoke <com.google.android.gms.internal.ads.zzdzy: android.widget.TextView zze(android.content.Context,java.lang.String,int,int,float,java.lang.String)>($r3, $r0, 16973892, -16777216, 12.0F, $r1);
+
+        return $r2;
+    }
+
+    private static android.widget.TextView zze(android.content.Context, java.lang.String, int, int, float, java.lang.String)
+    {
+        android.content.Context $r0;
+        android.view.ViewGroup$LayoutParams $r3, $r4;
+        android.util.DisplayMetrics $r6;
+        android.widget.TextView $r7;
+        android.view.ViewGroup$MarginLayoutParams $r9;
+        int $i0, $i1, $i2;
+        float $f0;
+        java.lang.String $r1, $r2;
+        android.content.res.Resources $r5;
+        android.widget.TableRow$LayoutParams $r8;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $i0 := @parameter2: int;
+
+        $i1 := @parameter3: int;
+
+        $f0 := @parameter4: float;
+
+        $r2 := @parameter5: java.lang.String;
+
+        $r7 = new android.widget.TextView;
+
+        specialinvoke $r7.<android.widget.TextView: void <init>(android.content.Context)>($r0);
+
+        virtualinvoke $r7.<android.widget.TextView: void setTag(java.lang.Object)>($r2);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzdzy: void zzf(android.view.View,int,int)>($r7, -2, -2);
+
+        $r3 = virtualinvoke $r7.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r4 = $r3;
+
+        if $r3 != null goto label1;
+
+        $r8 = new android.widget.TableRow$LayoutParams;
+
+        $r4 = $r8;
+
+        specialinvoke $r8.<android.widget.TableRow$LayoutParams: void <init>()>();
+
+     label1:
+        $r9 = new android.view.ViewGroup$MarginLayoutParams;
+
+        specialinvoke $r9.<android.view.ViewGroup$MarginLayoutParams: void <init>(android.view.ViewGroup$LayoutParams)>($r4);
+
+        $r5 = virtualinvoke $r7.<android.view.View: android.content.res.Resources getResources()>();
+
+        $r6 = virtualinvoke $r5.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $f0 = staticinvoke <android.util.TypedValue: float applyDimension(int,float,android.util.DisplayMetrics)>(1, $f0, $r6);
+
+        $i2 = (int) $f0;
+
+        $r9.<android.view.ViewGroup$MarginLayoutParams: int bottomMargin> = $i2;
+
+        virtualinvoke $r7.<android.view.View: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r9);
+
+        virtualinvoke $r7.<android.widget.TextView: void setTextAppearance(android.content.Context,int)>($r0, $i0);
+
+        virtualinvoke $r7.<android.widget.TextView: void setTextColor(int)>($i1);
+
+        virtualinvoke $r7.<android.widget.TextView: void setText(java.lang.CharSequence)>($r1);
+
+        return $r7;
+    }
+
+    private static void zzf(android.view.View, int, int)
+    {
+        android.view.ViewGroup$LayoutParams $r1, $r2;
+        int $i0, $i1;
+        android.view.View $r0;
+        android.widget.LinearLayout$LayoutParams $r4;
+        android.widget.TableRow$LayoutParams $r3;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $r2 = $r1;
+
+        if $r1 != null goto label1;
+
+        $r3 = new android.widget.TableRow$LayoutParams;
+
+        $r2 = $r3;
+
+        specialinvoke $r3.<android.widget.TableRow$LayoutParams: void <init>()>();
+
+     label1:
+        $r4 = new android.widget.LinearLayout$LayoutParams;
+
+        specialinvoke $r4.<android.widget.LinearLayout$LayoutParams: void <init>(android.view.ViewGroup$LayoutParams)>($r2);
+
+        $r4.<android.widget.LinearLayout$LayoutParams: int height> = $i0;
+
+        $r4.<android.widget.LinearLayout$LayoutParams: int width> = $i1;
+
+        virtualinvoke $r0.<android.view.View: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r4);
+
+        return;
+    }
+}

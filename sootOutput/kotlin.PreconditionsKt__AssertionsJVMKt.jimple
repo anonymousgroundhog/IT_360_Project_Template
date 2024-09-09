@@ -1,0 +1,60 @@
+class kotlin.PreconditionsKt__AssertionsJVMKt extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        kotlin.PreconditionsKt__AssertionsJVMKt r0;
+
+        r0 := @this: kotlin.PreconditionsKt__AssertionsJVMKt;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private static final void assert(boolean)
+    {
+        java.lang.AssertionError $r0;
+        boolean $z0;
+
+        $z0 := @parameter0: boolean;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $r0 = new java.lang.AssertionError;
+
+        specialinvoke $r0.<java.lang.AssertionError: void <init>(java.lang.Object)>("Assertion failed");
+
+        throw $r0;
+    }
+
+    private static final void assert(boolean, kotlin.jvm.functions.Function0)
+    {
+        java.lang.Object $r2;
+        java.lang.AssertionError $r1;
+        kotlin.jvm.functions.Function0 $r0;
+        boolean $z0;
+
+        $z0 := @parameter0: boolean;
+
+        $r0 := @parameter1: kotlin.jvm.functions.Function0;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "lazyMessage");
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $r2 = interfaceinvoke $r0.<kotlin.jvm.functions.Function0: java.lang.Object invoke()>();
+
+        $r1 = new java.lang.AssertionError;
+
+        specialinvoke $r1.<java.lang.AssertionError: void <init>(java.lang.Object)>($r2);
+
+        throw $r1;
+    }
+}

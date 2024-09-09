@@ -1,0 +1,249 @@
+class androidx.room.InvalidationTracker$ObserverWrapper extends java.lang.Object
+{
+    final androidx.room.InvalidationTracker$Observer mObserver;
+    private final java.util.Set mSingleTableSet;
+    final int[] mTableIds;
+    private final java.lang.String[] mTableNames;
+
+    void <init>(androidx.room.InvalidationTracker$Observer, int[], java.lang.String[])
+    {
+        androidx.room.InvalidationTracker$Observer $r1;
+        java.util.Set $r4;
+        java.lang.String[] $r3;
+        java.util.HashSet r5;
+        int[] $r2;
+        androidx.room.InvalidationTracker$ObserverWrapper r0;
+        int i0;
+        java.lang.String $r6;
+
+        r0 := @this: androidx.room.InvalidationTracker$ObserverWrapper;
+
+        $r1 := @parameter0: androidx.room.InvalidationTracker$Observer;
+
+        $r2 := @parameter1: int[];
+
+        $r3 := @parameter2: java.lang.String[];
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.room.InvalidationTracker$ObserverWrapper: androidx.room.InvalidationTracker$Observer mObserver> = $r1;
+
+        r0.<androidx.room.InvalidationTracker$ObserverWrapper: int[] mTableIds> = $r2;
+
+        r0.<androidx.room.InvalidationTracker$ObserverWrapper: java.lang.String[] mTableNames> = $r3;
+
+        i0 = lengthof $r2;
+
+        if i0 != 1 goto label1;
+
+        r5 = new java.util.HashSet;
+
+        specialinvoke r5.<java.util.HashSet: void <init>()>();
+
+        $r3 = r0.<androidx.room.InvalidationTracker$ObserverWrapper: java.lang.String[] mTableNames>;
+
+        $r6 = $r3[0];
+
+        virtualinvoke r5.<java.util.HashSet: boolean add(java.lang.Object)>($r6);
+
+        $r4 = staticinvoke <java.util.Collections: java.util.Set unmodifiableSet(java.util.Set)>(r5);
+
+        r0.<androidx.room.InvalidationTracker$ObserverWrapper: java.util.Set mSingleTableSet> = $r4;
+
+        return;
+
+     label1:
+        r0.<androidx.room.InvalidationTracker$ObserverWrapper: java.util.Set mSingleTableSet> = null;
+
+        return;
+    }
+
+    void notifyByTableInvalidStatus(java.util.Set)
+    {
+        androidx.room.InvalidationTracker$Observer r8;
+        java.util.Set r1, r2;
+        java.lang.String[] $r6;
+        java.lang.Integer $r4;
+        java.util.HashSet $r5;
+        int[] r3;
+        androidx.room.InvalidationTracker$ObserverWrapper r0;
+        int i0, i1, i2;
+        java.lang.String $r7;
+        boolean $z0;
+
+        r0 := @this: androidx.room.InvalidationTracker$ObserverWrapper;
+
+        r1 := @parameter0: java.util.Set;
+
+        r2 = null;
+
+        r3 = r0.<androidx.room.InvalidationTracker$ObserverWrapper: int[] mTableIds>;
+
+        i0 = lengthof r3;
+
+        i1 = 0;
+
+     label1:
+        if i1 >= i0 goto label5;
+
+        r3 = r0.<androidx.room.InvalidationTracker$ObserverWrapper: int[] mTableIds>;
+
+        i2 = r3[i1];
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(i2);
+
+        $z0 = interfaceinvoke r1.<java.util.Set: boolean contains(java.lang.Object)>($r4);
+
+        if $z0 == 0 goto label4;
+
+        if i0 != 1 goto label2;
+
+        r2 = r0.<androidx.room.InvalidationTracker$ObserverWrapper: java.util.Set mSingleTableSet>;
+
+        goto label4;
+
+     label2:
+        if r2 != null goto label3;
+
+        $r5 = new java.util.HashSet;
+
+        specialinvoke $r5.<java.util.HashSet: void <init>(int)>(i0);
+
+        r2 = $r5;
+
+     label3:
+        $r6 = r0.<androidx.room.InvalidationTracker$ObserverWrapper: java.lang.String[] mTableNames>;
+
+        $r7 = $r6[i1];
+
+        interfaceinvoke r2.<java.util.Set: boolean add(java.lang.Object)>($r7);
+
+     label4:
+        i1 = i1 + 1;
+
+        goto label1;
+
+     label5:
+        if r2 == null goto label6;
+
+        r8 = r0.<androidx.room.InvalidationTracker$ObserverWrapper: androidx.room.InvalidationTracker$Observer mObserver>;
+
+        virtualinvoke r8.<androidx.room.InvalidationTracker$Observer: void onInvalidated(java.util.Set)>(r2);
+
+     label6:
+        return;
+    }
+
+    void notifyByTableNames(java.lang.String[])
+    {
+        androidx.room.InvalidationTracker$Observer r7;
+        java.util.Set r4;
+        java.lang.String[] $r1, $r2;
+        java.util.HashSet r6;
+        androidx.room.InvalidationTracker$ObserverWrapper r0;
+        int $i0, $i1, i2, $i3;
+        java.lang.String r3, r5;
+        boolean $z0;
+
+        r0 := @this: androidx.room.InvalidationTracker$ObserverWrapper;
+
+        $r1 := @parameter0: java.lang.String[];
+
+        r4 = null;
+
+        $r2 = r0.<androidx.room.InvalidationTracker$ObserverWrapper: java.lang.String[] mTableNames>;
+
+        $i0 = lengthof $r2;
+
+        if $i0 != 1 goto label04;
+
+        $i0 = lengthof $r1;
+
+        $i1 = 0;
+
+     label01:
+        if $i1 >= $i0 goto label03;
+
+        r3 = $r1[$i1];
+
+        $r2 = r0.<androidx.room.InvalidationTracker$ObserverWrapper: java.lang.String[] mTableNames>;
+
+        r5 = $r2[0];
+
+        $z0 = virtualinvoke r3.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(r5);
+
+        if $z0 == 0 goto label02;
+
+        r4 = r0.<androidx.room.InvalidationTracker$ObserverWrapper: java.util.Set mSingleTableSet>;
+
+        goto label03;
+
+     label02:
+        $i1 = $i1 + 1;
+
+        goto label01;
+
+     label03:
+        goto label10;
+
+     label04:
+        r6 = new java.util.HashSet;
+
+        specialinvoke r6.<java.util.HashSet: void <init>()>();
+
+        $i1 = lengthof $r1;
+
+        i2 = 0;
+
+     label05:
+        if i2 >= $i1 goto label09;
+
+        r5 = $r1[i2];
+
+        $r2 = r0.<androidx.room.InvalidationTracker$ObserverWrapper: java.lang.String[] mTableNames>;
+
+        $i0 = lengthof $r2;
+
+        $i3 = 0;
+
+     label06:
+        if $i3 >= $i0 goto label08;
+
+        r3 = $r2[$i3];
+
+        $z0 = virtualinvoke r3.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(r5);
+
+        if $z0 == 0 goto label07;
+
+        virtualinvoke r6.<java.util.HashSet: boolean add(java.lang.Object)>(r3);
+
+        goto label08;
+
+     label07:
+        $i3 = $i3 + 1;
+
+        goto label06;
+
+     label08:
+        i2 = i2 + 1;
+
+        goto label05;
+
+     label09:
+        $i0 = virtualinvoke r6.<java.util.HashSet: int size()>();
+
+        if $i0 <= 0 goto label10;
+
+        r4 = r6;
+
+     label10:
+        if r4 == null goto label11;
+
+        r7 = r0.<androidx.room.InvalidationTracker$ObserverWrapper: androidx.room.InvalidationTracker$Observer mObserver>;
+
+        virtualinvoke r7.<androidx.room.InvalidationTracker$Observer: void onInvalidated(java.util.Set)>(r4);
+
+     label11:
+        return;
+    }
+}

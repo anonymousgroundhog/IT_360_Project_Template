@@ -1,0 +1,151 @@
+class androidx.room.RoomTrackingLiveData$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.room.RoomTrackingLiveData this$0;
+
+    void <init>(androidx.room.RoomTrackingLiveData)
+    {
+        androidx.room.RoomTrackingLiveData $r1;
+        androidx.room.RoomTrackingLiveData$1 r0;
+
+        r0 := @this: androidx.room.RoomTrackingLiveData$1;
+
+        $r1 := @parameter0: androidx.room.RoomTrackingLiveData;
+
+        r0.<androidx.room.RoomTrackingLiveData$1: androidx.room.RoomTrackingLiveData this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.room.InvalidationTracker $r4;
+        java.lang.Throwable r10;
+        androidx.room.RoomTrackingLiveData$1 r0;
+        androidx.room.RoomDatabase r3;
+        androidx.room.InvalidationTracker$Observer r5;
+        java.util.concurrent.atomic.AtomicBoolean r2;
+        androidx.room.RoomTrackingLiveData r1;
+        java.util.concurrent.Callable $r7;
+        java.lang.RuntimeException $r9;
+        java.lang.Exception r8;
+        java.lang.Object r6;
+        boolean $z0, $z1;
+
+        r0 := @this: androidx.room.RoomTrackingLiveData$1;
+
+        r1 = r0.<androidx.room.RoomTrackingLiveData$1: androidx.room.RoomTrackingLiveData this$0>;
+
+        r2 = r1.<androidx.room.RoomTrackingLiveData: java.util.concurrent.atomic.AtomicBoolean mRegisteredObserver>;
+
+        $z0 = virtualinvoke r2.<java.util.concurrent.atomic.AtomicBoolean: boolean compareAndSet(boolean,boolean)>(0, 1);
+
+        if $z0 == 0 goto label01;
+
+        r1 = r0.<androidx.room.RoomTrackingLiveData$1: androidx.room.RoomTrackingLiveData this$0>;
+
+        r3 = r1.<androidx.room.RoomTrackingLiveData: androidx.room.RoomDatabase mDatabase>;
+
+        $r4 = virtualinvoke r3.<androidx.room.RoomDatabase: androidx.room.InvalidationTracker getInvalidationTracker()>();
+
+        r1 = r0.<androidx.room.RoomTrackingLiveData$1: androidx.room.RoomTrackingLiveData this$0>;
+
+        r5 = r1.<androidx.room.RoomTrackingLiveData: androidx.room.InvalidationTracker$Observer mObserver>;
+
+        virtualinvoke $r4.<androidx.room.InvalidationTracker: void addWeakObserver(androidx.room.InvalidationTracker$Observer)>(r5);
+
+     label01:
+        $z0 = 0;
+
+        r1 = r0.<androidx.room.RoomTrackingLiveData$1: androidx.room.RoomTrackingLiveData this$0>;
+
+        r2 = r1.<androidx.room.RoomTrackingLiveData: java.util.concurrent.atomic.AtomicBoolean mComputing>;
+
+        $z1 = virtualinvoke r2.<java.util.concurrent.atomic.AtomicBoolean: boolean compareAndSet(boolean,boolean)>(0, 1);
+
+        if $z1 == 0 goto label12;
+
+        r6 = null;
+
+     label02:
+        r1 = r0.<androidx.room.RoomTrackingLiveData$1: androidx.room.RoomTrackingLiveData this$0>;
+
+        r2 = r1.<androidx.room.RoomTrackingLiveData: java.util.concurrent.atomic.AtomicBoolean mInvalid>;
+
+        $z1 = virtualinvoke r2.<java.util.concurrent.atomic.AtomicBoolean: boolean compareAndSet(boolean,boolean)>(1, 0);
+
+     label03:
+        if $z1 == 0 goto label08;
+
+        $z0 = 1;
+
+     label04:
+        r1 = r0.<androidx.room.RoomTrackingLiveData$1: androidx.room.RoomTrackingLiveData this$0>;
+
+        $r7 = r1.<androidx.room.RoomTrackingLiveData: java.util.concurrent.Callable mComputeFunction>;
+
+        r6 = interfaceinvoke $r7.<java.util.concurrent.Callable: java.lang.Object call()>();
+
+     label05:
+        goto label02;
+
+     label06:
+        r8 := @caughtexception;
+
+     label07:
+        $r9 = new java.lang.RuntimeException;
+
+        specialinvoke $r9.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("Exception while computing database live data.", r8);
+
+        throw $r9;
+
+     label08:
+        if $z0 == 0 goto label10;
+
+     label09:
+        r1 = r0.<androidx.room.RoomTrackingLiveData$1: androidx.room.RoomTrackingLiveData this$0>;
+
+        staticinvoke <androidx.room.RoomTrackingLiveData: void access$000(androidx.room.RoomTrackingLiveData,java.lang.Object)>(r1, r6);
+
+     label10:
+        r1 = r0.<androidx.room.RoomTrackingLiveData$1: androidx.room.RoomTrackingLiveData this$0>;
+
+        r2 = r1.<androidx.room.RoomTrackingLiveData: java.util.concurrent.atomic.AtomicBoolean mComputing>;
+
+        virtualinvoke r2.<java.util.concurrent.atomic.AtomicBoolean: void set(boolean)>(0);
+
+        goto label12;
+
+     label11:
+        r10 := @caughtexception;
+
+        r1 = r0.<androidx.room.RoomTrackingLiveData$1: androidx.room.RoomTrackingLiveData this$0>;
+
+        r2 = r1.<androidx.room.RoomTrackingLiveData: java.util.concurrent.atomic.AtomicBoolean mComputing>;
+
+        virtualinvoke r2.<java.util.concurrent.atomic.AtomicBoolean: void set(boolean)>(0);
+
+        throw r10;
+
+     label12:
+        if $z0 == 0 goto label13;
+
+        r1 = r0.<androidx.room.RoomTrackingLiveData$1: androidx.room.RoomTrackingLiveData this$0>;
+
+        r2 = r1.<androidx.room.RoomTrackingLiveData: java.util.concurrent.atomic.AtomicBoolean mInvalid>;
+
+        $z0 = virtualinvoke r2.<java.util.concurrent.atomic.AtomicBoolean: boolean get()>();
+
+        if $z0 != 0 goto label01;
+
+     label13:
+        return;
+
+        catch java.lang.Throwable from label02 to label03 with label11;
+        catch java.lang.Exception from label04 to label05 with label06;
+        catch java.lang.Throwable from label04 to label05 with label11;
+        catch java.lang.Throwable from label07 to label08 with label11;
+        catch java.lang.Throwable from label09 to label10 with label11;
+    }
+}

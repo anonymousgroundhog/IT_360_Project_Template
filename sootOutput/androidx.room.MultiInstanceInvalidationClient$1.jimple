@@ -1,0 +1,45 @@
+class androidx.room.MultiInstanceInvalidationClient$1 extends androidx.room.IMultiInstanceInvalidationCallback$Stub
+{
+    final androidx.room.MultiInstanceInvalidationClient this$0;
+
+    void <init>(androidx.room.MultiInstanceInvalidationClient)
+    {
+        androidx.room.MultiInstanceInvalidationClient$1 r0;
+        androidx.room.MultiInstanceInvalidationClient $r1;
+
+        r0 := @this: androidx.room.MultiInstanceInvalidationClient$1;
+
+        $r1 := @parameter0: androidx.room.MultiInstanceInvalidationClient;
+
+        r0.<androidx.room.MultiInstanceInvalidationClient$1: androidx.room.MultiInstanceInvalidationClient this$0> = $r1;
+
+        specialinvoke r0.<androidx.room.IMultiInstanceInvalidationCallback$Stub: void <init>()>();
+
+        return;
+    }
+
+    public void onInvalidation(java.lang.String[])
+    {
+        java.util.concurrent.Executor $r4;
+        androidx.room.MultiInstanceInvalidationClient$1 r0;
+        androidx.room.MultiInstanceInvalidationClient$1$1 $r2;
+        androidx.room.MultiInstanceInvalidationClient $r3;
+        java.lang.String[] $r1;
+
+        r0 := @this: androidx.room.MultiInstanceInvalidationClient$1;
+
+        $r1 := @parameter0: java.lang.String[];
+
+        $r3 = r0.<androidx.room.MultiInstanceInvalidationClient$1: androidx.room.MultiInstanceInvalidationClient this$0>;
+
+        $r4 = $r3.<androidx.room.MultiInstanceInvalidationClient: java.util.concurrent.Executor mExecutor>;
+
+        $r2 = new androidx.room.MultiInstanceInvalidationClient$1$1;
+
+        specialinvoke $r2.<androidx.room.MultiInstanceInvalidationClient$1$1: void <init>(androidx.room.MultiInstanceInvalidationClient$1,java.lang.String[])>(r0, $r1);
+
+        interfaceinvoke $r4.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r2);
+
+        return;
+    }
+}

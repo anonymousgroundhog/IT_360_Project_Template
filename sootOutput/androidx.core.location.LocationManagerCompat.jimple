@@ -1,0 +1,1084 @@
+public final class androidx.core.location.LocationManagerCompat extends java.lang.Object
+{
+    private static final long GET_CURRENT_LOCATION_TIMEOUT_MS;
+    private static final long MAX_CURRENT_LOCATION_AGE_MS;
+    private static final long PRE_N_LOOPER_TIMEOUT_S;
+    private static java.lang.reflect.Field sContextField;
+    static final java.util.WeakHashMap sLocationListeners;
+
+    static void <clinit>()
+    {
+        java.util.WeakHashMap $r0;
+
+        <androidx.core.location.LocationManagerCompat: long PRE_N_LOOPER_TIMEOUT_S> = 5L;
+
+        <androidx.core.location.LocationManagerCompat: long MAX_CURRENT_LOCATION_AGE_MS> = 10000L;
+
+        <androidx.core.location.LocationManagerCompat: long GET_CURRENT_LOCATION_TIMEOUT_MS> = 30000L;
+
+        $r0 = new java.util.WeakHashMap;
+
+        specialinvoke $r0.<java.util.WeakHashMap: void <init>()>();
+
+        <androidx.core.location.LocationManagerCompat: java.util.WeakHashMap sLocationListeners> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.core.location.LocationManagerCompat r0;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void getCurrentLocation(android.location.LocationManager, java.lang.String, androidx.core.os.CancellationSignal, java.util.concurrent.Executor, androidx.core.util.Consumer)
+    {
+        androidx.core.location.LocationManagerCompat$$ExternalSyntheticLambda1 $r9;
+        androidx.core.location.LocationManagerCompat$$ExternalSyntheticLambda0 $r7;
+        java.util.concurrent.Executor $r3;
+        androidx.core.os.CancellationSignal $r2;
+        long $l2, $l3;
+        androidx.core.util.Consumer r4;
+        byte $b0;
+        androidx.core.location.LocationManagerCompat$CancellableLocationListener $r8;
+        android.os.Looper $r6;
+        int i1;
+        java.lang.String $r1;
+        android.location.Location $r5;
+        android.location.LocationManager $r0;
+
+        $r0 := @parameter0: android.location.LocationManager;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 := @parameter2: androidx.core.os.CancellationSignal;
+
+        $r3 := @parameter3: java.util.concurrent.Executor;
+
+        r4 := @parameter4: androidx.core.util.Consumer;
+
+        i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i1 < 30 goto label1;
+
+        staticinvoke <androidx.core.location.LocationManagerCompat$Api30Impl: void getCurrentLocation(android.location.LocationManager,java.lang.String,androidx.core.os.CancellationSignal,java.util.concurrent.Executor,androidx.core.util.Consumer)>($r0, $r1, $r2, $r3, r4);
+
+        return;
+
+     label1:
+        if $r2 == null goto label2;
+
+        virtualinvoke $r2.<androidx.core.os.CancellationSignal: void throwIfCanceled()>();
+
+     label2:
+        $r5 = virtualinvoke $r0.<android.location.LocationManager: android.location.Location getLastKnownLocation(java.lang.String)>($r1);
+
+        if $r5 == null goto label3;
+
+        $l2 = staticinvoke <android.os.SystemClock: long elapsedRealtime()>();
+
+        $l3 = staticinvoke <androidx.core.location.LocationCompat: long getElapsedRealtimeMillis(android.location.Location)>($r5);
+
+        $l2 = $l2 - $l3;
+
+        $b0 = $l2 cmp 10000L;
+
+        i1 = (int) $b0;
+
+        if i1 >= 0 goto label3;
+
+        $r7 = new androidx.core.location.LocationManagerCompat$$ExternalSyntheticLambda0;
+
+        specialinvoke $r7.<androidx.core.location.LocationManagerCompat$$ExternalSyntheticLambda0: void <init>(androidx.core.util.Consumer,android.location.Location)>(r4, $r5);
+
+        interfaceinvoke $r3.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r7);
+
+        return;
+
+     label3:
+        $r8 = new androidx.core.location.LocationManagerCompat$CancellableLocationListener;
+
+        specialinvoke $r8.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: void <init>(android.location.LocationManager,java.util.concurrent.Executor,androidx.core.util.Consumer)>($r0, $r3, r4);
+
+        $r6 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        virtualinvoke $r0.<android.location.LocationManager: void requestLocationUpdates(java.lang.String,long,float,android.location.LocationListener,android.os.Looper)>($r1, 0L, 0.0F, $r8, $r6);
+
+        if $r2 == null goto label4;
+
+        staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>($r8);
+
+        $r9 = new androidx.core.location.LocationManagerCompat$$ExternalSyntheticLambda1;
+
+        specialinvoke $r9.<androidx.core.location.LocationManagerCompat$$ExternalSyntheticLambda1: void <init>(androidx.core.location.LocationManagerCompat$CancellableLocationListener)>($r8);
+
+        virtualinvoke $r2.<androidx.core.os.CancellationSignal: void setOnCancelListener(androidx.core.os.CancellationSignal$OnCancelListener)>($r9);
+
+     label4:
+        virtualinvoke $r8.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: void startTimeout(long)>(30000L);
+
+        return;
+    }
+
+    public static java.lang.String getGnssHardwareModelName(android.location.LocationManager)
+    {
+        int $i0;
+        java.lang.String $r1;
+        android.location.LocationManager $r0;
+
+        $r0 := @parameter0: android.location.LocationManager;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 28 goto label1;
+
+        $r1 = staticinvoke <androidx.core.location.LocationManagerCompat$Api28Impl: java.lang.String getGnssHardwareModelName(android.location.LocationManager)>($r0);
+
+        return $r1;
+
+     label1:
+        return null;
+    }
+
+    public static int getGnssYearOfHardware(android.location.LocationManager)
+    {
+        int $i0;
+        android.location.LocationManager $r0;
+
+        $r0 := @parameter0: android.location.LocationManager;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 28 goto label1;
+
+        $i0 = staticinvoke <androidx.core.location.LocationManagerCompat$Api28Impl: int getGnssYearOfHardware(android.location.LocationManager)>($r0);
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public static boolean hasProvider(android.location.LocationManager, java.lang.String)
+    {
+        java.util.List $r2;
+        android.location.LocationProvider $r3;
+        int $i0;
+        java.lang.SecurityException $r4;
+        java.lang.String $r1;
+        android.location.LocationManager $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.location.LocationManager;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 31 goto label1;
+
+        $z0 = staticinvoke <androidx.core.location.LocationManagerCompat$Api31Impl: boolean hasProvider(android.location.LocationManager,java.lang.String)>($r0, $r1);
+
+        return $z0;
+
+     label1:
+        $r2 = virtualinvoke $r0.<android.location.LocationManager: java.util.List getAllProviders()>();
+
+        $z0 = interfaceinvoke $r2.<java.util.List: boolean contains(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label2;
+
+        return 1;
+
+     label2:
+        $r3 = virtualinvoke $r0.<android.location.LocationManager: android.location.LocationProvider getProvider(java.lang.String)>($r1);
+
+     label3:
+        if $r3 == null goto label4;
+
+        return 1;
+
+     label4:
+        return 0;
+
+     label5:
+        $r4 := @caughtexception;
+
+        return 0;
+
+        catch java.lang.SecurityException from label2 to label3 with label5;
+    }
+
+    public static boolean isLocationEnabled(android.location.LocationManager)
+    {
+        int $i0;
+        android.location.LocationManager $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.location.LocationManager;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 28 goto label1;
+
+        $z0 = staticinvoke <androidx.core.location.LocationManagerCompat$Api28Impl: boolean isLocationEnabled(android.location.LocationManager)>($r0);
+
+        return $z0;
+
+     label1:
+        $z0 = virtualinvoke $r0.<android.location.LocationManager: boolean isProviderEnabled(java.lang.String)>("network");
+
+        if $z0 != 0 goto label3;
+
+        $z0 = virtualinvoke $r0.<android.location.LocationManager: boolean isProviderEnabled(java.lang.String)>("gps");
+
+        if $z0 == 0 goto label2;
+
+        goto label3;
+
+     label2:
+        return 0;
+
+     label3:
+        return 1;
+    }
+
+    static void lambda$getCurrentLocation$0(androidx.core.util.Consumer, android.location.Location)
+    {
+        androidx.core.util.Consumer $r0;
+        android.location.Location $r1;
+
+        $r0 := @parameter0: androidx.core.util.Consumer;
+
+        $r1 := @parameter1: android.location.Location;
+
+        interfaceinvoke $r0.<androidx.core.util.Consumer: void accept(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    static java.lang.Boolean lambda$registerGnssStatusCallback$1(android.location.LocationManager, androidx.core.location.LocationManagerCompat$GpsStatusTransport) throws java.lang.Exception
+    {
+        androidx.core.location.LocationManagerCompat$GpsStatusTransport $r1;
+        java.lang.Boolean $r2;
+        android.location.LocationManager $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.location.LocationManager;
+
+        $r1 := @parameter1: androidx.core.location.LocationManagerCompat$GpsStatusTransport;
+
+        $z0 = virtualinvoke $r0.<android.location.LocationManager: boolean addGpsStatusListener(android.location.GpsStatus$Listener)>($r1);
+
+        $r2 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        return $r2;
+    }
+
+    private static boolean registerGnssStatusCallback(android.location.LocationManager, android.os.Handler, java.util.concurrent.Executor, androidx.core.location.GnssStatusCompat$Callback)
+    {
+        java.lang.IllegalStateException $r19;
+        java.util.concurrent.TimeoutException r18;
+        android.os.Handler r1;
+        android.os.Looper $r11, $r12;
+        java.lang.Thread $r15;
+        boolean $z0, $z1;
+        java.lang.StringBuilder $r20;
+        android.location.LocationManager r0;
+        java.lang.Throwable r17, r25;
+        java.util.concurrent.FutureTask r9;
+        java.lang.Error $r23;
+        long $l1, l2, $l3;
+        androidx.core.location.GnssStatusCompat$Callback r3;
+        androidx.core.location.LocationManagerCompat$GpsStatusTransport r5, r8;
+        int i0;
+        java.lang.Boolean r14;
+        java.lang.String $r21;
+        androidx.collection.SimpleArrayMap $r4, r6;
+        java.util.concurrent.Executor r2;
+        androidx.core.location.LocationManagerCompat$$ExternalSyntheticLambda2 r10;
+        java.lang.RuntimeException $r24;
+        java.util.concurrent.TimeUnit r13;
+        java.util.concurrent.ExecutionException r22;
+        java.lang.InterruptedException r16;
+        java.lang.Object $r7;
+
+        r0 := @parameter0: android.location.LocationManager;
+
+        r1 := @parameter1: android.os.Handler;
+
+        r2 := @parameter2: java.util.concurrent.Executor;
+
+        r3 := @parameter3: androidx.core.location.GnssStatusCompat$Callback;
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 30 goto label01;
+
+        $z0 = staticinvoke <androidx.core.location.LocationManagerCompat$Api30Impl: boolean registerGnssStatusCallback(android.location.LocationManager,android.os.Handler,java.util.concurrent.Executor,androidx.core.location.GnssStatusCompat$Callback)>(r0, r1, r2, r3);
+
+        return $z0;
+
+     label01:
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 24 goto label02;
+
+        $z0 = staticinvoke <androidx.core.location.LocationManagerCompat$Api24Impl: boolean registerGnssStatusCallback(android.location.LocationManager,android.os.Handler,java.util.concurrent.Executor,androidx.core.location.GnssStatusCompat$Callback)>(r0, r1, r2, r3);
+
+        return $z0;
+
+     label02:
+        if r1 == null goto label03;
+
+        $z0 = 1;
+
+        goto label04;
+
+     label03:
+        $z0 = 0;
+
+     label04:
+        staticinvoke <androidx.core.util.Preconditions: void checkArgument(boolean)>($z0);
+
+        $r4 = <androidx.core.location.LocationManagerCompat$GnssLazyLoader: androidx.collection.SimpleArrayMap sGnssStatusListeners>;
+
+        entermonitor $r4;
+
+     label05:
+        r6 = <androidx.core.location.LocationManagerCompat$GnssLazyLoader: androidx.collection.SimpleArrayMap sGnssStatusListeners>;
+
+        $r7 = virtualinvoke r6.<androidx.collection.SimpleArrayMap: java.lang.Object get(java.lang.Object)>(r3);
+
+        r5 = (androidx.core.location.LocationManagerCompat$GpsStatusTransport) $r7;
+
+        if r5 != null goto label06;
+
+        r8 = new androidx.core.location.LocationManagerCompat$GpsStatusTransport;
+
+        specialinvoke r8.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: void <init>(android.location.LocationManager,androidx.core.location.GnssStatusCompat$Callback)>(r0, r3);
+
+        goto label08;
+
+     label06:
+        virtualinvoke r5.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: void unregister()>();
+
+     label07:
+        r8 = r5;
+
+     label08:
+        virtualinvoke r8.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: void register(java.util.concurrent.Executor)>(r2);
+
+        r5 = r8;
+
+        r9 = new java.util.concurrent.FutureTask;
+
+        r10 = new androidx.core.location.LocationManagerCompat$$ExternalSyntheticLambda2;
+
+        specialinvoke r10.<androidx.core.location.LocationManagerCompat$$ExternalSyntheticLambda2: void <init>(android.location.LocationManager,androidx.core.location.LocationManagerCompat$GpsStatusTransport)>(r0, r8);
+
+        specialinvoke r9.<java.util.concurrent.FutureTask: void <init>(java.util.concurrent.Callable)>(r10);
+
+        $r11 = staticinvoke <android.os.Looper: android.os.Looper myLooper()>();
+
+        $r12 = virtualinvoke r1.<android.os.Handler: android.os.Looper getLooper()>();
+
+        if $r11 != $r12 goto label09;
+
+        virtualinvoke r9.<java.util.concurrent.FutureTask: void run()>();
+
+        goto label11;
+
+     label09:
+        $z0 = virtualinvoke r1.<android.os.Handler: boolean post(java.lang.Runnable)>(r9);
+
+     label10:
+        if $z0 == 0 goto label42;
+
+     label11:
+        $z0 = 0;
+
+     label12:
+        r13 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+     label13:
+        $l1 = virtualinvoke r13.<java.util.concurrent.TimeUnit: long toNanos(long)>(5L);
+
+     label14:
+        l2 = $l1;
+
+     label15:
+        $l3 = staticinvoke <java.lang.System: long nanoTime()>();
+
+     label16:
+        $l1 = $l3 + $l1;
+
+     label17:
+        r13 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit NANOSECONDS>;
+
+     label18:
+        $r7 = virtualinvoke r9.<java.util.concurrent.FutureTask: java.lang.Object get(long,java.util.concurrent.TimeUnit)>(l2, r13);
+
+     label19:
+        r14 = (java.lang.Boolean) $r7;
+
+     label20:
+        $z1 = virtualinvoke r14.<java.lang.Boolean: boolean booleanValue()>();
+
+     label21:
+        if $z1 == 0 goto label27;
+
+        r6 = <androidx.core.location.LocationManagerCompat$GnssLazyLoader: androidx.collection.SimpleArrayMap sGnssStatusListeners>;
+
+     label22:
+        virtualinvoke r6.<androidx.collection.SimpleArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(r3, r5);
+
+     label23:
+        if $z0 == 0 goto label25;
+
+     label24:
+        $r15 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r15.<java.lang.Thread: void interrupt()>();
+
+     label25:
+        exitmonitor $r4;
+
+     label26:
+        return 1;
+
+     label27:
+        if $z0 == 0 goto label28;
+
+        $r15 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r15.<java.lang.Thread: void interrupt()>();
+
+     label28:
+        exitmonitor $r4;
+
+     label29:
+        return 0;
+
+     label30:
+        r16 := @caughtexception;
+
+        $z0 = 1;
+
+     label31:
+        l2 = staticinvoke <java.lang.System: long nanoTime()>();
+
+     label32:
+        l2 = $l1 - l2;
+
+        goto label17;
+
+     label33:
+        r17 := @caughtexception;
+
+        goto label39;
+
+     label34:
+        r18 := @caughtexception;
+
+     label35:
+        $r19 = new java.lang.IllegalStateException;
+
+        $r20 = new java.lang.StringBuilder;
+
+        specialinvoke $r20.<java.lang.StringBuilder: void <init>()>();
+
+        $r20 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r20 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" appears to be blocked, please run registerGnssStatusCallback() directly on a Looper thread or ensure the main Looper is not blocked by this thread");
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r19.<java.lang.IllegalStateException: void <init>(java.lang.String,java.lang.Throwable)>($r21, r18);
+
+        throw $r19;
+
+     label36:
+        r22 := @caughtexception;
+
+        r17 = virtualinvoke r22.<java.util.concurrent.ExecutionException: java.lang.Throwable getCause()>();
+
+        $z1 = r17 instanceof java.lang.RuntimeException;
+
+        if $z1 != 0 goto label38;
+
+        r17 = virtualinvoke r22.<java.util.concurrent.ExecutionException: java.lang.Throwable getCause()>();
+
+        $z1 = r17 instanceof java.lang.Error;
+
+        if $z1 == 0 goto label37;
+
+        r17 = virtualinvoke r22.<java.util.concurrent.ExecutionException: java.lang.Throwable getCause()>();
+
+        $r23 = (java.lang.Error) r17;
+
+        throw $r23;
+
+     label37:
+        $r19 = new java.lang.IllegalStateException;
+
+        specialinvoke $r19.<java.lang.IllegalStateException: void <init>(java.lang.Throwable)>(r22);
+
+        throw $r19;
+
+     label38:
+        r17 = virtualinvoke r22.<java.util.concurrent.ExecutionException: java.lang.Throwable getCause()>();
+
+        $r24 = (java.lang.RuntimeException) r17;
+
+        throw $r24;
+
+     label39:
+        if $z0 == 0 goto label41;
+
+     label40:
+        $r15 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r15.<java.lang.Thread: void interrupt()>();
+
+     label41:
+        throw r17;
+
+     label42:
+        $r19 = new java.lang.IllegalStateException;
+
+        $r20 = new java.lang.StringBuilder;
+
+        specialinvoke $r20.<java.lang.StringBuilder: void <init>()>();
+
+        $r20 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+
+        $r20 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" is shutting down");
+
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r19.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r21);
+
+        throw $r19;
+
+     label43:
+        r25 := @caughtexception;
+
+     label44:
+        exitmonitor $r4;
+
+     label45:
+        throw r25;
+
+     label46:
+        r25 := @caughtexception;
+
+        goto label44;
+
+        catch java.lang.Throwable from label05 to label07 with label43;
+        catch java.lang.Throwable from label08 to label10 with label46;
+        catch java.util.concurrent.ExecutionException from label13 to label14 with label36;
+        catch java.util.concurrent.ExecutionException from label15 to label16 with label36;
+        catch java.util.concurrent.TimeoutException from label13 to label14 with label34;
+        catch java.util.concurrent.TimeoutException from label15 to label16 with label34;
+        catch java.lang.Throwable from label12 to label16 with label33;
+        catch java.lang.InterruptedException from label18 to label19 with label30;
+        catch java.lang.InterruptedException from label20 to label21 with label30;
+        catch java.lang.InterruptedException from label22 to label23 with label30;
+        catch java.util.concurrent.ExecutionException from label18 to label19 with label36;
+        catch java.util.concurrent.ExecutionException from label20 to label21 with label36;
+        catch java.util.concurrent.ExecutionException from label22 to label23 with label36;
+        catch java.util.concurrent.TimeoutException from label18 to label19 with label34;
+        catch java.util.concurrent.TimeoutException from label20 to label21 with label34;
+        catch java.util.concurrent.TimeoutException from label22 to label23 with label34;
+        catch java.lang.Throwable from label17 to label23 with label33;
+        catch java.lang.Throwable from label24 to label26 with label46;
+        catch java.lang.Throwable from label27 to label29 with label46;
+        catch java.util.concurrent.ExecutionException from label31 to label32 with label36;
+        catch java.util.concurrent.TimeoutException from label31 to label32 with label34;
+        catch java.lang.Throwable from label31 to label32 with label33;
+        catch java.lang.Throwable from label35 to label39 with label33;
+        catch java.lang.Throwable from label40 to label45 with label46;
+    }
+
+    public static boolean registerGnssStatusCallback(android.location.LocationManager, androidx.core.location.GnssStatusCompat$Callback, android.os.Handler)
+    {
+        java.util.concurrent.Executor $r3;
+        androidx.core.location.LocationManagerCompat$InlineHandlerExecutor $r4;
+        android.os.Handler $r2;
+        int $i0;
+        androidx.core.location.GnssStatusCompat$Callback $r1;
+        android.location.LocationManager $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.location.LocationManager;
+
+        $r1 := @parameter1: androidx.core.location.GnssStatusCompat$Callback;
+
+        $r2 := @parameter2: android.os.Handler;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 30 goto label1;
+
+        $r3 = staticinvoke <androidx.core.os.ExecutorCompat: java.util.concurrent.Executor create(android.os.Handler)>($r2);
+
+        $z0 = staticinvoke <androidx.core.location.LocationManagerCompat: boolean registerGnssStatusCallback(android.location.LocationManager,java.util.concurrent.Executor,androidx.core.location.GnssStatusCompat$Callback)>($r0, $r3, $r1);
+
+        return $z0;
+
+     label1:
+        $r4 = new androidx.core.location.LocationManagerCompat$InlineHandlerExecutor;
+
+        specialinvoke $r4.<androidx.core.location.LocationManagerCompat$InlineHandlerExecutor: void <init>(android.os.Handler)>($r2);
+
+        $z0 = staticinvoke <androidx.core.location.LocationManagerCompat: boolean registerGnssStatusCallback(android.location.LocationManager,java.util.concurrent.Executor,androidx.core.location.GnssStatusCompat$Callback)>($r0, $r4, $r1);
+
+        return $z0;
+    }
+
+    public static boolean registerGnssStatusCallback(android.location.LocationManager, java.util.concurrent.Executor, androidx.core.location.GnssStatusCompat$Callback)
+    {
+        java.util.concurrent.Executor $r1;
+        androidx.core.location.GnssStatusCompat$Callback $r2;
+        android.os.Looper $r3, r4;
+        android.os.Handler $r5;
+        int i0;
+        android.location.LocationManager $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.location.LocationManager;
+
+        $r1 := @parameter1: java.util.concurrent.Executor;
+
+        $r2 := @parameter2: androidx.core.location.GnssStatusCompat$Callback;
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 30 goto label1;
+
+        $z0 = staticinvoke <androidx.core.location.LocationManagerCompat: boolean registerGnssStatusCallback(android.location.LocationManager,android.os.Handler,java.util.concurrent.Executor,androidx.core.location.GnssStatusCompat$Callback)>($r0, null, $r1, $r2);
+
+        return $z0;
+
+     label1:
+        $r3 = staticinvoke <android.os.Looper: android.os.Looper myLooper()>();
+
+        r4 = $r3;
+
+        if $r3 != null goto label2;
+
+        r4 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+     label2:
+        $r5 = new android.os.Handler;
+
+        specialinvoke $r5.<android.os.Handler: void <init>(android.os.Looper)>(r4);
+
+        $z0 = staticinvoke <androidx.core.location.LocationManagerCompat: boolean registerGnssStatusCallback(android.location.LocationManager,android.os.Handler,java.util.concurrent.Executor,androidx.core.location.GnssStatusCompat$Callback)>($r0, $r5, $r1, $r2);
+
+        return $z0;
+    }
+
+    static void registerLocationListenerTransport(android.location.LocationManager, androidx.core.location.LocationManagerCompat$LocationListenerTransport)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport $r1;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey $r4;
+        java.lang.Object $r5;
+        java.lang.ref.WeakReference $r2;
+        android.location.LocationManager $r0;
+        java.util.WeakHashMap r3;
+
+        $r0 := @parameter0: android.location.LocationManager;
+
+        $r1 := @parameter1: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        r3 = <androidx.core.location.LocationManagerCompat: java.util.WeakHashMap sLocationListeners>;
+
+        $r4 = virtualinvoke $r1.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey getKey()>();
+
+        $r2 = new java.lang.ref.WeakReference;
+
+        specialinvoke $r2.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>($r1);
+
+        $r5 = virtualinvoke r3.<java.util.WeakHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r4, $r2);
+
+        $r2 = (java.lang.ref.WeakReference) $r5;
+
+        if $r2 == null goto label1;
+
+        $r5 = virtualinvoke $r2.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $r1 = (androidx.core.location.LocationManagerCompat$LocationListenerTransport) $r5;
+
+        goto label2;
+
+     label1:
+        $r1 = null;
+
+     label2:
+        if $r1 == null goto label3;
+
+        virtualinvoke $r1.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: void unregister()>();
+
+        virtualinvoke $r0.<android.location.LocationManager: void removeUpdates(android.location.LocationListener)>($r1);
+
+     label3:
+        return;
+    }
+
+    public static void removeUpdates(android.location.LocationManager, androidx.core.location.LocationListenerCompat)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r9;
+        java.lang.Throwable r12;
+        java.util.Iterator $r6;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey $r10;
+        java.util.Collection $r5;
+        java.util.ArrayList r3;
+        java.lang.Object $r7;
+        java.lang.ref.WeakReference r8;
+        android.location.LocationManager $r0;
+        androidx.core.location.LocationListenerCompat $r1, $r11;
+        java.util.WeakHashMap $r2, $r4;
+        boolean $z0;
+
+        $r0 := @parameter0: android.location.LocationManager;
+
+        $r1 := @parameter1: androidx.core.location.LocationListenerCompat;
+
+        $r2 = <androidx.core.location.LocationManagerCompat: java.util.WeakHashMap sLocationListeners>;
+
+        entermonitor $r2;
+
+        r3 = null;
+
+     label01:
+        $r4 = <androidx.core.location.LocationManagerCompat: java.util.WeakHashMap sLocationListeners>;
+
+        $r5 = virtualinvoke $r4.<java.util.WeakHashMap: java.util.Collection values()>();
+
+        $r6 = interfaceinvoke $r5.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label02:
+        $z0 = interfaceinvoke $r6.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label05;
+
+        $r7 = interfaceinvoke $r6.<java.util.Iterator: java.lang.Object next()>();
+
+        r8 = (java.lang.ref.WeakReference) $r7;
+
+        $r7 = virtualinvoke r8.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        r9 = (androidx.core.location.LocationManagerCompat$LocationListenerTransport) $r7;
+
+        if r9 != null goto label03;
+
+        goto label02;
+
+     label03:
+        $r10 = virtualinvoke r9.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey getKey()>();
+
+        $r11 = $r10.<androidx.core.location.LocationManagerCompat$LocationListenerKey: androidx.core.location.LocationListenerCompat mListener>;
+
+        if $r11 != $r1 goto label02;
+
+        if r3 != null goto label04;
+
+        r3 = new java.util.ArrayList;
+
+        specialinvoke r3.<java.util.ArrayList: void <init>()>();
+
+     label04:
+        virtualinvoke r3.<java.util.ArrayList: boolean add(java.lang.Object)>($r10);
+
+        virtualinvoke r9.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: void unregister()>();
+
+        virtualinvoke $r0.<android.location.LocationManager: void removeUpdates(android.location.LocationListener)>(r9);
+
+        goto label02;
+
+     label05:
+        if r3 == null goto label07;
+
+        $r6 = virtualinvoke r3.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label06:
+        $z0 = interfaceinvoke $r6.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label07;
+
+        $r7 = interfaceinvoke $r6.<java.util.Iterator: java.lang.Object next()>();
+
+        $r10 = (androidx.core.location.LocationManagerCompat$LocationListenerKey) $r7;
+
+        $r4 = <androidx.core.location.LocationManagerCompat: java.util.WeakHashMap sLocationListeners>;
+
+        virtualinvoke $r4.<java.util.WeakHashMap: java.lang.Object remove(java.lang.Object)>($r10);
+
+        goto label06;
+
+     label07:
+        exitmonitor $r2;
+
+     label08:
+        virtualinvoke $r0.<android.location.LocationManager: void removeUpdates(android.location.LocationListener)>($r1);
+
+        return;
+
+     label09:
+        r12 := @caughtexception;
+
+     label10:
+        exitmonitor $r2;
+
+     label11:
+        throw r12;
+
+        catch java.lang.Throwable from label01 to label08 with label09;
+        catch java.lang.Throwable from label10 to label11 with label09;
+    }
+
+    public static void requestLocationUpdates(android.location.LocationManager, java.lang.String, androidx.core.location.LocationRequestCompat, androidx.core.location.LocationListenerCompat, android.os.Looper)
+    {
+        java.util.concurrent.Executor $r7;
+        androidx.core.location.LocationRequestCompat $r2;
+        android.location.LocationRequest $r5;
+        long $l1;
+        android.os.Looper $r4;
+        android.os.Handler $r6;
+        int $i0;
+        float $f0;
+        java.lang.String $r1;
+        android.location.LocationManager $r0;
+        androidx.core.location.LocationListenerCompat $r3;
+        boolean $z0;
+
+        $r0 := @parameter0: android.location.LocationManager;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 := @parameter2: androidx.core.location.LocationRequestCompat;
+
+        $r3 := @parameter3: androidx.core.location.LocationListenerCompat;
+
+        $r4 := @parameter4: android.os.Looper;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 31 goto label1;
+
+        $r5 = virtualinvoke $r2.<androidx.core.location.LocationRequestCompat: android.location.LocationRequest toLocationRequest()>();
+
+        $r6 = new android.os.Handler;
+
+        specialinvoke $r6.<android.os.Handler: void <init>(android.os.Looper)>($r4);
+
+        $r7 = staticinvoke <androidx.core.os.ExecutorCompat: java.util.concurrent.Executor create(android.os.Handler)>($r6);
+
+        staticinvoke <androidx.core.location.LocationManagerCompat$Api31Impl: void requestLocationUpdates(android.location.LocationManager,java.lang.String,android.location.LocationRequest,java.util.concurrent.Executor,android.location.LocationListener)>($r0, $r1, $r5, $r7, $r3);
+
+        return;
+
+     label1:
+        $z0 = staticinvoke <androidx.core.location.LocationManagerCompat$Api19Impl: boolean tryRequestLocationUpdates(android.location.LocationManager,java.lang.String,androidx.core.location.LocationRequestCompat,androidx.core.location.LocationListenerCompat,android.os.Looper)>($r0, $r1, $r2, $r3, $r4);
+
+        if $z0 == 0 goto label2;
+
+        return;
+
+     label2:
+        $l1 = virtualinvoke $r2.<androidx.core.location.LocationRequestCompat: long getIntervalMillis()>();
+
+        $f0 = virtualinvoke $r2.<androidx.core.location.LocationRequestCompat: float getMinUpdateDistanceMeters()>();
+
+        virtualinvoke $r0.<android.location.LocationManager: void requestLocationUpdates(java.lang.String,long,float,android.location.LocationListener,android.os.Looper)>($r1, $l1, $f0, $r3, $r4);
+
+        return;
+    }
+
+    public static void requestLocationUpdates(android.location.LocationManager, java.lang.String, androidx.core.location.LocationRequestCompat, java.util.concurrent.Executor, androidx.core.location.LocationListenerCompat)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r6;
+        java.lang.Throwable $r10;
+        java.util.concurrent.Executor $r3;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey $r7;
+        androidx.core.location.LocationRequestCompat $r2;
+        android.location.LocationRequest $r5;
+        long $l1;
+        android.os.Looper $r9;
+        int i0;
+        float $f0;
+        java.lang.String $r1;
+        android.location.LocationManager $r0;
+        androidx.core.location.LocationListenerCompat $r4;
+        java.util.WeakHashMap $r8;
+        boolean $z0;
+
+        $r0 := @parameter0: android.location.LocationManager;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 := @parameter2: androidx.core.location.LocationRequestCompat;
+
+        $r3 := @parameter3: java.util.concurrent.Executor;
+
+        $r4 := @parameter4: androidx.core.location.LocationListenerCompat;
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 31 goto label1;
+
+        $r5 = virtualinvoke $r2.<androidx.core.location.LocationRequestCompat: android.location.LocationRequest toLocationRequest()>();
+
+        staticinvoke <androidx.core.location.LocationManagerCompat$Api31Impl: void requestLocationUpdates(android.location.LocationManager,java.lang.String,android.location.LocationRequest,java.util.concurrent.Executor,android.location.LocationListener)>($r0, $r1, $r5, $r3, $r4);
+
+        return;
+
+     label1:
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 30 goto label2;
+
+        $z0 = staticinvoke <androidx.core.location.LocationManagerCompat$Api30Impl: boolean tryRequestLocationUpdates(android.location.LocationManager,java.lang.String,androidx.core.location.LocationRequestCompat,java.util.concurrent.Executor,androidx.core.location.LocationListenerCompat)>($r0, $r1, $r2, $r3, $r4);
+
+        if $z0 == 0 goto label2;
+
+        return;
+
+     label2:
+        r6 = new androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        $r7 = new androidx.core.location.LocationManagerCompat$LocationListenerKey;
+
+        specialinvoke $r7.<androidx.core.location.LocationManagerCompat$LocationListenerKey: void <init>(java.lang.String,androidx.core.location.LocationListenerCompat)>($r1, $r4);
+
+        specialinvoke r6.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: void <init>(androidx.core.location.LocationManagerCompat$LocationListenerKey,java.util.concurrent.Executor)>($r7, $r3);
+
+        $z0 = staticinvoke <androidx.core.location.LocationManagerCompat$Api19Impl: boolean tryRequestLocationUpdates(android.location.LocationManager,java.lang.String,androidx.core.location.LocationRequestCompat,androidx.core.location.LocationManagerCompat$LocationListenerTransport)>($r0, $r1, $r2, r6);
+
+        if $z0 == 0 goto label3;
+
+        return;
+
+     label3:
+        $r8 = <androidx.core.location.LocationManagerCompat: java.util.WeakHashMap sLocationListeners>;
+
+        entermonitor $r8;
+
+     label4:
+        $l1 = virtualinvoke $r2.<androidx.core.location.LocationRequestCompat: long getIntervalMillis()>();
+
+        $f0 = virtualinvoke $r2.<androidx.core.location.LocationRequestCompat: float getMinUpdateDistanceMeters()>();
+
+        $r9 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        virtualinvoke $r0.<android.location.LocationManager: void requestLocationUpdates(java.lang.String,long,float,android.location.LocationListener,android.os.Looper)>($r1, $l1, $f0, r6, $r9);
+
+        staticinvoke <androidx.core.location.LocationManagerCompat: void registerLocationListenerTransport(android.location.LocationManager,androidx.core.location.LocationManagerCompat$LocationListenerTransport)>($r0, r6);
+
+        exitmonitor $r8;
+
+     label5:
+        return;
+
+     label6:
+        $r10 := @caughtexception;
+
+        exitmonitor $r8;
+
+     label7:
+        throw $r10;
+
+        catch java.lang.Throwable from label4 to label5 with label6;
+        catch java.lang.Throwable from label6 to label7 with label6;
+    }
+
+    public static void unregisterGnssStatusCallback(android.location.LocationManager, androidx.core.location.GnssStatusCompat$Callback)
+    {
+        java.lang.Throwable r5, r7;
+        androidx.core.location.GnssStatusCompat$Callback $r1;
+        androidx.core.location.LocationManagerCompat$GpsStatusTransport r6;
+        int $i0;
+        java.lang.Object $r4;
+        android.location.LocationManager $r0;
+        androidx.collection.SimpleArrayMap $r2, r3;
+
+        $r0 := @parameter0: android.location.LocationManager;
+
+        $r1 := @parameter1: androidx.core.location.GnssStatusCompat$Callback;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 24 goto label06;
+
+        $r2 = <androidx.core.location.LocationManagerCompat$GnssLazyLoader: androidx.collection.SimpleArrayMap sGnssStatusListeners>;
+
+        entermonitor $r2;
+
+     label01:
+        r3 = <androidx.core.location.LocationManagerCompat$GnssLazyLoader: androidx.collection.SimpleArrayMap sGnssStatusListeners>;
+
+        $r4 = virtualinvoke r3.<androidx.collection.SimpleArrayMap: java.lang.Object remove(java.lang.Object)>($r1);
+
+        if $r4 == null goto label02;
+
+        staticinvoke <androidx.core.location.LocationManagerCompat$Api24Impl: void unregisterGnssStatusCallback(android.location.LocationManager,java.lang.Object)>($r0, $r4);
+
+     label02:
+        exitmonitor $r2;
+
+     label03:
+        return;
+
+     label04:
+        r5 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label05:
+        throw r5;
+
+     label06:
+        $r2 = <androidx.core.location.LocationManagerCompat$GnssLazyLoader: androidx.collection.SimpleArrayMap sGnssStatusListeners>;
+
+        entermonitor $r2;
+
+     label07:
+        r3 = <androidx.core.location.LocationManagerCompat$GnssLazyLoader: androidx.collection.SimpleArrayMap sGnssStatusListeners>;
+
+        $r4 = virtualinvoke r3.<androidx.collection.SimpleArrayMap: java.lang.Object remove(java.lang.Object)>($r1);
+
+        r6 = (androidx.core.location.LocationManagerCompat$GpsStatusTransport) $r4;
+
+        if r6 == null goto label08;
+
+        virtualinvoke r6.<androidx.core.location.LocationManagerCompat$GpsStatusTransport: void unregister()>();
+
+        virtualinvoke $r0.<android.location.LocationManager: void removeGpsStatusListener(android.location.GpsStatus$Listener)>(r6);
+
+     label08:
+        exitmonitor $r2;
+
+     label09:
+        return;
+
+     label10:
+        r7 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label11:
+        throw r7;
+
+        catch java.lang.Throwable from label01 to label03 with label04;
+        catch java.lang.Throwable from label04 to label05 with label04;
+        catch java.lang.Throwable from label07 to label09 with label10;
+        catch java.lang.Throwable from label10 to label11 with label10;
+    }
+}

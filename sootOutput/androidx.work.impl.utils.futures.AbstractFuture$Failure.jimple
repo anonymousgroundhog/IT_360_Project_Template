@@ -1,0 +1,44 @@
+final class androidx.work.impl.utils.futures.AbstractFuture$Failure extends java.lang.Object
+{
+    static final androidx.work.impl.utils.futures.AbstractFuture$Failure FALLBACK_INSTANCE;
+    final java.lang.Throwable exception;
+
+    static void <clinit>()
+    {
+        androidx.work.impl.utils.futures.AbstractFuture$Failure$1 $r1;
+        androidx.work.impl.utils.futures.AbstractFuture$Failure $r0;
+
+        $r0 = new androidx.work.impl.utils.futures.AbstractFuture$Failure;
+
+        $r1 = new androidx.work.impl.utils.futures.AbstractFuture$Failure$1;
+
+        specialinvoke $r1.<androidx.work.impl.utils.futures.AbstractFuture$Failure$1: void <init>(java.lang.String)>("Failure occurred while trying to finish a future.");
+
+        specialinvoke $r0.<androidx.work.impl.utils.futures.AbstractFuture$Failure: void <init>(java.lang.Throwable)>($r1);
+
+        <androidx.work.impl.utils.futures.AbstractFuture$Failure: androidx.work.impl.utils.futures.AbstractFuture$Failure FALLBACK_INSTANCE> = $r0;
+
+        return;
+    }
+
+    void <init>(java.lang.Throwable)
+    {
+        java.lang.Throwable $r1;
+        java.lang.Object $r2;
+        androidx.work.impl.utils.futures.AbstractFuture$Failure r0;
+
+        r0 := @this: androidx.work.impl.utils.futures.AbstractFuture$Failure;
+
+        $r1 := @parameter0: java.lang.Throwable;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = staticinvoke <androidx.work.impl.utils.futures.AbstractFuture: java.lang.Object checkNotNull(java.lang.Object)>($r1);
+
+        $r1 = (java.lang.Throwable) $r2;
+
+        r0.<androidx.work.impl.utils.futures.AbstractFuture$Failure: java.lang.Throwable exception> = $r1;
+
+        return;
+    }
+}

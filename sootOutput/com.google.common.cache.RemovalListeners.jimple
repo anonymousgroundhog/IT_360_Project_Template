@@ -1,0 +1,71 @@
+public final class com.google.common.cache.RemovalListeners extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        com.google.common.cache.RemovalListeners r0;
+
+        r0 := @this: com.google.common.cache.RemovalListeners;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static com.google.common.cache.RemovalListener asynchronous(com.google.common.cache.RemovalListener, java.util.concurrent.Executor)
+    {
+        com.google.common.cache.RemovalListener r0;
+        java.util.concurrent.Executor $r1;
+        com.google.common.cache.RemovalListeners$$ExternalSyntheticLambda1 $r2;
+
+        r0 := @parameter0: com.google.common.cache.RemovalListener;
+
+        $r1 := @parameter1: java.util.concurrent.Executor;
+
+        staticinvoke <com.google.common.base.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>(r0);
+
+        staticinvoke <com.google.common.base.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r1);
+
+        $r2 = new com.google.common.cache.RemovalListeners$$ExternalSyntheticLambda1;
+
+        specialinvoke $r2.<com.google.common.cache.RemovalListeners$$ExternalSyntheticLambda1: void <init>(java.util.concurrent.Executor,com.google.common.cache.RemovalListener)>($r1, r0);
+
+        return $r2;
+    }
+
+    static void lambda$asynchronous$0(com.google.common.cache.RemovalListener, com.google.common.cache.RemovalNotification)
+    {
+        com.google.common.cache.RemovalNotification $r1;
+        com.google.common.cache.RemovalListener $r0;
+
+        $r0 := @parameter0: com.google.common.cache.RemovalListener;
+
+        $r1 := @parameter1: com.google.common.cache.RemovalNotification;
+
+        interfaceinvoke $r0.<com.google.common.cache.RemovalListener: void onRemoval(com.google.common.cache.RemovalNotification)>($r1);
+
+        return;
+    }
+
+    static void lambda$asynchronous$1(java.util.concurrent.Executor, com.google.common.cache.RemovalListener, com.google.common.cache.RemovalNotification)
+    {
+        com.google.common.cache.RemovalNotification $r2;
+        java.util.concurrent.Executor $r0;
+        com.google.common.cache.RemovalListeners$$ExternalSyntheticLambda0 $r3;
+        com.google.common.cache.RemovalListener $r1;
+
+        $r0 := @parameter0: java.util.concurrent.Executor;
+
+        $r1 := @parameter1: com.google.common.cache.RemovalListener;
+
+        $r2 := @parameter2: com.google.common.cache.RemovalNotification;
+
+        $r3 = new com.google.common.cache.RemovalListeners$$ExternalSyntheticLambda0;
+
+        specialinvoke $r3.<com.google.common.cache.RemovalListeners$$ExternalSyntheticLambda0: void <init>(com.google.common.cache.RemovalListener,com.google.common.cache.RemovalNotification)>($r1, $r2);
+
+        interfaceinvoke $r0.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r3);
+
+        return;
+    }
+}

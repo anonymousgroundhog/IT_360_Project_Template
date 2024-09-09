@@ -1,0 +1,131 @@
+public final class com.google.android.gms.common.internal.RootTelemetryConfigManager extends java.lang.Object
+{
+    private static com.google.android.gms.common.internal.RootTelemetryConfigManager zza;
+    private static final com.google.android.gms.common.internal.RootTelemetryConfiguration zzb;
+    private com.google.android.gms.common.internal.RootTelemetryConfiguration zzc;
+
+    static void <clinit>()
+    {
+        com.google.android.gms.common.internal.RootTelemetryConfiguration $r0;
+
+        <com.google.android.gms.common.internal.RootTelemetryConfigManager: com.google.android.gms.common.internal.RootTelemetryConfigManager zza> = null;
+
+        $r0 = new com.google.android.gms.common.internal.RootTelemetryConfiguration;
+
+        specialinvoke $r0.<com.google.android.gms.common.internal.RootTelemetryConfiguration: void <init>(int,boolean,boolean,int,int)>(0, 0, 0, 0, 0);
+
+        <com.google.android.gms.common.internal.RootTelemetryConfigManager: com.google.android.gms.common.internal.RootTelemetryConfiguration zzb> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        com.google.android.gms.common.internal.RootTelemetryConfigManager r0;
+
+        r0 := @this: com.google.android.gms.common.internal.RootTelemetryConfigManager;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static com.google.android.gms.common.internal.RootTelemetryConfigManager getInstance()
+    {
+        java.lang.Throwable $r1;
+        com.google.android.gms.common.internal.RootTelemetryConfigManager $r0;
+
+        entermonitor class "Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;";
+
+     label1:
+        $r0 = <com.google.android.gms.common.internal.RootTelemetryConfigManager: com.google.android.gms.common.internal.RootTelemetryConfigManager zza>;
+
+        if $r0 != null goto label2;
+
+        $r0 = new com.google.android.gms.common.internal.RootTelemetryConfigManager;
+
+        specialinvoke $r0.<com.google.android.gms.common.internal.RootTelemetryConfigManager: void <init>()>();
+
+        <com.google.android.gms.common.internal.RootTelemetryConfigManager: com.google.android.gms.common.internal.RootTelemetryConfigManager zza> = $r0;
+
+     label2:
+        $r0 = <com.google.android.gms.common.internal.RootTelemetryConfigManager: com.google.android.gms.common.internal.RootTelemetryConfigManager zza>;
+
+     label3:
+        exitmonitor class "Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;";
+
+        return $r0;
+
+     label4:
+        $r1 := @caughtexception;
+
+        exitmonitor class "Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;";
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+    }
+
+    public com.google.android.gms.common.internal.RootTelemetryConfiguration getConfig()
+    {
+        com.google.android.gms.common.internal.RootTelemetryConfigManager r0;
+        com.google.android.gms.common.internal.RootTelemetryConfiguration r1;
+
+        r0 := @this: com.google.android.gms.common.internal.RootTelemetryConfigManager;
+
+        r1 = r0.<com.google.android.gms.common.internal.RootTelemetryConfigManager: com.google.android.gms.common.internal.RootTelemetryConfiguration zzc>;
+
+        return r1;
+    }
+
+    public final void zza(com.google.android.gms.common.internal.RootTelemetryConfiguration)
+    {
+        java.lang.Throwable $r3;
+        int $i0, $i1;
+        com.google.android.gms.common.internal.RootTelemetryConfigManager r0;
+        com.google.android.gms.common.internal.RootTelemetryConfiguration $r1, $r2;
+
+        r0 := @this: com.google.android.gms.common.internal.RootTelemetryConfigManager;
+
+        $r1 := @parameter0: com.google.android.gms.common.internal.RootTelemetryConfiguration;
+
+        entermonitor r0;
+
+        if $r1 != null goto label4;
+
+     label1:
+        $r1 = <com.google.android.gms.common.internal.RootTelemetryConfigManager: com.google.android.gms.common.internal.RootTelemetryConfiguration zzb>;
+
+     label2:
+        r0.<com.google.android.gms.common.internal.RootTelemetryConfigManager: com.google.android.gms.common.internal.RootTelemetryConfiguration zzc> = $r1;
+
+     label3:
+        exitmonitor r0;
+
+        return;
+
+     label4:
+        $r2 = r0.<com.google.android.gms.common.internal.RootTelemetryConfigManager: com.google.android.gms.common.internal.RootTelemetryConfiguration zzc>;
+
+        if $r2 == null goto label2;
+
+        $i0 = virtualinvoke $r2.<com.google.android.gms.common.internal.RootTelemetryConfiguration: int getVersion()>();
+
+        $i1 = virtualinvoke $r1.<com.google.android.gms.common.internal.RootTelemetryConfiguration: int getVersion()>();
+
+     label5:
+        if $i0 >= $i1 goto label3;
+
+        goto label2;
+
+     label6:
+        $r3 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label3 with label6;
+        catch java.lang.Throwable from label4 to label5 with label6;
+    }
+}

@@ -1,0 +1,272 @@
+public final class com.google.android.gms.internal.ads.zzfsf extends java.lang.Object
+{
+    private final com.google.android.gms.internal.ads.zzayf zza;
+    private final java.io.File zzb;
+    private final java.io.File zzc;
+    private final java.io.File zzd;
+    private byte[] zze;
+
+    public void <init>(com.google.android.gms.internal.ads.zzayf, java.io.File, java.io.File, java.io.File)
+    {
+        com.google.android.gms.internal.ads.zzfsf r0;
+        com.google.android.gms.internal.ads.zzayf $r1;
+        java.io.File $r2, $r3, $r4;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfsf;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzayf;
+
+        $r2 := @parameter1: java.io.File;
+
+        $r3 := @parameter2: java.io.File;
+
+        $r4 := @parameter3: java.io.File;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzfsf: com.google.android.gms.internal.ads.zzayf zza> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzfsf: java.io.File zzb> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzfsf: java.io.File zzc> = $r4;
+
+        r0.<com.google.android.gms.internal.ads.zzfsf: java.io.File zzd> = $r3;
+
+        return;
+    }
+
+    public final com.google.android.gms.internal.ads.zzayf zza()
+    {
+        com.google.android.gms.internal.ads.zzfsf r0;
+        com.google.android.gms.internal.ads.zzayf r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfsf;
+
+        r1 = r0.<com.google.android.gms.internal.ads.zzfsf: com.google.android.gms.internal.ads.zzayf zza>;
+
+        return r1;
+    }
+
+    public final java.io.File zzb()
+    {
+        com.google.android.gms.internal.ads.zzfsf r0;
+        java.io.File r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfsf;
+
+        r1 = r0.<com.google.android.gms.internal.ads.zzfsf: java.io.File zzc>;
+
+        return r1;
+    }
+
+    public final java.io.File zzc()
+    {
+        com.google.android.gms.internal.ads.zzfsf r0;
+        java.io.File r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfsf;
+
+        r1 = r0.<com.google.android.gms.internal.ads.zzfsf: java.io.File zzb>;
+
+        return r1;
+    }
+
+    public final boolean zzd(long)
+    {
+        byte $b2;
+        int $i3;
+        com.google.android.gms.internal.ads.zzfsf r0;
+        long $l0, $l1;
+        com.google.android.gms.internal.ads.zzayf $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfsf;
+
+        $l0 := @parameter0: long;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfsf: com.google.android.gms.internal.ads.zzayf zza>;
+
+        $l0 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzayf: long zzc()>();
+
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l1 = $l1 / 1000L;
+
+        $l0 = $l0 - $l1;
+
+        $b2 = $l0 cmp 3600L;
+
+        $i3 = (int) $b2;
+
+        if $i3 >= 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public final byte[] zze()
+    {
+        java.lang.Throwable $r6;
+        byte[] $r1;
+        com.google.android.gms.internal.ads.zzgyl $r5;
+        com.google.android.gms.internal.ads.zzfsf r0;
+        java.io.IOException $r7, $r8;
+        java.io.FileInputStream $r2, $r4, $r9;
+        java.io.File $r3;
+        java.util.ArrayList $r10;
+        int $i0, $i1, $i2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfsf;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfsf: byte[] zze>;
+
+        $r2 = null;
+
+        if $r1 != null goto label29;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzfsf: java.io.File zzd>;
+
+     label01:
+        $r9 = new java.io.FileInputStream;
+
+     label02:
+        $r4 = $r9;
+
+     label03:
+        specialinvoke $r9.<java.io.FileInputStream: void <init>(java.io.File)>($r3);
+
+     label04:
+        $r10 = new java.util.ArrayList;
+
+     label05:
+        specialinvoke $r10.<java.util.ArrayList: void <init>()>();
+
+     label06:
+        $i0 = 256;
+
+     label07:
+        $r1 = newarray (byte)[$i0];
+
+     label08:
+        $i1 = 0;
+
+     label09:
+        if $i1 >= $i0 goto label13;
+
+        $i2 = $i0 - $i1;
+
+     label10:
+        $i2 = virtualinvoke $r9.<java.io.InputStream: int read(byte[],int,int)>($r1, $i1, $i2);
+
+     label11:
+        if $i2 != -1 goto label12;
+
+        goto label13;
+
+     label12:
+        $i1 = $i1 + $i2;
+
+        goto label09;
+
+     label13:
+        if $i1 != 0 goto label14;
+
+        $r5 = null;
+
+        goto label15;
+
+     label14:
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzgyl: com.google.android.gms.internal.ads.zzgyl zzv(byte[],int,int)>($r1, 0, $i1);
+
+     label15:
+        if $r5 != null goto label18;
+
+     label16:
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzgyl: com.google.android.gms.internal.ads.zzgyl zzu(java.lang.Iterable)>($r10);
+
+        $r1 = virtualinvoke $r5.<com.google.android.gms.internal.ads.zzgyl: byte[] zzA()>();
+
+     label17:
+        staticinvoke <com.google.android.gms.common.util.IOUtils: void closeQuietly(java.io.Closeable)>($r9);
+
+        goto label28;
+
+     label18:
+        interfaceinvoke $r10.<java.util.Collection: boolean add(java.lang.Object)>($r5);
+
+     label19:
+        $i0 = $i0 + $i0;
+
+     label20:
+        $i0 = staticinvoke <java.lang.Math: int min(int,int)>($i0, 8192);
+
+     label21:
+        goto label07;
+
+     label22:
+        $r6 := @caughtexception;
+
+        $r2 = $r9;
+
+        goto label25;
+
+     label23:
+        $r7 := @caughtexception;
+
+        goto label27;
+
+     label24:
+        $r6 := @caughtexception;
+
+     label25:
+        staticinvoke <com.google.android.gms.common.util.IOUtils: void closeQuietly(java.io.Closeable)>($r2);
+
+        throw $r6;
+
+     label26:
+        $r8 := @caughtexception;
+
+        $r4 = null;
+
+     label27:
+        staticinvoke <com.google.android.gms.common.util.IOUtils: void closeQuietly(java.io.Closeable)>($r4);
+
+        $r1 = null;
+
+     label28:
+        r0.<com.google.android.gms.internal.ads.zzfsf: byte[] zze> = $r1;
+
+     label29:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfsf: byte[] zze>;
+
+        if $r1 != null goto label30;
+
+        return null;
+
+     label30:
+        $i0 = lengthof $r1;
+
+        $r1 = staticinvoke <java.util.Arrays: byte[] copyOf(byte[],int)>($r1, $i0);
+
+        return $r1;
+
+        catch java.io.IOException from label03 to label04 with label26;
+        catch java.lang.Throwable from label01 to label02 with label24;
+        catch java.lang.Throwable from label03 to label04 with label24;
+        catch java.io.IOException from label05 to label06 with label23;
+        catch java.io.IOException from label10 to label11 with label23;
+        catch java.io.IOException from label14 to label15 with label23;
+        catch java.io.IOException from label16 to label17 with label23;
+        catch java.lang.Throwable from label04 to label05 with label22;
+        catch java.lang.Throwable from label05 to label06 with label22;
+        catch java.lang.Throwable from label07 to label08 with label22;
+        catch java.lang.Throwable from label10 to label11 with label22;
+        catch java.lang.Throwable from label14 to label15 with label22;
+        catch java.lang.Throwable from label16 to label17 with label22;
+        catch java.io.IOException from label18 to label19 with label23;
+        catch java.io.IOException from label20 to label21 with label23;
+        catch java.lang.Throwable from label18 to label19 with label22;
+        catch java.lang.Throwable from label20 to label21 with label22;
+    }
+}

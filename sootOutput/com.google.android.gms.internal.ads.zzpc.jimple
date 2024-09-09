@@ -1,0 +1,144 @@
+final class com.google.android.gms.internal.ads.zzpc extends java.lang.Object
+{
+
+    public static int zza(int, int, com.google.android.gms.internal.ads.zzk)
+    {
+        android.media.AudioFormat $r2;
+        com.google.android.gms.internal.ads.zzi $r3;
+        com.google.android.gms.internal.ads.zzk $r0;
+        int $i0, $i1, $i2, $i3;
+        android.media.AudioFormat$Builder $r1, $r5;
+        android.media.AudioAttributes $r4;
+        boolean $z0;
+
+        $i1 := @parameter0: int;
+
+        $i0 := @parameter1: int;
+
+        $r0 := @parameter2: com.google.android.gms.internal.ads.zzk;
+
+        $i2 = 10;
+
+     label1:
+        if $i2 <= 0 goto label4;
+
+        $i3 = staticinvoke <com.google.android.gms.internal.ads.zzfy: int zzg(int)>($i2);
+
+        if $i3 != 0 goto label2;
+
+        goto label3;
+
+     label2:
+        $r5 = new android.media.AudioFormat$Builder;
+
+        specialinvoke $r5.<android.media.AudioFormat$Builder: void <init>()>();
+
+        $r1 = virtualinvoke $r5.<android.media.AudioFormat$Builder: android.media.AudioFormat$Builder setEncoding(int)>($i1);
+
+        $r1 = virtualinvoke $r1.<android.media.AudioFormat$Builder: android.media.AudioFormat$Builder setSampleRate(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<android.media.AudioFormat$Builder: android.media.AudioFormat$Builder setChannelMask(int)>($i3);
+
+        $r2 = virtualinvoke $r1.<android.media.AudioFormat$Builder: android.media.AudioFormat build()>();
+
+        $r3 = virtualinvoke $r0.<com.google.android.gms.internal.ads.zzk: com.google.android.gms.internal.ads.zzi zza()>();
+
+        $r4 = $r3.<com.google.android.gms.internal.ads.zzi: android.media.AudioAttributes zza>;
+
+        $z0 = staticinvoke <android.media.AudioTrack: boolean isDirectPlaybackSupported(android.media.AudioFormat,android.media.AudioAttributes)>($r2, $r4);
+
+        if $z0 == 0 goto label3;
+
+        return $i2;
+
+     label3:
+        $i2 = $i2 + -1;
+
+        goto label1;
+
+     label4:
+        return 0;
+    }
+
+    public static com.google.android.gms.internal.ads.zzgaa zzb(com.google.android.gms.internal.ads.zzk)
+    {
+        android.media.AudioFormat $r7;
+        java.lang.Integer $r5;
+        int $i0, $i1, $i2;
+        android.media.AudioFormat$Builder $r6, $r12;
+        android.media.AudioAttributes $r9;
+        boolean $z0;
+        com.google.android.gms.internal.ads.zzfzx $r11;
+        com.google.android.gms.internal.ads.zzi $r8;
+        com.google.android.gms.internal.ads.zzk $r0;
+        com.google.android.gms.internal.ads.zzgad $r1;
+        com.google.android.gms.internal.ads.zzgce $r3;
+        java.lang.Object $r4;
+        com.google.android.gms.internal.ads.zzgaa $r10;
+        com.google.android.gms.internal.ads.zzgaf $r2;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzk;
+
+        $r11 = new com.google.android.gms.internal.ads.zzfzx;
+
+        specialinvoke $r11.<com.google.android.gms.internal.ads.zzfzx: void <init>()>();
+
+        $r1 = staticinvoke <com.google.android.gms.internal.ads.zzpd: com.google.android.gms.internal.ads.zzgad zzb()>();
+
+        $r2 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzgad: com.google.android.gms.internal.ads.zzgaf zzi()>();
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzgaf: com.google.android.gms.internal.ads.zzgce zze()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (java.lang.Integer) $r4;
+
+        $i0 = virtualinvoke $r5.<java.lang.Integer: int intValue()>();
+
+        $i1 = staticinvoke <com.google.android.gms.internal.ads.zzfy: int zzf(int)>($i0);
+
+        $i2 = <com.google.android.gms.internal.ads.zzfy: int zza>;
+
+        if $i2 < $i1 goto label1;
+
+        $r12 = new android.media.AudioFormat$Builder;
+
+        specialinvoke $r12.<android.media.AudioFormat$Builder: void <init>()>();
+
+        $r6 = virtualinvoke $r12.<android.media.AudioFormat$Builder: android.media.AudioFormat$Builder setChannelMask(int)>(12);
+
+        $r6 = virtualinvoke $r6.<android.media.AudioFormat$Builder: android.media.AudioFormat$Builder setEncoding(int)>($i0);
+
+        $r6 = virtualinvoke $r6.<android.media.AudioFormat$Builder: android.media.AudioFormat$Builder setSampleRate(int)>(48000);
+
+        $r7 = virtualinvoke $r6.<android.media.AudioFormat$Builder: android.media.AudioFormat build()>();
+
+        $r8 = virtualinvoke $r0.<com.google.android.gms.internal.ads.zzk: com.google.android.gms.internal.ads.zzi zza()>();
+
+        $r9 = $r8.<com.google.android.gms.internal.ads.zzi: android.media.AudioAttributes zza>;
+
+        $z0 = staticinvoke <android.media.AudioTrack: boolean isDirectPlaybackSupported(android.media.AudioFormat,android.media.AudioAttributes)>($r7, $r9);
+
+        if $z0 == 0 goto label1;
+
+        $r5 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        virtualinvoke $r11.<com.google.android.gms.internal.ads.zzfzx: com.google.android.gms.internal.ads.zzfzx zzf(java.lang.Object)>($r5);
+
+        goto label1;
+
+     label2:
+        $r5 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(2);
+
+        virtualinvoke $r11.<com.google.android.gms.internal.ads.zzfzx: com.google.android.gms.internal.ads.zzfzx zzf(java.lang.Object)>($r5);
+
+        $r10 = virtualinvoke $r11.<com.google.android.gms.internal.ads.zzfzx: com.google.android.gms.internal.ads.zzgaa zzi()>();
+
+        return $r10;
+    }
+}

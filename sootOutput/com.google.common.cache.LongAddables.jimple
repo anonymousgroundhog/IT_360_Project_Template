@@ -1,0 +1,69 @@
+final class com.google.common.cache.LongAddables extends java.lang.Object
+{
+    private static final com.google.common.base.Supplier SUPPLIER;
+
+    static void <clinit>()
+    {
+        java.lang.Throwable r3;
+        com.google.common.base.Supplier r2;
+        com.google.common.cache.LongAdder r0;
+        com.google.common.cache.LongAddables$1 $r1;
+        com.google.common.cache.LongAddables$2 $r4;
+
+     label1:
+        r0 = new com.google.common.cache.LongAdder;
+
+        specialinvoke r0.<com.google.common.cache.LongAdder: void <init>()>();
+
+        $r1 = new com.google.common.cache.LongAddables$1;
+
+        specialinvoke $r1.<com.google.common.cache.LongAddables$1: void <init>()>();
+
+     label2:
+        r2 = $r1;
+
+        goto label4;
+
+     label3:
+        r3 := @caughtexception;
+
+        $r4 = new com.google.common.cache.LongAddables$2;
+
+        specialinvoke $r4.<com.google.common.cache.LongAddables$2: void <init>()>();
+
+        r2 = $r4;
+
+     label4:
+        <com.google.common.cache.LongAddables: com.google.common.base.Supplier SUPPLIER> = r2;
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    void <init>()
+    {
+        com.google.common.cache.LongAddables r0;
+
+        r0 := @this: com.google.common.cache.LongAddables;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static com.google.common.cache.LongAddable create()
+    {
+        com.google.common.base.Supplier $r1;
+        java.lang.Object $r0;
+        com.google.common.cache.LongAddable $r2;
+
+        $r1 = <com.google.common.cache.LongAddables: com.google.common.base.Supplier SUPPLIER>;
+
+        $r0 = interfaceinvoke $r1.<com.google.common.base.Supplier: java.lang.Object get()>();
+
+        $r2 = (com.google.common.cache.LongAddable) $r0;
+
+        return $r2;
+    }
+}

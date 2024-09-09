@@ -1,0 +1,561 @@
+public class androidx.room.RoomOpenHelper extends androidx.sqlite.db.SupportSQLiteOpenHelper$Callback
+{
+    private androidx.room.DatabaseConfiguration mConfiguration;
+    private final androidx.room.RoomOpenHelper$Delegate mDelegate;
+    private final java.lang.String mIdentityHash;
+    private final java.lang.String mLegacyHash;
+
+    public void <init>(androidx.room.DatabaseConfiguration, androidx.room.RoomOpenHelper$Delegate, java.lang.String)
+    {
+        androidx.room.DatabaseConfiguration $r1;
+        androidx.room.RoomOpenHelper r0;
+        java.lang.String $r3;
+        androidx.room.RoomOpenHelper$Delegate $r2;
+
+        r0 := @this: androidx.room.RoomOpenHelper;
+
+        $r1 := @parameter0: androidx.room.DatabaseConfiguration;
+
+        $r2 := @parameter1: androidx.room.RoomOpenHelper$Delegate;
+
+        $r3 := @parameter2: java.lang.String;
+
+        specialinvoke r0.<androidx.room.RoomOpenHelper: void <init>(androidx.room.DatabaseConfiguration,androidx.room.RoomOpenHelper$Delegate,java.lang.String,java.lang.String)>($r1, $r2, "", $r3);
+
+        return;
+    }
+
+    public void <init>(androidx.room.DatabaseConfiguration, androidx.room.RoomOpenHelper$Delegate, java.lang.String, java.lang.String)
+    {
+        androidx.room.DatabaseConfiguration $r1;
+        int $i0;
+        androidx.room.RoomOpenHelper r0;
+        java.lang.String $r3, $r4;
+        androidx.room.RoomOpenHelper$Delegate $r2;
+
+        r0 := @this: androidx.room.RoomOpenHelper;
+
+        $r1 := @parameter0: androidx.room.DatabaseConfiguration;
+
+        $r2 := @parameter1: androidx.room.RoomOpenHelper$Delegate;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: java.lang.String;
+
+        $i0 = $r2.<androidx.room.RoomOpenHelper$Delegate: int version>;
+
+        specialinvoke r0.<androidx.sqlite.db.SupportSQLiteOpenHelper$Callback: void <init>(int)>($i0);
+
+        r0.<androidx.room.RoomOpenHelper: androidx.room.DatabaseConfiguration mConfiguration> = $r1;
+
+        r0.<androidx.room.RoomOpenHelper: androidx.room.RoomOpenHelper$Delegate mDelegate> = $r2;
+
+        r0.<androidx.room.RoomOpenHelper: java.lang.String mIdentityHash> = $r3;
+
+        r0.<androidx.room.RoomOpenHelper: java.lang.String mLegacyHash> = $r4;
+
+        return;
+    }
+
+    private void checkIdentity(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        java.lang.Throwable $r7;
+        java.lang.IllegalStateException $r6;
+        androidx.room.RoomOpenHelper r0;
+        androidx.room.RoomOpenHelper$ValidationResult $r9;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        java.lang.StringBuilder $r10;
+        java.lang.String r2, $r5;
+        androidx.room.RoomOpenHelper$Delegate r8;
+        boolean $z0;
+        androidx.sqlite.db.SimpleSQLiteQuery r3;
+        android.database.Cursor $r4;
+
+        r0 := @this: androidx.room.RoomOpenHelper;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        $z0 = staticinvoke <androidx.room.RoomOpenHelper: boolean hasRoomMasterTable(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        if $z0 == 0 goto label8;
+
+        r2 = null;
+
+        r3 = new androidx.sqlite.db.SimpleSQLiteQuery;
+
+        specialinvoke r3.<androidx.sqlite.db.SimpleSQLiteQuery: void <init>(java.lang.String)>("SELECT identity_hash FROM room_master_table WHERE id = 42 LIMIT 1");
+
+        $r4 = interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: android.database.Cursor query(androidx.sqlite.db.SupportSQLiteQuery)>(r3);
+
+     label1:
+        $z0 = interfaceinvoke $r4.<android.database.Cursor: boolean moveToFirst()>();
+
+     label2:
+        if $z0 == 0 goto label4;
+
+     label3:
+        r2 = interfaceinvoke $r4.<android.database.Cursor: java.lang.String getString(int)>(0);
+
+     label4:
+        interfaceinvoke $r4.<android.database.Cursor: void close()>();
+
+        $r5 = r0.<androidx.room.RoomOpenHelper: java.lang.String mIdentityHash>;
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>(r2);
+
+        if $z0 != 0 goto label6;
+
+        $r5 = r0.<androidx.room.RoomOpenHelper: java.lang.String mLegacyHash>;
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>(r2);
+
+        if $z0 == 0 goto label5;
+
+        goto label6;
+
+     label5:
+        $r6 = new java.lang.IllegalStateException;
+
+        specialinvoke $r6.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Room cannot verify the data integrity. Looks like you\'ve changed schema but forgot to update the version number. You can simply fix this by increasing the version number.");
+
+        throw $r6;
+
+     label6:
+        return;
+
+     label7:
+        $r7 := @caughtexception;
+
+        interfaceinvoke $r4.<android.database.Cursor: void close()>();
+
+        throw $r7;
+
+     label8:
+        r8 = r0.<androidx.room.RoomOpenHelper: androidx.room.RoomOpenHelper$Delegate mDelegate>;
+
+        $r9 = virtualinvoke r8.<androidx.room.RoomOpenHelper$Delegate: androidx.room.RoomOpenHelper$ValidationResult onValidateSchema(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        $z0 = $r9.<androidx.room.RoomOpenHelper$ValidationResult: boolean isValid>;
+
+        if $z0 == 0 goto label9;
+
+        r8 = r0.<androidx.room.RoomOpenHelper: androidx.room.RoomOpenHelper$Delegate mDelegate>;
+
+        virtualinvoke r8.<androidx.room.RoomOpenHelper$Delegate: void onPostMigrate(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        specialinvoke r0.<androidx.room.RoomOpenHelper: void updateIdentity(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        return;
+
+     label9:
+        $r6 = new java.lang.IllegalStateException;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Pre-packaged database has an invalid schema: ");
+
+        r2 = $r9.<androidx.room.RoomOpenHelper$ValidationResult: java.lang.String expectedFoundMsg>;
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        r2 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r6.<java.lang.IllegalStateException: void <init>(java.lang.String)>(r2);
+
+        throw $r6;
+
+        catch java.lang.Throwable from label1 to label2 with label7;
+        catch java.lang.Throwable from label3 to label4 with label7;
+    }
+
+    private void createMasterTableIfNotExists(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        androidx.room.RoomOpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+
+        r0 := @this: androidx.room.RoomOpenHelper;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
+
+        return;
+    }
+
+    private static boolean hasEmptySchema(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        java.lang.Throwable $r2;
+        androidx.sqlite.db.SupportSQLiteDatabase $r0;
+        int $i0;
+        android.database.Cursor $r1;
+        boolean $z0, $z1;
+
+        $r0 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        $r1 = interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteDatabase: android.database.Cursor query(java.lang.String)>("SELECT count(*) FROM sqlite_master WHERE name != \'android_metadata\'");
+
+     label1:
+        $z0 = interfaceinvoke $r1.<android.database.Cursor: boolean moveToFirst()>();
+
+     label2:
+        $z1 = 0;
+
+        if $z0 == 0 goto label5;
+
+     label3:
+        $i0 = interfaceinvoke $r1.<android.database.Cursor: int getInt(int)>(0);
+
+     label4:
+        if $i0 != 0 goto label5;
+
+        $z1 = 1;
+
+     label5:
+        interfaceinvoke $r1.<android.database.Cursor: void close()>();
+
+        return $z1;
+
+     label6:
+        $r2 := @caughtexception;
+
+        interfaceinvoke $r1.<android.database.Cursor: void close()>();
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label6;
+        catch java.lang.Throwable from label3 to label4 with label6;
+    }
+
+    private static boolean hasRoomMasterTable(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        java.lang.Throwable $r2;
+        androidx.sqlite.db.SupportSQLiteDatabase $r0;
+        int $i0;
+        android.database.Cursor $r1;
+        boolean $z0, $z1;
+
+        $r0 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        $r1 = interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteDatabase: android.database.Cursor query(java.lang.String)>("SELECT 1 FROM sqlite_master WHERE type = \'table\' AND name=\'room_master_table\'");
+
+     label1:
+        $z0 = interfaceinvoke $r1.<android.database.Cursor: boolean moveToFirst()>();
+
+     label2:
+        $z1 = 0;
+
+        if $z0 == 0 goto label5;
+
+     label3:
+        $i0 = interfaceinvoke $r1.<android.database.Cursor: int getInt(int)>(0);
+
+     label4:
+        if $i0 == 0 goto label5;
+
+        $z1 = 1;
+
+     label5:
+        interfaceinvoke $r1.<android.database.Cursor: void close()>();
+
+        return $z1;
+
+     label6:
+        $r2 := @caughtexception;
+
+        interfaceinvoke $r1.<android.database.Cursor: void close()>();
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label6;
+        catch java.lang.Throwable from label3 to label4 with label6;
+    }
+
+    private void updateIdentity(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        androidx.room.RoomOpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        java.lang.String $r2;
+
+        r0 := @this: androidx.room.RoomOpenHelper;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        specialinvoke r0.<androidx.room.RoomOpenHelper: void createMasterTableIfNotExists(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        $r2 = r0.<androidx.room.RoomOpenHelper: java.lang.String mIdentityHash>;
+
+        $r2 = staticinvoke <androidx.room.RoomMasterTable: java.lang.String createInsertQuery(java.lang.String)>($r2);
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>($r2);
+
+        return;
+    }
+
+    public void onConfigure(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        androidx.room.RoomOpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+
+        r0 := @this: androidx.room.RoomOpenHelper;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        specialinvoke r0.<androidx.sqlite.db.SupportSQLiteOpenHelper$Callback: void onConfigure(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        return;
+    }
+
+    public void onCreate(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        java.lang.IllegalStateException $r4;
+        androidx.room.RoomOpenHelper r0;
+        androidx.room.RoomOpenHelper$ValidationResult $r3;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        java.lang.StringBuilder $r5;
+        java.lang.String $r6;
+        androidx.room.RoomOpenHelper$Delegate r2;
+        boolean $z0;
+
+        r0 := @this: androidx.room.RoomOpenHelper;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        $z0 = staticinvoke <androidx.room.RoomOpenHelper: boolean hasEmptySchema(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        r2 = r0.<androidx.room.RoomOpenHelper: androidx.room.RoomOpenHelper$Delegate mDelegate>;
+
+        virtualinvoke r2.<androidx.room.RoomOpenHelper$Delegate: void createAllTables(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        if $z0 != 0 goto label2;
+
+        r2 = r0.<androidx.room.RoomOpenHelper: androidx.room.RoomOpenHelper$Delegate mDelegate>;
+
+        $r3 = virtualinvoke r2.<androidx.room.RoomOpenHelper$Delegate: androidx.room.RoomOpenHelper$ValidationResult onValidateSchema(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        $z0 = $r3.<androidx.room.RoomOpenHelper$ValidationResult: boolean isValid>;
+
+        if $z0 == 0 goto label1;
+
+        goto label2;
+
+     label1:
+        $r4 = new java.lang.IllegalStateException;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Pre-packaged database has an invalid schema: ");
+
+        $r6 = $r3.<androidx.room.RoomOpenHelper$ValidationResult: java.lang.String expectedFoundMsg>;
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r6);
+
+        throw $r4;
+
+     label2:
+        specialinvoke r0.<androidx.room.RoomOpenHelper: void updateIdentity(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        r2 = r0.<androidx.room.RoomOpenHelper: androidx.room.RoomOpenHelper$Delegate mDelegate>;
+
+        virtualinvoke r2.<androidx.room.RoomOpenHelper$Delegate: void onCreate(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        return;
+    }
+
+    public void onDowngrade(androidx.sqlite.db.SupportSQLiteDatabase, int, int)
+    {
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        int $i0, $i1;
+        androidx.room.RoomOpenHelper r0;
+
+        r0 := @this: androidx.room.RoomOpenHelper;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        virtualinvoke r0.<androidx.room.RoomOpenHelper: void onUpgrade(androidx.sqlite.db.SupportSQLiteDatabase,int,int)>($r1, $i0, $i1);
+
+        return;
+    }
+
+    public void onOpen(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        androidx.room.RoomOpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        androidx.room.RoomOpenHelper$Delegate $r2;
+
+        r0 := @this: androidx.room.RoomOpenHelper;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        specialinvoke r0.<androidx.sqlite.db.SupportSQLiteOpenHelper$Callback: void onOpen(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        specialinvoke r0.<androidx.room.RoomOpenHelper: void checkIdentity(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        $r2 = r0.<androidx.room.RoomOpenHelper: androidx.room.RoomOpenHelper$Delegate mDelegate>;
+
+        virtualinvoke $r2.<androidx.room.RoomOpenHelper$Delegate: void onOpen(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        r0.<androidx.room.RoomOpenHelper: androidx.room.DatabaseConfiguration mConfiguration> = null;
+
+        return;
+    }
+
+    public void onUpgrade(androidx.sqlite.db.SupportSQLiteDatabase, int, int)
+    {
+        java.lang.IllegalStateException r10;
+        androidx.room.RoomOpenHelper$ValidationResult $r9;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        int $i0, $i1;
+        androidx.room.DatabaseConfiguration r2;
+        androidx.room.RoomDatabase$MigrationContainer r3;
+        java.lang.String $r12;
+        androidx.room.migration.Migration r8;
+        androidx.room.RoomOpenHelper$Delegate r5;
+        boolean z0;
+        java.util.Iterator $r6;
+        androidx.room.RoomOpenHelper r0;
+        java.util.List $r4;
+        java.lang.Object $r7;
+        java.lang.StringBuilder $r11;
+
+        r0 := @this: androidx.room.RoomOpenHelper;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        z0 = 0;
+
+        r2 = r0.<androidx.room.RoomOpenHelper: androidx.room.DatabaseConfiguration mConfiguration>;
+
+        if r2 == null goto label4;
+
+        r2 = r0.<androidx.room.RoomOpenHelper: androidx.room.DatabaseConfiguration mConfiguration>;
+
+        r3 = r2.<androidx.room.DatabaseConfiguration: androidx.room.RoomDatabase$MigrationContainer migrationContainer>;
+
+        $r4 = virtualinvoke r3.<androidx.room.RoomDatabase$MigrationContainer: java.util.List findMigrationPath(int,int)>($i0, $i1);
+
+        if $r4 == null goto label4;
+
+        r5 = r0.<androidx.room.RoomOpenHelper: androidx.room.RoomOpenHelper$Delegate mDelegate>;
+
+        virtualinvoke r5.<androidx.room.RoomOpenHelper$Delegate: void onPreMigrate(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        $r6 = interfaceinvoke $r4.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        z0 = interfaceinvoke $r6.<java.util.Iterator: boolean hasNext()>();
+
+        if z0 == 0 goto label2;
+
+        $r7 = interfaceinvoke $r6.<java.util.Iterator: java.lang.Object next()>();
+
+        r8 = (androidx.room.migration.Migration) $r7;
+
+        virtualinvoke r8.<androidx.room.migration.Migration: void migrate(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        goto label1;
+
+     label2:
+        r5 = r0.<androidx.room.RoomOpenHelper: androidx.room.RoomOpenHelper$Delegate mDelegate>;
+
+        $r9 = virtualinvoke r5.<androidx.room.RoomOpenHelper$Delegate: androidx.room.RoomOpenHelper$ValidationResult onValidateSchema(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        z0 = $r9.<androidx.room.RoomOpenHelper$ValidationResult: boolean isValid>;
+
+        if z0 == 0 goto label3;
+
+        r5 = r0.<androidx.room.RoomOpenHelper: androidx.room.RoomOpenHelper$Delegate mDelegate>;
+
+        virtualinvoke r5.<androidx.room.RoomOpenHelper$Delegate: void onPostMigrate(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        specialinvoke r0.<androidx.room.RoomOpenHelper: void updateIdentity(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        z0 = 1;
+
+        goto label4;
+
+     label3:
+        r10 = new java.lang.IllegalStateException;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Migration didn\'t properly handle: ");
+
+        $r12 = $r9.<androidx.room.RoomOpenHelper$ValidationResult: java.lang.String expectedFoundMsg>;
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r12);
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r10.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r12);
+
+        throw r10;
+
+     label4:
+        if z0 != 0 goto label6;
+
+        r2 = r0.<androidx.room.RoomOpenHelper: androidx.room.DatabaseConfiguration mConfiguration>;
+
+        if r2 == null goto label5;
+
+        r2 = r0.<androidx.room.RoomOpenHelper: androidx.room.DatabaseConfiguration mConfiguration>;
+
+        z0 = virtualinvoke r2.<androidx.room.DatabaseConfiguration: boolean isMigrationRequired(int,int)>($i0, $i1);
+
+        if z0 != 0 goto label5;
+
+        r5 = r0.<androidx.room.RoomOpenHelper: androidx.room.RoomOpenHelper$Delegate mDelegate>;
+
+        virtualinvoke r5.<androidx.room.RoomOpenHelper$Delegate: void dropAllTables(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        r5 = r0.<androidx.room.RoomOpenHelper: androidx.room.RoomOpenHelper$Delegate mDelegate>;
+
+        virtualinvoke r5.<androidx.room.RoomOpenHelper$Delegate: void createAllTables(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        return;
+
+     label5:
+        r10 = new java.lang.IllegalStateException;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("A migration from ");
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" to ");
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" was required but not found. Please provide the necessary Migration path via RoomDatabase.Builder.addMigration(Migration ...) or allow for destructive migrations via one of the RoomDatabase.Builder.fallbackToDestructiveMigration* methods.");
+
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r10.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r12);
+
+        throw r10;
+
+     label6:
+        return;
+    }
+}

@@ -1,0 +1,247 @@
+public final class androidx.core.view.MenuKt extends java.lang.Object
+{
+
+    public static final boolean contains(android.view.Menu, android.view.MenuItem)
+    {
+        android.view.Menu $r0;
+        int i0, $i1;
+        android.view.MenuItem $r1, $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.Menu;
+
+        $r1 := @parameter1: android.view.MenuItem;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "item");
+
+        i0 = 0;
+
+        $i1 = interfaceinvoke $r0.<android.view.Menu: int size()>();
+
+     label1:
+        if i0 >= $i1 goto label3;
+
+        $r2 = interfaceinvoke $r0.<android.view.Menu: android.view.MenuItem getItem(int)>(i0);
+
+        $z0 = staticinvoke <kotlin.jvm.internal.Intrinsics: boolean areEqual(java.lang.Object,java.lang.Object)>($r2, $r1);
+
+        if $z0 == 0 goto label2;
+
+        return 1;
+
+     label2:
+        i0 = i0 + 1;
+
+        goto label1;
+
+     label3:
+        return 0;
+    }
+
+    public static final void forEach(android.view.Menu, kotlin.jvm.functions.Function1)
+    {
+        android.view.Menu $r0;
+        int i0, $i1;
+        kotlin.jvm.functions.Function1 $r1;
+        android.view.MenuItem $r2;
+
+        $r0 := @parameter0: android.view.Menu;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "action");
+
+        i0 = 0;
+
+        $i1 = interfaceinvoke $r0.<android.view.Menu: int size()>();
+
+     label1:
+        if i0 >= $i1 goto label2;
+
+        $r2 = interfaceinvoke $r0.<android.view.Menu: android.view.MenuItem getItem(int)>(i0);
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r2, "getItem(index)");
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r2);
+
+        i0 = i0 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public static final void forEachIndexed(android.view.Menu, kotlin.jvm.functions.Function2)
+    {
+        android.view.Menu $r0;
+        int i0, $i1;
+        kotlin.jvm.functions.Function2 $r1;
+        java.lang.Integer $r2;
+        android.view.MenuItem $r3;
+
+        $r0 := @parameter0: android.view.Menu;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function2;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "action");
+
+        i0 = 0;
+
+        $i1 = interfaceinvoke $r0.<android.view.Menu: int size()>();
+
+     label1:
+        if i0 >= $i1 goto label2;
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(i0);
+
+        $r3 = interfaceinvoke $r0.<android.view.Menu: android.view.MenuItem getItem(int)>(i0);
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r3, "getItem(index)");
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function2: java.lang.Object invoke(java.lang.Object,java.lang.Object)>($r2, $r3);
+
+        i0 = i0 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public static final android.view.MenuItem get(android.view.Menu, int)
+    {
+        android.view.Menu $r0;
+        int $i0;
+        android.view.MenuItem $r1;
+
+        $r0 := @parameter0: android.view.Menu;
+
+        $i0 := @parameter1: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = interfaceinvoke $r0.<android.view.Menu: android.view.MenuItem getItem(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r1, "getItem(index)");
+
+        return $r1;
+    }
+
+    public static final kotlin.sequences.Sequence getChildren(android.view.Menu)
+    {
+        android.view.Menu $r0;
+        androidx.core.view.MenuKt$children$1 $r1;
+        kotlin.sequences.Sequence $r2;
+
+        $r0 := @parameter0: android.view.Menu;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = new androidx.core.view.MenuKt$children$1;
+
+        specialinvoke $r1.<androidx.core.view.MenuKt$children$1: void <init>(android.view.Menu)>($r0);
+
+        $r2 = (kotlin.sequences.Sequence) $r1;
+
+        return $r2;
+    }
+
+    public static final int getSize(android.view.Menu)
+    {
+        android.view.Menu $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.Menu;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = interfaceinvoke $r0.<android.view.Menu: int size()>();
+
+        return $i0;
+    }
+
+    public static final boolean isEmpty(android.view.Menu)
+    {
+        android.view.Menu $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.Menu;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = interfaceinvoke $r0.<android.view.Menu: int size()>();
+
+        if $i0 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final boolean isNotEmpty(android.view.Menu)
+    {
+        android.view.Menu $r0;
+        int $i0;
+
+        $r0 := @parameter0: android.view.Menu;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = interfaceinvoke $r0.<android.view.Menu: int size()>();
+
+        if $i0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final java.util.Iterator iterator(android.view.Menu)
+    {
+        android.view.Menu $r0;
+        java.util.Iterator $r2;
+        androidx.core.view.MenuKt$iterator$1 $r1;
+
+        $r0 := @parameter0: android.view.Menu;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = new androidx.core.view.MenuKt$iterator$1;
+
+        specialinvoke $r1.<androidx.core.view.MenuKt$iterator$1: void <init>(android.view.Menu)>($r0);
+
+        $r2 = (java.util.Iterator) $r1;
+
+        return $r2;
+    }
+
+    public static final void minusAssign(android.view.Menu, android.view.MenuItem)
+    {
+        android.view.Menu $r0;
+        int $i0;
+        android.view.MenuItem $r1;
+
+        $r0 := @parameter0: android.view.Menu;
+
+        $r1 := @parameter1: android.view.MenuItem;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "item");
+
+        $i0 = interfaceinvoke $r1.<android.view.MenuItem: int getItemId()>();
+
+        interfaceinvoke $r0.<android.view.Menu: void removeItem(int)>($i0);
+
+        return;
+    }
+}

@@ -1,0 +1,60 @@
+class androidx.core.location.LocationRequestCompat$Api31Impl extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.location.LocationRequestCompat$Api31Impl r0;
+
+        r0 := @this: androidx.core.location.LocationRequestCompat$Api31Impl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static android.location.LocationRequest toLocationRequest(androidx.core.location.LocationRequestCompat)
+    {
+        int $i1;
+        androidx.core.location.LocationRequestCompat $r0;
+        android.location.LocationRequest$Builder $r1;
+        float $f0;
+        android.location.LocationRequest $r2;
+        long $l0;
+
+        $r0 := @parameter0: androidx.core.location.LocationRequestCompat;
+
+        $r1 = new android.location.LocationRequest$Builder;
+
+        $l0 = virtualinvoke $r0.<androidx.core.location.LocationRequestCompat: long getIntervalMillis()>();
+
+        specialinvoke $r1.<android.location.LocationRequest$Builder: void <init>(long)>($l0);
+
+        $i1 = virtualinvoke $r0.<androidx.core.location.LocationRequestCompat: int getQuality()>();
+
+        $r1 = virtualinvoke $r1.<android.location.LocationRequest$Builder: android.location.LocationRequest$Builder setQuality(int)>($i1);
+
+        $l0 = virtualinvoke $r0.<androidx.core.location.LocationRequestCompat: long getMinUpdateIntervalMillis()>();
+
+        $r1 = virtualinvoke $r1.<android.location.LocationRequest$Builder: android.location.LocationRequest$Builder setMinUpdateIntervalMillis(long)>($l0);
+
+        $l0 = virtualinvoke $r0.<androidx.core.location.LocationRequestCompat: long getDurationMillis()>();
+
+        $r1 = virtualinvoke $r1.<android.location.LocationRequest$Builder: android.location.LocationRequest$Builder setDurationMillis(long)>($l0);
+
+        $i1 = virtualinvoke $r0.<androidx.core.location.LocationRequestCompat: int getMaxUpdates()>();
+
+        $r1 = virtualinvoke $r1.<android.location.LocationRequest$Builder: android.location.LocationRequest$Builder setMaxUpdates(int)>($i1);
+
+        $f0 = virtualinvoke $r0.<androidx.core.location.LocationRequestCompat: float getMinUpdateDistanceMeters()>();
+
+        $r1 = virtualinvoke $r1.<android.location.LocationRequest$Builder: android.location.LocationRequest$Builder setMinUpdateDistanceMeters(float)>($f0);
+
+        $l0 = virtualinvoke $r0.<androidx.core.location.LocationRequestCompat: long getMaxUpdateDelayMillis()>();
+
+        $r1 = virtualinvoke $r1.<android.location.LocationRequest$Builder: android.location.LocationRequest$Builder setMaxUpdateDelayMillis(long)>($l0);
+
+        $r2 = virtualinvoke $r1.<android.location.LocationRequest$Builder: android.location.LocationRequest build()>();
+
+        return $r2;
+    }
+}

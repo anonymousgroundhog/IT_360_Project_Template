@@ -1,0 +1,2347 @@
+public final class com.google.android.gms.internal.ads.zzapg extends java.lang.Object
+{
+
+    public static java.security.cert.X509Certificate[][] zza(java.lang.String) throws com.google.android.gms.internal.ads.zzapd, java.lang.SecurityException, java.io.IOException
+    {
+        byte[] $r7;
+        java.io.RandomAccessFile $r16;
+        java.nio.ByteBuffer $r3, $r5, $r9;
+        byte $b2;
+        java.lang.Long $r4;
+        boolean $z0;
+        java.security.cert.X509Certificate[][] $r11;
+        java.nio.ByteOrder $r6, $r8;
+        com.google.android.gms.internal.ads.zzapd $r19;
+        com.google.android.gms.internal.ads.zzapc $r17;
+        java.lang.StringBuilder $r18;
+        java.lang.Throwable $r13, $r14;
+        android.util.Pair $r1;
+        long $l0, $l1, $l4, $l6, $l8;
+        int $i3, $i5, $i7, $i9;
+        java.lang.String $r0;
+        java.io.IOException $r12, $r15;
+        java.lang.IllegalArgumentException $r20;
+        java.lang.Object $r2;
+        java.nio.channels.FileChannel $r10;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r16 = new java.io.RandomAccessFile;
+
+        specialinvoke $r16.<java.io.RandomAccessFile: void <init>(java.lang.String,java.lang.String)>($r0, "r");
+
+     label01:
+        $r1 = staticinvoke <com.google.android.gms.internal.ads.zzaph: android.util.Pair zzc(java.io.RandomAccessFile)>($r16);
+
+     label02:
+        if $r1 == null goto label91;
+
+     label03:
+        $r2 = $r1.<android.util.Pair: java.lang.Object first>;
+
+        $r3 = (java.nio.ByteBuffer) $r2;
+
+        $r2 = $r1.<android.util.Pair: java.lang.Object second>;
+
+        $r4 = (java.lang.Long) $r2;
+
+        $l0 = virtualinvoke $r4.<java.lang.Long: long longValue()>();
+
+     label04:
+        $l1 = -20L + $l0;
+
+        $b2 = $l1 cmp 0L;
+
+        $i3 = (int) $b2;
+
+        if $i3 >= 0 goto label05;
+
+        goto label07;
+
+     label05:
+        virtualinvoke $r16.<java.io.RandomAccessFile: void seek(long)>($l1);
+
+        $i3 = virtualinvoke $r16.<java.io.RandomAccessFile: int readInt()>();
+
+     label06:
+        if $i3 == 1347094023 goto label89;
+
+     label07:
+        $l1 = staticinvoke <com.google.android.gms.internal.ads.zzaph: long zza(java.nio.ByteBuffer)>($r3);
+
+     label08:
+        $b2 = $l1 cmp $l0;
+
+        $i3 = (int) $b2;
+
+        if $i3 >= 0 goto label86;
+
+     label09:
+        $l4 = staticinvoke <com.google.android.gms.internal.ads.zzaph: long zzb(java.nio.ByteBuffer)>($r3);
+
+     label10:
+        $l4 = $l4 + $l1;
+
+        $b2 = $l4 cmp $l0;
+
+        if $b2 != 0 goto label84;
+
+        $b2 = $l1 cmp 32L;
+
+        $i3 = (int) $b2;
+
+        if $i3 < 0 goto label81;
+
+     label11:
+        $r5 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer allocate(int)>(24);
+
+        $r6 = <java.nio.ByteOrder: java.nio.ByteOrder LITTLE_ENDIAN>;
+
+        virtualinvoke $r5.<java.nio.ByteBuffer: java.nio.ByteBuffer order(java.nio.ByteOrder)>($r6);
+
+        $i3 = virtualinvoke $r5.<java.nio.ByteBuffer: int capacity()>();
+
+     label12:
+        $l4 = (long) $i3;
+
+        $l4 = $l1 - $l4;
+
+     label13:
+        virtualinvoke $r16.<java.io.RandomAccessFile: void seek(long)>($l4);
+
+        $r7 = virtualinvoke $r5.<java.nio.ByteBuffer: byte[] array()>();
+
+        $i3 = virtualinvoke $r5.<java.nio.ByteBuffer: int arrayOffset()>();
+
+        $i5 = virtualinvoke $r5.<java.nio.ByteBuffer: int capacity()>();
+
+        virtualinvoke $r16.<java.io.RandomAccessFile: void readFully(byte[],int,int)>($r7, $i3, $i5);
+
+        $l4 = virtualinvoke $r5.<java.nio.ByteBuffer: long getLong(int)>(8);
+
+     label14:
+        $b2 = $l4 cmp 2334950737559900225L;
+
+        if $b2 != 0 goto label79;
+
+     label15:
+        $l4 = virtualinvoke $r5.<java.nio.ByteBuffer: long getLong(int)>(16);
+
+     label16:
+        $b2 = $l4 cmp 3617552046287187010L;
+
+        if $b2 != 0 goto label79;
+
+        $i3 = 0;
+
+     label17:
+        $l4 = virtualinvoke $r5.<java.nio.ByteBuffer: long getLong(int)>(0);
+
+        $i5 = virtualinvoke $r5.<java.nio.ByteBuffer: int capacity()>();
+
+     label18:
+        $l6 = (long) $i5;
+
+        $b2 = $l4 cmp $l6;
+
+        $i5 = (int) $b2;
+
+        if $i5 < 0 goto label76;
+
+        $b2 = $l4 cmp 2147483639L;
+
+        $i5 = (int) $b2;
+
+        if $i5 > 0 goto label76;
+
+        $l6 = 8L + $l4;
+
+        $i5 = (int) $l6;
+
+        $l6 = (long) $i5;
+
+        $l6 = $l1 - $l6;
+
+        $b2 = $l6 cmp 0L;
+
+        $i7 = (int) $b2;
+
+        if $i7 < 0 goto label73;
+
+     label19:
+        $r5 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer allocate(int)>($i5);
+
+        $r6 = <java.nio.ByteOrder: java.nio.ByteOrder LITTLE_ENDIAN>;
+
+        virtualinvoke $r5.<java.nio.ByteBuffer: java.nio.ByteBuffer order(java.nio.ByteOrder)>($r6);
+
+        virtualinvoke $r16.<java.io.RandomAccessFile: void seek(long)>($l6);
+
+        $r7 = virtualinvoke $r5.<java.nio.ByteBuffer: byte[] array()>();
+
+        $i5 = virtualinvoke $r5.<java.nio.ByteBuffer: int arrayOffset()>();
+
+        $i7 = virtualinvoke $r5.<java.nio.ByteBuffer: int capacity()>();
+
+        virtualinvoke $r16.<java.io.RandomAccessFile: void readFully(byte[],int,int)>($r7, $i5, $i7);
+
+        $l8 = virtualinvoke $r5.<java.nio.ByteBuffer: long getLong(int)>(0);
+
+     label20:
+        $b2 = $l8 cmp $l4;
+
+        if $b2 != 0 goto label70;
+
+     label21:
+        $r4 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l6);
+
+        $r1 = staticinvoke <android.util.Pair: android.util.Pair create(java.lang.Object,java.lang.Object)>($r5, $r4);
+
+        $r2 = $r1.<android.util.Pair: java.lang.Object first>;
+
+        $r5 = (java.nio.ByteBuffer) $r2;
+
+        $r2 = $r1.<android.util.Pair: java.lang.Object second>;
+
+        $r4 = (java.lang.Long) $r2;
+
+        $l4 = virtualinvoke $r4.<java.lang.Long: long longValue()>();
+
+        $r6 = virtualinvoke $r5.<java.nio.ByteBuffer: java.nio.ByteOrder order()>();
+
+        $r8 = <java.nio.ByteOrder: java.nio.ByteOrder LITTLE_ENDIAN>;
+
+     label22:
+        if $r6 != $r8 goto label68;
+
+     label23:
+        $i5 = virtualinvoke $r5.<java.nio.ByteBuffer: int capacity()>();
+
+     label24:
+        $i5 = $i5 + -24;
+
+        if $i5 < 8 goto label65;
+
+     label25:
+        $i7 = virtualinvoke $r5.<java.nio.ByteBuffer: int capacity()>();
+
+        $i9 = virtualinvoke $r5.<java.nio.ByteBuffer: int capacity()>();
+
+     label26:
+        if $i5 > $i9 goto label62;
+
+     label27:
+        $i7 = virtualinvoke $r5.<java.nio.ByteBuffer: int limit()>();
+
+        $i9 = virtualinvoke $r5.<java.nio.ByteBuffer: int position()>();
+
+     label28:
+        virtualinvoke $r5.<java.nio.ByteBuffer: java.nio.Buffer position(int)>(0);
+
+        virtualinvoke $r5.<java.nio.ByteBuffer: java.nio.Buffer limit(int)>($i5);
+
+        virtualinvoke $r5.<java.nio.ByteBuffer: java.nio.Buffer position(int)>(8);
+
+        $r9 = virtualinvoke $r5.<java.nio.ByteBuffer: java.nio.ByteBuffer slice()>();
+
+        $r6 = virtualinvoke $r5.<java.nio.ByteBuffer: java.nio.ByteOrder order()>();
+
+        virtualinvoke $r9.<java.nio.ByteBuffer: java.nio.ByteBuffer order(java.nio.ByteOrder)>($r6);
+
+     label29:
+        virtualinvoke $r5.<java.nio.ByteBuffer: java.nio.Buffer position(int)>(0);
+
+        virtualinvoke $r5.<java.nio.ByteBuffer: java.nio.Buffer limit(int)>($i7);
+
+        virtualinvoke $r5.<java.nio.ByteBuffer: java.nio.Buffer position(int)>($i9);
+
+     label30:
+        $z0 = virtualinvoke $r9.<java.nio.ByteBuffer: boolean hasRemaining()>();
+
+     label31:
+        if $z0 == 0 goto label58;
+
+        $i3 = $i3 + 1;
+
+     label32:
+        $i5 = virtualinvoke $r9.<java.nio.ByteBuffer: int remaining()>();
+
+     label33:
+        if $i5 < 8 goto label55;
+
+     label34:
+        $l6 = virtualinvoke $r9.<java.nio.ByteBuffer: long getLong()>();
+
+     label35:
+        $b2 = $l6 cmp 4L;
+
+        $i5 = (int) $b2;
+
+        if $i5 < 0 goto label52;
+
+        $b2 = $l6 cmp 2147483647L;
+
+        $i5 = (int) $b2;
+
+        if $i5 > 0 goto label52;
+
+     label36:
+        $i7 = virtualinvoke $r9.<java.nio.ByteBuffer: int position()>();
+
+     label37:
+        $i5 = (int) $l6;
+
+        $i7 = $i7 + $i5;
+
+     label38:
+        $i9 = virtualinvoke $r9.<java.nio.ByteBuffer: int remaining()>();
+
+     label39:
+        if $i5 > $i9 goto label49;
+
+     label40:
+        $i9 = virtualinvoke $r9.<java.nio.ByteBuffer: int getInt()>();
+
+     label41:
+        if $i9 != 1896449818 goto label47;
+
+        $i3 = $i5 + -4;
+
+     label42:
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzapg: java.nio.ByteBuffer zze(java.nio.ByteBuffer,int)>($r9, $i3);
+
+        $r17 = new com.google.android.gms.internal.ads.zzapc;
+
+     label43:
+        specialinvoke $r17.<com.google.android.gms.internal.ads.zzapc: void <init>(java.nio.ByteBuffer,long,long,long,java.nio.ByteBuffer,com.google.android.gms.internal.ads.zzapb)>($r5, $l4, $l1, $l0, $r3, null);
+
+        $r10 = virtualinvoke $r16.<java.io.RandomAccessFile: java.nio.channels.FileChannel getChannel()>();
+
+        $r11 = staticinvoke <com.google.android.gms.internal.ads.zzapg: java.security.cert.X509Certificate[][] zzl(java.nio.channels.FileChannel,com.google.android.gms.internal.ads.zzapc)>($r10, $r17);
+
+        virtualinvoke $r16.<java.io.RandomAccessFile: void close()>();
+
+     label44:
+        virtualinvoke $r16.<java.io.RandomAccessFile: void close()>();
+
+     label45:
+        return $r11;
+
+     label46:
+        $r12 := @caughtexception;
+
+        return $r11;
+
+     label47:
+        virtualinvoke $r9.<java.nio.ByteBuffer: java.nio.Buffer position(int)>($i7);
+
+     label48:
+        goto label30;
+
+     label49:
+        $r19 = new com.google.android.gms.internal.ads.zzapd;
+
+     label50:
+        $i7 = virtualinvoke $r9.<java.nio.ByteBuffer: int remaining()>();
+
+        $r18 = new java.lang.StringBuilder;
+
+     label51:
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("APK Signing Block entry #");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i3);
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" size out of range: ");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i5);
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", available: ");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i7);
+
+        $r0 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r19.<com.google.android.gms.internal.ads.zzapd: void <init>(java.lang.String)>($r0);
+
+        throw $r19;
+
+     label52:
+        $r19 = new com.google.android.gms.internal.ads.zzapd;
+
+     label53:
+        $r18 = new java.lang.StringBuilder;
+
+     label54:
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("APK Signing Block entry #");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i3);
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" size out of range: ");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l6);
+
+        $r0 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r19.<com.google.android.gms.internal.ads.zzapd: void <init>(java.lang.String)>($r0);
+
+        throw $r19;
+
+     label55:
+        $r19 = new com.google.android.gms.internal.ads.zzapd;
+
+     label56:
+        $r18 = new java.lang.StringBuilder;
+
+     label57:
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Insufficient data to read size of APK Signing Block entry #");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i3);
+
+        $r0 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r19.<com.google.android.gms.internal.ads.zzapd: void <init>(java.lang.String)>($r0);
+
+        throw $r19;
+
+     label58:
+        $r19 = new com.google.android.gms.internal.ads.zzapd;
+
+     label59:
+        specialinvoke $r19.<com.google.android.gms.internal.ads.zzapd: void <init>(java.lang.String)>("No APK Signature Scheme v2 block in APK Signing Block");
+
+        throw $r19;
+
+     label60:
+        $r13 := @caughtexception;
+
+     label61:
+        virtualinvoke $r5.<java.nio.ByteBuffer: java.nio.Buffer position(int)>(0);
+
+        virtualinvoke $r5.<java.nio.ByteBuffer: java.nio.Buffer limit(int)>($i7);
+
+        virtualinvoke $r5.<java.nio.ByteBuffer: java.nio.Buffer position(int)>($i9);
+
+        throw $r13;
+
+     label62:
+        $r20 = new java.lang.IllegalArgumentException;
+
+     label63:
+        $r18 = new java.lang.StringBuilder;
+
+     label64:
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("end > capacity: ");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i5);
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" > ");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i7);
+
+        $r0 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r20.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r0);
+
+        throw $r20;
+
+     label65:
+        $r20 = new java.lang.IllegalArgumentException;
+
+     label66:
+        $r18 = new java.lang.StringBuilder;
+
+     label67:
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("end < start: ");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i5);
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" < ");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(8);
+
+        $r0 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r20.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r0);
+
+        throw $r20;
+
+     label68:
+        $r20 = new java.lang.IllegalArgumentException;
+
+     label69:
+        specialinvoke $r20.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("ByteBuffer byte order must be little endian");
+
+        throw $r20;
+
+     label70:
+        $r19 = new com.google.android.gms.internal.ads.zzapd;
+
+     label71:
+        $r18 = new java.lang.StringBuilder;
+
+     label72:
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("APK Signing Block sizes in header and footer do not match: ");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l8);
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" vs ");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l4);
+
+        $r0 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r19.<com.google.android.gms.internal.ads.zzapd: void <init>(java.lang.String)>($r0);
+
+        throw $r19;
+
+     label73:
+        $r19 = new com.google.android.gms.internal.ads.zzapd;
+
+     label74:
+        $r18 = new java.lang.StringBuilder;
+
+     label75:
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("APK Signing Block offset out of range: ");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l6);
+
+        $r0 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r19.<com.google.android.gms.internal.ads.zzapd: void <init>(java.lang.String)>($r0);
+
+        throw $r19;
+
+     label76:
+        $r19 = new com.google.android.gms.internal.ads.zzapd;
+
+     label77:
+        $r18 = new java.lang.StringBuilder;
+
+     label78:
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("APK Signing Block size out of range: ");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l4);
+
+        $r0 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r19.<com.google.android.gms.internal.ads.zzapd: void <init>(java.lang.String)>($r0);
+
+        throw $r19;
+
+     label79:
+        $r19 = new com.google.android.gms.internal.ads.zzapd;
+
+     label80:
+        specialinvoke $r19.<com.google.android.gms.internal.ads.zzapd: void <init>(java.lang.String)>("No APK Signing Block before ZIP Central Directory");
+
+        throw $r19;
+
+     label81:
+        $r19 = new com.google.android.gms.internal.ads.zzapd;
+
+     label82:
+        $r18 = new java.lang.StringBuilder;
+
+     label83:
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("APK too small for APK Signing Block. ZIP Central Directory offset: ");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+
+        $r0 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r19.<com.google.android.gms.internal.ads.zzapd: void <init>(java.lang.String)>($r0);
+
+        throw $r19;
+
+     label84:
+        $r19 = new com.google.android.gms.internal.ads.zzapd;
+
+     label85:
+        specialinvoke $r19.<com.google.android.gms.internal.ads.zzapd: void <init>(java.lang.String)>("ZIP Central Directory is not immediately followed by End of Central Directory");
+
+        throw $r19;
+
+     label86:
+        $r19 = new com.google.android.gms.internal.ads.zzapd;
+
+     label87:
+        $r18 = new java.lang.StringBuilder;
+
+     label88:
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ZIP Central Directory offset out of range: ");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(". ZIP End of Central Directory offset: ");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        $r0 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r19.<com.google.android.gms.internal.ads.zzapd: void <init>(java.lang.String)>($r0);
+
+        throw $r19;
+
+     label89:
+        $r19 = new com.google.android.gms.internal.ads.zzapd;
+
+     label90:
+        specialinvoke $r19.<com.google.android.gms.internal.ads.zzapd: void <init>(java.lang.String)>("ZIP64 APK not supported");
+
+        throw $r19;
+
+     label91:
+        $r19 = new com.google.android.gms.internal.ads.zzapd;
+
+     label92:
+        $l0 = virtualinvoke $r16.<java.io.RandomAccessFile: long length()>();
+
+        $r18 = new java.lang.StringBuilder;
+
+     label93:
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Not an APK file: ZIP End of Central Directory record not found in file with ");
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" bytes");
+
+        $r0 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r19.<com.google.android.gms.internal.ads.zzapd: void <init>(java.lang.String)>($r0);
+
+        throw $r19;
+
+     label94:
+        $r14 := @caughtexception;
+
+     label95:
+        virtualinvoke $r16.<java.io.RandomAccessFile: void close()>();
+
+     label96:
+        goto label98;
+
+     label97:
+        $r15 := @caughtexception;
+
+     label98:
+        throw $r14;
+
+        catch java.lang.Throwable from label01 to label02 with label94;
+        catch java.lang.Throwable from label03 to label04 with label94;
+        catch java.lang.Throwable from label05 to label06 with label94;
+        catch java.lang.Throwable from label07 to label08 with label94;
+        catch java.lang.Throwable from label09 to label10 with label94;
+        catch java.lang.Throwable from label11 to label12 with label94;
+        catch java.lang.Throwable from label13 to label14 with label94;
+        catch java.lang.Throwable from label15 to label16 with label94;
+        catch java.lang.Throwable from label17 to label18 with label94;
+        catch java.lang.Throwable from label19 to label20 with label94;
+        catch java.lang.Throwable from label21 to label22 with label94;
+        catch java.lang.Throwable from label23 to label24 with label94;
+        catch java.lang.Throwable from label25 to label26 with label94;
+        catch java.lang.Throwable from label27 to label28 with label94;
+        catch java.lang.Throwable from label28 to label29 with label60;
+        catch java.lang.Throwable from label29 to label31 with label94;
+        catch java.lang.Throwable from label32 to label33 with label94;
+        catch java.lang.Throwable from label34 to label35 with label94;
+        catch java.lang.Throwable from label36 to label37 with label94;
+        catch java.lang.Throwable from label38 to label39 with label94;
+        catch java.lang.Throwable from label40 to label41 with label94;
+        catch java.lang.Throwable from label42 to label43 with label94;
+        catch java.lang.Throwable from label43 to label44 with label94;
+        catch java.io.IOException from label44 to label45 with label46;
+        catch java.lang.Throwable from label47 to label48 with label94;
+        catch java.lang.Throwable from label49 to label50 with label94;
+        catch java.lang.Throwable from label50 to label51 with label94;
+        catch java.lang.Throwable from label51 to label53 with label94;
+        catch java.lang.Throwable from label53 to label54 with label94;
+        catch java.lang.Throwable from label54 to label56 with label94;
+        catch java.lang.Throwable from label56 to label57 with label94;
+        catch java.lang.Throwable from label57 to label59 with label94;
+        catch java.lang.Throwable from label59 to label60 with label94;
+        catch java.lang.Throwable from label61 to label63 with label94;
+        catch java.lang.Throwable from label63 to label64 with label94;
+        catch java.lang.Throwable from label64 to label66 with label94;
+        catch java.lang.Throwable from label66 to label67 with label94;
+        catch java.lang.Throwable from label67 to label69 with label94;
+        catch java.lang.Throwable from label69 to label71 with label94;
+        catch java.lang.Throwable from label71 to label72 with label94;
+        catch java.lang.Throwable from label72 to label74 with label94;
+        catch java.lang.Throwable from label74 to label75 with label94;
+        catch java.lang.Throwable from label75 to label77 with label94;
+        catch java.lang.Throwable from label77 to label78 with label94;
+        catch java.lang.Throwable from label78 to label80 with label94;
+        catch java.lang.Throwable from label80 to label82 with label94;
+        catch java.lang.Throwable from label82 to label83 with label94;
+        catch java.lang.Throwable from label83 to label85 with label94;
+        catch java.lang.Throwable from label85 to label87 with label94;
+        catch java.lang.Throwable from label87 to label88 with label94;
+        catch java.lang.Throwable from label88 to label90 with label94;
+        catch java.lang.Throwable from label90 to label92 with label94;
+        catch java.lang.Throwable from label92 to label93 with label94;
+        catch java.lang.Throwable from label93 to label94 with label94;
+        catch java.io.IOException from label95 to label96 with label97;
+    }
+
+    private static int zzb(int)
+    {
+        int $i0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+        java.lang.IllegalArgumentException $r0;
+
+        $i0 := @parameter0: int;
+
+        lookupswitch($i0)
+        {
+            case 1: goto label3;
+            case 2: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        $r0 = new java.lang.IllegalArgumentException;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unknown content digest algorthm: ");
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r2);
+
+        throw $r0;
+
+     label2:
+        return 64;
+
+     label3:
+        return 32;
+    }
+
+    private static int zzc(int)
+    {
+        int $i0;
+        long $l1;
+        java.lang.String $r0, $r2;
+        java.lang.IllegalArgumentException $r1;
+
+        $i0 := @parameter0: int;
+
+        lookupswitch($i0)
+        {
+            case 257: goto label3;
+            case 258: goto label2;
+            case 259: goto label3;
+            case 260: goto label2;
+            case 513: goto label3;
+            case 514: goto label2;
+            case 769: goto label3;
+            default: goto label1;
+        };
+
+     label1:
+        $l1 = (long) $i0;
+
+        $r1 = new java.lang.IllegalArgumentException;
+
+        $r0 = staticinvoke <java.lang.Long: java.lang.String toHexString(long)>($l1);
+
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r0);
+
+        $r0 = "Unknown signature algorithm: 0x";
+
+        $r0 = virtualinvoke $r0.<java.lang.String: java.lang.String concat(java.lang.String)>($r2);
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r0);
+
+        throw $r1;
+
+     label2:
+        return 2;
+
+     label3:
+        return 1;
+    }
+
+    private static java.lang.String zzd(int)
+    {
+        int $i0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+        java.lang.IllegalArgumentException $r0;
+
+        $i0 := @parameter0: int;
+
+        lookupswitch($i0)
+        {
+            case 1: goto label3;
+            case 2: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        $r0 = new java.lang.IllegalArgumentException;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unknown content digest algorthm: ");
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r2);
+
+        throw $r0;
+
+     label2:
+        return "SHA-512";
+
+     label3:
+        return "SHA-256";
+    }
+
+    private static java.nio.ByteBuffer zze(java.nio.ByteBuffer, int) throws java.nio.BufferUnderflowException
+    {
+        java.lang.Throwable $r3;
+        java.nio.ByteBuffer $r0, $r1;
+        java.nio.BufferUnderflowException $r4;
+        java.nio.ByteOrder $r2;
+        int $i0, $i1, $i2;
+
+        $r0 := @parameter0: java.nio.ByteBuffer;
+
+        $i0 := @parameter1: int;
+
+        $i1 = virtualinvoke $r0.<java.nio.ByteBuffer: int limit()>();
+
+        $i2 = virtualinvoke $r0.<java.nio.ByteBuffer: int position()>();
+
+        $i0 = $i0 + $i2;
+
+        if $i0 < $i2 goto label4;
+
+        if $i0 > $i1 goto label4;
+
+        virtualinvoke $r0.<java.nio.ByteBuffer: java.nio.Buffer limit(int)>($i0);
+
+     label1:
+        $r1 = virtualinvoke $r0.<java.nio.ByteBuffer: java.nio.ByteBuffer slice()>();
+
+        $r2 = virtualinvoke $r0.<java.nio.ByteBuffer: java.nio.ByteOrder order()>();
+
+        virtualinvoke $r1.<java.nio.ByteBuffer: java.nio.ByteBuffer order(java.nio.ByteOrder)>($r2);
+
+        virtualinvoke $r0.<java.nio.ByteBuffer: java.nio.Buffer position(int)>($i0);
+
+     label2:
+        virtualinvoke $r0.<java.nio.ByteBuffer: java.nio.Buffer limit(int)>($i1);
+
+        return $r1;
+
+     label3:
+        $r3 := @caughtexception;
+
+        virtualinvoke $r0.<java.nio.ByteBuffer: java.nio.Buffer limit(int)>($i1);
+
+        throw $r3;
+
+     label4:
+        $r4 = new java.nio.BufferUnderflowException;
+
+        specialinvoke $r4.<java.nio.BufferUnderflowException: void <init>()>();
+
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    private static java.nio.ByteBuffer zzf(java.nio.ByteBuffer) throws java.io.IOException
+    {
+        int $i0, $i1;
+        java.io.IOException $r1;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+        java.lang.IllegalArgumentException $r4;
+        java.nio.ByteBuffer $r0;
+
+        $r0 := @parameter0: java.nio.ByteBuffer;
+
+        $i0 = virtualinvoke $r0.<java.nio.ByteBuffer: int remaining()>();
+
+        if $i0 < 4 goto label3;
+
+        $i0 = virtualinvoke $r0.<java.nio.ByteBuffer: int getInt()>();
+
+        if $i0 < 0 goto label2;
+
+        $i1 = virtualinvoke $r0.<java.nio.ByteBuffer: int remaining()>();
+
+        if $i0 > $i1 goto label1;
+
+        $r0 = staticinvoke <com.google.android.gms.internal.ads.zzapg: java.nio.ByteBuffer zze(java.nio.ByteBuffer,int)>($r0, $i0);
+
+        return $r0;
+
+     label1:
+        $r1 = new java.io.IOException;
+
+        $i1 = virtualinvoke $r0.<java.nio.ByteBuffer: int remaining()>();
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Length-prefixed field longer than remaining buffer. Field length: ");
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", remaining: ");
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r1.<java.io.IOException: void <init>(java.lang.String)>($r3);
+
+        throw $r1;
+
+     label2:
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Negative length");
+
+        throw $r4;
+
+     label3:
+        $r1 = new java.io.IOException;
+
+        $i0 = virtualinvoke $r0.<java.nio.ByteBuffer: int remaining()>();
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Remaining buffer too short to contain length of length-prefixed field. Remaining: ");
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r1.<java.io.IOException: void <init>(java.lang.String)>($r3);
+
+        throw $r1;
+    }
+
+    private static void zzg(int, byte[], int)
+    {
+        byte[] $r0;
+        byte $b2;
+        int $i0, $i1;
+
+        $i0 := @parameter0: int;
+
+        $r0 := @parameter1: byte[];
+
+        $i1 := @parameter2: int;
+
+        $i1 = $i0 & 255;
+
+        $b2 = (byte) $i1;
+
+        $r0[1] = $b2;
+
+        $i1 = $i0 >>> 8;
+
+        $i1 = $i1 & 255;
+
+        $b2 = (byte) $i1;
+
+        $r0[2] = $b2;
+
+        $i1 = $i0 >>> 16;
+
+        $i1 = $i1 & 255;
+
+        $b2 = (byte) $i1;
+
+        $r0[3] = $b2;
+
+        $i0 = $i0 >> 24;
+
+        $b2 = (byte) $i0;
+
+        $r0[4] = $b2;
+
+        return;
+    }
+
+    private static void zzh(java.util.Map, java.nio.channels.FileChannel, long, long, long, java.nio.ByteBuffer) throws java.lang.SecurityException
+    {
+        byte[] $r14, $r15;
+        long $l0, $l1, $l2;
+        java.lang.Integer $r11;
+        java.nio.ByteBuffer $r2;
+        int[] $r3;
+        java.util.Map $r0;
+        int $i3, $i4, $i5, $i6;
+        java.security.DigestException $r18;
+        java.lang.SecurityException $r16;
+        java.lang.String $r17;
+        boolean $z0;
+        java.util.Iterator $r9;
+        java.util.Set $r8;
+        com.google.android.gms.internal.ads.zzaoz[] $r12;
+        com.google.android.gms.internal.ads.zzapa $r4, $r5;
+        java.nio.ByteOrder $r6;
+        byte[][] $r13;
+        java.lang.Object $r10;
+        java.nio.channels.FileChannel $r1;
+        com.google.android.gms.internal.ads.zzaoy $r7;
+
+        $r0 := @parameter0: java.util.Map;
+
+        $r1 := @parameter1: java.nio.channels.FileChannel;
+
+        $l0 := @parameter2: long;
+
+        $l1 := @parameter3: long;
+
+        $l2 := @parameter4: long;
+
+        $r2 := @parameter5: java.nio.ByteBuffer;
+
+        $z0 = interfaceinvoke $r0.<java.util.Map: boolean isEmpty()>();
+
+        if $z0 != 0 goto label7;
+
+        $r4 = new com.google.android.gms.internal.ads.zzapa;
+
+        specialinvoke $r4.<com.google.android.gms.internal.ads.zzapa: void <init>(java.nio.channels.FileChannel,long,long)>($r1, 0L, $l0);
+
+        $l2 = $l2 - $l1;
+
+        $r5 = new com.google.android.gms.internal.ads.zzapa;
+
+        specialinvoke $r5.<com.google.android.gms.internal.ads.zzapa: void <init>(java.nio.channels.FileChannel,long,long)>($r1, $l1, $l2);
+
+        $r2 = virtualinvoke $r2.<java.nio.ByteBuffer: java.nio.ByteBuffer duplicate()>();
+
+        $r6 = <java.nio.ByteOrder: java.nio.ByteOrder LITTLE_ENDIAN>;
+
+        virtualinvoke $r2.<java.nio.ByteBuffer: java.nio.ByteBuffer order(java.nio.ByteOrder)>($r6);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzaph: void zzd(java.nio.ByteBuffer,long)>($r2, $l0);
+
+        $r7 = new com.google.android.gms.internal.ads.zzaoy;
+
+        specialinvoke $r7.<com.google.android.gms.internal.ads.zzaoy: void <init>(java.nio.ByteBuffer)>($r2);
+
+        $i3 = interfaceinvoke $r0.<java.util.Map: int size()>();
+
+        $r3 = newarray (int)[$i3];
+
+        $r8 = interfaceinvoke $r0.<java.util.Map: java.util.Set keySet()>();
+
+        $r9 = interfaceinvoke $r8.<java.util.Set: java.util.Iterator iterator()>();
+
+        $i4 = 0;
+
+        $i5 = 0;
+
+     label1:
+        $z0 = interfaceinvoke $r9.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r10 = interfaceinvoke $r9.<java.util.Iterator: java.lang.Object next()>();
+
+        $r11 = (java.lang.Integer) $r10;
+
+        $i6 = virtualinvoke $r11.<java.lang.Integer: int intValue()>();
+
+        $r3[$i5] = $i6;
+
+        $i5 = $i5 + 1;
+
+        goto label1;
+
+     label2:
+        $r12 = newarray (com.google.android.gms.internal.ads.zzaoz)[3];
+
+        $r12[0] = $r4;
+
+        $r12[1] = $r5;
+
+        $r12[2] = $r7;
+
+     label3:
+        $r13 = staticinvoke <com.google.android.gms.internal.ads.zzapg: byte[][] zzk(int[],com.google.android.gms.internal.ads.zzaoz[])>($r3, $r12);
+
+     label4:
+        if $i4 >= $i3 goto label8;
+
+        $i5 = $r3[$i4];
+
+        $r11 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i5);
+
+        $r10 = interfaceinvoke $r0.<java.util.Map: java.lang.Object get(java.lang.Object)>($r11);
+
+        $r14 = (byte[]) $r10;
+
+        $r15 = $r13[$i4];
+
+        $z0 = staticinvoke <java.security.MessageDigest: boolean isEqual(byte[],byte[])>($r14, $r15);
+
+        if $z0 == 0 goto label5;
+
+        $i4 = $i4 + 1;
+
+        goto label4;
+
+     label5:
+        $r16 = new java.lang.SecurityException;
+
+        $r17 = staticinvoke <com.google.android.gms.internal.ads.zzapg: java.lang.String zzd(int)>($i5);
+
+        $r17 = virtualinvoke $r17.<java.lang.String: java.lang.String concat(java.lang.String)>(" digest of contents did not verify");
+
+        specialinvoke $r16.<java.lang.SecurityException: void <init>(java.lang.String)>($r17);
+
+        throw $r16;
+
+     label6:
+        $r18 := @caughtexception;
+
+        $r16 = new java.lang.SecurityException;
+
+        specialinvoke $r16.<java.lang.SecurityException: void <init>(java.lang.String,java.lang.Throwable)>("Failed to compute digest(s) of contents", $r18);
+
+        throw $r16;
+
+     label7:
+        $r16 = new java.lang.SecurityException;
+
+        specialinvoke $r16.<java.lang.SecurityException: void <init>(java.lang.String)>("No digests provided");
+
+        throw $r16;
+
+     label8:
+        return;
+
+        catch java.security.DigestException from label3 to label4 with label6;
+    }
+
+    private static byte[] zzi(java.nio.ByteBuffer) throws java.io.IOException
+    {
+        byte[] $r2;
+        int $i0, $i1;
+        java.lang.StringBuilder $r0;
+        java.io.IOException $r3;
+        java.lang.String $r4;
+        java.nio.ByteBuffer $r1;
+
+        $r1 := @parameter0: java.nio.ByteBuffer;
+
+        $i0 = virtualinvoke $r1.<java.nio.ByteBuffer: int getInt()>();
+
+        if $i0 < 0 goto label2;
+
+        $i1 = virtualinvoke $r1.<java.nio.ByteBuffer: int remaining()>();
+
+        if $i0 > $i1 goto label1;
+
+        $r2 = newarray (byte)[$i0];
+
+        virtualinvoke $r1.<java.nio.ByteBuffer: java.nio.ByteBuffer get(byte[])>($r2);
+
+        return $r2;
+
+     label1:
+        $r3 = new java.io.IOException;
+
+        $i1 = virtualinvoke $r1.<java.nio.ByteBuffer: int remaining()>();
+
+        $r0 = new java.lang.StringBuilder;
+
+        specialinvoke $r0.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Underflow while reading length-prefixed value. Length: ");
+
+        virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", available: ");
+
+        virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r4 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r3.<java.io.IOException: void <init>(java.lang.String)>($r4);
+
+        throw $r3;
+
+     label2:
+        $r3 = new java.io.IOException;
+
+        specialinvoke $r3.<java.io.IOException: void <init>(java.lang.String)>("Negative length");
+
+        throw $r3;
+    }
+
+    private static java.security.cert.X509Certificate[] zzj(java.nio.ByteBuffer, java.util.Map, java.security.cert.CertificateFactory) throws java.lang.SecurityException, java.io.IOException
+    {
+        java.security.cert.X509Certificate $r23;
+        byte[] $r5, $r7, $r8;
+        java.security.cert.CertificateFactory $r2;
+        java.lang.Integer $r9;
+        java.nio.ByteBuffer $r0, $r3, $r4;
+        java.security.GeneralSecurityException $r27;
+        java.io.ByteArrayInputStream $r35;
+        java.util.Map $r1;
+        java.lang.SecurityException $r28;
+        java.security.spec.AlgorithmParameterSpec $r16;
+        boolean $z0;
+        java.security.Signature $r19;
+        java.security.spec.X509EncodedKeySpec $r32;
+        java.lang.Exception $r10, $r21;
+        java.security.KeyFactory $r17;
+        java.security.cert.Certificate $r22;
+        com.google.android.gms.internal.ads.zzape $r36;
+        java.lang.StringBuilder $r29;
+        java.security.cert.X509Certificate[] $r25;
+        java.lang.Object[] $r26;
+        java.security.spec.PSSParameterSpec $r31;
+        android.util.Pair $r13;
+        long $l5;
+        java.util.ArrayList $r6, $r20, $r33;
+        int $i0, $i1, $i2, $i3, $i4;
+        java.lang.String $r11, $r12;
+        java.security.spec.MGF1ParameterSpec $r14;
+        java.security.PublicKey $r18;
+        java.io.IOException $r34;
+        java.security.cert.CertificateException $r24;
+        java.lang.IllegalArgumentException $r30;
+        java.lang.Object $r15;
+
+        $r0 := @parameter0: java.nio.ByteBuffer;
+
+        $r1 := @parameter1: java.util.Map;
+
+        $r2 := @parameter2: java.security.cert.CertificateFactory;
+
+        $r3 = staticinvoke <com.google.android.gms.internal.ads.zzapg: java.nio.ByteBuffer zzf(java.nio.ByteBuffer)>($r0);
+
+        $r4 = staticinvoke <com.google.android.gms.internal.ads.zzapg: java.nio.ByteBuffer zzf(java.nio.ByteBuffer)>($r0);
+
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzapg: byte[] zzi(java.nio.ByteBuffer)>($r0);
+
+        $r20 = new java.util.ArrayList;
+
+        $r6 = $r20;
+
+        specialinvoke $r20.<java.util.ArrayList: void <init>()>();
+
+        $r7 = null;
+
+        $r8 = null;
+
+        $i0 = -1;
+
+        $i1 = 0;
+
+     label01:
+        $z0 = virtualinvoke $r4.<java.nio.ByteBuffer: boolean hasRemaining()>();
+
+        if $z0 == 0 goto label20;
+
+        $i1 = $i1 + 1;
+
+     label02:
+        $r0 = staticinvoke <com.google.android.gms.internal.ads.zzapg: java.nio.ByteBuffer zzf(java.nio.ByteBuffer)>($r4);
+
+        $i2 = virtualinvoke $r0.<java.nio.ByteBuffer: int remaining()>();
+
+     label03:
+        if $i2 < 8 goto label14;
+
+     label04:
+        $i2 = virtualinvoke $r0.<java.nio.ByteBuffer: int getInt()>();
+
+        $r9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i2);
+
+        interfaceinvoke $r6.<java.util.List: boolean add(java.lang.Object)>($r9);
+
+     label05:
+        lookupswitch($i2)
+        {
+            case 257: goto label07;
+            case 258: goto label07;
+            case 259: goto label07;
+            case 260: goto label07;
+            case 513: goto label07;
+            case 514: goto label07;
+            case 769: goto label07;
+            default: goto label06;
+        };
+
+     label06:
+        goto label01;
+
+     label07:
+        if $i0 == -1 goto label12;
+
+     label08:
+        $i3 = staticinvoke <com.google.android.gms.internal.ads.zzapg: int zzc(int)>($i2);
+
+        $i4 = staticinvoke <com.google.android.gms.internal.ads.zzapg: int zzc(int)>($i0);
+
+     label09:
+        lookupswitch($i3)
+        {
+            case 1: goto label11;
+            default: goto label10;
+        };
+
+     label10:
+        lookupswitch($i4)
+        {
+            case 1: goto label12;
+            default: goto label11;
+        };
+
+     label11:
+        goto label01;
+
+     label12:
+        $r8 = staticinvoke <com.google.android.gms.internal.ads.zzapg: byte[] zzi(java.nio.ByteBuffer)>($r0);
+
+     label13:
+        $i0 = $i2;
+
+        goto label01;
+
+     label14:
+        $r28 = new java.lang.SecurityException;
+
+     label15:
+        specialinvoke $r28.<java.lang.SecurityException: void <init>(java.lang.String)>("Signature record too short");
+
+     label16:
+        throw $r28;
+
+     label17:
+        $r10 := @caughtexception;
+
+        goto label19;
+
+     label18:
+        $r10 := @caughtexception;
+
+     label19:
+        $r28 = new java.lang.SecurityException;
+
+        $r29 = new java.lang.StringBuilder;
+
+        specialinvoke $r29.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to parse signature record #");
+
+        virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r11 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r28.<java.lang.SecurityException: void <init>(java.lang.String,java.lang.Throwable)>($r11, $r10);
+
+        throw $r28;
+
+     label20:
+        if $i0 != -1 goto label22;
+
+        if $i1 != 0 goto label21;
+
+        $r28 = new java.lang.SecurityException;
+
+        specialinvoke $r28.<java.lang.SecurityException: void <init>(java.lang.String)>("No signatures found");
+
+        throw $r28;
+
+     label21:
+        $r28 = new java.lang.SecurityException;
+
+        specialinvoke $r28.<java.lang.SecurityException: void <init>(java.lang.String)>("No supported signatures found");
+
+        throw $r28;
+
+     label22:
+        $r11 = "Unknown signature algorithm: 0x";
+
+        lookupswitch($i0)
+        {
+            case 257: goto label26;
+            case 258: goto label26;
+            case 259: goto label26;
+            case 260: goto label26;
+            case 513: goto label25;
+            case 514: goto label25;
+            case 769: goto label24;
+            default: goto label23;
+        };
+
+     label23:
+        $l5 = (long) $i0;
+
+        $r30 = new java.lang.IllegalArgumentException;
+
+        $r12 = staticinvoke <java.lang.Long: java.lang.String toHexString(long)>($l5);
+
+        $r12 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r12);
+
+        $r11 = virtualinvoke $r11.<java.lang.String: java.lang.String concat(java.lang.String)>($r12);
+
+        specialinvoke $r30.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r11);
+
+        throw $r30;
+
+     label24:
+        $r12 = "DSA";
+
+        goto label27;
+
+     label25:
+        $r12 = "EC";
+
+        goto label27;
+
+     label26:
+        $r12 = "RSA";
+
+     label27:
+        lookupswitch($i0)
+        {
+            case 257: goto label35;
+            case 258: goto label34;
+            case 259: goto label33;
+            case 260: goto label32;
+            case 513: goto label31;
+            case 514: goto label30;
+            case 769: goto label29;
+            default: goto label28;
+        };
+
+     label28:
+        $l5 = (long) $i0;
+
+        $r30 = new java.lang.IllegalArgumentException;
+
+        $r12 = staticinvoke <java.lang.Long: java.lang.String toHexString(long)>($l5);
+
+        $r12 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r12);
+
+        $r11 = virtualinvoke $r11.<java.lang.String: java.lang.String concat(java.lang.String)>($r12);
+
+        specialinvoke $r30.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r11);
+
+        throw $r30;
+
+     label29:
+        $r13 = staticinvoke <android.util.Pair: android.util.Pair create(java.lang.Object,java.lang.Object)>("SHA256withDSA", null);
+
+        goto label36;
+
+     label30:
+        $r13 = staticinvoke <android.util.Pair: android.util.Pair create(java.lang.Object,java.lang.Object)>("SHA512withECDSA", null);
+
+        goto label36;
+
+     label31:
+        $r13 = staticinvoke <android.util.Pair: android.util.Pair create(java.lang.Object,java.lang.Object)>("SHA256withECDSA", null);
+
+        goto label36;
+
+     label32:
+        $r13 = staticinvoke <android.util.Pair: android.util.Pair create(java.lang.Object,java.lang.Object)>("SHA512withRSA", null);
+
+        goto label36;
+
+     label33:
+        $r13 = staticinvoke <android.util.Pair: android.util.Pair create(java.lang.Object,java.lang.Object)>("SHA256withRSA", null);
+
+        goto label36;
+
+     label34:
+        $r31 = new java.security.spec.PSSParameterSpec;
+
+        $r14 = <java.security.spec.MGF1ParameterSpec: java.security.spec.MGF1ParameterSpec SHA512>;
+
+        specialinvoke $r31.<java.security.spec.PSSParameterSpec: void <init>(java.lang.String,java.lang.String,java.security.spec.AlgorithmParameterSpec,int,int)>("SHA-512", "MGF1", $r14, 64, 1);
+
+        $r13 = staticinvoke <android.util.Pair: android.util.Pair create(java.lang.Object,java.lang.Object)>("SHA512withRSA/PSS", $r31);
+
+        goto label36;
+
+     label35:
+        $r31 = new java.security.spec.PSSParameterSpec;
+
+        $r14 = <java.security.spec.MGF1ParameterSpec: java.security.spec.MGF1ParameterSpec SHA256>;
+
+        specialinvoke $r31.<java.security.spec.PSSParameterSpec: void <init>(java.lang.String,java.lang.String,java.security.spec.AlgorithmParameterSpec,int,int)>("SHA-256", "MGF1", $r14, 32, 1);
+
+        $r13 = staticinvoke <android.util.Pair: android.util.Pair create(java.lang.Object,java.lang.Object)>("SHA256withRSA/PSS", $r31);
+
+     label36:
+        $r15 = $r13.<android.util.Pair: java.lang.Object first>;
+
+        $r11 = (java.lang.String) $r15;
+
+        $r15 = $r13.<android.util.Pair: java.lang.Object second>;
+
+        $r16 = (java.security.spec.AlgorithmParameterSpec) $r15;
+
+     label37:
+        $r17 = staticinvoke <java.security.KeyFactory: java.security.KeyFactory getInstance(java.lang.String)>($r12);
+
+     label38:
+        $r32 = new java.security.spec.X509EncodedKeySpec;
+
+     label39:
+        specialinvoke $r32.<java.security.spec.X509EncodedKeySpec: void <init>(byte[])>($r5);
+
+        $r18 = virtualinvoke $r17.<java.security.KeyFactory: java.security.PublicKey generatePublic(java.security.spec.KeySpec)>($r32);
+
+        $r19 = staticinvoke <java.security.Signature: java.security.Signature getInstance(java.lang.String)>($r11);
+
+        virtualinvoke $r19.<java.security.Signature: void initVerify(java.security.PublicKey)>($r18);
+
+     label40:
+        if $r16 == null goto label42;
+
+     label41:
+        virtualinvoke $r19.<java.security.Signature: void setParameter(java.security.spec.AlgorithmParameterSpec)>($r16);
+
+     label42:
+        virtualinvoke $r19.<java.security.Signature: void update(java.nio.ByteBuffer)>($r3);
+
+        $z0 = virtualinvoke $r19.<java.security.Signature: boolean verify(byte[])>($r8);
+
+     label43:
+        if $z0 == 0 goto label68;
+
+        virtualinvoke $r3.<java.nio.ByteBuffer: java.nio.Buffer clear()>();
+
+        $r0 = staticinvoke <com.google.android.gms.internal.ads.zzapg: java.nio.ByteBuffer zzf(java.nio.ByteBuffer)>($r3);
+
+        $r33 = new java.util.ArrayList;
+
+        specialinvoke $r33.<java.util.ArrayList: void <init>()>();
+
+        $i1 = 0;
+
+     label44:
+        $z0 = virtualinvoke $r0.<java.nio.ByteBuffer: boolean hasRemaining()>();
+
+        if $z0 == 0 goto label57;
+
+        $i1 = $i1 + 1;
+
+     label45:
+        $r4 = staticinvoke <com.google.android.gms.internal.ads.zzapg: java.nio.ByteBuffer zzf(java.nio.ByteBuffer)>($r0);
+
+        $i2 = virtualinvoke $r4.<java.nio.ByteBuffer: int remaining()>();
+
+     label46:
+        if $i2 < 8 goto label51;
+
+     label47:
+        $i2 = virtualinvoke $r4.<java.nio.ByteBuffer: int getInt()>();
+
+        $r9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i2);
+
+        interfaceinvoke $r33.<java.util.List: boolean add(java.lang.Object)>($r9);
+
+     label48:
+        if $i2 != $i0 goto label44;
+
+     label49:
+        $r7 = staticinvoke <com.google.android.gms.internal.ads.zzapg: byte[] zzi(java.nio.ByteBuffer)>($r4);
+
+     label50:
+        goto label44;
+
+     label51:
+        $r34 = new java.io.IOException;
+
+     label52:
+        specialinvoke $r34.<java.io.IOException: void <init>(java.lang.String)>("Record too short");
+
+     label53:
+        throw $r34;
+
+     label54:
+        $r21 := @caughtexception;
+
+        goto label56;
+
+     label55:
+        $r21 := @caughtexception;
+
+     label56:
+        $r34 = new java.io.IOException;
+
+        $r29 = new java.lang.StringBuilder;
+
+        specialinvoke $r29.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to parse digest record #");
+
+        virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r11 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r34.<java.io.IOException: void <init>(java.lang.String,java.lang.Throwable)>($r11, $r21);
+
+        throw $r34;
+
+     label57:
+        $z0 = virtualinvoke $r6.<java.lang.Object: boolean equals(java.lang.Object)>($r33);
+
+        if $z0 == 0 goto label67;
+
+        $i0 = staticinvoke <com.google.android.gms.internal.ads.zzapg: int zzc(int)>($i0);
+
+        $r9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r15 = interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r9, $r7);
+
+        $r8 = (byte[]) $r15;
+
+        if $r8 == null goto label59;
+
+        $z0 = staticinvoke <java.security.MessageDigest: boolean isEqual(byte[],byte[])>($r8, $r7);
+
+        if $z0 == 0 goto label58;
+
+        goto label59;
+
+     label58:
+        $r28 = new java.lang.SecurityException;
+
+        $r11 = staticinvoke <com.google.android.gms.internal.ads.zzapg: java.lang.String zzd(int)>($i0);
+
+        $r11 = virtualinvoke $r11.<java.lang.String: java.lang.String concat(java.lang.String)>(" contents digest does not match the digest specified by a preceding signer");
+
+        specialinvoke $r28.<java.lang.SecurityException: void <init>(java.lang.String)>($r11);
+
+        throw $r28;
+
+     label59:
+        $r0 = staticinvoke <com.google.android.gms.internal.ads.zzapg: java.nio.ByteBuffer zzf(java.nio.ByteBuffer)>($r3);
+
+        $r20 = new java.util.ArrayList;
+
+        $r6 = $r20;
+
+        specialinvoke $r20.<java.util.ArrayList: void <init>()>();
+
+        $i0 = 0;
+
+     label60:
+        $z0 = virtualinvoke $r0.<java.nio.ByteBuffer: boolean hasRemaining()>();
+
+        if $z0 == 0 goto label64;
+
+        $i0 = $i0 + 1;
+
+        $r7 = staticinvoke <com.google.android.gms.internal.ads.zzapg: byte[] zzi(java.nio.ByteBuffer)>($r0);
+
+        $r35 = new java.io.ByteArrayInputStream;
+
+     label61:
+        specialinvoke $r35.<java.io.ByteArrayInputStream: void <init>(byte[])>($r7);
+
+        $r22 = virtualinvoke $r2.<java.security.cert.CertificateFactory: java.security.cert.Certificate generateCertificate(java.io.InputStream)>($r35);
+
+     label62:
+        $r23 = (java.security.cert.X509Certificate) $r22;
+
+        $r36 = new com.google.android.gms.internal.ads.zzape;
+
+        specialinvoke $r36.<com.google.android.gms.internal.ads.zzape: void <init>(java.security.cert.X509Certificate,byte[])>($r23, $r7);
+
+        interfaceinvoke $r6.<java.util.List: boolean add(java.lang.Object)>($r36);
+
+        goto label60;
+
+     label63:
+        $r24 := @caughtexception;
+
+        $r28 = new java.lang.SecurityException;
+
+        $r29 = new java.lang.StringBuilder;
+
+        specialinvoke $r29.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to decode certificate #");
+
+        virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r11 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r28.<java.lang.SecurityException: void <init>(java.lang.String,java.lang.Throwable)>($r11, $r24);
+
+        throw $r28;
+
+     label64:
+        $z0 = interfaceinvoke $r6.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label66;
+
+        $r15 = interfaceinvoke $r6.<java.util.List: java.lang.Object get(int)>(0);
+
+        $r23 = (java.security.cert.X509Certificate) $r15;
+
+        $r18 = virtualinvoke $r23.<java.security.cert.X509Certificate: java.security.PublicKey getPublicKey()>();
+
+        $r7 = interfaceinvoke $r18.<java.security.PublicKey: byte[] getEncoded()>();
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r5, $r7);
+
+        if $z0 == 0 goto label65;
+
+        $i0 = interfaceinvoke $r6.<java.util.List: int size()>();
+
+        $r25 = newarray (java.security.cert.X509Certificate)[$i0];
+
+        $r26 = interfaceinvoke $r6.<java.util.List: java.lang.Object[] toArray(java.lang.Object[])>($r25);
+
+        $r25 = (java.security.cert.X509Certificate[]) $r26;
+
+        return $r25;
+
+     label65:
+        $r28 = new java.lang.SecurityException;
+
+        specialinvoke $r28.<java.lang.SecurityException: void <init>(java.lang.String)>("Public key mismatch between certificate and signature record");
+
+        throw $r28;
+
+     label66:
+        $r28 = new java.lang.SecurityException;
+
+        specialinvoke $r28.<java.lang.SecurityException: void <init>(java.lang.String)>("No certificates listed");
+
+        throw $r28;
+
+     label67:
+        $r28 = new java.lang.SecurityException;
+
+        specialinvoke $r28.<java.lang.SecurityException: void <init>(java.lang.String)>("Signature algorithms don\'t match between digests and signatures records");
+
+        throw $r28;
+
+     label68:
+        $r11 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r11);
+
+        $r28 = new java.lang.SecurityException;
+
+        $r11 = virtualinvoke $r11.<java.lang.String: java.lang.String concat(java.lang.String)>(" signature did not verify");
+
+        specialinvoke $r28.<java.lang.SecurityException: void <init>(java.lang.String)>($r11);
+
+        throw $r28;
+
+     label69:
+        $r27 := @caughtexception;
+
+        goto label74;
+
+     label70:
+        $r27 := @caughtexception;
+
+        goto label74;
+
+     label71:
+        $r27 := @caughtexception;
+
+        goto label74;
+
+     label72:
+        $r27 := @caughtexception;
+
+        goto label74;
+
+     label73:
+        $r27 := @caughtexception;
+
+     label74:
+        $r28 = new java.lang.SecurityException;
+
+        $r29 = new java.lang.StringBuilder;
+
+        specialinvoke $r29.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to verify ");
+
+        virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r11);
+
+        virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" signature");
+
+        $r11 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r28.<java.lang.SecurityException: void <init>(java.lang.String,java.lang.Throwable)>($r11, $r27);
+
+        throw $r28;
+
+        catch java.io.IOException from label02 to label03 with label18;
+        catch java.io.IOException from label04 to label05 with label18;
+        catch java.io.IOException from label08 to label09 with label18;
+        catch java.io.IOException from label12 to label13 with label18;
+        catch java.io.IOException from label15 to label16 with label18;
+        catch java.nio.BufferUnderflowException from label02 to label03 with label17;
+        catch java.nio.BufferUnderflowException from label04 to label05 with label17;
+        catch java.nio.BufferUnderflowException from label08 to label09 with label17;
+        catch java.nio.BufferUnderflowException from label12 to label13 with label17;
+        catch java.nio.BufferUnderflowException from label15 to label16 with label17;
+        catch java.security.NoSuchAlgorithmException from label37 to label38 with label73;
+        catch java.security.NoSuchAlgorithmException from label39 to label40 with label73;
+        catch java.security.NoSuchAlgorithmException from label41 to label43 with label73;
+        catch java.security.spec.InvalidKeySpecException from label37 to label38 with label72;
+        catch java.security.spec.InvalidKeySpecException from label39 to label40 with label72;
+        catch java.security.spec.InvalidKeySpecException from label41 to label43 with label72;
+        catch java.security.InvalidKeyException from label37 to label38 with label71;
+        catch java.security.InvalidKeyException from label39 to label40 with label71;
+        catch java.security.InvalidKeyException from label41 to label43 with label71;
+        catch java.security.InvalidAlgorithmParameterException from label37 to label38 with label70;
+        catch java.security.InvalidAlgorithmParameterException from label39 to label40 with label70;
+        catch java.security.InvalidAlgorithmParameterException from label41 to label43 with label70;
+        catch java.security.SignatureException from label37 to label38 with label69;
+        catch java.security.SignatureException from label39 to label40 with label69;
+        catch java.security.SignatureException from label41 to label43 with label69;
+        catch java.io.IOException from label45 to label46 with label55;
+        catch java.io.IOException from label47 to label48 with label55;
+        catch java.io.IOException from label49 to label50 with label55;
+        catch java.io.IOException from label52 to label54 with label55;
+        catch java.nio.BufferUnderflowException from label45 to label46 with label54;
+        catch java.nio.BufferUnderflowException from label47 to label48 with label54;
+        catch java.nio.BufferUnderflowException from label49 to label50 with label54;
+        catch java.nio.BufferUnderflowException from label52 to label53 with label54;
+        catch java.security.cert.CertificateException from label61 to label62 with label63;
+    }
+
+    private static byte[][] zzk(int[], com.google.android.gms.internal.ads.zzaoz[]) throws java.security.DigestException
+    {
+        byte[] $r4, $r9;
+        java.security.MessageDigest $r7;
+        long $l3, $l5, $l8;
+        byte $b0;
+        int[] $r0;
+        int $i1, $i2, $i4, $i6, $i7, $i9, $i10, $i11;
+        java.security.DigestException $r15;
+        java.lang.String $r6;
+        java.io.IOException $r10;
+        java.lang.RuntimeException $r13;
+        com.google.android.gms.internal.ads.zzaoz[] $r1;
+        byte[][] $r3, $r11;
+        java.security.MessageDigest[] $r5;
+        java.security.NoSuchAlgorithmException $r8, $r12;
+        java.lang.StringBuilder $r14;
+        com.google.android.gms.internal.ads.zzaoz $r2;
+
+        $r0 := @parameter0: int[];
+
+        $r1 := @parameter1: com.google.android.gms.internal.ads.zzaoz[];
+
+        $i2 = 0;
+
+        $l3 = 0L;
+
+        $i4 = 0;
+
+     label01:
+        if $i4 >= 3 goto label02;
+
+        $r2 = $r1[$i4];
+
+        $l5 = interfaceinvoke $r2.<com.google.android.gms.internal.ads.zzaoz: long zza()>();
+
+        $l5 = $l5 + 1048575L;
+
+        $l5 = $l5 / 1048576L;
+
+        $l3 = $l3 + $l5;
+
+        $i4 = $i4 + 1;
+
+        goto label01;
+
+     label02:
+        $b0 = $l3 cmp 2097151L;
+
+        $i4 = (int) $b0;
+
+        if $i4 >= 0 goto label26;
+
+        $i4 = lengthof $r0;
+
+        $r3 = newarray (byte[])[$i4];
+
+        $i6 = 0;
+
+     label03:
+        $i4 = lengthof $r0;
+
+        if $i6 >= $i4 goto label04;
+
+        $i4 = (int) $l3;
+
+        $i7 = $r0[$i6];
+
+        $i7 = staticinvoke <com.google.android.gms.internal.ads.zzapg: int zzb(int)>($i7);
+
+        $i7 = $i7 * $i4;
+
+        $i7 = $i7 + 5;
+
+        $r4 = newarray (byte)[$i7];
+
+        $r4[0] = 90;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzapg: void zzg(int,byte[],int)>($i4, $r4, 1);
+
+        $r3[$i6] = $r4;
+
+        $i6 = $i6 + 1;
+
+        goto label03;
+
+     label04:
+        $r4 = newarray (byte)[5];
+
+        $r4[0] = -91;
+
+        $r5 = newarray (java.security.MessageDigest)[$i4];
+
+        $i6 = 0;
+
+     label05:
+        $i7 = lengthof $r0;
+
+        if $i6 >= $i7 goto label09;
+
+        $i7 = $r0[$i6];
+
+        $r6 = staticinvoke <com.google.android.gms.internal.ads.zzapg: java.lang.String zzd(int)>($i7);
+
+     label06:
+        $r7 = staticinvoke <java.security.MessageDigest: java.security.MessageDigest getInstance(java.lang.String)>($r6);
+
+     label07:
+        $r5[$i6] = $r7;
+
+        $i6 = $i6 + 1;
+
+        goto label05;
+
+     label08:
+        $r8 := @caughtexception;
+
+        $r6 = virtualinvoke $r6.<java.lang.String: java.lang.String concat(java.lang.String)>(" digest not supported");
+
+        $r13 = new java.lang.RuntimeException;
+
+        specialinvoke $r13.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>($r6, $r8);
+
+        throw $r13;
+
+     label09:
+        $i6 = 0;
+
+        $i7 = 0;
+
+     label10:
+        if $i6 >= 3 goto label21;
+
+        $r2 = $r1[$i6];
+
+        $l5 = 0L;
+
+        $l3 = interfaceinvoke $r2.<com.google.android.gms.internal.ads.zzaoz: long zza()>();
+
+     label11:
+        $b0 = $l3 cmp 0L;
+
+        $i9 = (int) $b0;
+
+        if $i9 <= 0 goto label20;
+
+        $l8 = staticinvoke <java.lang.Math: long min(long,long)>($l3, 1048576L);
+
+        $i9 = (int) $l8;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzapg: void zzg(int,byte[],int)>($i9, $r4, 1);
+
+        $i10 = 0;
+
+     label12:
+        if $i10 >= $i4 goto label13;
+
+        $r7 = $r5[$i10];
+
+        virtualinvoke $r7.<java.security.MessageDigest: void update(byte[])>($r4);
+
+        $i10 = $i10 + 1;
+
+        goto label12;
+
+     label13:
+        $l8 = $l5;
+
+     label14:
+        interfaceinvoke $r2.<com.google.android.gms.internal.ads.zzaoz: void zzb(java.security.MessageDigest[],long,int)>($r5, $l5, $i9);
+
+     label15:
+        $i10 = 0;
+
+     label16:
+        $i11 = lengthof $r0;
+
+        if $i10 >= $i11 goto label18;
+
+        $i11 = $r0[$i10];
+
+        $r9 = $r3[$i10];
+
+        $i11 = staticinvoke <com.google.android.gms.internal.ads.zzapg: int zzb(int)>($i11);
+
+        $r7 = $r5[$i10];
+
+        $i1 = $i7 * $i11;
+
+        $i1 = $i1 + 5;
+
+        $i1 = virtualinvoke $r7.<java.security.MessageDigest: int digest(byte[],int,int)>($r9, $i1, $i11);
+
+        if $i1 != $i11 goto label17;
+
+        $i10 = $i10 + 1;
+
+        goto label16;
+
+     label17:
+        $r13 = new java.lang.RuntimeException;
+
+        $r6 = virtualinvoke $r7.<java.security.MessageDigest: java.lang.String getAlgorithm()>();
+
+        $r14 = new java.lang.StringBuilder;
+
+        specialinvoke $r14.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unexpected output size of ");
+
+        virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" digest: ");
+
+        virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r6 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r13.<java.lang.RuntimeException: void <init>(java.lang.String)>($r6);
+
+        throw $r13;
+
+     label18:
+        $l5 = (long) $i9;
+
+        $l3 = $l3 - $l5;
+
+        $i7 = $i7 + 1;
+
+        $l5 = $l8 + $l5;
+
+        goto label11;
+
+     label19:
+        $r10 := @caughtexception;
+
+        $r15 = new java.security.DigestException;
+
+        $r14 = new java.lang.StringBuilder;
+
+        specialinvoke $r14.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to digest chunk #");
+
+        virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i7);
+
+        virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" of section #");
+
+        virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i2);
+
+        $r6 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r15.<java.security.DigestException: void <init>(java.lang.String,java.lang.Throwable)>($r6, $r10);
+
+        throw $r15;
+
+     label20:
+        $i2 = $i2 + 1;
+
+        $i6 = $i6 + 1;
+
+        goto label10;
+
+     label21:
+        $i2 = lengthof $r0;
+
+        $r11 = newarray (byte[])[$i2];
+
+        $i2 = 0;
+
+     label22:
+        $i4 = lengthof $r0;
+
+        if $i2 >= $i4 goto label27;
+
+        $i4 = $r0[$i2];
+
+        $r4 = $r3[$i2];
+
+        $r6 = staticinvoke <com.google.android.gms.internal.ads.zzapg: java.lang.String zzd(int)>($i4);
+
+     label23:
+        $r7 = staticinvoke <java.security.MessageDigest: java.security.MessageDigest getInstance(java.lang.String)>($r6);
+
+     label24:
+        $r4 = virtualinvoke $r7.<java.security.MessageDigest: byte[] digest(byte[])>($r4);
+
+        $r11[$i2] = $r4;
+
+        $i2 = $i2 + 1;
+
+        goto label22;
+
+     label25:
+        $r12 := @caughtexception;
+
+        $r6 = virtualinvoke $r6.<java.lang.String: java.lang.String concat(java.lang.String)>(" digest not supported");
+
+        $r13 = new java.lang.RuntimeException;
+
+        specialinvoke $r13.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>($r6, $r12);
+
+        throw $r13;
+
+     label26:
+        $r15 = new java.security.DigestException;
+
+        $r14 = new java.lang.StringBuilder;
+
+        specialinvoke $r14.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Too many chunks: ");
+
+        virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l3);
+
+        $r6 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r15.<java.security.DigestException: void <init>(java.lang.String)>($r6);
+
+        throw $r15;
+
+     label27:
+        return $r11;
+
+        catch java.security.NoSuchAlgorithmException from label06 to label07 with label08;
+        catch java.io.IOException from label14 to label15 with label19;
+        catch java.security.NoSuchAlgorithmException from label23 to label24 with label25;
+    }
+
+    private static java.security.cert.X509Certificate[][] zzl(java.nio.channels.FileChannel, com.google.android.gms.internal.ads.zzapc) throws java.lang.SecurityException
+    {
+        java.lang.Object[] $r13;
+        java.security.cert.CertificateFactory $r4;
+        java.util.HashMap $r3;
+        long $l1, $l2, $l3;
+        java.nio.ByteBuffer $r5, $r6;
+        java.util.ArrayList $r0;
+        int $i0;
+        java.lang.SecurityException $r9;
+        java.lang.String $r11;
+        boolean $z0;
+        java.io.IOException $r14;
+        java.security.cert.CertificateException $r15;
+        java.lang.RuntimeException $r16;
+        java.lang.Exception $r8;
+        java.security.cert.X509Certificate[][] $r12;
+        com.google.android.gms.internal.ads.zzapc $r2;
+        java.lang.StringBuilder $r10;
+        java.nio.channels.FileChannel $r1;
+        java.security.cert.X509Certificate[] $r7;
+
+        $r1 := @parameter0: java.nio.channels.FileChannel;
+
+        $r2 := @parameter1: com.google.android.gms.internal.ads.zzapc;
+
+        $r3 = new java.util.HashMap;
+
+        specialinvoke $r3.<java.util.HashMap: void <init>()>();
+
+        $r0 = new java.util.ArrayList;
+
+        specialinvoke $r0.<java.util.ArrayList: void <init>()>();
+
+     label01:
+        $r4 = staticinvoke <java.security.cert.CertificateFactory: java.security.cert.CertificateFactory getInstance(java.lang.String)>("X.509");
+
+     label02:
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzapc: java.nio.ByteBuffer zze(com.google.android.gms.internal.ads.zzapc)>($r2);
+
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzapg: java.nio.ByteBuffer zzf(java.nio.ByteBuffer)>($r5);
+
+     label03:
+        $i0 = 0;
+
+     label04:
+        $z0 = virtualinvoke $r5.<java.nio.ByteBuffer: boolean hasRemaining()>();
+
+        if $z0 == 0 goto label11;
+
+        $i0 = $i0 + 1;
+
+     label05:
+        $r6 = staticinvoke <com.google.android.gms.internal.ads.zzapg: java.nio.ByteBuffer zzf(java.nio.ByteBuffer)>($r5);
+
+        $r7 = staticinvoke <com.google.android.gms.internal.ads.zzapg: java.security.cert.X509Certificate[] zzj(java.nio.ByteBuffer,java.util.Map,java.security.cert.CertificateFactory)>($r6, $r3, $r4);
+
+        interfaceinvoke $r0.<java.util.List: boolean add(java.lang.Object)>($r7);
+
+     label06:
+        goto label04;
+
+     label07:
+        $r8 := @caughtexception;
+
+        goto label10;
+
+     label08:
+        $r8 := @caughtexception;
+
+        goto label10;
+
+     label09:
+        $r8 := @caughtexception;
+
+     label10:
+        $r9 = new java.lang.SecurityException;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to parse/verify signer #");
+
+        virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" block");
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r9.<java.lang.SecurityException: void <init>(java.lang.String,java.lang.Throwable)>($r11, $r8);
+
+        throw $r9;
+
+     label11:
+        if $i0 <= 0 goto label13;
+
+        $z0 = interfaceinvoke $r3.<java.util.Map: boolean isEmpty()>();
+
+        if $z0 != 0 goto label12;
+
+        $l1 = staticinvoke <com.google.android.gms.internal.ads.zzapc: long zza(com.google.android.gms.internal.ads.zzapc)>($r2);
+
+        $l2 = staticinvoke <com.google.android.gms.internal.ads.zzapc: long zzb(com.google.android.gms.internal.ads.zzapc)>($r2);
+
+        $l3 = staticinvoke <com.google.android.gms.internal.ads.zzapc: long zzc(com.google.android.gms.internal.ads.zzapc)>($r2);
+
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzapc: java.nio.ByteBuffer zzd(com.google.android.gms.internal.ads.zzapc)>($r2);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzapg: void zzh(java.util.Map,java.nio.channels.FileChannel,long,long,long,java.nio.ByteBuffer)>($r3, $r1, $l1, $l2, $l3, $r5);
+
+        $i0 = interfaceinvoke $r0.<java.util.List: int size()>();
+
+        $r12 = newarray (java.security.cert.X509Certificate[])[$i0];
+
+        $r13 = interfaceinvoke $r0.<java.util.List: java.lang.Object[] toArray(java.lang.Object[])>($r12);
+
+        $r12 = (java.security.cert.X509Certificate[][]) $r13;
+
+        return $r12;
+
+     label12:
+        $r9 = new java.lang.SecurityException;
+
+        specialinvoke $r9.<java.lang.SecurityException: void <init>(java.lang.String)>("No content digests found");
+
+        throw $r9;
+
+     label13:
+        $r9 = new java.lang.SecurityException;
+
+        specialinvoke $r9.<java.lang.SecurityException: void <init>(java.lang.String)>("No signers found");
+
+        throw $r9;
+
+     label14:
+        $r14 := @caughtexception;
+
+        $r9 = new java.lang.SecurityException;
+
+        specialinvoke $r9.<java.lang.SecurityException: void <init>(java.lang.String,java.lang.Throwable)>("Failed to read list of signers", $r14);
+
+        throw $r9;
+
+     label15:
+        $r15 := @caughtexception;
+
+        $r16 = new java.lang.RuntimeException;
+
+        specialinvoke $r16.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("Failed to obtain X.509 CertificateFactory", $r15);
+
+        throw $r16;
+
+        catch java.security.cert.CertificateException from label01 to label02 with label15;
+        catch java.io.IOException from label02 to label03 with label14;
+        catch java.io.IOException from label05 to label06 with label09;
+        catch java.nio.BufferUnderflowException from label05 to label06 with label08;
+        catch java.lang.SecurityException from label05 to label06 with label07;
+    }
+}

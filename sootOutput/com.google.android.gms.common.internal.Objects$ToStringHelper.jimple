@@ -1,0 +1,132 @@
+public final class com.google.android.gms.common.internal.Objects$ToStringHelper extends java.lang.Object
+{
+    private final java.util.List zza;
+    private final java.lang.Object zzb;
+
+    void <init>(java.lang.Object, com.google.android.gms.common.internal.zzai)
+    {
+        com.google.android.gms.common.internal.zzai $r1;
+        com.google.android.gms.common.internal.Objects$ToStringHelper r0;
+        java.lang.Object $r2;
+        java.util.ArrayList $r3;
+
+        r0 := @this: com.google.android.gms.common.internal.Objects$ToStringHelper;
+
+        $r2 := @parameter0: java.lang.Object;
+
+        $r1 := @parameter1: com.google.android.gms.common.internal.zzai;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        staticinvoke <com.google.android.gms.common.internal.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r2);
+
+        r0.<com.google.android.gms.common.internal.Objects$ToStringHelper: java.lang.Object zzb> = $r2;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.google.android.gms.common.internal.Objects$ToStringHelper: java.util.List zza> = $r3;
+
+        return;
+    }
+
+    public com.google.android.gms.common.internal.Objects$ToStringHelper add(java.lang.String, java.lang.Object)
+    {
+        java.util.List $r1;
+        com.google.android.gms.common.internal.Objects$ToStringHelper r0;
+        java.lang.StringBuilder $r2;
+        java.lang.Object $r4;
+        java.lang.String $r3, $r5;
+
+        r0 := @this: com.google.android.gms.common.internal.Objects$ToStringHelper;
+
+        $r3 := @parameter0: java.lang.String;
+
+        $r4 := @parameter1: java.lang.Object;
+
+        $r1 = r0.<com.google.android.gms.common.internal.Objects$ToStringHelper: java.util.List zza>;
+
+        staticinvoke <com.google.android.gms.common.internal.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r3);
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("=");
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke $r1.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+        return r0;
+    }
+
+    public java.lang.String toString()
+    {
+        com.google.android.gms.common.internal.Objects$ToStringHelper r0;
+        java.util.List $r4;
+        int $i0, $i1, $i2;
+        java.lang.Object $r1;
+        java.lang.Class $r2;
+        java.lang.StringBuilder $r5;
+        java.lang.String $r3;
+
+        r0 := @this: com.google.android.gms.common.internal.Objects$ToStringHelper;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(int)>(100);
+
+        $r1 = r0.<com.google.android.gms.common.internal.Objects$ToStringHelper: java.lang.Object zzb>;
+
+        $r2 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(123);
+
+        $r4 = r0.<com.google.android.gms.common.internal.Objects$ToStringHelper: java.util.List zza>;
+
+        $i0 = interfaceinvoke $r4.<java.util.List: int size()>();
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label3;
+
+        $r4 = r0.<com.google.android.gms.common.internal.Objects$ToStringHelper: java.util.List zza>;
+
+        $r1 = interfaceinvoke $r4.<java.util.List: java.lang.Object get(int)>($i1);
+
+        $r3 = (java.lang.String) $r1;
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $i2 = $i0 + -1;
+
+        if $i1 >= $i2 goto label2;
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", ");
+
+     label2:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(125);
+
+        $r3 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+}

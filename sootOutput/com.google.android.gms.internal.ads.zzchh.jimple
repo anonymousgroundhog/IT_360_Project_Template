@@ -1,0 +1,175 @@
+public final class com.google.android.gms.internal.ads.zzchh extends java.lang.Object
+{
+    private long zza;
+
+    public void <init>()
+    {
+        com.google.android.gms.internal.ads.zzchh r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzchh;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public final long zza(java.nio.ByteBuffer)
+    {
+        long $l0, $l2;
+        java.nio.ByteBuffer $r1;
+        byte $b1;
+        int $i3;
+        boolean $z0;
+        com.google.android.gms.internal.ads.zzchg $r11;
+        com.google.android.gms.internal.ads.zzarp $r5;
+        java.util.Iterator $r4;
+        com.google.android.gms.internal.ads.zzchj $r2;
+        com.google.android.gms.internal.ads.zzchh r0;
+        com.google.android.gms.internal.ads.zzark $r12;
+        java.io.IOException $r9;
+        java.lang.RuntimeException $r10;
+        com.google.android.gms.internal.ads.zzaro $r8;
+        com.google.android.gms.internal.ads.zzarm $r7;
+        java.util.List $r3;
+        java.lang.Object $r6;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzchh;
+
+        $r1 := @parameter0: java.nio.ByteBuffer;
+
+        $l0 = r0.<com.google.android.gms.internal.ads.zzchh: long zza>;
+
+        $b1 = $l0 cmp 0L;
+
+        $i3 = (int) $b1;
+
+        if $i3 <= 0 goto label01;
+
+        return $l0;
+
+     label01:
+        $r1 = virtualinvoke $r1.<java.nio.ByteBuffer: java.nio.ByteBuffer duplicate()>();
+
+        virtualinvoke $r1.<java.nio.ByteBuffer: java.nio.Buffer flip()>();
+
+     label02:
+        $r11 = new com.google.android.gms.internal.ads.zzchg;
+
+     label03:
+        specialinvoke $r11.<com.google.android.gms.internal.ads.zzchg: void <init>(java.nio.ByteBuffer)>($r1);
+
+     label04:
+        $r12 = new com.google.android.gms.internal.ads.zzark;
+
+        $r2 = <com.google.android.gms.internal.ads.zzchj: com.google.android.gms.internal.ads.zzchj zzb>;
+
+     label05:
+        specialinvoke $r12.<com.google.android.gms.internal.ads.zzark: void <init>(com.google.android.gms.internal.ads.zzhgp,com.google.android.gms.internal.ads.zzarj)>($r11, $r2);
+
+        $r3 = virtualinvoke $r12.<com.google.android.gms.internal.ads.zzhgo: java.util.List zze()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.List: java.util.Iterator iterator()>();
+
+     label06:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+     label07:
+        $r5 = null;
+
+        if $z0 == 0 goto label13;
+
+     label08:
+        $r6 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+     label09:
+        $r7 = (com.google.android.gms.internal.ads.zzarm) $r6;
+
+     label10:
+        $z0 = $r7 instanceof com.google.android.gms.internal.ads.zzaro;
+
+        if $z0 == 0 goto label06;
+
+     label11:
+        $r8 = (com.google.android.gms.internal.ads.zzaro) $r7;
+
+     label12:
+        goto label14;
+
+     label13:
+        $r8 = null;
+
+     label14:
+        $r3 = virtualinvoke $r8.<com.google.android.gms.internal.ads.zzhgo: java.util.List zze()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.List: java.util.Iterator iterator()>();
+
+     label15:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+     label16:
+        if $z0 == 0 goto label22;
+
+     label17:
+        $r6 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+     label18:
+        $r7 = (com.google.android.gms.internal.ads.zzarm) $r6;
+
+     label19:
+        $z0 = $r7 instanceof com.google.android.gms.internal.ads.zzarp;
+
+        if $z0 == 0 goto label15;
+
+     label20:
+        $r5 = (com.google.android.gms.internal.ads.zzarp) $r7;
+
+     label21:
+        goto label22;
+
+     label22:
+        $l0 = virtualinvoke $r5.<com.google.android.gms.internal.ads.zzarp: long zzd()>();
+
+     label23:
+        $l0 = $l0 * 1000L;
+
+     label24:
+        $l2 = virtualinvoke $r5.<com.google.android.gms.internal.ads.zzarp: long zze()>();
+
+     label25:
+        $l0 = $l0 / $l2;
+
+        r0.<com.google.android.gms.internal.ads.zzchh: long zza> = $l0;
+
+     label26:
+        return $l0;
+
+     label27:
+        $r9 := @caughtexception;
+
+        return 0L;
+
+     label28:
+        $r10 := @caughtexception;
+
+        return 0L;
+
+        catch java.lang.RuntimeException from label01 to label02 with label28;
+        catch java.lang.RuntimeException from label03 to label04 with label28;
+        catch java.lang.RuntimeException from label05 to label07 with label28;
+        catch java.lang.RuntimeException from label08 to label10 with label28;
+        catch java.lang.RuntimeException from label11 to label12 with label28;
+        catch java.lang.RuntimeException from label14 to label16 with label28;
+        catch java.lang.RuntimeException from label17 to label19 with label28;
+        catch java.lang.RuntimeException from label20 to label21 with label28;
+        catch java.lang.RuntimeException from label22 to label23 with label28;
+        catch java.lang.RuntimeException from label24 to label26 with label28;
+        catch java.io.IOException from label01 to label02 with label27;
+        catch java.io.IOException from label03 to label04 with label27;
+        catch java.io.IOException from label05 to label07 with label27;
+        catch java.io.IOException from label08 to label09 with label27;
+        catch java.io.IOException from label14 to label16 with label27;
+        catch java.io.IOException from label17 to label18 with label27;
+        catch java.io.IOException from label22 to label23 with label27;
+        catch java.io.IOException from label24 to label25 with label27;
+    }
+}

@@ -1,0 +1,84 @@
+public final class kotlinx.coroutines.flow.FlowKt__ZipKt$combine$$inlined$unsafeFlow$1 extends java.lang.Object implements kotlinx.coroutines.flow.Flow
+{
+    final kotlinx.coroutines.flow.Flow $flow$inlined;
+    final kotlinx.coroutines.flow.Flow $this_combine$inlined;
+    final kotlin.jvm.functions.Function3 $transform$inlined;
+
+    public void <init>(kotlinx.coroutines.flow.Flow, kotlinx.coroutines.flow.Flow, kotlin.jvm.functions.Function3)
+    {
+        kotlinx.coroutines.flow.Flow $r1, $r2;
+        kotlinx.coroutines.flow.FlowKt__ZipKt$combine$$inlined$unsafeFlow$1 r0;
+        kotlin.jvm.functions.Function3 $r3;
+
+        r0 := @this: kotlinx.coroutines.flow.FlowKt__ZipKt$combine$$inlined$unsafeFlow$1;
+
+        $r1 := @parameter0: kotlinx.coroutines.flow.Flow;
+
+        $r2 := @parameter1: kotlinx.coroutines.flow.Flow;
+
+        $r3 := @parameter2: kotlin.jvm.functions.Function3;
+
+        r0.<kotlinx.coroutines.flow.FlowKt__ZipKt$combine$$inlined$unsafeFlow$1: kotlinx.coroutines.flow.Flow $this_combine$inlined> = $r1;
+
+        r0.<kotlinx.coroutines.flow.FlowKt__ZipKt$combine$$inlined$unsafeFlow$1: kotlinx.coroutines.flow.Flow $flow$inlined> = $r2;
+
+        r0.<kotlinx.coroutines.flow.FlowKt__ZipKt$combine$$inlined$unsafeFlow$1: kotlin.jvm.functions.Function3 $transform$inlined> = $r3;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.Object collect(kotlinx.coroutines.flow.FlowCollector, kotlin.coroutines.Continuation)
+    {
+        kotlinx.coroutines.flow.FlowKt__ZipKt$combine$1$1 $r7;
+        kotlin.coroutines.Continuation $r2;
+        kotlinx.coroutines.flow.Flow[] $r5;
+        kotlin.jvm.functions.Function3 $r8;
+        kotlin.jvm.functions.Function0 $r6;
+        kotlinx.coroutines.flow.Flow $r3, $r4;
+        kotlinx.coroutines.flow.FlowKt__ZipKt$combine$$inlined$unsafeFlow$1 r0;
+        kotlin.Unit r11;
+        kotlinx.coroutines.flow.FlowCollector $r1;
+        java.lang.Object $r9, $r10;
+
+        r0 := @this: kotlinx.coroutines.flow.FlowKt__ZipKt$combine$$inlined$unsafeFlow$1;
+
+        $r1 := @parameter0: kotlinx.coroutines.flow.FlowCollector;
+
+        $r2 := @parameter1: kotlin.coroutines.Continuation;
+
+        $r3 = r0.<kotlinx.coroutines.flow.FlowKt__ZipKt$combine$$inlined$unsafeFlow$1: kotlinx.coroutines.flow.Flow $this_combine$inlined>;
+
+        $r4 = r0.<kotlinx.coroutines.flow.FlowKt__ZipKt$combine$$inlined$unsafeFlow$1: kotlinx.coroutines.flow.Flow $flow$inlined>;
+
+        $r5 = newarray (kotlinx.coroutines.flow.Flow)[2];
+
+        $r5[0] = $r3;
+
+        $r5[1] = $r4;
+
+        $r6 = staticinvoke <kotlinx.coroutines.flow.FlowKt__ZipKt: kotlin.jvm.functions.Function0 access$nullArrayFactory()>();
+
+        $r7 = new kotlinx.coroutines.flow.FlowKt__ZipKt$combine$1$1;
+
+        $r8 = r0.<kotlinx.coroutines.flow.FlowKt__ZipKt$combine$$inlined$unsafeFlow$1: kotlin.jvm.functions.Function3 $transform$inlined>;
+
+        specialinvoke $r7.<kotlinx.coroutines.flow.FlowKt__ZipKt$combine$1$1: void <init>(kotlin.jvm.functions.Function3,kotlin.coroutines.Continuation)>($r8, null);
+
+        $r8 = (kotlin.jvm.functions.Function3) $r7;
+
+        $r9 = staticinvoke <kotlinx.coroutines.flow.internal.CombineKt: java.lang.Object combineInternal(kotlinx.coroutines.flow.FlowCollector,kotlinx.coroutines.flow.Flow[],kotlin.jvm.functions.Function0,kotlin.jvm.functions.Function3,kotlin.coroutines.Continuation)>($r1, $r5, $r6, $r8, $r2);
+
+        $r10 = staticinvoke <kotlin.coroutines.intrinsics.IntrinsicsKt: java.lang.Object getCOROUTINE_SUSPENDED()>();
+
+        if $r9 != $r10 goto label1;
+
+        return $r9;
+
+     label1:
+        r11 = <kotlin.Unit: kotlin.Unit INSTANCE>;
+
+        return r11;
+    }
+}

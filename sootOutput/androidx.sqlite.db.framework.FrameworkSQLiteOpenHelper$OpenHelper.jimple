@@ -1,0 +1,343 @@
+class androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper extends android.database.sqlite.SQLiteOpenHelper
+{
+    final androidx.sqlite.db.SupportSQLiteOpenHelper$Callback mCallback;
+    final androidx.sqlite.db.framework.FrameworkSQLiteDatabase[] mDbRef;
+    private boolean mMigrated;
+
+    void <init>(android.content.Context, java.lang.String, androidx.sqlite.db.framework.FrameworkSQLiteDatabase[], androidx.sqlite.db.SupportSQLiteOpenHelper$Callback)
+    {
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase[] $r3;
+        android.content.Context $r1;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper$1 $r5;
+        int $i0;
+        java.lang.String $r2;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper$Callback $r4;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: androidx.sqlite.db.framework.FrameworkSQLiteDatabase[];
+
+        $r4 := @parameter3: androidx.sqlite.db.SupportSQLiteOpenHelper$Callback;
+
+        $i0 = $r4.<androidx.sqlite.db.SupportSQLiteOpenHelper$Callback: int version>;
+
+        $r5 = new androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper$1;
+
+        specialinvoke $r5.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper$1: void <init>(androidx.sqlite.db.SupportSQLiteOpenHelper$Callback,androidx.sqlite.db.framework.FrameworkSQLiteDatabase[])>($r4, $r3);
+
+        specialinvoke r0.<android.database.sqlite.SQLiteOpenHelper: void <init>(android.content.Context,java.lang.String,android.database.sqlite.SQLiteDatabase$CursorFactory,int,android.database.DatabaseErrorHandler)>($r1, $r2, null, $i0, $r5);
+
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.SupportSQLiteOpenHelper$Callback mCallback> = $r4;
+
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteDatabase[] mDbRef> = $r3;
+
+        return;
+    }
+
+    static androidx.sqlite.db.framework.FrameworkSQLiteDatabase getWrappedDb(androidx.sqlite.db.framework.FrameworkSQLiteDatabase[], android.database.sqlite.SQLiteDatabase)
+    {
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase[] $r0;
+        android.database.sqlite.SQLiteDatabase $r1;
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase r2;
+        boolean $z0;
+
+        $r0 := @parameter0: androidx.sqlite.db.framework.FrameworkSQLiteDatabase[];
+
+        $r1 := @parameter1: android.database.sqlite.SQLiteDatabase;
+
+        r2 = $r0[0];
+
+        if r2 == null goto label1;
+
+        $z0 = virtualinvoke r2.<androidx.sqlite.db.framework.FrameworkSQLiteDatabase: boolean isDelegate(android.database.sqlite.SQLiteDatabase)>($r1);
+
+        if $z0 != 0 goto label2;
+
+     label1:
+        r2 = new androidx.sqlite.db.framework.FrameworkSQLiteDatabase;
+
+        specialinvoke r2.<androidx.sqlite.db.framework.FrameworkSQLiteDatabase: void <init>(android.database.sqlite.SQLiteDatabase)>($r1);
+
+        $r0[0] = r2;
+
+     label2:
+        r2 = $r0[0];
+
+        return r2;
+    }
+
+    public void close()
+    {
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase[] $r1;
+        java.lang.Throwable $r2;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper r0;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper;
+
+        entermonitor r0;
+
+     label1:
+        specialinvoke r0.<android.database.sqlite.SQLiteOpenHelper: void close()>();
+
+        $r1 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteDatabase[] mDbRef>;
+
+        $r1[0] = null;
+
+     label2:
+        exitmonitor r0;
+
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    androidx.sqlite.db.SupportSQLiteDatabase getReadableSupportDatabase()
+    {
+        java.lang.Throwable r4;
+        android.database.sqlite.SQLiteDatabase $r1;
+        androidx.sqlite.db.SupportSQLiteDatabase $r2;
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase $r3;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper r0;
+        boolean $z0;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper;
+
+        entermonitor r0;
+
+     label1:
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: boolean mMigrated> = 0;
+
+        $r1 = specialinvoke r0.<android.database.sqlite.SQLiteOpenHelper: android.database.sqlite.SQLiteDatabase getReadableDatabase()>();
+
+        $z0 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: boolean mMigrated>;
+
+        if $z0 == 0 goto label3;
+
+        virtualinvoke r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: void close()>();
+
+        $r2 = virtualinvoke r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.SupportSQLiteDatabase getReadableSupportDatabase()>();
+
+     label2:
+        exitmonitor r0;
+
+        return $r2;
+
+     label3:
+        $r3 = virtualinvoke r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteDatabase getWrappedDb(android.database.sqlite.SQLiteDatabase)>($r1);
+
+     label4:
+        exitmonitor r0;
+
+        return $r3;
+
+     label5:
+        r4 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw r4;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label3 to label4 with label5;
+    }
+
+    androidx.sqlite.db.framework.FrameworkSQLiteDatabase getWrappedDb(android.database.sqlite.SQLiteDatabase)
+    {
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase[] $r3;
+        android.database.sqlite.SQLiteDatabase $r1;
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase $r2;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper r0;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper;
+
+        $r1 := @parameter0: android.database.sqlite.SQLiteDatabase;
+
+        $r3 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteDatabase[] mDbRef>;
+
+        $r2 = staticinvoke <androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteDatabase getWrappedDb(androidx.sqlite.db.framework.FrameworkSQLiteDatabase[],android.database.sqlite.SQLiteDatabase)>($r3, $r1);
+
+        return $r2;
+    }
+
+    androidx.sqlite.db.SupportSQLiteDatabase getWritableSupportDatabase()
+    {
+        java.lang.Throwable r4;
+        android.database.sqlite.SQLiteDatabase $r1;
+        androidx.sqlite.db.SupportSQLiteDatabase $r2;
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase $r3;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper r0;
+        boolean $z0;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper;
+
+        entermonitor r0;
+
+     label1:
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: boolean mMigrated> = 0;
+
+        $r1 = specialinvoke r0.<android.database.sqlite.SQLiteOpenHelper: android.database.sqlite.SQLiteDatabase getWritableDatabase()>();
+
+        $z0 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: boolean mMigrated>;
+
+        if $z0 == 0 goto label3;
+
+        virtualinvoke r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: void close()>();
+
+        $r2 = virtualinvoke r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.SupportSQLiteDatabase getWritableSupportDatabase()>();
+
+     label2:
+        exitmonitor r0;
+
+        return $r2;
+
+     label3:
+        $r3 = virtualinvoke r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteDatabase getWrappedDb(android.database.sqlite.SQLiteDatabase)>($r1);
+
+     label4:
+        exitmonitor r0;
+
+        return $r3;
+
+     label5:
+        r4 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw r4;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label3 to label4 with label5;
+    }
+
+    public void onConfigure(android.database.sqlite.SQLiteDatabase)
+    {
+        android.database.sqlite.SQLiteDatabase $r1;
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase $r3;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper$Callback $r2;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper;
+
+        $r1 := @parameter0: android.database.sqlite.SQLiteDatabase;
+
+        $r2 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.SupportSQLiteOpenHelper$Callback mCallback>;
+
+        $r3 = virtualinvoke r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteDatabase getWrappedDb(android.database.sqlite.SQLiteDatabase)>($r1);
+
+        virtualinvoke $r2.<androidx.sqlite.db.SupportSQLiteOpenHelper$Callback: void onConfigure(androidx.sqlite.db.SupportSQLiteDatabase)>($r3);
+
+        return;
+    }
+
+    public void onCreate(android.database.sqlite.SQLiteDatabase)
+    {
+        android.database.sqlite.SQLiteDatabase $r1;
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase $r3;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper$Callback $r2;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper;
+
+        $r1 := @parameter0: android.database.sqlite.SQLiteDatabase;
+
+        $r2 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.SupportSQLiteOpenHelper$Callback mCallback>;
+
+        $r3 = virtualinvoke r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteDatabase getWrappedDb(android.database.sqlite.SQLiteDatabase)>($r1);
+
+        virtualinvoke $r2.<androidx.sqlite.db.SupportSQLiteOpenHelper$Callback: void onCreate(androidx.sqlite.db.SupportSQLiteDatabase)>($r3);
+
+        return;
+    }
+
+    public void onDowngrade(android.database.sqlite.SQLiteDatabase, int, int)
+    {
+        android.database.sqlite.SQLiteDatabase $r1;
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase $r2;
+        int $i0, $i1;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper$Callback $r3;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper;
+
+        $r1 := @parameter0: android.database.sqlite.SQLiteDatabase;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: boolean mMigrated> = 1;
+
+        $r3 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.SupportSQLiteOpenHelper$Callback mCallback>;
+
+        $r2 = virtualinvoke r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteDatabase getWrappedDb(android.database.sqlite.SQLiteDatabase)>($r1);
+
+        virtualinvoke $r3.<androidx.sqlite.db.SupportSQLiteOpenHelper$Callback: void onDowngrade(androidx.sqlite.db.SupportSQLiteDatabase,int,int)>($r2, $i0, $i1);
+
+        return;
+    }
+
+    public void onOpen(android.database.sqlite.SQLiteDatabase)
+    {
+        android.database.sqlite.SQLiteDatabase $r1;
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase $r2;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper$Callback $r3;
+        boolean $z0;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper;
+
+        $r1 := @parameter0: android.database.sqlite.SQLiteDatabase;
+
+        $z0 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: boolean mMigrated>;
+
+        if $z0 != 0 goto label1;
+
+        $r3 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.SupportSQLiteOpenHelper$Callback mCallback>;
+
+        $r2 = virtualinvoke r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteDatabase getWrappedDb(android.database.sqlite.SQLiteDatabase)>($r1);
+
+        virtualinvoke $r3.<androidx.sqlite.db.SupportSQLiteOpenHelper$Callback: void onOpen(androidx.sqlite.db.SupportSQLiteDatabase)>($r2);
+
+     label1:
+        return;
+    }
+
+    public void onUpgrade(android.database.sqlite.SQLiteDatabase, int, int)
+    {
+        android.database.sqlite.SQLiteDatabase $r1;
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase $r2;
+        int $i0, $i1;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper$Callback $r3;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper;
+
+        $r1 := @parameter0: android.database.sqlite.SQLiteDatabase;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: boolean mMigrated> = 1;
+
+        $r3 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.SupportSQLiteOpenHelper$Callback mCallback>;
+
+        $r2 = virtualinvoke r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteDatabase getWrappedDb(android.database.sqlite.SQLiteDatabase)>($r1);
+
+        virtualinvoke $r3.<androidx.sqlite.db.SupportSQLiteOpenHelper$Callback: void onUpgrade(androidx.sqlite.db.SupportSQLiteDatabase,int,int)>($r2, $i0, $i1);
+
+        return;
+    }
+}

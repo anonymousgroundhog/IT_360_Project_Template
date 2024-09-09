@@ -1,0 +1,60 @@
+class com.google.common.cache.CacheBuilderSpec$RecordStatsParser extends java.lang.Object implements com.google.common.cache.CacheBuilderSpec$ValueParser
+{
+
+    void <init>()
+    {
+        com.google.common.cache.CacheBuilderSpec$RecordStatsParser r0;
+
+        r0 := @this: com.google.common.cache.CacheBuilderSpec$RecordStatsParser;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void parse(com.google.common.cache.CacheBuilderSpec, java.lang.String, java.lang.String)
+    {
+        com.google.common.cache.CacheBuilderSpec$RecordStatsParser r0;
+        java.lang.Boolean $r4;
+        java.lang.String $r2, $r3;
+        com.google.common.cache.CacheBuilderSpec $r1;
+        boolean $z0, $z1;
+
+        r0 := @this: com.google.common.cache.CacheBuilderSpec$RecordStatsParser;
+
+        $r1 := @parameter0: com.google.common.cache.CacheBuilderSpec;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $z0 = 0;
+
+        if $r3 != null goto label1;
+
+        $z1 = 1;
+
+        goto label2;
+
+     label1:
+        $z1 = 0;
+
+     label2:
+        staticinvoke <com.google.common.base.Preconditions: void checkArgument(boolean,java.lang.Object)>($z1, "recordStats does not take values");
+
+        $r4 = $r1.<com.google.common.cache.CacheBuilderSpec: java.lang.Boolean recordStats>;
+
+        if $r4 != null goto label3;
+
+        $z0 = 1;
+
+     label3:
+        staticinvoke <com.google.common.base.Preconditions: void checkArgument(boolean,java.lang.Object)>($z0, "recordStats already set");
+
+        $r4 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        $r1.<com.google.common.cache.CacheBuilderSpec: java.lang.Boolean recordStats> = $r4;
+
+        return;
+    }
+}

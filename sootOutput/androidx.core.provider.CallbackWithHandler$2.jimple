@@ -1,0 +1,49 @@
+class androidx.core.provider.CallbackWithHandler$2 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.core.provider.CallbackWithHandler this$0;
+    final androidx.core.provider.FontsContractCompat$FontRequestCallback val$callback;
+    final int val$reason;
+
+    void <init>(androidx.core.provider.CallbackWithHandler, androidx.core.provider.FontsContractCompat$FontRequestCallback, int)
+    {
+        androidx.core.provider.FontsContractCompat$FontRequestCallback $r2;
+        androidx.core.provider.CallbackWithHandler$2 r0;
+        int $i0;
+        androidx.core.provider.CallbackWithHandler $r1;
+
+        r0 := @this: androidx.core.provider.CallbackWithHandler$2;
+
+        $r1 := @parameter0: androidx.core.provider.CallbackWithHandler;
+
+        $r2 := @parameter1: androidx.core.provider.FontsContractCompat$FontRequestCallback;
+
+        $i0 := @parameter2: int;
+
+        r0.<androidx.core.provider.CallbackWithHandler$2: androidx.core.provider.CallbackWithHandler this$0> = $r1;
+
+        r0.<androidx.core.provider.CallbackWithHandler$2: androidx.core.provider.FontsContractCompat$FontRequestCallback val$callback> = $r2;
+
+        r0.<androidx.core.provider.CallbackWithHandler$2: int val$reason> = $i0;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        int $i0;
+        androidx.core.provider.FontsContractCompat$FontRequestCallback $r1;
+        androidx.core.provider.CallbackWithHandler$2 r0;
+
+        r0 := @this: androidx.core.provider.CallbackWithHandler$2;
+
+        $r1 = r0.<androidx.core.provider.CallbackWithHandler$2: androidx.core.provider.FontsContractCompat$FontRequestCallback val$callback>;
+
+        $i0 = r0.<androidx.core.provider.CallbackWithHandler$2: int val$reason>;
+
+        virtualinvoke $r1.<androidx.core.provider.FontsContractCompat$FontRequestCallback: void onTypefaceRequestFailed(int)>($i0);
+
+        return;
+    }
+}

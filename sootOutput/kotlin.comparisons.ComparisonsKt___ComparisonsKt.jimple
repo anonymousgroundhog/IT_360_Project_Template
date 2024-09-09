@@ -1,0 +1,192 @@
+class kotlin.comparisons.ComparisonsKt___ComparisonsKt extends kotlin.comparisons.ComparisonsKt___ComparisonsJvmKt
+{
+
+    public void <init>()
+    {
+        kotlin.comparisons.ComparisonsKt___ComparisonsKt r0;
+
+        r0 := @this: kotlin.comparisons.ComparisonsKt___ComparisonsKt;
+
+        specialinvoke r0.<kotlin.comparisons.ComparisonsKt___ComparisonsJvmKt: void <init>()>();
+
+        return;
+    }
+
+    public static final java.lang.Object maxOf(java.lang.Object, java.lang.Object, java.lang.Object, java.util.Comparator)
+    {
+        java.lang.Object $r0, $r1, $r2;
+        java.util.Comparator $r3;
+
+        $r0 := @parameter0: java.lang.Object;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        $r2 := @parameter2: java.lang.Object;
+
+        $r3 := @parameter3: java.util.Comparator;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r3, "comparator");
+
+        $r1 = staticinvoke <kotlin.comparisons.ComparisonsKt: java.lang.Object maxOf(java.lang.Object,java.lang.Object,java.util.Comparator)>($r1, $r2, $r3);
+
+        $r0 = staticinvoke <kotlin.comparisons.ComparisonsKt: java.lang.Object maxOf(java.lang.Object,java.lang.Object,java.util.Comparator)>($r0, $r1, $r3);
+
+        return $r0;
+    }
+
+    public static final java.lang.Object maxOf(java.lang.Object, java.lang.Object, java.util.Comparator)
+    {
+        int $i0;
+        java.lang.Object $r0, $r1;
+        java.util.Comparator $r2;
+
+        $r0 := @parameter0: java.lang.Object;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        $r2 := @parameter2: java.util.Comparator;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r2, "comparator");
+
+        $i0 = interfaceinvoke $r2.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r0, $r1);
+
+        if $i0 < 0 goto label1;
+
+        return $r0;
+
+     label1:
+        return $r1;
+    }
+
+    public static final java.lang.Object maxOf(java.lang.Object, java.lang.Object[], java.util.Comparator)
+    {
+        java.lang.Object[] $r1;
+        int $i0, $i1, $i2;
+        java.lang.Object $r0, r3;
+        java.util.Comparator $r2;
+
+        $r0 := @parameter0: java.lang.Object;
+
+        $r1 := @parameter1: java.lang.Object[];
+
+        $r2 := @parameter2: java.util.Comparator;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "other");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r2, "comparator");
+
+        r3 = $r0;
+
+        $i0 = lengthof $r1;
+
+        $i2 = 0;
+
+     label1:
+        if $i2 >= $i0 goto label3;
+
+        $r0 = $r1[$i2];
+
+        $i1 = interfaceinvoke $r2.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>(r3, $r0);
+
+        if $i1 >= 0 goto label2;
+
+        r3 = $r0;
+
+     label2:
+        $i2 = $i2 + 1;
+
+        goto label1;
+
+     label3:
+        return r3;
+    }
+
+    public static final java.lang.Object minOf(java.lang.Object, java.lang.Object, java.lang.Object, java.util.Comparator)
+    {
+        java.lang.Object $r0, $r1, $r2;
+        java.util.Comparator $r3;
+
+        $r0 := @parameter0: java.lang.Object;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        $r2 := @parameter2: java.lang.Object;
+
+        $r3 := @parameter3: java.util.Comparator;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r3, "comparator");
+
+        $r1 = staticinvoke <kotlin.comparisons.ComparisonsKt: java.lang.Object minOf(java.lang.Object,java.lang.Object,java.util.Comparator)>($r1, $r2, $r3);
+
+        $r0 = staticinvoke <kotlin.comparisons.ComparisonsKt: java.lang.Object minOf(java.lang.Object,java.lang.Object,java.util.Comparator)>($r0, $r1, $r3);
+
+        return $r0;
+    }
+
+    public static final java.lang.Object minOf(java.lang.Object, java.lang.Object, java.util.Comparator)
+    {
+        int $i0;
+        java.lang.Object $r0, $r1;
+        java.util.Comparator $r2;
+
+        $r0 := @parameter0: java.lang.Object;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        $r2 := @parameter2: java.util.Comparator;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r2, "comparator");
+
+        $i0 = interfaceinvoke $r2.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r0, $r1);
+
+        if $i0 > 0 goto label1;
+
+        return $r0;
+
+     label1:
+        return $r1;
+    }
+
+    public static final java.lang.Object minOf(java.lang.Object, java.lang.Object[], java.util.Comparator)
+    {
+        java.lang.Object[] $r1;
+        int $i0, $i1, $i2;
+        java.lang.Object $r0, r3;
+        java.util.Comparator $r2;
+
+        $r0 := @parameter0: java.lang.Object;
+
+        $r1 := @parameter1: java.lang.Object[];
+
+        $r2 := @parameter2: java.util.Comparator;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "other");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r2, "comparator");
+
+        r3 = $r0;
+
+        $i0 = lengthof $r1;
+
+        $i2 = 0;
+
+     label1:
+        if $i2 >= $i0 goto label3;
+
+        $r0 = $r1[$i2];
+
+        $i1 = interfaceinvoke $r2.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>(r3, $r0);
+
+        if $i1 <= 0 goto label2;
+
+        r3 = $r0;
+
+     label2:
+        $i2 = $i2 + 1;
+
+        goto label1;
+
+     label3:
+        return r3;
+    }
+}

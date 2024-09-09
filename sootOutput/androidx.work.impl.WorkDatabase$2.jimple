@@ -1,0 +1,51 @@
+class androidx.work.impl.WorkDatabase$2 extends androidx.room.RoomDatabase$Callback
+{
+
+    void <init>()
+    {
+        androidx.work.impl.WorkDatabase$2 r0;
+
+        r0 := @this: androidx.work.impl.WorkDatabase$2;
+
+        specialinvoke r0.<androidx.room.RoomDatabase$Callback: void <init>()>();
+
+        return;
+    }
+
+    public void onOpen(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        java.lang.Throwable $r3;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        androidx.work.impl.WorkDatabase$2 r0;
+        java.lang.String $r2;
+
+        r0 := @this: androidx.work.impl.WorkDatabase$2;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        specialinvoke r0.<androidx.room.RoomDatabase$Callback: void onOpen(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void beginTransaction()>();
+
+     label1:
+        $r2 = staticinvoke <androidx.work.impl.WorkDatabase: java.lang.String getPruneSQL()>();
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>($r2);
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void setTransactionSuccessful()>();
+
+     label2:
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void endTransaction()>();
+
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void endTransaction()>();
+
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+}

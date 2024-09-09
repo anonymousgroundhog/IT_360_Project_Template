@@ -1,0 +1,43 @@
+class androidx.core.content.res.ResourcesCompat$ColorStateListCacheEntry extends java.lang.Object
+{
+    final android.content.res.Configuration mConfiguration;
+    final int mThemeHash;
+    final android.content.res.ColorStateList mValue;
+
+    void <init>(android.content.res.ColorStateList, android.content.res.Configuration, android.content.res.Resources$Theme)
+    {
+        android.content.res.ColorStateList $r1;
+        android.content.res.Configuration $r2;
+        int $i0;
+        androidx.core.content.res.ResourcesCompat$ColorStateListCacheEntry r0;
+        android.content.res.Resources$Theme $r3;
+
+        r0 := @this: androidx.core.content.res.ResourcesCompat$ColorStateListCacheEntry;
+
+        $r1 := @parameter0: android.content.res.ColorStateList;
+
+        $r2 := @parameter1: android.content.res.Configuration;
+
+        $r3 := @parameter2: android.content.res.Resources$Theme;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.content.res.ResourcesCompat$ColorStateListCacheEntry: android.content.res.ColorStateList mValue> = $r1;
+
+        r0.<androidx.core.content.res.ResourcesCompat$ColorStateListCacheEntry: android.content.res.Configuration mConfiguration> = $r2;
+
+        if $r3 != null goto label1;
+
+        $i0 = 0;
+
+        goto label2;
+
+     label1:
+        $i0 = virtualinvoke $r3.<java.lang.Object: int hashCode()>();
+
+     label2:
+        r0.<androidx.core.content.res.ResourcesCompat$ColorStateListCacheEntry: int mThemeHash> = $i0;
+
+        return;
+    }
+}

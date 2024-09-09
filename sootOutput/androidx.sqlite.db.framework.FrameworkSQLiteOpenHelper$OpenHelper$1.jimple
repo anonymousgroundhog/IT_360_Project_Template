@@ -1,0 +1,49 @@
+class androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper$1 extends java.lang.Object implements android.database.DatabaseErrorHandler
+{
+    final androidx.sqlite.db.SupportSQLiteOpenHelper$Callback val$callback;
+    final androidx.sqlite.db.framework.FrameworkSQLiteDatabase[] val$dbRef;
+
+    void <init>(androidx.sqlite.db.SupportSQLiteOpenHelper$Callback, androidx.sqlite.db.framework.FrameworkSQLiteDatabase[])
+    {
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase[] $r2;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper$1 r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper$Callback $r1;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper$1;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteOpenHelper$Callback;
+
+        $r2 := @parameter1: androidx.sqlite.db.framework.FrameworkSQLiteDatabase[];
+
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper$1: androidx.sqlite.db.SupportSQLiteOpenHelper$Callback val$callback> = $r1;
+
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper$1: androidx.sqlite.db.framework.FrameworkSQLiteDatabase[] val$dbRef> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onCorruption(android.database.sqlite.SQLiteDatabase)
+    {
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase[] $r4;
+        android.database.sqlite.SQLiteDatabase $r1;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper$1 r0;
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase $r3;
+        androidx.sqlite.db.SupportSQLiteOpenHelper$Callback $r2;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper$1;
+
+        $r1 := @parameter0: android.database.sqlite.SQLiteDatabase;
+
+        $r2 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper$1: androidx.sqlite.db.SupportSQLiteOpenHelper$Callback val$callback>;
+
+        $r4 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper$1: androidx.sqlite.db.framework.FrameworkSQLiteDatabase[] val$dbRef>;
+
+        $r3 = staticinvoke <androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteDatabase getWrappedDb(androidx.sqlite.db.framework.FrameworkSQLiteDatabase[],android.database.sqlite.SQLiteDatabase)>($r4, $r1);
+
+        virtualinvoke $r2.<androidx.sqlite.db.SupportSQLiteOpenHelper$Callback: void onCorruption(androidx.sqlite.db.SupportSQLiteDatabase)>($r3);
+
+        return;
+    }
+}

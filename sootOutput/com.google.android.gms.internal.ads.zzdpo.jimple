@@ -1,0 +1,209 @@
+public final class com.google.android.gms.internal.ads.zzdpo extends java.lang.Object implements java.util.concurrent.Callable
+{
+    public final com.google.android.gms.internal.ads.zzdpq zza;
+    public final com.google.android.gms.internal.ads.zzfgy zzb;
+    public final com.google.android.gms.internal.ads.zzfgm zzc;
+    public final org.json.JSONObject zzd;
+
+    public void <init>(com.google.android.gms.internal.ads.zzdpq, com.google.android.gms.internal.ads.zzfgy, com.google.android.gms.internal.ads.zzfgm, org.json.JSONObject)
+    {
+        org.json.JSONObject $r4;
+        com.google.android.gms.internal.ads.zzdpq $r1;
+        com.google.android.gms.internal.ads.zzdpo r0;
+        com.google.android.gms.internal.ads.zzfgy $r2;
+        com.google.android.gms.internal.ads.zzfgm $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdpo;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzdpq;
+
+        $r2 := @parameter1: com.google.android.gms.internal.ads.zzfgy;
+
+        $r3 := @parameter2: com.google.android.gms.internal.ads.zzfgm;
+
+        $r4 := @parameter3: org.json.JSONObject;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzdpo: com.google.android.gms.internal.ads.zzdpq zza> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzdpo: com.google.android.gms.internal.ads.zzfgy zzb> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzdpo: com.google.android.gms.internal.ads.zzfgm zzc> = $r3;
+
+        r0.<com.google.android.gms.internal.ads.zzdpo: org.json.JSONObject zzd> = $r4;
+
+        return;
+    }
+
+    public final java.lang.Object call()
+    {
+        com.google.android.gms.internal.ads.zzeml $r11;
+        java.util.ArrayList $r7;
+        org.json.JSONObject $r1, $r3;
+        int $i0;
+        java.lang.String $r2, $r9;
+        boolean $z0;
+        double $d0;
+        com.google.android.gms.internal.ads.zzfhh $r6;
+        com.google.android.gms.internal.ads.zzdpo r0;
+        com.google.android.gms.internal.ads.zzfgy $r4;
+        com.google.android.gms.internal.ads.zzdna $r10;
+        com.google.android.gms.internal.ads.zzfgv $r5;
+        java.lang.StringBuilder $r12;
+        com.google.android.gms.internal.ads.zzfgm $r8;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdpo;
+
+        $r10 = new com.google.android.gms.internal.ads.zzdna;
+
+        specialinvoke $r10.<com.google.android.gms.internal.ads.zzdna: void <init>()>();
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzdpo: org.json.JSONObject zzd>;
+
+        $i0 = virtualinvoke $r1.<org.json.JSONObject: int optInt(java.lang.String,int)>("template_id", -1);
+
+        virtualinvoke $r10.<com.google.android.gms.internal.ads.zzdna: void zzaa(int)>($i0);
+
+        $r2 = virtualinvoke $r1.<org.json.JSONObject: java.lang.String optString(java.lang.String)>("custom_template_id");
+
+        virtualinvoke $r10.<com.google.android.gms.internal.ads.zzdna: void zzK(java.lang.String)>($r2);
+
+        $r3 = virtualinvoke $r1.<org.json.JSONObject: org.json.JSONObject optJSONObject(java.lang.String)>("omid_settings");
+
+        if $r3 == null goto label1;
+
+        $r2 = virtualinvoke $r3.<org.json.JSONObject: java.lang.String optString(java.lang.String)>("omid_partner_name");
+
+        goto label2;
+
+     label1:
+        $r2 = null;
+
+     label2:
+        $r4 = r0.<com.google.android.gms.internal.ads.zzdpo: com.google.android.gms.internal.ads.zzfgy zzb>;
+
+        virtualinvoke $r10.<com.google.android.gms.internal.ads.zzdna: void zzV(java.lang.String)>($r2);
+
+        $r5 = $r4.<com.google.android.gms.internal.ads.zzfgy: com.google.android.gms.internal.ads.zzfgv zza>;
+
+        $r6 = $r5.<com.google.android.gms.internal.ads.zzfgv: com.google.android.gms.internal.ads.zzfhh zza>;
+
+        $i0 = virtualinvoke $r10.<com.google.android.gms.internal.ads.zzdna: int zzc()>();
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>($i0);
+
+        $r7 = $r6.<com.google.android.gms.internal.ads.zzfhh: java.util.ArrayList zzg>;
+
+        $z0 = virtualinvoke $r7.<java.util.ArrayList: boolean contains(java.lang.Object)>($r2);
+
+        if $z0 == 0 goto label7;
+
+        $i0 = virtualinvoke $r10.<com.google.android.gms.internal.ads.zzdna: int zzc()>();
+
+        if $i0 != 3 goto label5;
+
+        $r2 = virtualinvoke $r10.<com.google.android.gms.internal.ads.zzdna: java.lang.String zzA()>();
+
+        if $r2 == null goto label4;
+
+        $r7 = $r6.<com.google.android.gms.internal.ads.zzfhh: java.util.ArrayList zzh>;
+
+        $r2 = virtualinvoke $r10.<com.google.android.gms.internal.ads.zzdna: java.lang.String zzA()>();
+
+        $z0 = virtualinvoke $r7.<java.util.ArrayList: boolean contains(java.lang.Object)>($r2);
+
+        if $z0 == 0 goto label3;
+
+        goto label5;
+
+     label3:
+        $r11 = new com.google.android.gms.internal.ads.zzeml;
+
+        specialinvoke $r11.<com.google.android.gms.internal.ads.zzeml: void <init>(int,java.lang.String)>(1, "Unexpected custom template id in the response.");
+
+        throw $r11;
+
+     label4:
+        $r11 = new com.google.android.gms.internal.ads.zzeml;
+
+        specialinvoke $r11.<com.google.android.gms.internal.ads.zzeml: void <init>(int,java.lang.String)>(1, "No custom template id for custom template ad response.");
+
+        throw $r11;
+
+     label5:
+        $r8 = r0.<com.google.android.gms.internal.ads.zzdpo: com.google.android.gms.internal.ads.zzfgm zzc>;
+
+        $d0 = virtualinvoke $r1.<org.json.JSONObject: double optDouble(java.lang.String,double)>("rating", -1.0);
+
+        virtualinvoke $r10.<com.google.android.gms.internal.ads.zzdna: void zzY(double)>($d0);
+
+        $r2 = virtualinvoke $r1.<org.json.JSONObject: java.lang.String optString(java.lang.String,java.lang.String)>("headline", null);
+
+        $r9 = $r2;
+
+        $z0 = $r8.<com.google.android.gms.internal.ads.zzfgm: boolean zzN>;
+
+        if $z0 == 0 goto label6;
+
+        staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.ads.internal.util.zzt zzp()>();
+
+        $r9 = staticinvoke <com.google.android.gms.ads.internal.util.zzt: java.lang.String zzx()>();
+
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r9);
+
+        virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
+
+        virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r9 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label6:
+        virtualinvoke $r10.<com.google.android.gms.internal.ads.zzdna: void zzZ(java.lang.String,java.lang.String)>("headline", $r9);
+
+        $r2 = virtualinvoke $r1.<org.json.JSONObject: java.lang.String optString(java.lang.String,java.lang.String)>("body", null);
+
+        virtualinvoke $r10.<com.google.android.gms.internal.ads.zzdna: void zzZ(java.lang.String,java.lang.String)>("body", $r2);
+
+        $r2 = virtualinvoke $r1.<org.json.JSONObject: java.lang.String optString(java.lang.String,java.lang.String)>("call_to_action", null);
+
+        virtualinvoke $r10.<com.google.android.gms.internal.ads.zzdna: void zzZ(java.lang.String,java.lang.String)>("call_to_action", $r2);
+
+        $r2 = virtualinvoke $r1.<org.json.JSONObject: java.lang.String optString(java.lang.String,java.lang.String)>("store", null);
+
+        virtualinvoke $r10.<com.google.android.gms.internal.ads.zzdna: void zzZ(java.lang.String,java.lang.String)>("store", $r2);
+
+        $r2 = virtualinvoke $r1.<org.json.JSONObject: java.lang.String optString(java.lang.String,java.lang.String)>("price", null);
+
+        virtualinvoke $r10.<com.google.android.gms.internal.ads.zzdna: void zzZ(java.lang.String,java.lang.String)>("price", $r2);
+
+        $r2 = virtualinvoke $r1.<org.json.JSONObject: java.lang.String optString(java.lang.String,java.lang.String)>("advertiser", null);
+
+        virtualinvoke $r10.<com.google.android.gms.internal.ads.zzdna: void zzZ(java.lang.String,java.lang.String)>("advertiser", $r2);
+
+        return $r10;
+
+     label7:
+        $r11 = new com.google.android.gms.internal.ads.zzeml;
+
+        $i0 = virtualinvoke $r10.<com.google.android.gms.internal.ads.zzdna: int zzc()>();
+
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Invalid template ID: ");
+
+        virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r2 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r11.<com.google.android.gms.internal.ads.zzeml: void <init>(int,java.lang.String)>(1, $r2);
+
+        throw $r11;
+    }
+}

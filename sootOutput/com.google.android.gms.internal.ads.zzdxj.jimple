@@ -1,0 +1,195 @@
+final class com.google.android.gms.internal.ads.zzdxj extends java.lang.Object
+{
+    private java.lang.Long zza;
+    private final java.lang.String zzb;
+    private java.lang.String zzc;
+    private java.lang.Integer zzd;
+    private java.lang.String zze;
+    private java.lang.Integer zzf;
+
+    void <init>(java.lang.String, com.google.android.gms.internal.ads.zzdxi)
+    {
+        java.lang.String $r1;
+        com.google.android.gms.internal.ads.zzdxj r0;
+        com.google.android.gms.internal.ads.zzdxi $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdxj;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: com.google.android.gms.internal.ads.zzdxi;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzdxj: java.lang.String zzb> = $r1;
+
+        return;
+    }
+
+    static volatile java.lang.String zza(com.google.android.gms.internal.ads.zzdxj)
+    {
+        java.lang.Integer $r8;
+        com.google.android.gms.internal.ads.zzbga $r2;
+        com.google.android.gms.internal.ads.zzbfu $r1;
+        org.json.JSONException $r9;
+        org.json.JSONObject $r5;
+        com.google.android.gms.internal.ads.zzdxj $r0;
+        java.lang.Long $r6;
+        java.lang.Object $r3;
+        java.lang.StringBuilder $r10;
+        java.lang.String $r4, $r7;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzdxj;
+
+        $r1 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzjI>;
+
+        $r2 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r1);
+
+        $r4 = (java.lang.String) $r3;
+
+        $r5 = new org.json.JSONObject;
+
+        specialinvoke $r5.<org.json.JSONObject: void <init>()>();
+
+        $r6 = $r0.<com.google.android.gms.internal.ads.zzdxj: java.lang.Long zza>;
+
+     label01:
+        virtualinvoke $r5.<org.json.JSONObject: org.json.JSONObject putOpt(java.lang.String,java.lang.Object)>("objectId", $r6);
+
+     label02:
+        $r7 = $r0.<com.google.android.gms.internal.ads.zzdxj: java.lang.String zzb>;
+
+     label03:
+        virtualinvoke $r5.<org.json.JSONObject: org.json.JSONObject put(java.lang.String,java.lang.Object)>("eventCategory", $r7);
+
+     label04:
+        $r7 = $r0.<com.google.android.gms.internal.ads.zzdxj: java.lang.String zzc>;
+
+     label05:
+        virtualinvoke $r5.<org.json.JSONObject: org.json.JSONObject putOpt(java.lang.String,java.lang.Object)>("event", $r7);
+
+     label06:
+        $r8 = $r0.<com.google.android.gms.internal.ads.zzdxj: java.lang.Integer zzd>;
+
+     label07:
+        virtualinvoke $r5.<org.json.JSONObject: org.json.JSONObject putOpt(java.lang.String,java.lang.Object)>("errorCode", $r8);
+
+     label08:
+        $r7 = $r0.<com.google.android.gms.internal.ads.zzdxj: java.lang.String zze>;
+
+     label09:
+        virtualinvoke $r5.<org.json.JSONObject: org.json.JSONObject putOpt(java.lang.String,java.lang.Object)>("rewardType", $r7);
+
+     label10:
+        $r8 = $r0.<com.google.android.gms.internal.ads.zzdxj: java.lang.Integer zzf>;
+
+     label11:
+        virtualinvoke $r5.<org.json.JSONObject: org.json.JSONObject putOpt(java.lang.String,java.lang.Object)>("rewardAmount", $r8);
+
+     label12:
+        goto label14;
+
+     label13:
+        $r9 := @caughtexception;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>("Could not convert parameters to JSON.");
+
+     label14:
+        $r7 = virtualinvoke $r5.<org.json.JSONObject: java.lang.String toString()>();
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("(\"h5adsEvent\",");
+
+        virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(");");
+
+        $r4 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r4;
+
+        catch org.json.JSONException from label01 to label02 with label13;
+        catch org.json.JSONException from label03 to label04 with label13;
+        catch org.json.JSONException from label05 to label06 with label13;
+        catch org.json.JSONException from label07 to label08 with label13;
+        catch org.json.JSONException from label09 to label10 with label13;
+        catch org.json.JSONException from label11 to label12 with label13;
+    }
+
+    static volatile void zzb(com.google.android.gms.internal.ads.zzdxj, java.lang.Integer)
+    {
+        com.google.android.gms.internal.ads.zzdxj $r0;
+        java.lang.Integer $r1;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzdxj;
+
+        $r1 := @parameter1: java.lang.Integer;
+
+        $r0.<com.google.android.gms.internal.ads.zzdxj: java.lang.Integer zzd> = $r1;
+
+        return;
+    }
+
+    static volatile void zzc(com.google.android.gms.internal.ads.zzdxj, java.lang.String)
+    {
+        java.lang.String $r1;
+        com.google.android.gms.internal.ads.zzdxj $r0;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzdxj;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r0.<com.google.android.gms.internal.ads.zzdxj: java.lang.String zzc> = $r1;
+
+        return;
+    }
+
+    static volatile void zzd(com.google.android.gms.internal.ads.zzdxj, java.lang.Long)
+    {
+        com.google.android.gms.internal.ads.zzdxj $r0;
+        java.lang.Long $r1;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzdxj;
+
+        $r1 := @parameter1: java.lang.Long;
+
+        $r0.<com.google.android.gms.internal.ads.zzdxj: java.lang.Long zza> = $r1;
+
+        return;
+    }
+
+    static volatile void zze(com.google.android.gms.internal.ads.zzdxj, java.lang.Integer)
+    {
+        com.google.android.gms.internal.ads.zzdxj $r0;
+        java.lang.Integer $r1;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzdxj;
+
+        $r1 := @parameter1: java.lang.Integer;
+
+        $r0.<com.google.android.gms.internal.ads.zzdxj: java.lang.Integer zzf> = $r1;
+
+        return;
+    }
+
+    static volatile void zzf(com.google.android.gms.internal.ads.zzdxj, java.lang.String)
+    {
+        java.lang.String $r1;
+        com.google.android.gms.internal.ads.zzdxj $r0;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzdxj;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r0.<com.google.android.gms.internal.ads.zzdxj: java.lang.String zze> = $r1;
+
+        return;
+    }
+}

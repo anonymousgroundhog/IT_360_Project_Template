@@ -1,0 +1,153 @@
+public class androidx.core.telephony.SubscriptionManagerCompat extends java.lang.Object
+{
+    private static java.lang.reflect.Method sGetSlotIndexMethod;
+
+    private void <init>()
+    {
+        androidx.core.telephony.SubscriptionManagerCompat r0;
+
+        r0 := @this: androidx.core.telephony.SubscriptionManagerCompat;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static int getSlotIndex(int)
+    {
+        java.lang.IllegalAccessException r8;
+        java.lang.Object[] $r4;
+        java.lang.NoSuchMethodException r9;
+        java.lang.Class[] $r2;
+        java.lang.Integer $r5;
+        java.lang.reflect.InvocationTargetException r7;
+        int $i0, i1;
+        java.lang.Class r1, $r3;
+        java.lang.Object $r6;
+        java.lang.reflect.Method r0;
+
+        $i0 := @parameter0: int;
+
+        if $i0 != -1 goto label01;
+
+        return -1;
+
+     label01:
+        i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i1 < 29 goto label02;
+
+        $i0 = staticinvoke <androidx.core.telephony.SubscriptionManagerCompat$Api29Impl: int getSlotIndex(int)>($i0);
+
+        return $i0;
+
+     label02:
+        r0 = <androidx.core.telephony.SubscriptionManagerCompat: java.lang.reflect.Method sGetSlotIndexMethod>;
+
+        if r0 != null goto label10;
+
+        i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i1 < 26 goto label05;
+
+        r1 = class "Landroid/telephony/SubscriptionManager;";
+
+        $r2 = newarray (java.lang.Class)[1];
+
+        $r3 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $r2[0] = $r3;
+
+     label03:
+        r0 = virtualinvoke r1.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("getSlotIndex", $r2);
+
+     label04:
+        <androidx.core.telephony.SubscriptionManagerCompat: java.lang.reflect.Method sGetSlotIndexMethod> = r0;
+
+        goto label08;
+
+     label05:
+        r1 = class "Landroid/telephony/SubscriptionManager;";
+
+        $r2 = newarray (java.lang.Class)[1];
+
+        $r3 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $r2[0] = $r3;
+
+     label06:
+        r0 = virtualinvoke r1.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("getSlotId", $r2);
+
+     label07:
+        <androidx.core.telephony.SubscriptionManagerCompat: java.lang.reflect.Method sGetSlotIndexMethod> = r0;
+
+     label08:
+        r0 = <androidx.core.telephony.SubscriptionManagerCompat: java.lang.reflect.Method sGetSlotIndexMethod>;
+
+     label09:
+        virtualinvoke r0.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label10:
+        r0 = <androidx.core.telephony.SubscriptionManagerCompat: java.lang.reflect.Method sGetSlotIndexMethod>;
+
+        $r4 = newarray (java.lang.Object)[1];
+
+     label11:
+        $r5 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+     label12:
+        $r4[0] = $r5;
+
+     label13:
+        $r6 = virtualinvoke r0.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r4);
+
+     label14:
+        $r5 = (java.lang.Integer) $r6;
+
+        if $r5 == null goto label17;
+
+     label15:
+        $i0 = virtualinvoke $r5.<java.lang.Integer: int intValue()>();
+
+     label16:
+        return $i0;
+
+     label17:
+        goto label21;
+
+     label18:
+        r7 := @caughtexception;
+
+        return -1;
+
+     label19:
+        r8 := @caughtexception;
+
+        goto label21;
+
+     label20:
+        r9 := @caughtexception;
+
+     label21:
+        return -1;
+
+        catch java.lang.NoSuchMethodException from label03 to label04 with label20;
+        catch java.lang.NoSuchMethodException from label06 to label07 with label20;
+        catch java.lang.NoSuchMethodException from label09 to label10 with label20;
+        catch java.lang.NoSuchMethodException from label11 to label12 with label20;
+        catch java.lang.NoSuchMethodException from label13 to label14 with label20;
+        catch java.lang.NoSuchMethodException from label15 to label16 with label20;
+        catch java.lang.IllegalAccessException from label03 to label04 with label19;
+        catch java.lang.IllegalAccessException from label06 to label07 with label19;
+        catch java.lang.IllegalAccessException from label09 to label10 with label19;
+        catch java.lang.IllegalAccessException from label11 to label12 with label19;
+        catch java.lang.IllegalAccessException from label13 to label14 with label19;
+        catch java.lang.IllegalAccessException from label15 to label16 with label19;
+        catch java.lang.reflect.InvocationTargetException from label03 to label04 with label18;
+        catch java.lang.reflect.InvocationTargetException from label06 to label07 with label18;
+        catch java.lang.reflect.InvocationTargetException from label09 to label10 with label18;
+        catch java.lang.reflect.InvocationTargetException from label11 to label12 with label18;
+        catch java.lang.reflect.InvocationTargetException from label13 to label14 with label18;
+        catch java.lang.reflect.InvocationTargetException from label15 to label16 with label18;
+    }
+}

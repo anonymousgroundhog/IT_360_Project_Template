@@ -1,0 +1,106 @@
+class androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs extends java.lang.Object
+{
+    public final java.lang.String channelName;
+    public final android.app.Notification notification;
+    public final int platformId;
+    public final java.lang.String platformTag;
+
+    void <init>(java.lang.String, int, android.app.Notification, java.lang.String)
+    {
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs r0;
+        int $i0;
+        android.app.Notification $r2;
+        java.lang.String $r1, $r3;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: android.app.Notification;
+
+        $r3 := @parameter3: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs: java.lang.String platformTag> = $r1;
+
+        r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs: int platformId> = $i0;
+
+        r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs: android.app.Notification notification> = $r2;
+
+        r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs: java.lang.String channelName> = $r3;
+
+        return;
+    }
+
+    public static androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs fromBundle(android.os.Bundle)
+    {
+        android.os.Bundle $r0;
+        android.os.Parcelable $r3;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs $r1;
+        int $i0;
+        android.app.Notification $r4;
+        java.lang.String $r2, $r5;
+
+        $r0 := @parameter0: android.os.Bundle;
+
+        staticinvoke <androidx.browser.trusted.TrustedWebActivityServiceConnection: void ensureBundleContains(android.os.Bundle,java.lang.String)>($r0, "android.support.customtabs.trusted.PLATFORM_TAG");
+
+        staticinvoke <androidx.browser.trusted.TrustedWebActivityServiceConnection: void ensureBundleContains(android.os.Bundle,java.lang.String)>($r0, "android.support.customtabs.trusted.PLATFORM_ID");
+
+        staticinvoke <androidx.browser.trusted.TrustedWebActivityServiceConnection: void ensureBundleContains(android.os.Bundle,java.lang.String)>($r0, "android.support.customtabs.trusted.NOTIFICATION");
+
+        staticinvoke <androidx.browser.trusted.TrustedWebActivityServiceConnection: void ensureBundleContains(android.os.Bundle,java.lang.String)>($r0, "android.support.customtabs.trusted.CHANNEL_NAME");
+
+        $r1 = new androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs;
+
+        $r2 = virtualinvoke $r0.<android.os.Bundle: java.lang.String getString(java.lang.String)>("android.support.customtabs.trusted.PLATFORM_TAG");
+
+        $i0 = virtualinvoke $r0.<android.os.Bundle: int getInt(java.lang.String)>("android.support.customtabs.trusted.PLATFORM_ID");
+
+        $r3 = virtualinvoke $r0.<android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>("android.support.customtabs.trusted.NOTIFICATION");
+
+        $r4 = (android.app.Notification) $r3;
+
+        $r5 = virtualinvoke $r0.<android.os.Bundle: java.lang.String getString(java.lang.String)>("android.support.customtabs.trusted.CHANNEL_NAME");
+
+        specialinvoke $r1.<androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs: void <init>(java.lang.String,int,android.app.Notification,java.lang.String)>($r2, $i0, $r4, $r5);
+
+        return $r1;
+    }
+
+    public android.os.Bundle toBundle()
+    {
+        android.os.Bundle r1;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs r0;
+        int $i0;
+        android.app.Notification $r3;
+        java.lang.String $r2;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs;
+
+        r1 = new android.os.Bundle;
+
+        specialinvoke r1.<android.os.Bundle: void <init>()>();
+
+        $r2 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs: java.lang.String platformTag>;
+
+        virtualinvoke r1.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("android.support.customtabs.trusted.PLATFORM_TAG", $r2);
+
+        $i0 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs: int platformId>;
+
+        virtualinvoke r1.<android.os.Bundle: void putInt(java.lang.String,int)>("android.support.customtabs.trusted.PLATFORM_ID", $i0);
+
+        $r3 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs: android.app.Notification notification>;
+
+        virtualinvoke r1.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("android.support.customtabs.trusted.NOTIFICATION", $r3);
+
+        $r2 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs: java.lang.String channelName>;
+
+        virtualinvoke r1.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("android.support.customtabs.trusted.CHANNEL_NAME", $r2);
+
+        return r1;
+    }
+}

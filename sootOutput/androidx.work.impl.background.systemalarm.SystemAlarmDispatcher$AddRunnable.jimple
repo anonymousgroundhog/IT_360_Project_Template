@@ -1,0 +1,52 @@
+class androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$AddRunnable extends java.lang.Object implements java.lang.Runnable
+{
+    private final androidx.work.impl.background.systemalarm.SystemAlarmDispatcher mDispatcher;
+    private final android.content.Intent mIntent;
+    private final int mStartId;
+
+    void <init>(androidx.work.impl.background.systemalarm.SystemAlarmDispatcher, android.content.Intent, int)
+    {
+        androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$AddRunnable r0;
+        int $i0;
+        android.content.Intent $r2;
+        androidx.work.impl.background.systemalarm.SystemAlarmDispatcher $r1;
+
+        r0 := @this: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$AddRunnable;
+
+        $r1 := @parameter0: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        $i0 := @parameter2: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$AddRunnable: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher mDispatcher> = $r1;
+
+        r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$AddRunnable: android.content.Intent mIntent> = $r2;
+
+        r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$AddRunnable: int mStartId> = $i0;
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$AddRunnable r0;
+        int $i0;
+        android.content.Intent $r2;
+        androidx.work.impl.background.systemalarm.SystemAlarmDispatcher $r1;
+
+        r0 := @this: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$AddRunnable;
+
+        $r1 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$AddRunnable: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher mDispatcher>;
+
+        $r2 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$AddRunnable: android.content.Intent mIntent>;
+
+        $i0 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$AddRunnable: int mStartId>;
+
+        virtualinvoke $r1.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: boolean add(android.content.Intent,int)>($r2, $i0);
+
+        return;
+    }
+}

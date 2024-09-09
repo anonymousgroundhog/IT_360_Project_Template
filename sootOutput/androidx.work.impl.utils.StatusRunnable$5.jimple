@@ -1,0 +1,73 @@
+class androidx.work.impl.utils.StatusRunnable$5 extends androidx.work.impl.utils.StatusRunnable
+{
+    final androidx.work.WorkQuery val$querySpec;
+    final androidx.work.impl.WorkManagerImpl val$workManager;
+
+    void <init>(androidx.work.impl.WorkManagerImpl, androidx.work.WorkQuery)
+    {
+        androidx.work.impl.utils.StatusRunnable$5 r0;
+        androidx.work.impl.WorkManagerImpl $r1;
+        androidx.work.WorkQuery $r2;
+
+        r0 := @this: androidx.work.impl.utils.StatusRunnable$5;
+
+        $r1 := @parameter0: androidx.work.impl.WorkManagerImpl;
+
+        $r2 := @parameter1: androidx.work.WorkQuery;
+
+        r0.<androidx.work.impl.utils.StatusRunnable$5: androidx.work.impl.WorkManagerImpl val$workManager> = $r1;
+
+        r0.<androidx.work.impl.utils.StatusRunnable$5: androidx.work.WorkQuery val$querySpec> = $r2;
+
+        specialinvoke r0.<androidx.work.impl.utils.StatusRunnable: void <init>()>();
+
+        return;
+    }
+
+    volatile java.lang.Object runInternal()
+    {
+        androidx.work.impl.utils.StatusRunnable$5 r0;
+        java.util.List $r1;
+
+        r0 := @this: androidx.work.impl.utils.StatusRunnable$5;
+
+        $r1 = virtualinvoke r0.<androidx.work.impl.utils.StatusRunnable$5: java.util.List runInternal()>();
+
+        return $r1;
+    }
+
+    java.util.List runInternal()
+    {
+        androidx.work.impl.utils.StatusRunnable$5 r0;
+        androidx.work.impl.model.RawWorkInfoDao $r3;
+        java.util.List $r6;
+        androidx.work.WorkQuery $r4;
+        androidx.sqlite.db.SupportSQLiteQuery $r5;
+        androidx.work.impl.WorkDatabase $r2;
+        androidx.work.impl.WorkManagerImpl r1;
+        java.lang.Object $r8;
+        androidx.arch.core.util.Function $r7;
+
+        r0 := @this: androidx.work.impl.utils.StatusRunnable$5;
+
+        r1 = r0.<androidx.work.impl.utils.StatusRunnable$5: androidx.work.impl.WorkManagerImpl val$workManager>;
+
+        $r2 = virtualinvoke r1.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkDatabase getWorkDatabase()>();
+
+        $r3 = virtualinvoke $r2.<androidx.work.impl.WorkDatabase: androidx.work.impl.model.RawWorkInfoDao rawWorkInfoDao()>();
+
+        $r4 = r0.<androidx.work.impl.utils.StatusRunnable$5: androidx.work.WorkQuery val$querySpec>;
+
+        $r5 = staticinvoke <androidx.work.impl.utils.RawQueries: androidx.sqlite.db.SupportSQLiteQuery workQueryToRawQuery(androidx.work.WorkQuery)>($r4);
+
+        $r6 = interfaceinvoke $r3.<androidx.work.impl.model.RawWorkInfoDao: java.util.List getWorkInfoPojos(androidx.sqlite.db.SupportSQLiteQuery)>($r5);
+
+        $r7 = <androidx.work.impl.model.WorkSpec: androidx.arch.core.util.Function WORK_INFO_MAPPER>;
+
+        $r8 = interfaceinvoke $r7.<androidx.arch.core.util.Function: java.lang.Object apply(java.lang.Object)>($r6);
+
+        $r6 = (java.util.List) $r8;
+
+        return $r6;
+    }
+}

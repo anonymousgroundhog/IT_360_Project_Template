@@ -1,0 +1,222 @@
+public final class com.google.android.gms.internal.ads.zzeuv extends java.lang.Object implements com.google.android.gms.internal.ads.zzexq
+{
+    private final com.google.android.gms.internal.ads.zzgey zza;
+    private final android.view.ViewGroup zzb;
+    private final android.content.Context zzc;
+    private final java.util.Set zzd;
+
+    public void <init>(com.google.android.gms.internal.ads.zzgey, android.view.ViewGroup, android.content.Context, java.util.Set)
+    {
+        android.content.Context $r3;
+        com.google.android.gms.internal.ads.zzeuv r0;
+        java.util.Set $r4;
+        android.view.ViewGroup $r2;
+        com.google.android.gms.internal.ads.zzgey $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzeuv;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzgey;
+
+        $r2 := @parameter1: android.view.ViewGroup;
+
+        $r3 := @parameter2: android.content.Context;
+
+        $r4 := @parameter3: java.util.Set;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzeuv: com.google.android.gms.internal.ads.zzgey zza> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzeuv: java.util.Set zzd> = $r4;
+
+        r0.<com.google.android.gms.internal.ads.zzeuv: android.view.ViewGroup zzb> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzeuv: android.content.Context zzc> = $r3;
+
+        return;
+    }
+
+    public final int zza()
+    {
+        com.google.android.gms.internal.ads.zzeuv r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzeuv;
+
+        return 22;
+    }
+
+    public final com.google.common.util.concurrent.ListenableFuture zzb()
+    {
+        com.google.android.gms.internal.ads.zzeuv r0;
+        com.google.common.util.concurrent.ListenableFuture $r2;
+        com.google.android.gms.internal.ads.zzeuu $r3;
+        com.google.android.gms.internal.ads.zzgey $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzeuv;
+
+        $r3 = new com.google.android.gms.internal.ads.zzeuu;
+
+        specialinvoke $r3.<com.google.android.gms.internal.ads.zzeuu: void <init>(com.google.android.gms.internal.ads.zzeuv)>(r0);
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzeuv: com.google.android.gms.internal.ads.zzgey zza>;
+
+        $r2 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzgey: com.google.common.util.concurrent.ListenableFuture zzb(java.util.concurrent.Callable)>($r3);
+
+        return $r2;
+    }
+
+    final com.google.android.gms.internal.ads.zzeuw zzc() throws java.lang.Exception
+    {
+        android.content.Context $r8;
+        com.google.android.gms.internal.ads.zzeuv r0;
+        android.content.pm.PackageManager $r12;
+        android.content.pm.PackageManager$NameNotFoundException $r16;
+        com.google.android.gms.internal.ads.zzbga $r2;
+        com.google.android.gms.internal.ads.zzbfu $r1;
+        int $i0;
+        android.content.pm.ActivityInfo $r14;
+        java.lang.Boolean $r4, $r15;
+        android.view.WindowManager$LayoutParams $r11;
+        boolean $z0;
+        android.content.ComponentName $r13;
+        java.util.Set $r6;
+        android.view.ViewGroup $r5;
+        java.lang.Object $r3;
+        com.google.android.gms.internal.ads.zzeuw $r7;
+        android.app.Activity $r9;
+        android.view.Window $r10;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzeuv;
+
+        $r1 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzfT>;
+
+        $r2 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r1);
+
+        $r4 = (java.lang.Boolean) $r3;
+
+        $z0 = virtualinvoke $r4.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label02;
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzeuv: android.view.ViewGroup zzb>;
+
+        if $r5 == null goto label02;
+
+        $r6 = r0.<com.google.android.gms.internal.ads.zzeuv: java.util.Set zzd>;
+
+        $z0 = interfaceinvoke $r6.<java.util.Set: boolean contains(java.lang.Object)>("banner");
+
+        if $z0 != 0 goto label01;
+
+        goto label02;
+
+     label01:
+        $r5 = r0.<com.google.android.gms.internal.ads.zzeuv: android.view.ViewGroup zzb>;
+
+        $r7 = new com.google.android.gms.internal.ads.zzeuw;
+
+        $z0 = virtualinvoke $r5.<android.view.ViewGroup: boolean isHardwareAccelerated()>();
+
+        $r4 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        specialinvoke $r7.<com.google.android.gms.internal.ads.zzeuw: void <init>(java.lang.Boolean)>($r4);
+
+        return $r7;
+
+     label02:
+        $r1 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzfU>;
+
+        $r2 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r1);
+
+        $r4 = (java.lang.Boolean) $r3;
+
+        $z0 = virtualinvoke $r4.<java.lang.Boolean: boolean booleanValue()>();
+
+        $r4 = null;
+
+        if $z0 == 0 goto label10;
+
+        $r6 = r0.<com.google.android.gms.internal.ads.zzeuv: java.util.Set zzd>;
+
+        $z0 = interfaceinvoke $r6.<java.util.Set: boolean contains(java.lang.Object)>("native");
+
+        if $z0 == 0 goto label10;
+
+        $r8 = r0.<com.google.android.gms.internal.ads.zzeuv: android.content.Context zzc>;
+
+        $z0 = $r8 instanceof android.app.Activity;
+
+        if $z0 == 0 goto label10;
+
+        $r7 = new com.google.android.gms.internal.ads.zzeuw;
+
+        $r9 = (android.app.Activity) $r8;
+
+        $r10 = virtualinvoke $r9.<android.app.Activity: android.view.Window getWindow()>();
+
+        $z0 = 1;
+
+        if $r10 == null goto label03;
+
+        $r11 = virtualinvoke $r10.<android.view.Window: android.view.WindowManager$LayoutParams getAttributes()>();
+
+        $i0 = $r11.<android.view.WindowManager$LayoutParams: int flags>;
+
+        $i0 = $i0 & 16777216;
+
+        if $i0 == 0 goto label03;
+
+        $r4 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        goto label09;
+
+     label03:
+        $r12 = virtualinvoke $r9.<android.app.Activity: android.content.pm.PackageManager getPackageManager()>();
+
+        $r13 = virtualinvoke $r9.<android.app.Activity: android.content.ComponentName getComponentName()>();
+
+        $r14 = virtualinvoke $r12.<android.content.pm.PackageManager: android.content.pm.ActivityInfo getActivityInfo(android.content.ComponentName,int)>($r13, 0);
+
+     label04:
+        $i0 = $r14.<android.content.pm.ActivityInfo: int flags>;
+
+        $i0 = $i0 & 512;
+
+        if $i0 == 0 goto label05;
+
+        goto label06;
+
+     label05:
+        $z0 = 0;
+
+     label06:
+        $r15 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+     label07:
+        $r4 = $r15;
+
+        goto label09;
+
+     label08:
+        $r16 := @caughtexception;
+
+     label09:
+        specialinvoke $r7.<com.google.android.gms.internal.ads.zzeuw: void <init>(java.lang.Boolean)>($r4);
+
+        return $r7;
+
+     label10:
+        $r7 = new com.google.android.gms.internal.ads.zzeuw;
+
+        specialinvoke $r7.<com.google.android.gms.internal.ads.zzeuw: void <init>(java.lang.Boolean)>(null);
+
+        return $r7;
+
+        catch android.content.pm.PackageManager$NameNotFoundException from label03 to label04 with label08;
+        catch android.content.pm.PackageManager$NameNotFoundException from label06 to label07 with label08;
+    }
+}

@@ -1,0 +1,179 @@
+public final class com.google.android.gms.internal.ads.zzfor extends android.database.ContentObserver
+{
+    private final android.content.Context zza;
+    private final android.media.AudioManager zzb;
+    private final com.google.android.gms.internal.ads.zzfop zzc;
+    private float zzd;
+    private final com.google.android.gms.internal.ads.zzfpc zze;
+
+    public void <init>(android.os.Handler, android.content.Context, com.google.android.gms.internal.ads.zzfop, com.google.android.gms.internal.ads.zzfpc)
+    {
+        android.content.Context $r1;
+        android.os.Handler $r5;
+        com.google.android.gms.internal.ads.zzfor r0;
+        com.google.android.gms.internal.ads.zzfpc $r3;
+        java.lang.Object $r4;
+        com.google.android.gms.internal.ads.zzfop $r2;
+        android.media.AudioManager $r6;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfor;
+
+        $r5 := @parameter0: android.os.Handler;
+
+        $r1 := @parameter1: android.content.Context;
+
+        $r2 := @parameter2: com.google.android.gms.internal.ads.zzfop;
+
+        $r3 := @parameter3: com.google.android.gms.internal.ads.zzfpc;
+
+        specialinvoke r0.<android.database.ContentObserver: void <init>(android.os.Handler)>($r5);
+
+        r0.<com.google.android.gms.internal.ads.zzfor: android.content.Context zza> = $r1;
+
+        $r4 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("audio");
+
+        $r6 = (android.media.AudioManager) $r4;
+
+        r0.<com.google.android.gms.internal.ads.zzfor: android.media.AudioManager zzb> = $r6;
+
+        r0.<com.google.android.gms.internal.ads.zzfor: com.google.android.gms.internal.ads.zzfop zzc> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzfor: com.google.android.gms.internal.ads.zzfpc zze> = $r3;
+
+        return;
+    }
+
+    private final float zzc()
+    {
+        byte $b2;
+        int $i0, $i1;
+        com.google.android.gms.internal.ads.zzfor r0;
+        float $f0, $f1;
+        android.media.AudioManager $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfor;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfor: android.media.AudioManager zzb>;
+
+        $i0 = virtualinvoke $r1.<android.media.AudioManager: int getStreamVolume(int)>(3);
+
+        $i1 = virtualinvoke $r1.<android.media.AudioManager: int getStreamMaxVolume(int)>(3);
+
+        if $i1 <= 0 goto label2;
+
+        if $i0 > 0 goto label1;
+
+        return 0.0F;
+
+     label1:
+        $f0 = (float) $i0;
+
+        $f1 = (float) $i1;
+
+        $f0 = $f0 / $f1;
+
+        $b2 = $f0 cmpl 1.0F;
+
+        $i0 = (int) $b2;
+
+        if $i0 <= 0 goto label3;
+
+        return 1.0F;
+
+     label2:
+        return 0.0F;
+
+     label3:
+        return $f0;
+    }
+
+    private final void zzd()
+    {
+        com.google.android.gms.internal.ads.zzfor r0;
+        com.google.android.gms.internal.ads.zzfpc $r1;
+        float $f0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfor;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfor: com.google.android.gms.internal.ads.zzfpc zze>;
+
+        $f0 = r0.<com.google.android.gms.internal.ads.zzfor: float zzd>;
+
+        virtualinvoke $r1.<com.google.android.gms.internal.ads.zzfpc: void zze(float)>($f0);
+
+        return;
+    }
+
+    public final void onChange(boolean)
+    {
+        byte $b0;
+        com.google.android.gms.internal.ads.zzfor r0;
+        float $f0, $f1;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfor;
+
+        $z0 := @parameter0: boolean;
+
+        specialinvoke r0.<android.database.ContentObserver: void onChange(boolean)>($z0);
+
+        $f0 = specialinvoke r0.<com.google.android.gms.internal.ads.zzfor: float zzc()>();
+
+        $f1 = r0.<com.google.android.gms.internal.ads.zzfor: float zzd>;
+
+        $b0 = $f0 cmpl $f1;
+
+        if $b0 == 0 goto label1;
+
+        r0.<com.google.android.gms.internal.ads.zzfor: float zzd> = $f0;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzfor: void zzd()>();
+
+     label1:
+        return;
+    }
+
+    public final void zza()
+    {
+        android.content.Context $r2;
+        android.content.ContentResolver $r3;
+        android.net.Uri $r1;
+        com.google.android.gms.internal.ads.zzfor r0;
+        float $f0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfor;
+
+        $f0 = specialinvoke r0.<com.google.android.gms.internal.ads.zzfor: float zzc()>();
+
+        r0.<com.google.android.gms.internal.ads.zzfor: float zzd> = $f0;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzfor: void zzd()>();
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzfor: android.content.Context zza>;
+
+        $r3 = virtualinvoke $r2.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        $r1 = <android.provider.Settings$System: android.net.Uri CONTENT_URI>;
+
+        virtualinvoke $r3.<android.content.ContentResolver: void registerContentObserver(android.net.Uri,boolean,android.database.ContentObserver)>($r1, 1, r0);
+
+        return;
+    }
+
+    public final void zzb()
+    {
+        com.google.android.gms.internal.ads.zzfor r0;
+        android.content.Context $r2;
+        android.content.ContentResolver $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfor;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzfor: android.content.Context zza>;
+
+        $r1 = virtualinvoke $r2.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        virtualinvoke $r1.<android.content.ContentResolver: void unregisterContentObserver(android.database.ContentObserver)>(r0);
+
+        return;
+    }
+}

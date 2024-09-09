@@ -1,0 +1,49 @@
+class androidx.core.provider.CallbackWithHandler$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.core.provider.CallbackWithHandler this$0;
+    final androidx.core.provider.FontsContractCompat$FontRequestCallback val$callback;
+    final android.graphics.Typeface val$typeface;
+
+    void <init>(androidx.core.provider.CallbackWithHandler, androidx.core.provider.FontsContractCompat$FontRequestCallback, android.graphics.Typeface)
+    {
+        android.graphics.Typeface $r3;
+        androidx.core.provider.FontsContractCompat$FontRequestCallback $r2;
+        androidx.core.provider.CallbackWithHandler$1 r0;
+        androidx.core.provider.CallbackWithHandler $r1;
+
+        r0 := @this: androidx.core.provider.CallbackWithHandler$1;
+
+        $r1 := @parameter0: androidx.core.provider.CallbackWithHandler;
+
+        $r2 := @parameter1: androidx.core.provider.FontsContractCompat$FontRequestCallback;
+
+        $r3 := @parameter2: android.graphics.Typeface;
+
+        r0.<androidx.core.provider.CallbackWithHandler$1: androidx.core.provider.CallbackWithHandler this$0> = $r1;
+
+        r0.<androidx.core.provider.CallbackWithHandler$1: androidx.core.provider.FontsContractCompat$FontRequestCallback val$callback> = $r2;
+
+        r0.<androidx.core.provider.CallbackWithHandler$1: android.graphics.Typeface val$typeface> = $r3;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        android.graphics.Typeface $r2;
+        androidx.core.provider.FontsContractCompat$FontRequestCallback $r1;
+        androidx.core.provider.CallbackWithHandler$1 r0;
+
+        r0 := @this: androidx.core.provider.CallbackWithHandler$1;
+
+        $r1 = r0.<androidx.core.provider.CallbackWithHandler$1: androidx.core.provider.FontsContractCompat$FontRequestCallback val$callback>;
+
+        $r2 = r0.<androidx.core.provider.CallbackWithHandler$1: android.graphics.Typeface val$typeface>;
+
+        virtualinvoke $r1.<androidx.core.provider.FontsContractCompat$FontRequestCallback: void onTypefaceRetrieved(android.graphics.Typeface)>($r2);
+
+        return;
+    }
+}

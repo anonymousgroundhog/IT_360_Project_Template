@@ -1,0 +1,203 @@
+public final class com.google.android.gms.ads.identifier.zzc extends java.lang.Object
+{
+
+    public static final void zza(java.lang.String)
+    {
+        java.net.HttpURLConnection $r3;
+        java.lang.Throwable $r6, $r7;
+        java.lang.IndexOutOfBoundsException $r10;
+        java.net.URL $r1;
+        java.lang.Exception $r8;
+        java.net.URLConnection $r2;
+        int $i0, $i1;
+        java.lang.StringBuilder $r5;
+        java.lang.String $r0, $r4, $r9;
+
+        $r0 := @parameter0: java.lang.String;
+
+     label01:
+        staticinvoke <com.google.android.gms.internal.ads_identifier.zzi: void zzb(int)>(263);
+
+     label02:
+        $r1 = new java.net.URL;
+
+     label03:
+        specialinvoke $r1.<java.net.URL: void <init>(java.lang.String)>($r0);
+
+        $r2 = virtualinvoke $r1.<java.net.URL: java.net.URLConnection openConnection()>();
+
+     label04:
+        $r3 = (java.net.HttpURLConnection) $r2;
+
+     label05:
+        $i0 = virtualinvoke $r3.<java.net.HttpURLConnection: int getResponseCode()>();
+
+     label06:
+        if $i0 < 200 goto label07;
+
+        if $i0 < 300 goto label10;
+
+     label07:
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r0);
+
+        $i1 = virtualinvoke $r4.<java.lang.String: int length()>();
+
+     label08:
+        $i1 = $i1 + 65;
+
+     label09:
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(int)>($i1);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Received non-success response code ");
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" from pinging URL: ");
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        $r4 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("HttpUrlPinger", $r4);
+
+     label10:
+        virtualinvoke $r3.<java.net.HttpURLConnection: void disconnect()>();
+
+     label11:
+        staticinvoke <com.google.android.gms.internal.ads_identifier.zzi: void zza()>();
+
+        return;
+
+     label12:
+        $r6 := @caughtexception;
+
+     label13:
+        virtualinvoke $r3.<java.net.HttpURLConnection: void disconnect()>();
+
+        throw $r6;
+
+     label14:
+        $r7 := @caughtexception;
+
+        goto label30;
+
+     label15:
+        $r8 := @caughtexception;
+
+        goto label17;
+
+     label16:
+        $r8 := @caughtexception;
+
+     label17:
+        $r4 = virtualinvoke $r8.<java.lang.Exception: java.lang.String getMessage()>();
+
+        $r9 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r0);
+
+        $i0 = virtualinvoke $r9.<java.lang.String: int length()>();
+
+     label18:
+        $i0 = $i0 + 27;
+
+     label19:
+        $r9 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r4);
+
+        $i1 = virtualinvoke $r9.<java.lang.String: int length()>();
+
+     label20:
+        $i0 = $i0 + $i1;
+
+     label21:
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(int)>($i0);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Error while pinging URL: ");
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(". ");
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r0 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("HttpUrlPinger", $r0, $r8);
+
+     label22:
+        goto label11;
+
+     label23:
+        $r10 := @caughtexception;
+
+     label24:
+        $r4 = virtualinvoke $r10.<java.lang.IndexOutOfBoundsException: java.lang.String getMessage()>();
+
+        $r9 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r0);
+
+        $i0 = virtualinvoke $r9.<java.lang.String: int length()>();
+
+     label25:
+        $i0 = $i0 + 32;
+
+     label26:
+        $r9 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r4);
+
+        $i1 = virtualinvoke $r9.<java.lang.String: int length()>();
+
+     label27:
+        $i0 = $i0 + $i1;
+
+     label28:
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(int)>($i0);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Error while parsing ping URL: ");
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(". ");
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r0 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("HttpUrlPinger", $r0, $r10);
+
+     label29:
+        goto label11;
+
+     label30:
+        staticinvoke <com.google.android.gms.internal.ads_identifier.zzi: void zza()>();
+
+        throw $r7;
+
+        catch java.lang.IndexOutOfBoundsException from label01 to label02 with label23;
+        catch java.lang.IndexOutOfBoundsException from label03 to label04 with label23;
+        catch java.io.IOException from label01 to label02 with label16;
+        catch java.io.IOException from label03 to label04 with label16;
+        catch java.lang.RuntimeException from label01 to label02 with label15;
+        catch java.lang.RuntimeException from label03 to label05 with label15;
+        catch java.lang.Throwable from label01 to label05 with label14;
+        catch java.lang.Throwable from label05 to label06 with label12;
+        catch java.lang.Throwable from label07 to label08 with label12;
+        catch java.lang.Throwable from label09 to label10 with label12;
+        catch java.lang.IndexOutOfBoundsException from label10 to label11 with label23;
+        catch java.io.IOException from label10 to label11 with label16;
+        catch java.lang.RuntimeException from label10 to label11 with label15;
+        catch java.lang.Throwable from label10 to label11 with label14;
+        catch java.lang.IndexOutOfBoundsException from label13 to label14 with label23;
+        catch java.io.IOException from label13 to label14 with label16;
+        catch java.lang.RuntimeException from label13 to label14 with label15;
+        catch java.lang.Throwable from label13 to label14 with label14;
+        catch java.lang.Throwable from label17 to label18 with label14;
+        catch java.lang.Throwable from label19 to label20 with label14;
+        catch java.lang.Throwable from label21 to label22 with label14;
+        catch java.lang.Throwable from label24 to label25 with label14;
+        catch java.lang.Throwable from label26 to label27 with label14;
+        catch java.lang.Throwable from label28 to label29 with label14;
+    }
+}

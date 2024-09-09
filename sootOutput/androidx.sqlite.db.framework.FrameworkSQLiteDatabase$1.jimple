@@ -1,0 +1,62 @@
+class androidx.sqlite.db.framework.FrameworkSQLiteDatabase$1 extends java.lang.Object implements android.database.sqlite.SQLiteDatabase$CursorFactory
+{
+    final androidx.sqlite.db.framework.FrameworkSQLiteDatabase this$0;
+    final androidx.sqlite.db.SupportSQLiteQuery val$supportQuery;
+
+    void <init>(androidx.sqlite.db.framework.FrameworkSQLiteDatabase, androidx.sqlite.db.SupportSQLiteQuery)
+    {
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase$1 r0;
+        androidx.sqlite.db.SupportSQLiteQuery $r2;
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase $r1;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteDatabase$1;
+
+        $r1 := @parameter0: androidx.sqlite.db.framework.FrameworkSQLiteDatabase;
+
+        $r2 := @parameter1: androidx.sqlite.db.SupportSQLiteQuery;
+
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteDatabase$1: androidx.sqlite.db.framework.FrameworkSQLiteDatabase this$0> = $r1;
+
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteDatabase$1: androidx.sqlite.db.SupportSQLiteQuery val$supportQuery> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public android.database.Cursor newCursor(android.database.sqlite.SQLiteDatabase, android.database.sqlite.SQLiteCursorDriver, java.lang.String, android.database.sqlite.SQLiteQuery)
+    {
+        androidx.sqlite.db.framework.FrameworkSQLiteProgram $r5;
+        android.database.sqlite.SQLiteCursorDriver $r2;
+        android.database.sqlite.SQLiteCursor $r7;
+        android.database.sqlite.SQLiteDatabase $r1;
+        androidx.sqlite.db.SupportSQLiteQuery $r6;
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase$1 r0;
+        java.lang.String $r3;
+        android.database.sqlite.SQLiteQuery $r4;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteDatabase$1;
+
+        $r1 := @parameter0: android.database.sqlite.SQLiteDatabase;
+
+        $r2 := @parameter1: android.database.sqlite.SQLiteCursorDriver;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: android.database.sqlite.SQLiteQuery;
+
+        $r6 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteDatabase$1: androidx.sqlite.db.SupportSQLiteQuery val$supportQuery>;
+
+        $r5 = new androidx.sqlite.db.framework.FrameworkSQLiteProgram;
+
+        specialinvoke $r5.<androidx.sqlite.db.framework.FrameworkSQLiteProgram: void <init>(android.database.sqlite.SQLiteProgram)>($r4);
+
+        interfaceinvoke $r6.<androidx.sqlite.db.SupportSQLiteQuery: void bindTo(androidx.sqlite.db.SupportSQLiteProgram)>($r5);
+
+        $r7 = new android.database.sqlite.SQLiteCursor;
+
+        specialinvoke $r7.<android.database.sqlite.SQLiteCursor: void <init>(android.database.sqlite.SQLiteCursorDriver,java.lang.String,android.database.sqlite.SQLiteQuery)>($r2, $r3, $r4);
+
+        return $r7;
+    }
+}

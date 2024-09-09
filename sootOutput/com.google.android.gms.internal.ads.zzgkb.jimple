@@ -1,0 +1,250 @@
+public final class com.google.android.gms.internal.ads.zzgkb extends com.google.android.gms.internal.ads.zzghh
+{
+    private final com.google.android.gms.internal.ads.zzgkg zza;
+    private final com.google.android.gms.internal.ads.zzgxr zzb;
+    private final com.google.android.gms.internal.ads.zzgxq zzc;
+    private final java.lang.Integer zzd;
+
+    private void <init>(com.google.android.gms.internal.ads.zzgkg, com.google.android.gms.internal.ads.zzgxr, com.google.android.gms.internal.ads.zzgxq, java.lang.Integer)
+    {
+        com.google.android.gms.internal.ads.zzgxr $r2;
+        com.google.android.gms.internal.ads.zzgxq $r3;
+        com.google.android.gms.internal.ads.zzgkg $r1;
+        com.google.android.gms.internal.ads.zzgkb r0;
+        java.lang.Integer $r4;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgkb;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzgkg;
+
+        $r2 := @parameter1: com.google.android.gms.internal.ads.zzgxr;
+
+        $r3 := @parameter2: com.google.android.gms.internal.ads.zzgxq;
+
+        $r4 := @parameter3: java.lang.Integer;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzghh: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzgkb: com.google.android.gms.internal.ads.zzgkg zza> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzgkb: com.google.android.gms.internal.ads.zzgxr zzb> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzgkb: com.google.android.gms.internal.ads.zzgxq zzc> = $r3;
+
+        r0.<com.google.android.gms.internal.ads.zzgkb: java.lang.Integer zzd> = $r4;
+
+        return;
+    }
+
+    public static com.google.android.gms.internal.ads.zzgkb zza(com.google.android.gms.internal.ads.zzgkf, com.google.android.gms.internal.ads.zzgxr, java.lang.Integer) throws java.security.GeneralSecurityException
+    {
+        com.google.android.gms.internal.ads.zzgkf $r0, $r3;
+        com.google.android.gms.internal.ads.zzgxr $r1;
+        byte[] $r9;
+        java.lang.IllegalStateException $r12;
+        com.google.android.gms.internal.ads.zzgxq $r10;
+        com.google.android.gms.internal.ads.zzgkg $r7;
+        com.google.android.gms.internal.ads.zzgkb $r8;
+        java.lang.Integer $r2;
+        java.nio.ByteBuffer $r11;
+        java.security.GeneralSecurityException $r4;
+        int $i0;
+        java.lang.StringBuilder $r6;
+        java.lang.String $r5, $r13;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzgkf;
+
+        $r1 := @parameter1: com.google.android.gms.internal.ads.zzgxr;
+
+        $r2 := @parameter2: java.lang.Integer;
+
+        $r3 = <com.google.android.gms.internal.ads.zzgkf: com.google.android.gms.internal.ads.zzgkf zzc>;
+
+        if $r0 == $r3 goto label2;
+
+        if $r2 == null goto label1;
+
+        goto label2;
+
+     label1:
+        $r4 = new java.security.GeneralSecurityException;
+
+        $r5 = virtualinvoke $r0.<java.lang.Object: java.lang.String toString()>();
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("For given Variant ");
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" the value of idRequirement must be non-null");
+
+        $r5 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<java.security.GeneralSecurityException: void <init>(java.lang.String)>($r5);
+
+        throw $r4;
+
+     label2:
+        if $r0 != $r3 goto label4;
+
+        if $r2 != null goto label3;
+
+        goto label4;
+
+     label3:
+        $r4 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r4.<java.security.GeneralSecurityException: void <init>(java.lang.String)>("For given Variant NO_PREFIX the value of idRequirement must be null");
+
+        throw $r4;
+
+     label4:
+        $i0 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzgxr: int zza()>();
+
+        if $i0 != 32 goto label9;
+
+        $r7 = staticinvoke <com.google.android.gms.internal.ads.zzgkg: com.google.android.gms.internal.ads.zzgkg zzc(com.google.android.gms.internal.ads.zzgkf)>($r0);
+
+        $r8 = new com.google.android.gms.internal.ads.zzgkb;
+
+        $r0 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzgkg: com.google.android.gms.internal.ads.zzgkf zzb()>();
+
+        if $r0 != $r3 goto label5;
+
+        $r9 = newarray (byte)[0];
+
+        $r10 = staticinvoke <com.google.android.gms.internal.ads.zzgxq: com.google.android.gms.internal.ads.zzgxq zzb(byte[])>($r9);
+
+        goto label7;
+
+     label5:
+        $r0 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzgkg: com.google.android.gms.internal.ads.zzgkf zzb()>();
+
+        $r3 = <com.google.android.gms.internal.ads.zzgkf: com.google.android.gms.internal.ads.zzgkf zzb>;
+
+        if $r0 != $r3 goto label6;
+
+        $r11 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer allocate(int)>(5);
+
+        $r11 = virtualinvoke $r11.<java.nio.ByteBuffer: java.nio.ByteBuffer put(byte)>(0);
+
+        $i0 = virtualinvoke $r2.<java.lang.Integer: int intValue()>();
+
+        $r11 = virtualinvoke $r11.<java.nio.ByteBuffer: java.nio.ByteBuffer putInt(int)>($i0);
+
+        $r9 = virtualinvoke $r11.<java.nio.ByteBuffer: byte[] array()>();
+
+        $r10 = staticinvoke <com.google.android.gms.internal.ads.zzgxq: com.google.android.gms.internal.ads.zzgxq zzb(byte[])>($r9);
+
+        goto label7;
+
+     label6:
+        $r0 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzgkg: com.google.android.gms.internal.ads.zzgkf zzb()>();
+
+        $r3 = <com.google.android.gms.internal.ads.zzgkf: com.google.android.gms.internal.ads.zzgkf zza>;
+
+        if $r0 != $r3 goto label8;
+
+        $r11 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer allocate(int)>(5);
+
+        $r11 = virtualinvoke $r11.<java.nio.ByteBuffer: java.nio.ByteBuffer put(byte)>(1);
+
+        $i0 = virtualinvoke $r2.<java.lang.Integer: int intValue()>();
+
+        $r11 = virtualinvoke $r11.<java.nio.ByteBuffer: java.nio.ByteBuffer putInt(int)>($i0);
+
+        $r9 = virtualinvoke $r11.<java.nio.ByteBuffer: byte[] array()>();
+
+        $r10 = staticinvoke <com.google.android.gms.internal.ads.zzgxq: com.google.android.gms.internal.ads.zzgxq zzb(byte[])>($r9);
+
+     label7:
+        specialinvoke $r8.<com.google.android.gms.internal.ads.zzgkb: void <init>(com.google.android.gms.internal.ads.zzgkg,com.google.android.gms.internal.ads.zzgxr,com.google.android.gms.internal.ads.zzgxq,java.lang.Integer)>($r7, $r1, $r10, $r2);
+
+        return $r8;
+
+     label8:
+        $r12 = new java.lang.IllegalStateException;
+
+        $r0 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzgkg: com.google.android.gms.internal.ads.zzgkf zzb()>();
+
+        $r5 = virtualinvoke $r0.<java.lang.Object: java.lang.String toString()>();
+
+        $r13 = "Unknown Variant: ";
+
+        $r5 = virtualinvoke $r13.<java.lang.String: java.lang.String concat(java.lang.String)>($r5);
+
+        specialinvoke $r12.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r5);
+
+        throw $r12;
+
+     label9:
+        $r4 = new java.security.GeneralSecurityException;
+
+        $i0 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzgxr: int zza()>();
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ChaCha20Poly1305 key must be constructed with key of length 32 bytes, not ");
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r5 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<java.security.GeneralSecurityException: void <init>(java.lang.String)>($r5);
+
+        throw $r4;
+    }
+
+    public final com.google.android.gms.internal.ads.zzgkg zzb()
+    {
+        com.google.android.gms.internal.ads.zzgkb r0;
+        com.google.android.gms.internal.ads.zzgkg r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgkb;
+
+        r1 = r0.<com.google.android.gms.internal.ads.zzgkb: com.google.android.gms.internal.ads.zzgkg zza>;
+
+        return r1;
+    }
+
+    public final com.google.android.gms.internal.ads.zzgxq zzc()
+    {
+        com.google.android.gms.internal.ads.zzgxq r1;
+        com.google.android.gms.internal.ads.zzgkb r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgkb;
+
+        r1 = r0.<com.google.android.gms.internal.ads.zzgkb: com.google.android.gms.internal.ads.zzgxq zzc>;
+
+        return r1;
+    }
+
+    public final com.google.android.gms.internal.ads.zzgxr zzd()
+    {
+        com.google.android.gms.internal.ads.zzgxr r1;
+        com.google.android.gms.internal.ads.zzgkb r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgkb;
+
+        r1 = r0.<com.google.android.gms.internal.ads.zzgkb: com.google.android.gms.internal.ads.zzgxr zzb>;
+
+        return r1;
+    }
+
+    public final java.lang.Integer zze()
+    {
+        com.google.android.gms.internal.ads.zzgkb r0;
+        java.lang.Integer r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgkb;
+
+        r1 = r0.<com.google.android.gms.internal.ads.zzgkb: java.lang.Integer zzd>;
+
+        return r1;
+    }
+}

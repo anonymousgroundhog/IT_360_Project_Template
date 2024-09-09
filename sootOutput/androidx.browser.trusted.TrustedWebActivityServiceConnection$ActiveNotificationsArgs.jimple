@@ -1,0 +1,58 @@
+class androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs extends java.lang.Object
+{
+    public final android.os.Parcelable[] notifications;
+
+    void <init>(android.os.Parcelable[])
+    {
+        android.os.Parcelable[] $r1;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs r0;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs;
+
+        $r1 := @parameter0: android.os.Parcelable[];
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs: android.os.Parcelable[] notifications> = $r1;
+
+        return;
+    }
+
+    public static androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs fromBundle(android.os.Bundle)
+    {
+        android.os.Bundle $r0;
+        android.os.Parcelable[] $r2;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs $r1;
+
+        $r0 := @parameter0: android.os.Bundle;
+
+        staticinvoke <androidx.browser.trusted.TrustedWebActivityServiceConnection: void ensureBundleContains(android.os.Bundle,java.lang.String)>($r0, "android.support.customtabs.trusted.ACTIVE_NOTIFICATIONS");
+
+        $r1 = new androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs;
+
+        $r2 = virtualinvoke $r0.<android.os.Bundle: android.os.Parcelable[] getParcelableArray(java.lang.String)>("android.support.customtabs.trusted.ACTIVE_NOTIFICATIONS");
+
+        specialinvoke $r1.<androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs: void <init>(android.os.Parcelable[])>($r2);
+
+        return $r1;
+    }
+
+    public android.os.Bundle toBundle()
+    {
+        android.os.Bundle r1;
+        android.os.Parcelable[] $r2;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs r0;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs;
+
+        r1 = new android.os.Bundle;
+
+        specialinvoke r1.<android.os.Bundle: void <init>()>();
+
+        $r2 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs: android.os.Parcelable[] notifications>;
+
+        virtualinvoke r1.<android.os.Bundle: void putParcelableArray(java.lang.String,android.os.Parcelable[])>("android.support.customtabs.trusted.ACTIVE_NOTIFICATIONS", $r2);
+
+        return r1;
+    }
+}

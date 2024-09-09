@@ -1,0 +1,137 @@
+final class com.google.android.gms.internal.ads.zzcib extends java.lang.Object
+{
+    private final java.util.ArrayList zza;
+    private long zzb;
+
+    void <init>()
+    {
+        com.google.android.gms.internal.ads.zzcib r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcib;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzcib: java.util.ArrayList zza> = $r1;
+
+        return;
+    }
+
+    final long zza()
+    {
+        long $l0, $l1;
+        com.google.android.gms.internal.ads.zzcib r0;
+        java.util.ArrayList $r1;
+        java.util.Map $r5;
+        java.lang.String $r9, $r10;
+        boolean $z0;
+        java.util.Map$Entry $r8;
+        java.util.Iterator $r2, $r7;
+        java.util.Set $r6;
+        java.lang.RuntimeException $r12;
+        com.google.android.gms.internal.ads.zzhj $r4;
+        java.util.List $r11;
+        java.lang.Object $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcib;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcib: java.util.ArrayList zza>;
+
+        $r2 = virtualinvoke $r1.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label9;
+
+        $r3 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+        $r4 = (com.google.android.gms.internal.ads.zzhj) $r3;
+
+        $r5 = virtualinvoke $r4.<com.google.android.gms.internal.ads.zzgq: java.util.Map zze()>();
+
+        $r6 = interfaceinvoke $r5.<java.util.Map: java.util.Set entrySet()>();
+
+        $r7 = interfaceinvoke $r6.<java.util.Set: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r7.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label8;
+
+        $r3 = interfaceinvoke $r7.<java.util.Iterator: java.lang.Object next()>();
+
+        $r8 = (java.util.Map$Entry) $r3;
+
+        $r9 = "content-length";
+
+     label3:
+        $r3 = interfaceinvoke $r8.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $r10 = (java.lang.String) $r3;
+
+        $z0 = virtualinvoke $r9.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>($r10);
+
+     label4:
+        if $z0 == 0 goto label2;
+
+     label5:
+        $r3 = interfaceinvoke $r8.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $r11 = (java.util.List) $r3;
+
+        $r3 = interfaceinvoke $r11.<java.util.List: java.lang.Object get(int)>(0);
+
+        $r9 = (java.lang.String) $r3;
+
+        $l0 = staticinvoke <java.lang.Long: long parseLong(java.lang.String)>($r9);
+
+        $l1 = r0.<com.google.android.gms.internal.ads.zzcib: long zzb>;
+
+        $l0 = staticinvoke <java.lang.Math: long max(long,long)>($l1, $l0);
+
+        r0.<com.google.android.gms.internal.ads.zzcib: long zzb> = $l0;
+
+     label6:
+        goto label2;
+
+     label7:
+        $r12 := @caughtexception;
+
+        goto label2;
+
+     label8:
+        interfaceinvoke $r2.<java.util.Iterator: void remove()>();
+
+        goto label1;
+
+     label9:
+        $l0 = r0.<com.google.android.gms.internal.ads.zzcib: long zzb>;
+
+        return $l0;
+
+        catch java.lang.RuntimeException from label3 to label4 with label7;
+        catch java.lang.RuntimeException from label5 to label6 with label7;
+    }
+
+    final void zzb(com.google.android.gms.internal.ads.zzhj)
+    {
+        com.google.android.gms.internal.ads.zzcib r0;
+        com.google.android.gms.internal.ads.zzhj $r1;
+        java.util.ArrayList $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcib;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzhj;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcib: java.util.ArrayList zza>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+        return;
+    }
+}

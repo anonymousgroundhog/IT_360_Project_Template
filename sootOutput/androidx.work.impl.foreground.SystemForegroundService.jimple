@@ -1,0 +1,276 @@
+public class androidx.work.impl.foreground.SystemForegroundService extends androidx.lifecycle.LifecycleService implements androidx.work.impl.foreground.SystemForegroundDispatcher$Callback
+{
+    private static final java.lang.String TAG;
+    private static androidx.work.impl.foreground.SystemForegroundService sForegroundService;
+    androidx.work.impl.foreground.SystemForegroundDispatcher mDispatcher;
+    private android.os.Handler mHandler;
+    private boolean mIsShutdown;
+    android.app.NotificationManager mNotificationManager;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+
+        $r0 = staticinvoke <androidx.work.Logger: java.lang.String tagWithPrefix(java.lang.String)>("SystemFgService");
+
+        <androidx.work.impl.foreground.SystemForegroundService: java.lang.String TAG> = $r0;
+
+        <androidx.work.impl.foreground.SystemForegroundService: androidx.work.impl.foreground.SystemForegroundService sForegroundService> = null;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        androidx.work.impl.foreground.SystemForegroundService r0;
+
+        r0 := @this: androidx.work.impl.foreground.SystemForegroundService;
+
+        specialinvoke r0.<androidx.lifecycle.LifecycleService: void <init>()>();
+
+        return;
+    }
+
+    public static androidx.work.impl.foreground.SystemForegroundService getInstance()
+    {
+        androidx.work.impl.foreground.SystemForegroundService r0;
+
+        r0 = <androidx.work.impl.foreground.SystemForegroundService: androidx.work.impl.foreground.SystemForegroundService sForegroundService>;
+
+        return r0;
+    }
+
+    private void initializeDispatcher()
+    {
+        android.content.Context $r3;
+        android.app.NotificationManager $r5;
+        android.os.Handler $r1;
+        android.os.Looper $r2;
+        androidx.work.impl.foreground.SystemForegroundService r0;
+        java.lang.Object $r4;
+        androidx.work.impl.foreground.SystemForegroundDispatcher $r6;
+
+        r0 := @this: androidx.work.impl.foreground.SystemForegroundService;
+
+        $r1 = new android.os.Handler;
+
+        $r2 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        specialinvoke $r1.<android.os.Handler: void <init>(android.os.Looper)>($r2);
+
+        r0.<androidx.work.impl.foreground.SystemForegroundService: android.os.Handler mHandler> = $r1;
+
+        $r3 = virtualinvoke r0.<androidx.work.impl.foreground.SystemForegroundService: android.content.Context getApplicationContext()>();
+
+        $r4 = virtualinvoke $r3.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("notification");
+
+        $r5 = (android.app.NotificationManager) $r4;
+
+        r0.<androidx.work.impl.foreground.SystemForegroundService: android.app.NotificationManager mNotificationManager> = $r5;
+
+        $r6 = new androidx.work.impl.foreground.SystemForegroundDispatcher;
+
+        $r3 = virtualinvoke r0.<androidx.work.impl.foreground.SystemForegroundService: android.content.Context getApplicationContext()>();
+
+        specialinvoke $r6.<androidx.work.impl.foreground.SystemForegroundDispatcher: void <init>(android.content.Context)>($r3);
+
+        r0.<androidx.work.impl.foreground.SystemForegroundService: androidx.work.impl.foreground.SystemForegroundDispatcher mDispatcher> = $r6;
+
+        $r6 = r0.<androidx.work.impl.foreground.SystemForegroundService: androidx.work.impl.foreground.SystemForegroundDispatcher mDispatcher>;
+
+        virtualinvoke $r6.<androidx.work.impl.foreground.SystemForegroundDispatcher: void setCallback(androidx.work.impl.foreground.SystemForegroundDispatcher$Callback)>(r0);
+
+        return;
+    }
+
+    public void cancelNotification(int)
+    {
+        androidx.work.impl.foreground.SystemForegroundService$3 $r2;
+        android.os.Handler $r1;
+        androidx.work.impl.foreground.SystemForegroundService r0;
+        int $i0;
+
+        r0 := @this: androidx.work.impl.foreground.SystemForegroundService;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.work.impl.foreground.SystemForegroundService: android.os.Handler mHandler>;
+
+        $r2 = new androidx.work.impl.foreground.SystemForegroundService$3;
+
+        specialinvoke $r2.<androidx.work.impl.foreground.SystemForegroundService$3: void <init>(androidx.work.impl.foreground.SystemForegroundService,int)>(r0, $i0);
+
+        virtualinvoke $r1.<android.os.Handler: boolean post(java.lang.Runnable)>($r2);
+
+        return;
+    }
+
+    public void notify(int, android.app.Notification)
+    {
+        androidx.work.impl.foreground.SystemForegroundService$2 $r3;
+        android.os.Handler $r2;
+        androidx.work.impl.foreground.SystemForegroundService r0;
+        int $i0;
+        android.app.Notification $r1;
+
+        r0 := @this: androidx.work.impl.foreground.SystemForegroundService;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.app.Notification;
+
+        $r2 = r0.<androidx.work.impl.foreground.SystemForegroundService: android.os.Handler mHandler>;
+
+        $r3 = new androidx.work.impl.foreground.SystemForegroundService$2;
+
+        specialinvoke $r3.<androidx.work.impl.foreground.SystemForegroundService$2: void <init>(androidx.work.impl.foreground.SystemForegroundService,int,android.app.Notification)>(r0, $i0, $r1);
+
+        virtualinvoke $r2.<android.os.Handler: boolean post(java.lang.Runnable)>($r3);
+
+        return;
+    }
+
+    public void onCreate()
+    {
+        androidx.work.impl.foreground.SystemForegroundService r0;
+
+        r0 := @this: androidx.work.impl.foreground.SystemForegroundService;
+
+        specialinvoke r0.<androidx.lifecycle.LifecycleService: void onCreate()>();
+
+        <androidx.work.impl.foreground.SystemForegroundService: androidx.work.impl.foreground.SystemForegroundService sForegroundService> = r0;
+
+        specialinvoke r0.<androidx.work.impl.foreground.SystemForegroundService: void initializeDispatcher()>();
+
+        return;
+    }
+
+    public void onDestroy()
+    {
+        androidx.work.impl.foreground.SystemForegroundService r0;
+        androidx.work.impl.foreground.SystemForegroundDispatcher $r1;
+
+        r0 := @this: androidx.work.impl.foreground.SystemForegroundService;
+
+        specialinvoke r0.<androidx.lifecycle.LifecycleService: void onDestroy()>();
+
+        $r1 = r0.<androidx.work.impl.foreground.SystemForegroundService: androidx.work.impl.foreground.SystemForegroundDispatcher mDispatcher>;
+
+        virtualinvoke $r1.<androidx.work.impl.foreground.SystemForegroundDispatcher: void onDestroy()>();
+
+        return;
+    }
+
+    public int onStartCommand(android.content.Intent, int, int)
+    {
+        androidx.work.impl.foreground.SystemForegroundService r0;
+        android.content.Intent $r1;
+        androidx.work.Logger $r4;
+        java.lang.Throwable[] $r3;
+        int $i0, $i1;
+        java.lang.String $r2;
+        androidx.work.impl.foreground.SystemForegroundDispatcher $r5;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.foreground.SystemForegroundService;
+
+        $r1 := @parameter0: android.content.Intent;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        specialinvoke r0.<androidx.lifecycle.LifecycleService: int onStartCommand(android.content.Intent,int,int)>($r1, $i0, $i1);
+
+        $z0 = r0.<androidx.work.impl.foreground.SystemForegroundService: boolean mIsShutdown>;
+
+        if $z0 == 0 goto label1;
+
+        $r4 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r2 = <androidx.work.impl.foreground.SystemForegroundService: java.lang.String TAG>;
+
+        $r3 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r4.<androidx.work.Logger: void info(java.lang.String,java.lang.String,java.lang.Throwable[])>($r2, "Re-initializing SystemForegroundService after a request to shut-down.", $r3);
+
+        $r5 = r0.<androidx.work.impl.foreground.SystemForegroundService: androidx.work.impl.foreground.SystemForegroundDispatcher mDispatcher>;
+
+        virtualinvoke $r5.<androidx.work.impl.foreground.SystemForegroundDispatcher: void onDestroy()>();
+
+        specialinvoke r0.<androidx.work.impl.foreground.SystemForegroundService: void initializeDispatcher()>();
+
+        r0.<androidx.work.impl.foreground.SystemForegroundService: boolean mIsShutdown> = 0;
+
+     label1:
+        if $r1 == null goto label2;
+
+        $r5 = r0.<androidx.work.impl.foreground.SystemForegroundService: androidx.work.impl.foreground.SystemForegroundDispatcher mDispatcher>;
+
+        virtualinvoke $r5.<androidx.work.impl.foreground.SystemForegroundDispatcher: void onStartCommand(android.content.Intent)>($r1);
+
+     label2:
+        return 3;
+    }
+
+    public void startForeground(int, int, android.app.Notification)
+    {
+        androidx.work.impl.foreground.SystemForegroundService$1 $r3;
+        android.os.Handler $r2;
+        androidx.work.impl.foreground.SystemForegroundService r0;
+        int $i0, $i1;
+        android.app.Notification $r1;
+
+        r0 := @this: androidx.work.impl.foreground.SystemForegroundService;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 := @parameter2: android.app.Notification;
+
+        $r2 = r0.<androidx.work.impl.foreground.SystemForegroundService: android.os.Handler mHandler>;
+
+        $r3 = new androidx.work.impl.foreground.SystemForegroundService$1;
+
+        specialinvoke $r3.<androidx.work.impl.foreground.SystemForegroundService$1: void <init>(androidx.work.impl.foreground.SystemForegroundService,int,android.app.Notification,int)>(r0, $i0, $r1, $i1);
+
+        virtualinvoke $r2.<android.os.Handler: boolean post(java.lang.Runnable)>($r3);
+
+        return;
+    }
+
+    public void stop()
+    {
+        androidx.work.Logger $r1;
+        java.lang.Throwable[] $r3;
+        androidx.work.impl.foreground.SystemForegroundService r0;
+        int $i0;
+        java.lang.String $r2;
+
+        r0 := @this: androidx.work.impl.foreground.SystemForegroundService;
+
+        r0.<androidx.work.impl.foreground.SystemForegroundService: boolean mIsShutdown> = 1;
+
+        $r1 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r2 = <androidx.work.impl.foreground.SystemForegroundService: java.lang.String TAG>;
+
+        $r3 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r1.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>($r2, "All commands completed.", $r3);
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 26 goto label1;
+
+        virtualinvoke r0.<androidx.work.impl.foreground.SystemForegroundService: void stopForeground(boolean)>(1);
+
+     label1:
+        <androidx.work.impl.foreground.SystemForegroundService: androidx.work.impl.foreground.SystemForegroundService sForegroundService> = null;
+
+        virtualinvoke r0.<androidx.work.impl.foreground.SystemForegroundService: void stopSelf()>();
+
+        return;
+    }
+}

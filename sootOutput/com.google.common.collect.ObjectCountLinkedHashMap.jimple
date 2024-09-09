@@ -1,0 +1,455 @@
+class com.google.common.collect.ObjectCountLinkedHashMap extends com.google.common.collect.ObjectCountHashMap
+{
+    private static final int ENDPOINT;
+    private transient int firstEntry;
+    private transient int lastEntry;
+    transient long[] links;
+
+    void <init>()
+    {
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        specialinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: void <init>(int)>(3);
+
+        return;
+    }
+
+    void <init>(int)
+    {
+        int $i0;
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: void <init>(int,float)>($i0, 1.0F);
+
+        return;
+    }
+
+    void <init>(int, float)
+    {
+        int $i0;
+        float $f0;
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        $i0 := @parameter0: int;
+
+        $f0 := @parameter1: float;
+
+        specialinvoke r0.<com.google.common.collect.ObjectCountHashMap: void <init>(int,float)>($i0, $f0);
+
+        return;
+    }
+
+    void <init>(com.google.common.collect.ObjectCountHashMap)
+    {
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+        com.google.common.collect.ObjectCountHashMap r1;
+        int $i0, $i1;
+        java.lang.Object $r2;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        r1 := @parameter0: com.google.common.collect.ObjectCountHashMap;
+
+        specialinvoke r0.<com.google.common.collect.ObjectCountHashMap: void <init>()>();
+
+        $i0 = virtualinvoke r1.<com.google.common.collect.ObjectCountHashMap: int size()>();
+
+        virtualinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: void init(int,float)>($i0, 1.0F);
+
+        $i0 = virtualinvoke r1.<com.google.common.collect.ObjectCountHashMap: int firstIndex()>();
+
+     label1:
+        if $i0 == -1 goto label2;
+
+        $r2 = virtualinvoke r1.<com.google.common.collect.ObjectCountHashMap: java.lang.Object getKey(int)>($i0);
+
+        $i1 = virtualinvoke r1.<com.google.common.collect.ObjectCountHashMap: int getValue(int)>($i0);
+
+        virtualinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: int put(java.lang.Object,int)>($r2, $i1);
+
+        $i0 = virtualinvoke r1.<com.google.common.collect.ObjectCountHashMap: int nextIndex(int)>($i0);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    static com.google.common.collect.ObjectCountLinkedHashMap create()
+    {
+        com.google.common.collect.ObjectCountLinkedHashMap $r0;
+
+        $r0 = new com.google.common.collect.ObjectCountLinkedHashMap;
+
+        specialinvoke $r0.<com.google.common.collect.ObjectCountLinkedHashMap: void <init>()>();
+
+        return $r0;
+    }
+
+    static com.google.common.collect.ObjectCountLinkedHashMap createWithExpectedSize(int)
+    {
+        int $i0;
+        com.google.common.collect.ObjectCountLinkedHashMap $r0;
+
+        $i0 := @parameter0: int;
+
+        $r0 = new com.google.common.collect.ObjectCountLinkedHashMap;
+
+        specialinvoke $r0.<com.google.common.collect.ObjectCountLinkedHashMap: void <init>(int)>($i0);
+
+        return $r0;
+    }
+
+    private int getPredecessor(int)
+    {
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+        long[] $r1;
+        int $i0;
+        long $l1;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<com.google.common.collect.ObjectCountLinkedHashMap: long[] links>;
+
+        $l1 = $r1[$i0];
+
+        $l1 = $l1 >>> 32;
+
+        $i0 = (int) $l1;
+
+        return $i0;
+    }
+
+    private int getSuccessor(int)
+    {
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+        long[] $r1;
+        int $i0;
+        long $l1;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<com.google.common.collect.ObjectCountLinkedHashMap: long[] links>;
+
+        $l1 = $r1[$i0];
+
+        $i0 = (int) $l1;
+
+        return $i0;
+    }
+
+    private void setPredecessor(int, int)
+    {
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+        long[] $r1, $r2;
+        int $i0, $i1;
+        long $l2, $l3;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = r0.<com.google.common.collect.ObjectCountLinkedHashMap: long[] links>;
+
+        $r2 = r0.<com.google.common.collect.ObjectCountLinkedHashMap: long[] links>;
+
+        $l2 = $r2[$i0];
+
+        $l3 = -4294967296L ^ -1L;
+
+        $l2 = $l2 & $l3;
+
+        $l3 = (long) $i1;
+
+        $l3 = $l3 << 32;
+
+        $l2 = $l2 | $l3;
+
+        $r1[$i0] = $l2;
+
+        return;
+    }
+
+    private void setSucceeds(int, int)
+    {
+        int $i0, $i1;
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        if $i0 != -2 goto label1;
+
+        r0.<com.google.common.collect.ObjectCountLinkedHashMap: int firstEntry> = $i1;
+
+        goto label2;
+
+     label1:
+        specialinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: void setSuccessor(int,int)>($i0, $i1);
+
+     label2:
+        if $i1 != -2 goto label3;
+
+        r0.<com.google.common.collect.ObjectCountLinkedHashMap: int lastEntry> = $i0;
+
+        return;
+
+     label3:
+        specialinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: void setPredecessor(int,int)>($i1, $i0);
+
+        return;
+    }
+
+    private void setSuccessor(int, int)
+    {
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+        long[] $r1, $r2;
+        int $i0, $i1;
+        long $l2, $l3;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = r0.<com.google.common.collect.ObjectCountLinkedHashMap: long[] links>;
+
+        $r2 = r0.<com.google.common.collect.ObjectCountLinkedHashMap: long[] links>;
+
+        $l2 = $r2[$i0];
+
+        $l3 = 4294967295L ^ -1L;
+
+        $l2 = $l2 & $l3;
+
+        $l3 = (long) $i1;
+
+        $l3 = $l3 & 4294967295L;
+
+        $l2 = $l2 | $l3;
+
+        $r1[$i0] = $l2;
+
+        return;
+    }
+
+    public void clear()
+    {
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        specialinvoke r0.<com.google.common.collect.ObjectCountHashMap: void clear()>();
+
+        r0.<com.google.common.collect.ObjectCountLinkedHashMap: int firstEntry> = -2;
+
+        r0.<com.google.common.collect.ObjectCountLinkedHashMap: int lastEntry> = -2;
+
+        return;
+    }
+
+    int firstIndex()
+    {
+        int $i0;
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        $i0 = r0.<com.google.common.collect.ObjectCountLinkedHashMap: int firstEntry>;
+
+        if $i0 != -2 goto label1;
+
+        return -1;
+
+     label1:
+        $i0 = r0.<com.google.common.collect.ObjectCountLinkedHashMap: int firstEntry>;
+
+        return $i0;
+    }
+
+    void init(int, float)
+    {
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+        long[] $r1;
+        int $i0;
+        float $f0;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        $i0 := @parameter0: int;
+
+        $f0 := @parameter1: float;
+
+        specialinvoke r0.<com.google.common.collect.ObjectCountHashMap: void init(int,float)>($i0, $f0);
+
+        r0.<com.google.common.collect.ObjectCountLinkedHashMap: int firstEntry> = -2;
+
+        r0.<com.google.common.collect.ObjectCountLinkedHashMap: int lastEntry> = -2;
+
+        $r1 = newarray (long)[$i0];
+
+        r0.<com.google.common.collect.ObjectCountLinkedHashMap: long[] links> = $r1;
+
+        $r1 = r0.<com.google.common.collect.ObjectCountLinkedHashMap: long[] links>;
+
+        staticinvoke <java.util.Arrays: void fill(long[],long)>($r1, -1L);
+
+        return;
+    }
+
+    void insertEntry(int, java.lang.Object, int, int)
+    {
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+        int $i0, $i1, $i2;
+        java.lang.Object r1;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        $i0 := @parameter0: int;
+
+        r1 := @parameter1: java.lang.Object;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        specialinvoke r0.<com.google.common.collect.ObjectCountHashMap: void insertEntry(int,java.lang.Object,int,int)>($i0, r1, $i1, $i2);
+
+        $i1 = r0.<com.google.common.collect.ObjectCountLinkedHashMap: int lastEntry>;
+
+        specialinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: void setSucceeds(int,int)>($i1, $i0);
+
+        specialinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: void setSucceeds(int,int)>($i0, -2);
+
+        return;
+    }
+
+    void moveLastEntry(int)
+    {
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+        int $i0, $i1, $i2, $i3;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        $i0 := @parameter0: int;
+
+        $i1 = virtualinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: int size()>();
+
+        $i1 = $i1 + -1;
+
+        $i2 = specialinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: int getPredecessor(int)>($i0);
+
+        $i3 = specialinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: int getSuccessor(int)>($i0);
+
+        specialinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: void setSucceeds(int,int)>($i2, $i3);
+
+        if $i0 >= $i1 goto label1;
+
+        $i2 = specialinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: int getPredecessor(int)>($i1);
+
+        specialinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: void setSucceeds(int,int)>($i2, $i0);
+
+        $i1 = specialinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: int getSuccessor(int)>($i1);
+
+        specialinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: void setSucceeds(int,int)>($i0, $i1);
+
+     label1:
+        specialinvoke r0.<com.google.common.collect.ObjectCountHashMap: void moveLastEntry(int)>($i0);
+
+        return;
+    }
+
+    int nextIndex(int)
+    {
+        int $i0;
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        $i0 := @parameter0: int;
+
+        $i0 = specialinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: int getSuccessor(int)>($i0);
+
+        if $i0 != -2 goto label1;
+
+        return -1;
+
+     label1:
+        return $i0;
+    }
+
+    int nextIndexAfterRemove(int, int)
+    {
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+        int $i0, $i1, $i2;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 = virtualinvoke r0.<com.google.common.collect.ObjectCountLinkedHashMap: int size()>();
+
+        if $i0 != $i2 goto label1;
+
+        return $i1;
+
+     label1:
+        return $i0;
+    }
+
+    void resizeEntries(int)
+    {
+        com.google.common.collect.ObjectCountLinkedHashMap r0;
+        long[] $r1;
+        int $i0, i1;
+
+        r0 := @this: com.google.common.collect.ObjectCountLinkedHashMap;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke r0.<com.google.common.collect.ObjectCountHashMap: void resizeEntries(int)>($i0);
+
+        $r1 = r0.<com.google.common.collect.ObjectCountLinkedHashMap: long[] links>;
+
+        i1 = lengthof $r1;
+
+        $r1 = r0.<com.google.common.collect.ObjectCountLinkedHashMap: long[] links>;
+
+        $r1 = staticinvoke <java.util.Arrays: long[] copyOf(long[],int)>($r1, $i0);
+
+        r0.<com.google.common.collect.ObjectCountLinkedHashMap: long[] links> = $r1;
+
+        $r1 = r0.<com.google.common.collect.ObjectCountLinkedHashMap: long[] links>;
+
+        staticinvoke <java.util.Arrays: void fill(long[],int,int,long)>($r1, i1, $i0, -1L);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.google.common.collect.ObjectCountLinkedHashMap: int ENDPOINT> = -2;
+
+        return;
+    }
+}

@@ -1,0 +1,487 @@
+public abstract class androidx.room.paging.LimitOffsetDataSource extends androidx.paging.PositionalDataSource
+{
+    private final java.lang.String mCountQuery;
+    private final androidx.room.RoomDatabase mDb;
+    private final boolean mInTransaction;
+    private final java.lang.String mLimitOffsetQuery;
+    private final androidx.room.InvalidationTracker$Observer mObserver;
+    private final androidx.room.RoomSQLiteQuery mSourceQuery;
+
+    protected transient void <init>(androidx.room.RoomDatabase, androidx.room.RoomSQLiteQuery, boolean, java.lang.String[])
+    {
+        androidx.room.InvalidationTracker $r7;
+        androidx.room.RoomSQLiteQuery $r2;
+        androidx.room.RoomDatabase $r1;
+        androidx.room.InvalidationTracker$Observer $r8;
+        java.lang.String[] $r3;
+        androidx.room.paging.LimitOffsetDataSource$1 $r6;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+        androidx.room.paging.LimitOffsetDataSource r0;
+        boolean $z0;
+
+        r0 := @this: androidx.room.paging.LimitOffsetDataSource;
+
+        $r1 := @parameter0: androidx.room.RoomDatabase;
+
+        $r2 := @parameter1: androidx.room.RoomSQLiteQuery;
+
+        $z0 := @parameter2: boolean;
+
+        $r3 := @parameter3: java.lang.String[];
+
+        specialinvoke r0.<androidx.paging.PositionalDataSource: void <init>()>();
+
+        r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomDatabase mDb> = $r1;
+
+        r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomSQLiteQuery mSourceQuery> = $r2;
+
+        r0.<androidx.room.paging.LimitOffsetDataSource: boolean mInTransaction> = $z0;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("SELECT COUNT(*) FROM ( ");
+
+        $r2 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomSQLiteQuery mSourceQuery>;
+
+        $r5 = virtualinvoke $r2.<androidx.room.RoomSQLiteQuery: java.lang.String getSql()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" )");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r0.<androidx.room.paging.LimitOffsetDataSource: java.lang.String mCountQuery> = $r5;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("SELECT * FROM ( ");
+
+        $r2 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomSQLiteQuery mSourceQuery>;
+
+        $r5 = virtualinvoke $r2.<androidx.room.RoomSQLiteQuery: java.lang.String getSql()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ) LIMIT ? OFFSET ?");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r0.<androidx.room.paging.LimitOffsetDataSource: java.lang.String mLimitOffsetQuery> = $r5;
+
+        $r6 = new androidx.room.paging.LimitOffsetDataSource$1;
+
+        specialinvoke $r6.<androidx.room.paging.LimitOffsetDataSource$1: void <init>(androidx.room.paging.LimitOffsetDataSource,java.lang.String[])>(r0, $r3);
+
+        r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.InvalidationTracker$Observer mObserver> = $r6;
+
+        $r7 = virtualinvoke $r1.<androidx.room.RoomDatabase: androidx.room.InvalidationTracker getInvalidationTracker()>();
+
+        $r8 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.InvalidationTracker$Observer mObserver>;
+
+        virtualinvoke $r7.<androidx.room.InvalidationTracker: void addWeakObserver(androidx.room.InvalidationTracker$Observer)>($r8);
+
+        return;
+    }
+
+    protected transient void <init>(androidx.room.RoomDatabase, androidx.sqlite.db.SupportSQLiteQuery, boolean, java.lang.String[])
+    {
+        androidx.room.RoomSQLiteQuery $r4;
+        androidx.room.RoomDatabase $r1;
+        androidx.sqlite.db.SupportSQLiteQuery $r2;
+        java.lang.String[] $r3;
+        androidx.room.paging.LimitOffsetDataSource r0;
+        boolean $z0;
+
+        r0 := @this: androidx.room.paging.LimitOffsetDataSource;
+
+        $r1 := @parameter0: androidx.room.RoomDatabase;
+
+        $r2 := @parameter1: androidx.sqlite.db.SupportSQLiteQuery;
+
+        $z0 := @parameter2: boolean;
+
+        $r3 := @parameter3: java.lang.String[];
+
+        $r4 = staticinvoke <androidx.room.RoomSQLiteQuery: androidx.room.RoomSQLiteQuery copyFrom(androidx.sqlite.db.SupportSQLiteQuery)>($r2);
+
+        specialinvoke r0.<androidx.room.paging.LimitOffsetDataSource: void <init>(androidx.room.RoomDatabase,androidx.room.RoomSQLiteQuery,boolean,java.lang.String[])>($r1, $r4, $z0, $r3);
+
+        return;
+    }
+
+    private androidx.room.RoomSQLiteQuery getSQLiteQuery(int, int)
+    {
+        androidx.room.RoomSQLiteQuery $r2, $r3;
+        long $l3;
+        int $i0, $i1, $i2;
+        java.lang.String r1;
+        androidx.room.paging.LimitOffsetDataSource r0;
+
+        r0 := @this: androidx.room.paging.LimitOffsetDataSource;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        r1 = r0.<androidx.room.paging.LimitOffsetDataSource: java.lang.String mLimitOffsetQuery>;
+
+        $r2 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomSQLiteQuery mSourceQuery>;
+
+        $i2 = virtualinvoke $r2.<androidx.room.RoomSQLiteQuery: int getArgCount()>();
+
+        $i2 = $i2 + 2;
+
+        $r2 = staticinvoke <androidx.room.RoomSQLiteQuery: androidx.room.RoomSQLiteQuery acquire(java.lang.String,int)>(r1, $i2);
+
+        $r3 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomSQLiteQuery mSourceQuery>;
+
+        virtualinvoke $r2.<androidx.room.RoomSQLiteQuery: void copyArgumentsFrom(androidx.room.RoomSQLiteQuery)>($r3);
+
+        $i2 = virtualinvoke $r2.<androidx.room.RoomSQLiteQuery: int getArgCount()>();
+
+        $i2 = $i2 + -1;
+
+        $l3 = (long) $i1;
+
+        virtualinvoke $r2.<androidx.room.RoomSQLiteQuery: void bindLong(int,long)>($i2, $l3);
+
+        $i1 = virtualinvoke $r2.<androidx.room.RoomSQLiteQuery: int getArgCount()>();
+
+        $l3 = (long) $i0;
+
+        virtualinvoke $r2.<androidx.room.RoomSQLiteQuery: void bindLong(int,long)>($i1, $l3);
+
+        return $r2;
+    }
+
+    protected abstract java.util.List convertRows(android.database.Cursor);
+
+    public int countItems()
+    {
+        java.lang.Throwable $r6;
+        androidx.room.RoomSQLiteQuery r2, r3;
+        androidx.room.RoomDatabase r4;
+        int $i0;
+        java.lang.String r1;
+        androidx.room.paging.LimitOffsetDataSource r0;
+        android.database.Cursor $r5;
+        boolean $z0;
+
+        r0 := @this: androidx.room.paging.LimitOffsetDataSource;
+
+        r1 = r0.<androidx.room.paging.LimitOffsetDataSource: java.lang.String mCountQuery>;
+
+        r2 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomSQLiteQuery mSourceQuery>;
+
+        $i0 = virtualinvoke r2.<androidx.room.RoomSQLiteQuery: int getArgCount()>();
+
+        r2 = staticinvoke <androidx.room.RoomSQLiteQuery: androidx.room.RoomSQLiteQuery acquire(java.lang.String,int)>(r1, $i0);
+
+        r3 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomSQLiteQuery mSourceQuery>;
+
+        virtualinvoke r2.<androidx.room.RoomSQLiteQuery: void copyArgumentsFrom(androidx.room.RoomSQLiteQuery)>(r3);
+
+        r4 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomDatabase mDb>;
+
+        $r5 = virtualinvoke r4.<androidx.room.RoomDatabase: android.database.Cursor query(androidx.sqlite.db.SupportSQLiteQuery)>(r2);
+
+     label1:
+        $z0 = interfaceinvoke $r5.<android.database.Cursor: boolean moveToFirst()>();
+
+     label2:
+        if $z0 == 0 goto label5;
+
+     label3:
+        $i0 = interfaceinvoke $r5.<android.database.Cursor: int getInt(int)>(0);
+
+     label4:
+        interfaceinvoke $r5.<android.database.Cursor: void close()>();
+
+        virtualinvoke r2.<androidx.room.RoomSQLiteQuery: void release()>();
+
+        return $i0;
+
+     label5:
+        interfaceinvoke $r5.<android.database.Cursor: void close()>();
+
+        virtualinvoke r2.<androidx.room.RoomSQLiteQuery: void release()>();
+
+        return 0;
+
+     label6:
+        $r6 := @caughtexception;
+
+        interfaceinvoke $r5.<android.database.Cursor: void close()>();
+
+        virtualinvoke r2.<androidx.room.RoomSQLiteQuery: void release()>();
+
+        throw $r6;
+
+        catch java.lang.Throwable from label1 to label2 with label6;
+        catch java.lang.Throwable from label3 to label4 with label6;
+    }
+
+    public boolean isInvalid()
+    {
+        androidx.room.InvalidationTracker $r2;
+        androidx.room.RoomDatabase $r1;
+        androidx.room.paging.LimitOffsetDataSource r0;
+        boolean $z0;
+
+        r0 := @this: androidx.room.paging.LimitOffsetDataSource;
+
+        $r1 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomDatabase mDb>;
+
+        $r2 = virtualinvoke $r1.<androidx.room.RoomDatabase: androidx.room.InvalidationTracker getInvalidationTracker()>();
+
+        virtualinvoke $r2.<androidx.room.InvalidationTracker: void refreshVersionsSync()>();
+
+        $z0 = specialinvoke r0.<androidx.paging.PositionalDataSource: boolean isInvalid()>();
+
+        return $z0;
+    }
+
+    public void loadInitial(androidx.paging.PositionalDataSource$LoadInitialParams, androidx.paging.PositionalDataSource$LoadInitialCallback)
+    {
+        java.lang.Throwable r9;
+        androidx.room.RoomSQLiteQuery r5, $r7;
+        androidx.room.RoomDatabase $r3;
+        androidx.paging.PositionalDataSource$LoadInitialParams $r1;
+        java.util.List $r4;
+        int i0, $i1, $i2, $i3;
+        androidx.paging.PositionalDataSource$LoadInitialCallback r2;
+        androidx.room.paging.LimitOffsetDataSource r0;
+        android.database.Cursor r6, $r8;
+
+        r0 := @this: androidx.room.paging.LimitOffsetDataSource;
+
+        $r1 := @parameter0: androidx.paging.PositionalDataSource$LoadInitialParams;
+
+        r2 := @parameter1: androidx.paging.PositionalDataSource$LoadInitialCallback;
+
+        $r4 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        i0 = 0;
+
+        r5 = null;
+
+        r6 = null;
+
+        $r3 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomDatabase mDb>;
+
+        virtualinvoke $r3.<androidx.room.RoomDatabase: void beginTransaction()>();
+
+     label01:
+        $i1 = virtualinvoke r0.<androidx.room.paging.LimitOffsetDataSource: int countItems()>();
+
+     label02:
+        if $i1 == 0 goto label10;
+
+     label03:
+        $i2 = staticinvoke <androidx.room.paging.LimitOffsetDataSource: int computeInitialLoadPosition(androidx.paging.PositionalDataSource$LoadInitialParams,int)>($r1, $i1);
+
+     label04:
+        i0 = $i2;
+
+     label05:
+        $i3 = staticinvoke <androidx.room.paging.LimitOffsetDataSource: int computeInitialLoadSize(androidx.paging.PositionalDataSource$LoadInitialParams,int,int)>($r1, $i2, $i1);
+
+        $r7 = specialinvoke r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomSQLiteQuery getSQLiteQuery(int,int)>($i2, $i3);
+
+     label06:
+        r5 = $r7;
+
+     label07:
+        $r3 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomDatabase mDb>;
+
+        $r8 = virtualinvoke $r3.<androidx.room.RoomDatabase: android.database.Cursor query(androidx.sqlite.db.SupportSQLiteQuery)>($r7);
+
+     label08:
+        r6 = $r8;
+
+     label09:
+        $r4 = virtualinvoke r0.<androidx.room.paging.LimitOffsetDataSource: java.util.List convertRows(android.database.Cursor)>($r8);
+
+        $r3 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomDatabase mDb>;
+
+        virtualinvoke $r3.<androidx.room.RoomDatabase: void setTransactionSuccessful()>();
+
+     label10:
+        if r6 == null goto label11;
+
+        interfaceinvoke r6.<android.database.Cursor: void close()>();
+
+     label11:
+        $r3 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomDatabase mDb>;
+
+        virtualinvoke $r3.<androidx.room.RoomDatabase: void endTransaction()>();
+
+        if r5 == null goto label12;
+
+        virtualinvoke r5.<androidx.room.RoomSQLiteQuery: void release()>();
+
+     label12:
+        virtualinvoke r2.<androidx.paging.PositionalDataSource$LoadInitialCallback: void onResult(java.util.List,int,int)>($r4, i0, $i1);
+
+        return;
+
+     label13:
+        r9 := @caughtexception;
+
+        if r6 == null goto label14;
+
+        interfaceinvoke r6.<android.database.Cursor: void close()>();
+
+     label14:
+        $r3 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomDatabase mDb>;
+
+        virtualinvoke $r3.<androidx.room.RoomDatabase: void endTransaction()>();
+
+        if r5 == null goto label15;
+
+        virtualinvoke r5.<androidx.room.RoomSQLiteQuery: void release()>();
+
+     label15:
+        throw r9;
+
+        catch java.lang.Throwable from label01 to label02 with label13;
+        catch java.lang.Throwable from label03 to label04 with label13;
+        catch java.lang.Throwable from label05 to label06 with label13;
+        catch java.lang.Throwable from label07 to label08 with label13;
+        catch java.lang.Throwable from label09 to label10 with label13;
+    }
+
+    public java.util.List loadRange(int, int)
+    {
+        java.lang.Throwable r6, r7;
+        androidx.room.RoomSQLiteQuery $r1;
+        androidx.room.RoomDatabase r2;
+        java.util.List $r5;
+        int $i0, $i1;
+        androidx.room.paging.LimitOffsetDataSource r0;
+        boolean z0;
+        android.database.Cursor r3, $r4;
+
+        r0 := @this: androidx.room.paging.LimitOffsetDataSource;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = specialinvoke r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomSQLiteQuery getSQLiteQuery(int,int)>($i0, $i1);
+
+        z0 = r0.<androidx.room.paging.LimitOffsetDataSource: boolean mInTransaction>;
+
+        if z0 == 0 goto label08;
+
+        r2 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomDatabase mDb>;
+
+        virtualinvoke r2.<androidx.room.RoomDatabase: void beginTransaction()>();
+
+        r3 = null;
+
+     label01:
+        r2 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomDatabase mDb>;
+
+        $r4 = virtualinvoke r2.<androidx.room.RoomDatabase: android.database.Cursor query(androidx.sqlite.db.SupportSQLiteQuery)>($r1);
+
+     label02:
+        r3 = $r4;
+
+     label03:
+        $r5 = virtualinvoke r0.<androidx.room.paging.LimitOffsetDataSource: java.util.List convertRows(android.database.Cursor)>($r4);
+
+        r2 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomDatabase mDb>;
+
+        virtualinvoke r2.<androidx.room.RoomDatabase: void setTransactionSuccessful()>();
+
+     label04:
+        if $r4 == null goto label05;
+
+        interfaceinvoke $r4.<android.database.Cursor: void close()>();
+
+     label05:
+        r2 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomDatabase mDb>;
+
+        virtualinvoke r2.<androidx.room.RoomDatabase: void endTransaction()>();
+
+        virtualinvoke $r1.<androidx.room.RoomSQLiteQuery: void release()>();
+
+        return $r5;
+
+     label06:
+        r6 := @caughtexception;
+
+        if r3 == null goto label07;
+
+        interfaceinvoke r3.<android.database.Cursor: void close()>();
+
+     label07:
+        r2 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomDatabase mDb>;
+
+        virtualinvoke r2.<androidx.room.RoomDatabase: void endTransaction()>();
+
+        virtualinvoke $r1.<androidx.room.RoomSQLiteQuery: void release()>();
+
+        throw r6;
+
+     label08:
+        r2 = r0.<androidx.room.paging.LimitOffsetDataSource: androidx.room.RoomDatabase mDb>;
+
+        r3 = virtualinvoke r2.<androidx.room.RoomDatabase: android.database.Cursor query(androidx.sqlite.db.SupportSQLiteQuery)>($r1);
+
+     label09:
+        $r5 = virtualinvoke r0.<androidx.room.paging.LimitOffsetDataSource: java.util.List convertRows(android.database.Cursor)>(r3);
+
+     label10:
+        interfaceinvoke r3.<android.database.Cursor: void close()>();
+
+        virtualinvoke $r1.<androidx.room.RoomSQLiteQuery: void release()>();
+
+        return $r5;
+
+     label11:
+        r7 := @caughtexception;
+
+        interfaceinvoke r3.<android.database.Cursor: void close()>();
+
+        virtualinvoke $r1.<androidx.room.RoomSQLiteQuery: void release()>();
+
+        throw r7;
+
+        catch java.lang.Throwable from label01 to label02 with label06;
+        catch java.lang.Throwable from label03 to label04 with label06;
+        catch java.lang.Throwable from label09 to label10 with label11;
+    }
+
+    public void loadRange(androidx.paging.PositionalDataSource$LoadRangeParams, androidx.paging.PositionalDataSource$LoadRangeCallback)
+    {
+        androidx.paging.PositionalDataSource$LoadRangeCallback r2;
+        java.util.List $r3;
+        int $i0, $i1;
+        androidx.paging.PositionalDataSource$LoadRangeParams $r1;
+        androidx.room.paging.LimitOffsetDataSource r0;
+
+        r0 := @this: androidx.room.paging.LimitOffsetDataSource;
+
+        $r1 := @parameter0: androidx.paging.PositionalDataSource$LoadRangeParams;
+
+        r2 := @parameter1: androidx.paging.PositionalDataSource$LoadRangeCallback;
+
+        $i1 = $r1.<androidx.paging.PositionalDataSource$LoadRangeParams: int startPosition>;
+
+        $i0 = $r1.<androidx.paging.PositionalDataSource$LoadRangeParams: int loadSize>;
+
+        $r3 = virtualinvoke r0.<androidx.room.paging.LimitOffsetDataSource: java.util.List loadRange(int,int)>($i1, $i0);
+
+        virtualinvoke r2.<androidx.paging.PositionalDataSource$LoadRangeCallback: void onResult(java.util.List)>($r3);
+
+        return;
+    }
+}

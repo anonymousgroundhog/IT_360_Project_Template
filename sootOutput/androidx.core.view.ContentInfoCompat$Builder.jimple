@@ -1,0 +1,178 @@
+public final class androidx.core.view.ContentInfoCompat$Builder extends java.lang.Object
+{
+    private final androidx.core.view.ContentInfoCompat$BuilderCompat mBuilderCompat;
+
+    public void <init>(android.content.ClipData, int)
+    {
+        android.content.ClipData $r1;
+        androidx.core.view.ContentInfoCompat$BuilderCompatImpl $r3;
+        androidx.core.view.ContentInfoCompat$Builder r0;
+        int $i0, $i1;
+        androidx.core.view.ContentInfoCompat$BuilderCompat31Impl $r2;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat$Builder;
+
+        $r1 := @parameter0: android.content.ClipData;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 31 goto label1;
+
+        $r2 = new androidx.core.view.ContentInfoCompat$BuilderCompat31Impl;
+
+        specialinvoke $r2.<androidx.core.view.ContentInfoCompat$BuilderCompat31Impl: void <init>(android.content.ClipData,int)>($r1, $i0);
+
+        r0.<androidx.core.view.ContentInfoCompat$Builder: androidx.core.view.ContentInfoCompat$BuilderCompat mBuilderCompat> = $r2;
+
+        return;
+
+     label1:
+        $r3 = new androidx.core.view.ContentInfoCompat$BuilderCompatImpl;
+
+        specialinvoke $r3.<androidx.core.view.ContentInfoCompat$BuilderCompatImpl: void <init>(android.content.ClipData,int)>($r1, $i0);
+
+        r0.<androidx.core.view.ContentInfoCompat$Builder: androidx.core.view.ContentInfoCompat$BuilderCompat mBuilderCompat> = $r3;
+
+        return;
+    }
+
+    public void <init>(androidx.core.view.ContentInfoCompat)
+    {
+        androidx.core.view.ContentInfoCompat $r1;
+        androidx.core.view.ContentInfoCompat$BuilderCompatImpl $r3;
+        androidx.core.view.ContentInfoCompat$Builder r0;
+        int $i0;
+        androidx.core.view.ContentInfoCompat$BuilderCompat31Impl $r2;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat$Builder;
+
+        $r1 := @parameter0: androidx.core.view.ContentInfoCompat;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 31 goto label1;
+
+        $r2 = new androidx.core.view.ContentInfoCompat$BuilderCompat31Impl;
+
+        specialinvoke $r2.<androidx.core.view.ContentInfoCompat$BuilderCompat31Impl: void <init>(androidx.core.view.ContentInfoCompat)>($r1);
+
+        r0.<androidx.core.view.ContentInfoCompat$Builder: androidx.core.view.ContentInfoCompat$BuilderCompat mBuilderCompat> = $r2;
+
+        return;
+
+     label1:
+        $r3 = new androidx.core.view.ContentInfoCompat$BuilderCompatImpl;
+
+        specialinvoke $r3.<androidx.core.view.ContentInfoCompat$BuilderCompatImpl: void <init>(androidx.core.view.ContentInfoCompat)>($r1);
+
+        r0.<androidx.core.view.ContentInfoCompat$Builder: androidx.core.view.ContentInfoCompat$BuilderCompat mBuilderCompat> = $r3;
+
+        return;
+    }
+
+    public androidx.core.view.ContentInfoCompat build()
+    {
+        androidx.core.view.ContentInfoCompat $r1;
+        androidx.core.view.ContentInfoCompat$Builder r0;
+        androidx.core.view.ContentInfoCompat$BuilderCompat $r2;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat$Builder;
+
+        $r2 = r0.<androidx.core.view.ContentInfoCompat$Builder: androidx.core.view.ContentInfoCompat$BuilderCompat mBuilderCompat>;
+
+        $r1 = interfaceinvoke $r2.<androidx.core.view.ContentInfoCompat$BuilderCompat: androidx.core.view.ContentInfoCompat build()>();
+
+        return $r1;
+    }
+
+    public androidx.core.view.ContentInfoCompat$Builder setClip(android.content.ClipData)
+    {
+        android.content.ClipData $r1;
+        androidx.core.view.ContentInfoCompat$Builder r0;
+        androidx.core.view.ContentInfoCompat$BuilderCompat $r2;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat$Builder;
+
+        $r1 := @parameter0: android.content.ClipData;
+
+        $r2 = r0.<androidx.core.view.ContentInfoCompat$Builder: androidx.core.view.ContentInfoCompat$BuilderCompat mBuilderCompat>;
+
+        interfaceinvoke $r2.<androidx.core.view.ContentInfoCompat$BuilderCompat: void setClip(android.content.ClipData)>($r1);
+
+        return r0;
+    }
+
+    public androidx.core.view.ContentInfoCompat$Builder setExtras(android.os.Bundle)
+    {
+        android.os.Bundle $r1;
+        androidx.core.view.ContentInfoCompat$Builder r0;
+        androidx.core.view.ContentInfoCompat$BuilderCompat $r2;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat$Builder;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        $r2 = r0.<androidx.core.view.ContentInfoCompat$Builder: androidx.core.view.ContentInfoCompat$BuilderCompat mBuilderCompat>;
+
+        interfaceinvoke $r2.<androidx.core.view.ContentInfoCompat$BuilderCompat: void setExtras(android.os.Bundle)>($r1);
+
+        return r0;
+    }
+
+    public androidx.core.view.ContentInfoCompat$Builder setFlags(int)
+    {
+        int $i0;
+        androidx.core.view.ContentInfoCompat$Builder r0;
+        androidx.core.view.ContentInfoCompat$BuilderCompat $r1;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.core.view.ContentInfoCompat$Builder: androidx.core.view.ContentInfoCompat$BuilderCompat mBuilderCompat>;
+
+        interfaceinvoke $r1.<androidx.core.view.ContentInfoCompat$BuilderCompat: void setFlags(int)>($i0);
+
+        return r0;
+    }
+
+    public androidx.core.view.ContentInfoCompat$Builder setLinkUri(android.net.Uri)
+    {
+        android.net.Uri $r1;
+        androidx.core.view.ContentInfoCompat$Builder r0;
+        androidx.core.view.ContentInfoCompat$BuilderCompat $r2;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat$Builder;
+
+        $r1 := @parameter0: android.net.Uri;
+
+        $r2 = r0.<androidx.core.view.ContentInfoCompat$Builder: androidx.core.view.ContentInfoCompat$BuilderCompat mBuilderCompat>;
+
+        interfaceinvoke $r2.<androidx.core.view.ContentInfoCompat$BuilderCompat: void setLinkUri(android.net.Uri)>($r1);
+
+        return r0;
+    }
+
+    public androidx.core.view.ContentInfoCompat$Builder setSource(int)
+    {
+        int $i0;
+        androidx.core.view.ContentInfoCompat$Builder r0;
+        androidx.core.view.ContentInfoCompat$BuilderCompat $r1;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.core.view.ContentInfoCompat$Builder: androidx.core.view.ContentInfoCompat$BuilderCompat mBuilderCompat>;
+
+        interfaceinvoke $r1.<androidx.core.view.ContentInfoCompat$BuilderCompat: void setSource(int)>($i0);
+
+        return r0;
+    }
+}

@@ -1,0 +1,204 @@
+public class androidx.room.util.TableInfo$Index extends java.lang.Object
+{
+    public static final java.lang.String DEFAULT_PREFIX;
+    public final java.util.List columns;
+    public final java.lang.String name;
+    public final boolean unique;
+
+    public void <init>(java.lang.String, boolean, java.util.List)
+    {
+        java.util.List r2;
+        androidx.room.util.TableInfo$Index r0;
+        java.lang.String $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.room.util.TableInfo$Index;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $z0 := @parameter1: boolean;
+
+        r2 := @parameter2: java.util.List;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.room.util.TableInfo$Index: java.lang.String name> = $r1;
+
+        r0.<androidx.room.util.TableInfo$Index: boolean unique> = $z0;
+
+        r0.<androidx.room.util.TableInfo$Index: java.util.List columns> = r2;
+
+        return;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        java.util.List $r5, $r6;
+        androidx.room.util.TableInfo$Index r0, r4;
+        java.lang.Object $r1;
+        java.lang.Class $r2, $r3;
+        java.lang.String $r7, $r8;
+        boolean $z0, $z1;
+
+        r0 := @this: androidx.room.util.TableInfo$Index;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if r0 != $r1 goto label1;
+
+        return 1;
+
+     label1:
+        if $r1 == null goto label6;
+
+        $r2 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r2 == $r3 goto label2;
+
+        return 0;
+
+     label2:
+        r4 = (androidx.room.util.TableInfo$Index) $r1;
+
+        $z0 = r0.<androidx.room.util.TableInfo$Index: boolean unique>;
+
+        $z1 = r4.<androidx.room.util.TableInfo$Index: boolean unique>;
+
+        if $z0 == $z1 goto label3;
+
+        return 0;
+
+     label3:
+        $r5 = r0.<androidx.room.util.TableInfo$Index: java.util.List columns>;
+
+        $r6 = r4.<androidx.room.util.TableInfo$Index: java.util.List columns>;
+
+        $z0 = interfaceinvoke $r5.<java.util.List: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 != 0 goto label4;
+
+        return 0;
+
+     label4:
+        $r7 = r0.<androidx.room.util.TableInfo$Index: java.lang.String name>;
+
+        $z0 = virtualinvoke $r7.<java.lang.String: boolean startsWith(java.lang.String)>("index_");
+
+        if $z0 == 0 goto label5;
+
+        $r7 = r4.<androidx.room.util.TableInfo$Index: java.lang.String name>;
+
+        $z0 = virtualinvoke $r7.<java.lang.String: boolean startsWith(java.lang.String)>("index_");
+
+        return $z0;
+
+     label5:
+        $r7 = r0.<androidx.room.util.TableInfo$Index: java.lang.String name>;
+
+        $r8 = r4.<androidx.room.util.TableInfo$Index: java.lang.String name>;
+
+        $z0 = virtualinvoke $r7.<java.lang.String: boolean equals(java.lang.Object)>($r8);
+
+        return $z0;
+
+     label6:
+        return 0;
+    }
+
+    public int hashCode()
+    {
+        java.util.List $r3;
+        androidx.room.util.TableInfo$Index r0;
+        int $i0, $i1;
+        java.lang.String r1, r2;
+        boolean $z0;
+
+        r0 := @this: androidx.room.util.TableInfo$Index;
+
+        r1 = r0.<androidx.room.util.TableInfo$Index: java.lang.String name>;
+
+        r2 = "index_";
+
+        $z0 = virtualinvoke r1.<java.lang.String: boolean startsWith(java.lang.String)>("index_");
+
+        if $z0 == 0 goto label1;
+
+        $i0 = virtualinvoke r2.<java.lang.String: int hashCode()>();
+
+        goto label2;
+
+     label1:
+        r1 = r0.<androidx.room.util.TableInfo$Index: java.lang.String name>;
+
+        $i0 = virtualinvoke r1.<java.lang.String: int hashCode()>();
+
+     label2:
+        $i0 = $i0 * 31;
+
+        $z0 = r0.<androidx.room.util.TableInfo$Index: boolean unique>;
+
+        $i1 = (int) $z0;
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        $r3 = r0.<androidx.room.util.TableInfo$Index: java.util.List columns>;
+
+        $i1 = interfaceinvoke $r3.<java.util.List: int hashCode()>();
+
+        $i0 = $i0 + $i1;
+
+        return $i0;
+    }
+
+    public java.lang.String toString()
+    {
+        java.util.List $r3;
+        androidx.room.util.TableInfo$Index r0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.room.util.TableInfo$Index;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Index{name=\'");
+
+        $r2 = r0.<androidx.room.util.TableInfo$Index: java.lang.String name>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", unique=");
+
+        $z0 = r0.<androidx.room.util.TableInfo$Index: boolean unique>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", columns=");
+
+        $r3 = r0.<androidx.room.util.TableInfo$Index: java.util.List columns>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(125);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.room.util.TableInfo$Index: java.lang.String DEFAULT_PREFIX> = "index_";
+
+        return;
+    }
+}

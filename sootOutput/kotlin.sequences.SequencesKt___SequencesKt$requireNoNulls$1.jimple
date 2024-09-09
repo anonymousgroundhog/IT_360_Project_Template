@@ -1,0 +1,59 @@
+final class kotlin.sequences.SequencesKt___SequencesKt$requireNoNulls$1 extends kotlin.jvm.internal.Lambda implements kotlin.jvm.functions.Function1
+{
+    final kotlin.sequences.Sequence $this_requireNoNulls;
+
+    void <init>(kotlin.sequences.Sequence)
+    {
+        kotlin.sequences.SequencesKt___SequencesKt$requireNoNulls$1 r0;
+        kotlin.sequences.Sequence $r1;
+
+        r0 := @this: kotlin.sequences.SequencesKt___SequencesKt$requireNoNulls$1;
+
+        $r1 := @parameter0: kotlin.sequences.Sequence;
+
+        r0.<kotlin.sequences.SequencesKt___SequencesKt$requireNoNulls$1: kotlin.sequences.Sequence $this_requireNoNulls> = $r1;
+
+        specialinvoke r0.<kotlin.jvm.internal.Lambda: void <init>(int)>(1);
+
+        return;
+    }
+
+    public final java.lang.Object invoke(java.lang.Object)
+    {
+        kotlin.sequences.SequencesKt___SequencesKt$requireNoNulls$1 r0;
+        kotlin.sequences.Sequence $r4;
+        java.lang.Object $r1;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r5;
+        java.lang.IllegalArgumentException $r2;
+
+        r0 := @this: kotlin.sequences.SequencesKt___SequencesKt$requireNoNulls$1;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if $r1 == null goto label1;
+
+        return $r1;
+
+     label1:
+        $r2 = new java.lang.IllegalArgumentException;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("null element found in ");
+
+        $r4 = r0.<kotlin.sequences.SequencesKt___SequencesKt$requireNoNulls$1: kotlin.sequences.Sequence $this_requireNoNulls>;
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(46);
+
+        $r5 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r5);
+
+        throw $r2;
+    }
+}

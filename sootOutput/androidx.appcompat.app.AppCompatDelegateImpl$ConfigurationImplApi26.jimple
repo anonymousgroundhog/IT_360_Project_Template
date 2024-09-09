@@ -1,0 +1,70 @@
+class androidx.appcompat.app.AppCompatDelegateImpl$ConfigurationImplApi26 extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$ConfigurationImplApi26 r0;
+
+        r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$ConfigurationImplApi26;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static void generateConfigDelta_colorMode(android.content.res.Configuration, android.content.res.Configuration, android.content.res.Configuration)
+    {
+        android.content.res.Configuration $r0, $r1, $r2;
+        int $i0, $i1;
+
+        $r0 := @parameter0: android.content.res.Configuration;
+
+        $r1 := @parameter1: android.content.res.Configuration;
+
+        $r2 := @parameter2: android.content.res.Configuration;
+
+        $i0 = $r0.<android.content.res.Configuration: int colorMode>;
+
+        $i0 = $i0 & 3;
+
+        $i1 = $r1.<android.content.res.Configuration: int colorMode>;
+
+        $i1 = $i1 & 3;
+
+        if $i0 == $i1 goto label1;
+
+        $i0 = $r2.<android.content.res.Configuration: int colorMode>;
+
+        $i1 = $r1.<android.content.res.Configuration: int colorMode>;
+
+        $i1 = $i1 & 3;
+
+        $i0 = $i0 | $i1;
+
+        $r2.<android.content.res.Configuration: int colorMode> = $i0;
+
+     label1:
+        $i0 = $r0.<android.content.res.Configuration: int colorMode>;
+
+        $i0 = $i0 & 12;
+
+        $i1 = $r1.<android.content.res.Configuration: int colorMode>;
+
+        $i1 = $i1 & 12;
+
+        if $i0 == $i1 goto label2;
+
+        $i0 = $r2.<android.content.res.Configuration: int colorMode>;
+
+        $i1 = $r1.<android.content.res.Configuration: int colorMode>;
+
+        $i1 = $i1 & 12;
+
+        $i0 = $i0 | $i1;
+
+        $r2.<android.content.res.Configuration: int colorMode> = $i0;
+
+     label2:
+        return;
+    }
+}

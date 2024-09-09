@@ -1,0 +1,46 @@
+class androidx.work.impl.foreground.SystemForegroundService$3 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.work.impl.foreground.SystemForegroundService this$0;
+    final int val$notificationId;
+
+    void <init>(androidx.work.impl.foreground.SystemForegroundService, int)
+    {
+        androidx.work.impl.foreground.SystemForegroundService $r1;
+        int $i0;
+        androidx.work.impl.foreground.SystemForegroundService$3 r0;
+
+        r0 := @this: androidx.work.impl.foreground.SystemForegroundService$3;
+
+        $r1 := @parameter0: androidx.work.impl.foreground.SystemForegroundService;
+
+        $i0 := @parameter1: int;
+
+        r0.<androidx.work.impl.foreground.SystemForegroundService$3: androidx.work.impl.foreground.SystemForegroundService this$0> = $r1;
+
+        r0.<androidx.work.impl.foreground.SystemForegroundService$3: int val$notificationId> = $i0;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.work.impl.foreground.SystemForegroundService$3 r0;
+        android.app.NotificationManager $r2;
+        int $i0;
+        androidx.work.impl.foreground.SystemForegroundService $r1;
+
+        r0 := @this: androidx.work.impl.foreground.SystemForegroundService$3;
+
+        $r1 = r0.<androidx.work.impl.foreground.SystemForegroundService$3: androidx.work.impl.foreground.SystemForegroundService this$0>;
+
+        $r2 = $r1.<androidx.work.impl.foreground.SystemForegroundService: android.app.NotificationManager mNotificationManager>;
+
+        $i0 = r0.<androidx.work.impl.foreground.SystemForegroundService$3: int val$notificationId>;
+
+        virtualinvoke $r2.<android.app.NotificationManager: void cancel(int)>($i0);
+
+        return;
+    }
+}

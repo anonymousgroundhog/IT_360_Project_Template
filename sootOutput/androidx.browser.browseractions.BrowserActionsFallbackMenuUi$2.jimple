@@ -1,0 +1,60 @@
+class androidx.browser.browseractions.BrowserActionsFallbackMenuUi$2 extends java.lang.Object implements android.content.DialogInterface$OnShowListener
+{
+    final androidx.browser.browseractions.BrowserActionsFallbackMenuUi this$0;
+    final android.view.View val$view;
+
+    void <init>(androidx.browser.browseractions.BrowserActionsFallbackMenuUi, android.view.View)
+    {
+        android.view.View $r2;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuUi $r1;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuUi$2 r0;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsFallbackMenuUi$2;
+
+        $r1 := @parameter0: androidx.browser.browseractions.BrowserActionsFallbackMenuUi;
+
+        $r2 := @parameter1: android.view.View;
+
+        r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi$2: androidx.browser.browseractions.BrowserActionsFallbackMenuUi this$0> = $r1;
+
+        r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi$2: android.view.View val$view> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onShow(android.content.DialogInterface)
+    {
+        android.view.View $r4;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuUi $r2;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuUi$2 r0;
+        android.content.DialogInterface $r1;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuUi$BrowserActionsFallMenuUiListener $r3;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsFallbackMenuUi$2;
+
+        $r1 := @parameter0: android.content.DialogInterface;
+
+        $r2 = r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi$2: androidx.browser.browseractions.BrowserActionsFallbackMenuUi this$0>;
+
+        $r3 = $r2.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi: androidx.browser.browseractions.BrowserActionsFallbackMenuUi$BrowserActionsFallMenuUiListener mMenuUiListener>;
+
+        if $r3 != null goto label1;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("BrowserActionskMenuUi", "Cannot trigger menu item listener, it is null");
+
+        return;
+
+     label1:
+        $r2 = r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi$2: androidx.browser.browseractions.BrowserActionsFallbackMenuUi this$0>;
+
+        $r3 = $r2.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi: androidx.browser.browseractions.BrowserActionsFallbackMenuUi$BrowserActionsFallMenuUiListener mMenuUiListener>;
+
+        $r4 = r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi$2: android.view.View val$view>;
+
+        interfaceinvoke $r3.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi$BrowserActionsFallMenuUiListener: void onMenuShown(android.view.View)>($r4);
+
+        return;
+    }
+}

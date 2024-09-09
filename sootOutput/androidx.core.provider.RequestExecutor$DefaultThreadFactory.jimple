@@ -1,0 +1,49 @@
+class androidx.core.provider.RequestExecutor$DefaultThreadFactory extends java.lang.Object implements java.util.concurrent.ThreadFactory
+{
+    private int mPriority;
+    private java.lang.String mThreadName;
+
+    void <init>(java.lang.String, int)
+    {
+        int $i0;
+        java.lang.String $r1;
+        androidx.core.provider.RequestExecutor$DefaultThreadFactory r0;
+
+        r0 := @this: androidx.core.provider.RequestExecutor$DefaultThreadFactory;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.provider.RequestExecutor$DefaultThreadFactory: java.lang.String mThreadName> = $r1;
+
+        r0.<androidx.core.provider.RequestExecutor$DefaultThreadFactory: int mPriority> = $i0;
+
+        return;
+    }
+
+    public java.lang.Thread newThread(java.lang.Runnable)
+    {
+        androidx.core.provider.RequestExecutor$DefaultThreadFactory$ProcessPriorityThread $r2;
+        int $i0;
+        java.lang.String $r3;
+        androidx.core.provider.RequestExecutor$DefaultThreadFactory r0;
+        java.lang.Runnable $r1;
+
+        r0 := @this: androidx.core.provider.RequestExecutor$DefaultThreadFactory;
+
+        $r1 := @parameter0: java.lang.Runnable;
+
+        $r2 = new androidx.core.provider.RequestExecutor$DefaultThreadFactory$ProcessPriorityThread;
+
+        $r3 = r0.<androidx.core.provider.RequestExecutor$DefaultThreadFactory: java.lang.String mThreadName>;
+
+        $i0 = r0.<androidx.core.provider.RequestExecutor$DefaultThreadFactory: int mPriority>;
+
+        specialinvoke $r2.<androidx.core.provider.RequestExecutor$DefaultThreadFactory$ProcessPriorityThread: void <init>(java.lang.Runnable,java.lang.String,int)>($r1, $r3, $i0);
+
+        return $r2;
+    }
+}

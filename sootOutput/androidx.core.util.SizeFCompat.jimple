@@ -1,0 +1,174 @@
+public final class androidx.core.util.SizeFCompat extends java.lang.Object
+{
+    private final float mHeight;
+    private final float mWidth;
+
+    public void <init>(float, float)
+    {
+        float $f0, $f1;
+        androidx.core.util.SizeFCompat r0;
+
+        r0 := @this: androidx.core.util.SizeFCompat;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $f0 = staticinvoke <androidx.core.util.Preconditions: float checkArgumentFinite(float,java.lang.String)>($f0, "width");
+
+        r0.<androidx.core.util.SizeFCompat: float mWidth> = $f0;
+
+        $f0 = staticinvoke <androidx.core.util.Preconditions: float checkArgumentFinite(float,java.lang.String)>($f1, "height");
+
+        r0.<androidx.core.util.SizeFCompat: float mHeight> = $f0;
+
+        return;
+    }
+
+    public static androidx.core.util.SizeFCompat toSizeFCompat(android.util.SizeF)
+    {
+        android.util.SizeF $r0;
+        androidx.core.util.SizeFCompat $r1;
+
+        $r0 := @parameter0: android.util.SizeF;
+
+        $r1 = staticinvoke <androidx.core.util.SizeFCompat$Api21Impl: androidx.core.util.SizeFCompat toSizeFCompat(android.util.SizeF)>($r0);
+
+        return $r1;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.core.util.SizeFCompat r0, r2;
+        byte $b0;
+        float $f0, $f1;
+        java.lang.Object $r1;
+        boolean z0;
+
+        r0 := @this: androidx.core.util.SizeFCompat;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if r0 != $r1 goto label1;
+
+        return 1;
+
+     label1:
+        z0 = $r1 instanceof androidx.core.util.SizeFCompat;
+
+        if z0 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        r2 = (androidx.core.util.SizeFCompat) $r1;
+
+        $f0 = r2.<androidx.core.util.SizeFCompat: float mWidth>;
+
+        $f1 = r0.<androidx.core.util.SizeFCompat: float mWidth>;
+
+        $b0 = $f0 cmpl $f1;
+
+        if $b0 != 0 goto label3;
+
+        $f0 = r2.<androidx.core.util.SizeFCompat: float mHeight>;
+
+        $f1 = r0.<androidx.core.util.SizeFCompat: float mHeight>;
+
+        $b0 = $f0 cmpl $f1;
+
+        if $b0 != 0 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public float getHeight()
+    {
+        float f0;
+        androidx.core.util.SizeFCompat r0;
+
+        r0 := @this: androidx.core.util.SizeFCompat;
+
+        f0 = r0.<androidx.core.util.SizeFCompat: float mHeight>;
+
+        return f0;
+    }
+
+    public float getWidth()
+    {
+        float f0;
+        androidx.core.util.SizeFCompat r0;
+
+        r0 := @this: androidx.core.util.SizeFCompat;
+
+        f0 = r0.<androidx.core.util.SizeFCompat: float mWidth>;
+
+        return f0;
+    }
+
+    public int hashCode()
+    {
+        androidx.core.util.SizeFCompat r0;
+        int $i0, $i1;
+        float $f0;
+
+        r0 := @this: androidx.core.util.SizeFCompat;
+
+        $f0 = r0.<androidx.core.util.SizeFCompat: float mWidth>;
+
+        $i0 = staticinvoke <java.lang.Float: int floatToIntBits(float)>($f0);
+
+        $f0 = r0.<androidx.core.util.SizeFCompat: float mHeight>;
+
+        $i1 = staticinvoke <java.lang.Float: int floatToIntBits(float)>($f0);
+
+        $i0 = $i0 ^ $i1;
+
+        return $i0;
+    }
+
+    public android.util.SizeF toSizeF()
+    {
+        androidx.core.util.SizeFCompat r0;
+        android.util.SizeF $r1;
+
+        r0 := @this: androidx.core.util.SizeFCompat;
+
+        $r1 = staticinvoke <androidx.core.util.SizeFCompat$Api21Impl: android.util.SizeF toSizeF(androidx.core.util.SizeFCompat)>(r0);
+
+        return $r1;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.core.util.SizeFCompat r0;
+        float $f0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+
+        r0 := @this: androidx.core.util.SizeFCompat;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $f0 = r0.<androidx.core.util.SizeFCompat: float mWidth>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($f0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("x");
+
+        $f0 = r0.<androidx.core.util.SizeFCompat: float mHeight>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($f0);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+}

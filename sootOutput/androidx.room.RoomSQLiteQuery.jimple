@@ -1,0 +1,604 @@
+public class androidx.room.RoomSQLiteQuery extends java.lang.Object implements androidx.sqlite.db.SupportSQLiteQuery, androidx.sqlite.db.SupportSQLiteProgram
+{
+    private static final int BLOB;
+    static final int DESIRED_POOL_SIZE;
+    private static final int DOUBLE;
+    private static final int LONG;
+    private static final int NULL;
+    static final int POOL_LIMIT;
+    private static final int STRING;
+    static final java.util.TreeMap sQueryPool;
+    int mArgCount;
+    private final int[] mBindingTypes;
+    final byte[][] mBlobBindings;
+    final int mCapacity;
+    final double[] mDoubleBindings;
+    final long[] mLongBindings;
+    private volatile java.lang.String mQuery;
+    final java.lang.String[] mStringBindings;
+
+    static void <clinit>()
+    {
+        java.util.TreeMap $r0;
+
+        <androidx.room.RoomSQLiteQuery: int STRING> = 4;
+
+        <androidx.room.RoomSQLiteQuery: int POOL_LIMIT> = 15;
+
+        <androidx.room.RoomSQLiteQuery: int NULL> = 1;
+
+        <androidx.room.RoomSQLiteQuery: int LONG> = 2;
+
+        <androidx.room.RoomSQLiteQuery: int DOUBLE> = 3;
+
+        <androidx.room.RoomSQLiteQuery: int DESIRED_POOL_SIZE> = 10;
+
+        <androidx.room.RoomSQLiteQuery: int BLOB> = 5;
+
+        $r0 = new java.util.TreeMap;
+
+        specialinvoke $r0.<java.util.TreeMap: void <init>()>();
+
+        <androidx.room.RoomSQLiteQuery: java.util.TreeMap sQueryPool> = $r0;
+
+        return;
+    }
+
+    private void <init>(int)
+    {
+        androidx.room.RoomSQLiteQuery r0;
+        byte[][] $r5;
+        long[] $r2;
+        int[] $r1;
+        int $i0;
+        double[] $r3;
+        java.lang.String[] $r4;
+
+        r0 := @this: androidx.room.RoomSQLiteQuery;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.room.RoomSQLiteQuery: int mCapacity> = $i0;
+
+        $i0 = $i0 + 1;
+
+        $r1 = newarray (int)[$i0];
+
+        r0.<androidx.room.RoomSQLiteQuery: int[] mBindingTypes> = $r1;
+
+        $r2 = newarray (long)[$i0];
+
+        r0.<androidx.room.RoomSQLiteQuery: long[] mLongBindings> = $r2;
+
+        $r3 = newarray (double)[$i0];
+
+        r0.<androidx.room.RoomSQLiteQuery: double[] mDoubleBindings> = $r3;
+
+        $r4 = newarray (java.lang.String)[$i0];
+
+        r0.<androidx.room.RoomSQLiteQuery: java.lang.String[] mStringBindings> = $r4;
+
+        $r5 = newarray (byte[])[$i0];
+
+        r0.<androidx.room.RoomSQLiteQuery: byte[][] mBlobBindings> = $r5;
+
+        return;
+    }
+
+    public static androidx.room.RoomSQLiteQuery acquire(java.lang.String, int)
+    {
+        java.lang.Throwable r7;
+        androidx.room.RoomSQLiteQuery r6;
+        java.util.Map$Entry $r4;
+        java.lang.Integer $r3;
+        java.util.TreeMap r1, r2;
+        int $i0;
+        java.lang.Object $r5;
+        java.lang.String $r0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        r1 = <androidx.room.RoomSQLiteQuery: java.util.TreeMap sQueryPool>;
+
+        entermonitor r1;
+
+     label1:
+        r2 = <androidx.room.RoomSQLiteQuery: java.util.TreeMap sQueryPool>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r4 = virtualinvoke r2.<java.util.TreeMap: java.util.Map$Entry ceilingEntry(java.lang.Object)>($r3);
+
+        if $r4 == null goto label3;
+
+        r2 = <androidx.room.RoomSQLiteQuery: java.util.TreeMap sQueryPool>;
+
+        $r5 = interfaceinvoke $r4.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        virtualinvoke r2.<java.util.TreeMap: java.lang.Object remove(java.lang.Object)>($r5);
+
+        $r5 = interfaceinvoke $r4.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        r6 = (androidx.room.RoomSQLiteQuery) $r5;
+
+        virtualinvoke r6.<androidx.room.RoomSQLiteQuery: void init(java.lang.String,int)>($r0, $i0);
+
+        exitmonitor r1;
+
+     label2:
+        return r6;
+
+     label3:
+        exitmonitor r1;
+
+     label4:
+        r6 = new androidx.room.RoomSQLiteQuery;
+
+        specialinvoke r6.<androidx.room.RoomSQLiteQuery: void <init>(int)>($i0);
+
+        virtualinvoke r6.<androidx.room.RoomSQLiteQuery: void init(java.lang.String,int)>($r0, $i0);
+
+        return r6;
+
+     label5:
+        r7 := @caughtexception;
+
+     label6:
+        exitmonitor r1;
+
+     label7:
+        throw r7;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label3 to label4 with label5;
+        catch java.lang.Throwable from label6 to label7 with label5;
+    }
+
+    public static androidx.room.RoomSQLiteQuery copyFrom(androidx.sqlite.db.SupportSQLiteQuery)
+    {
+        androidx.room.RoomSQLiteQuery $r2;
+        androidx.sqlite.db.SupportSQLiteQuery $r0;
+        androidx.room.RoomSQLiteQuery$1 $r3;
+        int $i0;
+        java.lang.String $r1;
+
+        $r0 := @parameter0: androidx.sqlite.db.SupportSQLiteQuery;
+
+        $r1 = interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteQuery: java.lang.String getSql()>();
+
+        $i0 = interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteQuery: int getArgCount()>();
+
+        $r2 = staticinvoke <androidx.room.RoomSQLiteQuery: androidx.room.RoomSQLiteQuery acquire(java.lang.String,int)>($r1, $i0);
+
+        $r3 = new androidx.room.RoomSQLiteQuery$1;
+
+        specialinvoke $r3.<androidx.room.RoomSQLiteQuery$1: void <init>(androidx.room.RoomSQLiteQuery)>($r2);
+
+        interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteQuery: void bindTo(androidx.sqlite.db.SupportSQLiteProgram)>($r3);
+
+        return $r2;
+    }
+
+    private static void prunePoolLocked()
+    {
+        java.util.TreeMap r0;
+        java.util.Iterator $r2;
+        int $i0;
+        java.util.NavigableSet $r1;
+
+        r0 = <androidx.room.RoomSQLiteQuery: java.util.TreeMap sQueryPool>;
+
+        $i0 = virtualinvoke r0.<java.util.TreeMap: int size()>();
+
+        if $i0 <= 15 goto label2;
+
+        r0 = <androidx.room.RoomSQLiteQuery: java.util.TreeMap sQueryPool>;
+
+        $i0 = virtualinvoke r0.<java.util.TreeMap: int size()>();
+
+        $i0 = $i0 + -10;
+
+        r0 = <androidx.room.RoomSQLiteQuery: java.util.TreeMap sQueryPool>;
+
+        $r1 = virtualinvoke r0.<java.util.TreeMap: java.util.NavigableSet descendingKeySet()>();
+
+        $r2 = interfaceinvoke $r1.<java.util.NavigableSet: java.util.Iterator iterator()>();
+
+     label1:
+        if $i0 <= 0 goto label2;
+
+        interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+        interfaceinvoke $r2.<java.util.Iterator: void remove()>();
+
+        $i0 = $i0 + -1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void bindBlob(int, byte[])
+    {
+        androidx.room.RoomSQLiteQuery r0;
+        byte[] $r1;
+        byte[][] $r3;
+        int[] $r2;
+        int $i0;
+
+        r0 := @this: androidx.room.RoomSQLiteQuery;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: byte[];
+
+        $r2 = r0.<androidx.room.RoomSQLiteQuery: int[] mBindingTypes>;
+
+        $r2[$i0] = 5;
+
+        $r3 = r0.<androidx.room.RoomSQLiteQuery: byte[][] mBlobBindings>;
+
+        $r3[$i0] = $r1;
+
+        return;
+    }
+
+    public void bindDouble(int, double)
+    {
+        androidx.room.RoomSQLiteQuery r0;
+        int[] $r1;
+        int $i0;
+        double[] $r2;
+        double $d0;
+
+        r0 := @this: androidx.room.RoomSQLiteQuery;
+
+        $i0 := @parameter0: int;
+
+        $d0 := @parameter1: double;
+
+        $r1 = r0.<androidx.room.RoomSQLiteQuery: int[] mBindingTypes>;
+
+        $r1[$i0] = 3;
+
+        $r2 = r0.<androidx.room.RoomSQLiteQuery: double[] mDoubleBindings>;
+
+        $r2[$i0] = $d0;
+
+        return;
+    }
+
+    public void bindLong(int, long)
+    {
+        androidx.room.RoomSQLiteQuery r0;
+        long[] $r2;
+        int[] $r1;
+        int $i0;
+        long $l1;
+
+        r0 := @this: androidx.room.RoomSQLiteQuery;
+
+        $i0 := @parameter0: int;
+
+        $l1 := @parameter1: long;
+
+        $r1 = r0.<androidx.room.RoomSQLiteQuery: int[] mBindingTypes>;
+
+        $r1[$i0] = 2;
+
+        $r2 = r0.<androidx.room.RoomSQLiteQuery: long[] mLongBindings>;
+
+        $r2[$i0] = $l1;
+
+        return;
+    }
+
+    public void bindNull(int)
+    {
+        int $i0;
+        androidx.room.RoomSQLiteQuery r0;
+        int[] $r1;
+
+        r0 := @this: androidx.room.RoomSQLiteQuery;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.room.RoomSQLiteQuery: int[] mBindingTypes>;
+
+        $r1[$i0] = 1;
+
+        return;
+    }
+
+    public void bindString(int, java.lang.String)
+    {
+        androidx.room.RoomSQLiteQuery r0;
+        int[] $r2;
+        int $i0;
+        java.lang.String[] $r3;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.room.RoomSQLiteQuery;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 = r0.<androidx.room.RoomSQLiteQuery: int[] mBindingTypes>;
+
+        $r2[$i0] = 4;
+
+        $r3 = r0.<androidx.room.RoomSQLiteQuery: java.lang.String[] mStringBindings>;
+
+        $r3[$i0] = $r1;
+
+        return;
+    }
+
+    public void bindTo(androidx.sqlite.db.SupportSQLiteProgram)
+    {
+        androidx.room.RoomSQLiteQuery r0;
+        byte[] $r4;
+        double[] $r7;
+        java.lang.String[] $r5;
+        long $l2;
+        androidx.sqlite.db.SupportSQLiteProgram $r1;
+        byte[][] $r3;
+        long[] $r8;
+        int[] $r2;
+        int i0, $i1;
+        java.lang.String $r6;
+        double $d0;
+
+        r0 := @this: androidx.room.RoomSQLiteQuery;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteProgram;
+
+        i0 = 1;
+
+     label1:
+        $i1 = r0.<androidx.room.RoomSQLiteQuery: int mArgCount>;
+
+        if i0 > $i1 goto label9;
+
+        $r2 = r0.<androidx.room.RoomSQLiteQuery: int[] mBindingTypes>;
+
+        $i1 = $r2[i0];
+
+        lookupswitch($i1)
+        {
+            case 1: goto label7;
+            case 2: goto label6;
+            case 3: goto label5;
+            case 4: goto label4;
+            case 5: goto label3;
+            default: goto label2;
+        };
+
+     label2:
+        goto label8;
+
+     label3:
+        $r3 = r0.<androidx.room.RoomSQLiteQuery: byte[][] mBlobBindings>;
+
+        $r4 = $r3[i0];
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteProgram: void bindBlob(int,byte[])>(i0, $r4);
+
+        goto label8;
+
+     label4:
+        $r5 = r0.<androidx.room.RoomSQLiteQuery: java.lang.String[] mStringBindings>;
+
+        $r6 = $r5[i0];
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteProgram: void bindString(int,java.lang.String)>(i0, $r6);
+
+        goto label8;
+
+     label5:
+        $r7 = r0.<androidx.room.RoomSQLiteQuery: double[] mDoubleBindings>;
+
+        $d0 = $r7[i0];
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteProgram: void bindDouble(int,double)>(i0, $d0);
+
+        goto label8;
+
+     label6:
+        $r8 = r0.<androidx.room.RoomSQLiteQuery: long[] mLongBindings>;
+
+        $l2 = $r8[i0];
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteProgram: void bindLong(int,long)>(i0, $l2);
+
+        goto label8;
+
+     label7:
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteProgram: void bindNull(int)>(i0);
+
+     label8:
+        i0 = i0 + 1;
+
+        goto label1;
+
+     label9:
+        return;
+    }
+
+    public void clearBindings()
+    {
+        androidx.room.RoomSQLiteQuery r0;
+        byte[][] $r3;
+        int[] $r1;
+        java.lang.String[] $r2;
+
+        r0 := @this: androidx.room.RoomSQLiteQuery;
+
+        $r1 = r0.<androidx.room.RoomSQLiteQuery: int[] mBindingTypes>;
+
+        staticinvoke <java.util.Arrays: void fill(int[],int)>($r1, 1);
+
+        $r2 = r0.<androidx.room.RoomSQLiteQuery: java.lang.String[] mStringBindings>;
+
+        staticinvoke <java.util.Arrays: void fill(java.lang.Object[],java.lang.Object)>($r2, null);
+
+        $r3 = r0.<androidx.room.RoomSQLiteQuery: byte[][] mBlobBindings>;
+
+        staticinvoke <java.util.Arrays: void fill(java.lang.Object[],java.lang.Object)>($r3, null);
+
+        r0.<androidx.room.RoomSQLiteQuery: java.lang.String mQuery> = null;
+
+        return;
+    }
+
+    public void close()
+    {
+        androidx.room.RoomSQLiteQuery r0;
+
+        r0 := @this: androidx.room.RoomSQLiteQuery;
+
+        return;
+    }
+
+    public void copyArgumentsFrom(androidx.room.RoomSQLiteQuery)
+    {
+        androidx.room.RoomSQLiteQuery r0, $r1;
+        double[] $r10, $r11;
+        java.lang.String[] $r6, $r7;
+        byte[][] $r8, $r9;
+        long[] $r4, $r5;
+        int[] $r2, $r3;
+        int $i0;
+
+        r0 := @this: androidx.room.RoomSQLiteQuery;
+
+        $r1 := @parameter0: androidx.room.RoomSQLiteQuery;
+
+        $i0 = virtualinvoke $r1.<androidx.room.RoomSQLiteQuery: int getArgCount()>();
+
+        $i0 = $i0 + 1;
+
+        $r2 = $r1.<androidx.room.RoomSQLiteQuery: int[] mBindingTypes>;
+
+        $r3 = r0.<androidx.room.RoomSQLiteQuery: int[] mBindingTypes>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r2, 0, $r3, 0, $i0);
+
+        $r4 = $r1.<androidx.room.RoomSQLiteQuery: long[] mLongBindings>;
+
+        $r5 = r0.<androidx.room.RoomSQLiteQuery: long[] mLongBindings>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r4, 0, $r5, 0, $i0);
+
+        $r6 = $r1.<androidx.room.RoomSQLiteQuery: java.lang.String[] mStringBindings>;
+
+        $r7 = r0.<androidx.room.RoomSQLiteQuery: java.lang.String[] mStringBindings>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r6, 0, $r7, 0, $i0);
+
+        $r8 = $r1.<androidx.room.RoomSQLiteQuery: byte[][] mBlobBindings>;
+
+        $r9 = r0.<androidx.room.RoomSQLiteQuery: byte[][] mBlobBindings>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r8, 0, $r9, 0, $i0);
+
+        $r10 = $r1.<androidx.room.RoomSQLiteQuery: double[] mDoubleBindings>;
+
+        $r11 = r0.<androidx.room.RoomSQLiteQuery: double[] mDoubleBindings>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r10, 0, $r11, 0, $i0);
+
+        return;
+    }
+
+    public int getArgCount()
+    {
+        int i0;
+        androidx.room.RoomSQLiteQuery r0;
+
+        r0 := @this: androidx.room.RoomSQLiteQuery;
+
+        i0 = r0.<androidx.room.RoomSQLiteQuery: int mArgCount>;
+
+        return i0;
+    }
+
+    public java.lang.String getSql()
+    {
+        androidx.room.RoomSQLiteQuery r0;
+        java.lang.String r1;
+
+        r0 := @this: androidx.room.RoomSQLiteQuery;
+
+        r1 = r0.<androidx.room.RoomSQLiteQuery: java.lang.String mQuery>;
+
+        return r1;
+    }
+
+    void init(java.lang.String, int)
+    {
+        int $i0;
+        androidx.room.RoomSQLiteQuery r0;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.room.RoomSQLiteQuery;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        r0.<androidx.room.RoomSQLiteQuery: java.lang.String mQuery> = $r1;
+
+        r0.<androidx.room.RoomSQLiteQuery: int mArgCount> = $i0;
+
+        return;
+    }
+
+    public void release()
+    {
+        java.lang.Throwable $r4;
+        androidx.room.RoomSQLiteQuery r0;
+        java.util.TreeMap $r1, $r3;
+        int $i0;
+        java.lang.Integer $r2;
+
+        r0 := @this: androidx.room.RoomSQLiteQuery;
+
+        $r1 = <androidx.room.RoomSQLiteQuery: java.util.TreeMap sQueryPool>;
+
+        entermonitor $r1;
+
+     label1:
+        $r3 = <androidx.room.RoomSQLiteQuery: java.util.TreeMap sQueryPool>;
+
+        $i0 = r0.<androidx.room.RoomSQLiteQuery: int mCapacity>;
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        virtualinvoke $r3.<java.util.TreeMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r2, r0);
+
+        staticinvoke <androidx.room.RoomSQLiteQuery: void prunePoolLocked()>();
+
+        exitmonitor $r1;
+
+     label2:
+        return;
+
+     label3:
+        $r4 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label4:
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+}

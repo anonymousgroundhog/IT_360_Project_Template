@@ -1,0 +1,520 @@
+final class kotlin.io.encoding.EncodeOutputStream extends java.io.OutputStream
+{
+    private final kotlin.io.encoding.Base64 base64;
+    private final byte[] byteBuffer;
+    private int byteBufferLength;
+    private boolean isClosed;
+    private int lineLength;
+    private final java.io.OutputStream output;
+    private final byte[] symbolBuffer;
+
+    public void <init>(java.io.OutputStream, kotlin.io.encoding.Base64)
+    {
+        java.io.OutputStream $r1;
+        byte[] $r3;
+        byte $b0;
+        kotlin.io.encoding.Base64 $r2;
+        kotlin.io.encoding.EncodeOutputStream r0;
+        boolean $z0;
+
+        r0 := @this: kotlin.io.encoding.EncodeOutputStream;
+
+        $r1 := @parameter0: java.io.OutputStream;
+
+        $r2 := @parameter1: kotlin.io.encoding.Base64;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "output");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r2, "base64");
+
+        specialinvoke r0.<java.io.OutputStream: void <init>()>();
+
+        r0.<kotlin.io.encoding.EncodeOutputStream: java.io.OutputStream output> = $r1;
+
+        r0.<kotlin.io.encoding.EncodeOutputStream: kotlin.io.encoding.Base64 base64> = $r2;
+
+        $r2 = r0.<kotlin.io.encoding.EncodeOutputStream: kotlin.io.encoding.Base64 base64>;
+
+        $z0 = virtualinvoke $r2.<kotlin.io.encoding.Base64: boolean isMimeScheme$kotlin_stdlib()>();
+
+        if $z0 == 0 goto label1;
+
+        $b0 = 76;
+
+        goto label2;
+
+     label1:
+        $b0 = -1;
+
+     label2:
+        r0.<kotlin.io.encoding.EncodeOutputStream: int lineLength> = $b0;
+
+        $r3 = newarray (byte)[1024];
+
+        r0.<kotlin.io.encoding.EncodeOutputStream: byte[] symbolBuffer> = $r3;
+
+        $r3 = newarray (byte)[3];
+
+        r0.<kotlin.io.encoding.EncodeOutputStream: byte[] byteBuffer> = $r3;
+
+        return;
+    }
+
+    private final void checkOpen()
+    {
+        java.io.IOException $r1;
+        kotlin.io.encoding.EncodeOutputStream r0;
+        boolean $z0;
+
+        r0 := @this: kotlin.io.encoding.EncodeOutputStream;
+
+        $z0 = r0.<kotlin.io.encoding.EncodeOutputStream: boolean isClosed>;
+
+        if $z0 != 0 goto label1;
+
+        return;
+
+     label1:
+        $r1 = new java.io.IOException;
+
+        specialinvoke $r1.<java.io.IOException: void <init>(java.lang.String)>("The output stream is closed.");
+
+        throw $r1;
+    }
+
+    private final int copyIntoByteBuffer(byte[], int, int)
+    {
+        byte[] $r1, $r2;
+        int $i0, $i1, $i2, $i3;
+        kotlin.io.encoding.EncodeOutputStream r0;
+
+        r0 := @this: kotlin.io.encoding.EncodeOutputStream;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 = r0.<kotlin.io.encoding.EncodeOutputStream: int byteBufferLength>;
+
+        $i2 = 3 - $i2;
+
+        $i1 = $i1 - $i0;
+
+        $i1 = staticinvoke <java.lang.Math: int min(int,int)>($i2, $i1);
+
+        $r2 = r0.<kotlin.io.encoding.EncodeOutputStream: byte[] byteBuffer>;
+
+        $i2 = r0.<kotlin.io.encoding.EncodeOutputStream: int byteBufferLength>;
+
+        $i3 = $i0 + $i1;
+
+        staticinvoke <kotlin.collections.ArraysKt: byte[] copyInto(byte[],byte[],int,int,int)>($r1, $r2, $i2, $i0, $i3);
+
+        $i0 = r0.<kotlin.io.encoding.EncodeOutputStream: int byteBufferLength>;
+
+        $i0 = $i0 + $i1;
+
+        r0.<kotlin.io.encoding.EncodeOutputStream: int byteBufferLength> = $i0;
+
+        $i0 = r0.<kotlin.io.encoding.EncodeOutputStream: int byteBufferLength>;
+
+        if $i0 != 3 goto label1;
+
+        specialinvoke r0.<kotlin.io.encoding.EncodeOutputStream: void encodeByteBufferIntoOutput()>();
+
+     label1:
+        return $i1;
+    }
+
+    private final void encodeByteBufferIntoOutput()
+    {
+        byte[] r1;
+        java.lang.IllegalStateException $r2;
+        int $i0;
+        java.lang.String $r3;
+        kotlin.io.encoding.EncodeOutputStream r0;
+        boolean $z0;
+
+        r0 := @this: kotlin.io.encoding.EncodeOutputStream;
+
+        r1 = r0.<kotlin.io.encoding.EncodeOutputStream: byte[] byteBuffer>;
+
+        $i0 = r0.<kotlin.io.encoding.EncodeOutputStream: int byteBufferLength>;
+
+        $i0 = specialinvoke r0.<kotlin.io.encoding.EncodeOutputStream: int encodeIntoOutput(byte[],int,int)>(r1, 0, $i0);
+
+        if $i0 != 4 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        if $z0 == 0 goto label3;
+
+        r0.<kotlin.io.encoding.EncodeOutputStream: int byteBufferLength> = 0;
+
+        return;
+
+     label3:
+        $r2 = new java.lang.IllegalStateException;
+
+        $r3 = "Check failed.";
+
+        $r3 = virtualinvoke $r3.<java.lang.Object: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r3);
+
+        throw $r2;
+    }
+
+    private final int encodeIntoOutput(byte[], int, int)
+    {
+        java.io.OutputStream $r4;
+        byte[] $r1, $r3;
+        java.lang.IllegalStateException $r6;
+        kotlin.io.encoding.Base64 r2;
+        kotlin.io.encoding.EncodeOutputStream r0;
+        kotlin.io.encoding.Base64$Default $r5;
+        int $i0, $i1;
+        java.lang.String $r7;
+        boolean $z0;
+
+        r0 := @this: kotlin.io.encoding.EncodeOutputStream;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        r2 = r0.<kotlin.io.encoding.EncodeOutputStream: kotlin.io.encoding.Base64 base64>;
+
+        $r3 = r0.<kotlin.io.encoding.EncodeOutputStream: byte[] symbolBuffer>;
+
+        $i0 = virtualinvoke r2.<kotlin.io.encoding.Base64: int encodeIntoByteArray(byte[],byte[],int,int,int)>($r1, $r3, 0, $i0, $i1);
+
+        $i1 = r0.<kotlin.io.encoding.EncodeOutputStream: int lineLength>;
+
+        if $i1 != 0 goto label4;
+
+        $r4 = r0.<kotlin.io.encoding.EncodeOutputStream: java.io.OutputStream output>;
+
+        $r5 = <kotlin.io.encoding.Base64: kotlin.io.encoding.Base64$Default Default>;
+
+        $r1 = virtualinvoke $r5.<kotlin.io.encoding.Base64$Default: byte[] getMimeLineSeparatorSymbols$kotlin_stdlib()>();
+
+        virtualinvoke $r4.<java.io.OutputStream: void write(byte[])>($r1);
+
+        r0.<kotlin.io.encoding.EncodeOutputStream: int lineLength> = 76;
+
+        if $i0 > 76 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        if $z0 == 0 goto label3;
+
+        goto label4;
+
+     label3:
+        $r6 = new java.lang.IllegalStateException;
+
+        $r7 = "Check failed.";
+
+        $r7 = virtualinvoke $r7.<java.lang.Object: java.lang.String toString()>();
+
+        specialinvoke $r6.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r7);
+
+        throw $r6;
+
+     label4:
+        $r4 = r0.<kotlin.io.encoding.EncodeOutputStream: java.io.OutputStream output>;
+
+        $r1 = r0.<kotlin.io.encoding.EncodeOutputStream: byte[] symbolBuffer>;
+
+        virtualinvoke $r4.<java.io.OutputStream: void write(byte[],int,int)>($r1, 0, $i0);
+
+        $i1 = r0.<kotlin.io.encoding.EncodeOutputStream: int lineLength>;
+
+        $i1 = $i1 - $i0;
+
+        r0.<kotlin.io.encoding.EncodeOutputStream: int lineLength> = $i1;
+
+        return $i0;
+    }
+
+    public void close()
+    {
+        java.io.OutputStream $r1;
+        int $i0;
+        kotlin.io.encoding.EncodeOutputStream r0;
+        boolean $z0;
+
+        r0 := @this: kotlin.io.encoding.EncodeOutputStream;
+
+        $z0 = r0.<kotlin.io.encoding.EncodeOutputStream: boolean isClosed>;
+
+        if $z0 != 0 goto label2;
+
+        r0.<kotlin.io.encoding.EncodeOutputStream: boolean isClosed> = 1;
+
+        $i0 = r0.<kotlin.io.encoding.EncodeOutputStream: int byteBufferLength>;
+
+        if $i0 == 0 goto label1;
+
+        specialinvoke r0.<kotlin.io.encoding.EncodeOutputStream: void encodeByteBufferIntoOutput()>();
+
+     label1:
+        $r1 = r0.<kotlin.io.encoding.EncodeOutputStream: java.io.OutputStream output>;
+
+        virtualinvoke $r1.<java.io.OutputStream: void close()>();
+
+     label2:
+        return;
+    }
+
+    public void flush()
+    {
+        java.io.OutputStream $r1;
+        kotlin.io.encoding.EncodeOutputStream r0;
+
+        r0 := @this: kotlin.io.encoding.EncodeOutputStream;
+
+        specialinvoke r0.<kotlin.io.encoding.EncodeOutputStream: void checkOpen()>();
+
+        $r1 = r0.<kotlin.io.encoding.EncodeOutputStream: java.io.OutputStream output>;
+
+        virtualinvoke $r1.<java.io.OutputStream: void flush()>();
+
+        return;
+    }
+
+    public void write(int)
+    {
+        byte[] $r1;
+        byte $b3;
+        int $i0, $i1, $i2;
+        kotlin.io.encoding.EncodeOutputStream r0;
+
+        r0 := @this: kotlin.io.encoding.EncodeOutputStream;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke r0.<kotlin.io.encoding.EncodeOutputStream: void checkOpen()>();
+
+        $r1 = r0.<kotlin.io.encoding.EncodeOutputStream: byte[] byteBuffer>;
+
+        $i1 = r0.<kotlin.io.encoding.EncodeOutputStream: int byteBufferLength>;
+
+        $i2 = $i1 + 1;
+
+        r0.<kotlin.io.encoding.EncodeOutputStream: int byteBufferLength> = $i2;
+
+        $b3 = (byte) $i0;
+
+        $r1[$i1] = $b3;
+
+        $i0 = r0.<kotlin.io.encoding.EncodeOutputStream: int byteBufferLength>;
+
+        if $i0 != 3 goto label1;
+
+        specialinvoke r0.<kotlin.io.encoding.EncodeOutputStream: void encodeByteBufferIntoOutput()>();
+
+     label1:
+        return;
+    }
+
+    public void write(byte[], int, int)
+    {
+        byte[] $r1, r4;
+        java.lang.IllegalStateException $r5;
+        java.lang.IndexOutOfBoundsException r6;
+        kotlin.io.encoding.Base64 r3;
+        kotlin.io.encoding.EncodeOutputStream r0;
+        int $i0, $i1, i2, $i3, i4;
+        java.lang.StringBuilder $r7;
+        java.lang.String $r2;
+        boolean z0;
+
+        r0 := @this: kotlin.io.encoding.EncodeOutputStream;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "source");
+
+        specialinvoke r0.<kotlin.io.encoding.EncodeOutputStream: void checkOpen()>();
+
+        if $i0 < 0 goto label12;
+
+        if $i1 < 0 goto label12;
+
+        i2 = $i0 + $i1;
+
+        $i3 = lengthof $r1;
+
+        if i2 > $i3 goto label12;
+
+        if $i1 != 0 goto label01;
+
+        return;
+
+     label01:
+        i2 = r0.<kotlin.io.encoding.EncodeOutputStream: int byteBufferLength>;
+
+        if i2 >= 3 goto label02;
+
+        z0 = 1;
+
+        goto label03;
+
+     label02:
+        z0 = 0;
+
+     label03:
+        $r2 = "Check failed.";
+
+        if z0 == 0 goto label11;
+
+        i2 = $i0;
+
+        $i1 = $i0 + $i1;
+
+        $i3 = r0.<kotlin.io.encoding.EncodeOutputStream: int byteBufferLength>;
+
+        if $i3 == 0 goto label04;
+
+        i2 = specialinvoke r0.<kotlin.io.encoding.EncodeOutputStream: int copyIntoByteBuffer(byte[],int,int)>($r1, $i0, $i1);
+
+        i2 = $i0 + i2;
+
+        $i0 = r0.<kotlin.io.encoding.EncodeOutputStream: int byteBufferLength>;
+
+        if $i0 == 0 goto label04;
+
+        return;
+
+     label04:
+        $i0 = i2 + 3;
+
+        if $i0 > $i1 goto label10;
+
+        r3 = r0.<kotlin.io.encoding.EncodeOutputStream: kotlin.io.encoding.Base64 base64>;
+
+        z0 = virtualinvoke r3.<kotlin.io.encoding.Base64: boolean isMimeScheme$kotlin_stdlib()>();
+
+        if z0 == 0 goto label05;
+
+        $i0 = r0.<kotlin.io.encoding.EncodeOutputStream: int lineLength>;
+
+        goto label06;
+
+     label05:
+        r4 = r0.<kotlin.io.encoding.EncodeOutputStream: byte[] symbolBuffer>;
+
+        $i0 = lengthof r4;
+
+     label06:
+        $i0 = $i0 / 4;
+
+        $i3 = $i1 - i2;
+
+        $i3 = $i3 / 3;
+
+        $i3 = staticinvoke <java.lang.Math: int min(int,int)>($i0, $i3);
+
+        $i0 = $i3 * 3;
+
+        i4 = i2 + $i0;
+
+        i4 = specialinvoke r0.<kotlin.io.encoding.EncodeOutputStream: int encodeIntoOutput(byte[],int,int)>($r1, i2, i4);
+
+        $i3 = $i3 * 4;
+
+        if i4 != $i3 goto label07;
+
+        z0 = 1;
+
+        goto label08;
+
+     label07:
+        z0 = 0;
+
+     label08:
+        if z0 == 0 goto label09;
+
+        i2 = i2 + $i0;
+
+        goto label04;
+
+     label09:
+        $r5 = new java.lang.IllegalStateException;
+
+        $r2 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        specialinvoke $r5.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r2);
+
+        throw $r5;
+
+     label10:
+        r4 = r0.<kotlin.io.encoding.EncodeOutputStream: byte[] byteBuffer>;
+
+        staticinvoke <kotlin.collections.ArraysKt: byte[] copyInto(byte[],byte[],int,int,int)>($r1, r4, 0, i2, $i1);
+
+        $i0 = $i1 - i2;
+
+        r0.<kotlin.io.encoding.EncodeOutputStream: int byteBufferLength> = $i0;
+
+        return;
+
+     label11:
+        $r5 = new java.lang.IllegalStateException;
+
+        $r2 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        specialinvoke $r5.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r2);
+
+        throw $r5;
+
+     label12:
+        r6 = new java.lang.IndexOutOfBoundsException;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("offset: ");
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", length: ");
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", source size: ");
+
+        $i0 = lengthof $r1;
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r2 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r6.<java.lang.IndexOutOfBoundsException: void <init>(java.lang.String)>($r2);
+
+        throw r6;
+    }
+}

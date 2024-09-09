@@ -1,0 +1,168 @@
+class androidx.room.RoomTrackingLiveData extends androidx.lifecycle.LiveData
+{
+    final java.util.concurrent.Callable mComputeFunction;
+    final java.util.concurrent.atomic.AtomicBoolean mComputing;
+    private final androidx.room.InvalidationLiveDataContainer mContainer;
+    final androidx.room.RoomDatabase mDatabase;
+    final boolean mInTransaction;
+    final java.util.concurrent.atomic.AtomicBoolean mInvalid;
+    final java.lang.Runnable mInvalidationRunnable;
+    final androidx.room.InvalidationTracker$Observer mObserver;
+    final java.lang.Runnable mRefreshRunnable;
+    final java.util.concurrent.atomic.AtomicBoolean mRegisteredObserver;
+
+    void <init>(androidx.room.RoomDatabase, androidx.room.InvalidationLiveDataContainer, boolean, java.util.concurrent.Callable, java.lang.String[])
+    {
+        androidx.room.RoomTrackingLiveData$3 $r8;
+        androidx.room.RoomTrackingLiveData$2 $r7;
+        androidx.room.RoomDatabase $r1;
+        androidx.room.RoomTrackingLiveData$1 $r6;
+        java.util.concurrent.atomic.AtomicBoolean $r5;
+        androidx.room.RoomTrackingLiveData r0;
+        java.util.concurrent.Callable r3;
+        java.lang.String[] $r4;
+        androidx.room.InvalidationLiveDataContainer $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.room.RoomTrackingLiveData;
+
+        $r1 := @parameter0: androidx.room.RoomDatabase;
+
+        $r2 := @parameter1: androidx.room.InvalidationLiveDataContainer;
+
+        $z0 := @parameter2: boolean;
+
+        r3 := @parameter3: java.util.concurrent.Callable;
+
+        $r4 := @parameter4: java.lang.String[];
+
+        specialinvoke r0.<androidx.lifecycle.LiveData: void <init>()>();
+
+        $r5 = new java.util.concurrent.atomic.AtomicBoolean;
+
+        specialinvoke $r5.<java.util.concurrent.atomic.AtomicBoolean: void <init>(boolean)>(1);
+
+        r0.<androidx.room.RoomTrackingLiveData: java.util.concurrent.atomic.AtomicBoolean mInvalid> = $r5;
+
+        $r5 = new java.util.concurrent.atomic.AtomicBoolean;
+
+        specialinvoke $r5.<java.util.concurrent.atomic.AtomicBoolean: void <init>(boolean)>(0);
+
+        r0.<androidx.room.RoomTrackingLiveData: java.util.concurrent.atomic.AtomicBoolean mComputing> = $r5;
+
+        $r5 = new java.util.concurrent.atomic.AtomicBoolean;
+
+        specialinvoke $r5.<java.util.concurrent.atomic.AtomicBoolean: void <init>(boolean)>(0);
+
+        r0.<androidx.room.RoomTrackingLiveData: java.util.concurrent.atomic.AtomicBoolean mRegisteredObserver> = $r5;
+
+        $r6 = new androidx.room.RoomTrackingLiveData$1;
+
+        specialinvoke $r6.<androidx.room.RoomTrackingLiveData$1: void <init>(androidx.room.RoomTrackingLiveData)>(r0);
+
+        r0.<androidx.room.RoomTrackingLiveData: java.lang.Runnable mRefreshRunnable> = $r6;
+
+        $r7 = new androidx.room.RoomTrackingLiveData$2;
+
+        specialinvoke $r7.<androidx.room.RoomTrackingLiveData$2: void <init>(androidx.room.RoomTrackingLiveData)>(r0);
+
+        r0.<androidx.room.RoomTrackingLiveData: java.lang.Runnable mInvalidationRunnable> = $r7;
+
+        r0.<androidx.room.RoomTrackingLiveData: androidx.room.RoomDatabase mDatabase> = $r1;
+
+        r0.<androidx.room.RoomTrackingLiveData: boolean mInTransaction> = $z0;
+
+        r0.<androidx.room.RoomTrackingLiveData: java.util.concurrent.Callable mComputeFunction> = r3;
+
+        r0.<androidx.room.RoomTrackingLiveData: androidx.room.InvalidationLiveDataContainer mContainer> = $r2;
+
+        $r8 = new androidx.room.RoomTrackingLiveData$3;
+
+        specialinvoke $r8.<androidx.room.RoomTrackingLiveData$3: void <init>(androidx.room.RoomTrackingLiveData,java.lang.String[])>(r0, $r4);
+
+        r0.<androidx.room.RoomTrackingLiveData: androidx.room.InvalidationTracker$Observer mObserver> = $r8;
+
+        return;
+    }
+
+    static void access$000(androidx.room.RoomTrackingLiveData, java.lang.Object)
+    {
+        androidx.room.RoomTrackingLiveData $r0;
+        java.lang.Object $r1;
+
+        $r0 := @parameter0: androidx.room.RoomTrackingLiveData;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        virtualinvoke $r0.<androidx.room.RoomTrackingLiveData: void postValue(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    java.util.concurrent.Executor getQueryExecutor()
+    {
+        androidx.room.RoomDatabase $r1;
+        java.util.concurrent.Executor $r2;
+        androidx.room.RoomTrackingLiveData r0;
+        boolean $z0;
+
+        r0 := @this: androidx.room.RoomTrackingLiveData;
+
+        $z0 = r0.<androidx.room.RoomTrackingLiveData: boolean mInTransaction>;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<androidx.room.RoomTrackingLiveData: androidx.room.RoomDatabase mDatabase>;
+
+        $r2 = virtualinvoke $r1.<androidx.room.RoomDatabase: java.util.concurrent.Executor getTransactionExecutor()>();
+
+        return $r2;
+
+     label1:
+        $r1 = r0.<androidx.room.RoomTrackingLiveData: androidx.room.RoomDatabase mDatabase>;
+
+        $r2 = virtualinvoke $r1.<androidx.room.RoomDatabase: java.util.concurrent.Executor getQueryExecutor()>();
+
+        return $r2;
+    }
+
+    protected void onActive()
+    {
+        java.util.concurrent.Executor $r2;
+        androidx.room.InvalidationLiveDataContainer $r3;
+        androidx.room.RoomTrackingLiveData r0;
+        java.lang.Runnable $r1;
+
+        r0 := @this: androidx.room.RoomTrackingLiveData;
+
+        specialinvoke r0.<androidx.lifecycle.LiveData: void onActive()>();
+
+        $r3 = r0.<androidx.room.RoomTrackingLiveData: androidx.room.InvalidationLiveDataContainer mContainer>;
+
+        virtualinvoke $r3.<androidx.room.InvalidationLiveDataContainer: void onActive(androidx.lifecycle.LiveData)>(r0);
+
+        $r2 = virtualinvoke r0.<androidx.room.RoomTrackingLiveData: java.util.concurrent.Executor getQueryExecutor()>();
+
+        $r1 = r0.<androidx.room.RoomTrackingLiveData: java.lang.Runnable mRefreshRunnable>;
+
+        interfaceinvoke $r2.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r1);
+
+        return;
+    }
+
+    protected void onInactive()
+    {
+        androidx.room.RoomTrackingLiveData r0;
+        androidx.room.InvalidationLiveDataContainer $r1;
+
+        r0 := @this: androidx.room.RoomTrackingLiveData;
+
+        specialinvoke r0.<androidx.lifecycle.LiveData: void onInactive()>();
+
+        $r1 = r0.<androidx.room.RoomTrackingLiveData: androidx.room.InvalidationLiveDataContainer mContainer>;
+
+        virtualinvoke $r1.<androidx.room.InvalidationLiveDataContainer: void onInactive(androidx.lifecycle.LiveData)>(r0);
+
+        return;
+    }
+}

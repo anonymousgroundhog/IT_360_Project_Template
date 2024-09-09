@@ -1,0 +1,290 @@
+class androidx.work.impl.model.WorkSpecDao_Impl$1 extends androidx.room.EntityInsertionAdapter
+{
+    final androidx.work.impl.model.WorkSpecDao_Impl this$0;
+
+    void <init>(androidx.work.impl.model.WorkSpecDao_Impl, androidx.room.RoomDatabase)
+    {
+        androidx.work.impl.model.WorkSpecDao_Impl$1 r0;
+        androidx.room.RoomDatabase $r2;
+        androidx.work.impl.model.WorkSpecDao_Impl $r1;
+
+        r0 := @this: androidx.work.impl.model.WorkSpecDao_Impl$1;
+
+        $r1 := @parameter0: androidx.work.impl.model.WorkSpecDao_Impl;
+
+        $r2 := @parameter1: androidx.room.RoomDatabase;
+
+        r0.<androidx.work.impl.model.WorkSpecDao_Impl$1: androidx.work.impl.model.WorkSpecDao_Impl this$0> = $r1;
+
+        specialinvoke r0.<androidx.room.EntityInsertionAdapter: void <init>(androidx.room.RoomDatabase)>($r2);
+
+        return;
+    }
+
+    public void bind(androidx.sqlite.db.SupportSQLiteStatement, androidx.work.impl.model.WorkSpec)
+    {
+        byte[] $r6;
+        androidx.work.NetworkType $r10;
+        androidx.work.BackoffPolicy r7;
+        androidx.work.Constraints r9;
+        androidx.work.impl.model.WorkSpecDao_Impl$1 r0;
+        long l1;
+        androidx.work.impl.model.WorkSpec $r2;
+        androidx.work.ContentUriTriggers $r11;
+        androidx.work.WorkInfo$State r4;
+        int $i0;
+        java.lang.String r3;
+        androidx.work.OutOfQuotaPolicy r8;
+        androidx.work.Data r5;
+        androidx.sqlite.db.SupportSQLiteStatement $r1;
+        boolean z0;
+
+        r0 := @this: androidx.work.impl.model.WorkSpecDao_Impl$1;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteStatement;
+
+        $r2 := @parameter1: androidx.work.impl.model.WorkSpec;
+
+        r3 = $r2.<androidx.work.impl.model.WorkSpec: java.lang.String id>;
+
+        if r3 != null goto label01;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindNull(int)>(1);
+
+        goto label02;
+
+     label01:
+        r3 = $r2.<androidx.work.impl.model.WorkSpec: java.lang.String id>;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindString(int,java.lang.String)>(1, r3);
+
+     label02:
+        r4 = $r2.<androidx.work.impl.model.WorkSpec: androidx.work.WorkInfo$State state>;
+
+        $i0 = staticinvoke <androidx.work.impl.model.WorkTypeConverters: int stateToInt(androidx.work.WorkInfo$State)>(r4);
+
+        l1 = (long) $i0;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(2, l1);
+
+        r3 = $r2.<androidx.work.impl.model.WorkSpec: java.lang.String workerClassName>;
+
+        if r3 != null goto label03;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindNull(int)>(3);
+
+        goto label04;
+
+     label03:
+        r3 = $r2.<androidx.work.impl.model.WorkSpec: java.lang.String workerClassName>;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindString(int,java.lang.String)>(3, r3);
+
+     label04:
+        r3 = $r2.<androidx.work.impl.model.WorkSpec: java.lang.String inputMergerClassName>;
+
+        if r3 != null goto label05;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindNull(int)>(4);
+
+        goto label06;
+
+     label05:
+        r3 = $r2.<androidx.work.impl.model.WorkSpec: java.lang.String inputMergerClassName>;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindString(int,java.lang.String)>(4, r3);
+
+     label06:
+        r5 = $r2.<androidx.work.impl.model.WorkSpec: androidx.work.Data input>;
+
+        $r6 = staticinvoke <androidx.work.Data: byte[] toByteArrayInternal(androidx.work.Data)>(r5);
+
+        if $r6 != null goto label07;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindNull(int)>(5);
+
+        goto label08;
+
+     label07:
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindBlob(int,byte[])>(5, $r6);
+
+     label08:
+        r5 = $r2.<androidx.work.impl.model.WorkSpec: androidx.work.Data output>;
+
+        $r6 = staticinvoke <androidx.work.Data: byte[] toByteArrayInternal(androidx.work.Data)>(r5);
+
+        if $r6 != null goto label09;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindNull(int)>(6);
+
+        goto label10;
+
+     label09:
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindBlob(int,byte[])>(6, $r6);
+
+     label10:
+        l1 = $r2.<androidx.work.impl.model.WorkSpec: long initialDelay>;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(7, l1);
+
+        l1 = $r2.<androidx.work.impl.model.WorkSpec: long intervalDuration>;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(8, l1);
+
+        l1 = $r2.<androidx.work.impl.model.WorkSpec: long flexDuration>;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(9, l1);
+
+        $i0 = $r2.<androidx.work.impl.model.WorkSpec: int runAttemptCount>;
+
+        l1 = (long) $i0;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(10, l1);
+
+        r7 = $r2.<androidx.work.impl.model.WorkSpec: androidx.work.BackoffPolicy backoffPolicy>;
+
+        $i0 = staticinvoke <androidx.work.impl.model.WorkTypeConverters: int backoffPolicyToInt(androidx.work.BackoffPolicy)>(r7);
+
+        l1 = (long) $i0;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(11, l1);
+
+        l1 = $r2.<androidx.work.impl.model.WorkSpec: long backoffDelayDuration>;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(12, l1);
+
+        l1 = $r2.<androidx.work.impl.model.WorkSpec: long periodStartTime>;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(13, l1);
+
+        l1 = $r2.<androidx.work.impl.model.WorkSpec: long minimumRetentionDuration>;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(14, l1);
+
+        l1 = $r2.<androidx.work.impl.model.WorkSpec: long scheduleRequestedAt>;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(15, l1);
+
+        z0 = $r2.<androidx.work.impl.model.WorkSpec: boolean expedited>;
+
+        l1 = (long) z0;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(16, l1);
+
+        r8 = $r2.<androidx.work.impl.model.WorkSpec: androidx.work.OutOfQuotaPolicy outOfQuotaPolicy>;
+
+        $i0 = staticinvoke <androidx.work.impl.model.WorkTypeConverters: int outOfQuotaPolicyToInt(androidx.work.OutOfQuotaPolicy)>(r8);
+
+        l1 = (long) $i0;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(17, l1);
+
+        r9 = $r2.<androidx.work.impl.model.WorkSpec: androidx.work.Constraints constraints>;
+
+        if r9 == null goto label13;
+
+        $r10 = virtualinvoke r9.<androidx.work.Constraints: androidx.work.NetworkType getRequiredNetworkType()>();
+
+        $i0 = staticinvoke <androidx.work.impl.model.WorkTypeConverters: int networkTypeToInt(androidx.work.NetworkType)>($r10);
+
+        l1 = (long) $i0;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(18, l1);
+
+        z0 = virtualinvoke r9.<androidx.work.Constraints: boolean requiresCharging()>();
+
+        l1 = (long) z0;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(19, l1);
+
+        z0 = virtualinvoke r9.<androidx.work.Constraints: boolean requiresDeviceIdle()>();
+
+        l1 = (long) z0;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(20, l1);
+
+        z0 = virtualinvoke r9.<androidx.work.Constraints: boolean requiresBatteryNotLow()>();
+
+        l1 = (long) z0;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(21, l1);
+
+        z0 = virtualinvoke r9.<androidx.work.Constraints: boolean requiresStorageNotLow()>();
+
+        l1 = (long) z0;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(22, l1);
+
+        l1 = virtualinvoke r9.<androidx.work.Constraints: long getTriggerContentUpdateDelay()>();
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(23, l1);
+
+        l1 = virtualinvoke r9.<androidx.work.Constraints: long getTriggerMaxContentDelay()>();
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindLong(int,long)>(24, l1);
+
+        $r11 = virtualinvoke r9.<androidx.work.Constraints: androidx.work.ContentUriTriggers getContentUriTriggers()>();
+
+        $r6 = staticinvoke <androidx.work.impl.model.WorkTypeConverters: byte[] contentUriTriggersToByteArray(androidx.work.ContentUriTriggers)>($r11);
+
+        if $r6 != null goto label11;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindNull(int)>(25);
+
+        goto label12;
+
+     label11:
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindBlob(int,byte[])>(25, $r6);
+
+     label12:
+        return;
+
+     label13:
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindNull(int)>(18);
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindNull(int)>(19);
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindNull(int)>(20);
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindNull(int)>(21);
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindNull(int)>(22);
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindNull(int)>(23);
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindNull(int)>(24);
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindNull(int)>(25);
+
+        return;
+    }
+
+    public volatile void bind(androidx.sqlite.db.SupportSQLiteStatement, java.lang.Object)
+    {
+        androidx.work.impl.model.WorkSpecDao_Impl$1 r0;
+        java.lang.Object $r2;
+        androidx.sqlite.db.SupportSQLiteStatement $r1;
+        androidx.work.impl.model.WorkSpec $r3;
+
+        r0 := @this: androidx.work.impl.model.WorkSpecDao_Impl$1;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteStatement;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = (androidx.work.impl.model.WorkSpec) $r2;
+
+        virtualinvoke r0.<androidx.work.impl.model.WorkSpecDao_Impl$1: void bind(androidx.sqlite.db.SupportSQLiteStatement,androidx.work.impl.model.WorkSpec)>($r1, $r3);
+
+        return;
+    }
+
+    public java.lang.String createQuery()
+    {
+        androidx.work.impl.model.WorkSpecDao_Impl$1 r0;
+
+        r0 := @this: androidx.work.impl.model.WorkSpecDao_Impl$1;
+
+        return "INSERT OR IGNORE INTO `WorkSpec` (`id`,`state`,`worker_class_name`,`input_merger_class_name`,`input`,`output`,`initial_delay`,`interval_duration`,`flex_duration`,`run_attempt_count`,`backoff_policy`,`backoff_delay_duration`,`period_start_time`,`minimum_retention_duration`,`schedule_requested_at`,`run_in_foreground`,`out_of_quota_policy`,`required_network_type`,`requires_charging`,`requires_device_idle`,`requires_battery_not_low`,`requires_storage_not_low`,`trigger_content_update_delay`,`trigger_max_content_delay`,`content_uri_triggers`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    }
+}

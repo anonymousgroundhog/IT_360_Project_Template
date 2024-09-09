@@ -1,0 +1,1278 @@
+public final class com.google.android.gms.internal.ads.zzchz extends com.google.android.gms.internal.ads.zzchw
+{
+    public static final int zzd;
+    private static final java.util.Set zze;
+    private static final java.text.DecimalFormat zzf;
+    private java.io.File zzg;
+    private boolean zzh;
+
+    static void <clinit>()
+    {
+        java.util.HashSet $r1;
+        java.text.DecimalFormat $r2;
+        java.util.Set $r0;
+
+        $r1 = new java.util.HashSet;
+
+        specialinvoke $r1.<java.util.HashSet: void <init>()>();
+
+        $r0 = staticinvoke <java.util.Collections: java.util.Set synchronizedSet(java.util.Set)>($r1);
+
+        <com.google.android.gms.internal.ads.zzchz: java.util.Set zze> = $r0;
+
+        $r2 = new java.text.DecimalFormat;
+
+        specialinvoke $r2.<java.text.DecimalFormat: void <init>(java.lang.String)>("#,###");
+
+        <com.google.android.gms.internal.ads.zzchz: java.text.DecimalFormat zzf> = $r2;
+
+        return;
+    }
+
+    public void <init>(com.google.android.gms.internal.ads.zzcgl)
+    {
+        android.content.Context $r2;
+        java.io.File $r3, $r4;
+        com.google.android.gms.internal.ads.zzchz r0;
+        com.google.android.gms.internal.ads.zzcgl $r1;
+        java.lang.String $r5, $r6;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzchz;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzcgl;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzchw: void <init>(com.google.android.gms.internal.ads.zzcgl)>($r1);
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzchz: android.content.Context zza>;
+
+        $r3 = virtualinvoke $r2.<android.content.Context: java.io.File getCacheDir()>();
+
+        if $r3 != null goto label1;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>("Context.getCacheDir() returned null");
+
+        return;
+
+     label1:
+        $r4 = new java.io.File;
+
+        specialinvoke $r4.<java.io.File: void <init>(java.io.File,java.lang.String)>($r3, "admobVideoStreams");
+
+        r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zzg> = $r4;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zzg>;
+
+        $z0 = virtualinvoke $r3.<java.io.File: boolean isDirectory()>();
+
+        if $z0 != 0 goto label3;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zzg>;
+
+        $z0 = virtualinvoke $r3.<java.io.File: boolean mkdirs()>();
+
+        if $z0 == 0 goto label2;
+
+        goto label3;
+
+     label2:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zzg>;
+
+        $r5 = virtualinvoke $r3.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r5);
+
+        $r6 = "Could not create preload cache directory at ";
+
+        $r5 = virtualinvoke $r6.<java.lang.String: java.lang.String concat(java.lang.String)>($r5);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>($r5);
+
+        r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zzg> = null;
+
+        return;
+
+     label3:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zzg>;
+
+        $z0 = virtualinvoke $r3.<java.io.File: boolean setReadable(boolean,boolean)>(1, 0);
+
+        if $z0 == 0 goto label5;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zzg>;
+
+        $z0 = virtualinvoke $r3.<java.io.File: boolean setExecutable(boolean,boolean)>(1, 0);
+
+        if $z0 != 0 goto label4;
+
+        goto label5;
+
+     label4:
+        return;
+
+     label5:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zzg>;
+
+        $r5 = virtualinvoke $r3.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r5);
+
+        $r6 = "Could not set cache file permissions at ";
+
+        $r5 = virtualinvoke $r6.<java.lang.String: java.lang.String concat(java.lang.String)>($r5);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>($r5);
+
+        r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zzg> = null;
+
+        return;
+    }
+
+    private final java.io.File zza(java.io.File)
+    {
+        com.google.android.gms.internal.ads.zzchz r0;
+        java.lang.String $r4;
+        java.io.File $r1, $r2, $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzchz;
+
+        $r3 := @parameter0: java.io.File;
+
+        $r1 = new java.io.File;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zzg>;
+
+        $r4 = virtualinvoke $r3.<java.io.File: java.lang.String getName()>();
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r4);
+
+        $r4 = virtualinvoke $r4.<java.lang.String: java.lang.String concat(java.lang.String)>(".done");
+
+        specialinvoke $r1.<java.io.File: void <init>(java.io.File,java.lang.String)>($r2, $r4);
+
+        return $r1;
+    }
+
+    public final void zzf()
+    {
+        com.google.android.gms.internal.ads.zzchz r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzchz;
+
+        r0.<com.google.android.gms.internal.ads.zzchz: boolean zzh> = 1;
+
+        return;
+    }
+
+    public final boolean zzt(java.lang.String)
+    {
+        java.net.HttpURLConnection $r18;
+        java.lang.Integer $r9;
+        java.nio.ByteBuffer $r29;
+        java.lang.NullPointerException $r39;
+        byte $b5;
+        java.lang.Long $r31;
+        android.os.Handler $r32;
+        boolean $z0, $z1, $z2;
+        com.google.android.gms.common.util.Clock $r30;
+        com.google.android.gms.ads.internal.util.zzcb $r45;
+        java.util.Set $r14, $r16;
+        java.lang.Exception $r21, $r22, $r23, $r34, $r35, $r36, $r37;
+        java.lang.StringBuilder $r42;
+        java.lang.Throwable $r41;
+        long $l3, $l4, $l7, $l8;
+        com.google.android.gms.internal.ads.zzbga $r7;
+        com.google.android.gms.internal.ads.zzbfu $r6;
+        com.google.android.gms.internal.ads.zzchz r0;
+        com.google.android.gms.internal.ads.zzchy $r43;
+        int $i0, $i1, $i2, $i6;
+        java.lang.String $r1, $r5, $r11, $r13, $r15, $r20, $r25;
+        com.google.android.gms.internal.ads.zzchq $r46;
+        com.google.android.gms.internal.ads.zzcdl $r38;
+        com.google.android.gms.internal.ads.zzfto $r17;
+        java.nio.channels.ReadableByteChannel $r27;
+        java.text.DecimalFormat $r24;
+        java.io.FileOutputStream $r3, $r33, $r44;
+        java.io.IOException $r19, $r40;
+        java.io.File $r2, $r10, $r12;
+        java.lang.Object $r8;
+        java.io.File[] $r4;
+        java.nio.channels.FileChannel $r28;
+        java.io.InputStream $r26;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzchz;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zzg>;
+
+        $r3 = null;
+
+        if $r2 == null goto label161;
+
+     label001:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zzg>;
+
+        if $r2 != null goto label002;
+
+        $i0 = 0;
+
+        goto label005;
+
+     label002:
+        $r4 = virtualinvoke $r2.<java.io.File: java.io.File[] listFiles()>();
+
+        $i1 = lengthof $r4;
+
+        $i2 = 0;
+
+        $i0 = 0;
+
+     label003:
+        if $i2 >= $i1 goto label005;
+
+        $r2 = $r4[$i2];
+
+        $r5 = virtualinvoke $r2.<java.io.File: java.lang.String getName()>();
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean endsWith(java.lang.String)>(".done");
+
+        if $z0 != 0 goto label004;
+
+        $i0 = $i0 + 1;
+
+     label004:
+        $i2 = $i2 + 1;
+
+        goto label003;
+
+     label005:
+        $r6 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzu>;
+
+        $r7 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r8 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r6);
+
+        $r9 = (java.lang.Integer) $r8;
+
+        $i1 = virtualinvoke $r9.<java.lang.Integer: int intValue()>();
+
+        if $i0 <= $i1 goto label014;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zzg>;
+
+        if $r2 != null goto label006;
+
+        goto label013;
+
+     label006:
+        $r4 = virtualinvoke $r2.<java.io.File: java.io.File[] listFiles()>();
+
+        $i0 = lengthof $r4;
+
+        $l3 = 9223372036854775807L;
+
+        $r2 = null;
+
+        $i1 = 0;
+
+     label007:
+        if $i1 >= $i0 goto label009;
+
+        $r10 = $r4[$i1];
+
+        $r5 = virtualinvoke $r10.<java.io.File: java.lang.String getName()>();
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean endsWith(java.lang.String)>(".done");
+
+        if $z0 != 0 goto label008;
+
+        $l4 = virtualinvoke $r10.<java.io.File: long lastModified()>();
+
+        $b5 = $l4 cmp $l3;
+
+        $i2 = (int) $b5;
+
+        if $i2 >= 0 goto label008;
+
+        $r2 = $r10;
+
+        $l3 = $l4;
+
+        goto label008;
+
+     label008:
+        $i1 = $i1 + 1;
+
+        goto label007;
+
+     label009:
+        if $r2 == null goto label011;
+
+        $z0 = virtualinvoke $r2.<java.io.File: boolean delete()>();
+
+        $z1 = $z0;
+
+        $r2 = specialinvoke r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zza(java.io.File)>($r2);
+
+        $z2 = virtualinvoke $r2.<java.io.File: boolean isFile()>();
+
+        if $z2 == 0 goto label010;
+
+        $z1 = virtualinvoke $r2.<java.io.File: boolean delete()>();
+
+        $z1 = $z0 & $z1;
+
+        goto label012;
+
+     label010:
+        goto label012;
+
+     label011:
+        $z1 = 0;
+
+     label012:
+        if $z1 != 0 goto label001;
+
+     label013:
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>("Unable to expire stream cache");
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzchw: void zzg(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>($r1, null, "expireFailed", null);
+
+        return 0;
+
+     label014:
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzcdv: java.lang.String zze(java.lang.String)>($r1);
+
+        $r12 = new java.io.File;
+
+        $r2 = $r12;
+
+        $r10 = r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zzg>;
+
+        specialinvoke $r12.<java.io.File: void <init>(java.io.File,java.lang.String)>($r10, $r5);
+
+        $r10 = specialinvoke r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zza(java.io.File)>($r12);
+
+        $z0 = virtualinvoke $r12.<java.io.File: boolean isFile()>();
+
+        if $z0 == 0 goto label016;
+
+        $z0 = virtualinvoke $r10.<java.io.File: boolean isFile()>();
+
+        if $z0 != 0 goto label015;
+
+        goto label016;
+
+     label015:
+        $l3 = virtualinvoke $r12.<java.io.File: long length()>();
+
+        $i0 = (int) $l3;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r1);
+
+        $r11 = "Stream cache hit at ";
+
+        $r5 = virtualinvoke $r11.<java.lang.String: java.lang.String concat(java.lang.String)>($r5);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zze(java.lang.String)>($r5);
+
+        $r5 = virtualinvoke $r12.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzchw: void zzh(java.lang.String,java.lang.String,int)>($r1, $r5, $i0);
+
+        return 1;
+
+     label016:
+        $r12 = r0.<com.google.android.gms.internal.ads.zzchz: java.io.File zzg>;
+
+        $r5 = virtualinvoke $r12.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r5);
+
+        $r13 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r1);
+
+        $r14 = <com.google.android.gms.internal.ads.zzchz: java.util.Set zze>;
+
+        $r13 = virtualinvoke $r5.<java.lang.String: java.lang.String concat(java.lang.String)>($r13);
+
+        $r15 = $r13;
+
+        entermonitor $r14;
+
+     label017:
+        $r16 = <com.google.android.gms.internal.ads.zzchz: java.util.Set zze>;
+
+        $z0 = interfaceinvoke $r16.<java.util.Set: boolean contains(java.lang.Object)>($r13);
+
+        if $z0 == 0 goto label019;
+
+        $r42 = new java.lang.StringBuilder;
+
+        specialinvoke $r42.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Stream cache already in progress at ");
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r5 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>($r5);
+
+        $r5 = virtualinvoke $r2.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzchw: void zzg(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>($r1, $r5, "inProgress", null);
+
+        exitmonitor $r14;
+
+     label018:
+        return 0;
+
+     label019:
+        $r16 = <com.google.android.gms.internal.ads.zzchz: java.util.Set zze>;
+
+        interfaceinvoke $r16.<java.util.Set: boolean add(java.lang.Object)>($r13);
+
+        exitmonitor $r14;
+
+     label020:
+        $r5 = "error";
+
+     label021:
+        $r17 = staticinvoke <com.google.android.gms.internal.ads.zzfto: com.google.android.gms.internal.ads.zzfto zza()>();
+
+     label022:
+        $r43 = new com.google.android.gms.internal.ads.zzchy;
+
+     label023:
+        specialinvoke $r43.<com.google.android.gms.internal.ads.zzchy: void <init>(java.lang.String)>($r1);
+
+     label024:
+        $r18 = virtualinvoke $r17.<com.google.android.gms.internal.ads.zzfto: java.net.HttpURLConnection zzn(com.google.android.gms.internal.ads.zzftn,int,int)>($r43, 265, -1);
+
+     label025:
+        $z0 = $r18 instanceof java.net.HttpURLConnection;
+
+        if $z0 == 0 goto label041;
+
+     label026:
+        $i0 = virtualinvoke $r18.<java.net.HttpURLConnection: int getResponseCode()>();
+
+     label027:
+        if $i0 >= 400 goto label028;
+
+        goto label041;
+
+     label028:
+        $r5 = "badUrl";
+
+     label029:
+        $r11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>($i0);
+
+     label030:
+        $r42 = new java.lang.StringBuilder;
+
+     label031:
+        specialinvoke $r42.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("HTTP request failed. Code: ");
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r11);
+
+        $r11 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label032:
+        $r40 = new java.io.IOException;
+
+        $r42 = new java.lang.StringBuilder;
+
+     label033:
+        specialinvoke $r42.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("HTTP status code ");
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" at ");
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r20 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r40.<java.io.IOException: void <init>(java.lang.String)>($r20);
+
+        throw $r40;
+
+     label034:
+        $r21 := @caughtexception;
+
+        goto label036;
+
+     label035:
+        $r21 := @caughtexception;
+
+     label036:
+        $r22 = $r21;
+
+        goto label040;
+
+     label037:
+        $r23 := @caughtexception;
+
+        goto label039;
+
+     label038:
+        $r23 := @caughtexception;
+
+     label039:
+        $r22 = $r23;
+
+        $r11 = null;
+
+     label040:
+        goto label149;
+
+     label041:
+        $i2 = virtualinvoke $r18.<java.net.URLConnection: int getContentLength()>();
+
+     label042:
+        $i0 = $i2;
+
+        if $i2 >= 0 goto label047;
+
+        $r42 = new java.lang.StringBuilder;
+
+     label043:
+        specialinvoke $r42.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Stream cache aborted, missing content-length header at ");
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r5 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>($r5);
+
+        $r5 = virtualinvoke $r2.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzchw: void zzg(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>($r1, $r5, "contentLengthMissing", null);
+
+     label044:
+        $r14 = <com.google.android.gms.internal.ads.zzchz: java.util.Set zze>;
+
+     label045:
+        interfaceinvoke $r14.<java.util.Set: boolean remove(java.lang.Object)>($r13);
+
+     label046:
+        return 0;
+
+     label047:
+        $r24 = <com.google.android.gms.internal.ads.zzchz: java.text.DecimalFormat zzf>;
+
+        $l3 = (long) $i2;
+
+     label048:
+        $r25 = virtualinvoke $r24.<java.text.DecimalFormat: java.lang.String format(long)>($l3);
+
+     label049:
+        $r6 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzv>;
+
+     label050:
+        $r7 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r8 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r6);
+
+     label051:
+        $r9 = (java.lang.Integer) $r8;
+
+     label052:
+        $i6 = virtualinvoke $r9.<java.lang.Integer: int intValue()>();
+
+     label053:
+        $i1 = $i6;
+
+        if $i2 <= $i6 goto label060;
+
+        $r42 = new java.lang.StringBuilder;
+
+     label054:
+        specialinvoke $r42.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Content length ");
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r25);
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" exceeds limit at ");
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r5 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>($r5);
+
+     label055:
+        $r42 = new java.lang.StringBuilder;
+
+     label056:
+        specialinvoke $r42.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("File too big for full file cache. Size: ");
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r25);
+
+        $r5 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r11 = virtualinvoke $r2.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzchw: void zzg(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>($r1, $r11, "sizeExceeded", $r5);
+
+     label057:
+        $r14 = <com.google.android.gms.internal.ads.zzchz: java.util.Set zze>;
+
+     label058:
+        interfaceinvoke $r14.<java.util.Set: boolean remove(java.lang.Object)>($r13);
+
+     label059:
+        return 0;
+
+     label060:
+        $r42 = new java.lang.StringBuilder;
+
+     label061:
+        specialinvoke $r42.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Caching ");
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r25);
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" bytes from ");
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r25 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zze(java.lang.String)>($r25);
+
+        $r26 = virtualinvoke $r18.<java.net.URLConnection: java.io.InputStream getInputStream()>();
+
+        $r27 = staticinvoke <java.nio.channels.Channels: java.nio.channels.ReadableByteChannel newChannel(java.io.InputStream)>($r26);
+
+     label062:
+        $r44 = new java.io.FileOutputStream;
+
+        $r3 = $r44;
+
+     label063:
+        specialinvoke $r44.<java.io.FileOutputStream: void <init>(java.io.File)>($r2);
+
+     label064:
+        $r28 = virtualinvoke $r44.<java.io.FileOutputStream: java.nio.channels.FileChannel getChannel()>();
+
+     label065:
+        $r29 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer allocate(int)>(1048576);
+
+     label066:
+        $r30 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.common.util.Clock zzB()>();
+
+        $l3 = interfaceinvoke $r30.<com.google.android.gms.common.util.Clock: long currentTimeMillis()>();
+
+     label067:
+        $r6 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzy>;
+
+     label068:
+        $r7 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r8 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r6);
+
+     label069:
+        $r31 = (java.lang.Long) $r8;
+
+     label070:
+        $l4 = virtualinvoke $r31.<java.lang.Long: long longValue()>();
+
+     label071:
+        $r45 = new com.google.android.gms.ads.internal.util.zzcb;
+
+     label072:
+        specialinvoke $r45.<com.google.android.gms.ads.internal.util.zzcb: void <init>(long)>($l4);
+
+     label073:
+        $r6 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzx>;
+
+     label074:
+        $r7 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r8 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r6);
+
+     label075:
+        $r31 = (java.lang.Long) $r8;
+
+     label076:
+        $l4 = virtualinvoke $r31.<java.lang.Long: long longValue()>();
+
+     label077:
+        $i2 = 0;
+
+     label078:
+        $i6 = interfaceinvoke $r27.<java.nio.channels.ReadableByteChannel: int read(java.nio.ByteBuffer)>($r29);
+
+     label079:
+        if $i6 < 0 goto label119;
+
+        $i2 = $i2 + $i6;
+
+        if $i2 > $i1 goto label107;
+
+     label080:
+        virtualinvoke $r29.<java.nio.ByteBuffer: java.nio.Buffer flip()>();
+
+     label081:
+        $i6 = virtualinvoke $r28.<java.nio.channels.FileChannel: int write(java.nio.ByteBuffer)>($r29);
+
+     label082:
+        if $i6 > 0 goto label103;
+
+     label083:
+        virtualinvoke $r29.<java.nio.ByteBuffer: java.nio.Buffer clear()>();
+
+        $l7 = interfaceinvoke $r30.<com.google.android.gms.common.util.Clock: long currentTimeMillis()>();
+
+     label084:
+        $l7 = $l7 - $l3;
+
+        $l8 = 1000L * $l4;
+
+        $b5 = $l7 cmp $l8;
+
+        $i6 = (int) $b5;
+
+        if $i6 > 0 goto label097;
+
+     label085:
+        $z0 = r0.<com.google.android.gms.internal.ads.zzchz: boolean zzh>;
+
+     label086:
+        if $z0 != 0 goto label095;
+
+     label087:
+        $z0 = virtualinvoke $r45.<com.google.android.gms.ads.internal.util.zzcb: boolean zzb()>();
+
+     label088:
+        if $z0 == 0 goto label093;
+
+     label089:
+        $r13 = virtualinvoke $r2.<java.io.File: java.lang.String getAbsolutePath()>();
+
+     label090:
+        $r32 = <com.google.android.gms.internal.ads.zzcdv: android.os.Handler zza>;
+
+        $r11 = $r5;
+
+        $r46 = new com.google.android.gms.internal.ads.zzchq;
+
+        $r20 = $r15;
+
+        $r33 = $r3;
+
+        $i6 = $i0;
+
+     label091:
+        specialinvoke $r46.<com.google.android.gms.internal.ads.zzchq: void <init>(com.google.android.gms.internal.ads.zzchw,java.lang.String,java.lang.String,int,int,boolean)>(r0, $r1, $r13, $i2, $i0, 0);
+
+        virtualinvoke $r32.<android.os.Handler: boolean post(java.lang.Runnable)>($r46);
+
+     label092:
+        goto label094;
+
+     label093:
+        $r33 = $r3;
+
+        $i6 = $i0;
+
+        $r20 = $r15;
+
+        $r11 = $r5;
+
+     label094:
+        $r5 = $r11;
+
+        $r15 = $r20;
+
+        $r3 = $r33;
+
+        $i0 = $i6;
+
+        goto label078;
+
+     label095:
+        $r33 = $r3;
+
+        $r13 = $r15;
+
+        $r5 = "externalAbort";
+
+        $r40 = new java.io.IOException;
+
+     label096:
+        specialinvoke $r40.<java.io.IOException: void <init>(java.lang.String)>("abort requested");
+
+        throw $r40;
+
+     label097:
+        $r33 = $r3;
+
+        $r13 = $r15;
+
+        $r5 = "downloadTimeout";
+
+     label098:
+        $r11 = staticinvoke <java.lang.Long: java.lang.String toString(long)>($l4);
+
+     label099:
+        $r42 = new java.lang.StringBuilder;
+
+     label100:
+        specialinvoke $r42.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Timeout exceeded. Limit: ");
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r11);
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" sec");
+
+        $r11 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label101:
+        $r40 = new java.io.IOException;
+
+     label102:
+        specialinvoke $r40.<java.io.IOException: void <init>(java.lang.String)>("stream cache time limit exceeded");
+
+        throw $r40;
+
+     label103:
+        goto label081;
+
+     label104:
+        $r34 := @caughtexception;
+
+        goto label106;
+
+     label105:
+        $r34 := @caughtexception;
+
+     label106:
+        $r33 = $r3;
+
+        $r20 = $r15;
+
+        $r11 = $r5;
+
+        goto label140;
+
+     label107:
+        $r33 = $r3;
+
+        $r13 = $r15;
+
+        $r5 = "sizeExceeded";
+
+     label108:
+        $r11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>($i2);
+
+     label109:
+        $r42 = new java.lang.StringBuilder;
+
+     label110:
+        specialinvoke $r42.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("File too big for full file cache. Size: ");
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r11);
+
+        $r11 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label111:
+        $r40 = new java.io.IOException;
+
+     label112:
+        specialinvoke $r40.<java.io.IOException: void <init>(java.lang.String)>("stream cache file size limit exceeded");
+
+        throw $r40;
+
+     label113:
+        $r35 := @caughtexception;
+
+        goto label115;
+
+     label114:
+        $r35 := @caughtexception;
+
+     label115:
+        $r22 = $r35;
+
+        $r3 = $r33;
+
+        goto label149;
+
+     label116:
+        $r36 := @caughtexception;
+
+        goto label118;
+
+     label117:
+        $r36 := @caughtexception;
+
+     label118:
+        $r22 = $r36;
+
+        goto label145;
+
+     label119:
+        $r33 = $r3;
+
+        $r20 = $r15;
+
+        $r11 = $r5;
+
+     label120:
+        virtualinvoke $r3.<java.io.FileOutputStream: void close()>();
+
+        $z0 = staticinvoke <com.google.android.gms.ads.internal.util.zze: boolean zzm(int)>(3);
+
+     label121:
+        if $z0 == 0 goto label125;
+
+        $r24 = <com.google.android.gms.internal.ads.zzchz: java.text.DecimalFormat zzf>;
+
+        $l3 = (long) $i2;
+
+     label122:
+        $r5 = virtualinvoke $r24.<java.text.DecimalFormat: java.lang.String format(long)>($l3);
+
+     label123:
+        $r42 = new java.lang.StringBuilder;
+
+     label124:
+        specialinvoke $r42.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Preloaded ");
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" bytes from ");
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r5 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zze(java.lang.String)>($r5);
+
+     label125:
+        virtualinvoke $r2.<java.io.File: boolean setReadable(boolean,boolean)>(1, 0);
+
+        $z0 = virtualinvoke $r10.<java.io.File: boolean isFile()>();
+
+     label126:
+        if $z0 == 0 goto label129;
+
+     label127:
+        $l3 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        virtualinvoke $r10.<java.io.File: boolean setLastModified(long)>($l3);
+
+     label128:
+        goto label132;
+
+     label129:
+        virtualinvoke $r10.<java.io.File: boolean createNewFile()>();
+
+     label130:
+        goto label132;
+
+     label131:
+        $r19 := @caughtexception;
+
+     label132:
+        $r5 = virtualinvoke $r2.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzchw: void zzh(java.lang.String,java.lang.String,int)>($r1, $r5, $i2);
+
+     label133:
+        $r14 = <com.google.android.gms.internal.ads.zzchz: java.util.Set zze>;
+
+        $r13 = $r20;
+
+     label134:
+        interfaceinvoke $r14.<java.util.Set: boolean remove(java.lang.Object)>($r20);
+
+     label135:
+        return 1;
+
+     label136:
+        $r34 := @caughtexception;
+
+        goto label144;
+
+     label137:
+        $r34 := @caughtexception;
+
+        goto label144;
+
+     label138:
+        $r34 := @caughtexception;
+
+        goto label140;
+
+     label139:
+        $r34 := @caughtexception;
+
+     label140:
+        $r13 = $r20;
+
+        goto label144;
+
+     label141:
+        $r34 := @caughtexception;
+
+        goto label143;
+
+     label142:
+        $r34 := @caughtexception;
+
+     label143:
+        $r33 = $r3;
+
+        $r13 = $r15;
+
+        $r11 = $r5;
+
+     label144:
+        $r22 = $r34;
+
+        $r5 = $r11;
+
+     label145:
+        $r3 = $r33;
+
+        $r11 = null;
+
+        goto label149;
+
+     label146:
+        $r37 := @caughtexception;
+
+        goto label148;
+
+     label147:
+        $r37 := @caughtexception;
+
+     label148:
+        $r22 = $r37;
+
+        $r5 = "error";
+
+        $r11 = null;
+
+        $r3 = null;
+
+     label149:
+        $z0 = $r22 instanceof java.lang.RuntimeException;
+
+        if $z0 == 0 goto label150;
+
+        $r38 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzcdl zzo()>();
+
+        virtualinvoke $r38.<com.google.android.gms.internal.ads.zzcdl: void zzw(java.lang.Throwable,java.lang.String)>($r22, "VideoStreamFullFileCache.preload");
+
+     label150:
+        virtualinvoke $r3.<java.io.FileOutputStream: void close()>();
+
+     label151:
+        goto label154;
+
+     label152:
+        $r39 := @caughtexception;
+
+        goto label154;
+
+     label153:
+        $r40 := @caughtexception;
+
+     label154:
+        $z0 = r0.<com.google.android.gms.internal.ads.zzchz: boolean zzh>;
+
+        if $z0 == 0 goto label155;
+
+        $r42 = new java.lang.StringBuilder;
+
+        specialinvoke $r42.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Preload aborted for URL \"");
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\"");
+
+        $r20 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzi(java.lang.String)>($r20);
+
+        goto label156;
+
+     label155:
+        $r42 = new java.lang.StringBuilder;
+
+        specialinvoke $r42.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Preload failed for URL \"");
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        virtualinvoke $r42.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\"");
+
+        $r20 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzk(java.lang.String,java.lang.Throwable)>($r20, $r22);
+
+     label156:
+        $z0 = virtualinvoke $r2.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label157;
+
+        $z0 = virtualinvoke $r2.<java.io.File: boolean delete()>();
+
+        if $z0 != 0 goto label157;
+
+        $r20 = virtualinvoke $r2.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        $r20 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r20);
+
+        $r15 = "Could not delete partial cache file at ";
+
+        $r20 = virtualinvoke $r15.<java.lang.String: java.lang.String concat(java.lang.String)>($r20);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>($r20);
+
+     label157:
+        $r20 = virtualinvoke $r2.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzchw: void zzg(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>($r1, $r20, $r5, $r11);
+
+        $r14 = <com.google.android.gms.internal.ads.zzchz: java.util.Set zze>;
+
+        interfaceinvoke $r14.<java.util.Set: boolean remove(java.lang.Object)>($r13);
+
+        return 0;
+
+     label158:
+        $r41 := @caughtexception;
+
+     label159:
+        exitmonitor $r14;
+
+     label160:
+        throw $r41;
+
+     label161:
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzchw: void zzg(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>($r1, null, "noCacheDir", null);
+
+        return 0;
+
+        catch java.lang.Throwable from label017 to label018 with label158;
+        catch java.lang.Throwable from label019 to label020 with label158;
+        catch java.io.IOException from label021 to label022 with label147;
+        catch java.io.IOException from label023 to label024 with label147;
+        catch java.io.IOException from label024 to label025 with label147;
+        catch java.io.IOException from label026 to label027 with label147;
+        catch java.lang.RuntimeException from label021 to label022 with label146;
+        catch java.lang.RuntimeException from label023 to label024 with label146;
+        catch java.lang.RuntimeException from label024 to label025 with label146;
+        catch java.lang.RuntimeException from label026 to label027 with label146;
+        catch java.io.IOException from label029 to label030 with label038;
+        catch java.io.IOException from label031 to label032 with label038;
+        catch java.lang.RuntimeException from label029 to label030 with label037;
+        catch java.lang.RuntimeException from label031 to label032 with label037;
+        catch java.io.IOException from label033 to label034 with label035;
+        catch java.lang.RuntimeException from label033 to label034 with label034;
+        catch java.io.IOException from label041 to label042 with label147;
+        catch java.io.IOException from label043 to label044 with label147;
+        catch java.io.IOException from label045 to label046 with label147;
+        catch java.io.IOException from label048 to label049 with label147;
+        catch java.io.IOException from label050 to label051 with label147;
+        catch java.io.IOException from label052 to label053 with label147;
+        catch java.io.IOException from label054 to label055 with label147;
+        catch java.io.IOException from label056 to label057 with label147;
+        catch java.io.IOException from label058 to label059 with label147;
+        catch java.io.IOException from label061 to label062 with label147;
+        catch java.io.IOException from label063 to label064 with label147;
+        catch java.lang.RuntimeException from label041 to label042 with label146;
+        catch java.lang.RuntimeException from label043 to label044 with label146;
+        catch java.lang.RuntimeException from label045 to label046 with label146;
+        catch java.lang.RuntimeException from label048 to label049 with label146;
+        catch java.lang.RuntimeException from label050 to label053 with label146;
+        catch java.lang.RuntimeException from label054 to label055 with label146;
+        catch java.lang.RuntimeException from label056 to label057 with label146;
+        catch java.lang.RuntimeException from label058 to label059 with label146;
+        catch java.lang.RuntimeException from label061 to label062 with label146;
+        catch java.lang.RuntimeException from label063 to label064 with label146;
+        catch java.io.IOException from label064 to label065 with label142;
+        catch java.io.IOException from label065 to label066 with label142;
+        catch java.io.IOException from label066 to label067 with label142;
+        catch java.io.IOException from label068 to label069 with label142;
+        catch java.io.IOException from label070 to label071 with label142;
+        catch java.io.IOException from label072 to label073 with label142;
+        catch java.io.IOException from label074 to label075 with label142;
+        catch java.io.IOException from label076 to label077 with label142;
+        catch java.io.IOException from label078 to label079 with label142;
+        catch java.lang.RuntimeException from label064 to label065 with label141;
+        catch java.lang.RuntimeException from label065 to label066 with label141;
+        catch java.lang.RuntimeException from label066 to label067 with label141;
+        catch java.lang.RuntimeException from label068 to label071 with label141;
+        catch java.lang.RuntimeException from label072 to label073 with label141;
+        catch java.lang.RuntimeException from label074 to label077 with label141;
+        catch java.lang.RuntimeException from label078 to label079 with label141;
+        catch java.io.IOException from label080 to label082 with label105;
+        catch java.io.IOException from label083 to label084 with label105;
+        catch java.io.IOException from label087 to label088 with label105;
+        catch java.io.IOException from label089 to label090 with label105;
+        catch java.lang.RuntimeException from label080 to label082 with label104;
+        catch java.lang.RuntimeException from label083 to label084 with label104;
+        catch java.lang.RuntimeException from label085 to label086 with label104;
+        catch java.lang.RuntimeException from label087 to label088 with label104;
+        catch java.lang.RuntimeException from label089 to label090 with label104;
+        catch java.io.IOException from label091 to label092 with label139;
+        catch java.lang.RuntimeException from label091 to label092 with label138;
+        catch java.io.IOException from label096 to label097 with label117;
+        catch java.lang.RuntimeException from label096 to label097 with label116;
+        catch java.io.IOException from label098 to label099 with label117;
+        catch java.io.IOException from label100 to label101 with label117;
+        catch java.lang.RuntimeException from label098 to label099 with label116;
+        catch java.lang.RuntimeException from label100 to label101 with label116;
+        catch java.io.IOException from label102 to label103 with label114;
+        catch java.lang.RuntimeException from label102 to label103 with label113;
+        catch java.io.IOException from label108 to label109 with label117;
+        catch java.io.IOException from label110 to label111 with label117;
+        catch java.lang.RuntimeException from label108 to label109 with label116;
+        catch java.lang.RuntimeException from label110 to label111 with label116;
+        catch java.io.IOException from label112 to label113 with label114;
+        catch java.lang.RuntimeException from label112 to label113 with label113;
+        catch java.io.IOException from label120 to label121 with label139;
+        catch java.io.IOException from label122 to label123 with label139;
+        catch java.io.IOException from label124 to label126 with label139;
+        catch java.io.IOException from label127 to label128 with label139;
+        catch java.lang.RuntimeException from label120 to label121 with label138;
+        catch java.lang.RuntimeException from label122 to label123 with label138;
+        catch java.lang.RuntimeException from label124 to label126 with label138;
+        catch java.lang.RuntimeException from label127 to label128 with label138;
+        catch java.io.IOException from label129 to label130 with label131;
+        catch java.lang.RuntimeException from label129 to label130 with label138;
+        catch java.io.IOException from label132 to label133 with label139;
+        catch java.lang.RuntimeException from label132 to label133 with label138;
+        catch java.io.IOException from label134 to label135 with label137;
+        catch java.lang.RuntimeException from label134 to label135 with label136;
+        catch java.io.IOException from label150 to label151 with label153;
+        catch java.lang.NullPointerException from label150 to label151 with label152;
+        catch java.lang.Throwable from label159 to label160 with label158;
+    }
+}

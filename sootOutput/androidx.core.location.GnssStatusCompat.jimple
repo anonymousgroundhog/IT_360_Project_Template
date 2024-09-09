@@ -1,0 +1,95 @@
+public abstract class androidx.core.location.GnssStatusCompat extends java.lang.Object
+{
+    public static final int CONSTELLATION_BEIDOU;
+    public static final int CONSTELLATION_GALILEO;
+    public static final int CONSTELLATION_GLONASS;
+    public static final int CONSTELLATION_GPS;
+    public static final int CONSTELLATION_IRNSS;
+    public static final int CONSTELLATION_QZSS;
+    public static final int CONSTELLATION_SBAS;
+    public static final int CONSTELLATION_UNKNOWN;
+
+    void <init>()
+    {
+        androidx.core.location.GnssStatusCompat r0;
+
+        r0 := @this: androidx.core.location.GnssStatusCompat;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static androidx.core.location.GnssStatusCompat wrap(android.location.GnssStatus)
+    {
+        androidx.core.location.GnssStatusWrapper $r1;
+        android.location.GnssStatus $r0;
+
+        $r0 := @parameter0: android.location.GnssStatus;
+
+        $r1 = new androidx.core.location.GnssStatusWrapper;
+
+        specialinvoke $r1.<androidx.core.location.GnssStatusWrapper: void <init>(java.lang.Object)>($r0);
+
+        return $r1;
+    }
+
+    public static androidx.core.location.GnssStatusCompat wrap(android.location.GpsStatus)
+    {
+        androidx.core.location.GpsStatusWrapper $r1;
+        android.location.GpsStatus $r0;
+
+        $r0 := @parameter0: android.location.GpsStatus;
+
+        $r1 = new androidx.core.location.GpsStatusWrapper;
+
+        specialinvoke $r1.<androidx.core.location.GpsStatusWrapper: void <init>(android.location.GpsStatus)>($r0);
+
+        return $r1;
+    }
+
+    public abstract float getAzimuthDegrees(int);
+
+    public abstract float getBasebandCn0DbHz(int);
+
+    public abstract float getCarrierFrequencyHz(int);
+
+    public abstract float getCn0DbHz(int);
+
+    public abstract int getConstellationType(int);
+
+    public abstract float getElevationDegrees(int);
+
+    public abstract int getSatelliteCount();
+
+    public abstract int getSvid(int);
+
+    public abstract boolean hasAlmanacData(int);
+
+    public abstract boolean hasBasebandCn0DbHz(int);
+
+    public abstract boolean hasCarrierFrequencyHz(int);
+
+    public abstract boolean hasEphemerisData(int);
+
+    public abstract boolean usedInFix(int);
+
+    public static void <clinit>()
+    {
+        <androidx.core.location.GnssStatusCompat: int CONSTELLATION_SBAS> = 2;
+
+        <androidx.core.location.GnssStatusCompat: int CONSTELLATION_QZSS> = 4;
+
+        <androidx.core.location.GnssStatusCompat: int CONSTELLATION_IRNSS> = 7;
+
+        <androidx.core.location.GnssStatusCompat: int CONSTELLATION_GPS> = 1;
+
+        <androidx.core.location.GnssStatusCompat: int CONSTELLATION_GLONASS> = 3;
+
+        <androidx.core.location.GnssStatusCompat: int CONSTELLATION_GALILEO> = 6;
+
+        <androidx.core.location.GnssStatusCompat: int CONSTELLATION_BEIDOU> = 5;
+
+        return;
+    }
+}

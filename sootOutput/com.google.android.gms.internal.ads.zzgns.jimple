@@ -1,0 +1,153 @@
+public final class com.google.android.gms.internal.ads.zzgns extends java.lang.Object
+{
+    public static final com.google.android.gms.internal.ads.zzgrx zza;
+
+    static void <clinit>()
+    {
+        com.google.android.gms.internal.ads.zzgnr $r0;
+
+        $r0 = new com.google.android.gms.internal.ads.zzgnr;
+
+        specialinvoke $r0.<com.google.android.gms.internal.ads.zzgnr: void <init>(com.google.android.gms.internal.ads.zzgnq)>(null);
+
+        <com.google.android.gms.internal.ads.zzgns: com.google.android.gms.internal.ads.zzgrx zza> = $r0;
+
+        return;
+    }
+
+    public static com.google.android.gms.internal.ads.zzgsd zza(com.google.android.gms.internal.ads.zzggx)
+    {
+        java.lang.IllegalStateException $r15;
+        com.google.android.gms.internal.ads.zzgge $r8;
+        com.google.android.gms.internal.ads.zzgsd $r12;
+        java.security.GeneralSecurityException $r13;
+        com.google.android.gms.internal.ads.zzgrz $r14;
+        int $i0;
+        java.lang.String $r9, $r10;
+        com.google.android.gms.internal.ads.zzgrw $r1;
+        boolean $z0;
+        com.google.android.gms.internal.ads.zzgvz $r11;
+        java.util.Iterator $r3, $r6;
+        java.util.Collection $r2;
+        com.google.android.gms.internal.ads.zzggx $r0;
+        java.util.List $r5;
+        com.google.android.gms.internal.ads.zzggt $r7;
+        java.lang.Object $r4;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzggx;
+
+        $r14 = new com.google.android.gms.internal.ads.zzgrz;
+
+        specialinvoke $r14.<com.google.android.gms.internal.ads.zzgrz: void <init>()>();
+
+        $r1 = virtualinvoke $r0.<com.google.android.gms.internal.ads.zzggx: com.google.android.gms.internal.ads.zzgrw zzb()>();
+
+        virtualinvoke $r14.<com.google.android.gms.internal.ads.zzgrz: com.google.android.gms.internal.ads.zzgrz zzb(com.google.android.gms.internal.ads.zzgrw)>($r1);
+
+        $r2 = virtualinvoke $r0.<com.google.android.gms.internal.ads.zzggx: java.util.Collection zzd()>();
+
+        $r3 = interfaceinvoke $r2.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label01:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label09;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (java.util.List) $r4;
+
+        $r6 = interfaceinvoke $r5.<java.util.List: java.util.Iterator iterator()>();
+
+     label02:
+        $z0 = interfaceinvoke $r6.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label01;
+
+        $r4 = interfaceinvoke $r6.<java.util.Iterator: java.lang.Object next()>();
+
+        $r7 = (com.google.android.gms.internal.ads.zzggt) $r4;
+
+        $i0 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzggt: int zzh()>();
+
+        $i0 = $i0 + -2;
+
+        lookupswitch($i0)
+        {
+            case 1: goto label06;
+            case 2: goto label05;
+            case 3: goto label04;
+            default: goto label03;
+        };
+
+     label03:
+        $r15 = new java.lang.IllegalStateException;
+
+        specialinvoke $r15.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Unknown key status");
+
+        throw $r15;
+
+     label04:
+        $r8 = <com.google.android.gms.internal.ads.zzgge: com.google.android.gms.internal.ads.zzgge zzc>;
+
+        goto label07;
+
+     label05:
+        $r8 = <com.google.android.gms.internal.ads.zzgge: com.google.android.gms.internal.ads.zzgge zzb>;
+
+        goto label07;
+
+     label06:
+        $r8 = <com.google.android.gms.internal.ads.zzgge: com.google.android.gms.internal.ads.zzgge zza>;
+
+     label07:
+        $i0 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzggt: int zza()>();
+
+        $r9 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzggt: java.lang.String zzf()>();
+
+        $r10 = $r9;
+
+        $z0 = virtualinvoke $r9.<java.lang.String: boolean startsWith(java.lang.String)>("type.googleapis.com/google.crypto.");
+
+        if $z0 == 0 goto label08;
+
+        $r10 = virtualinvoke $r9.<java.lang.String: java.lang.String substring(int)>(34);
+
+     label08:
+        $r11 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzggt: com.google.android.gms.internal.ads.zzgvz zzc()>();
+
+        $r9 = virtualinvoke $r11.<com.google.android.gms.internal.ads.zzgvz: java.lang.String name()>();
+
+        virtualinvoke $r14.<com.google.android.gms.internal.ads.zzgrz: com.google.android.gms.internal.ads.zzgrz zza(com.google.android.gms.internal.ads.zzgge,int,java.lang.String,java.lang.String)>($r8, $i0, $r10, $r9);
+
+        goto label02;
+
+     label09:
+        $r7 = virtualinvoke $r0.<com.google.android.gms.internal.ads.zzggx: com.google.android.gms.internal.ads.zzggt zza()>();
+
+        if $r7 == null goto label10;
+
+        $r7 = virtualinvoke $r0.<com.google.android.gms.internal.ads.zzggx: com.google.android.gms.internal.ads.zzggt zza()>();
+
+        $i0 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzggt: int zza()>();
+
+        virtualinvoke $r14.<com.google.android.gms.internal.ads.zzgrz: com.google.android.gms.internal.ads.zzgrz zzc(int)>($i0);
+
+     label10:
+        $r12 = virtualinvoke $r14.<com.google.android.gms.internal.ads.zzgrz: com.google.android.gms.internal.ads.zzgsd zzd()>();
+
+     label11:
+        return $r12;
+
+     label12:
+        $r13 := @caughtexception;
+
+        $r15 = new java.lang.IllegalStateException;
+
+        specialinvoke $r15.<java.lang.IllegalStateException: void <init>(java.lang.Throwable)>($r13);
+
+        throw $r15;
+
+        catch java.security.GeneralSecurityException from label10 to label11 with label12;
+    }
+}

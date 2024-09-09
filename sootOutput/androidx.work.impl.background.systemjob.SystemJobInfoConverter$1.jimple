@@ -1,0 +1,104 @@
+class androidx.work.impl.background.systemjob.SystemJobInfoConverter$1 extends java.lang.Object
+{
+    static final int[] $SwitchMap$androidx$work$NetworkType;
+
+    static void <clinit>()
+    {
+        androidx.work.NetworkType $r2;
+        androidx.work.NetworkType[] $r0;
+        java.lang.NoSuchFieldError $r3, $r4, $r5, $r6, $r7;
+        int[] $r1;
+        int $i0;
+
+        $r0 = staticinvoke <androidx.work.NetworkType: androidx.work.NetworkType[] values()>();
+
+        $i0 = lengthof $r0;
+
+        $r1 = newarray (int)[$i0];
+
+        <androidx.work.impl.background.systemjob.SystemJobInfoConverter$1: int[] $SwitchMap$androidx$work$NetworkType> = $r1;
+
+     label01:
+        $r1 = <androidx.work.impl.background.systemjob.SystemJobInfoConverter$1: int[] $SwitchMap$androidx$work$NetworkType>;
+
+        $r2 = <androidx.work.NetworkType: androidx.work.NetworkType NOT_REQUIRED>;
+
+        $i0 = virtualinvoke $r2.<androidx.work.NetworkType: int ordinal()>();
+
+     label02:
+        $r1[$i0] = 1;
+
+        goto label04;
+
+     label03:
+        $r3 := @caughtexception;
+
+     label04:
+        $r1 = <androidx.work.impl.background.systemjob.SystemJobInfoConverter$1: int[] $SwitchMap$androidx$work$NetworkType>;
+
+        $r2 = <androidx.work.NetworkType: androidx.work.NetworkType CONNECTED>;
+
+        $i0 = virtualinvoke $r2.<androidx.work.NetworkType: int ordinal()>();
+
+     label05:
+        $r1[$i0] = 2;
+
+        goto label07;
+
+     label06:
+        $r4 := @caughtexception;
+
+     label07:
+        $r1 = <androidx.work.impl.background.systemjob.SystemJobInfoConverter$1: int[] $SwitchMap$androidx$work$NetworkType>;
+
+        $r2 = <androidx.work.NetworkType: androidx.work.NetworkType UNMETERED>;
+
+        $i0 = virtualinvoke $r2.<androidx.work.NetworkType: int ordinal()>();
+
+     label08:
+        $r1[$i0] = 3;
+
+        goto label10;
+
+     label09:
+        $r5 := @caughtexception;
+
+     label10:
+        $r1 = <androidx.work.impl.background.systemjob.SystemJobInfoConverter$1: int[] $SwitchMap$androidx$work$NetworkType>;
+
+        $r2 = <androidx.work.NetworkType: androidx.work.NetworkType NOT_ROAMING>;
+
+        $i0 = virtualinvoke $r2.<androidx.work.NetworkType: int ordinal()>();
+
+     label11:
+        $r1[$i0] = 4;
+
+        goto label13;
+
+     label12:
+        $r6 := @caughtexception;
+
+     label13:
+        $r1 = <androidx.work.impl.background.systemjob.SystemJobInfoConverter$1: int[] $SwitchMap$androidx$work$NetworkType>;
+
+        $r2 = <androidx.work.NetworkType: androidx.work.NetworkType METERED>;
+
+        $i0 = virtualinvoke $r2.<androidx.work.NetworkType: int ordinal()>();
+
+     label14:
+        $r1[$i0] = 5;
+
+        return;
+
+     label15:
+        $r7 := @caughtexception;
+
+        return;
+
+        catch java.lang.NoSuchFieldError from label01 to label02 with label03;
+        catch java.lang.NoSuchFieldError from label04 to label05 with label06;
+        catch java.lang.NoSuchFieldError from label07 to label08 with label09;
+        catch java.lang.NoSuchFieldError from label10 to label11 with label12;
+        catch java.lang.NoSuchFieldError from label13 to label14 with label15;
+    }
+}

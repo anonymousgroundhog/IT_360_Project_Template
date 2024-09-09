@@ -1,0 +1,188 @@
+public final class com.google.android.gms.internal.ads.zzavm extends java.lang.Object
+{
+    private android.net.NetworkCapabilities zza;
+
+    void <init>(android.net.ConnectivityManager)
+    {
+        android.net.ConnectivityManager $r1;
+        java.lang.Throwable $r4;
+        int $i0;
+        com.google.android.gms.internal.ads.zzavm r0;
+        com.google.android.gms.internal.ads.zzavl $r2;
+        java.lang.RuntimeException $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzavm;
+
+        $r1 := @parameter0: android.net.ConnectivityManager;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        if $r1 == null goto label9;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 >= 24 goto label1;
+
+        return;
+
+     label1:
+        $r2 = new com.google.android.gms.internal.ads.zzavl;
+
+     label2:
+        specialinvoke $r2.<com.google.android.gms.internal.ads.zzavl: void <init>(com.google.android.gms.internal.ads.zzavm)>(r0);
+
+        virtualinvoke $r1.<android.net.ConnectivityManager: void registerDefaultNetworkCallback(android.net.ConnectivityManager$NetworkCallback)>($r2);
+
+     label3:
+        return;
+
+     label4:
+        $r3 := @caughtexception;
+
+        entermonitor class "Lcom/google/android/gms/internal/ads/zzavm;";
+
+     label5:
+        r0.<com.google.android.gms.internal.ads.zzavm: android.net.NetworkCapabilities zza> = null;
+
+        exitmonitor class "Lcom/google/android/gms/internal/ads/zzavm;";
+
+     label6:
+        return;
+
+     label7:
+        $r4 := @caughtexception;
+
+        exitmonitor class "Lcom/google/android/gms/internal/ads/zzavm;";
+
+     label8:
+        throw $r4;
+
+     label9:
+        return;
+
+        catch java.lang.RuntimeException from label2 to label3 with label4;
+        catch java.lang.Throwable from label5 to label6 with label7;
+        catch java.lang.Throwable from label7 to label8 with label7;
+    }
+
+    public static com.google.android.gms.internal.ads.zzavm zzc(android.content.Context)
+    {
+        android.net.ConnectivityManager $r3;
+        android.content.Context $r2;
+        com.google.android.gms.internal.ads.zzavm $r0;
+        java.lang.Object $r1;
+
+        $r2 := @parameter0: android.content.Context;
+
+        if $r2 == null goto label1;
+
+        $r0 = new com.google.android.gms.internal.ads.zzavm;
+
+        $r1 = virtualinvoke $r2.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("connectivity");
+
+        $r3 = (android.net.ConnectivityManager) $r1;
+
+        specialinvoke $r0.<com.google.android.gms.internal.ads.zzavm: void <init>(android.net.ConnectivityManager)>($r3);
+
+        return $r0;
+
+     label1:
+        return null;
+    }
+
+    static volatile void zzd(com.google.android.gms.internal.ads.zzavm, android.net.NetworkCapabilities)
+    {
+        com.google.android.gms.internal.ads.zzavm $r0;
+        android.net.NetworkCapabilities $r1;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzavm;
+
+        $r1 := @parameter1: android.net.NetworkCapabilities;
+
+        $r0.<com.google.android.gms.internal.ads.zzavm: android.net.NetworkCapabilities zza> = $r1;
+
+        return;
+    }
+
+    public final long zza()
+    {
+        java.lang.Throwable $r2;
+        com.google.android.gms.internal.ads.zzavm r0;
+        android.net.NetworkCapabilities $r1;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzavm;
+
+        entermonitor class "Lcom/google/android/gms/internal/ads/zzavm;";
+
+     label01:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzavm: android.net.NetworkCapabilities zza>;
+
+        if $r1 == null goto label07;
+
+        $z0 = virtualinvoke $r1.<android.net.NetworkCapabilities: boolean hasTransport(int)>(4);
+
+        if $z0 == 0 goto label03;
+
+        exitmonitor class "Lcom/google/android/gms/internal/ads/zzavm;";
+
+     label02:
+        return 2L;
+
+     label03:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzavm: android.net.NetworkCapabilities zza>;
+
+        $z0 = virtualinvoke $r1.<android.net.NetworkCapabilities: boolean hasTransport(int)>(1);
+
+        if $z0 == 0 goto label05;
+
+        exitmonitor class "Lcom/google/android/gms/internal/ads/zzavm;";
+
+     label04:
+        return 1L;
+
+     label05:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzavm: android.net.NetworkCapabilities zza>;
+
+        $z0 = virtualinvoke $r1.<android.net.NetworkCapabilities: boolean hasTransport(int)>(0);
+
+        if $z0 == 0 goto label07;
+
+        exitmonitor class "Lcom/google/android/gms/internal/ads/zzavm;";
+
+     label06:
+        return 0L;
+
+     label07:
+        exitmonitor class "Lcom/google/android/gms/internal/ads/zzavm;";
+
+     label08:
+        return -1L;
+
+     label09:
+        $r2 := @caughtexception;
+
+        exitmonitor class "Lcom/google/android/gms/internal/ads/zzavm;";
+
+     label10:
+        throw $r2;
+
+        catch java.lang.Throwable from label01 to label02 with label09;
+        catch java.lang.Throwable from label03 to label04 with label09;
+        catch java.lang.Throwable from label05 to label06 with label09;
+        catch java.lang.Throwable from label07 to label08 with label09;
+        catch java.lang.Throwable from label09 to label10 with label09;
+    }
+
+    public final android.net.NetworkCapabilities zzb()
+    {
+        com.google.android.gms.internal.ads.zzavm r0;
+        android.net.NetworkCapabilities r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzavm;
+
+        r1 = r0.<com.google.android.gms.internal.ads.zzavm: android.net.NetworkCapabilities zza>;
+
+        return r1;
+    }
+}

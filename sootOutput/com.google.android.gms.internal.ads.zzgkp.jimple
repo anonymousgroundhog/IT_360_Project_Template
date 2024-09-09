@@ -1,0 +1,234 @@
+public final class com.google.android.gms.internal.ads.zzgkp extends java.lang.Object implements com.google.android.gms.internal.ads.zzgfs
+{
+    private static final byte[] zza;
+    private static final java.util.Set zzb;
+    private final com.google.android.gms.internal.ads.zzguy zzc;
+    private final com.google.android.gms.internal.ads.zzgfs zzd;
+
+    static void <clinit>()
+    {
+        java.util.HashSet $r2;
+        java.util.Set $r0;
+        byte[] $r1;
+
+        $r1 = newarray (byte)[0];
+
+        <com.google.android.gms.internal.ads.zzgkp: byte[] zza> = $r1;
+
+        $r2 = new java.util.HashSet;
+
+        specialinvoke $r2.<java.util.HashSet: void <init>()>();
+
+        virtualinvoke $r2.<java.util.HashSet: boolean add(java.lang.Object)>("type.googleapis.com/google.crypto.tink.AesGcmKey");
+
+        virtualinvoke $r2.<java.util.HashSet: boolean add(java.lang.Object)>("type.googleapis.com/google.crypto.tink.ChaCha20Poly1305Key");
+
+        virtualinvoke $r2.<java.util.HashSet: boolean add(java.lang.Object)>("type.googleapis.com/google.crypto.tink.XChaCha20Poly1305Key");
+
+        virtualinvoke $r2.<java.util.HashSet: boolean add(java.lang.Object)>("type.googleapis.com/google.crypto.tink.AesCtrHmacAeadKey");
+
+        virtualinvoke $r2.<java.util.HashSet: boolean add(java.lang.Object)>("type.googleapis.com/google.crypto.tink.AesGcmSivKey");
+
+        virtualinvoke $r2.<java.util.HashSet: boolean add(java.lang.Object)>("type.googleapis.com/google.crypto.tink.AesEaxKey");
+
+        $r0 = staticinvoke <java.util.Collections: java.util.Set unmodifiableSet(java.util.Set)>($r2);
+
+        <com.google.android.gms.internal.ads.zzgkp: java.util.Set zzb> = $r0;
+
+        return;
+    }
+
+    void <init>(com.google.android.gms.internal.ads.zzguy, com.google.android.gms.internal.ads.zzgfs)
+    {
+        java.util.Set $r4;
+        java.lang.IllegalArgumentException $r5;
+        com.google.android.gms.internal.ads.zzgfs $r2;
+        java.lang.StringBuilder $r6;
+        java.lang.String $r3;
+        com.google.android.gms.internal.ads.zzgkp r0;
+        com.google.android.gms.internal.ads.zzguy $r1;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgkp;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzguy;
+
+        $r2 := @parameter1: com.google.android.gms.internal.ads.zzgfs;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzguy: java.lang.String zzh()>();
+
+        $r4 = <com.google.android.gms.internal.ads.zzgkp: java.util.Set zzb>;
+
+        $z0 = interfaceinvoke $r4.<java.util.Set: boolean contains(java.lang.Object)>($r3);
+
+        if $z0 == 0 goto label1;
+
+        r0.<com.google.android.gms.internal.ads.zzgkp: com.google.android.gms.internal.ads.zzguy zzc> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzgkp: com.google.android.gms.internal.ads.zzgfs zzd> = $r2;
+
+        return;
+
+     label1:
+        $r5 = new java.lang.IllegalArgumentException;
+
+        $r3 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzguy: java.lang.String zzh()>();
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unsupported DEK key type: ");
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(". Only Tink AEAD key types are supported.");
+
+        $r3 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r3);
+
+        throw $r5;
+    }
+
+    public final byte[] zza(byte[], byte[]) throws java.security.GeneralSecurityException
+    {
+        byte[] $r1, $r2, $r4, $r6;
+        com.google.android.gms.internal.ads.zzgyl $r9;
+        java.lang.RuntimeException $r11;
+        java.nio.ByteBuffer $r3;
+        java.security.GeneralSecurityException $r12;
+        com.google.android.gms.internal.ads.zzgfs $r5;
+        int $i0, $i1;
+        java.lang.Object $r10;
+        java.lang.String $r8;
+        com.google.android.gms.internal.ads.zzgkp r0;
+        com.google.android.gms.internal.ads.zzguy $r7;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgkp;
+
+        $r1 := @parameter0: byte[];
+
+        $r2 := @parameter1: byte[];
+
+     label01:
+        $r3 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer wrap(byte[])>($r1);
+
+        $i0 = virtualinvoke $r3.<java.nio.ByteBuffer: int getInt()>();
+
+     label02:
+        if $i0 <= 0 goto label16;
+
+        $i1 = lengthof $r1;
+
+        $i1 = $i1 + -4;
+
+        if $i0 > $i1 goto label16;
+
+     label03:
+        $r4 = newarray (byte)[$i0];
+
+     label04:
+        virtualinvoke $r3.<java.nio.ByteBuffer: java.nio.ByteBuffer get(byte[],int,int)>($r4, 0, $i0);
+
+        $i0 = virtualinvoke $r3.<java.nio.ByteBuffer: int remaining()>();
+
+     label05:
+        $r1 = newarray (byte)[$i0];
+
+     label06:
+        $i0 = virtualinvoke $r3.<java.nio.ByteBuffer: int remaining()>();
+
+        virtualinvoke $r3.<java.nio.ByteBuffer: java.nio.ByteBuffer get(byte[],int,int)>($r1, 0, $i0);
+
+     label07:
+        $r5 = r0.<com.google.android.gms.internal.ads.zzgkp: com.google.android.gms.internal.ads.zzgfs zzd>;
+
+        $r6 = <com.google.android.gms.internal.ads.zzgkp: byte[] zza>;
+
+     label08:
+        $r4 = interfaceinvoke $r5.<com.google.android.gms.internal.ads.zzgfs: byte[] zza(byte[],byte[])>($r4, $r6);
+
+     label09:
+        $r7 = r0.<com.google.android.gms.internal.ads.zzgkp: com.google.android.gms.internal.ads.zzguy zzc>;
+
+     label10:
+        $r8 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzguy: java.lang.String zzh()>();
+
+     label11:
+        $i0 = <com.google.android.gms.internal.ads.zzghb: int zza>;
+
+        $r9 = <com.google.android.gms.internal.ads.zzgyl: com.google.android.gms.internal.ads.zzgyl zzb>;
+
+        $i0 = lengthof $r4;
+
+     label12:
+        $r9 = staticinvoke <com.google.android.gms.internal.ads.zzgyl: com.google.android.gms.internal.ads.zzgyl zzv(byte[],int,int)>($r4, 0, $i0);
+
+        $r10 = staticinvoke <com.google.android.gms.internal.ads.zzghb: java.lang.Object zzd(java.lang.String,com.google.android.gms.internal.ads.zzgyl,java.lang.Class)>($r8, $r9, class "Lcom/google/android/gms/internal/ads/zzgfs;");
+
+     label13:
+        $r5 = (com.google.android.gms.internal.ads.zzgfs) $r10;
+
+     label14:
+        $r1 = interfaceinvoke $r5.<com.google.android.gms.internal.ads.zzgfs: byte[] zza(byte[],byte[])>($r1, $r2);
+
+     label15:
+        return $r1;
+
+     label16:
+        $r12 = new java.security.GeneralSecurityException;
+
+     label17:
+        specialinvoke $r12.<java.security.GeneralSecurityException: void <init>(java.lang.String)>("invalid ciphertext");
+
+     label18:
+        throw $r12;
+
+     label19:
+        $r11 := @caughtexception;
+
+        goto label22;
+
+     label20:
+        $r11 := @caughtexception;
+
+        goto label22;
+
+     label21:
+        $r11 := @caughtexception;
+
+     label22:
+        $r12 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r12.<java.security.GeneralSecurityException: void <init>(java.lang.String,java.lang.Throwable)>("invalid ciphertext", $r11);
+
+        throw $r12;
+
+        catch java.lang.IndexOutOfBoundsException from label01 to label02 with label21;
+        catch java.lang.IndexOutOfBoundsException from label04 to label05 with label21;
+        catch java.lang.IndexOutOfBoundsException from label06 to label07 with label21;
+        catch java.lang.IndexOutOfBoundsException from label08 to label09 with label21;
+        catch java.lang.IndexOutOfBoundsException from label10 to label11 with label21;
+        catch java.lang.IndexOutOfBoundsException from label12 to label13 with label21;
+        catch java.lang.IndexOutOfBoundsException from label14 to label15 with label21;
+        catch java.lang.IndexOutOfBoundsException from label17 to label18 with label21;
+        catch java.nio.BufferUnderflowException from label01 to label02 with label20;
+        catch java.nio.BufferUnderflowException from label04 to label05 with label20;
+        catch java.nio.BufferUnderflowException from label06 to label07 with label20;
+        catch java.nio.BufferUnderflowException from label08 to label09 with label20;
+        catch java.nio.BufferUnderflowException from label10 to label11 with label20;
+        catch java.nio.BufferUnderflowException from label12 to label13 with label20;
+        catch java.nio.BufferUnderflowException from label14 to label15 with label20;
+        catch java.nio.BufferUnderflowException from label17 to label18 with label20;
+        catch java.lang.NegativeArraySizeException from label01 to label02 with label19;
+        catch java.lang.NegativeArraySizeException from label03 to label07 with label19;
+        catch java.lang.NegativeArraySizeException from label08 to label09 with label19;
+        catch java.lang.NegativeArraySizeException from label10 to label11 with label19;
+        catch java.lang.NegativeArraySizeException from label12 to label13 with label19;
+        catch java.lang.NegativeArraySizeException from label14 to label15 with label19;
+        catch java.lang.NegativeArraySizeException from label17 to label18 with label19;
+    }
+}

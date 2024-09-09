@@ -1,0 +1,219 @@
+class androidx.room.IMultiInstanceInvalidationService$Stub$Proxy extends java.lang.Object implements androidx.room.IMultiInstanceInvalidationService
+{
+    private android.os.IBinder mRemote;
+
+    void <init>(android.os.IBinder)
+    {
+        androidx.room.IMultiInstanceInvalidationService$Stub$Proxy r0;
+        android.os.IBinder $r1;
+
+        r0 := @this: androidx.room.IMultiInstanceInvalidationService$Stub$Proxy;
+
+        $r1 := @parameter0: android.os.IBinder;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.room.IMultiInstanceInvalidationService$Stub$Proxy: android.os.IBinder mRemote> = $r1;
+
+        return;
+    }
+
+    public android.os.IBinder asBinder()
+    {
+        androidx.room.IMultiInstanceInvalidationService$Stub$Proxy r0;
+        android.os.IBinder r1;
+
+        r0 := @this: androidx.room.IMultiInstanceInvalidationService$Stub$Proxy;
+
+        r1 = r0.<androidx.room.IMultiInstanceInvalidationService$Stub$Proxy: android.os.IBinder mRemote>;
+
+        return r1;
+    }
+
+    public void broadcastInvalidation(int, java.lang.String[]) throws android.os.RemoteException
+    {
+        java.lang.Throwable $r4;
+        int $i0;
+        androidx.room.IMultiInstanceInvalidationService$Stub$Proxy r0;
+        java.lang.String[] $r1;
+        android.os.Parcel $r2;
+        android.os.IBinder $r3;
+
+        r0 := @this: androidx.room.IMultiInstanceInvalidationService$Stub$Proxy;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: java.lang.String[];
+
+        $r2 = staticinvoke <android.os.Parcel: android.os.Parcel obtain()>();
+
+     label1:
+        virtualinvoke $r2.<android.os.Parcel: void writeInterfaceToken(java.lang.String)>("androidx.room.IMultiInstanceInvalidationService");
+
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>($i0);
+
+        virtualinvoke $r2.<android.os.Parcel: void writeStringArray(java.lang.String[])>($r1);
+
+        $r3 = r0.<androidx.room.IMultiInstanceInvalidationService$Stub$Proxy: android.os.IBinder mRemote>;
+
+        interfaceinvoke $r3.<android.os.IBinder: boolean transact(int,android.os.Parcel,android.os.Parcel,int)>(3, $r2, null, 1);
+
+     label2:
+        virtualinvoke $r2.<android.os.Parcel: void recycle()>();
+
+        return;
+
+     label3:
+        $r4 := @caughtexception;
+
+        virtualinvoke $r2.<android.os.Parcel: void recycle()>();
+
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public java.lang.String getInterfaceDescriptor()
+    {
+        androidx.room.IMultiInstanceInvalidationService$Stub$Proxy r0;
+
+        r0 := @this: androidx.room.IMultiInstanceInvalidationService$Stub$Proxy;
+
+        return "androidx.room.IMultiInstanceInvalidationService";
+    }
+
+    public int registerCallback(androidx.room.IMultiInstanceInvalidationCallback, java.lang.String) throws android.os.RemoteException
+    {
+        java.lang.Throwable r6;
+        androidx.room.IMultiInstanceInvalidationCallback $r1;
+        android.os.Parcel $r3, $r4;
+        android.os.IBinder $r5;
+        int $i0;
+        androidx.room.IMultiInstanceInvalidationService$Stub$Proxy r0;
+        java.lang.String $r2;
+
+        r0 := @this: androidx.room.IMultiInstanceInvalidationService$Stub$Proxy;
+
+        $r1 := @parameter0: androidx.room.IMultiInstanceInvalidationCallback;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = staticinvoke <android.os.Parcel: android.os.Parcel obtain()>();
+
+        $r4 = staticinvoke <android.os.Parcel: android.os.Parcel obtain()>();
+
+     label1:
+        virtualinvoke $r3.<android.os.Parcel: void writeInterfaceToken(java.lang.String)>("androidx.room.IMultiInstanceInvalidationService");
+
+     label2:
+        if $r1 == null goto label5;
+
+     label3:
+        $r5 = interfaceinvoke $r1.<androidx.room.IMultiInstanceInvalidationCallback: android.os.IBinder asBinder()>();
+
+     label4:
+        goto label6;
+
+     label5:
+        $r5 = null;
+
+     label6:
+        virtualinvoke $r3.<android.os.Parcel: void writeStrongBinder(android.os.IBinder)>($r5);
+
+        virtualinvoke $r3.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $r5 = r0.<androidx.room.IMultiInstanceInvalidationService$Stub$Proxy: android.os.IBinder mRemote>;
+
+        interfaceinvoke $r5.<android.os.IBinder: boolean transact(int,android.os.Parcel,android.os.Parcel,int)>(1, $r3, $r4, 0);
+
+        virtualinvoke $r4.<android.os.Parcel: void readException()>();
+
+        $i0 = virtualinvoke $r4.<android.os.Parcel: int readInt()>();
+
+     label7:
+        virtualinvoke $r4.<android.os.Parcel: void recycle()>();
+
+        virtualinvoke $r3.<android.os.Parcel: void recycle()>();
+
+        return $i0;
+
+     label8:
+        r6 := @caughtexception;
+
+        virtualinvoke $r4.<android.os.Parcel: void recycle()>();
+
+        virtualinvoke $r3.<android.os.Parcel: void recycle()>();
+
+        throw r6;
+
+        catch java.lang.Throwable from label1 to label2 with label8;
+        catch java.lang.Throwable from label3 to label4 with label8;
+        catch java.lang.Throwable from label6 to label7 with label8;
+    }
+
+    public void unregisterCallback(androidx.room.IMultiInstanceInvalidationCallback, int) throws android.os.RemoteException
+    {
+        java.lang.Throwable $r5;
+        androidx.room.IMultiInstanceInvalidationCallback $r1;
+        int $i0;
+        androidx.room.IMultiInstanceInvalidationService$Stub$Proxy r0;
+        android.os.Parcel $r2, $r3;
+        android.os.IBinder $r4;
+
+        r0 := @this: androidx.room.IMultiInstanceInvalidationService$Stub$Proxy;
+
+        $r1 := @parameter0: androidx.room.IMultiInstanceInvalidationCallback;
+
+        $i0 := @parameter1: int;
+
+        $r2 = staticinvoke <android.os.Parcel: android.os.Parcel obtain()>();
+
+        $r3 = staticinvoke <android.os.Parcel: android.os.Parcel obtain()>();
+
+     label1:
+        virtualinvoke $r2.<android.os.Parcel: void writeInterfaceToken(java.lang.String)>("androidx.room.IMultiInstanceInvalidationService");
+
+     label2:
+        if $r1 == null goto label5;
+
+     label3:
+        $r4 = interfaceinvoke $r1.<androidx.room.IMultiInstanceInvalidationCallback: android.os.IBinder asBinder()>();
+
+     label4:
+        goto label6;
+
+     label5:
+        $r4 = null;
+
+     label6:
+        virtualinvoke $r2.<android.os.Parcel: void writeStrongBinder(android.os.IBinder)>($r4);
+
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>($i0);
+
+        $r4 = r0.<androidx.room.IMultiInstanceInvalidationService$Stub$Proxy: android.os.IBinder mRemote>;
+
+        interfaceinvoke $r4.<android.os.IBinder: boolean transact(int,android.os.Parcel,android.os.Parcel,int)>(2, $r2, $r3, 0);
+
+        virtualinvoke $r3.<android.os.Parcel: void readException()>();
+
+     label7:
+        virtualinvoke $r3.<android.os.Parcel: void recycle()>();
+
+        virtualinvoke $r2.<android.os.Parcel: void recycle()>();
+
+        return;
+
+     label8:
+        $r5 := @caughtexception;
+
+        virtualinvoke $r3.<android.os.Parcel: void recycle()>();
+
+        virtualinvoke $r2.<android.os.Parcel: void recycle()>();
+
+        throw $r5;
+
+        catch java.lang.Throwable from label1 to label2 with label8;
+        catch java.lang.Throwable from label3 to label4 with label8;
+        catch java.lang.Throwable from label6 to label7 with label8;
+    }
+}

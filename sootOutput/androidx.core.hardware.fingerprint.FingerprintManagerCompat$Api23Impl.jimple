@@ -1,0 +1,251 @@
+class androidx.core.hardware.fingerprint.FingerprintManagerCompat$Api23Impl extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.hardware.fingerprint.FingerprintManagerCompat$Api23Impl r0;
+
+        r0 := @this: androidx.core.hardware.fingerprint.FingerprintManagerCompat$Api23Impl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static void authenticate(java.lang.Object, java.lang.Object, android.os.CancellationSignal, int, java.lang.Object, android.os.Handler)
+    {
+        android.os.CancellationSignal $r2;
+        android.hardware.fingerprint.FingerprintManager $r5;
+        android.hardware.fingerprint.FingerprintManager$CryptoObject $r6;
+        android.hardware.fingerprint.FingerprintManager$AuthenticationCallback $r7;
+        android.os.Handler $r4;
+        int $i0;
+        java.lang.Object $r0, $r1, $r3;
+
+        $r0 := @parameter0: java.lang.Object;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        $r2 := @parameter2: android.os.CancellationSignal;
+
+        $i0 := @parameter3: int;
+
+        $r3 := @parameter4: java.lang.Object;
+
+        $r4 := @parameter5: android.os.Handler;
+
+        $r5 = (android.hardware.fingerprint.FingerprintManager) $r0;
+
+        $r6 = (android.hardware.fingerprint.FingerprintManager$CryptoObject) $r1;
+
+        $r7 = (android.hardware.fingerprint.FingerprintManager$AuthenticationCallback) $r3;
+
+        virtualinvoke $r5.<android.hardware.fingerprint.FingerprintManager: void authenticate(android.hardware.fingerprint.FingerprintManager$CryptoObject,android.os.CancellationSignal,int,android.hardware.fingerprint.FingerprintManager$AuthenticationCallback,android.os.Handler)>($r6, $r2, $i0, $r7, $r4);
+
+        return;
+    }
+
+    static android.hardware.fingerprint.FingerprintManager$CryptoObject getCryptoObject(java.lang.Object)
+    {
+        java.lang.Object $r0;
+        android.hardware.fingerprint.FingerprintManager$AuthenticationResult $r2;
+        android.hardware.fingerprint.FingerprintManager$CryptoObject $r1;
+
+        $r0 := @parameter0: java.lang.Object;
+
+        $r2 = (android.hardware.fingerprint.FingerprintManager$AuthenticationResult) $r0;
+
+        $r1 = virtualinvoke $r2.<android.hardware.fingerprint.FingerprintManager$AuthenticationResult: android.hardware.fingerprint.FingerprintManager$CryptoObject getCryptoObject()>();
+
+        return $r1;
+    }
+
+    public static android.hardware.fingerprint.FingerprintManager getFingerprintManagerOrNull(android.content.Context)
+    {
+        android.content.Context $r0;
+        android.content.pm.PackageManager $r3;
+        int $i0;
+        java.lang.Object $r1;
+        android.hardware.fingerprint.FingerprintManager $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 != 23 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/hardware/fingerprint/FingerprintManager;");
+
+        $r2 = (android.hardware.fingerprint.FingerprintManager) $r1;
+
+        return $r2;
+
+     label1:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 <= 23 goto label2;
+
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $z0 = virtualinvoke $r3.<android.content.pm.PackageManager: boolean hasSystemFeature(java.lang.String)>("android.hardware.fingerprint");
+
+        if $z0 == 0 goto label2;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/hardware/fingerprint/FingerprintManager;");
+
+        $r2 = (android.hardware.fingerprint.FingerprintManager) $r1;
+
+        return $r2;
+
+     label2:
+        return null;
+    }
+
+    static boolean hasEnrolledFingerprints(java.lang.Object)
+    {
+        java.lang.Object $r0;
+        android.hardware.fingerprint.FingerprintManager $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: java.lang.Object;
+
+        $r1 = (android.hardware.fingerprint.FingerprintManager) $r0;
+
+        $z0 = virtualinvoke $r1.<android.hardware.fingerprint.FingerprintManager: boolean hasEnrolledFingerprints()>();
+
+        return $z0;
+    }
+
+    static boolean isHardwareDetected(java.lang.Object)
+    {
+        java.lang.Object $r0;
+        android.hardware.fingerprint.FingerprintManager $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: java.lang.Object;
+
+        $r1 = (android.hardware.fingerprint.FingerprintManager) $r0;
+
+        $z0 = virtualinvoke $r1.<android.hardware.fingerprint.FingerprintManager: boolean isHardwareDetected()>();
+
+        return $z0;
+    }
+
+    public static androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject unwrapCryptoObject(java.lang.Object)
+    {
+        androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject $r3;
+        java.security.Signature $r4;
+        javax.crypto.Mac $r5;
+        java.lang.Object $r0;
+        javax.crypto.Cipher $r2;
+        android.hardware.fingerprint.FingerprintManager$CryptoObject r1;
+
+        $r0 := @parameter0: java.lang.Object;
+
+        r1 = (android.hardware.fingerprint.FingerprintManager$CryptoObject) $r0;
+
+        if r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $r2 = virtualinvoke r1.<android.hardware.fingerprint.FingerprintManager$CryptoObject: javax.crypto.Cipher getCipher()>();
+
+        if $r2 == null goto label2;
+
+        $r3 = new androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject;
+
+        $r2 = virtualinvoke r1.<android.hardware.fingerprint.FingerprintManager$CryptoObject: javax.crypto.Cipher getCipher()>();
+
+        specialinvoke $r3.<androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject: void <init>(javax.crypto.Cipher)>($r2);
+
+        return $r3;
+
+     label2:
+        $r4 = virtualinvoke r1.<android.hardware.fingerprint.FingerprintManager$CryptoObject: java.security.Signature getSignature()>();
+
+        if $r4 == null goto label3;
+
+        $r3 = new androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject;
+
+        $r4 = virtualinvoke r1.<android.hardware.fingerprint.FingerprintManager$CryptoObject: java.security.Signature getSignature()>();
+
+        specialinvoke $r3.<androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject: void <init>(java.security.Signature)>($r4);
+
+        return $r3;
+
+     label3:
+        $r5 = virtualinvoke r1.<android.hardware.fingerprint.FingerprintManager$CryptoObject: javax.crypto.Mac getMac()>();
+
+        if $r5 == null goto label4;
+
+        $r3 = new androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject;
+
+        $r5 = virtualinvoke r1.<android.hardware.fingerprint.FingerprintManager$CryptoObject: javax.crypto.Mac getMac()>();
+
+        specialinvoke $r3.<androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject: void <init>(javax.crypto.Mac)>($r5);
+
+        return $r3;
+
+     label4:
+        return null;
+    }
+
+    public static android.hardware.fingerprint.FingerprintManager$CryptoObject wrapCryptoObject(androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject)
+    {
+        androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject $r0;
+        java.security.Signature $r3;
+        javax.crypto.Mac $r4;
+        javax.crypto.Cipher $r1;
+        android.hardware.fingerprint.FingerprintManager$CryptoObject $r2;
+
+        $r0 := @parameter0: androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject;
+
+        if $r0 != null goto label1;
+
+        return null;
+
+     label1:
+        $r1 = virtualinvoke $r0.<androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject: javax.crypto.Cipher getCipher()>();
+
+        if $r1 == null goto label2;
+
+        $r2 = new android.hardware.fingerprint.FingerprintManager$CryptoObject;
+
+        $r1 = virtualinvoke $r0.<androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject: javax.crypto.Cipher getCipher()>();
+
+        specialinvoke $r2.<android.hardware.fingerprint.FingerprintManager$CryptoObject: void <init>(javax.crypto.Cipher)>($r1);
+
+        return $r2;
+
+     label2:
+        $r3 = virtualinvoke $r0.<androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject: java.security.Signature getSignature()>();
+
+        if $r3 == null goto label3;
+
+        $r2 = new android.hardware.fingerprint.FingerprintManager$CryptoObject;
+
+        $r3 = virtualinvoke $r0.<androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject: java.security.Signature getSignature()>();
+
+        specialinvoke $r2.<android.hardware.fingerprint.FingerprintManager$CryptoObject: void <init>(java.security.Signature)>($r3);
+
+        return $r2;
+
+     label3:
+        $r4 = virtualinvoke $r0.<androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject: javax.crypto.Mac getMac()>();
+
+        if $r4 == null goto label4;
+
+        $r2 = new android.hardware.fingerprint.FingerprintManager$CryptoObject;
+
+        $r4 = virtualinvoke $r0.<androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject: javax.crypto.Mac getMac()>();
+
+        specialinvoke $r2.<android.hardware.fingerprint.FingerprintManager$CryptoObject: void <init>(javax.crypto.Mac)>($r4);
+
+        return $r2;
+
+     label4:
+        return null;
+    }
+}

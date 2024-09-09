@@ -1,0 +1,160 @@
+final class kotlin.io.path.PathRelativizer extends java.lang.Object
+{
+    public static final kotlin.io.path.PathRelativizer INSTANCE;
+    private static final java.nio.file.Path emptyPath;
+    private static final java.nio.file.Path parentPath;
+
+    static void <clinit>()
+    {
+        kotlin.io.path.PathRelativizer $r0;
+        java.lang.String[] $r1;
+        java.nio.file.Path $r2;
+
+        $r0 = new kotlin.io.path.PathRelativizer;
+
+        specialinvoke $r0.<kotlin.io.path.PathRelativizer: void <init>()>();
+
+        <kotlin.io.path.PathRelativizer: kotlin.io.path.PathRelativizer INSTANCE> = $r0;
+
+        $r1 = newarray (java.lang.String)[0];
+
+        $r2 = staticinvoke <java.nio.file.Paths: java.nio.file.Path get(java.lang.String,java.lang.String[])>("", $r1);
+
+        <kotlin.io.path.PathRelativizer: java.nio.file.Path emptyPath> = $r2;
+
+        $r1 = newarray (java.lang.String)[0];
+
+        $r2 = staticinvoke <java.nio.file.Paths: java.nio.file.Path get(java.lang.String,java.lang.String[])>("..", $r1);
+
+        <kotlin.io.path.PathRelativizer: java.nio.file.Path parentPath> = $r2;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        kotlin.io.path.PathRelativizer r0;
+
+        r0 := @this: kotlin.io.path.PathRelativizer;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public final java.nio.file.Path tryRelativeTo(java.nio.file.Path, java.nio.file.Path)
+    {
+        kotlin.io.path.PathRelativizer r0;
+        java.lang.String[] $r11;
+        int i0, $i1, $i2;
+        java.lang.String $r7, $r9;
+        java.nio.file.Path $r1, $r2, $r3, $r4, $r5;
+        boolean $z0;
+        java.lang.IllegalArgumentException $r6;
+        java.nio.file.FileSystem $r8, $r10;
+
+        r0 := @this: kotlin.io.path.PathRelativizer;
+
+        $r1 := @parameter0: java.nio.file.Path;
+
+        $r2 := @parameter1: java.nio.file.Path;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "path");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r2, "base");
+
+        $r2 = interfaceinvoke $r2.<java.nio.file.Path: java.nio.file.Path normalize()>();
+
+        $r1 = interfaceinvoke $r1.<java.nio.file.Path: java.nio.file.Path normalize()>();
+
+        $r3 = interfaceinvoke $r2.<java.nio.file.Path: java.nio.file.Path relativize(java.nio.file.Path)>($r1);
+
+        i0 = 0;
+
+        $i1 = interfaceinvoke $r2.<java.nio.file.Path: int getNameCount()>();
+
+        $i2 = interfaceinvoke $r1.<java.nio.file.Path: int getNameCount()>();
+
+        $i1 = staticinvoke <java.lang.Math: int min(int,int)>($i1, $i2);
+
+     label1:
+        if i0 >= $i1 goto label3;
+
+        $r4 = interfaceinvoke $r2.<java.nio.file.Path: java.nio.file.Path getName(int)>(i0);
+
+        $r5 = <kotlin.io.path.PathRelativizer: java.nio.file.Path parentPath>;
+
+        $z0 = staticinvoke <kotlin.jvm.internal.Intrinsics: boolean areEqual(java.lang.Object,java.lang.Object)>($r4, $r5);
+
+        if $z0 == 0 goto label3;
+
+        $r4 = interfaceinvoke $r1.<java.nio.file.Path: java.nio.file.Path getName(int)>(i0);
+
+        $r5 = <kotlin.io.path.PathRelativizer: java.nio.file.Path parentPath>;
+
+        $z0 = staticinvoke <kotlin.jvm.internal.Intrinsics: boolean areEqual(java.lang.Object,java.lang.Object)>($r4, $r5);
+
+        if $z0 == 0 goto label2;
+
+        i0 = i0 + 1;
+
+        goto label1;
+
+     label2:
+        $r6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Unable to compute relative path");
+
+        throw $r6;
+
+     label3:
+        $z0 = staticinvoke <kotlin.jvm.internal.Intrinsics: boolean areEqual(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        if $z0 != 0 goto label4;
+
+        $r4 = <kotlin.io.path.PathRelativizer: java.nio.file.Path emptyPath>;
+
+        $z0 = staticinvoke <kotlin.jvm.internal.Intrinsics: boolean areEqual(java.lang.Object,java.lang.Object)>($r2, $r4);
+
+        if $z0 == 0 goto label4;
+
+        goto label6;
+
+     label4:
+        $r7 = virtualinvoke $r3.<java.lang.Object: java.lang.String toString()>();
+
+        $r8 = interfaceinvoke $r3.<java.nio.file.Path: java.nio.file.FileSystem getFileSystem()>();
+
+        $r9 = virtualinvoke $r8.<java.nio.file.FileSystem: java.lang.String getSeparator()>();
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r9, "rn.fileSystem.separator");
+
+        $z0 = staticinvoke <kotlin.text.StringsKt: boolean endsWith$default(java.lang.String,java.lang.String,boolean,int,java.lang.Object)>($r7, $r9, 0, 2, null);
+
+        if $z0 == 0 goto label5;
+
+        $r8 = interfaceinvoke $r3.<java.nio.file.Path: java.nio.file.FileSystem getFileSystem()>();
+
+        $r10 = interfaceinvoke $r3.<java.nio.file.Path: java.nio.file.FileSystem getFileSystem()>();
+
+        $r9 = virtualinvoke $r10.<java.nio.file.FileSystem: java.lang.String getSeparator()>();
+
+        i0 = virtualinvoke $r9.<java.lang.String: int length()>();
+
+        $r7 = staticinvoke <kotlin.text.StringsKt: java.lang.String dropLast(java.lang.String,int)>($r7, i0);
+
+        $r11 = newarray (java.lang.String)[0];
+
+        $r1 = virtualinvoke $r8.<java.nio.file.FileSystem: java.nio.file.Path getPath(java.lang.String,java.lang.String[])>($r7, $r11);
+
+        goto label6;
+
+     label5:
+        $r1 = $r3;
+
+     label6:
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r1, "r");
+
+        return $r1;
+    }
+}

@@ -1,0 +1,70 @@
+public abstract class com.google.android.gms.internal.consent_sdk.zza extends java.lang.Object
+{
+    private static com.google.android.gms.internal.consent_sdk.zza zza;
+
+    public void <init>()
+    {
+        com.google.android.gms.internal.consent_sdk.zza r0;
+
+        r0 := @this: com.google.android.gms.internal.consent_sdk.zza;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static com.google.android.gms.internal.consent_sdk.zza zza(android.content.Context)
+    {
+        com.google.android.gms.internal.consent_sdk.zzai $r2;
+        java.lang.Throwable $r4;
+        android.content.Context $r0;
+        android.app.Application $r3;
+        com.google.android.gms.internal.consent_sdk.zza $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        entermonitor class "Lcom/google/android/gms/internal/consent_sdk/zza;";
+
+     label1:
+        $r1 = <com.google.android.gms.internal.consent_sdk.zza: com.google.android.gms.internal.consent_sdk.zza zza>;
+
+        if $r1 != null goto label2;
+
+        $r2 = new com.google.android.gms.internal.consent_sdk.zzai;
+
+        specialinvoke $r2.<com.google.android.gms.internal.consent_sdk.zzai: void <init>(com.google.android.gms.internal.consent_sdk.zzah)>(null);
+
+        $r0 = virtualinvoke $r0.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        $r3 = (android.app.Application) $r0;
+
+        virtualinvoke $r2.<com.google.android.gms.internal.consent_sdk.zzai: com.google.android.gms.internal.consent_sdk.zzai zzb(android.app.Application)>($r3);
+
+        $r1 = virtualinvoke $r2.<com.google.android.gms.internal.consent_sdk.zzai: com.google.android.gms.internal.consent_sdk.zza zza()>();
+
+        <com.google.android.gms.internal.consent_sdk.zza: com.google.android.gms.internal.consent_sdk.zza zza> = $r1;
+
+     label2:
+        $r1 = <com.google.android.gms.internal.consent_sdk.zza: com.google.android.gms.internal.consent_sdk.zza zza>;
+
+        exitmonitor class "Lcom/google/android/gms/internal/consent_sdk/zza;";
+
+     label3:
+        return $r1;
+
+     label4:
+        $r4 := @caughtexception;
+
+        exitmonitor class "Lcom/google/android/gms/internal/consent_sdk/zza;";
+
+     label5:
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+        catch java.lang.Throwable from label4 to label5 with label4;
+    }
+
+    public abstract com.google.android.gms.internal.consent_sdk.zzj zzb();
+
+    public abstract com.google.android.gms.internal.consent_sdk.zzbn zzc();
+}

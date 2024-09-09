@@ -1,0 +1,172 @@
+final class com.google.android.gms.internal.ads.zzghk extends java.lang.Object implements com.google.android.gms.internal.ads.zzgfs
+{
+    private final com.google.android.gms.internal.ads.zzggx zza;
+    private final com.google.android.gms.internal.ads.zzgrx zzb;
+    private final com.google.android.gms.internal.ads.zzgrx zzc;
+
+    void <init>(com.google.android.gms.internal.ads.zzggx, com.google.android.gms.internal.ads.zzghj)
+    {
+        com.google.android.gms.internal.ads.zzggx $r1;
+        com.google.android.gms.internal.ads.zzgsd $r5;
+        com.google.android.gms.internal.ads.zzgnz $r3;
+        com.google.android.gms.internal.ads.zzghk r0;
+        com.google.android.gms.internal.ads.zzghj $r2;
+        com.google.android.gms.internal.ads.zzgry $r4;
+        com.google.android.gms.internal.ads.zzgrx $r6;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzghk;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzggx;
+
+        $r2 := @parameter1: com.google.android.gms.internal.ads.zzghj;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzghk: com.google.android.gms.internal.ads.zzggx zza> = $r1;
+
+        $z0 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzggx: boolean zzf()>();
+
+        if $z0 == 0 goto label2;
+
+        $r3 = staticinvoke <com.google.android.gms.internal.ads.zzgnz: com.google.android.gms.internal.ads.zzgnz zza()>();
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgnz: com.google.android.gms.internal.ads.zzgry zzb()>();
+
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzgns: com.google.android.gms.internal.ads.zzgsd zza(com.google.android.gms.internal.ads.zzggx)>($r1);
+
+        $r6 = interfaceinvoke $r4.<com.google.android.gms.internal.ads.zzgry: com.google.android.gms.internal.ads.zzgrx zza(com.google.android.gms.internal.ads.zzgsd,java.lang.String,java.lang.String)>($r5, "aead", "encrypt");
+
+        r0.<com.google.android.gms.internal.ads.zzghk: com.google.android.gms.internal.ads.zzgrx zzb> = $r6;
+
+        $r6 = interfaceinvoke $r4.<com.google.android.gms.internal.ads.zzgry: com.google.android.gms.internal.ads.zzgrx zza(com.google.android.gms.internal.ads.zzgsd,java.lang.String,java.lang.String)>($r5, "aead", "decrypt");
+
+     label1:
+        r0.<com.google.android.gms.internal.ads.zzghk: com.google.android.gms.internal.ads.zzgrx zzc> = $r6;
+
+        return;
+
+     label2:
+        $r6 = <com.google.android.gms.internal.ads.zzgns: com.google.android.gms.internal.ads.zzgrx zza>;
+
+        r0.<com.google.android.gms.internal.ads.zzghk: com.google.android.gms.internal.ads.zzgrx zzb> = $r6;
+
+        goto label1;
+    }
+
+    public final byte[] zza(byte[], byte[]) throws java.security.GeneralSecurityException
+    {
+        byte[] $r1, $r2, $r3, $r4;
+        java.util.Iterator $r7;
+        com.google.android.gms.internal.ads.zzggx $r5;
+        java.util.List $r6;
+        java.security.GeneralSecurityException $r11, $r12;
+        com.google.android.gms.internal.ads.zzggt $r9;
+        com.google.android.gms.internal.ads.zzgfs $r10;
+        com.google.android.gms.internal.ads.zzghk r0;
+        int $i0;
+        java.lang.Object $r8;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzghk;
+
+        $r1 := @parameter0: byte[];
+
+        $r2 := @parameter1: byte[];
+
+        $i0 = lengthof $r1;
+
+        if $i0 <= 5 goto label07;
+
+        $r3 = staticinvoke <java.util.Arrays: byte[] copyOf(byte[],int)>($r1, 5);
+
+        $r4 = staticinvoke <java.util.Arrays: byte[] copyOfRange(byte[],int,int)>($r1, 5, $i0);
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzghk: com.google.android.gms.internal.ads.zzggx zza>;
+
+        $r6 = virtualinvoke $r5.<com.google.android.gms.internal.ads.zzggx: java.util.List zze(byte[])>($r3);
+
+        $r7 = interfaceinvoke $r6.<java.util.List: java.util.Iterator iterator()>();
+
+     label01:
+        $z0 = interfaceinvoke $r7.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label07;
+
+        $r8 = interfaceinvoke $r7.<java.util.Iterator: java.lang.Object next()>();
+
+        $r9 = (com.google.android.gms.internal.ads.zzggt) $r8;
+
+     label02:
+        $r8 = virtualinvoke $r9.<com.google.android.gms.internal.ads.zzggt: java.lang.Object zze()>();
+
+     label03:
+        $r10 = (com.google.android.gms.internal.ads.zzgfs) $r8;
+
+     label04:
+        $r3 = interfaceinvoke $r10.<com.google.android.gms.internal.ads.zzgfs: byte[] zza(byte[],byte[])>($r4, $r2);
+
+        virtualinvoke $r9.<com.google.android.gms.internal.ads.zzggt: int zza()>();
+
+     label05:
+        $i0 = lengthof $r4;
+
+        return $r3;
+
+     label06:
+        $r11 := @caughtexception;
+
+        goto label01;
+
+     label07:
+        $r5 = r0.<com.google.android.gms.internal.ads.zzghk: com.google.android.gms.internal.ads.zzggx zza>;
+
+        $r4 = <com.google.android.gms.internal.ads.zzgfx: byte[] zza>;
+
+        $r6 = virtualinvoke $r5.<com.google.android.gms.internal.ads.zzggx: java.util.List zze(byte[])>($r4);
+
+        $r7 = interfaceinvoke $r6.<java.util.List: java.util.Iterator iterator()>();
+
+     label08:
+        $z0 = interfaceinvoke $r7.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label14;
+
+        $r8 = interfaceinvoke $r7.<java.util.Iterator: java.lang.Object next()>();
+
+        $r9 = (com.google.android.gms.internal.ads.zzggt) $r8;
+
+     label09:
+        $r8 = virtualinvoke $r9.<com.google.android.gms.internal.ads.zzggt: java.lang.Object zze()>();
+
+     label10:
+        $r10 = (com.google.android.gms.internal.ads.zzgfs) $r8;
+
+     label11:
+        $r4 = interfaceinvoke $r10.<com.google.android.gms.internal.ads.zzgfs: byte[] zza(byte[],byte[])>($r1, $r2);
+
+        virtualinvoke $r9.<com.google.android.gms.internal.ads.zzggt: int zza()>();
+
+     label12:
+        $i0 = lengthof $r1;
+
+        return $r4;
+
+     label13:
+        $r12 := @caughtexception;
+
+        goto label08;
+
+     label14:
+        $r11 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r11.<java.security.GeneralSecurityException: void <init>(java.lang.String)>("decryption failed");
+
+        throw $r11;
+
+        catch java.security.GeneralSecurityException from label02 to label03 with label06;
+        catch java.security.GeneralSecurityException from label04 to label05 with label06;
+        catch java.security.GeneralSecurityException from label09 to label10 with label13;
+        catch java.security.GeneralSecurityException from label11 to label12 with label13;
+    }
+}

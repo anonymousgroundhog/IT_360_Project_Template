@@ -1,0 +1,144 @@
+class androidx.work.impl.utils.WorkForegroundUpdater$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.work.impl.utils.WorkForegroundUpdater this$0;
+    final android.content.Context val$context;
+    final androidx.work.ForegroundInfo val$foregroundInfo;
+    final androidx.work.impl.utils.futures.SettableFuture val$future;
+    final java.util.UUID val$id;
+
+    void <init>(androidx.work.impl.utils.WorkForegroundUpdater, androidx.work.impl.utils.futures.SettableFuture, java.util.UUID, androidx.work.ForegroundInfo, android.content.Context)
+    {
+        android.content.Context $r5;
+        androidx.work.impl.utils.WorkForegroundUpdater $r1;
+        androidx.work.ForegroundInfo $r4;
+        androidx.work.impl.utils.WorkForegroundUpdater$1 r0;
+        androidx.work.impl.utils.futures.SettableFuture $r2;
+        java.util.UUID $r3;
+
+        r0 := @this: androidx.work.impl.utils.WorkForegroundUpdater$1;
+
+        $r1 := @parameter0: androidx.work.impl.utils.WorkForegroundUpdater;
+
+        $r2 := @parameter1: androidx.work.impl.utils.futures.SettableFuture;
+
+        $r3 := @parameter2: java.util.UUID;
+
+        $r4 := @parameter3: androidx.work.ForegroundInfo;
+
+        $r5 := @parameter4: android.content.Context;
+
+        r0.<androidx.work.impl.utils.WorkForegroundUpdater$1: androidx.work.impl.utils.WorkForegroundUpdater this$0> = $r1;
+
+        r0.<androidx.work.impl.utils.WorkForegroundUpdater$1: androidx.work.impl.utils.futures.SettableFuture val$future> = $r2;
+
+        r0.<androidx.work.impl.utils.WorkForegroundUpdater$1: java.util.UUID val$id> = $r3;
+
+        r0.<androidx.work.impl.utils.WorkForegroundUpdater$1: androidx.work.ForegroundInfo val$foregroundInfo> = $r4;
+
+        r0.<androidx.work.impl.utils.WorkForegroundUpdater$1: android.content.Context val$context> = $r5;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        java.lang.Throwable r12;
+        android.content.Context r9;
+        java.lang.IllegalStateException $r11;
+        androidx.work.impl.utils.WorkForegroundUpdater r4;
+        androidx.work.impl.model.WorkSpecDao r5;
+        androidx.work.impl.utils.WorkForegroundUpdater$1 r0;
+        android.content.Intent $r10;
+        java.util.UUID r2;
+        androidx.work.impl.foreground.ForegroundProcessor r7;
+        androidx.work.ForegroundInfo $r8;
+        androidx.work.WorkInfo$State $r6;
+        androidx.work.impl.utils.futures.SettableFuture r1;
+        java.lang.String $r3;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.utils.WorkForegroundUpdater$1;
+
+     label01:
+        r1 = r0.<androidx.work.impl.utils.WorkForegroundUpdater$1: androidx.work.impl.utils.futures.SettableFuture val$future>;
+
+        $z0 = virtualinvoke r1.<androidx.work.impl.utils.futures.SettableFuture: boolean isCancelled()>();
+
+     label02:
+        if $z0 != 0 goto label10;
+
+     label03:
+        r2 = r0.<androidx.work.impl.utils.WorkForegroundUpdater$1: java.util.UUID val$id>;
+
+        $r3 = virtualinvoke r2.<java.util.UUID: java.lang.String toString()>();
+
+        r4 = r0.<androidx.work.impl.utils.WorkForegroundUpdater$1: androidx.work.impl.utils.WorkForegroundUpdater this$0>;
+
+        r5 = r4.<androidx.work.impl.utils.WorkForegroundUpdater: androidx.work.impl.model.WorkSpecDao mWorkSpecDao>;
+
+        $r6 = interfaceinvoke r5.<androidx.work.impl.model.WorkSpecDao: androidx.work.WorkInfo$State getState(java.lang.String)>($r3);
+
+     label04:
+        if $r6 == null goto label09;
+
+     label05:
+        $z0 = virtualinvoke $r6.<androidx.work.WorkInfo$State: boolean isFinished()>();
+
+     label06:
+        if $z0 != 0 goto label09;
+
+     label07:
+        r4 = r0.<androidx.work.impl.utils.WorkForegroundUpdater$1: androidx.work.impl.utils.WorkForegroundUpdater this$0>;
+
+        r7 = r4.<androidx.work.impl.utils.WorkForegroundUpdater: androidx.work.impl.foreground.ForegroundProcessor mForegroundProcessor>;
+
+        $r8 = r0.<androidx.work.impl.utils.WorkForegroundUpdater$1: androidx.work.ForegroundInfo val$foregroundInfo>;
+
+        interfaceinvoke r7.<androidx.work.impl.foreground.ForegroundProcessor: void startForeground(java.lang.String,androidx.work.ForegroundInfo)>($r3, $r8);
+
+        r9 = r0.<androidx.work.impl.utils.WorkForegroundUpdater$1: android.content.Context val$context>;
+
+        $r8 = r0.<androidx.work.impl.utils.WorkForegroundUpdater$1: androidx.work.ForegroundInfo val$foregroundInfo>;
+
+        $r10 = staticinvoke <androidx.work.impl.foreground.SystemForegroundDispatcher: android.content.Intent createNotifyIntent(android.content.Context,java.lang.String,androidx.work.ForegroundInfo)>(r9, $r3, $r8);
+
+        r9 = r0.<androidx.work.impl.utils.WorkForegroundUpdater$1: android.content.Context val$context>;
+
+        virtualinvoke r9.<android.content.Context: android.content.ComponentName startService(android.content.Intent)>($r10);
+
+     label08:
+        goto label10;
+
+     label09:
+        $r11 = new java.lang.IllegalStateException;
+
+        specialinvoke $r11.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Calls to setForegroundAsync() must complete before a ListenableWorker signals completion of work by returning an instance of Result.");
+
+        throw $r11;
+
+     label10:
+        r1 = r0.<androidx.work.impl.utils.WorkForegroundUpdater$1: androidx.work.impl.utils.futures.SettableFuture val$future>;
+
+        virtualinvoke r1.<androidx.work.impl.utils.futures.SettableFuture: boolean set(java.lang.Object)>(null);
+
+     label11:
+        return;
+
+     label12:
+        r12 := @caughtexception;
+
+        r1 = r0.<androidx.work.impl.utils.WorkForegroundUpdater$1: androidx.work.impl.utils.futures.SettableFuture val$future>;
+
+        virtualinvoke r1.<androidx.work.impl.utils.futures.SettableFuture: boolean setException(java.lang.Throwable)>(r12);
+
+        return;
+
+        catch java.lang.Throwable from label01 to label02 with label12;
+        catch java.lang.Throwable from label03 to label04 with label12;
+        catch java.lang.Throwable from label05 to label06 with label12;
+        catch java.lang.Throwable from label07 to label08 with label12;
+        catch java.lang.Throwable from label09 to label11 with label12;
+    }
+}

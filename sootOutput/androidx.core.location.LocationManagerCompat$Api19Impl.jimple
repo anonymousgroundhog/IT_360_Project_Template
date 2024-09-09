@@ -1,0 +1,312 @@
+class androidx.core.location.LocationManagerCompat$Api19Impl extends java.lang.Object
+{
+    private static java.lang.Class sLocationRequestClass;
+    private static java.lang.reflect.Method sRequestLocationUpdatesLooperMethod;
+
+    private void <init>()
+    {
+        androidx.core.location.LocationManagerCompat$Api19Impl r0;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$Api19Impl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static boolean tryRequestLocationUpdates(android.location.LocationManager, java.lang.String, androidx.core.location.LocationRequestCompat, androidx.core.location.LocationListenerCompat, android.os.Looper)
+    {
+        java.lang.Object[] $r10;
+        java.lang.NoSuchMethodException r15;
+        androidx.core.location.LocationRequestCompat $r2;
+        android.os.Looper $r4;
+        java.lang.String $r1;
+        androidx.core.location.LocationListenerCompat $r3;
+        java.lang.reflect.Method r7;
+        java.lang.UnsupportedOperationException r11;
+        java.lang.IllegalAccessException r13;
+        java.lang.Class[] $r5;
+        android.location.LocationRequest $r9;
+        java.lang.reflect.InvocationTargetException r14;
+        java.lang.Class r6, $r8;
+        java.lang.ClassNotFoundException r12;
+        android.location.LocationManager $r0;
+
+        $r0 := @parameter0: android.location.LocationManager;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 := @parameter2: androidx.core.location.LocationRequestCompat;
+
+        $r3 := @parameter3: androidx.core.location.LocationListenerCompat;
+
+        $r4 := @parameter4: android.os.Looper;
+
+        r6 = <androidx.core.location.LocationManagerCompat$Api19Impl: java.lang.Class sLocationRequestClass>;
+
+        if r6 != null goto label03;
+
+     label01:
+        r6 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("android.location.LocationRequest");
+
+     label02:
+        <androidx.core.location.LocationManagerCompat$Api19Impl: java.lang.Class sLocationRequestClass> = r6;
+
+     label03:
+        r7 = <androidx.core.location.LocationManagerCompat$Api19Impl: java.lang.reflect.Method sRequestLocationUpdatesLooperMethod>;
+
+        if r7 != null goto label07;
+
+        r6 = class "Landroid/location/LocationManager;";
+
+        $r5 = newarray (java.lang.Class)[3];
+
+        $r8 = <androidx.core.location.LocationManagerCompat$Api19Impl: java.lang.Class sLocationRequestClass>;
+
+        $r5[0] = $r8;
+
+        $r5[1] = class "Landroid/location/LocationListener;";
+
+        $r5[2] = class "Landroid/os/Looper;";
+
+     label04:
+        r7 = virtualinvoke r6.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("requestLocationUpdates", $r5);
+
+     label05:
+        <androidx.core.location.LocationManagerCompat$Api19Impl: java.lang.reflect.Method sRequestLocationUpdatesLooperMethod> = r7;
+
+        r7 = <androidx.core.location.LocationManagerCompat$Api19Impl: java.lang.reflect.Method sRequestLocationUpdatesLooperMethod>;
+
+     label06:
+        virtualinvoke r7.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label07:
+        $r9 = virtualinvoke $r2.<androidx.core.location.LocationRequestCompat: android.location.LocationRequest toLocationRequest(java.lang.String)>($r1);
+
+     label08:
+        if $r9 == null goto label11;
+
+        r7 = <androidx.core.location.LocationManagerCompat$Api19Impl: java.lang.reflect.Method sRequestLocationUpdatesLooperMethod>;
+
+        $r10 = newarray (java.lang.Object)[3];
+
+        $r10[0] = $r9;
+
+        $r10[1] = $r3;
+
+        $r10[2] = $r4;
+
+     label09:
+        virtualinvoke r7.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r0, $r10);
+
+     label10:
+        return 1;
+
+     label11:
+        return 0;
+
+     label12:
+        r11 := @caughtexception;
+
+        return 0;
+
+     label13:
+        r12 := @caughtexception;
+
+        return 0;
+
+     label14:
+        r13 := @caughtexception;
+
+        return 0;
+
+     label15:
+        r14 := @caughtexception;
+
+        return 0;
+
+     label16:
+        r15 := @caughtexception;
+
+        return 0;
+
+        catch java.lang.NoSuchMethodException from label01 to label02 with label16;
+        catch java.lang.NoSuchMethodException from label04 to label05 with label16;
+        catch java.lang.NoSuchMethodException from label06 to label08 with label16;
+        catch java.lang.NoSuchMethodException from label09 to label10 with label16;
+        catch java.lang.reflect.InvocationTargetException from label01 to label02 with label15;
+        catch java.lang.reflect.InvocationTargetException from label04 to label05 with label15;
+        catch java.lang.reflect.InvocationTargetException from label06 to label08 with label15;
+        catch java.lang.reflect.InvocationTargetException from label09 to label10 with label15;
+        catch java.lang.IllegalAccessException from label01 to label02 with label14;
+        catch java.lang.IllegalAccessException from label04 to label05 with label14;
+        catch java.lang.IllegalAccessException from label06 to label08 with label14;
+        catch java.lang.IllegalAccessException from label09 to label10 with label14;
+        catch java.lang.ClassNotFoundException from label01 to label02 with label13;
+        catch java.lang.ClassNotFoundException from label04 to label05 with label13;
+        catch java.lang.ClassNotFoundException from label06 to label08 with label13;
+        catch java.lang.ClassNotFoundException from label09 to label10 with label13;
+        catch java.lang.UnsupportedOperationException from label01 to label02 with label12;
+        catch java.lang.UnsupportedOperationException from label04 to label05 with label12;
+        catch java.lang.UnsupportedOperationException from label06 to label08 with label12;
+        catch java.lang.UnsupportedOperationException from label09 to label10 with label12;
+    }
+
+    static boolean tryRequestLocationUpdates(android.location.LocationManager, java.lang.String, androidx.core.location.LocationRequestCompat, androidx.core.location.LocationManagerCompat$LocationListenerTransport)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r3;
+        java.lang.Throwable $r12;
+        java.lang.Object[] $r10;
+        java.lang.NoSuchMethodException r17;
+        androidx.core.location.LocationRequestCompat r2;
+        android.os.Looper $r11;
+        java.lang.String r1;
+        java.lang.reflect.Method r5;
+        java.util.WeakHashMap $r9;
+        java.lang.UnsupportedOperationException r13;
+        java.lang.IllegalAccessException r15;
+        java.lang.Class[] $r6;
+        android.location.LocationRequest $r8;
+        java.lang.reflect.InvocationTargetException r16;
+        java.lang.Class r4, $r7;
+        java.lang.ClassNotFoundException r14;
+        android.location.LocationManager r0;
+
+        r0 := @parameter0: android.location.LocationManager;
+
+        r1 := @parameter1: java.lang.String;
+
+        r2 := @parameter2: androidx.core.location.LocationRequestCompat;
+
+        r3 := @parameter3: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        r4 = <androidx.core.location.LocationManagerCompat$Api19Impl: java.lang.Class sLocationRequestClass>;
+
+        if r4 != null goto label03;
+
+     label01:
+        r4 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("android.location.LocationRequest");
+
+     label02:
+        <androidx.core.location.LocationManagerCompat$Api19Impl: java.lang.Class sLocationRequestClass> = r4;
+
+     label03:
+        r5 = <androidx.core.location.LocationManagerCompat$Api19Impl: java.lang.reflect.Method sRequestLocationUpdatesLooperMethod>;
+
+        if r5 != null goto label07;
+
+        r4 = class "Landroid/location/LocationManager;";
+
+        $r6 = newarray (java.lang.Class)[3];
+
+        $r7 = <androidx.core.location.LocationManagerCompat$Api19Impl: java.lang.Class sLocationRequestClass>;
+
+        $r6[0] = $r7;
+
+        $r6[1] = class "Landroid/location/LocationListener;";
+
+        $r6[2] = class "Landroid/os/Looper;";
+
+     label04:
+        r5 = virtualinvoke r4.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("requestLocationUpdates", $r6);
+
+     label05:
+        <androidx.core.location.LocationManagerCompat$Api19Impl: java.lang.reflect.Method sRequestLocationUpdatesLooperMethod> = r5;
+
+        r5 = <androidx.core.location.LocationManagerCompat$Api19Impl: java.lang.reflect.Method sRequestLocationUpdatesLooperMethod>;
+
+     label06:
+        virtualinvoke r5.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label07:
+        $r8 = virtualinvoke r2.<androidx.core.location.LocationRequestCompat: android.location.LocationRequest toLocationRequest(java.lang.String)>(r1);
+
+     label08:
+        if $r8 == null goto label13;
+
+        $r9 = <androidx.core.location.LocationManagerCompat: java.util.WeakHashMap sLocationListeners>;
+
+        entermonitor $r9;
+
+     label09:
+        r5 = <androidx.core.location.LocationManagerCompat$Api19Impl: java.lang.reflect.Method sRequestLocationUpdatesLooperMethod>;
+
+        $r10 = newarray (java.lang.Object)[3];
+
+        $r10[0] = $r8;
+
+        $r10[1] = r3;
+
+        $r11 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        $r10[2] = $r11;
+
+        virtualinvoke r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r0, $r10);
+
+        staticinvoke <androidx.core.location.LocationManagerCompat: void registerLocationListenerTransport(android.location.LocationManager,androidx.core.location.LocationManagerCompat$LocationListenerTransport)>(r0, r3);
+
+        exitmonitor $r9;
+
+     label10:
+        return 1;
+
+     label11:
+        $r12 := @caughtexception;
+
+        exitmonitor $r9;
+
+     label12:
+        throw $r12;
+
+     label13:
+        return 0;
+
+     label14:
+        r13 := @caughtexception;
+
+        return 0;
+
+     label15:
+        r14 := @caughtexception;
+
+        return 0;
+
+     label16:
+        r15 := @caughtexception;
+
+        return 0;
+
+     label17:
+        r16 := @caughtexception;
+
+        return 0;
+
+     label18:
+        r17 := @caughtexception;
+
+        return 0;
+
+        catch java.lang.NoSuchMethodException from label01 to label02 with label18;
+        catch java.lang.NoSuchMethodException from label04 to label05 with label18;
+        catch java.lang.NoSuchMethodException from label06 to label08 with label18;
+        catch java.lang.reflect.InvocationTargetException from label01 to label02 with label17;
+        catch java.lang.reflect.InvocationTargetException from label04 to label05 with label17;
+        catch java.lang.reflect.InvocationTargetException from label06 to label08 with label17;
+        catch java.lang.IllegalAccessException from label01 to label02 with label16;
+        catch java.lang.IllegalAccessException from label04 to label05 with label16;
+        catch java.lang.IllegalAccessException from label06 to label08 with label16;
+        catch java.lang.ClassNotFoundException from label01 to label02 with label15;
+        catch java.lang.ClassNotFoundException from label04 to label05 with label15;
+        catch java.lang.ClassNotFoundException from label06 to label08 with label15;
+        catch java.lang.UnsupportedOperationException from label01 to label02 with label14;
+        catch java.lang.UnsupportedOperationException from label04 to label05 with label14;
+        catch java.lang.UnsupportedOperationException from label06 to label08 with label14;
+        catch java.lang.Throwable from label09 to label10 with label11;
+        catch java.lang.Throwable from label11 to label12 with label11;
+        catch java.lang.NoSuchMethodException from label12 to label13 with label18;
+        catch java.lang.reflect.InvocationTargetException from label12 to label13 with label17;
+        catch java.lang.IllegalAccessException from label12 to label13 with label16;
+        catch java.lang.ClassNotFoundException from label12 to label13 with label15;
+        catch java.lang.UnsupportedOperationException from label12 to label13 with label14;
+    }
+}

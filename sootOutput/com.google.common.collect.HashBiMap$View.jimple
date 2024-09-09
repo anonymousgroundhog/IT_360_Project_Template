@@ -1,0 +1,65 @@
+abstract class com.google.common.collect.HashBiMap$View extends java.util.AbstractSet
+{
+    final com.google.common.collect.HashBiMap biMap;
+
+    void <init>(com.google.common.collect.HashBiMap)
+    {
+        com.google.common.collect.HashBiMap$View r0;
+        com.google.common.collect.HashBiMap r1;
+
+        r0 := @this: com.google.common.collect.HashBiMap$View;
+
+        r1 := @parameter0: com.google.common.collect.HashBiMap;
+
+        specialinvoke r0.<java.util.AbstractSet: void <init>()>();
+
+        r0.<com.google.common.collect.HashBiMap$View: com.google.common.collect.HashBiMap biMap> = r1;
+
+        return;
+    }
+
+    public void clear()
+    {
+        com.google.common.collect.HashBiMap$View r0;
+        com.google.common.collect.HashBiMap $r1;
+
+        r0 := @this: com.google.common.collect.HashBiMap$View;
+
+        $r1 = r0.<com.google.common.collect.HashBiMap$View: com.google.common.collect.HashBiMap biMap>;
+
+        virtualinvoke $r1.<com.google.common.collect.HashBiMap: void clear()>();
+
+        return;
+    }
+
+    abstract java.lang.Object forEntry(int);
+
+    public java.util.Iterator iterator()
+    {
+        com.google.common.collect.HashBiMap$View r0;
+        com.google.common.collect.HashBiMap$View$1 $r1;
+
+        r0 := @this: com.google.common.collect.HashBiMap$View;
+
+        $r1 = new com.google.common.collect.HashBiMap$View$1;
+
+        specialinvoke $r1.<com.google.common.collect.HashBiMap$View$1: void <init>(com.google.common.collect.HashBiMap$View)>(r0);
+
+        return $r1;
+    }
+
+    public int size()
+    {
+        com.google.common.collect.HashBiMap$View r0;
+        int i0;
+        com.google.common.collect.HashBiMap $r1;
+
+        r0 := @this: com.google.common.collect.HashBiMap$View;
+
+        $r1 = r0.<com.google.common.collect.HashBiMap$View: com.google.common.collect.HashBiMap biMap>;
+
+        i0 = $r1.<com.google.common.collect.HashBiMap: int size>;
+
+        return i0;
+    }
+}

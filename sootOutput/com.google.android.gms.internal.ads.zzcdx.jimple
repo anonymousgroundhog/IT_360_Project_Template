@@ -1,0 +1,74 @@
+public final class com.google.android.gms.internal.ads.zzcdx extends java.lang.Object implements com.google.android.gms.internal.ads.zzcea
+{
+    public final byte[] zza;
+
+    public void <init>(byte[])
+    {
+        byte[] $r1;
+        com.google.android.gms.internal.ads.zzcdx r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcdx;
+
+        $r1 := @parameter0: byte[];
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzcdx: byte[] zza> = $r1;
+
+        return;
+    }
+
+    public final void zza(android.util.JsonWriter)
+    {
+        byte[] $r3;
+        android.util.JsonWriter $r1, $r2;
+        int $i0;
+        long $l1;
+        com.google.android.gms.internal.ads.zzcdx r0;
+        java.lang.String $r4;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcdx;
+
+        $r1 := @parameter0: android.util.JsonWriter;
+
+        $i0 = <com.google.android.gms.internal.ads.zzceb: int zza>;
+
+        $r2 = virtualinvoke $r1.<android.util.JsonWriter: android.util.JsonWriter name(java.lang.String)>("params");
+
+        virtualinvoke $r2.<android.util.JsonWriter: android.util.JsonWriter beginObject()>();
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzcdx: byte[] zza>;
+
+        $i0 = lengthof $r3;
+
+        $r4 = staticinvoke <com.google.android.gms.common.util.Base64Utils: java.lang.String encode(byte[])>($r3);
+
+        if $i0 >= 10000 goto label1;
+
+        $r2 = virtualinvoke $r1.<android.util.JsonWriter: android.util.JsonWriter name(java.lang.String)>("body");
+
+        virtualinvoke $r2.<android.util.JsonWriter: android.util.JsonWriter value(java.lang.String)>($r4);
+
+        goto label2;
+
+     label1:
+        $r4 = staticinvoke <com.google.android.gms.internal.ads.zzcdv: java.lang.String zze(java.lang.String)>($r4);
+
+        if $r4 == null goto label2;
+
+        $r2 = virtualinvoke $r1.<android.util.JsonWriter: android.util.JsonWriter name(java.lang.String)>("bodydigest");
+
+        virtualinvoke $r2.<android.util.JsonWriter: android.util.JsonWriter value(java.lang.String)>($r4);
+
+     label2:
+        $r2 = virtualinvoke $r1.<android.util.JsonWriter: android.util.JsonWriter name(java.lang.String)>("bodylength");
+
+        $l1 = (long) $i0;
+
+        virtualinvoke $r2.<android.util.JsonWriter: android.util.JsonWriter value(long)>($l1);
+
+        virtualinvoke $r1.<android.util.JsonWriter: android.util.JsonWriter endObject()>();
+
+        return;
+    }
+}

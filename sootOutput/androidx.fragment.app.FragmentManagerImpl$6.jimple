@@ -1,0 +1,51 @@
+class androidx.fragment.app.FragmentManagerImpl$6 extends androidx.fragment.app.FragmentFactory
+{
+    final androidx.fragment.app.FragmentManagerImpl this$0;
+
+    void <init>(androidx.fragment.app.FragmentManagerImpl)
+    {
+        androidx.fragment.app.FragmentManagerImpl $r1;
+        androidx.fragment.app.FragmentManagerImpl$6 r0;
+
+        r0 := @this: androidx.fragment.app.FragmentManagerImpl$6;
+
+        $r1 := @parameter0: androidx.fragment.app.FragmentManagerImpl;
+
+        r0.<androidx.fragment.app.FragmentManagerImpl$6: androidx.fragment.app.FragmentManagerImpl this$0> = $r1;
+
+        specialinvoke r0.<androidx.fragment.app.FragmentFactory: void <init>()>();
+
+        return;
+    }
+
+    public androidx.fragment.app.Fragment instantiate(java.lang.ClassLoader, java.lang.String)
+    {
+        androidx.fragment.app.FragmentManagerImpl $r3;
+        android.content.Context $r6;
+        androidx.fragment.app.FragmentHostCallback $r4, $r5;
+        androidx.fragment.app.FragmentManagerImpl$6 r0;
+        androidx.fragment.app.Fragment $r7;
+        java.lang.ClassLoader $r1;
+        java.lang.String $r2;
+
+        r0 := @this: androidx.fragment.app.FragmentManagerImpl$6;
+
+        $r1 := @parameter0: java.lang.ClassLoader;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = r0.<androidx.fragment.app.FragmentManagerImpl$6: androidx.fragment.app.FragmentManagerImpl this$0>;
+
+        $r4 = $r3.<androidx.fragment.app.FragmentManagerImpl: androidx.fragment.app.FragmentHostCallback mHost>;
+
+        $r3 = r0.<androidx.fragment.app.FragmentManagerImpl$6: androidx.fragment.app.FragmentManagerImpl this$0>;
+
+        $r5 = $r3.<androidx.fragment.app.FragmentManagerImpl: androidx.fragment.app.FragmentHostCallback mHost>;
+
+        $r6 = virtualinvoke $r5.<androidx.fragment.app.FragmentHostCallback: android.content.Context getContext()>();
+
+        $r7 = virtualinvoke $r4.<androidx.fragment.app.FragmentHostCallback: androidx.fragment.app.Fragment instantiate(android.content.Context,java.lang.String,android.os.Bundle)>($r6, $r2, null);
+
+        return $r7;
+    }
+}

@@ -1,0 +1,91 @@
+class androidx.room.InvalidationLiveDataContainer extends java.lang.Object
+{
+    private final androidx.room.RoomDatabase mDatabase;
+    final java.util.Set mLiveDataSet;
+
+    void <init>(androidx.room.RoomDatabase)
+    {
+        java.util.IdentityHashMap $r3;
+        androidx.room.RoomDatabase $r1;
+        androidx.room.InvalidationLiveDataContainer r0;
+        java.util.Set $r2;
+
+        r0 := @this: androidx.room.InvalidationLiveDataContainer;
+
+        $r1 := @parameter0: androidx.room.RoomDatabase;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = new java.util.IdentityHashMap;
+
+        specialinvoke $r3.<java.util.IdentityHashMap: void <init>()>();
+
+        $r2 = staticinvoke <java.util.Collections: java.util.Set newSetFromMap(java.util.Map)>($r3);
+
+        r0.<androidx.room.InvalidationLiveDataContainer: java.util.Set mLiveDataSet> = $r2;
+
+        r0.<androidx.room.InvalidationLiveDataContainer: androidx.room.RoomDatabase mDatabase> = $r1;
+
+        return;
+    }
+
+    androidx.lifecycle.LiveData create(java.lang.String[], boolean, java.util.concurrent.Callable)
+    {
+        androidx.room.RoomDatabase $r3;
+        androidx.room.InvalidationLiveDataContainer r0;
+        java.lang.String[] $r1;
+        java.util.concurrent.Callable r2;
+        androidx.room.RoomTrackingLiveData $r4;
+        boolean $z0;
+
+        r0 := @this: androidx.room.InvalidationLiveDataContainer;
+
+        $r1 := @parameter0: java.lang.String[];
+
+        $z0 := @parameter1: boolean;
+
+        r2 := @parameter2: java.util.concurrent.Callable;
+
+        $r4 = new androidx.room.RoomTrackingLiveData;
+
+        $r3 = r0.<androidx.room.InvalidationLiveDataContainer: androidx.room.RoomDatabase mDatabase>;
+
+        specialinvoke $r4.<androidx.room.RoomTrackingLiveData: void <init>(androidx.room.RoomDatabase,androidx.room.InvalidationLiveDataContainer,boolean,java.util.concurrent.Callable,java.lang.String[])>($r3, r0, $z0, r2, $r1);
+
+        return $r4;
+    }
+
+    void onActive(androidx.lifecycle.LiveData)
+    {
+        androidx.lifecycle.LiveData $r1;
+        java.util.Set $r2;
+        androidx.room.InvalidationLiveDataContainer r0;
+
+        r0 := @this: androidx.room.InvalidationLiveDataContainer;
+
+        $r1 := @parameter0: androidx.lifecycle.LiveData;
+
+        $r2 = r0.<androidx.room.InvalidationLiveDataContainer: java.util.Set mLiveDataSet>;
+
+        interfaceinvoke $r2.<java.util.Set: boolean add(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    void onInactive(androidx.lifecycle.LiveData)
+    {
+        androidx.lifecycle.LiveData $r1;
+        java.util.Set $r2;
+        androidx.room.InvalidationLiveDataContainer r0;
+
+        r0 := @this: androidx.room.InvalidationLiveDataContainer;
+
+        $r1 := @parameter0: androidx.lifecycle.LiveData;
+
+        $r2 = r0.<androidx.room.InvalidationLiveDataContainer: java.util.Set mLiveDataSet>;
+
+        interfaceinvoke $r2.<java.util.Set: boolean remove(java.lang.Object)>($r1);
+
+        return;
+    }
+}

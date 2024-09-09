@@ -1,0 +1,37 @@
+final class com.google.android.gms.common.internal.zzj extends java.lang.Object
+{
+    static final java.util.concurrent.ExecutorService zza;
+
+    static void <clinit>()
+    {
+        java.util.concurrent.TimeUnit $r0;
+        com.google.android.gms.common.util.concurrent.NamedThreadFactory $r2;
+        java.util.concurrent.ThreadPoolExecutor $r3;
+        java.util.concurrent.LinkedBlockingQueue $r1;
+        java.util.concurrent.ExecutorService $r4;
+
+        staticinvoke <com.google.android.gms.internal.common.zzh: com.google.android.gms.internal.common.zze zza()>();
+
+        $r2 = new com.google.android.gms.common.util.concurrent.NamedThreadFactory;
+
+        specialinvoke $r2.<com.google.android.gms.common.util.concurrent.NamedThreadFactory: void <init>(java.lang.String)>("CallbackExecutor");
+
+        $r3 = new java.util.concurrent.ThreadPoolExecutor;
+
+        $r0 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $r1 = new java.util.concurrent.LinkedBlockingQueue;
+
+        specialinvoke $r1.<java.util.concurrent.LinkedBlockingQueue: void <init>()>();
+
+        specialinvoke $r3.<java.util.concurrent.ThreadPoolExecutor: void <init>(int,int,long,java.util.concurrent.TimeUnit,java.util.concurrent.BlockingQueue,java.util.concurrent.ThreadFactory)>(1, 1, 60L, $r0, $r1, $r2);
+
+        virtualinvoke $r3.<java.util.concurrent.ThreadPoolExecutor: void allowCoreThreadTimeOut(boolean)>(1);
+
+        $r4 = staticinvoke <java.util.concurrent.Executors: java.util.concurrent.ExecutorService unconfigurableExecutorService(java.util.concurrent.ExecutorService)>($r3);
+
+        <com.google.android.gms.common.internal.zzj: java.util.concurrent.ExecutorService zza> = $r4;
+
+        return;
+    }
+}

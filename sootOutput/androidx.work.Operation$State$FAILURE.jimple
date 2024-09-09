@@ -1,0 +1,54 @@
+public final class androidx.work.Operation$State$FAILURE extends androidx.work.Operation$State
+{
+    private final java.lang.Throwable mThrowable;
+
+    public void <init>(java.lang.Throwable)
+    {
+        java.lang.Throwable $r1;
+        androidx.work.Operation$State$FAILURE r0;
+
+        r0 := @this: androidx.work.Operation$State$FAILURE;
+
+        $r1 := @parameter0: java.lang.Throwable;
+
+        specialinvoke r0.<androidx.work.Operation$State: void <init>()>();
+
+        r0.<androidx.work.Operation$State$FAILURE: java.lang.Throwable mThrowable> = $r1;
+
+        return;
+    }
+
+    public java.lang.Throwable getThrowable()
+    {
+        java.lang.Throwable r1;
+        androidx.work.Operation$State$FAILURE r0;
+
+        r0 := @this: androidx.work.Operation$State$FAILURE;
+
+        r1 = r0.<androidx.work.Operation$State$FAILURE: java.lang.Throwable mThrowable>;
+
+        return r1;
+    }
+
+    public java.lang.String toString()
+    {
+        java.lang.Throwable $r1;
+        androidx.work.Operation$State$FAILURE r0;
+        java.lang.Object[] $r3;
+        java.lang.String $r2;
+
+        r0 := @this: androidx.work.Operation$State$FAILURE;
+
+        $r1 = r0.<androidx.work.Operation$State$FAILURE: java.lang.Throwable mThrowable>;
+
+        $r2 = virtualinvoke $r1.<java.lang.Throwable: java.lang.String getMessage()>();
+
+        $r3 = newarray (java.lang.Object)[1];
+
+        $r3[0] = $r2;
+
+        $r2 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("FAILURE (%s)", $r3);
+
+        return $r2;
+    }
+}

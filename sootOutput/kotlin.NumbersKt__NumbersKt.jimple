@@ -1,0 +1,328 @@
+class kotlin.NumbersKt__NumbersKt extends kotlin.NumbersKt__NumbersJVMKt
+{
+
+    public void <init>()
+    {
+        kotlin.NumbersKt__NumbersKt r0;
+
+        r0 := @this: kotlin.NumbersKt__NumbersKt;
+
+        specialinvoke r0.<kotlin.NumbersKt__NumbersJVMKt: void <init>()>();
+
+        return;
+    }
+
+    private static final int countLeadingZeroBits(byte)
+    {
+        int $i1;
+        short $s2;
+        byte $b0;
+
+        $b0 := @parameter0: byte;
+
+        $s2 = (short) $b0;
+
+        $s2 = $s2 & 255;
+
+        $i1 = (int) $s2;
+
+        $i1 = staticinvoke <java.lang.Integer: int numberOfLeadingZeros(int)>($i1);
+
+        $i1 = $i1 + -24;
+
+        return $i1;
+    }
+
+    private static final int countLeadingZeroBits(short)
+    {
+        int $i1, $i2;
+        short $s0;
+
+        $s0 := @parameter0: short;
+
+        $i2 = (int) $s0;
+
+        $i1 = 65535 & $i2;
+
+        $i1 = staticinvoke <java.lang.Integer: int numberOfLeadingZeros(int)>($i1);
+
+        $i1 = $i1 + -16;
+
+        return $i1;
+    }
+
+    private static final int countOneBits(byte)
+    {
+        int $i1;
+        short $s2;
+        byte $b0;
+
+        $b0 := @parameter0: byte;
+
+        $s2 = (short) $b0;
+
+        $s2 = $s2 & 255;
+
+        $i1 = (int) $s2;
+
+        $i1 = staticinvoke <java.lang.Integer: int bitCount(int)>($i1);
+
+        return $i1;
+    }
+
+    private static final int countOneBits(short)
+    {
+        int $i1, $i2;
+        short $s0;
+
+        $s0 := @parameter0: short;
+
+        $i2 = (int) $s0;
+
+        $i1 = 65535 & $i2;
+
+        $i1 = staticinvoke <java.lang.Integer: int bitCount(int)>($i1);
+
+        return $i1;
+    }
+
+    private static final int countTrailingZeroBits(byte)
+    {
+        int $i1;
+        short $s2;
+        byte $b0;
+
+        $b0 := @parameter0: byte;
+
+        $s2 = (short) $b0;
+
+        $s2 = $s2 | 256;
+
+        $i1 = (int) $s2;
+
+        $i1 = staticinvoke <java.lang.Integer: int numberOfTrailingZeros(int)>($i1);
+
+        return $i1;
+    }
+
+    private static final int countTrailingZeroBits(short)
+    {
+        int $i1;
+        short $s0;
+
+        $s0 := @parameter0: short;
+
+        $i1 = (int) $s0;
+
+        $i1 = 65536 | $i1;
+
+        $i1 = staticinvoke <java.lang.Integer: int numberOfTrailingZeros(int)>($i1);
+
+        return $i1;
+    }
+
+    public static final byte rotateLeft(byte, int)
+    {
+        short $s3;
+        byte $b0;
+        int $i1, $i2, $i4;
+
+        $b0 := @parameter0: byte;
+
+        $i1 := @parameter1: int;
+
+        $i2 = $i1 & 7;
+
+        $i4 = (int) $b0;
+
+        $i2 = $i4 << $i2;
+
+        $s3 = (short) $b0;
+
+        $s3 = $s3 & 255;
+
+        $i1 = $i1 & 7;
+
+        $i1 = 8 - $i1;
+
+        $i4 = (int) $s3;
+
+        $i1 = $i4 >>> $i1;
+
+        $i1 = $i2 | $i1;
+
+        $b0 = (byte) $i1;
+
+        return $b0;
+    }
+
+    public static final short rotateLeft(short, int)
+    {
+        short $s0;
+        int $i1, $i2, $i3, $i4;
+
+        $s0 := @parameter0: short;
+
+        $i1 := @parameter1: int;
+
+        $i2 = $i1 & 15;
+
+        $i3 = (int) $s0;
+
+        $i2 = $i3 << $i2;
+
+        $i4 = (int) $s0;
+
+        $i3 = 65535 & $i4;
+
+        $i1 = $i1 & 15;
+
+        $i1 = 16 - $i1;
+
+        $i1 = $i3 >>> $i1;
+
+        $i1 = $i2 | $i1;
+
+        $s0 = (short) $i1;
+
+        return $s0;
+    }
+
+    public static final byte rotateRight(byte, int)
+    {
+        short $s3;
+        byte $b0;
+        int $i1, $i2, $i4;
+
+        $b0 := @parameter0: byte;
+
+        $i1 := @parameter1: int;
+
+        $i2 = $i1 & 7;
+
+        $i2 = 8 - $i2;
+
+        $i4 = (int) $b0;
+
+        $i2 = $i4 << $i2;
+
+        $s3 = (short) $b0;
+
+        $s3 = $s3 & 255;
+
+        $i1 = $i1 & 7;
+
+        $i4 = (int) $s3;
+
+        $i1 = $i4 >>> $i1;
+
+        $i1 = $i2 | $i1;
+
+        $b0 = (byte) $i1;
+
+        return $b0;
+    }
+
+    public static final short rotateRight(short, int)
+    {
+        short $s0;
+        int $i1, $i2, $i3, $i4;
+
+        $s0 := @parameter0: short;
+
+        $i1 := @parameter1: int;
+
+        $i2 = $i1 & 15;
+
+        $i2 = 16 - $i2;
+
+        $i3 = (int) $s0;
+
+        $i2 = $i3 << $i2;
+
+        $i4 = (int) $s0;
+
+        $i3 = 65535 & $i4;
+
+        $i1 = $i1 & 15;
+
+        $i1 = $i3 >>> $i1;
+
+        $i1 = $i2 | $i1;
+
+        $s0 = (short) $i1;
+
+        return $s0;
+    }
+
+    private static final byte takeHighestOneBit(byte)
+    {
+        int $i1;
+        short $s2;
+        byte $b0;
+
+        $b0 := @parameter0: byte;
+
+        $s2 = (short) $b0;
+
+        $s2 = $s2 & 255;
+
+        $i1 = (int) $s2;
+
+        $i1 = staticinvoke <java.lang.Integer: int highestOneBit(int)>($i1);
+
+        $b0 = (byte) $i1;
+
+        return $b0;
+    }
+
+    private static final short takeHighestOneBit(short)
+    {
+        int $i1, $i2;
+        short $s0;
+
+        $s0 := @parameter0: short;
+
+        $i2 = (int) $s0;
+
+        $i1 = 65535 & $i2;
+
+        $i1 = staticinvoke <java.lang.Integer: int highestOneBit(int)>($i1);
+
+        $s0 = (short) $i1;
+
+        return $s0;
+    }
+
+    private static final byte takeLowestOneBit(byte)
+    {
+        int $i1;
+        byte $b0;
+
+        $b0 := @parameter0: byte;
+
+        $i1 = (int) $b0;
+
+        $i1 = staticinvoke <java.lang.Integer: int lowestOneBit(int)>($i1);
+
+        $b0 = (byte) $i1;
+
+        return $b0;
+    }
+
+    private static final short takeLowestOneBit(short)
+    {
+        int $i1;
+        short $s0;
+
+        $s0 := @parameter0: short;
+
+        $i1 = (int) $s0;
+
+        $i1 = staticinvoke <java.lang.Integer: int lowestOneBit(int)>($i1);
+
+        $s0 = (short) $i1;
+
+        return $s0;
+    }
+}

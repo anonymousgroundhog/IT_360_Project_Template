@@ -1,0 +1,292 @@
+class androidx.core.view.WindowInsetsCompat$BuilderImpl extends java.lang.Object
+{
+    private final androidx.core.view.WindowInsetsCompat mInsets;
+    androidx.core.graphics.Insets[] mInsetsTypeMask;
+
+    void <init>()
+    {
+        androidx.core.view.WindowInsetsCompat$BuilderImpl r0;
+        androidx.core.view.WindowInsetsCompat $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl;
+
+        $r1 = new androidx.core.view.WindowInsetsCompat;
+
+        specialinvoke $r1.<androidx.core.view.WindowInsetsCompat: void <init>(androidx.core.view.WindowInsetsCompat)>(null);
+
+        specialinvoke r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: void <init>(androidx.core.view.WindowInsetsCompat)>($r1);
+
+        return;
+    }
+
+    void <init>(androidx.core.view.WindowInsetsCompat)
+    {
+        androidx.core.view.WindowInsetsCompat$BuilderImpl r0;
+        androidx.core.view.WindowInsetsCompat $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl;
+
+        $r1 := @parameter0: androidx.core.view.WindowInsetsCompat;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: androidx.core.view.WindowInsetsCompat mInsets> = $r1;
+
+        return;
+    }
+
+    protected final void applyInsetTypes()
+    {
+        androidx.core.graphics.Insets[] r1;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl r0;
+        int $i0;
+        androidx.core.graphics.Insets r2, r3;
+        androidx.core.view.WindowInsetsCompat $r4;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl;
+
+        r1 = r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: androidx.core.graphics.Insets[] mInsetsTypeMask>;
+
+        if r1 == null goto label5;
+
+        r1 = r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: androidx.core.graphics.Insets[] mInsetsTypeMask>;
+
+        $i0 = staticinvoke <androidx.core.view.WindowInsetsCompat$Type: int indexOf(int)>(1);
+
+        r2 = r1[$i0];
+
+        r1 = r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: androidx.core.graphics.Insets[] mInsetsTypeMask>;
+
+        $i0 = staticinvoke <androidx.core.view.WindowInsetsCompat$Type: int indexOf(int)>(2);
+
+        r3 = r1[$i0];
+
+        if r3 != null goto label1;
+
+        $r4 = r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: androidx.core.view.WindowInsetsCompat mInsets>;
+
+        r3 = virtualinvoke $r4.<androidx.core.view.WindowInsetsCompat: androidx.core.graphics.Insets getInsets(int)>(2);
+
+     label1:
+        if r2 != null goto label2;
+
+        $r4 = r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: androidx.core.view.WindowInsetsCompat mInsets>;
+
+        r2 = virtualinvoke $r4.<androidx.core.view.WindowInsetsCompat: androidx.core.graphics.Insets getInsets(int)>(1);
+
+     label2:
+        r2 = staticinvoke <androidx.core.graphics.Insets: androidx.core.graphics.Insets max(androidx.core.graphics.Insets,androidx.core.graphics.Insets)>(r2, r3);
+
+        virtualinvoke r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: void setSystemWindowInsets(androidx.core.graphics.Insets)>(r2);
+
+        r1 = r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: androidx.core.graphics.Insets[] mInsetsTypeMask>;
+
+        $i0 = staticinvoke <androidx.core.view.WindowInsetsCompat$Type: int indexOf(int)>(16);
+
+        r2 = r1[$i0];
+
+        if r2 == null goto label3;
+
+        virtualinvoke r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: void setSystemGestureInsets(androidx.core.graphics.Insets)>(r2);
+
+     label3:
+        r1 = r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: androidx.core.graphics.Insets[] mInsetsTypeMask>;
+
+        $i0 = staticinvoke <androidx.core.view.WindowInsetsCompat$Type: int indexOf(int)>(32);
+
+        r2 = r1[$i0];
+
+        if r2 == null goto label4;
+
+        virtualinvoke r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: void setMandatorySystemGestureInsets(androidx.core.graphics.Insets)>(r2);
+
+     label4:
+        r1 = r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: androidx.core.graphics.Insets[] mInsetsTypeMask>;
+
+        $i0 = staticinvoke <androidx.core.view.WindowInsetsCompat$Type: int indexOf(int)>(64);
+
+        r2 = r1[$i0];
+
+        if r2 == null goto label5;
+
+        virtualinvoke r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: void setTappableElementInsets(androidx.core.graphics.Insets)>(r2);
+
+     label5:
+        return;
+    }
+
+    androidx.core.view.WindowInsetsCompat build()
+    {
+        androidx.core.view.WindowInsetsCompat$BuilderImpl r0;
+        androidx.core.view.WindowInsetsCompat r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl;
+
+        virtualinvoke r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: void applyInsetTypes()>();
+
+        r1 = r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: androidx.core.view.WindowInsetsCompat mInsets>;
+
+        return r1;
+    }
+
+    void setDisplayCutout(androidx.core.view.DisplayCutoutCompat)
+    {
+        androidx.core.view.WindowInsetsCompat$BuilderImpl r0;
+        androidx.core.view.DisplayCutoutCompat $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl;
+
+        $r1 := @parameter0: androidx.core.view.DisplayCutoutCompat;
+
+        return;
+    }
+
+    void setInsets(int, androidx.core.graphics.Insets)
+    {
+        androidx.core.graphics.Insets[] r2;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl r0;
+        int $i0, $i1, i2;
+        androidx.core.graphics.Insets $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: androidx.core.graphics.Insets;
+
+        r2 = r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: androidx.core.graphics.Insets[] mInsetsTypeMask>;
+
+        if r2 != null goto label1;
+
+        r2 = newarray (androidx.core.graphics.Insets)[9];
+
+        r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: androidx.core.graphics.Insets[] mInsetsTypeMask> = r2;
+
+     label1:
+        i2 = 1;
+
+     label2:
+        if i2 > 256 goto label5;
+
+        $i1 = $i0 & i2;
+
+        if $i1 != 0 goto label3;
+
+        goto label4;
+
+     label3:
+        r2 = r0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: androidx.core.graphics.Insets[] mInsetsTypeMask>;
+
+        $i1 = staticinvoke <androidx.core.view.WindowInsetsCompat$Type: int indexOf(int)>(i2);
+
+        r2[$i1] = $r1;
+
+     label4:
+        i2 = i2 << 1;
+
+        goto label2;
+
+     label5:
+        return;
+    }
+
+    void setInsetsIgnoringVisibility(int, androidx.core.graphics.Insets)
+    {
+        androidx.core.view.WindowInsetsCompat$BuilderImpl r0;
+        int $i0;
+        androidx.core.graphics.Insets $r1;
+        java.lang.IllegalArgumentException $r2;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: androidx.core.graphics.Insets;
+
+        if $i0 == 8 goto label1;
+
+        return;
+
+     label1:
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Ignoring visibility inset not available for IME");
+
+        throw $r2;
+    }
+
+    void setMandatorySystemGestureInsets(androidx.core.graphics.Insets)
+    {
+        androidx.core.view.WindowInsetsCompat$BuilderImpl r0;
+        androidx.core.graphics.Insets $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl;
+
+        $r1 := @parameter0: androidx.core.graphics.Insets;
+
+        return;
+    }
+
+    void setStableInsets(androidx.core.graphics.Insets)
+    {
+        androidx.core.view.WindowInsetsCompat$BuilderImpl r0;
+        androidx.core.graphics.Insets $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl;
+
+        $r1 := @parameter0: androidx.core.graphics.Insets;
+
+        return;
+    }
+
+    void setSystemGestureInsets(androidx.core.graphics.Insets)
+    {
+        androidx.core.view.WindowInsetsCompat$BuilderImpl r0;
+        androidx.core.graphics.Insets $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl;
+
+        $r1 := @parameter0: androidx.core.graphics.Insets;
+
+        return;
+    }
+
+    void setSystemWindowInsets(androidx.core.graphics.Insets)
+    {
+        androidx.core.view.WindowInsetsCompat$BuilderImpl r0;
+        androidx.core.graphics.Insets $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl;
+
+        $r1 := @parameter0: androidx.core.graphics.Insets;
+
+        return;
+    }
+
+    void setTappableElementInsets(androidx.core.graphics.Insets)
+    {
+        androidx.core.view.WindowInsetsCompat$BuilderImpl r0;
+        androidx.core.graphics.Insets $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl;
+
+        $r1 := @parameter0: androidx.core.graphics.Insets;
+
+        return;
+    }
+
+    void setVisible(int, boolean)
+    {
+        int $i0;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$BuilderImpl;
+
+        $i0 := @parameter0: int;
+
+        $z0 := @parameter1: boolean;
+
+        return;
+    }
+}

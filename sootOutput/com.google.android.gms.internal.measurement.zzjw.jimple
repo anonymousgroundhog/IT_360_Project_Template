@@ -1,0 +1,329 @@
+abstract class com.google.android.gms.internal.measurement.zzjw extends java.lang.Object
+{
+    private static final java.util.logging.Logger zza;
+    private static final java.lang.String zzb;
+
+    static void <clinit>()
+    {
+        java.lang.Class $r0;
+        java.lang.String $r1;
+        java.util.logging.Logger $r2;
+
+        <com.google.android.gms.internal.measurement.zzjw: java.lang.String zzb> = "com.google.protobuf.BlazeGeneratedExtensionRegistryLiteLoader";
+
+        $r0 = class "Lcom/google/android/gms/internal/measurement/zzjj;";
+
+        $r1 = virtualinvoke $r0.<java.lang.Class: java.lang.String getName()>();
+
+        $r2 = staticinvoke <java.util.logging.Logger: java.util.logging.Logger getLogger(java.lang.String)>($r1);
+
+        <com.google.android.gms.internal.measurement.zzjw: java.util.logging.Logger zza> = $r2;
+
+        <com.google.android.gms.internal.measurement.zzjw: java.lang.String zzb> = "com.google.protobuf.BlazeGeneratedExtensionRegistryLiteLoader";
+
+        return;
+    }
+
+    void <init>()
+    {
+        com.google.android.gms.internal.measurement.zzjw r0;
+
+        r0 := @this: com.google.android.gms.internal.measurement.zzjw;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static com.google.android.gms.internal.measurement.zzjo zzb(java.lang.Class)
+    {
+        java.lang.IllegalStateException $r14;
+        java.lang.NoSuchMethodException $r17, $r28;
+        java.lang.InstantiationException $r16;
+        java.lang.reflect.Method $r25;
+        boolean $z0;
+        java.lang.IllegalAccessException $r15, $r27;
+        com.google.android.gms.internal.measurement.zzjw $r11;
+        java.util.ServiceLoader $r19;
+        java.util.logging.Logger $r23;
+        com.google.android.gms.internal.measurement.zzjo $r12;
+        java.lang.reflect.InvocationTargetException $r13, $r26;
+        java.lang.ClassLoader $r2;
+        java.lang.Object[] $r7;
+        java.lang.reflect.Constructor $r9;
+        java.util.ArrayList $r21;
+        java.util.logging.Level $r24;
+        int $i0;
+        java.util.ServiceConfigurationError $r22;
+        java.lang.String $r3, $r6;
+        java.util.Iterator $r20;
+        java.lang.Package $r4, $r5;
+        java.lang.Class[] $r8;
+        java.lang.IllegalArgumentException $r29;
+        java.lang.Class $r0, $r1;
+        java.lang.Object $r10;
+        java.lang.ClassNotFoundException $r18;
+
+        $r0 := @parameter0: java.lang.Class;
+
+        $r1 = class "Lcom/google/android/gms/internal/measurement/zzjw;";
+
+        $r2 = virtualinvoke $r1.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        $z0 = virtualinvoke $r0.<java.lang.Object: boolean equals(java.lang.Object)>(class "Lcom/google/android/gms/internal/measurement/zzjo;");
+
+        if $z0 == 0 goto label01;
+
+        $r3 = <com.google.android.gms.internal.measurement.zzjw: java.lang.String zzb>;
+
+        goto label02;
+
+     label01:
+        $r4 = virtualinvoke $r0.<java.lang.Class: java.lang.Package getPackage()>();
+
+        $r5 = virtualinvoke $r1.<java.lang.Class: java.lang.Package getPackage()>();
+
+        $z0 = virtualinvoke $r4.<java.lang.Object: boolean equals(java.lang.Object)>($r5);
+
+        if $z0 == 0 goto label39;
+
+        $r4 = virtualinvoke $r0.<java.lang.Class: java.lang.Package getPackage()>();
+
+        $r3 = virtualinvoke $r4.<java.lang.Package: java.lang.String getName()>();
+
+        $r6 = virtualinvoke $r0.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        $r7 = newarray (java.lang.Object)[2];
+
+        $r7[0] = $r3;
+
+        $r7[1] = $r6;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("%s.BlazeGenerated%sLoader", $r7);
+
+     label02:
+        $r1 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String,boolean,java.lang.ClassLoader)>($r3, 1, $r2);
+
+     label03:
+        $r8 = newarray (java.lang.Class)[0];
+
+     label04:
+        $r9 = virtualinvoke $r1.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>($r8);
+
+     label05:
+        $r7 = newarray (java.lang.Object)[0];
+
+     label06:
+        $r10 = virtualinvoke $r9.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r7);
+
+     label07:
+        $r11 = (com.google.android.gms.internal.measurement.zzjw) $r10;
+
+     label08:
+        $r12 = virtualinvoke $r11.<com.google.android.gms.internal.measurement.zzjw: com.google.android.gms.internal.measurement.zzjo zza()>();
+
+        $r10 = virtualinvoke $r0.<java.lang.Class: java.lang.Object cast(java.lang.Object)>($r12);
+
+     label09:
+        $r12 = (com.google.android.gms.internal.measurement.zzjo) $r10;
+
+        return $r12;
+
+     label10:
+        $r13 := @caughtexception;
+
+        $r14 = new java.lang.IllegalStateException;
+
+     label11:
+        specialinvoke $r14.<java.lang.IllegalStateException: void <init>(java.lang.Throwable)>($r13);
+
+     label12:
+        throw $r14;
+
+     label13:
+        $r15 := @caughtexception;
+
+        $r14 = new java.lang.IllegalStateException;
+
+     label14:
+        specialinvoke $r14.<java.lang.IllegalStateException: void <init>(java.lang.Throwable)>($r15);
+
+     label15:
+        throw $r14;
+
+     label16:
+        $r16 := @caughtexception;
+
+        $r14 = new java.lang.IllegalStateException;
+
+     label17:
+        specialinvoke $r14.<java.lang.IllegalStateException: void <init>(java.lang.Throwable)>($r16);
+
+     label18:
+        throw $r14;
+
+     label19:
+        $r17 := @caughtexception;
+
+        $r14 = new java.lang.IllegalStateException;
+
+     label20:
+        specialinvoke $r14.<java.lang.IllegalStateException: void <init>(java.lang.Throwable)>($r17);
+
+     label21:
+        throw $r14;
+
+     label22:
+        $r18 := @caughtexception;
+
+        $r19 = staticinvoke <java.util.ServiceLoader: java.util.ServiceLoader load(java.lang.Class,java.lang.ClassLoader)>(class "Lcom/google/android/gms/internal/measurement/zzjw;", $r2);
+
+        $r20 = virtualinvoke $r19.<java.util.ServiceLoader: java.util.Iterator iterator()>();
+
+        $r21 = new java.util.ArrayList;
+
+        specialinvoke $r21.<java.util.ArrayList: void <init>()>();
+
+     label23:
+        $z0 = interfaceinvoke $r20.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label29;
+
+     label24:
+        $r10 = interfaceinvoke $r20.<java.util.Iterator: java.lang.Object next()>();
+
+     label25:
+        $r11 = (com.google.android.gms.internal.measurement.zzjw) $r10;
+
+     label26:
+        $r12 = virtualinvoke $r11.<com.google.android.gms.internal.measurement.zzjw: com.google.android.gms.internal.measurement.zzjo zza()>();
+
+        $r10 = virtualinvoke $r0.<java.lang.Class: java.lang.Object cast(java.lang.Object)>($r12);
+
+        virtualinvoke $r21.<java.util.ArrayList: boolean add(java.lang.Object)>($r10);
+
+     label27:
+        goto label23;
+
+     label28:
+        $r22 := @caughtexception;
+
+        $r23 = <com.google.android.gms.internal.measurement.zzjw: java.util.logging.Logger zza>;
+
+        $r24 = <java.util.logging.Level: java.util.logging.Level SEVERE>;
+
+        $r3 = virtualinvoke $r0.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r3);
+
+        $r6 = "Unable to load ";
+
+        $r3 = virtualinvoke $r6.<java.lang.String: java.lang.String concat(java.lang.String)>($r3);
+
+        virtualinvoke $r23.<java.util.logging.Logger: void logp(java.util.logging.Level,java.lang.String,java.lang.String,java.lang.String,java.lang.Throwable)>($r24, "com.google.protobuf.GeneratedExtensionRegistryLoader", "load", $r3, $r22);
+
+        goto label23;
+
+     label29:
+        $i0 = virtualinvoke $r21.<java.util.ArrayList: int size()>();
+
+        if $i0 != 1 goto label30;
+
+        $r10 = virtualinvoke $r21.<java.util.ArrayList: java.lang.Object get(int)>(0);
+
+        $r12 = (com.google.android.gms.internal.measurement.zzjo) $r10;
+
+        return $r12;
+
+     label30:
+        $i0 = virtualinvoke $r21.<java.util.ArrayList: int size()>();
+
+        if $i0 != 0 goto label31;
+
+        return null;
+
+     label31:
+        $r8 = newarray (java.lang.Class)[1];
+
+        $r8[0] = class "Ljava/util/Collection;";
+
+     label32:
+        $r25 = virtualinvoke $r0.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("combine", $r8);
+
+     label33:
+        $r7 = newarray (java.lang.Object)[1];
+
+        $r7[0] = $r21;
+
+     label34:
+        $r10 = virtualinvoke $r25.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r7);
+
+     label35:
+        $r12 = (com.google.android.gms.internal.measurement.zzjo) $r10;
+
+        return $r12;
+
+     label36:
+        $r26 := @caughtexception;
+
+        $r14 = new java.lang.IllegalStateException;
+
+        specialinvoke $r14.<java.lang.IllegalStateException: void <init>(java.lang.Throwable)>($r26);
+
+        throw $r14;
+
+     label37:
+        $r27 := @caughtexception;
+
+        $r14 = new java.lang.IllegalStateException;
+
+        specialinvoke $r14.<java.lang.IllegalStateException: void <init>(java.lang.Throwable)>($r27);
+
+        throw $r14;
+
+     label38:
+        $r28 := @caughtexception;
+
+        $r14 = new java.lang.IllegalStateException;
+
+        specialinvoke $r14.<java.lang.IllegalStateException: void <init>(java.lang.Throwable)>($r28);
+
+        throw $r14;
+
+     label39:
+        $r29 = new java.lang.IllegalArgumentException;
+
+        $r3 = virtualinvoke $r0.<java.lang.Class: java.lang.String getName()>();
+
+        specialinvoke $r29.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r3);
+
+        throw $r29;
+
+        catch java.lang.ClassNotFoundException from label02 to label03 with label22;
+        catch java.lang.NoSuchMethodException from label04 to label05 with label19;
+        catch java.lang.NoSuchMethodException from label06 to label07 with label19;
+        catch java.lang.InstantiationException from label04 to label05 with label16;
+        catch java.lang.InstantiationException from label06 to label07 with label16;
+        catch java.lang.IllegalAccessException from label04 to label05 with label13;
+        catch java.lang.IllegalAccessException from label06 to label07 with label13;
+        catch java.lang.reflect.InvocationTargetException from label04 to label05 with label10;
+        catch java.lang.reflect.InvocationTargetException from label06 to label07 with label10;
+        catch java.lang.ClassNotFoundException from label04 to label05 with label22;
+        catch java.lang.ClassNotFoundException from label06 to label07 with label22;
+        catch java.lang.ClassNotFoundException from label08 to label09 with label22;
+        catch java.lang.ClassNotFoundException from label11 to label12 with label22;
+        catch java.lang.ClassNotFoundException from label14 to label15 with label22;
+        catch java.lang.ClassNotFoundException from label17 to label18 with label22;
+        catch java.lang.ClassNotFoundException from label20 to label21 with label22;
+        catch java.util.ServiceConfigurationError from label24 to label25 with label28;
+        catch java.util.ServiceConfigurationError from label26 to label27 with label28;
+        catch java.lang.NoSuchMethodException from label32 to label33 with label38;
+        catch java.lang.NoSuchMethodException from label34 to label35 with label38;
+        catch java.lang.IllegalAccessException from label32 to label33 with label37;
+        catch java.lang.IllegalAccessException from label34 to label35 with label37;
+        catch java.lang.reflect.InvocationTargetException from label32 to label33 with label36;
+        catch java.lang.reflect.InvocationTargetException from label34 to label35 with label36;
+    }
+
+    protected abstract com.google.android.gms.internal.measurement.zzjo zza();
+}

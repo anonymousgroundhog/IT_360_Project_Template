@@ -1,0 +1,56 @@
+public class androidx.room.MultiInstanceInvalidationService extends android.app.Service
+{
+    private final androidx.room.IMultiInstanceInvalidationService$Stub mBinder;
+    final android.os.RemoteCallbackList mCallbackList;
+    final java.util.HashMap mClientNames;
+    int mMaxClientId;
+
+    public void <init>()
+    {
+        androidx.room.MultiInstanceInvalidationService$2 $r3;
+        androidx.room.MultiInstanceInvalidationService$1 $r2;
+        java.util.HashMap $r1;
+        androidx.room.MultiInstanceInvalidationService r0;
+
+        r0 := @this: androidx.room.MultiInstanceInvalidationService;
+
+        specialinvoke r0.<android.app.Service: void <init>()>();
+
+        r0.<androidx.room.MultiInstanceInvalidationService: int mMaxClientId> = 0;
+
+        $r1 = new java.util.HashMap;
+
+        specialinvoke $r1.<java.util.HashMap: void <init>()>();
+
+        r0.<androidx.room.MultiInstanceInvalidationService: java.util.HashMap mClientNames> = $r1;
+
+        $r2 = new androidx.room.MultiInstanceInvalidationService$1;
+
+        specialinvoke $r2.<androidx.room.MultiInstanceInvalidationService$1: void <init>(androidx.room.MultiInstanceInvalidationService)>(r0);
+
+        r0.<androidx.room.MultiInstanceInvalidationService: android.os.RemoteCallbackList mCallbackList> = $r2;
+
+        $r3 = new androidx.room.MultiInstanceInvalidationService$2;
+
+        specialinvoke $r3.<androidx.room.MultiInstanceInvalidationService$2: void <init>(androidx.room.MultiInstanceInvalidationService)>(r0);
+
+        r0.<androidx.room.MultiInstanceInvalidationService: androidx.room.IMultiInstanceInvalidationService$Stub mBinder> = $r3;
+
+        return;
+    }
+
+    public android.os.IBinder onBind(android.content.Intent)
+    {
+        android.content.Intent $r1;
+        androidx.room.IMultiInstanceInvalidationService$Stub r2;
+        androidx.room.MultiInstanceInvalidationService r0;
+
+        r0 := @this: androidx.room.MultiInstanceInvalidationService;
+
+        $r1 := @parameter0: android.content.Intent;
+
+        r2 = r0.<androidx.room.MultiInstanceInvalidationService: androidx.room.IMultiInstanceInvalidationService$Stub mBinder>;
+
+        return r2;
+    }
+}

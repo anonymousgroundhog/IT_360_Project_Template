@@ -1,0 +1,162 @@
+class com.google.android.gms.internal.ads.zzfyh extends java.lang.Object implements java.util.Iterator
+{
+    final java.util.Iterator zza;
+    java.lang.Object zzb;
+    java.util.Collection zzc;
+    java.util.Iterator zzd;
+    final com.google.android.gms.internal.ads.zzfyt zze;
+
+    void <init>(com.google.android.gms.internal.ads.zzfyt)
+    {
+        com.google.android.gms.internal.ads.zzfyt $r1;
+        com.google.android.gms.internal.ads.zzgai $r5;
+        java.util.Iterator $r4;
+        com.google.android.gms.internal.ads.zzfyh r0;
+        java.util.Map $r2;
+        java.util.Set $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfyh;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzfyt;
+
+        r0.<com.google.android.gms.internal.ads.zzfyh: com.google.android.gms.internal.ads.zzfyt zze> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = staticinvoke <com.google.android.gms.internal.ads.zzfyt: java.util.Map zzi(com.google.android.gms.internal.ads.zzfyt)>($r1);
+
+        $r3 = interfaceinvoke $r2.<java.util.Map: java.util.Set entrySet()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.Set: java.util.Iterator iterator()>();
+
+        r0.<com.google.android.gms.internal.ads.zzfyh: java.util.Iterator zza> = $r4;
+
+        r0.<com.google.android.gms.internal.ads.zzfyh: java.lang.Object zzb> = null;
+
+        r0.<com.google.android.gms.internal.ads.zzfyh: java.util.Collection zzc> = null;
+
+        $r5 = <com.google.android.gms.internal.ads.zzgai: com.google.android.gms.internal.ads.zzgai zza>;
+
+        r0.<com.google.android.gms.internal.ads.zzfyh: java.util.Iterator zzd> = $r5;
+
+        return;
+    }
+
+    public final boolean hasNext()
+    {
+        java.util.Iterator $r1;
+        com.google.android.gms.internal.ads.zzfyh r0;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfyh;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfyh: java.util.Iterator zza>;
+
+        $z0 = interfaceinvoke $r1.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label2;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfyh: java.util.Iterator zzd>;
+
+        $z0 = interfaceinvoke $r1.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label1;
+
+        goto label2;
+
+     label1:
+        return 0;
+
+     label2:
+        return 1;
+    }
+
+    public final java.lang.Object next()
+    {
+        java.util.Map$Entry $r3;
+        java.util.Iterator $r1;
+        com.google.android.gms.internal.ads.zzfyh r0;
+        java.util.Collection $r4;
+        java.lang.Object $r2;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfyh;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfyh: java.util.Iterator zzd>;
+
+        $z0 = interfaceinvoke $r1.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfyh: java.util.Iterator zza>;
+
+        $r2 = interfaceinvoke $r1.<java.util.Iterator: java.lang.Object next()>();
+
+        $r3 = (java.util.Map$Entry) $r2;
+
+        $r2 = interfaceinvoke $r3.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        r0.<com.google.android.gms.internal.ads.zzfyh: java.lang.Object zzb> = $r2;
+
+        $r2 = interfaceinvoke $r3.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $r4 = (java.util.Collection) $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzfyh: java.util.Collection zzc> = $r4;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzfyh: java.util.Collection zzc>;
+
+        $r1 = interfaceinvoke $r4.<java.util.Collection: java.util.Iterator iterator()>();
+
+        r0.<com.google.android.gms.internal.ads.zzfyh: java.util.Iterator zzd> = $r1;
+
+     label1:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfyh: java.util.Iterator zzd>;
+
+        $r2 = interfaceinvoke $r1.<java.util.Iterator: java.lang.Object next()>();
+
+        return $r2;
+    }
+
+    public final void remove()
+    {
+        com.google.android.gms.internal.ads.zzfyt $r4;
+        java.util.Iterator $r1;
+        com.google.android.gms.internal.ads.zzfyh r0;
+        java.util.Collection $r2;
+        int $i0;
+        java.lang.Object $r3;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfyh;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfyh: java.util.Iterator zzd>;
+
+        interfaceinvoke $r1.<java.util.Iterator: void remove()>();
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzfyh: java.util.Collection zzc>;
+
+        $r3 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>($r2);
+
+        $r2 = (java.util.Collection) $r3;
+
+        $z0 = interfaceinvoke $r2.<java.util.Collection: boolean isEmpty()>();
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfyh: java.util.Iterator zza>;
+
+        interfaceinvoke $r1.<java.util.Iterator: void remove()>();
+
+     label1:
+        $r4 = r0.<com.google.android.gms.internal.ads.zzfyh: com.google.android.gms.internal.ads.zzfyt zze>;
+
+        $i0 = staticinvoke <com.google.android.gms.internal.ads.zzfyt: int zzd(com.google.android.gms.internal.ads.zzfyt)>($r4);
+
+        $i0 = $i0 + -1;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzfyt: void zzn(com.google.android.gms.internal.ads.zzfyt,int)>($r4, $i0);
+
+        return;
+    }
+}

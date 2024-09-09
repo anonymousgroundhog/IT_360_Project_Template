@@ -1,0 +1,258 @@
+abstract class com.google.android.gms.internal.ads.zzgdj extends com.google.android.gms.internal.ads.zzged implements java.lang.Runnable
+{
+    public static final int zzc;
+    com.google.common.util.concurrent.ListenableFuture zza;
+    java.lang.Object zzb;
+
+    void <init>(com.google.common.util.concurrent.ListenableFuture, java.lang.Object)
+    {
+        com.google.common.util.concurrent.ListenableFuture $r2;
+        java.lang.Object $r1;
+        com.google.android.gms.internal.ads.zzgdj r0;
+        java.lang.NullPointerException r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgdj;
+
+        $r2 := @parameter0: com.google.common.util.concurrent.ListenableFuture;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzged: void <init>()>();
+
+        if $r2 == null goto label1;
+
+        r0.<com.google.android.gms.internal.ads.zzgdj: com.google.common.util.concurrent.ListenableFuture zza> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzgdj: java.lang.Object zzb> = $r1;
+
+        return;
+
+     label1:
+        r3 = new java.lang.NullPointerException;
+
+        specialinvoke r3.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+        throw r3;
+    }
+
+    public final void run()
+    {
+        java.lang.Throwable $r4, $r5;
+        com.google.common.util.concurrent.ListenableFuture $r2;
+        java.util.concurrent.CancellationException $r9;
+        java.lang.Error $r6;
+        java.lang.Exception $r7;
+        java.util.concurrent.ExecutionException $r8;
+        java.lang.Object $r1, $r3;
+        com.google.android.gms.internal.ads.zzgdj r0;
+        boolean $z0, $z1, $z2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgdj;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzgdj: com.google.common.util.concurrent.ListenableFuture zza>;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgdj: java.lang.Object zzb>;
+
+        $z0 = virtualinvoke r0.<com.google.android.gms.internal.ads.zzgdb: boolean isCancelled()>();
+
+        $z1 = 1;
+
+        if $r2 != null goto label01;
+
+        $z2 = 1;
+
+        goto label02;
+
+     label01:
+        $z2 = 0;
+
+     label02:
+        $z0 = $z0 | $z2;
+
+        if $r1 != null goto label03;
+
+        goto label04;
+
+     label03:
+        $z1 = 0;
+
+     label04:
+        $z1 = $z0 | $z1;
+
+        if $z1 == 0 goto label05;
+
+        return;
+
+     label05:
+        r0.<com.google.android.gms.internal.ads.zzgdj: com.google.common.util.concurrent.ListenableFuture zza> = null;
+
+        $z1 = interfaceinvoke $r2.<com.google.common.util.concurrent.ListenableFuture: boolean isCancelled()>();
+
+        if $z1 == 0 goto label06;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzgdb: boolean zzs(com.google.common.util.concurrent.ListenableFuture)>($r2);
+
+        return;
+
+     label06:
+        $r3 = staticinvoke <com.google.android.gms.internal.ads.zzgen: java.lang.Object zzp(java.util.concurrent.Future)>($r2);
+
+     label07:
+        $r1 = virtualinvoke r0.<com.google.android.gms.internal.ads.zzgdj: java.lang.Object zze(java.lang.Object,java.lang.Object)>($r1, $r3);
+
+     label08:
+        r0.<com.google.android.gms.internal.ads.zzgdj: java.lang.Object zzb> = null;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzgdj: void zzf(java.lang.Object)>($r1);
+
+        return;
+
+     label09:
+        $r4 := @caughtexception;
+
+     label10:
+        staticinvoke <com.google.android.gms.internal.ads.zzgff: void zza(java.lang.Throwable)>($r4);
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzgdb: boolean zzd(java.lang.Throwable)>($r4);
+
+     label11:
+        r0.<com.google.android.gms.internal.ads.zzgdj: java.lang.Object zzb> = null;
+
+        return;
+
+     label12:
+        $r5 := @caughtexception;
+
+        r0.<com.google.android.gms.internal.ads.zzgdj: java.lang.Object zzb> = null;
+
+        throw $r5;
+
+     label13:
+        $r6 := @caughtexception;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzgdb: boolean zzd(java.lang.Throwable)>($r6);
+
+        return;
+
+     label14:
+        $r7 := @caughtexception;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzgdb: boolean zzd(java.lang.Throwable)>($r7);
+
+        return;
+
+     label15:
+        $r8 := @caughtexception;
+
+        $r4 = virtualinvoke $r8.<java.util.concurrent.ExecutionException: java.lang.Throwable getCause()>();
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzgdb: boolean zzd(java.lang.Throwable)>($r4);
+
+        return;
+
+     label16:
+        $r9 := @caughtexception;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzgdb: boolean cancel(boolean)>(0);
+
+        return;
+
+        catch java.util.concurrent.CancellationException from label06 to label07 with label16;
+        catch java.util.concurrent.ExecutionException from label06 to label07 with label15;
+        catch java.lang.Exception from label06 to label07 with label14;
+        catch java.lang.Error from label06 to label07 with label13;
+        catch java.lang.Throwable from label07 to label08 with label09;
+        catch java.lang.Throwable from label10 to label11 with label12;
+    }
+
+    protected final java.lang.String zza()
+    {
+        com.google.common.util.concurrent.ListenableFuture $r2;
+        java.lang.StringBuilder $r1;
+        java.lang.Object $r3;
+        java.lang.String $r4, $r5;
+        com.google.android.gms.internal.ads.zzgdj r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgdj;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzgdj: com.google.common.util.concurrent.ListenableFuture zza>;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzgdj: java.lang.Object zzb>;
+
+        $r4 = specialinvoke r0.<com.google.android.gms.internal.ads.zzged: java.lang.String zza()>();
+
+        if $r2 == null goto label1;
+
+        $r5 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("inputFuture=[");
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("], ");
+
+        $r5 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        goto label2;
+
+     label1:
+        $r5 = "";
+
+     label2:
+        if $r3 == null goto label3;
+
+        $r4 = virtualinvoke $r3.<java.lang.Object: java.lang.String toString()>();
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("function=[");
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r4 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r4;
+
+     label3:
+        if $r4 == null goto label4;
+
+        $r4 = virtualinvoke $r5.<java.lang.String: java.lang.String concat(java.lang.String)>($r4);
+
+        return $r4;
+
+     label4:
+        return null;
+    }
+
+    protected final void zzb()
+    {
+        com.google.common.util.concurrent.ListenableFuture $r1;
+        com.google.android.gms.internal.ads.zzgdj r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgdj;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgdj: com.google.common.util.concurrent.ListenableFuture zza>;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzgdb: void zzr(java.util.concurrent.Future)>($r1);
+
+        r0.<com.google.android.gms.internal.ads.zzgdj: com.google.common.util.concurrent.ListenableFuture zza> = null;
+
+        r0.<com.google.android.gms.internal.ads.zzgdj: java.lang.Object zzb> = null;
+
+        return;
+    }
+
+    abstract java.lang.Object zze(java.lang.Object, java.lang.Object) throws java.lang.Exception;
+
+    abstract void zzf(java.lang.Object);
+}

@@ -1,0 +1,43 @@
+class androidx.core.app.ActivityRecreator$2 extends java.lang.Object implements java.lang.Runnable
+{
+    final android.app.Application val$application;
+    final androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks val$callbacks;
+
+    void <init>(android.app.Application, androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks)
+    {
+        androidx.core.app.ActivityRecreator$2 r0;
+        android.app.Application $r1;
+        androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks $r2;
+
+        r0 := @this: androidx.core.app.ActivityRecreator$2;
+
+        $r1 := @parameter0: android.app.Application;
+
+        $r2 := @parameter1: androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks;
+
+        r0.<androidx.core.app.ActivityRecreator$2: android.app.Application val$application> = $r1;
+
+        r0.<androidx.core.app.ActivityRecreator$2: androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks val$callbacks> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.core.app.ActivityRecreator$2 r0;
+        android.app.Application $r1;
+        androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks $r2;
+
+        r0 := @this: androidx.core.app.ActivityRecreator$2;
+
+        $r1 = r0.<androidx.core.app.ActivityRecreator$2: android.app.Application val$application>;
+
+        $r2 = r0.<androidx.core.app.ActivityRecreator$2: androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks val$callbacks>;
+
+        virtualinvoke $r1.<android.app.Application: void unregisterActivityLifecycleCallbacks(android.app.Application$ActivityLifecycleCallbacks)>($r2);
+
+        return;
+    }
+}

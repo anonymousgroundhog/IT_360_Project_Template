@@ -1,0 +1,206 @@
+abstract class com.google.android.gms.internal.ads.zzgds extends com.google.android.gms.internal.ads.zzgdb$zzi
+{
+    private static final com.google.android.gms.internal.ads.zzgdo zzba;
+    private static final com.google.android.gms.internal.ads.zzgex zzbb;
+    private volatile int remaining;
+    private volatile java.util.Set seenExceptions;
+
+    static void <clinit>()
+    {
+        java.lang.Throwable $r4;
+        java.util.concurrent.atomic.AtomicIntegerFieldUpdater $r3;
+        java.util.concurrent.atomic.AtomicReferenceFieldUpdater $r2;
+        com.google.android.gms.internal.ads.zzgex $r0, $r7;
+        java.util.logging.Logger $r5;
+        java.util.logging.Level $r6;
+        com.google.android.gms.internal.ads.zzgdo $r1;
+        com.google.android.gms.internal.ads.zzgdr $r9;
+        com.google.android.gms.internal.ads.zzgdp $r8;
+
+        $r7 = new com.google.android.gms.internal.ads.zzgex;
+
+        specialinvoke $r7.<com.google.android.gms.internal.ads.zzgex: void <init>(java.lang.Class)>(class "Lcom/google/android/gms/internal/ads/zzgds;");
+
+        <com.google.android.gms.internal.ads.zzgds: com.google.android.gms.internal.ads.zzgex zzbb> = $r7;
+
+     label1:
+        $r8 = new com.google.android.gms.internal.ads.zzgdp;
+
+     label2:
+        $r1 = $r8;
+
+     label3:
+        $r2 = staticinvoke <java.util.concurrent.atomic.AtomicReferenceFieldUpdater: java.util.concurrent.atomic.AtomicReferenceFieldUpdater newUpdater(java.lang.Class,java.lang.Class,java.lang.String)>(class "Lcom/google/android/gms/internal/ads/zzgds;", class "Ljava/util/Set;", "seenExceptions");
+
+        $r3 = staticinvoke <java.util.concurrent.atomic.AtomicIntegerFieldUpdater: java.util.concurrent.atomic.AtomicIntegerFieldUpdater newUpdater(java.lang.Class,java.lang.String)>(class "Lcom/google/android/gms/internal/ads/zzgds;", "remaining");
+
+        specialinvoke $r8.<com.google.android.gms.internal.ads.zzgdp: void <init>(java.util.concurrent.atomic.AtomicReferenceFieldUpdater,java.util.concurrent.atomic.AtomicIntegerFieldUpdater)>($r2, $r3);
+
+     label4:
+        $r4 = null;
+
+        goto label6;
+
+     label5:
+        $r4 := @caughtexception;
+
+        $r9 = new com.google.android.gms.internal.ads.zzgdr;
+
+        $r1 = $r9;
+
+        specialinvoke $r9.<com.google.android.gms.internal.ads.zzgdr: void <init>(com.google.android.gms.internal.ads.zzgdq)>(null);
+
+     label6:
+        <com.google.android.gms.internal.ads.zzgds: com.google.android.gms.internal.ads.zzgdo zzba> = $r1;
+
+        if $r4 == null goto label7;
+
+        $r0 = <com.google.android.gms.internal.ads.zzgds: com.google.android.gms.internal.ads.zzgex zzbb>;
+
+        $r5 = virtualinvoke $r0.<com.google.android.gms.internal.ads.zzgex: java.util.logging.Logger zza()>();
+
+        $r6 = <java.util.logging.Level: java.util.logging.Level SEVERE>;
+
+        virtualinvoke $r5.<java.util.logging.Logger: void logp(java.util.logging.Level,java.lang.String,java.lang.String,java.lang.String,java.lang.Throwable)>($r6, "com.google.common.util.concurrent.AggregateFutureState", "<clinit>", "SafeAtomicHelper is broken!", $r4);
+
+     label7:
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label3 to label4 with label5;
+    }
+
+    void <init>(int)
+    {
+        int $i0;
+        com.google.android.gms.internal.ads.zzgds r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgds;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzgdb$zzi: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzgds: java.util.Set seenExceptions> = null;
+
+        r0.<com.google.android.gms.internal.ads.zzgds: int remaining> = $i0;
+
+        return;
+    }
+
+    static volatile java.util.Set zzB(com.google.android.gms.internal.ads.zzgds)
+    {
+        java.util.Set r1;
+        com.google.android.gms.internal.ads.zzgds $r0;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzgds;
+
+        r1 = $r0.<com.google.android.gms.internal.ads.zzgds: java.util.Set seenExceptions>;
+
+        return r1;
+    }
+
+    static volatile void zzD(com.google.android.gms.internal.ads.zzgds, int)
+    {
+        int $i0;
+        com.google.android.gms.internal.ads.zzgds $r0;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzgds;
+
+        $i0 := @parameter1: int;
+
+        $r0.<com.google.android.gms.internal.ads.zzgds: int remaining> = $i0;
+
+        return;
+    }
+
+    static volatile void zzE(com.google.android.gms.internal.ads.zzgds, java.util.Set)
+    {
+        java.util.Set $r1;
+        com.google.android.gms.internal.ads.zzgds $r0;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzgds;
+
+        $r1 := @parameter1: java.util.Set;
+
+        $r0.<com.google.android.gms.internal.ads.zzgds: java.util.Set seenExceptions> = $r1;
+
+        return;
+    }
+
+    static volatile int zzz(com.google.android.gms.internal.ads.zzgds)
+    {
+        int i0;
+        com.google.android.gms.internal.ads.zzgds $r0;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzgds;
+
+        i0 = $r0.<com.google.android.gms.internal.ads.zzgds: int remaining>;
+
+        return i0;
+    }
+
+    final int zzA()
+    {
+        int $i0;
+        com.google.android.gms.internal.ads.zzgdo $r1;
+        com.google.android.gms.internal.ads.zzgds r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgds;
+
+        $r1 = <com.google.android.gms.internal.ads.zzgds: com.google.android.gms.internal.ads.zzgdo zzba>;
+
+        $i0 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzgdo: int zza(com.google.android.gms.internal.ads.zzgds)>(r0);
+
+        return $i0;
+    }
+
+    final java.util.Set zzC()
+    {
+        com.google.android.gms.internal.ads.zzgdo $r1;
+        com.google.android.gms.internal.ads.zzgds r0;
+        java.util.concurrent.ConcurrentHashMap $r3;
+        java.util.Set $r2;
+        java.lang.Object $r4;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgds;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzgds: java.util.Set seenExceptions>;
+
+        if $r2 != null goto label1;
+
+        $r3 = new java.util.concurrent.ConcurrentHashMap;
+
+        specialinvoke $r3.<java.util.concurrent.ConcurrentHashMap: void <init>()>();
+
+        $r2 = staticinvoke <java.util.Collections: java.util.Set newSetFromMap(java.util.Map)>($r3);
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzgds: void zze(java.util.Set)>($r2);
+
+        $r1 = <com.google.android.gms.internal.ads.zzgds: com.google.android.gms.internal.ads.zzgdo zzba>;
+
+        virtualinvoke $r1.<com.google.android.gms.internal.ads.zzgdo: void zzb(com.google.android.gms.internal.ads.zzgds,java.util.Set,java.util.Set)>(r0, null, $r2);
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzgds: java.util.Set seenExceptions>;
+
+        $r4 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>($r2);
+
+        $r2 = (java.util.Set) $r4;
+
+     label1:
+        return $r2;
+    }
+
+    final void zzF()
+    {
+        com.google.android.gms.internal.ads.zzgds r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgds;
+
+        r0.<com.google.android.gms.internal.ads.zzgds: java.util.Set seenExceptions> = null;
+
+        return;
+    }
+
+    abstract void zze(java.util.Set);
+}

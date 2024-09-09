@@ -1,0 +1,2449 @@
+public class androidx.core.app.NotificationCompat$Builder extends java.lang.Object
+{
+    private static final int MAX_CHARSEQUENCE_LENGTH;
+    public java.util.ArrayList mActions;
+    boolean mAllowSystemGeneratedContextualActions;
+    int mBadgeIcon;
+    android.widget.RemoteViews mBigContentView;
+    androidx.core.app.NotificationCompat$BubbleMetadata mBubbleMetadata;
+    java.lang.String mCategory;
+    java.lang.String mChannelId;
+    boolean mChronometerCountDown;
+    int mColor;
+    boolean mColorized;
+    boolean mColorizedSet;
+    java.lang.CharSequence mContentInfo;
+    android.app.PendingIntent mContentIntent;
+    java.lang.CharSequence mContentText;
+    java.lang.CharSequence mContentTitle;
+    android.widget.RemoteViews mContentView;
+    public android.content.Context mContext;
+    android.os.Bundle mExtras;
+    int mFgsDeferBehavior;
+    android.app.PendingIntent mFullScreenIntent;
+    int mGroupAlertBehavior;
+    java.lang.String mGroupKey;
+    boolean mGroupSummary;
+    android.widget.RemoteViews mHeadsUpContentView;
+    java.util.ArrayList mInvisibleActions;
+    android.graphics.Bitmap mLargeIcon;
+    boolean mLocalOnly;
+    androidx.core.content.LocusIdCompat mLocusId;
+    android.app.Notification mNotification;
+    int mNumber;
+    public java.util.ArrayList mPeople;
+    public java.util.ArrayList mPersonList;
+    int mPriority;
+    int mProgress;
+    boolean mProgressIndeterminate;
+    int mProgressMax;
+    android.app.Notification mPublicVersion;
+    java.lang.CharSequence[] mRemoteInputHistory;
+    java.lang.CharSequence mSettingsText;
+    java.lang.String mShortcutId;
+    boolean mShowWhen;
+    boolean mSilent;
+    android.graphics.drawable.Icon mSmallIcon;
+    java.lang.String mSortKey;
+    androidx.core.app.NotificationCompat$Style mStyle;
+    java.lang.CharSequence mSubText;
+    android.widget.RemoteViews mTickerView;
+    long mTimeout;
+    boolean mUseChronometer;
+    int mVisibility;
+
+    public void <init>(android.content.Context)
+    {
+        android.content.Context $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<androidx.core.app.NotificationCompat$Builder: void <init>(android.content.Context,java.lang.String)>($r1, null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.app.Notification)
+    {
+        android.os.Bundle r4, $r15;
+        androidx.core.app.NotificationCompat$BubbleMetadata $r11;
+        androidx.core.app.NotificationCompat$Builder r0, $r7;
+        android.net.Uri r12;
+        android.app.Person r26;
+        android.app.PendingIntent r8;
+        androidx.core.app.Person $r27;
+        android.app.Notification$Action[] r17;
+        boolean $z0;
+        java.lang.CharSequence $r6;
+        android.app.Notification$Action r18;
+        java.util.List $r21;
+        android.app.Notification $r2, $r14;
+        android.content.Context $r1;
+        long l0;
+        java.lang.String[] $r24;
+        androidx.core.app.NotificationCompat$Action $r20;
+        java.util.ArrayList $r25;
+        long[] r13;
+        int $i1, $i2, i3;
+        java.lang.String $r3;
+        android.graphics.drawable.Icon $r16;
+        androidx.core.content.LocusIdCompat $r9;
+        androidx.core.app.NotificationCompat$Action$Builder $r19;
+        java.util.Iterator $r22;
+        androidx.core.app.NotificationCompat$Style $r5;
+        android.graphics.Bitmap r10;
+        java.lang.Object $r23;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.app.Notification;
+
+        $r3 = staticinvoke <androidx.core.app.NotificationCompat: java.lang.String getChannelId(android.app.Notification)>($r2);
+
+        specialinvoke r0.<androidx.core.app.NotificationCompat$Builder: void <init>(android.content.Context,java.lang.String)>($r1, $r3);
+
+        r4 = $r2.<android.app.Notification: android.os.Bundle extras>;
+
+        $r5 = staticinvoke <androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Style extractStyleFromNotification(android.app.Notification)>($r2);
+
+        $r6 = staticinvoke <androidx.core.app.NotificationCompat: java.lang.CharSequence getContentTitle(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setContentTitle(java.lang.CharSequence)>($r6);
+
+        $r6 = staticinvoke <androidx.core.app.NotificationCompat: java.lang.CharSequence getContentText(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setContentText(java.lang.CharSequence)>($r6);
+
+        $r6 = staticinvoke <androidx.core.app.NotificationCompat: java.lang.CharSequence getContentInfo(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setContentInfo(java.lang.CharSequence)>($r6);
+
+        $r6 = staticinvoke <androidx.core.app.NotificationCompat: java.lang.CharSequence getSubText(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setSubText(java.lang.CharSequence)>($r6);
+
+        $r6 = staticinvoke <androidx.core.app.NotificationCompat: java.lang.CharSequence getSettingsText(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setSettingsText(java.lang.CharSequence)>($r6);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setStyle(androidx.core.app.NotificationCompat$Style)>($r5);
+
+        r8 = $r2.<android.app.Notification: android.app.PendingIntent contentIntent>;
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setContentIntent(android.app.PendingIntent)>(r8);
+
+        $r3 = staticinvoke <androidx.core.app.NotificationCompat: java.lang.String getGroup(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setGroup(java.lang.String)>($r3);
+
+        $z0 = staticinvoke <androidx.core.app.NotificationCompat: boolean isGroupSummary(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setGroupSummary(boolean)>($z0);
+
+        $r9 = staticinvoke <androidx.core.app.NotificationCompat: androidx.core.content.LocusIdCompat getLocusId(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setLocusId(androidx.core.content.LocusIdCompat)>($r9);
+
+        l0 = $r2.<android.app.Notification: long when>;
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setWhen(long)>(l0);
+
+        $z0 = staticinvoke <androidx.core.app.NotificationCompat: boolean getShowWhen(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setShowWhen(boolean)>($z0);
+
+        $z0 = staticinvoke <androidx.core.app.NotificationCompat: boolean getUsesChronometer(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setUsesChronometer(boolean)>($z0);
+
+        $z0 = staticinvoke <androidx.core.app.NotificationCompat: boolean getAutoCancel(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setAutoCancel(boolean)>($z0);
+
+        $z0 = staticinvoke <androidx.core.app.NotificationCompat: boolean getOnlyAlertOnce(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setOnlyAlertOnce(boolean)>($z0);
+
+        $z0 = staticinvoke <androidx.core.app.NotificationCompat: boolean getOngoing(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setOngoing(boolean)>($z0);
+
+        $z0 = staticinvoke <androidx.core.app.NotificationCompat: boolean getLocalOnly(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setLocalOnly(boolean)>($z0);
+
+        r10 = $r2.<android.app.Notification: android.graphics.Bitmap largeIcon>;
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setLargeIcon(android.graphics.Bitmap)>(r10);
+
+        $i1 = staticinvoke <androidx.core.app.NotificationCompat: int getBadgeIconType(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setBadgeIconType(int)>($i1);
+
+        $r3 = staticinvoke <androidx.core.app.NotificationCompat: java.lang.String getCategory(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setCategory(java.lang.String)>($r3);
+
+        $r11 = staticinvoke <androidx.core.app.NotificationCompat: androidx.core.app.NotificationCompat$BubbleMetadata getBubbleMetadata(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setBubbleMetadata(androidx.core.app.NotificationCompat$BubbleMetadata)>($r11);
+
+        $i1 = $r2.<android.app.Notification: int number>;
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setNumber(int)>($i1);
+
+        $r6 = $r2.<android.app.Notification: java.lang.CharSequence tickerText>;
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setTicker(java.lang.CharSequence)>($r6);
+
+        r8 = $r2.<android.app.Notification: android.app.PendingIntent contentIntent>;
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setContentIntent(android.app.PendingIntent)>(r8);
+
+        r8 = $r2.<android.app.Notification: android.app.PendingIntent deleteIntent>;
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setDeleteIntent(android.app.PendingIntent)>(r8);
+
+        r8 = $r2.<android.app.Notification: android.app.PendingIntent fullScreenIntent>;
+
+        $z0 = staticinvoke <androidx.core.app.NotificationCompat: boolean getHighPriority(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setFullScreenIntent(android.app.PendingIntent,boolean)>(r8, $z0);
+
+        r12 = $r2.<android.app.Notification: android.net.Uri sound>;
+
+        $i1 = $r2.<android.app.Notification: int audioStreamType>;
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setSound(android.net.Uri,int)>(r12, $i1);
+
+        r13 = $r2.<android.app.Notification: long[] vibrate>;
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setVibrate(long[])>(r13);
+
+        $i1 = $r2.<android.app.Notification: int ledARGB>;
+
+        $i2 = $r2.<android.app.Notification: int ledOnMS>;
+
+        i3 = $r2.<android.app.Notification: int ledOffMS>;
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setLights(int,int,int)>($i1, $i2, i3);
+
+        $i1 = $r2.<android.app.Notification: int defaults>;
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setDefaults(int)>($i1);
+
+        $i1 = $r2.<android.app.Notification: int priority>;
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setPriority(int)>($i1);
+
+        $i1 = staticinvoke <androidx.core.app.NotificationCompat: int getColor(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setColor(int)>($i1);
+
+        $i1 = staticinvoke <androidx.core.app.NotificationCompat: int getVisibility(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setVisibility(int)>($i1);
+
+        $r14 = staticinvoke <androidx.core.app.NotificationCompat: android.app.Notification getPublicVersion(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setPublicVersion(android.app.Notification)>($r14);
+
+        $r3 = staticinvoke <androidx.core.app.NotificationCompat: java.lang.String getSortKey(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setSortKey(java.lang.String)>($r3);
+
+        l0 = staticinvoke <androidx.core.app.NotificationCompat: long getTimeoutAfter(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setTimeoutAfter(long)>(l0);
+
+        $r3 = staticinvoke <androidx.core.app.NotificationCompat: java.lang.String getShortcutId(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setShortcutId(java.lang.String)>($r3);
+
+        $i1 = virtualinvoke r4.<android.os.Bundle: int getInt(java.lang.String)>("android.progressMax");
+
+        $i2 = virtualinvoke r4.<android.os.Bundle: int getInt(java.lang.String)>("android.progress");
+
+        $z0 = virtualinvoke r4.<android.os.Bundle: boolean getBoolean(java.lang.String)>("android.progressIndeterminate");
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setProgress(int,int,boolean)>($i1, $i2, $z0);
+
+        $z0 = staticinvoke <androidx.core.app.NotificationCompat: boolean getAllowSystemGeneratedContextualActions(android.app.Notification)>($r2);
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setAllowSystemGeneratedContextualActions(boolean)>($z0);
+
+        $i1 = $r2.<android.app.Notification: int icon>;
+
+        $i2 = $r2.<android.app.Notification: int iconLevel>;
+
+        $r7 = virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setSmallIcon(int,int)>($i1, $i2);
+
+        $r15 = staticinvoke <androidx.core.app.NotificationCompat$Builder: android.os.Bundle getExtrasWithoutDuplicateData(android.app.Notification,androidx.core.app.NotificationCompat$Style)>($r2, $r5);
+
+        virtualinvoke $r7.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder addExtras(android.os.Bundle)>($r15);
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 23 goto label01;
+
+        $r16 = virtualinvoke $r2.<android.app.Notification: android.graphics.drawable.Icon getSmallIcon()>();
+
+        r0.<androidx.core.app.NotificationCompat$Builder: android.graphics.drawable.Icon mSmallIcon> = $r16;
+
+     label01:
+        r17 = $r2.<android.app.Notification: android.app.Notification$Action[] actions>;
+
+        $i1 = 0;
+
+        if r17 == null goto label03;
+
+        r17 = $r2.<android.app.Notification: android.app.Notification$Action[] actions>;
+
+        $i2 = lengthof r17;
+
+        if $i2 == 0 goto label03;
+
+        r17 = $r2.<android.app.Notification: android.app.Notification$Action[] actions>;
+
+        $i2 = lengthof r17;
+
+        i3 = 0;
+
+     label02:
+        if i3 >= $i2 goto label03;
+
+        r18 = r17[i3];
+
+        $r19 = staticinvoke <androidx.core.app.NotificationCompat$Action$Builder: androidx.core.app.NotificationCompat$Action$Builder fromAndroidAction(android.app.Notification$Action)>(r18);
+
+        $r20 = virtualinvoke $r19.<androidx.core.app.NotificationCompat$Action$Builder: androidx.core.app.NotificationCompat$Action build()>();
+
+        virtualinvoke r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder addAction(androidx.core.app.NotificationCompat$Action)>($r20);
+
+        i3 = i3 + 1;
+
+        goto label02;
+
+     label03:
+        $r21 = staticinvoke <androidx.core.app.NotificationCompat: java.util.List getInvisibleActions(android.app.Notification)>($r2);
+
+        $z0 = interfaceinvoke $r21.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label05;
+
+        $r22 = interfaceinvoke $r21.<java.util.List: java.util.Iterator iterator()>();
+
+     label04:
+        $z0 = interfaceinvoke $r22.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label05;
+
+        $r23 = interfaceinvoke $r22.<java.util.Iterator: java.lang.Object next()>();
+
+        $r20 = (androidx.core.app.NotificationCompat$Action) $r23;
+
+        virtualinvoke r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder addInvisibleAction(androidx.core.app.NotificationCompat$Action)>($r20);
+
+        goto label04;
+
+     label05:
+        $r15 = $r2.<android.app.Notification: android.os.Bundle extras>;
+
+        $r24 = virtualinvoke $r15.<android.os.Bundle: java.lang.String[] getStringArray(java.lang.String)>("android.people");
+
+        if $r24 == null goto label07;
+
+        $i2 = lengthof $r24;
+
+        if $i2 == 0 goto label07;
+
+        $i2 = lengthof $r24;
+
+     label06:
+        if $i1 >= $i2 goto label07;
+
+        $r3 = $r24[$i1];
+
+        virtualinvoke r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder addPerson(java.lang.String)>($r3);
+
+        $i1 = $i1 + 1;
+
+        goto label06;
+
+     label07:
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 28 goto label09;
+
+        $r15 = $r2.<android.app.Notification: android.os.Bundle extras>;
+
+        $r25 = virtualinvoke $r15.<android.os.Bundle: java.util.ArrayList getParcelableArrayList(java.lang.String)>("android.people.list");
+
+        if $r25 == null goto label09;
+
+        $z0 = virtualinvoke $r25.<java.util.ArrayList: boolean isEmpty()>();
+
+        if $z0 != 0 goto label09;
+
+        $r22 = virtualinvoke $r25.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label08:
+        $z0 = interfaceinvoke $r22.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label09;
+
+        $r23 = interfaceinvoke $r22.<java.util.Iterator: java.lang.Object next()>();
+
+        r26 = (android.app.Person) $r23;
+
+        $r27 = staticinvoke <androidx.core.app.Person: androidx.core.app.Person fromAndroidPerson(android.app.Person)>(r26);
+
+        virtualinvoke r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder addPerson(androidx.core.app.Person)>($r27);
+
+        goto label08;
+
+     label09:
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 24 goto label10;
+
+        $z0 = virtualinvoke r4.<android.os.Bundle: boolean containsKey(java.lang.String)>("android.chronometerCountDown");
+
+        if $z0 == 0 goto label10;
+
+        $z0 = virtualinvoke r4.<android.os.Bundle: boolean getBoolean(java.lang.String)>("android.chronometerCountDown");
+
+        virtualinvoke r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setChronometerCountDown(boolean)>($z0);
+
+     label10:
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 26 goto label11;
+
+        $z0 = virtualinvoke r4.<android.os.Bundle: boolean containsKey(java.lang.String)>("android.colorized");
+
+        if $z0 == 0 goto label11;
+
+        $z0 = virtualinvoke r4.<android.os.Bundle: boolean getBoolean(java.lang.String)>("android.colorized");
+
+        virtualinvoke r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setColorized(boolean)>($z0);
+
+     label11:
+        return;
+    }
+
+    public void <init>(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+        android.app.Notification $r3, $r5;
+        long $l0;
+        java.lang.String $r2;
+        java.util.ArrayList $r4;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.util.ArrayList mActions> = $r4;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.util.ArrayList mPersonList> = $r4;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.util.ArrayList mInvisibleActions> = $r4;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: boolean mShowWhen> = 1;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: boolean mLocalOnly> = 0;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: int mColor> = 0;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: int mVisibility> = 0;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: int mBadgeIcon> = 0;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: int mGroupAlertBehavior> = 0;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: int mFgsDeferBehavior> = 0;
+
+        $r5 = new android.app.Notification;
+
+        specialinvoke $r5.<android.app.Notification: void <init>()>();
+
+        r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification> = $r5;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: android.content.Context mContext> = $r1;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.lang.String mChannelId> = $r2;
+
+        $r3 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $r3.<android.app.Notification: long when> = $l0;
+
+        $r3 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r3.<android.app.Notification: int audioStreamType> = -1;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: int mPriority> = 0;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.util.ArrayList mPeople> = $r4;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: boolean mAllowSystemGeneratedContextualActions> = 1;
+
+        return;
+    }
+
+    private static android.os.Bundle getExtrasWithoutDuplicateData(android.app.Notification, androidx.core.app.NotificationCompat$Style)
+    {
+        android.os.Bundle $r2, r3, $r4;
+        android.app.Notification $r0;
+        androidx.core.app.NotificationCompat$Style $r1;
+
+        $r0 := @parameter0: android.app.Notification;
+
+        $r1 := @parameter1: androidx.core.app.NotificationCompat$Style;
+
+        r3 = $r0.<android.app.Notification: android.os.Bundle extras>;
+
+        if r3 != null goto label1;
+
+        return null;
+
+     label1:
+        r3 = new android.os.Bundle;
+
+        $r2 = $r0.<android.app.Notification: android.os.Bundle extras>;
+
+        specialinvoke r3.<android.os.Bundle: void <init>(android.os.Bundle)>($r2);
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.title");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.text");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.infoText");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.subText");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.intent.extra.CHANNEL_ID");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.intent.extra.CHANNEL_GROUP_ID");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.showWhen");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.progress");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.progressMax");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.progressIndeterminate");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.chronometerCountDown");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.colorized");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.people.list");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.people");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.support.sortKey");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.support.groupKey");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.support.isGroupSummary");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.support.localOnly");
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("android.support.actionExtras");
+
+        $r2 = virtualinvoke r3.<android.os.Bundle: android.os.Bundle getBundle(java.lang.String)>("android.car.EXTENSIONS");
+
+        if $r2 == null goto label2;
+
+        $r4 = new android.os.Bundle;
+
+        specialinvoke $r4.<android.os.Bundle: void <init>(android.os.Bundle)>($r2);
+
+        virtualinvoke $r4.<android.os.Bundle: void remove(java.lang.String)>("invisible_actions");
+
+        virtualinvoke r3.<android.os.Bundle: void putBundle(java.lang.String,android.os.Bundle)>("android.car.EXTENSIONS", $r4);
+
+     label2:
+        if $r1 == null goto label3;
+
+        virtualinvoke $r1.<androidx.core.app.NotificationCompat$Style: void clearCompatExtraKeys(android.os.Bundle)>(r3);
+
+     label3:
+        return r3;
+    }
+
+    protected static java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)
+    {
+        int $i0;
+        java.lang.CharSequence $r0;
+
+        $r0 := @parameter0: java.lang.CharSequence;
+
+        if $r0 != null goto label1;
+
+        return $r0;
+
+     label1:
+        $i0 = interfaceinvoke $r0.<java.lang.CharSequence: int length()>();
+
+        if $i0 <= 5120 goto label2;
+
+        $r0 = interfaceinvoke $r0.<java.lang.CharSequence: java.lang.CharSequence subSequence(int,int)>(0, 5120);
+
+     label2:
+        return $r0;
+    }
+
+    private android.graphics.Bitmap reduceLargeIconSize(android.graphics.Bitmap)
+    {
+        android.content.Context r2;
+        androidx.core.app.NotificationCompat$Builder r0;
+        android.graphics.Bitmap $r1;
+        int i0, $i1, $i2;
+        double $d0, d1, $d2;
+        android.content.res.Resources $r3;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.graphics.Bitmap;
+
+        if $r1 == null goto label3;
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 27 goto label1;
+
+        return $r1;
+
+     label1:
+        r2 = r0.<androidx.core.app.NotificationCompat$Builder: android.content.Context mContext>;
+
+        $r3 = virtualinvoke r2.<android.content.Context: android.content.res.Resources getResources()>();
+
+        i0 = <androidx.core.R$dimen: int compat_notification_large_icon_max_width>;
+
+        $i1 = virtualinvoke $r3.<android.content.res.Resources: int getDimensionPixelSize(int)>(i0);
+
+        i0 = <androidx.core.R$dimen: int compat_notification_large_icon_max_height>;
+
+        i0 = virtualinvoke $r3.<android.content.res.Resources: int getDimensionPixelSize(int)>(i0);
+
+        $i2 = virtualinvoke $r1.<android.graphics.Bitmap: int getWidth()>();
+
+        if $i2 > $i1 goto label2;
+
+        $i2 = virtualinvoke $r1.<android.graphics.Bitmap: int getHeight()>();
+
+        if $i2 > i0 goto label2;
+
+        return $r1;
+
+     label2:
+        d1 = (double) $i1;
+
+        $i1 = virtualinvoke $r1.<android.graphics.Bitmap: int getWidth()>();
+
+        $i1 = staticinvoke <java.lang.Math: int max(int,int)>(1, $i1);
+
+        $d0 = (double) $i1;
+
+        d1 = d1 / $d0;
+
+        $d2 = (double) i0;
+
+        i0 = virtualinvoke $r1.<android.graphics.Bitmap: int getHeight()>();
+
+        i0 = staticinvoke <java.lang.Math: int max(int,int)>(1, i0);
+
+        $d0 = (double) i0;
+
+        $d0 = $d2 / $d0;
+
+        d1 = staticinvoke <java.lang.Math: double min(double,double)>(d1, $d0);
+
+        i0 = virtualinvoke $r1.<android.graphics.Bitmap: int getWidth()>();
+
+        $d0 = (double) i0;
+
+        $d0 = $d0 * d1;
+
+        $d0 = staticinvoke <java.lang.Math: double ceil(double)>($d0);
+
+        i0 = (int) $d0;
+
+        $i1 = virtualinvoke $r1.<android.graphics.Bitmap: int getHeight()>();
+
+        $d0 = (double) $i1;
+
+        d1 = $d0 * d1;
+
+        d1 = staticinvoke <java.lang.Math: double ceil(double)>(d1);
+
+        $i1 = (int) d1;
+
+        $r1 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createScaledBitmap(android.graphics.Bitmap,int,int,boolean)>($r1, i0, $i1, 1);
+
+     label3:
+        return $r1;
+    }
+
+    private void setFlag(int, boolean)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        int $i0, $i1;
+        android.app.Notification $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        $z0 := @parameter1: boolean;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $i1 = $r1.<android.app.Notification: int flags>;
+
+        $i0 = $i1 | $i0;
+
+        $r1.<android.app.Notification: int flags> = $i0;
+
+        return;
+
+     label1:
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $i1 = $r1.<android.app.Notification: int flags>;
+
+        $i0 = $i0 ^ -1;
+
+        $i0 = $i1 & $i0;
+
+        $r1.<android.app.Notification: int flags> = $i0;
+
+        return;
+    }
+
+    private boolean useExistingRemoteView()
+    {
+        androidx.core.app.NotificationCompat$Style $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Style mStyle>;
+
+        if $r1 == null goto label2;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Style mStyle>;
+
+        $z0 = virtualinvoke $r1.<androidx.core.app.NotificationCompat$Style: boolean displayCustomViewInline()>();
+
+        if $z0 != 0 goto label1;
+
+        goto label2;
+
+     label1:
+        return 0;
+
+     label2:
+        return 1;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder addAction(int, java.lang.CharSequence, android.app.PendingIntent)
+    {
+        java.lang.CharSequence $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+        int $i0;
+        android.app.PendingIntent $r2;
+        androidx.core.app.NotificationCompat$Action $r4;
+        java.util.ArrayList $r3;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: java.lang.CharSequence;
+
+        $r2 := @parameter2: android.app.PendingIntent;
+
+        $r3 = r0.<androidx.core.app.NotificationCompat$Builder: java.util.ArrayList mActions>;
+
+        $r4 = new androidx.core.app.NotificationCompat$Action;
+
+        specialinvoke $r4.<androidx.core.app.NotificationCompat$Action: void <init>(int,java.lang.CharSequence,android.app.PendingIntent)>($i0, $r1, $r2);
+
+        virtualinvoke $r3.<java.util.ArrayList: boolean add(java.lang.Object)>($r4);
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder addAction(androidx.core.app.NotificationCompat$Action)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        androidx.core.app.NotificationCompat$Action $r1;
+        java.util.ArrayList $r2;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: androidx.core.app.NotificationCompat$Action;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: java.util.ArrayList mActions>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+     label1:
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder addExtras(android.os.Bundle)
+    {
+        android.os.Bundle $r1, $r2;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        if $r1 == null goto label2;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: android.os.Bundle mExtras>;
+
+        if $r2 != null goto label1;
+
+        $r2 = new android.os.Bundle;
+
+        specialinvoke $r2.<android.os.Bundle: void <init>(android.os.Bundle)>($r1);
+
+        r0.<androidx.core.app.NotificationCompat$Builder: android.os.Bundle mExtras> = $r2;
+
+        return r0;
+
+     label1:
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: android.os.Bundle mExtras>;
+
+        virtualinvoke $r2.<android.os.Bundle: void putAll(android.os.Bundle)>($r1);
+
+     label2:
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder addInvisibleAction(int, java.lang.CharSequence, android.app.PendingIntent)
+    {
+        java.lang.CharSequence $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+        int $i0;
+        android.app.PendingIntent $r2;
+        androidx.core.app.NotificationCompat$Action $r4;
+        java.util.ArrayList $r3;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: java.lang.CharSequence;
+
+        $r2 := @parameter2: android.app.PendingIntent;
+
+        $r3 = r0.<androidx.core.app.NotificationCompat$Builder: java.util.ArrayList mInvisibleActions>;
+
+        $r4 = new androidx.core.app.NotificationCompat$Action;
+
+        specialinvoke $r4.<androidx.core.app.NotificationCompat$Action: void <init>(int,java.lang.CharSequence,android.app.PendingIntent)>($i0, $r1, $r2);
+
+        virtualinvoke $r3.<java.util.ArrayList: boolean add(java.lang.Object)>($r4);
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder addInvisibleAction(androidx.core.app.NotificationCompat$Action)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        androidx.core.app.NotificationCompat$Action $r1;
+        java.util.ArrayList $r2;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: androidx.core.app.NotificationCompat$Action;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: java.util.ArrayList mInvisibleActions>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+     label1:
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder addPerson(androidx.core.app.Person)
+    {
+        androidx.core.app.Person $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+        java.util.ArrayList $r2;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: androidx.core.app.Person;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: java.util.ArrayList mPersonList>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+     label1:
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder addPerson(java.lang.String)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        java.lang.String $r1;
+        boolean $z0;
+        java.util.ArrayList $r2;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        if $r1 == null goto label1;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean isEmpty()>();
+
+        if $z0 != 0 goto label1;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: java.util.ArrayList mPeople>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+     label1:
+        return r0;
+    }
+
+    public android.app.Notification build()
+    {
+        android.app.Notification $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+        androidx.core.app.NotificationCompatBuilder $r2;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r2 = new androidx.core.app.NotificationCompatBuilder;
+
+        specialinvoke $r2.<androidx.core.app.NotificationCompatBuilder: void <init>(androidx.core.app.NotificationCompat$Builder)>(r0);
+
+        $r1 = virtualinvoke $r2.<androidx.core.app.NotificationCompatBuilder: android.app.Notification build()>();
+
+        return $r1;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder clearActions()
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: java.util.ArrayList mActions>;
+
+        virtualinvoke $r1.<java.util.ArrayList: void clear()>();
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder clearInvisibleActions()
+    {
+        android.os.Bundle $r1, r3;
+        androidx.core.app.NotificationCompat$Builder r0;
+        java.util.ArrayList r2;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        r2 = r0.<androidx.core.app.NotificationCompat$Builder: java.util.ArrayList mInvisibleActions>;
+
+        virtualinvoke r2.<java.util.ArrayList: void clear()>();
+
+        r3 = r0.<androidx.core.app.NotificationCompat$Builder: android.os.Bundle mExtras>;
+
+        $r1 = virtualinvoke r3.<android.os.Bundle: android.os.Bundle getBundle(java.lang.String)>("android.car.EXTENSIONS");
+
+        if $r1 == null goto label1;
+
+        r3 = new android.os.Bundle;
+
+        specialinvoke r3.<android.os.Bundle: void <init>(android.os.Bundle)>($r1);
+
+        virtualinvoke r3.<android.os.Bundle: void remove(java.lang.String)>("invisible_actions");
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.os.Bundle mExtras>;
+
+        virtualinvoke $r1.<android.os.Bundle: void putBundle(java.lang.String,android.os.Bundle)>("android.car.EXTENSIONS", r3);
+
+     label1:
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder clearPeople()
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: java.util.ArrayList mPersonList>;
+
+        virtualinvoke $r1.<java.util.ArrayList: void clear()>();
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: java.util.ArrayList mPeople>;
+
+        virtualinvoke $r1.<java.util.ArrayList: void clear()>();
+
+        return r0;
+    }
+
+    public android.widget.RemoteViews createBigContentView()
+    {
+        android.widget.RemoteViews r1;
+        android.content.Context $r5;
+        androidx.core.app.NotificationCompat$Builder r0;
+        androidx.core.app.NotificationCompat$Style r3;
+        android.app.Notification$Builder $r6;
+        androidx.core.app.NotificationCompatBuilder r2;
+        int $i0;
+        android.app.Notification $r4;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews mBigContentView>;
+
+        if r1 == null goto label1;
+
+        $z0 = specialinvoke r0.<androidx.core.app.NotificationCompat$Builder: boolean useExistingRemoteView()>();
+
+        if $z0 == 0 goto label1;
+
+        r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews mBigContentView>;
+
+        return r1;
+
+     label1:
+        r2 = new androidx.core.app.NotificationCompatBuilder;
+
+        specialinvoke r2.<androidx.core.app.NotificationCompatBuilder: void <init>(androidx.core.app.NotificationCompat$Builder)>(r0);
+
+        r3 = r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Style mStyle>;
+
+        if r3 == null goto label2;
+
+        r3 = r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Style mStyle>;
+
+        r1 = virtualinvoke r3.<androidx.core.app.NotificationCompat$Style: android.widget.RemoteViews makeBigContentView(androidx.core.app.NotificationBuilderWithBuilderAccessor)>(r2);
+
+        if r1 == null goto label2;
+
+        return r1;
+
+     label2:
+        $r4 = virtualinvoke r2.<androidx.core.app.NotificationCompatBuilder: android.app.Notification build()>();
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 24 goto label3;
+
+        $r5 = r0.<androidx.core.app.NotificationCompat$Builder: android.content.Context mContext>;
+
+        $r6 = staticinvoke <android.app.Notification$Builder: android.app.Notification$Builder recoverBuilder(android.content.Context,android.app.Notification)>($r5, $r4);
+
+        r1 = virtualinvoke $r6.<android.app.Notification$Builder: android.widget.RemoteViews createBigContentView()>();
+
+        return r1;
+
+     label3:
+        r1 = $r4.<android.app.Notification: android.widget.RemoteViews bigContentView>;
+
+        return r1;
+    }
+
+    public android.widget.RemoteViews createContentView()
+    {
+        android.widget.RemoteViews r1;
+        android.content.Context $r5;
+        androidx.core.app.NotificationCompat$Builder r0;
+        androidx.core.app.NotificationCompat$Style r3;
+        android.app.Notification$Builder $r6;
+        androidx.core.app.NotificationCompatBuilder r2;
+        int $i0;
+        android.app.Notification $r4;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews mContentView>;
+
+        if r1 == null goto label1;
+
+        $z0 = specialinvoke r0.<androidx.core.app.NotificationCompat$Builder: boolean useExistingRemoteView()>();
+
+        if $z0 == 0 goto label1;
+
+        r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews mContentView>;
+
+        return r1;
+
+     label1:
+        r2 = new androidx.core.app.NotificationCompatBuilder;
+
+        specialinvoke r2.<androidx.core.app.NotificationCompatBuilder: void <init>(androidx.core.app.NotificationCompat$Builder)>(r0);
+
+        r3 = r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Style mStyle>;
+
+        if r3 == null goto label2;
+
+        r3 = r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Style mStyle>;
+
+        r1 = virtualinvoke r3.<androidx.core.app.NotificationCompat$Style: android.widget.RemoteViews makeContentView(androidx.core.app.NotificationBuilderWithBuilderAccessor)>(r2);
+
+        if r1 == null goto label2;
+
+        return r1;
+
+     label2:
+        $r4 = virtualinvoke r2.<androidx.core.app.NotificationCompatBuilder: android.app.Notification build()>();
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 24 goto label3;
+
+        $r5 = r0.<androidx.core.app.NotificationCompat$Builder: android.content.Context mContext>;
+
+        $r6 = staticinvoke <android.app.Notification$Builder: android.app.Notification$Builder recoverBuilder(android.content.Context,android.app.Notification)>($r5, $r4);
+
+        r1 = virtualinvoke $r6.<android.app.Notification$Builder: android.widget.RemoteViews createContentView()>();
+
+        return r1;
+
+     label3:
+        r1 = $r4.<android.app.Notification: android.widget.RemoteViews contentView>;
+
+        return r1;
+    }
+
+    public android.widget.RemoteViews createHeadsUpContentView()
+    {
+        android.widget.RemoteViews r1;
+        android.content.Context r5;
+        androidx.core.app.NotificationCompat$Builder r0;
+        androidx.core.app.NotificationCompat$Style r3;
+        android.app.Notification$Builder $r6;
+        androidx.core.app.NotificationCompatBuilder r2;
+        int i0;
+        android.app.Notification $r4;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews mHeadsUpContentView>;
+
+        if r1 == null goto label1;
+
+        $z0 = specialinvoke r0.<androidx.core.app.NotificationCompat$Builder: boolean useExistingRemoteView()>();
+
+        if $z0 == 0 goto label1;
+
+        r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews mHeadsUpContentView>;
+
+        return r1;
+
+     label1:
+        r2 = new androidx.core.app.NotificationCompatBuilder;
+
+        specialinvoke r2.<androidx.core.app.NotificationCompatBuilder: void <init>(androidx.core.app.NotificationCompat$Builder)>(r0);
+
+        r3 = r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Style mStyle>;
+
+        if r3 == null goto label2;
+
+        r3 = r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Style mStyle>;
+
+        r1 = virtualinvoke r3.<androidx.core.app.NotificationCompat$Style: android.widget.RemoteViews makeHeadsUpContentView(androidx.core.app.NotificationBuilderWithBuilderAccessor)>(r2);
+
+        if r1 == null goto label2;
+
+        return r1;
+
+     label2:
+        $r4 = virtualinvoke r2.<androidx.core.app.NotificationCompatBuilder: android.app.Notification build()>();
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 24 goto label3;
+
+        r5 = r0.<androidx.core.app.NotificationCompat$Builder: android.content.Context mContext>;
+
+        $r6 = staticinvoke <android.app.Notification$Builder: android.app.Notification$Builder recoverBuilder(android.content.Context,android.app.Notification)>(r5, $r4);
+
+        r1 = virtualinvoke $r6.<android.app.Notification$Builder: android.widget.RemoteViews createHeadsUpContentView()>();
+
+        return r1;
+
+     label3:
+        r1 = $r4.<android.app.Notification: android.widget.RemoteViews headsUpContentView>;
+
+        return r1;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder extend(androidx.core.app.NotificationCompat$Extender)
+    {
+        androidx.core.app.NotificationCompat$Extender $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: androidx.core.app.NotificationCompat$Extender;
+
+        interfaceinvoke $r1.<androidx.core.app.NotificationCompat$Extender: androidx.core.app.NotificationCompat$Builder extend(androidx.core.app.NotificationCompat$Builder)>(r0);
+
+        return r0;
+    }
+
+    public android.widget.RemoteViews getBigContentView()
+    {
+        android.widget.RemoteViews r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews mBigContentView>;
+
+        return r1;
+    }
+
+    public androidx.core.app.NotificationCompat$BubbleMetadata getBubbleMetadata()
+    {
+        androidx.core.app.NotificationCompat$BubbleMetadata r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        r1 = r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$BubbleMetadata mBubbleMetadata>;
+
+        return r1;
+    }
+
+    public int getColor()
+    {
+        int i0;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        i0 = r0.<androidx.core.app.NotificationCompat$Builder: int mColor>;
+
+        return i0;
+    }
+
+    public android.widget.RemoteViews getContentView()
+    {
+        android.widget.RemoteViews r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews mContentView>;
+
+        return r1;
+    }
+
+    public android.os.Bundle getExtras()
+    {
+        android.os.Bundle $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.os.Bundle mExtras>;
+
+        if $r1 != null goto label1;
+
+        $r1 = new android.os.Bundle;
+
+        specialinvoke $r1.<android.os.Bundle: void <init>()>();
+
+        r0.<androidx.core.app.NotificationCompat$Builder: android.os.Bundle mExtras> = $r1;
+
+     label1:
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.os.Bundle mExtras>;
+
+        return $r1;
+    }
+
+    public int getForegroundServiceBehavior()
+    {
+        int i0;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        i0 = r0.<androidx.core.app.NotificationCompat$Builder: int mFgsDeferBehavior>;
+
+        return i0;
+    }
+
+    public android.widget.RemoteViews getHeadsUpContentView()
+    {
+        android.widget.RemoteViews r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews mHeadsUpContentView>;
+
+        return r1;
+    }
+
+    public android.app.Notification getNotification()
+    {
+        android.app.Notification $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 = virtualinvoke r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification build()>();
+
+        return $r1;
+    }
+
+    public int getPriority()
+    {
+        int i0;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        i0 = r0.<androidx.core.app.NotificationCompat$Builder: int mPriority>;
+
+        return i0;
+    }
+
+    public long getWhenIfShowing()
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        android.app.Notification $r1;
+        long l0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $z0 = r0.<androidx.core.app.NotificationCompat$Builder: boolean mShowWhen>;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        l0 = $r1.<android.app.Notification: long when>;
+
+        return l0;
+
+     label1:
+        return 0L;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setAllowSystemGeneratedContextualActions(boolean)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: boolean mAllowSystemGeneratedContextualActions> = $z0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setAutoCancel(boolean)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        specialinvoke r0.<androidx.core.app.NotificationCompat$Builder: void setFlag(int,boolean)>(16, $z0);
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setBadgeIconType(int)
+    {
+        int $i0;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: int mBadgeIcon> = $i0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setBubbleMetadata(androidx.core.app.NotificationCompat$BubbleMetadata)
+    {
+        androidx.core.app.NotificationCompat$BubbleMetadata $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: androidx.core.app.NotificationCompat$BubbleMetadata;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$BubbleMetadata mBubbleMetadata> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setCategory(java.lang.String)
+    {
+        java.lang.String $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.lang.String mCategory> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setChannelId(java.lang.String)
+    {
+        java.lang.String $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.lang.String mChannelId> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setChronometerCountDown(boolean)
+    {
+        android.os.Bundle $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: boolean mChronometerCountDown> = $z0;
+
+        $r1 = virtualinvoke r0.<androidx.core.app.NotificationCompat$Builder: android.os.Bundle getExtras()>();
+
+        virtualinvoke $r1.<android.os.Bundle: void putBoolean(java.lang.String,boolean)>("android.chronometerCountDown", $z0);
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setColor(int)
+    {
+        int $i0;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: int mColor> = $i0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setColorized(boolean)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: boolean mColorized> = $z0;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: boolean mColorizedSet> = 1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setContent(android.widget.RemoteViews)
+    {
+        android.widget.RemoteViews $r1;
+        android.app.Notification $r2;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.widget.RemoteViews;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r2.<android.app.Notification: android.widget.RemoteViews contentView> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setContentInfo(java.lang.CharSequence)
+    {
+        java.lang.CharSequence $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r1 = staticinvoke <androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)>($r1);
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence mContentInfo> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setContentIntent(android.app.PendingIntent)
+    {
+        android.app.PendingIntent $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.app.PendingIntent;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: android.app.PendingIntent mContentIntent> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setContentText(java.lang.CharSequence)
+    {
+        java.lang.CharSequence $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r1 = staticinvoke <androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)>($r1);
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence mContentText> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setContentTitle(java.lang.CharSequence)
+    {
+        java.lang.CharSequence $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r1 = staticinvoke <androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)>($r1);
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence mContentTitle> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setCustomBigContentView(android.widget.RemoteViews)
+    {
+        android.widget.RemoteViews $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.widget.RemoteViews;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews mBigContentView> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setCustomContentView(android.widget.RemoteViews)
+    {
+        android.widget.RemoteViews $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.widget.RemoteViews;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews mContentView> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setCustomHeadsUpContentView(android.widget.RemoteViews)
+    {
+        android.widget.RemoteViews $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.widget.RemoteViews;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews mHeadsUpContentView> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setDefaults(int)
+    {
+        int $i0;
+        android.app.Notification $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r1.<android.app.Notification: int defaults> = $i0;
+
+        $i0 = $i0 & 4;
+
+        if $i0 == 0 goto label1;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $i0 = $r1.<android.app.Notification: int flags>;
+
+        $i0 = $i0 | 1;
+
+        $r1.<android.app.Notification: int flags> = $i0;
+
+     label1:
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setDeleteIntent(android.app.PendingIntent)
+    {
+        android.app.Notification $r2;
+        android.app.PendingIntent $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.app.PendingIntent;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r2.<android.app.Notification: android.app.PendingIntent deleteIntent> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setExtras(android.os.Bundle)
+    {
+        android.os.Bundle $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: android.os.Bundle mExtras> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setForegroundServiceBehavior(int)
+    {
+        int $i0;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: int mFgsDeferBehavior> = $i0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setFullScreenIntent(android.app.PendingIntent, boolean)
+    {
+        android.app.PendingIntent $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.app.PendingIntent;
+
+        $z0 := @parameter1: boolean;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: android.app.PendingIntent mFullScreenIntent> = $r1;
+
+        specialinvoke r0.<androidx.core.app.NotificationCompat$Builder: void setFlag(int,boolean)>(128, $z0);
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setGroup(java.lang.String)
+    {
+        java.lang.String $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.lang.String mGroupKey> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setGroupAlertBehavior(int)
+    {
+        int $i0;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: int mGroupAlertBehavior> = $i0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setGroupSummary(boolean)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: boolean mGroupSummary> = $z0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setLargeIcon(android.graphics.Bitmap)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        android.graphics.Bitmap $r1;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.graphics.Bitmap;
+
+        $r1 = specialinvoke r0.<androidx.core.app.NotificationCompat$Builder: android.graphics.Bitmap reduceLargeIconSize(android.graphics.Bitmap)>($r1);
+
+        r0.<androidx.core.app.NotificationCompat$Builder: android.graphics.Bitmap mLargeIcon> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setLights(int, int, int)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        int $i0, $i1, $i2;
+        android.app.Notification $r1, $r2;
+        boolean $z0, z1;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r1.<android.app.Notification: int ledARGB> = $i0;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r1.<android.app.Notification: int ledOnMS> = $i1;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r1.<android.app.Notification: int ledOffMS> = $i2;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $i0 = $r1.<android.app.Notification: int ledOnMS>;
+
+        $z0 = 1;
+
+        if $i0 == 0 goto label1;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $i0 = $r1.<android.app.Notification: int ledOffMS>;
+
+        if $i0 == 0 goto label1;
+
+        z1 = 1;
+
+        goto label2;
+
+     label1:
+        z1 = 0;
+
+     label2:
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $i0 = $r2.<android.app.Notification: int flags>;
+
+        $i0 = $i0 & -2;
+
+        if z1 == 0 goto label3;
+
+        goto label4;
+
+     label3:
+        $z0 = 0;
+
+     label4:
+        $i0 = $z0 | $i0;
+
+        $r1.<android.app.Notification: int flags> = $i0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setLocalOnly(boolean)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: boolean mLocalOnly> = $z0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setLocusId(androidx.core.content.LocusIdCompat)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        androidx.core.content.LocusIdCompat $r1;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: androidx.core.content.LocusIdCompat;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.content.LocusIdCompat mLocusId> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setNotificationSilent()
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: boolean mSilent> = 1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setNumber(int)
+    {
+        int $i0;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: int mNumber> = $i0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setOngoing(boolean)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        specialinvoke r0.<androidx.core.app.NotificationCompat$Builder: void setFlag(int,boolean)>(2, $z0);
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setOnlyAlertOnce(boolean)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        specialinvoke r0.<androidx.core.app.NotificationCompat$Builder: void setFlag(int,boolean)>(8, $z0);
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setPriority(int)
+    {
+        int $i0;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: int mPriority> = $i0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setProgress(int, int, boolean)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        int $i0, $i1;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $z0 := @parameter2: boolean;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: int mProgressMax> = $i0;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: int mProgress> = $i1;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: boolean mProgressIndeterminate> = $z0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setPublicVersion(android.app.Notification)
+    {
+        android.app.Notification $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.app.Notification;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mPublicVersion> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setRemoteInputHistory(java.lang.CharSequence[])
+    {
+        java.lang.CharSequence[] $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: java.lang.CharSequence[];
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence[] mRemoteInputHistory> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setSettingsText(java.lang.CharSequence)
+    {
+        java.lang.CharSequence $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r1 = staticinvoke <androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)>($r1);
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence mSettingsText> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setShortcutId(java.lang.String)
+    {
+        java.lang.String $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.lang.String mShortcutId> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setShortcutInfo(androidx.core.content.pm.ShortcutInfoCompat)
+    {
+        java.lang.CharSequence $r4;
+        androidx.core.app.NotificationCompat$Builder r0;
+        java.lang.String $r2;
+        androidx.core.content.pm.ShortcutInfoCompat $r1;
+        androidx.core.content.LocusIdCompat $r3;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: androidx.core.content.pm.ShortcutInfoCompat;
+
+        if $r1 != null goto label1;
+
+        return r0;
+
+     label1:
+        $r2 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.String getId()>();
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.lang.String mShortcutId> = $r2;
+
+        $r3 = r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.content.LocusIdCompat mLocusId>;
+
+        if $r3 != null goto label3;
+
+        $r3 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.content.LocusIdCompat getLocusId()>();
+
+        if $r3 == null goto label2;
+
+        $r3 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.content.LocusIdCompat getLocusId()>();
+
+        r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.content.LocusIdCompat mLocusId> = $r3;
+
+        goto label3;
+
+     label2:
+        $r2 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.String getId()>();
+
+        if $r2 == null goto label3;
+
+        $r3 = new androidx.core.content.LocusIdCompat;
+
+        $r2 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.String getId()>();
+
+        specialinvoke $r3.<androidx.core.content.LocusIdCompat: void <init>(java.lang.String)>($r2);
+
+        r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.content.LocusIdCompat mLocusId> = $r3;
+
+     label3:
+        $r4 = r0.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence mContentTitle>;
+
+        if $r4 != null goto label4;
+
+        $r4 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence getShortLabel()>();
+
+        virtualinvoke r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setContentTitle(java.lang.CharSequence)>($r4);
+
+     label4:
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setShowWhen(boolean)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: boolean mShowWhen> = $z0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setSilent(boolean)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: boolean mSilent> = $z0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setSmallIcon(int)
+    {
+        int $i0;
+        android.app.Notification $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r1.<android.app.Notification: int icon> = $i0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setSmallIcon(int, int)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        int $i0, $i1;
+        android.app.Notification $r1;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r1.<android.app.Notification: int icon> = $i0;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r1.<android.app.Notification: int iconLevel> = $i1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setSmallIcon(androidx.core.graphics.drawable.IconCompat)
+    {
+        android.content.Context $r3;
+        androidx.core.graphics.drawable.IconCompat $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+        android.graphics.drawable.Icon $r2;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: androidx.core.graphics.drawable.IconCompat;
+
+        $r3 = r0.<androidx.core.app.NotificationCompat$Builder: android.content.Context mContext>;
+
+        $r2 = virtualinvoke $r1.<androidx.core.graphics.drawable.IconCompat: android.graphics.drawable.Icon toIcon(android.content.Context)>($r3);
+
+        r0.<androidx.core.app.NotificationCompat$Builder: android.graphics.drawable.Icon mSmallIcon> = $r2;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setSortKey(java.lang.String)
+    {
+        java.lang.String $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.lang.String mSortKey> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setSound(android.net.Uri)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        android.net.Uri $r1;
+        android.app.Notification $r2;
+        android.media.AudioAttributes$Builder $r3, $r5;
+        android.media.AudioAttributes $r4;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.net.Uri;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r2.<android.app.Notification: android.net.Uri sound> = $r1;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r2.<android.app.Notification: int audioStreamType> = -1;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r5 = new android.media.AudioAttributes$Builder;
+
+        specialinvoke $r5.<android.media.AudioAttributes$Builder: void <init>()>();
+
+        $r3 = virtualinvoke $r5.<android.media.AudioAttributes$Builder: android.media.AudioAttributes$Builder setContentType(int)>(4);
+
+        $r3 = virtualinvoke $r3.<android.media.AudioAttributes$Builder: android.media.AudioAttributes$Builder setUsage(int)>(5);
+
+        $r4 = virtualinvoke $r3.<android.media.AudioAttributes$Builder: android.media.AudioAttributes build()>();
+
+        $r2.<android.app.Notification: android.media.AudioAttributes audioAttributes> = $r4;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setSound(android.net.Uri, int)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        android.net.Uri $r1;
+        int $i0;
+        android.app.Notification $r2;
+        android.media.AudioAttributes$Builder $r3;
+        android.media.AudioAttributes $r4;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: android.net.Uri;
+
+        $i0 := @parameter1: int;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r2.<android.app.Notification: android.net.Uri sound> = $r1;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r2.<android.app.Notification: int audioStreamType> = $i0;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r3 = new android.media.AudioAttributes$Builder;
+
+        specialinvoke $r3.<android.media.AudioAttributes$Builder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<android.media.AudioAttributes$Builder: android.media.AudioAttributes$Builder setContentType(int)>(4);
+
+        $r3 = virtualinvoke $r3.<android.media.AudioAttributes$Builder: android.media.AudioAttributes$Builder setLegacyStreamType(int)>($i0);
+
+        $r4 = virtualinvoke $r3.<android.media.AudioAttributes$Builder: android.media.AudioAttributes build()>();
+
+        $r2.<android.app.Notification: android.media.AudioAttributes audioAttributes> = $r4;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setStyle(androidx.core.app.NotificationCompat$Style)
+    {
+        androidx.core.app.NotificationCompat$Style $r1, $r2;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: androidx.core.app.NotificationCompat$Style;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Style mStyle>;
+
+        if $r2 == $r1 goto label1;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Style mStyle> = $r1;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Style mStyle>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Style mStyle>;
+
+        virtualinvoke $r1.<androidx.core.app.NotificationCompat$Style: void setBuilder(androidx.core.app.NotificationCompat$Builder)>(r0);
+
+     label1:
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setSubText(java.lang.CharSequence)
+    {
+        java.lang.CharSequence $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r1 = staticinvoke <androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)>($r1);
+
+        r0.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence mSubText> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setTicker(java.lang.CharSequence)
+    {
+        android.app.Notification $r2;
+        java.lang.CharSequence $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r1 = staticinvoke <androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)>($r1);
+
+        $r2.<android.app.Notification: java.lang.CharSequence tickerText> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setTicker(java.lang.CharSequence, android.widget.RemoteViews)
+    {
+        android.widget.RemoteViews $r2;
+        java.lang.CharSequence $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+        android.app.Notification $r3;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r2 := @parameter1: android.widget.RemoteViews;
+
+        $r3 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r1 = staticinvoke <androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)>($r1);
+
+        $r3.<android.app.Notification: java.lang.CharSequence tickerText> = $r1;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews mTickerView> = $r2;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setTimeoutAfter(long)
+    {
+        long $l0;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $l0 := @parameter0: long;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: long mTimeout> = $l0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setUsesChronometer(boolean)
+    {
+        androidx.core.app.NotificationCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: boolean mUseChronometer> = $z0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setVibrate(long[])
+    {
+        android.app.Notification $r2;
+        long[] $r1;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $r1 := @parameter0: long[];
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r2.<android.app.Notification: long[] vibrate> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setVisibility(int)
+    {
+        int $i0;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        r0.<androidx.core.app.NotificationCompat$Builder: int mVisibility> = $i0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Builder setWhen(long)
+    {
+        android.app.Notification $r1;
+        long $l0;
+        androidx.core.app.NotificationCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Builder;
+
+        $l0 := @parameter0: long;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $r1.<android.app.Notification: long when> = $l0;
+
+        return r0;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.app.NotificationCompat$Builder: int MAX_CHARSEQUENCE_LENGTH> = 5120;
+
+        return;
+    }
+}

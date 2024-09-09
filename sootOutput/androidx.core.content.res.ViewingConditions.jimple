@@ -1,0 +1,603 @@
+final class androidx.core.content.res.ViewingConditions extends java.lang.Object
+{
+    static final androidx.core.content.res.ViewingConditions DEFAULT;
+    private final float mAw;
+    private final float mC;
+    private final float mFl;
+    private final float mFlRoot;
+    private final float mN;
+    private final float mNbb;
+    private final float mNc;
+    private final float mNcb;
+    private final float[] mRgbD;
+    private final float mZ;
+
+    static void <clinit>()
+    {
+        androidx.core.content.res.ViewingConditions $r1;
+        float $f0;
+        float[] $r0;
+        double $d0;
+
+        $r0 = <androidx.core.content.res.CamUtils: float[] WHITE_POINT_D65>;
+
+        $f0 = staticinvoke <androidx.core.content.res.CamUtils: float yFromLStar(float)>(50.0F);
+
+        $d0 = (double) $f0;
+
+        $d0 = $d0 * 63.66197723675813;
+
+        $d0 = $d0 / 100.0;
+
+        $f0 = (float) $d0;
+
+        $r1 = staticinvoke <androidx.core.content.res.ViewingConditions: androidx.core.content.res.ViewingConditions make(float[],float,float,float,boolean)>($r0, $f0, 50.0F, 2.0F, 0);
+
+        <androidx.core.content.res.ViewingConditions: androidx.core.content.res.ViewingConditions DEFAULT> = $r1;
+
+        return;
+    }
+
+    private void <init>(float, float, float, float, float, float, float[], float, float, float)
+    {
+        float[] $r1;
+        androidx.core.content.res.ViewingConditions r0;
+        float $f0, $f1, $f2, $f3, $f4, $f5, $f6, $f7, $f8;
+
+        r0 := @this: androidx.core.content.res.ViewingConditions;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 := @parameter2: float;
+
+        $f3 := @parameter3: float;
+
+        $f4 := @parameter4: float;
+
+        $f5 := @parameter5: float;
+
+        $r1 := @parameter6: float[];
+
+        $f6 := @parameter7: float;
+
+        $f7 := @parameter8: float;
+
+        $f8 := @parameter9: float;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.content.res.ViewingConditions: float mN> = $f0;
+
+        r0.<androidx.core.content.res.ViewingConditions: float mAw> = $f1;
+
+        r0.<androidx.core.content.res.ViewingConditions: float mNbb> = $f2;
+
+        r0.<androidx.core.content.res.ViewingConditions: float mNcb> = $f3;
+
+        r0.<androidx.core.content.res.ViewingConditions: float mC> = $f4;
+
+        r0.<androidx.core.content.res.ViewingConditions: float mNc> = $f5;
+
+        r0.<androidx.core.content.res.ViewingConditions: float[] mRgbD> = $r1;
+
+        r0.<androidx.core.content.res.ViewingConditions: float mFl> = $f6;
+
+        r0.<androidx.core.content.res.ViewingConditions: float mFlRoot> = $f7;
+
+        r0.<androidx.core.content.res.ViewingConditions: float mZ> = $f8;
+
+        return;
+    }
+
+    static androidx.core.content.res.ViewingConditions make(float[], float, float, float, boolean)
+    {
+        float[] $r0, r2;
+        byte b0;
+        int $i1;
+        boolean $z0;
+        double $d0;
+        float[][] r1;
+        androidx.core.content.res.ViewingConditions $r3;
+        float $f0, $f1, $f2, f3, f4, f5, f6, f7, f8, $f9, f10;
+
+        $r0 := @parameter0: float[];
+
+        $f0 := @parameter1: float;
+
+        $f1 := @parameter2: float;
+
+        $f2 := @parameter3: float;
+
+        $z0 := @parameter4: boolean;
+
+        r1 = <androidx.core.content.res.CamUtils: float[][] XYZ_TO_CAM16RGB>;
+
+        f3 = $r0[0];
+
+        r2 = r1[0];
+
+        f6 = r2[0];
+
+        f3 = f3 * f6;
+
+        f6 = $r0[1];
+
+        r2 = r1[0];
+
+        f7 = r2[1];
+
+        f6 = f6 * f7;
+
+        f3 = f3 + f6;
+
+        f6 = $r0[2];
+
+        r2 = r1[0];
+
+        f7 = r2[2];
+
+        f6 = f6 * f7;
+
+        f6 = f3 + f6;
+
+        f3 = $r0[0];
+
+        r2 = r1[1];
+
+        f7 = r2[0];
+
+        f3 = f3 * f7;
+
+        f7 = $r0[1];
+
+        r2 = r1[1];
+
+        f8 = r2[1];
+
+        f7 = f7 * f8;
+
+        f3 = f3 + f7;
+
+        f7 = $r0[2];
+
+        r2 = r1[1];
+
+        f8 = r2[2];
+
+        f7 = f7 * f8;
+
+        f7 = f3 + f7;
+
+        f3 = $r0[0];
+
+        r2 = r1[2];
+
+        f8 = r2[0];
+
+        f3 = f3 * f8;
+
+        f8 = $r0[1];
+
+        r2 = r1[2];
+
+        f4 = r2[1];
+
+        f8 = f8 * f4;
+
+        f3 = f3 + f8;
+
+        f8 = $r0[2];
+
+        r2 = r1[2];
+
+        f4 = r2[2];
+
+        f8 = f8 * f4;
+
+        f8 = f3 + f8;
+
+        $f2 = $f2 / 10.0F;
+
+        $f2 = $f2 + 0.8F;
+
+        $d0 = (double) $f2;
+
+        b0 = $d0 cmpl 0.9;
+
+        $i1 = (int) b0;
+
+        if $i1 < 0 goto label1;
+
+        f3 = $f2 - 0.9F;
+
+        f3 = f3 * 10.0F;
+
+        f3 = staticinvoke <androidx.core.content.res.CamUtils: float lerp(float,float,float)>(0.59F, 0.69F, f3);
+
+        goto label2;
+
+     label1:
+        f3 = $f2 - 0.8F;
+
+        f3 = f3 * 10.0F;
+
+        f3 = staticinvoke <androidx.core.content.res.CamUtils: float lerp(float,float,float)>(0.525F, 0.59F, f3);
+
+     label2:
+        if $z0 == 0 goto label3;
+
+        f4 = 1.0F;
+
+        goto label4;
+
+     label3:
+        f4 = neg $f0;
+
+        f4 = f4 - 42.0F;
+
+        f4 = f4 / 92.0F;
+
+        $d0 = (double) f4;
+
+        $d0 = staticinvoke <java.lang.Math: double exp(double)>($d0);
+
+        f4 = (float) $d0;
+
+        f4 = f4 * 0.2777778F;
+
+        f4 = 1.0F - f4;
+
+        f4 = f4 * $f2;
+
+     label4:
+        $d0 = (double) f4;
+
+        b0 = $d0 cmpl 1.0;
+
+        $i1 = (int) b0;
+
+        if $i1 <= 0 goto label5;
+
+        f4 = 1.0F;
+
+        goto label6;
+
+     label5:
+        $d0 = (double) f4;
+
+        b0 = $d0 cmpg 0.0;
+
+        $i1 = (int) b0;
+
+        if $i1 >= 0 goto label6;
+
+        f4 = 0.0F;
+
+        goto label6;
+
+     label6:
+        f5 = 100.0F / f6;
+
+        f5 = f5 * f4;
+
+        f5 = f5 + 1.0F;
+
+        f5 = f5 - f4;
+
+        $f9 = 100.0F / f7;
+
+        $f9 = $f9 * f4;
+
+        $f9 = $f9 + 1.0F;
+
+        $f9 = $f9 - f4;
+
+        f10 = 100.0F / f8;
+
+        f10 = f10 * f4;
+
+        f10 = f10 + 1.0F;
+
+        f4 = f10 - f4;
+
+        r2 = newarray (float)[3];
+
+        r2[0] = f5;
+
+        r2[1] = $f9;
+
+        r2[2] = f4;
+
+        f4 = 5.0F * $f0;
+
+        f4 = f4 + 1.0F;
+
+        f4 = 1.0F / f4;
+
+        f5 = f4 * f4;
+
+        f5 = f5 * f4;
+
+        f4 = f5 * f4;
+
+        f5 = 1.0F - f4;
+
+        f4 = f4 * $f0;
+
+        $f9 = 0.1F * f5;
+
+        f5 = $f9 * f5;
+
+        $d0 = (double) $f0;
+
+        $d0 = $d0 * 5.0;
+
+        $d0 = staticinvoke <java.lang.Math: double cbrt(double)>($d0);
+
+        $f0 = (float) $d0;
+
+        $f0 = f5 * $f0;
+
+        $f0 = f4 + $f0;
+
+        $f1 = staticinvoke <androidx.core.content.res.CamUtils: float yFromLStar(float)>($f1);
+
+        f4 = $r0[1];
+
+        $f1 = $f1 / f4;
+
+        $d0 = (double) $f1;
+
+        $d0 = staticinvoke <java.lang.Math: double sqrt(double)>($d0);
+
+        f4 = (float) $d0;
+
+        f4 = f4 + 1.48F;
+
+        $d0 = (double) $f1;
+
+        $d0 = staticinvoke <java.lang.Math: double pow(double,double)>($d0, 0.2);
+
+        f5 = (float) $d0;
+
+        f5 = 0.725F / f5;
+
+        $f9 = r2[0];
+
+        $f9 = $f9 * $f0;
+
+        f6 = $f9 * f6;
+
+        $d0 = (double) f6;
+
+        $d0 = $d0 / 100.0;
+
+        $d0 = staticinvoke <java.lang.Math: double pow(double,double)>($d0, 0.42);
+
+        f6 = (float) $d0;
+
+        $f9 = r2[1];
+
+        $f9 = $f9 * $f0;
+
+        f7 = $f9 * f7;
+
+        $d0 = (double) f7;
+
+        $d0 = $d0 / 100.0;
+
+        $d0 = staticinvoke <java.lang.Math: double pow(double,double)>($d0, 0.42);
+
+        f7 = (float) $d0;
+
+        $f9 = r2[2];
+
+        $f9 = $f9 * $f0;
+
+        f8 = $f9 * f8;
+
+        $d0 = (double) f8;
+
+        $d0 = $d0 / 100.0;
+
+        $d0 = staticinvoke <java.lang.Math: double pow(double,double)>($d0, 0.42);
+
+        f8 = (float) $d0;
+
+        $r0 = newarray (float)[3];
+
+        $r0[0] = f6;
+
+        $r0[1] = f7;
+
+        $r0[2] = f8;
+
+        f6 = $r0[0];
+
+        f6 = f6 * 400.0F;
+
+        f7 = $r0[0];
+
+        f7 = f7 + 27.13F;
+
+        f6 = f6 / f7;
+
+        f7 = $r0[1];
+
+        f7 = f7 * 400.0F;
+
+        f8 = $r0[1];
+
+        f8 = f8 + 27.13F;
+
+        f7 = f7 / f8;
+
+        f8 = $r0[2];
+
+        f8 = f8 * 400.0F;
+
+        $f9 = $r0[2];
+
+        $f9 = $f9 + 27.13F;
+
+        f8 = f8 / $f9;
+
+        $r0 = newarray (float)[3];
+
+        $r0[0] = f6;
+
+        $r0[1] = f7;
+
+        $r0[2] = f8;
+
+        f6 = $r0[0];
+
+        f6 = f6 * 2.0F;
+
+        f7 = $r0[1];
+
+        f6 = f6 + f7;
+
+        f7 = $r0[2];
+
+        f7 = f7 * 0.05F;
+
+        f6 = f6 + f7;
+
+        f6 = f6 * f5;
+
+        $r3 = new androidx.core.content.res.ViewingConditions;
+
+        $d0 = (double) $f0;
+
+        $d0 = staticinvoke <java.lang.Math: double pow(double,double)>($d0, 0.25);
+
+        f7 = (float) $d0;
+
+        specialinvoke $r3.<androidx.core.content.res.ViewingConditions: void <init>(float,float,float,float,float,float,float[],float,float,float)>($f1, f6, f5, f5, f3, $f2, r2, $f0, f7, f4);
+
+        return $r3;
+    }
+
+    float getAw()
+    {
+        androidx.core.content.res.ViewingConditions r0;
+        float f0;
+
+        r0 := @this: androidx.core.content.res.ViewingConditions;
+
+        f0 = r0.<androidx.core.content.res.ViewingConditions: float mAw>;
+
+        return f0;
+    }
+
+    float getC()
+    {
+        androidx.core.content.res.ViewingConditions r0;
+        float f0;
+
+        r0 := @this: androidx.core.content.res.ViewingConditions;
+
+        f0 = r0.<androidx.core.content.res.ViewingConditions: float mC>;
+
+        return f0;
+    }
+
+    float getFl()
+    {
+        androidx.core.content.res.ViewingConditions r0;
+        float f0;
+
+        r0 := @this: androidx.core.content.res.ViewingConditions;
+
+        f0 = r0.<androidx.core.content.res.ViewingConditions: float mFl>;
+
+        return f0;
+    }
+
+    float getFlRoot()
+    {
+        androidx.core.content.res.ViewingConditions r0;
+        float f0;
+
+        r0 := @this: androidx.core.content.res.ViewingConditions;
+
+        f0 = r0.<androidx.core.content.res.ViewingConditions: float mFlRoot>;
+
+        return f0;
+    }
+
+    float getN()
+    {
+        androidx.core.content.res.ViewingConditions r0;
+        float f0;
+
+        r0 := @this: androidx.core.content.res.ViewingConditions;
+
+        f0 = r0.<androidx.core.content.res.ViewingConditions: float mN>;
+
+        return f0;
+    }
+
+    float getNbb()
+    {
+        androidx.core.content.res.ViewingConditions r0;
+        float f0;
+
+        r0 := @this: androidx.core.content.res.ViewingConditions;
+
+        f0 = r0.<androidx.core.content.res.ViewingConditions: float mNbb>;
+
+        return f0;
+    }
+
+    float getNc()
+    {
+        androidx.core.content.res.ViewingConditions r0;
+        float f0;
+
+        r0 := @this: androidx.core.content.res.ViewingConditions;
+
+        f0 = r0.<androidx.core.content.res.ViewingConditions: float mNc>;
+
+        return f0;
+    }
+
+    float getNcb()
+    {
+        androidx.core.content.res.ViewingConditions r0;
+        float f0;
+
+        r0 := @this: androidx.core.content.res.ViewingConditions;
+
+        f0 = r0.<androidx.core.content.res.ViewingConditions: float mNcb>;
+
+        return f0;
+    }
+
+    float[] getRgbD()
+    {
+        androidx.core.content.res.ViewingConditions r0;
+        float[] r1;
+
+        r0 := @this: androidx.core.content.res.ViewingConditions;
+
+        r1 = r0.<androidx.core.content.res.ViewingConditions: float[] mRgbD>;
+
+        return r1;
+    }
+
+    float getZ()
+    {
+        androidx.core.content.res.ViewingConditions r0;
+        float f0;
+
+        r0 := @this: androidx.core.content.res.ViewingConditions;
+
+        f0 = r0.<androidx.core.content.res.ViewingConditions: float mZ>;
+
+        return f0;
+    }
+}

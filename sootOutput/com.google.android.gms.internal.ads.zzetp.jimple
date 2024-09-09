@@ -1,0 +1,64 @@
+final class com.google.android.gms.internal.ads.zzetp extends java.lang.Object
+{
+    public final com.google.common.util.concurrent.ListenableFuture zza;
+    private final long zzb;
+    private final com.google.android.gms.common.util.Clock zzc;
+
+    public void <init>(com.google.common.util.concurrent.ListenableFuture, long, com.google.android.gms.common.util.Clock)
+    {
+        com.google.android.gms.internal.ads.zzetp r0;
+        com.google.android.gms.common.util.Clock $r2;
+        com.google.common.util.concurrent.ListenableFuture $r1;
+        long $l0, $l1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzetp;
+
+        $r1 := @parameter0: com.google.common.util.concurrent.ListenableFuture;
+
+        $l0 := @parameter1: long;
+
+        $r2 := @parameter2: com.google.android.gms.common.util.Clock;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzetp: com.google.common.util.concurrent.ListenableFuture zza> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzetp: com.google.android.gms.common.util.Clock zzc> = $r2;
+
+        $l1 = interfaceinvoke $r2.<com.google.android.gms.common.util.Clock: long elapsedRealtime()>();
+
+        $l0 = $l1 + $l0;
+
+        r0.<com.google.android.gms.internal.ads.zzetp: long zzb> = $l0;
+
+        return;
+    }
+
+    public final boolean zza()
+    {
+        com.google.android.gms.internal.ads.zzetp r0;
+        com.google.android.gms.common.util.Clock $r1;
+        byte $b2;
+        int $i3;
+        long $l0, $l1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzetp;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzetp: com.google.android.gms.common.util.Clock zzc>;
+
+        $l0 = r0.<com.google.android.gms.internal.ads.zzetp: long zzb>;
+
+        $l1 = interfaceinvoke $r1.<com.google.android.gms.common.util.Clock: long elapsedRealtime()>();
+
+        $b2 = $l0 cmp $l1;
+
+        $i3 = (int) $b2;
+
+        if $i3 >= 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+}

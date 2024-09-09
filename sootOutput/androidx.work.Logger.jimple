@@ -1,0 +1,152 @@
+public abstract class androidx.work.Logger extends java.lang.Object
+{
+    private static final int MAX_PREFIXED_TAG_LENGTH;
+    private static final int MAX_TAG_LENGTH;
+    private static final java.lang.String TAG_PREFIX;
+    private static androidx.work.Logger sLogger;
+
+    static void <clinit>()
+    {
+        int $i0;
+        java.lang.String $r0;
+
+        <androidx.work.Logger: java.lang.String TAG_PREFIX> = "WM-";
+
+        <androidx.work.Logger: int MAX_TAG_LENGTH> = 23;
+
+        $r0 = "WM-";
+
+        $i0 = virtualinvoke $r0.<java.lang.String: int length()>();
+
+        $i0 = 23 - $i0;
+
+        <androidx.work.Logger: int MAX_PREFIXED_TAG_LENGTH> = $i0;
+
+        return;
+    }
+
+    public void <init>(int)
+    {
+        int $i0;
+        androidx.work.Logger r0;
+
+        r0 := @this: androidx.work.Logger;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static androidx.work.Logger get()
+    {
+        java.lang.Throwable $r2;
+        androidx.work.Logger $r0;
+        androidx.work.Logger$LogcatLogger $r1;
+
+        entermonitor class "Landroidx/work/Logger;";
+
+     label1:
+        $r0 = <androidx.work.Logger: androidx.work.Logger sLogger>;
+
+        if $r0 != null goto label2;
+
+        $r1 = new androidx.work.Logger$LogcatLogger;
+
+        specialinvoke $r1.<androidx.work.Logger$LogcatLogger: void <init>(int)>(3);
+
+        <androidx.work.Logger: androidx.work.Logger sLogger> = $r1;
+
+     label2:
+        $r0 = <androidx.work.Logger: androidx.work.Logger sLogger>;
+
+     label3:
+        exitmonitor class "Landroidx/work/Logger;";
+
+        return $r0;
+
+     label4:
+        $r2 := @caughtexception;
+
+        exitmonitor class "Landroidx/work/Logger;";
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+    }
+
+    public static void setLogger(androidx.work.Logger)
+    {
+        java.lang.Throwable $r1;
+        androidx.work.Logger $r0;
+
+        $r0 := @parameter0: androidx.work.Logger;
+
+        entermonitor class "Landroidx/work/Logger;";
+
+     label1:
+        <androidx.work.Logger: androidx.work.Logger sLogger> = $r0;
+
+     label2:
+        exitmonitor class "Landroidx/work/Logger;";
+
+        return;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor class "Landroidx/work/Logger;";
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static java.lang.String tagWithPrefix(java.lang.String)
+    {
+        int $i0, $i1;
+        java.lang.StringBuilder r1;
+        java.lang.String $r0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $i0 = virtualinvoke $r0.<java.lang.String: int length()>();
+
+        r1 = new java.lang.StringBuilder;
+
+        specialinvoke r1.<java.lang.StringBuilder: void <init>(int)>(23);
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("WM-");
+
+        $i1 = <androidx.work.Logger: int MAX_PREFIXED_TAG_LENGTH>;
+
+        if $i0 < $i1 goto label1;
+
+        $i0 = <androidx.work.Logger: int MAX_PREFIXED_TAG_LENGTH>;
+
+        $r0 = virtualinvoke $r0.<java.lang.String: java.lang.String substring(int,int)>(0, $i0);
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        goto label2;
+
+     label1:
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+     label2:
+        $r0 = virtualinvoke r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r0;
+    }
+
+    public abstract transient void debug(java.lang.String, java.lang.String, java.lang.Throwable[]);
+
+    public abstract transient void error(java.lang.String, java.lang.String, java.lang.Throwable[]);
+
+    public abstract transient void info(java.lang.String, java.lang.String, java.lang.Throwable[]);
+
+    public abstract transient void verbose(java.lang.String, java.lang.String, java.lang.Throwable[]);
+
+    public abstract transient void warning(java.lang.String, java.lang.String, java.lang.Throwable[]);
+}

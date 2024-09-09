@@ -1,0 +1,59 @@
+class androidx.room.TransactionExecutor$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.room.TransactionExecutor this$0;
+    final java.lang.Runnable val$command;
+
+    void <init>(androidx.room.TransactionExecutor, java.lang.Runnable)
+    {
+        androidx.room.TransactionExecutor $r1;
+        androidx.room.TransactionExecutor$1 r0;
+        java.lang.Runnable $r2;
+
+        r0 := @this: androidx.room.TransactionExecutor$1;
+
+        $r1 := @parameter0: androidx.room.TransactionExecutor;
+
+        $r2 := @parameter1: java.lang.Runnable;
+
+        r0.<androidx.room.TransactionExecutor$1: androidx.room.TransactionExecutor this$0> = $r1;
+
+        r0.<androidx.room.TransactionExecutor$1: java.lang.Runnable val$command> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.room.TransactionExecutor $r1;
+        java.lang.Throwable $r3;
+        androidx.room.TransactionExecutor$1 r0;
+        java.lang.Runnable $r2;
+
+        r0 := @this: androidx.room.TransactionExecutor$1;
+
+     label1:
+        $r2 = r0.<androidx.room.TransactionExecutor$1: java.lang.Runnable val$command>;
+
+        interfaceinvoke $r2.<java.lang.Runnable: void run()>();
+
+     label2:
+        $r1 = r0.<androidx.room.TransactionExecutor$1: androidx.room.TransactionExecutor this$0>;
+
+        virtualinvoke $r1.<androidx.room.TransactionExecutor: void scheduleNext()>();
+
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        $r1 = r0.<androidx.room.TransactionExecutor$1: androidx.room.TransactionExecutor this$0>;
+
+        virtualinvoke $r1.<androidx.room.TransactionExecutor: void scheduleNext()>();
+
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+}

@@ -1,0 +1,308 @@
+final class androidx.core.location.LocationManagerCompat$CancellableLocationListener extends java.lang.Object implements android.location.LocationListener
+{
+    private androidx.core.util.Consumer mConsumer;
+    private final java.util.concurrent.Executor mExecutor;
+    private final android.location.LocationManager mLocationManager;
+    private final android.os.Handler mTimeoutHandler;
+    java.lang.Runnable mTimeoutRunnable;
+    private boolean mTriggered;
+
+    void <init>(android.location.LocationManager, java.util.concurrent.Executor, androidx.core.util.Consumer)
+    {
+        androidx.core.util.Consumer r3;
+        androidx.core.location.LocationManagerCompat$CancellableLocationListener r0;
+        java.util.concurrent.Executor $r2;
+        android.os.Handler $r4;
+        android.os.Looper $r5;
+        android.location.LocationManager $r1;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$CancellableLocationListener;
+
+        $r1 := @parameter0: android.location.LocationManager;
+
+        $r2 := @parameter1: java.util.concurrent.Executor;
+
+        r3 := @parameter2: androidx.core.util.Consumer;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: android.location.LocationManager mLocationManager> = $r1;
+
+        r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: java.util.concurrent.Executor mExecutor> = $r2;
+
+        $r4 = new android.os.Handler;
+
+        $r5 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        specialinvoke $r4.<android.os.Handler: void <init>(android.os.Looper)>($r5);
+
+        r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: android.os.Handler mTimeoutHandler> = $r4;
+
+        r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: androidx.core.util.Consumer mConsumer> = r3;
+
+        return;
+    }
+
+    private void cleanup()
+    {
+        androidx.core.location.LocationManagerCompat$CancellableLocationListener r0;
+        android.os.Handler $r3;
+        java.lang.Runnable $r1;
+        android.location.LocationManager $r2;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$CancellableLocationListener;
+
+        r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: androidx.core.util.Consumer mConsumer> = null;
+
+        $r2 = r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: android.location.LocationManager mLocationManager>;
+
+        virtualinvoke $r2.<android.location.LocationManager: void removeUpdates(android.location.LocationListener)>(r0);
+
+        $r1 = r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: java.lang.Runnable mTimeoutRunnable>;
+
+        if $r1 == null goto label1;
+
+        $r3 = r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: android.os.Handler mTimeoutHandler>;
+
+        $r1 = r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: java.lang.Runnable mTimeoutRunnable>;
+
+        virtualinvoke $r3.<android.os.Handler: void removeCallbacks(java.lang.Runnable)>($r1);
+
+        r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: java.lang.Runnable mTimeoutRunnable> = null;
+
+     label1:
+        return;
+    }
+
+    static void lambda$onLocationChanged$1(androidx.core.util.Consumer, android.location.Location)
+    {
+        androidx.core.util.Consumer $r0;
+        android.location.Location $r1;
+
+        $r0 := @parameter0: androidx.core.util.Consumer;
+
+        $r1 := @parameter1: android.location.Location;
+
+        interfaceinvoke $r0.<androidx.core.util.Consumer: void accept(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void cancel()
+    {
+        java.lang.Throwable $r1;
+        androidx.core.location.LocationManagerCompat$CancellableLocationListener r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$CancellableLocationListener;
+
+        entermonitor r0;
+
+     label1:
+        $z0 = r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: boolean mTriggered>;
+
+        if $z0 == 0 goto label3;
+
+        exitmonitor r0;
+
+     label2:
+        return;
+
+     label3:
+        r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: boolean mTriggered> = 1;
+
+        exitmonitor r0;
+
+     label4:
+        specialinvoke r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: void cleanup()>();
+
+        return;
+
+     label5:
+        $r1 := @caughtexception;
+
+     label6:
+        exitmonitor r0;
+
+     label7:
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label3 to label4 with label5;
+        catch java.lang.Throwable from label6 to label7 with label5;
+    }
+
+    void lambda$startTimeout$0$androidx-core-location-LocationManagerCompat$CancellableLocationListener()
+    {
+        androidx.core.location.LocationManagerCompat$CancellableLocationListener r0;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$CancellableLocationListener;
+
+        r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: java.lang.Runnable mTimeoutRunnable> = null;
+
+        virtualinvoke r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: void onLocationChanged(android.location.Location)>(null);
+
+        return;
+    }
+
+    public void onLocationChanged(android.location.Location)
+    {
+        androidx.core.util.Consumer r4;
+        java.lang.Throwable r5;
+        androidx.core.location.LocationManagerCompat$CancellableLocationListener r0;
+        java.util.concurrent.Executor $r2;
+        androidx.core.location.LocationManagerCompat$CancellableLocationListener$$ExternalSyntheticLambda1 $r3;
+        android.location.Location $r1;
+        boolean z0;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$CancellableLocationListener;
+
+        $r1 := @parameter0: android.location.Location;
+
+        entermonitor r0;
+
+     label1:
+        z0 = r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: boolean mTriggered>;
+
+        if z0 == 0 goto label3;
+
+        exitmonitor r0;
+
+     label2:
+        return;
+
+     label3:
+        r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: boolean mTriggered> = 1;
+
+        exitmonitor r0;
+
+     label4:
+        r4 = r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: androidx.core.util.Consumer mConsumer>;
+
+        $r2 = r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: java.util.concurrent.Executor mExecutor>;
+
+        $r3 = new androidx.core.location.LocationManagerCompat$CancellableLocationListener$$ExternalSyntheticLambda1;
+
+        specialinvoke $r3.<androidx.core.location.LocationManagerCompat$CancellableLocationListener$$ExternalSyntheticLambda1: void <init>(androidx.core.util.Consumer,android.location.Location)>(r4, $r1);
+
+        interfaceinvoke $r2.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r3);
+
+        specialinvoke r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: void cleanup()>();
+
+        return;
+
+     label5:
+        r5 := @caughtexception;
+
+     label6:
+        exitmonitor r0;
+
+     label7:
+        throw r5;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label3 to label4 with label5;
+        catch java.lang.Throwable from label6 to label7 with label5;
+    }
+
+    public void onProviderDisabled(java.lang.String)
+    {
+        java.lang.String $r1;
+        androidx.core.location.LocationManagerCompat$CancellableLocationListener r0;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$CancellableLocationListener;
+
+        $r1 := @parameter0: java.lang.String;
+
+        virtualinvoke r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: void onLocationChanged(android.location.Location)>(null);
+
+        return;
+    }
+
+    public void onProviderEnabled(java.lang.String)
+    {
+        java.lang.String $r1;
+        androidx.core.location.LocationManagerCompat$CancellableLocationListener r0;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$CancellableLocationListener;
+
+        $r1 := @parameter0: java.lang.String;
+
+        return;
+    }
+
+    public void onStatusChanged(java.lang.String, int, android.os.Bundle)
+    {
+        android.os.Bundle $r2;
+        androidx.core.location.LocationManagerCompat$CancellableLocationListener r0;
+        int $i0;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$CancellableLocationListener;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: android.os.Bundle;
+
+        return;
+    }
+
+    public void startTimeout(long)
+    {
+        java.lang.Throwable $r4;
+        androidx.core.location.LocationManagerCompat$CancellableLocationListener r0;
+        android.os.Handler $r3;
+        long $l0;
+        androidx.core.location.LocationManagerCompat$CancellableLocationListener$$ExternalSyntheticLambda0 $r2;
+        java.lang.Runnable $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$CancellableLocationListener;
+
+        $l0 := @parameter0: long;
+
+        entermonitor r0;
+
+     label1:
+        $z0 = r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: boolean mTriggered>;
+
+        if $z0 == 0 goto label3;
+
+        exitmonitor r0;
+
+     label2:
+        return;
+
+     label3:
+        $r2 = new androidx.core.location.LocationManagerCompat$CancellableLocationListener$$ExternalSyntheticLambda0;
+
+        specialinvoke $r2.<androidx.core.location.LocationManagerCompat$CancellableLocationListener$$ExternalSyntheticLambda0: void <init>(androidx.core.location.LocationManagerCompat$CancellableLocationListener)>(r0);
+
+        r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: java.lang.Runnable mTimeoutRunnable> = $r2;
+
+        $r3 = r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: android.os.Handler mTimeoutHandler>;
+
+        $r1 = r0.<androidx.core.location.LocationManagerCompat$CancellableLocationListener: java.lang.Runnable mTimeoutRunnable>;
+
+        virtualinvoke $r3.<android.os.Handler: boolean postDelayed(java.lang.Runnable,long)>($r1, $l0);
+
+        exitmonitor r0;
+
+     label4:
+        return;
+
+     label5:
+        $r4 := @caughtexception;
+
+        exitmonitor r0;
+
+     label6:
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label3 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+}

@@ -1,0 +1,54 @@
+final class com.google.android.gms.internal.ads.zzcrp extends java.lang.Object implements com.google.android.gms.internal.ads.zzcqw
+{
+    private final com.google.android.gms.internal.ads.zzcbx zza;
+
+    void <init>(com.google.android.gms.internal.ads.zzcbx)
+    {
+        com.google.android.gms.internal.ads.zzcrp r0;
+        com.google.android.gms.internal.ads.zzcbx $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcrp;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzcbx;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzcrp: com.google.android.gms.internal.ads.zzcbx zza> = $r1;
+
+        return;
+    }
+
+    public final void zza(org.json.JSONObject)
+    {
+        com.google.android.gms.internal.ads.zzcrp r0;
+        org.json.JSONObject $r1;
+        byte $b1;
+        com.google.android.gms.internal.ads.zzcbx $r2;
+        long $l0;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcrp;
+
+        $r1 := @parameter0: org.json.JSONObject;
+
+        $l0 = virtualinvoke $r1.<org.json.JSONObject: long optLong(java.lang.String)>("timestamp");
+
+        $z0 = virtualinvoke $r1.<org.json.JSONObject: boolean optBoolean(java.lang.String)>("npa_reset");
+
+        if $z0 == 0 goto label1;
+
+        $b1 = -1;
+
+        goto label2;
+
+     label1:
+        $b1 = virtualinvoke $r1.<org.json.JSONObject: boolean optBoolean(java.lang.String)>("npa");
+
+     label2:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcrp: com.google.android.gms.internal.ads.zzcbx zza>;
+
+        virtualinvoke $r2.<com.google.android.gms.internal.ads.zzcbx: void zzb(int,long)>($b1, $l0);
+
+        return;
+    }
+}

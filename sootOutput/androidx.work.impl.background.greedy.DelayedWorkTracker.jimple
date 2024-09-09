@@ -1,0 +1,129 @@
+public class androidx.work.impl.background.greedy.DelayedWorkTracker extends java.lang.Object
+{
+    static final java.lang.String TAG;
+    final androidx.work.impl.background.greedy.GreedyScheduler mGreedyScheduler;
+    private final androidx.work.RunnableScheduler mRunnableScheduler;
+    private final java.util.Map mRunnables;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+
+        $r0 = staticinvoke <androidx.work.Logger: java.lang.String tagWithPrefix(java.lang.String)>("DelayedWorkTracker");
+
+        <androidx.work.impl.background.greedy.DelayedWorkTracker: java.lang.String TAG> = $r0;
+
+        return;
+    }
+
+    public void <init>(androidx.work.impl.background.greedy.GreedyScheduler, androidx.work.RunnableScheduler)
+    {
+        androidx.work.impl.background.greedy.GreedyScheduler $r1;
+        java.util.HashMap $r3;
+        androidx.work.impl.background.greedy.DelayedWorkTracker r0;
+        androidx.work.RunnableScheduler $r2;
+
+        r0 := @this: androidx.work.impl.background.greedy.DelayedWorkTracker;
+
+        $r1 := @parameter0: androidx.work.impl.background.greedy.GreedyScheduler;
+
+        $r2 := @parameter1: androidx.work.RunnableScheduler;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.work.impl.background.greedy.DelayedWorkTracker: androidx.work.impl.background.greedy.GreedyScheduler mGreedyScheduler> = $r1;
+
+        r0.<androidx.work.impl.background.greedy.DelayedWorkTracker: androidx.work.RunnableScheduler mRunnableScheduler> = $r2;
+
+        $r3 = new java.util.HashMap;
+
+        specialinvoke $r3.<java.util.HashMap: void <init>()>();
+
+        r0.<androidx.work.impl.background.greedy.DelayedWorkTracker: java.util.Map mRunnables> = $r3;
+
+        return;
+    }
+
+    public void schedule(androidx.work.impl.model.WorkSpec)
+    {
+        long $l0, $l1;
+        java.lang.Runnable r6;
+        androidx.work.impl.background.greedy.DelayedWorkTracker r0;
+        androidx.work.impl.model.WorkSpec $r1;
+        androidx.work.impl.background.greedy.DelayedWorkTracker$1 r7;
+        java.util.Map r4;
+        java.lang.Object $r5;
+        java.lang.String $r2;
+        androidx.work.RunnableScheduler $r3;
+
+        r0 := @this: androidx.work.impl.background.greedy.DelayedWorkTracker;
+
+        $r1 := @parameter0: androidx.work.impl.model.WorkSpec;
+
+        r4 = r0.<androidx.work.impl.background.greedy.DelayedWorkTracker: java.util.Map mRunnables>;
+
+        $r2 = $r1.<androidx.work.impl.model.WorkSpec: java.lang.String id>;
+
+        $r5 = interfaceinvoke r4.<java.util.Map: java.lang.Object remove(java.lang.Object)>($r2);
+
+        r6 = (java.lang.Runnable) $r5;
+
+        if r6 == null goto label1;
+
+        $r3 = r0.<androidx.work.impl.background.greedy.DelayedWorkTracker: androidx.work.RunnableScheduler mRunnableScheduler>;
+
+        interfaceinvoke $r3.<androidx.work.RunnableScheduler: void cancel(java.lang.Runnable)>(r6);
+
+     label1:
+        r7 = new androidx.work.impl.background.greedy.DelayedWorkTracker$1;
+
+        specialinvoke r7.<androidx.work.impl.background.greedy.DelayedWorkTracker$1: void <init>(androidx.work.impl.background.greedy.DelayedWorkTracker,androidx.work.impl.model.WorkSpec)>(r0, $r1);
+
+        r4 = r0.<androidx.work.impl.background.greedy.DelayedWorkTracker: java.util.Map mRunnables>;
+
+        $r2 = $r1.<androidx.work.impl.model.WorkSpec: java.lang.String id>;
+
+        interfaceinvoke r4.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r2, r7);
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l1 = virtualinvoke $r1.<androidx.work.impl.model.WorkSpec: long calculateNextRunTime()>();
+
+        $l0 = $l1 - $l0;
+
+        $r3 = r0.<androidx.work.impl.background.greedy.DelayedWorkTracker: androidx.work.RunnableScheduler mRunnableScheduler>;
+
+        interfaceinvoke $r3.<androidx.work.RunnableScheduler: void scheduleWithDelay(long,java.lang.Runnable)>($l0, r7);
+
+        return;
+    }
+
+    public void unschedule(java.lang.String)
+    {
+        java.util.Map r4;
+        java.lang.Object $r3;
+        java.lang.String $r1;
+        java.lang.Runnable r5;
+        androidx.work.impl.background.greedy.DelayedWorkTracker r0;
+        androidx.work.RunnableScheduler $r2;
+
+        r0 := @this: androidx.work.impl.background.greedy.DelayedWorkTracker;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r4 = r0.<androidx.work.impl.background.greedy.DelayedWorkTracker: java.util.Map mRunnables>;
+
+        $r3 = interfaceinvoke r4.<java.util.Map: java.lang.Object remove(java.lang.Object)>($r1);
+
+        r5 = (java.lang.Runnable) $r3;
+
+        if r5 == null goto label1;
+
+        $r2 = r0.<androidx.work.impl.background.greedy.DelayedWorkTracker: androidx.work.RunnableScheduler mRunnableScheduler>;
+
+        interfaceinvoke $r2.<androidx.work.RunnableScheduler: void cancel(java.lang.Runnable)>(r5);
+
+     label1:
+        return;
+    }
+}

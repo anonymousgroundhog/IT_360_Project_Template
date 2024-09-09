@@ -1,0 +1,385 @@
+public final class androidx.appcompat.widget.AppCompatDrawableManager extends java.lang.Object
+{
+    private static final boolean DEBUG;
+    private static final android.graphics.PorterDuff$Mode DEFAULT_MODE;
+    private static androidx.appcompat.widget.AppCompatDrawableManager INSTANCE;
+    private static final java.lang.String TAG;
+    private androidx.appcompat.widget.ResourceManagerInternal mResourceManager;
+
+    static void <clinit>()
+    {
+        android.graphics.PorterDuff$Mode $r0;
+
+        <androidx.appcompat.widget.AppCompatDrawableManager: java.lang.String TAG> = "AppCompatDrawableManag";
+
+        <androidx.appcompat.widget.AppCompatDrawableManager: boolean DEBUG> = 0;
+
+        $r0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode SRC_IN>;
+
+        <androidx.appcompat.widget.AppCompatDrawableManager: android.graphics.PorterDuff$Mode DEFAULT_MODE> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        androidx.appcompat.widget.AppCompatDrawableManager r0;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatDrawableManager;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static android.graphics.PorterDuff$Mode access$000()
+    {
+        android.graphics.PorterDuff$Mode r0;
+
+        r0 = <androidx.appcompat.widget.AppCompatDrawableManager: android.graphics.PorterDuff$Mode DEFAULT_MODE>;
+
+        return r0;
+    }
+
+    public static androidx.appcompat.widget.AppCompatDrawableManager get()
+    {
+        androidx.appcompat.widget.AppCompatDrawableManager $r0;
+        java.lang.Throwable $r1;
+
+        entermonitor class "Landroidx/appcompat/widget/AppCompatDrawableManager;";
+
+     label1:
+        $r0 = <androidx.appcompat.widget.AppCompatDrawableManager: androidx.appcompat.widget.AppCompatDrawableManager INSTANCE>;
+
+        if $r0 != null goto label2;
+
+        staticinvoke <androidx.appcompat.widget.AppCompatDrawableManager: void preload()>();
+
+     label2:
+        $r0 = <androidx.appcompat.widget.AppCompatDrawableManager: androidx.appcompat.widget.AppCompatDrawableManager INSTANCE>;
+
+     label3:
+        exitmonitor class "Landroidx/appcompat/widget/AppCompatDrawableManager;";
+
+        return $r0;
+
+     label4:
+        $r1 := @caughtexception;
+
+        exitmonitor class "Landroidx/appcompat/widget/AppCompatDrawableManager;";
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+    }
+
+    public static android.graphics.PorterDuffColorFilter getPorterDuffColorFilter(int, android.graphics.PorterDuff$Mode)
+    {
+        java.lang.Throwable $r2;
+        int $i0;
+        android.graphics.PorterDuffColorFilter $r1;
+        android.graphics.PorterDuff$Mode $r0;
+
+        $i0 := @parameter0: int;
+
+        $r0 := @parameter1: android.graphics.PorterDuff$Mode;
+
+        entermonitor class "Landroidx/appcompat/widget/AppCompatDrawableManager;";
+
+     label1:
+        $r1 = staticinvoke <androidx.appcompat.widget.ResourceManagerInternal: android.graphics.PorterDuffColorFilter getPorterDuffColorFilter(int,android.graphics.PorterDuff$Mode)>($i0, $r0);
+
+     label2:
+        exitmonitor class "Landroidx/appcompat/widget/AppCompatDrawableManager;";
+
+        return $r1;
+
+     label3:
+        $r2 := @caughtexception;
+
+        exitmonitor class "Landroidx/appcompat/widget/AppCompatDrawableManager;";
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static void preload()
+    {
+        java.lang.Throwable $r3;
+        androidx.appcompat.widget.ResourceManagerInternal $r0;
+        androidx.appcompat.widget.AppCompatDrawableManager $r1;
+        androidx.appcompat.widget.AppCompatDrawableManager$1 $r2;
+
+        entermonitor class "Landroidx/appcompat/widget/AppCompatDrawableManager;";
+
+     label1:
+        $r1 = <androidx.appcompat.widget.AppCompatDrawableManager: androidx.appcompat.widget.AppCompatDrawableManager INSTANCE>;
+
+        if $r1 != null goto label2;
+
+        $r1 = new androidx.appcompat.widget.AppCompatDrawableManager;
+
+        specialinvoke $r1.<androidx.appcompat.widget.AppCompatDrawableManager: void <init>()>();
+
+        <androidx.appcompat.widget.AppCompatDrawableManager: androidx.appcompat.widget.AppCompatDrawableManager INSTANCE> = $r1;
+
+        $r1 = <androidx.appcompat.widget.AppCompatDrawableManager: androidx.appcompat.widget.AppCompatDrawableManager INSTANCE>;
+
+        $r0 = staticinvoke <androidx.appcompat.widget.ResourceManagerInternal: androidx.appcompat.widget.ResourceManagerInternal get()>();
+
+        $r1.<androidx.appcompat.widget.AppCompatDrawableManager: androidx.appcompat.widget.ResourceManagerInternal mResourceManager> = $r0;
+
+        $r1 = <androidx.appcompat.widget.AppCompatDrawableManager: androidx.appcompat.widget.AppCompatDrawableManager INSTANCE>;
+
+        $r0 = $r1.<androidx.appcompat.widget.AppCompatDrawableManager: androidx.appcompat.widget.ResourceManagerInternal mResourceManager>;
+
+        $r2 = new androidx.appcompat.widget.AppCompatDrawableManager$1;
+
+        specialinvoke $r2.<androidx.appcompat.widget.AppCompatDrawableManager$1: void <init>()>();
+
+        virtualinvoke $r0.<androidx.appcompat.widget.ResourceManagerInternal: void setHooks(androidx.appcompat.widget.ResourceManagerInternal$ResourceManagerHooks)>($r2);
+
+     label2:
+        exitmonitor class "Landroidx/appcompat/widget/AppCompatDrawableManager;";
+
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        exitmonitor class "Landroidx/appcompat/widget/AppCompatDrawableManager;";
+
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    static void tintDrawable(android.graphics.drawable.Drawable, androidx.appcompat.widget.TintInfo, int[])
+    {
+        android.graphics.drawable.Drawable $r0;
+        int[] $r2;
+        androidx.appcompat.widget.TintInfo $r1;
+
+        $r0 := @parameter0: android.graphics.drawable.Drawable;
+
+        $r1 := @parameter1: androidx.appcompat.widget.TintInfo;
+
+        $r2 := @parameter2: int[];
+
+        staticinvoke <androidx.appcompat.widget.ResourceManagerInternal: void tintDrawable(android.graphics.drawable.Drawable,androidx.appcompat.widget.TintInfo,int[])>($r0, $r1, $r2);
+
+        return;
+    }
+
+    public android.graphics.drawable.Drawable getDrawable(android.content.Context, int)
+    {
+        java.lang.Throwable $r4;
+        android.content.Context $r2;
+        androidx.appcompat.widget.AppCompatDrawableManager r0;
+        int $i0;
+        androidx.appcompat.widget.ResourceManagerInternal $r3;
+        android.graphics.drawable.Drawable $r1;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatDrawableManager;
+
+        $r2 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        entermonitor r0;
+
+     label1:
+        $r3 = r0.<androidx.appcompat.widget.AppCompatDrawableManager: androidx.appcompat.widget.ResourceManagerInternal mResourceManager>;
+
+        $r1 = virtualinvoke $r3.<androidx.appcompat.widget.ResourceManagerInternal: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($r2, $i0);
+
+     label2:
+        exitmonitor r0;
+
+        return $r1;
+
+     label3:
+        $r4 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    android.graphics.drawable.Drawable getDrawable(android.content.Context, int, boolean)
+    {
+        java.lang.Throwable $r4;
+        android.content.Context $r2;
+        androidx.appcompat.widget.AppCompatDrawableManager r0;
+        int $i0;
+        androidx.appcompat.widget.ResourceManagerInternal $r3;
+        android.graphics.drawable.Drawable $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatDrawableManager;
+
+        $r2 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        $z0 := @parameter2: boolean;
+
+        entermonitor r0;
+
+     label1:
+        $r3 = r0.<androidx.appcompat.widget.AppCompatDrawableManager: androidx.appcompat.widget.ResourceManagerInternal mResourceManager>;
+
+        $r1 = virtualinvoke $r3.<androidx.appcompat.widget.ResourceManagerInternal: android.graphics.drawable.Drawable getDrawable(android.content.Context,int,boolean)>($r2, $i0, $z0);
+
+     label2:
+        exitmonitor r0;
+
+        return $r1;
+
+     label3:
+        $r4 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    android.content.res.ColorStateList getTintList(android.content.Context, int)
+    {
+        android.content.res.ColorStateList $r1;
+        java.lang.Throwable $r4;
+        android.content.Context $r2;
+        androidx.appcompat.widget.AppCompatDrawableManager r0;
+        int $i0;
+        androidx.appcompat.widget.ResourceManagerInternal $r3;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatDrawableManager;
+
+        $r2 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        entermonitor r0;
+
+     label1:
+        $r3 = r0.<androidx.appcompat.widget.AppCompatDrawableManager: androidx.appcompat.widget.ResourceManagerInternal mResourceManager>;
+
+        $r1 = virtualinvoke $r3.<androidx.appcompat.widget.ResourceManagerInternal: android.content.res.ColorStateList getTintList(android.content.Context,int)>($r2, $i0);
+
+     label2:
+        exitmonitor r0;
+
+        return $r1;
+
+     label3:
+        $r4 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public void onConfigurationChanged(android.content.Context)
+    {
+        java.lang.Throwable $r3;
+        android.content.Context $r2;
+        androidx.appcompat.widget.AppCompatDrawableManager r0;
+        androidx.appcompat.widget.ResourceManagerInternal $r1;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatDrawableManager;
+
+        $r2 := @parameter0: android.content.Context;
+
+        entermonitor r0;
+
+     label1:
+        $r1 = r0.<androidx.appcompat.widget.AppCompatDrawableManager: androidx.appcompat.widget.ResourceManagerInternal mResourceManager>;
+
+        virtualinvoke $r1.<androidx.appcompat.widget.ResourceManagerInternal: void onConfigurationChanged(android.content.Context)>($r2);
+
+     label2:
+        exitmonitor r0;
+
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    android.graphics.drawable.Drawable onDrawableLoadedFromResources(android.content.Context, androidx.appcompat.widget.VectorEnabledTintResources, int)
+    {
+        java.lang.Throwable $r5;
+        android.content.Context $r3;
+        androidx.appcompat.widget.AppCompatDrawableManager r0;
+        int $i0;
+        androidx.appcompat.widget.ResourceManagerInternal $r4;
+        androidx.appcompat.widget.VectorEnabledTintResources $r1;
+        android.graphics.drawable.Drawable $r2;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatDrawableManager;
+
+        $r3 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: androidx.appcompat.widget.VectorEnabledTintResources;
+
+        $i0 := @parameter2: int;
+
+        entermonitor r0;
+
+     label1:
+        $r4 = r0.<androidx.appcompat.widget.AppCompatDrawableManager: androidx.appcompat.widget.ResourceManagerInternal mResourceManager>;
+
+        $r2 = virtualinvoke $r4.<androidx.appcompat.widget.ResourceManagerInternal: android.graphics.drawable.Drawable onDrawableLoadedFromResources(android.content.Context,androidx.appcompat.widget.VectorEnabledTintResources,int)>($r3, $r1, $i0);
+
+     label2:
+        exitmonitor r0;
+
+        return $r2;
+
+     label3:
+        $r5 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r5;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    boolean tintDrawableUsingColorFilter(android.content.Context, int, android.graphics.drawable.Drawable)
+    {
+        android.content.Context $r1;
+        androidx.appcompat.widget.AppCompatDrawableManager r0;
+        int $i0;
+        androidx.appcompat.widget.ResourceManagerInternal $r3;
+        android.graphics.drawable.Drawable $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatDrawableManager;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: android.graphics.drawable.Drawable;
+
+        $r3 = r0.<androidx.appcompat.widget.AppCompatDrawableManager: androidx.appcompat.widget.ResourceManagerInternal mResourceManager>;
+
+        $z0 = virtualinvoke $r3.<androidx.appcompat.widget.ResourceManagerInternal: boolean tintDrawableUsingColorFilter(android.content.Context,int,android.graphics.drawable.Drawable)>($r1, $i0, $r2);
+
+        return $z0;
+    }
+}

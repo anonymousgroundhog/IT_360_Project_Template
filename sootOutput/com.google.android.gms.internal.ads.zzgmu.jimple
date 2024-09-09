@@ -1,0 +1,313 @@
+public final class com.google.android.gms.internal.ads.zzgmu extends java.lang.Object implements com.google.android.gms.internal.ads.zzgfs
+{
+    private static final byte[] zza;
+    private static final byte[] zzb;
+    private static final byte[] zzc;
+    private static final byte[] zzd;
+    private static final byte[] zze;
+    private static final java.lang.ThreadLocal zzf;
+    private final javax.crypto.SecretKey zzg;
+    private final byte[] zzh;
+
+    static void <clinit>()
+    {
+        byte[] $r0;
+        com.google.android.gms.internal.ads.zzgmt $r1;
+
+        $r0 = staticinvoke <com.google.android.gms.internal.ads.zzgxi: byte[] zzb(java.lang.String)>("7a806c");
+
+        <com.google.android.gms.internal.ads.zzgmu: byte[] zza> = $r0;
+
+        $r0 = staticinvoke <com.google.android.gms.internal.ads.zzgxi: byte[] zzb(java.lang.String)>("46bb91c3c5");
+
+        <com.google.android.gms.internal.ads.zzgmu: byte[] zzb> = $r0;
+
+        $r0 = staticinvoke <com.google.android.gms.internal.ads.zzgxi: byte[] zzb(java.lang.String)>("36864200e0eaf5284d884a0e77d31646");
+
+        <com.google.android.gms.internal.ads.zzgmu: byte[] zzc> = $r0;
+
+        $r0 = staticinvoke <com.google.android.gms.internal.ads.zzgxi: byte[] zzb(java.lang.String)>("bae8e37fc83441b16034566b");
+
+        <com.google.android.gms.internal.ads.zzgmu: byte[] zzd> = $r0;
+
+        $r0 = staticinvoke <com.google.android.gms.internal.ads.zzgxi: byte[] zzb(java.lang.String)>("af60eb711bd85bc1e4d3e0a462e074eea428a8");
+
+        <com.google.android.gms.internal.ads.zzgmu: byte[] zze> = $r0;
+
+        $r1 = new com.google.android.gms.internal.ads.zzgmt;
+
+        specialinvoke $r1.<com.google.android.gms.internal.ads.zzgmt: void <init>()>();
+
+        <com.google.android.gms.internal.ads.zzgmu: java.lang.ThreadLocal zzf> = $r1;
+
+        return;
+    }
+
+    private void <init>(byte[], byte[]) throws java.security.GeneralSecurityException
+    {
+        byte[] $r1, $r2;
+        com.google.android.gms.internal.ads.zzgmu r0;
+        int $i0;
+        javax.crypto.spec.SecretKeySpec $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgmu;
+
+        $r1 := @parameter0: byte[];
+
+        $r2 := @parameter1: byte[];
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzgmu: byte[] zzh> = $r2;
+
+        $i0 = lengthof $r1;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzgxo: void zza(int)>($i0);
+
+        $r3 = new javax.crypto.spec.SecretKeySpec;
+
+        specialinvoke $r3.<javax.crypto.spec.SecretKeySpec: void <init>(byte[],java.lang.String)>($r1, "AES");
+
+        r0.<com.google.android.gms.internal.ads.zzgmu: javax.crypto.SecretKey zzg> = $r3;
+
+        return;
+    }
+
+    public static com.google.android.gms.internal.ads.zzgfs zzb(com.google.android.gms.internal.ads.zzgjm) throws java.security.GeneralSecurityException
+    {
+        com.google.android.gms.internal.ads.zzghc $r3;
+        com.google.android.gms.internal.ads.zzgxr $r2;
+        byte[] $r4, $r6;
+        com.google.android.gms.internal.ads.zzgxq $r5;
+        com.google.android.gms.internal.ads.zzgmu $r0;
+        com.google.android.gms.internal.ads.zzgjm $r1;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzgjm;
+
+        $r0 = new com.google.android.gms.internal.ads.zzgmu;
+
+        $r2 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzgjm: com.google.android.gms.internal.ads.zzgxr zzc()>();
+
+        $r3 = staticinvoke <com.google.android.gms.internal.ads.zzggb: com.google.android.gms.internal.ads.zzghc zza()>();
+
+        $r4 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzgxr: byte[] zzd(com.google.android.gms.internal.ads.zzghc)>($r3);
+
+        $r5 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzgjm: com.google.android.gms.internal.ads.zzgxq zzb()>();
+
+        $r6 = virtualinvoke $r5.<com.google.android.gms.internal.ads.zzgxq: byte[] zzc()>();
+
+        specialinvoke $r0.<com.google.android.gms.internal.ads.zzgmu: void <init>(byte[],byte[])>($r4, $r6);
+
+        return $r0;
+    }
+
+    static volatile boolean zzc(javax.crypto.Cipher)
+    {
+        javax.crypto.Cipher $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: javax.crypto.Cipher;
+
+        $z0 = staticinvoke <com.google.android.gms.internal.ads.zzgmu: boolean zze(javax.crypto.Cipher)>($r0);
+
+        return $z0;
+    }
+
+    private static java.security.spec.AlgorithmParameterSpec zzd(byte[], int, int) throws java.security.GeneralSecurityException
+    {
+        byte[] $r0;
+        int $i0, $i1;
+        javax.crypto.spec.GCMParameterSpec $r1;
+
+        $r0 := @parameter0: byte[];
+
+        $i1 := @parameter1: int;
+
+        $i0 := @parameter2: int;
+
+        $r1 = new javax.crypto.spec.GCMParameterSpec;
+
+        specialinvoke $r1.<javax.crypto.spec.GCMParameterSpec: void <init>(int,byte[],int,int)>(128, $r0, 0, $i0);
+
+        return $r1;
+    }
+
+    private static boolean zze(javax.crypto.Cipher)
+    {
+        byte[] $r1, $r4;
+        javax.crypto.spec.SecretKeySpec $r3;
+        javax.crypto.Cipher $r0;
+        java.security.GeneralSecurityException $r5;
+        int $i0;
+        java.security.spec.AlgorithmParameterSpec $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: javax.crypto.Cipher;
+
+        $r1 = <com.google.android.gms.internal.ads.zzgmu: byte[] zzd>;
+
+        $i0 = lengthof $r1;
+
+     label01:
+        $r2 = staticinvoke <com.google.android.gms.internal.ads.zzgmu: java.security.spec.AlgorithmParameterSpec zzd(byte[],int,int)>($r1, 0, $i0);
+
+     label02:
+        $r3 = new javax.crypto.spec.SecretKeySpec;
+
+        $r1 = <com.google.android.gms.internal.ads.zzgmu: byte[] zzc>;
+
+     label03:
+        specialinvoke $r3.<javax.crypto.spec.SecretKeySpec: void <init>(byte[],java.lang.String)>($r1, "AES");
+
+        virtualinvoke $r0.<javax.crypto.Cipher: void init(int,java.security.Key,java.security.spec.AlgorithmParameterSpec)>(2, $r3, $r2);
+
+     label04:
+        $r1 = <com.google.android.gms.internal.ads.zzgmu: byte[] zzb>;
+
+     label05:
+        virtualinvoke $r0.<javax.crypto.Cipher: void updateAAD(byte[])>($r1);
+
+     label06:
+        $r1 = <com.google.android.gms.internal.ads.zzgmu: byte[] zze>;
+
+        $i0 = lengthof $r1;
+
+     label07:
+        $r1 = virtualinvoke $r0.<javax.crypto.Cipher: byte[] doFinal(byte[],int,int)>($r1, 0, $i0);
+
+     label08:
+        $r4 = <com.google.android.gms.internal.ads.zzgmu: byte[] zza>;
+
+     label09:
+        $z0 = staticinvoke <java.security.MessageDigest: boolean isEqual(byte[],byte[])>($r1, $r4);
+
+     label10:
+        return $z0;
+
+     label11:
+        $r5 := @caughtexception;
+
+        return 0;
+
+        catch java.security.GeneralSecurityException from label01 to label02 with label11;
+        catch java.security.GeneralSecurityException from label03 to label04 with label11;
+        catch java.security.GeneralSecurityException from label05 to label06 with label11;
+        catch java.security.GeneralSecurityException from label07 to label08 with label11;
+        catch java.security.GeneralSecurityException from label09 to label10 with label11;
+    }
+
+    private final byte[] zzf(byte[], byte[]) throws java.security.GeneralSecurityException
+    {
+        byte[] $r2, $r3;
+        java.lang.ThreadLocal $r4;
+        javax.crypto.Cipher $r6;
+        com.google.android.gms.internal.ads.zzgmu r0;
+        java.security.GeneralSecurityException $r8;
+        int $i0, $i1;
+        java.lang.Object $r5;
+        javax.crypto.SecretKey $r1;
+        java.security.spec.AlgorithmParameterSpec $r7;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgmu;
+
+        $r2 := @parameter0: byte[];
+
+        $r3 := @parameter1: byte[];
+
+        $r4 = <com.google.android.gms.internal.ads.zzgmu: java.lang.ThreadLocal zzf>;
+
+        $r5 = virtualinvoke $r4.<java.lang.ThreadLocal: java.lang.Object get()>();
+
+        $r6 = (javax.crypto.Cipher) $r5;
+
+        if $r6 == null goto label3;
+
+        $i0 = lengthof $r2;
+
+        if $i0 < 28 goto label2;
+
+        $r7 = staticinvoke <com.google.android.gms.internal.ads.zzgmu: java.security.spec.AlgorithmParameterSpec zzd(byte[],int,int)>($r2, 0, 12);
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgmu: javax.crypto.SecretKey zzg>;
+
+        virtualinvoke $r6.<javax.crypto.Cipher: void init(int,java.security.Key,java.security.spec.AlgorithmParameterSpec)>(2, $r1, $r7);
+
+        if $r3 == null goto label1;
+
+        $i1 = lengthof $r3;
+
+        if $i1 == 0 goto label1;
+
+        virtualinvoke $r6.<javax.crypto.Cipher: void updateAAD(byte[])>($r3);
+
+     label1:
+        $i0 = $i0 + -12;
+
+        $r2 = virtualinvoke $r6.<javax.crypto.Cipher: byte[] doFinal(byte[],int,int)>($r2, 12, $i0);
+
+        return $r2;
+
+     label2:
+        $r8 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r8.<java.security.GeneralSecurityException: void <init>(java.lang.String)>("ciphertext too short");
+
+        throw $r8;
+
+     label3:
+        $r8 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r8.<java.security.GeneralSecurityException: void <init>(java.lang.String)>("AES GCM SIV cipher is not available or is invalid.");
+
+        throw $r8;
+    }
+
+    public final byte[] zza(byte[], byte[]) throws java.security.GeneralSecurityException
+    {
+        byte[] $r1, $r2, $r3;
+        com.google.android.gms.internal.ads.zzgmu r0;
+        java.security.GeneralSecurityException $r4;
+        int $i0, $i1;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgmu;
+
+        $r1 := @parameter0: byte[];
+
+        $r2 := @parameter1: byte[];
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzgmu: byte[] zzh>;
+
+        $i0 = lengthof $r3;
+
+        if $i0 != 0 goto label1;
+
+        $r1 = specialinvoke r0.<com.google.android.gms.internal.ads.zzgmu: byte[] zzf(byte[],byte[])>($r1, $r2);
+
+        return $r1;
+
+     label1:
+        $z0 = staticinvoke <com.google.android.gms.internal.ads.zzgpm: boolean zzb(byte[],byte[])>($r3, $r1);
+
+        if $z0 == 0 goto label2;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzgmu: byte[] zzh>;
+
+        $i0 = lengthof $r1;
+
+        $i1 = lengthof $r3;
+
+        $r1 = staticinvoke <java.util.Arrays: byte[] copyOfRange(byte[],int,int)>($r1, $i1, $i0);
+
+        $r1 = specialinvoke r0.<com.google.android.gms.internal.ads.zzgmu: byte[] zzf(byte[],byte[])>($r1, $r2);
+
+        return $r1;
+
+     label2:
+        $r4 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r4.<java.security.GeneralSecurityException: void <init>(java.lang.String)>("Decryption failed (OutputPrefix mismatch).");
+
+        throw $r4;
+    }
+}

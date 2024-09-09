@@ -1,0 +1,65 @@
+class androidx.core.app.AppOpsManagerCompat$Api29Impl extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.app.AppOpsManagerCompat$Api29Impl r0;
+
+        r0 := @this: androidx.core.app.AppOpsManagerCompat$Api29Impl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static int checkOpNoThrow(android.app.AppOpsManager, java.lang.String, int, java.lang.String)
+    {
+        android.app.AppOpsManager $r0;
+        int $i0;
+        java.lang.String $r1, $r2;
+
+        $r0 := @parameter0: android.app.AppOpsManager;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $i0 := @parameter2: int;
+
+        $r2 := @parameter3: java.lang.String;
+
+        if $r0 != null goto label1;
+
+        return 1;
+
+     label1:
+        $i0 = virtualinvoke $r0.<android.app.AppOpsManager: int checkOpNoThrow(java.lang.String,int,java.lang.String)>($r1, $i0, $r2);
+
+        return $i0;
+    }
+
+    static java.lang.String getOpPackageName(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.String getOpPackageName()>();
+
+        return $r1;
+    }
+
+    static android.app.AppOpsManager getSystemService(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.Object $r1;
+        android.app.AppOpsManager $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/app/AppOpsManager;");
+
+        $r2 = (android.app.AppOpsManager) $r1;
+
+        return $r2;
+    }
+}

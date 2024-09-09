@@ -1,0 +1,61 @@
+public final class androidx.privacysandbox.ads.adservices.topics.TopicsManagerApi33Ext5Impl extends androidx.privacysandbox.ads.adservices.topics.TopicsManagerImplCommon
+{
+
+    public void <init>(android.content.Context)
+    {
+        android.content.Context $r1;
+        java.lang.Object $r2;
+        androidx.privacysandbox.ads.adservices.topics.TopicsManagerApi33Ext5Impl r0;
+        android.adservices.topics.TopicsManager $r3;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.topics.TopicsManagerApi33Ext5Impl;
+
+        $r1 := @parameter0: android.content.Context;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "context");
+
+        $r2 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/adservices/topics/TopicsManager;");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r2, "context.getSystemService\u2026opicsManager::class.java)");
+
+        $r3 = (android.adservices.topics.TopicsManager) $r2;
+
+        specialinvoke r0.<androidx.privacysandbox.ads.adservices.topics.TopicsManagerImplCommon: void <init>(android.adservices.topics.TopicsManager)>($r3);
+
+        return;
+    }
+
+    public android.adservices.topics.GetTopicsRequest convertRequest$ads_adservices_release(androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest)
+    {
+        android.adservices.topics.GetTopicsRequest $r4;
+        androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest $r1;
+        java.lang.String $r3;
+        androidx.privacysandbox.ads.adservices.topics.TopicsManagerApi33Ext5Impl r0;
+        android.adservices.topics.GetTopicsRequest$Builder $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.topics.TopicsManagerApi33Ext5Impl;
+
+        $r1 := @parameter0: androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "request");
+
+        $r2 = new android.adservices.topics.GetTopicsRequest$Builder;
+
+        specialinvoke $r2.<android.adservices.topics.GetTopicsRequest$Builder: void <init>()>();
+
+        $r3 = virtualinvoke $r1.<androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest: java.lang.String getAdsSdkName()>();
+
+        $r2 = virtualinvoke $r2.<android.adservices.topics.GetTopicsRequest$Builder: android.adservices.topics.GetTopicsRequest$Builder setAdsSdkName(java.lang.String)>($r3);
+
+        $z0 = virtualinvoke $r1.<androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest: boolean shouldRecordObservation()>();
+
+        $r2 = virtualinvoke $r2.<android.adservices.topics.GetTopicsRequest$Builder: android.adservices.topics.GetTopicsRequest$Builder setShouldRecordObservation(boolean)>($z0);
+
+        $r4 = virtualinvoke $r2.<android.adservices.topics.GetTopicsRequest$Builder: android.adservices.topics.GetTopicsRequest build()>();
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r4, "Builder()\n            .s\u2026ion)\n            .build()");
+
+        return $r4;
+    }
+}

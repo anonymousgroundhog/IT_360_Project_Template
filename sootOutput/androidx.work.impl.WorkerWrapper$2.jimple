@@ -1,0 +1,224 @@
+class androidx.work.impl.WorkerWrapper$2 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.work.impl.WorkerWrapper this$0;
+    final androidx.work.impl.utils.futures.SettableFuture val$future;
+    final java.lang.String val$workDescription;
+
+    void <init>(androidx.work.impl.WorkerWrapper, androidx.work.impl.utils.futures.SettableFuture, java.lang.String)
+    {
+        androidx.work.impl.WorkerWrapper$2 r0;
+        androidx.work.impl.WorkerWrapper $r1;
+        androidx.work.impl.utils.futures.SettableFuture $r2;
+        java.lang.String $r3;
+
+        r0 := @this: androidx.work.impl.WorkerWrapper$2;
+
+        $r1 := @parameter0: androidx.work.impl.WorkerWrapper;
+
+        $r2 := @parameter1: androidx.work.impl.utils.futures.SettableFuture;
+
+        $r3 := @parameter2: java.lang.String;
+
+        r0.<androidx.work.impl.WorkerWrapper$2: androidx.work.impl.WorkerWrapper this$0> = $r1;
+
+        r0.<androidx.work.impl.WorkerWrapper$2: androidx.work.impl.utils.futures.SettableFuture val$future> = $r2;
+
+        r0.<androidx.work.impl.WorkerWrapper$2: java.lang.String val$workDescription> = $r3;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        java.lang.Throwable $r11;
+        androidx.work.impl.WorkerWrapper$2 r0;
+        androidx.work.ListenableWorker$Result r3;
+        java.lang.Object[] $r6;
+        java.util.concurrent.CancellationException r13;
+        androidx.work.impl.model.WorkSpec $r8;
+        java.lang.Exception r12;
+        androidx.work.Logger $r4;
+        java.lang.Throwable[] $r10;
+        androidx.work.impl.WorkerWrapper $r7;
+        java.lang.Object $r2;
+        androidx.work.impl.utils.futures.SettableFuture r1;
+        java.lang.String $r5, $r9;
+
+        r0 := @this: androidx.work.impl.WorkerWrapper$2;
+
+     label01:
+        r1 = r0.<androidx.work.impl.WorkerWrapper$2: androidx.work.impl.utils.futures.SettableFuture val$future>;
+
+     label02:
+        $r2 = virtualinvoke r1.<androidx.work.impl.utils.futures.SettableFuture: java.lang.Object get()>();
+
+     label03:
+        r3 = (androidx.work.ListenableWorker$Result) $r2;
+
+     label04:
+        if r3 != null goto label11;
+
+     label05:
+        $r4 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+     label06:
+        $r5 = <androidx.work.impl.WorkerWrapper: java.lang.String TAG>;
+
+        $r6 = newarray (java.lang.Object)[1];
+
+        $r7 = r0.<androidx.work.impl.WorkerWrapper$2: androidx.work.impl.WorkerWrapper this$0>;
+
+        $r8 = $r7.<androidx.work.impl.WorkerWrapper: androidx.work.impl.model.WorkSpec mWorkSpec>;
+
+        $r9 = $r8.<androidx.work.impl.model.WorkSpec: java.lang.String workerClassName>;
+
+        $r6[0] = $r9;
+
+     label07:
+        $r9 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("%s returned a null result. Treating it as a failure.", $r6);
+
+     label08:
+        $r10 = newarray (java.lang.Throwable)[0];
+
+     label09:
+        virtualinvoke $r4.<androidx.work.Logger: void error(java.lang.String,java.lang.String,java.lang.Throwable[])>($r5, $r9, $r10);
+
+     label10:
+        goto label25;
+
+     label11:
+        $r4 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+     label12:
+        $r5 = <androidx.work.impl.WorkerWrapper: java.lang.String TAG>;
+
+        $r6 = newarray (java.lang.Object)[2];
+
+        $r7 = r0.<androidx.work.impl.WorkerWrapper$2: androidx.work.impl.WorkerWrapper this$0>;
+
+        $r8 = $r7.<androidx.work.impl.WorkerWrapper: androidx.work.impl.model.WorkSpec mWorkSpec>;
+
+        $r9 = $r8.<androidx.work.impl.model.WorkSpec: java.lang.String workerClassName>;
+
+        $r6[0] = $r9;
+
+        $r6[1] = r3;
+
+     label13:
+        $r9 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("%s returned a %s result.", $r6);
+
+     label14:
+        $r10 = newarray (java.lang.Throwable)[0];
+
+     label15:
+        virtualinvoke $r4.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>($r5, $r9, $r10);
+
+     label16:
+        $r7 = r0.<androidx.work.impl.WorkerWrapper$2: androidx.work.impl.WorkerWrapper this$0>;
+
+        $r7.<androidx.work.impl.WorkerWrapper: androidx.work.ListenableWorker$Result mResult> = r3;
+
+     label17:
+        goto label25;
+
+     label18:
+        $r11 := @caughtexception;
+
+        goto label26;
+
+     label19:
+        r12 := @caughtexception;
+
+        goto label21;
+
+     label20:
+        r12 := @caughtexception;
+
+     label21:
+        $r4 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r5 = <androidx.work.impl.WorkerWrapper: java.lang.String TAG>;
+
+        $r6 = newarray (java.lang.Object)[1];
+
+        $r9 = r0.<androidx.work.impl.WorkerWrapper$2: java.lang.String val$workDescription>;
+
+        $r6[0] = $r9;
+
+        $r9 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("%s failed because it threw an exception/error", $r6);
+
+        $r10 = newarray (java.lang.Throwable)[1];
+
+        $r10[0] = r12;
+
+        virtualinvoke $r4.<androidx.work.Logger: void error(java.lang.String,java.lang.String,java.lang.Throwable[])>($r5, $r9, $r10);
+
+     label22:
+        goto label25;
+
+     label23:
+        r13 := @caughtexception;
+
+     label24:
+        $r4 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r5 = <androidx.work.impl.WorkerWrapper: java.lang.String TAG>;
+
+        $r6 = newarray (java.lang.Object)[1];
+
+        $r9 = r0.<androidx.work.impl.WorkerWrapper$2: java.lang.String val$workDescription>;
+
+        $r6[0] = $r9;
+
+        $r9 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("%s was cancelled", $r6);
+
+        $r10 = newarray (java.lang.Throwable)[1];
+
+        $r10[0] = r13;
+
+        virtualinvoke $r4.<androidx.work.Logger: void info(java.lang.String,java.lang.String,java.lang.Throwable[])>($r5, $r9, $r10);
+
+     label25:
+        $r7 = r0.<androidx.work.impl.WorkerWrapper$2: androidx.work.impl.WorkerWrapper this$0>;
+
+        virtualinvoke $r7.<androidx.work.impl.WorkerWrapper: void onWorkFinished()>();
+
+        return;
+
+     label26:
+        $r7 = r0.<androidx.work.impl.WorkerWrapper$2: androidx.work.impl.WorkerWrapper this$0>;
+
+        virtualinvoke $r7.<androidx.work.impl.WorkerWrapper: void onWorkFinished()>();
+
+        throw $r11;
+
+        catch java.util.concurrent.CancellationException from label02 to label03 with label23;
+        catch java.util.concurrent.CancellationException from label05 to label06 with label23;
+        catch java.util.concurrent.CancellationException from label07 to label08 with label23;
+        catch java.util.concurrent.CancellationException from label09 to label10 with label23;
+        catch java.util.concurrent.CancellationException from label11 to label12 with label23;
+        catch java.util.concurrent.CancellationException from label13 to label14 with label23;
+        catch java.util.concurrent.CancellationException from label15 to label16 with label23;
+        catch java.lang.InterruptedException from label02 to label03 with label20;
+        catch java.lang.InterruptedException from label05 to label06 with label20;
+        catch java.lang.InterruptedException from label07 to label08 with label20;
+        catch java.lang.InterruptedException from label09 to label10 with label20;
+        catch java.lang.InterruptedException from label11 to label12 with label20;
+        catch java.lang.InterruptedException from label13 to label14 with label20;
+        catch java.lang.InterruptedException from label15 to label16 with label20;
+        catch java.util.concurrent.ExecutionException from label02 to label03 with label19;
+        catch java.util.concurrent.ExecutionException from label05 to label06 with label19;
+        catch java.util.concurrent.ExecutionException from label07 to label08 with label19;
+        catch java.util.concurrent.ExecutionException from label09 to label10 with label19;
+        catch java.util.concurrent.ExecutionException from label11 to label12 with label19;
+        catch java.util.concurrent.ExecutionException from label13 to label14 with label19;
+        catch java.util.concurrent.ExecutionException from label15 to label16 with label19;
+        catch java.lang.Throwable from label01 to label04 with label18;
+        catch java.lang.Throwable from label05 to label10 with label18;
+        catch java.lang.Throwable from label11 to label17 with label18;
+        catch java.lang.Throwable from label21 to label22 with label18;
+        catch java.lang.Throwable from label24 to label25 with label18;
+    }
+}

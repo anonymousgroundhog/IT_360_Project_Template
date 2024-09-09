@@ -1,0 +1,1926 @@
+public final class com.google.android.gms.internal.ads.zzcgj extends java.lang.Thread implements android.graphics.SurfaceTexture$OnFrameAvailableListener, com.google.android.gms.internal.ads.zzcgh
+{
+    private static final float[] zza;
+    private volatile boolean zzA;
+    private volatile boolean zzB;
+    private final com.google.android.gms.internal.ads.zzcgi zzb;
+    private final float[] zzc;
+    private final float[] zzd;
+    private final float[] zze;
+    private final float[] zzf;
+    private final float[] zzg;
+    private final float[] zzh;
+    private final float[] zzi;
+    private float zzj;
+    private float zzk;
+    private float zzl;
+    private int zzm;
+    private int zzn;
+    private android.graphics.SurfaceTexture zzo;
+    private android.graphics.SurfaceTexture zzp;
+    private int zzq;
+    private int zzr;
+    private int zzs;
+    private final java.nio.FloatBuffer zzt;
+    private final java.util.concurrent.CountDownLatch zzu;
+    private final java.lang.Object zzv;
+    private javax.microedition.khronos.egl.EGL10 zzw;
+    private javax.microedition.khronos.egl.EGLDisplay zzx;
+    private javax.microedition.khronos.egl.EGLContext zzy;
+    private javax.microedition.khronos.egl.EGLSurface zzz;
+
+    static void <clinit>()
+    {
+        float[] $r0;
+
+        $r0 = newarray (float)[12];
+
+        $r0[0] = -1.0F;
+
+        $r0[1] = -1.0F;
+
+        $r0[2] = -1.0F;
+
+        $r0[3] = 1.0F;
+
+        $r0[4] = -1.0F;
+
+        $r0[5] = -1.0F;
+
+        $r0[6] = -1.0F;
+
+        $r0[7] = 1.0F;
+
+        $r0[8] = -1.0F;
+
+        $r0[9] = 1.0F;
+
+        $r0[10] = 1.0F;
+
+        $r0[11] = -1.0F;
+
+        <com.google.android.gms.internal.ads.zzcgj: float[] zza> = $r0;
+
+        return;
+    }
+
+    public void <init>(android.content.Context)
+    {
+        android.content.Context $r1;
+        com.google.android.gms.internal.ads.zzcgj r0;
+        java.nio.FloatBuffer $r5;
+        com.google.android.gms.internal.ads.zzcgi $r6;
+        float[] $r2;
+        java.nio.ByteBuffer $r3;
+        java.nio.ByteOrder $r4;
+        java.util.concurrent.CountDownLatch $r7;
+        int $i0;
+        java.lang.Object $r8;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcgj;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<java.lang.Thread: void <init>(java.lang.String)>("SphericalVideoProcessor");
+
+        $r2 = <com.google.android.gms.internal.ads.zzcgj: float[] zza>;
+
+        $i0 = lengthof $r2;
+
+        $r3 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer allocateDirect(int)>(48);
+
+        $r4 = staticinvoke <java.nio.ByteOrder: java.nio.ByteOrder nativeOrder()>();
+
+        $r3 = virtualinvoke $r3.<java.nio.ByteBuffer: java.nio.ByteBuffer order(java.nio.ByteOrder)>($r4);
+
+        $r5 = virtualinvoke $r3.<java.nio.ByteBuffer: java.nio.FloatBuffer asFloatBuffer()>();
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: java.nio.FloatBuffer zzt> = $r5;
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzcgj: java.nio.FloatBuffer zzt>;
+
+        $r2 = <com.google.android.gms.internal.ads.zzcgj: float[] zza>;
+
+        $r5 = virtualinvoke $r5.<java.nio.FloatBuffer: java.nio.FloatBuffer put(float[])>($r2);
+
+        virtualinvoke $r5.<java.nio.FloatBuffer: java.nio.Buffer position(int)>(0);
+
+        $r2 = newarray (float)[9];
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzc> = $r2;
+
+        $r2 = newarray (float)[9];
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzd> = $r2;
+
+        $r2 = newarray (float)[9];
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: float[] zze> = $r2;
+
+        $r2 = newarray (float)[9];
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzf> = $r2;
+
+        $r2 = newarray (float)[9];
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzg> = $r2;
+
+        $r2 = newarray (float)[9];
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzh> = $r2;
+
+        $r2 = newarray (float)[9];
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzi> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: float zzj> = #NaNF;
+
+        $r6 = new com.google.android.gms.internal.ads.zzcgi;
+
+        specialinvoke $r6.<com.google.android.gms.internal.ads.zzcgi: void <init>(android.content.Context)>($r1);
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: com.google.android.gms.internal.ads.zzcgi zzb> = $r6;
+
+        $r6 = r0.<com.google.android.gms.internal.ads.zzcgj: com.google.android.gms.internal.ads.zzcgi zzb>;
+
+        virtualinvoke $r6.<com.google.android.gms.internal.ads.zzcgi: void zzb(com.google.android.gms.internal.ads.zzcgh)>(r0);
+
+        $r7 = new java.util.concurrent.CountDownLatch;
+
+        specialinvoke $r7.<java.util.concurrent.CountDownLatch: void <init>(int)>(1);
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: java.util.concurrent.CountDownLatch zzu> = $r7;
+
+        $r8 = new java.lang.Object;
+
+        specialinvoke $r8.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: java.lang.Object zzv> = $r8;
+
+        return;
+    }
+
+    private static final void zzh(java.lang.String)
+    {
+        int $i0;
+        java.lang.StringBuilder $r0;
+        java.lang.String $r1;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 = staticinvoke <android.opengl.GLES20: int glGetError()>();
+
+        if $i0 == 0 goto label1;
+
+        $r0 = new java.lang.StringBuilder;
+
+        specialinvoke $r0.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": glError ");
+
+        virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("SphericalVideoRenderer", $r1);
+
+     label1:
+        return;
+    }
+
+    private static final void zzi(float[], float[], float[])
+    {
+        float $f0, $f1, $f2, $f3;
+        float[] $r0, $r1, $r2;
+
+        $r0 := @parameter0: float[];
+
+        $r1 := @parameter1: float[];
+
+        $r2 := @parameter2: float[];
+
+        $f0 = $r1[0];
+
+        $f1 = $r2[0];
+
+        $f0 = $f0 * $f1;
+
+        $f1 = $r1[1];
+
+        $f2 = $r2[3];
+
+        $f1 = $f1 * $f2;
+
+        $f2 = $r1[2];
+
+        $f3 = $r2[6];
+
+        $f2 = $f2 * $f3;
+
+        $f0 = $f0 + $f1;
+
+        $f0 = $f0 + $f2;
+
+        $r0[0] = $f0;
+
+        $f0 = $r1[0];
+
+        $f1 = $r2[1];
+
+        $f0 = $f0 * $f1;
+
+        $f1 = $r1[1];
+
+        $f2 = $r2[4];
+
+        $f1 = $f1 * $f2;
+
+        $f2 = $r1[2];
+
+        $f3 = $r2[7];
+
+        $f2 = $f2 * $f3;
+
+        $f0 = $f0 + $f1;
+
+        $f0 = $f0 + $f2;
+
+        $r0[1] = $f0;
+
+        $f0 = $r1[0];
+
+        $f1 = $r2[2];
+
+        $f0 = $f0 * $f1;
+
+        $f1 = $r1[1];
+
+        $f2 = $r2[5];
+
+        $f1 = $f1 * $f2;
+
+        $f2 = $r1[2];
+
+        $f3 = $r2[8];
+
+        $f2 = $f2 * $f3;
+
+        $f0 = $f0 + $f1;
+
+        $f0 = $f0 + $f2;
+
+        $r0[2] = $f0;
+
+        $f0 = $r1[3];
+
+        $f1 = $r2[0];
+
+        $f0 = $f0 * $f1;
+
+        $f1 = $r1[4];
+
+        $f2 = $r2[3];
+
+        $f1 = $f1 * $f2;
+
+        $f2 = $r1[5];
+
+        $f3 = $r2[6];
+
+        $f2 = $f2 * $f3;
+
+        $f0 = $f0 + $f1;
+
+        $f0 = $f0 + $f2;
+
+        $r0[3] = $f0;
+
+        $f0 = $r1[3];
+
+        $f1 = $r2[1];
+
+        $f0 = $f0 * $f1;
+
+        $f1 = $r1[4];
+
+        $f2 = $r2[4];
+
+        $f1 = $f1 * $f2;
+
+        $f2 = $r1[5];
+
+        $f3 = $r2[7];
+
+        $f2 = $f2 * $f3;
+
+        $f0 = $f0 + $f1;
+
+        $f0 = $f0 + $f2;
+
+        $r0[4] = $f0;
+
+        $f0 = $r1[3];
+
+        $f1 = $r2[2];
+
+        $f0 = $f0 * $f1;
+
+        $f1 = $r1[4];
+
+        $f2 = $r2[5];
+
+        $f1 = $f1 * $f2;
+
+        $f2 = $r1[5];
+
+        $f3 = $r2[8];
+
+        $f2 = $f2 * $f3;
+
+        $f0 = $f0 + $f1;
+
+        $f0 = $f0 + $f2;
+
+        $r0[5] = $f0;
+
+        $f0 = $r1[6];
+
+        $f1 = $r2[0];
+
+        $f0 = $f0 * $f1;
+
+        $f1 = $r1[7];
+
+        $f2 = $r2[3];
+
+        $f1 = $f1 * $f2;
+
+        $f2 = $r1[8];
+
+        $f3 = $r2[6];
+
+        $f2 = $f2 * $f3;
+
+        $f0 = $f0 + $f1;
+
+        $f0 = $f0 + $f2;
+
+        $r0[6] = $f0;
+
+        $f0 = $r1[6];
+
+        $f1 = $r2[1];
+
+        $f0 = $f0 * $f1;
+
+        $f1 = $r1[7];
+
+        $f2 = $r2[4];
+
+        $f2 = $f1 * $f2;
+
+        $f1 = $r1[8];
+
+        $f0 = $f0 + $f2;
+
+        $f2 = $r2[7];
+
+        $f1 = $f1 * $f2;
+
+        $f0 = $f0 + $f1;
+
+        $r0[7] = $f0;
+
+        $f0 = $r1[6];
+
+        $f1 = $r2[2];
+
+        $f0 = $f0 * $f1;
+
+        $f1 = $r1[7];
+
+        $f2 = $r2[5];
+
+        $f1 = $f1 * $f2;
+
+        $f2 = $r1[8];
+
+        $f3 = $r2[8];
+
+        $f2 = $f2 * $f3;
+
+        $f0 = $f0 + $f1;
+
+        $f0 = $f0 + $f2;
+
+        $r0[8] = $f0;
+
+        return;
+    }
+
+    private static final void zzj(float[], float)
+    {
+        float $f0;
+        float[] $r0;
+        double $d0, $d1;
+
+        $r0 := @parameter0: float[];
+
+        $f0 := @parameter1: float;
+
+        $r0[0] = 1.0F;
+
+        $r0[1] = 0.0F;
+
+        $r0[2] = 0.0F;
+
+        $r0[3] = 0.0F;
+
+        $d0 = (double) $f0;
+
+        $d1 = staticinvoke <java.lang.Math: double cos(double)>($d0);
+
+        $f0 = (float) $d1;
+
+        $r0[4] = $f0;
+
+        $d1 = staticinvoke <java.lang.Math: double sin(double)>($d0);
+
+        $d1 = neg $d1;
+
+        $f0 = (float) $d1;
+
+        $r0[5] = $f0;
+
+        $r0[6] = 0.0F;
+
+        $d1 = staticinvoke <java.lang.Math: double sin(double)>($d0);
+
+        $f0 = (float) $d1;
+
+        $r0[7] = $f0;
+
+        $d0 = staticinvoke <java.lang.Math: double cos(double)>($d0);
+
+        $f0 = (float) $d0;
+
+        $r0[8] = $f0;
+
+        return;
+    }
+
+    private static final void zzk(float[], float)
+    {
+        float $f0;
+        float[] $r0;
+        double $d0, $d1;
+
+        $r0 := @parameter0: float[];
+
+        $f0 := @parameter1: float;
+
+        $d0 = (double) $f0;
+
+        $d1 = staticinvoke <java.lang.Math: double cos(double)>($d0);
+
+        $f0 = (float) $d1;
+
+        $r0[0] = $f0;
+
+        $d1 = staticinvoke <java.lang.Math: double sin(double)>($d0);
+
+        $d1 = neg $d1;
+
+        $f0 = (float) $d1;
+
+        $r0[1] = $f0;
+
+        $r0[2] = 0.0F;
+
+        $d1 = staticinvoke <java.lang.Math: double sin(double)>($d0);
+
+        $f0 = (float) $d1;
+
+        $r0[3] = $f0;
+
+        $d0 = staticinvoke <java.lang.Math: double cos(double)>($d0);
+
+        $f0 = (float) $d0;
+
+        $r0[4] = $f0;
+
+        $r0[5] = 0.0F;
+
+        $r0[6] = 0.0F;
+
+        $r0[7] = 0.0F;
+
+        $r0[8] = 1.0F;
+
+        return;
+    }
+
+    private static final int zzl(int, java.lang.String)
+    {
+        int[] $r1;
+        int $i0, $i1, $i2;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r0;
+
+        $i0 := @parameter0: int;
+
+        $r0 := @parameter1: java.lang.String;
+
+        $i1 = staticinvoke <android.opengl.GLES20: int glCreateShader(int)>($i0);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("createShader");
+
+        if $i1 == 0 goto label1;
+
+        staticinvoke <android.opengl.GLES20: void glShaderSource(int,java.lang.String)>($i1, $r0);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("shaderSource");
+
+        staticinvoke <android.opengl.GLES20: void glCompileShader(int)>($i1);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("compileShader");
+
+        $r1 = newarray (int)[1];
+
+        staticinvoke <android.opengl.GLES20: void glGetShaderiv(int,int,int[],int)>($i1, 35713, $r1, 0);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("getShaderiv");
+
+        $i2 = $r1[0];
+
+        if $i2 != 0 goto label1;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Could not compile shader ");
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $r0 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("SphericalVideoRenderer", $r0);
+
+        $r0 = staticinvoke <android.opengl.GLES20: java.lang.String glGetShaderInfoLog(int)>($i1);
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("SphericalVideoRenderer", $r0);
+
+        staticinvoke <android.opengl.GLES20: void glDeleteShader(int)>($i1);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("deleteShader");
+
+        return 0;
+
+     label1:
+        return $i1;
+    }
+
+    public final void onFrameAvailable(android.graphics.SurfaceTexture)
+    {
+        java.lang.Throwable $r4;
+        android.graphics.SurfaceTexture $r1;
+        com.google.android.gms.internal.ads.zzcgj r0;
+        int $i0;
+        java.lang.Object $r2, $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcgj;
+
+        $r1 := @parameter0: android.graphics.SurfaceTexture;
+
+        $i0 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzs>;
+
+        $i0 = $i0 + 1;
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: int zzs> = $i0;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgj: java.lang.Object zzv>;
+
+        entermonitor $r2;
+
+     label1:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzcgj: java.lang.Object zzv>;
+
+        virtualinvoke $r3.<java.lang.Object: void notifyAll()>();
+
+        exitmonitor $r2;
+
+     label2:
+        return;
+
+     label3:
+        $r4 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label4:
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public final void run()
+    {
+        java.lang.IllegalStateException $r29;
+        com.google.android.gms.internal.ads.zzcgj r0;
+        java.nio.FloatBuffer $r18;
+        com.google.android.gms.internal.ads.zzcgi $r21;
+        javax.microedition.khronos.egl.EGLConfig[] $r8;
+        int[] $r7, $r9;
+        boolean $z0, $z1;
+        javax.microedition.khronos.egl.EGLSurface $r13, $r14;
+        java.util.concurrent.CountDownLatch $r20;
+        javax.microedition.khronos.egl.EGLConfig $r10;
+        float $f0, $f1, $f2, $f3;
+        java.lang.Throwable $r25, $r27, $r30;
+        javax.microedition.khronos.egl.EGL10 $r3;
+        javax.microedition.khronos.egl.EGL $r2;
+        float[] $r19, $r22, $r23;
+        com.google.android.gms.internal.ads.zzbga $r16;
+        com.google.android.gms.internal.ads.zzbfu $r15;
+        int $i0, $i1, $i2, $i3;
+        java.lang.String $r17, $r31;
+        double $d0, $d1;
+        com.google.android.gms.internal.ads.zzcdl $r28;
+        android.graphics.SurfaceTexture $r1, $r32;
+        java.lang.InterruptedException $r26;
+        java.lang.Object $r4, $r24;
+        javax.microedition.khronos.egl.EGLDisplay $r5, $r6;
+        javax.microedition.khronos.egl.EGLContext $r11, $r12;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcgj;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcgj: android.graphics.SurfaceTexture zzp>;
+
+        if $r1 == null goto label123;
+
+        $r2 = staticinvoke <javax.microedition.khronos.egl.EGLContext: javax.microedition.khronos.egl.EGL getEGL()>();
+
+        $r3 = (javax.microedition.khronos.egl.EGL10) $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGL10 zzw> = $r3;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGL10 zzw>;
+
+        $r4 = <javax.microedition.khronos.egl.EGL10: java.lang.Object EGL_DEFAULT_DISPLAY>;
+
+        $r5 = interfaceinvoke $r3.<javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLDisplay eglGetDisplay(java.lang.Object)>($r4);
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLDisplay zzx> = $r5;
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLDisplay zzx>;
+
+        $r6 = <javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLDisplay EGL_NO_DISPLAY>;
+
+        if $r5 != $r6 goto label001;
+
+        $z0 = 0;
+
+        goto label011;
+
+     label001:
+        $r7 = newarray (int)[2];
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGL10 zzw>;
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLDisplay zzx>;
+
+        $z0 = interfaceinvoke $r3.<javax.microedition.khronos.egl.EGL10: boolean eglInitialize(javax.microedition.khronos.egl.EGLDisplay,int[])>($r5, $r7);
+
+        if $z0 != 0 goto label002;
+
+        $z0 = 0;
+
+        goto label011;
+
+     label002:
+        $r7 = newarray (int)[1];
+
+        $r8 = newarray (javax.microedition.khronos.egl.EGLConfig)[1];
+
+        $r9 = newarray (int)[11];
+
+        $r9[0] = 12352;
+
+        $r9[1] = 4;
+
+        $r9[2] = 12324;
+
+        $r9[3] = 8;
+
+        $r9[4] = 12323;
+
+        $r9[5] = 8;
+
+        $r9[6] = 12322;
+
+        $r9[7] = 8;
+
+        $r9[8] = 12325;
+
+        $r9[9] = 16;
+
+        $r9[10] = 12344;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGL10 zzw>;
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLDisplay zzx>;
+
+        $z0 = interfaceinvoke $r3.<javax.microedition.khronos.egl.EGL10: boolean eglChooseConfig(javax.microedition.khronos.egl.EGLDisplay,int[],javax.microedition.khronos.egl.EGLConfig[],int,int[])>($r5, $r9, $r8, 1, $r7);
+
+        if $z0 != 0 goto label003;
+
+        $r10 = null;
+
+        goto label005;
+
+     label003:
+        $i0 = $r7[0];
+
+        if $i0 <= 0 goto label004;
+
+        $r10 = $r8[0];
+
+        goto label005;
+
+     label004:
+        $r10 = null;
+
+     label005:
+        if $r10 != null goto label006;
+
+        $z0 = 0;
+
+        goto label011;
+
+     label006:
+        $r7 = newarray (int)[3];
+
+        $r7[0] = 12440;
+
+        $r7[1] = 2;
+
+        $r7[2] = 12344;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGL10 zzw>;
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLDisplay zzx>;
+
+        $r11 = <javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLContext EGL_NO_CONTEXT>;
+
+        $r11 = interfaceinvoke $r3.<javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLContext eglCreateContext(javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig,javax.microedition.khronos.egl.EGLContext,int[])>($r5, $r10, $r11, $r7);
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLContext zzy> = $r11;
+
+        $r11 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLContext zzy>;
+
+        if $r11 == null goto label010;
+
+        $r12 = <javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLContext EGL_NO_CONTEXT>;
+
+        if $r11 != $r12 goto label007;
+
+        $z0 = 0;
+
+        goto label011;
+
+     label007:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGL10 zzw>;
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLDisplay zzx>;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcgj: android.graphics.SurfaceTexture zzp>;
+
+        $r13 = interfaceinvoke $r3.<javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLSurface eglCreateWindowSurface(javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig,java.lang.Object,int[])>($r5, $r10, $r1, null);
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLSurface zzz> = $r13;
+
+        $r13 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLSurface zzz>;
+
+        if $r13 == null goto label010;
+
+        $r14 = <javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLSurface EGL_NO_SURFACE>;
+
+        if $r13 != $r14 goto label008;
+
+        $z0 = 0;
+
+        goto label011;
+
+     label008:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGL10 zzw>;
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLDisplay zzx>;
+
+        $r13 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLSurface zzz>;
+
+        $r11 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLContext zzy>;
+
+        $z0 = interfaceinvoke $r3.<javax.microedition.khronos.egl.EGL10: boolean eglMakeCurrent(javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLSurface,javax.microedition.khronos.egl.EGLSurface,javax.microedition.khronos.egl.EGLContext)>($r5, $r13, $r13, $r11);
+
+        if $z0 != 0 goto label009;
+
+        goto label010;
+
+     label009:
+        $z0 = 1;
+
+        goto label011;
+
+     label010:
+        $z0 = 0;
+
+     label011:
+        $r15 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzbj>;
+
+        $r16 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r4 = virtualinvoke $r16.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r15);
+
+        $r17 = (java.lang.String) $r4;
+
+        $r4 = virtualinvoke $r15.<com.google.android.gms.internal.ads.zzbfu: java.lang.Object zzm()>();
+
+        $z1 = virtualinvoke $r17.<java.lang.String: boolean equals(java.lang.Object)>($r4);
+
+        if $z1 != 0 goto label012;
+
+        $r16 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r4 = virtualinvoke $r16.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r15);
+
+        $r17 = (java.lang.String) $r4;
+
+        goto label013;
+
+     label012:
+        $r17 = "attribute highp vec3 aPosition;varying vec3 pos;void main() {  gl_Position = vec4(aPosition, 1.0);  pos = aPosition;}";
+
+     label013:
+        $i1 = staticinvoke <com.google.android.gms.internal.ads.zzcgj: int zzl(int,java.lang.String)>(35633, $r17);
+
+        if $i1 != 0 goto label014;
+
+        $i0 = 0;
+
+        goto label019;
+
+     label014:
+        $r15 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzbk>;
+
+        $r16 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r4 = virtualinvoke $r16.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r15);
+
+        $r17 = (java.lang.String) $r4;
+
+        $r4 = virtualinvoke $r15.<com.google.android.gms.internal.ads.zzbfu: java.lang.Object zzm()>();
+
+        $z1 = virtualinvoke $r17.<java.lang.String: boolean equals(java.lang.Object)>($r4);
+
+        if $z1 != 0 goto label015;
+
+        $r16 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r4 = virtualinvoke $r16.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r15);
+
+        $r17 = (java.lang.String) $r4;
+
+        goto label016;
+
+     label015:
+        $r17 = "#extension GL_OES_EGL_image_external : require\n#define INV_PI 0.3183\nprecision highp float;varying vec3 pos;uniform samplerExternalOES uSplr;uniform mat3 uVMat;uniform float uFOVx;uniform float uFOVy;void main() {  vec3 ray = vec3(pos.x * tan(uFOVx), pos.y * tan(uFOVy), -1);  ray = (uVMat * ray).xyz;  ray = normalize(ray);  vec2 texCrd = vec2(    0.5 + atan(ray.x, - ray.z) * INV_PI * 0.5, acos(ray.y) * INV_PI);  gl_FragColor = vec4(texture2D(uSplr, texCrd).xyz, 1.0);}";
+
+     label016:
+        $i2 = staticinvoke <com.google.android.gms.internal.ads.zzcgj: int zzl(int,java.lang.String)>(35632, $r17);
+
+        if $i2 != 0 goto label017;
+
+        $i0 = 0;
+
+        goto label019;
+
+     label017:
+        $i3 = staticinvoke <android.opengl.GLES20: int glCreateProgram()>();
+
+        $i0 = $i3;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("createProgram");
+
+        if $i3 == 0 goto label019;
+
+        staticinvoke <android.opengl.GLES20: void glAttachShader(int,int)>($i3, $i1);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("attachShader");
+
+        staticinvoke <android.opengl.GLES20: void glAttachShader(int,int)>($i3, $i2);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("attachShader");
+
+        staticinvoke <android.opengl.GLES20: void glLinkProgram(int)>($i3);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("linkProgram");
+
+        $r7 = newarray (int)[1];
+
+        staticinvoke <android.opengl.GLES20: void glGetProgramiv(int,int,int[],int)>($i3, 35714, $r7, 0);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("getProgramiv");
+
+        $i1 = $r7[0];
+
+        if $i1 == 1 goto label018;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("SphericalVideoRenderer", "Could not link program: ");
+
+        $r17 = staticinvoke <android.opengl.GLES20: java.lang.String glGetProgramInfoLog(int)>($i3);
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("SphericalVideoRenderer", $r17);
+
+        staticinvoke <android.opengl.GLES20: void glDeleteProgram(int)>($i3);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("deleteProgram");
+
+        $i0 = 0;
+
+        goto label019;
+
+     label018:
+        staticinvoke <android.opengl.GLES20: void glValidateProgram(int)>($i3);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("validateProgram");
+
+        goto label019;
+
+     label019:
+        r0.<com.google.android.gms.internal.ads.zzcgj: int zzq> = $i0;
+
+        staticinvoke <android.opengl.GLES20: void glUseProgram(int)>($i0);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("useProgram");
+
+        $i0 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzq>;
+
+        $i0 = staticinvoke <android.opengl.GLES20: int glGetAttribLocation(int,java.lang.String)>($i0, "aPosition");
+
+        $r18 = r0.<com.google.android.gms.internal.ads.zzcgj: java.nio.FloatBuffer zzt>;
+
+        staticinvoke <android.opengl.GLES20: void glVertexAttribPointer(int,int,int,boolean,int,java.nio.Buffer)>($i0, 3, 5126, 0, 12, $r18);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("vertexAttribPointer");
+
+        staticinvoke <android.opengl.GLES20: void glEnableVertexAttribArray(int)>($i0);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("enableVertexAttribArray");
+
+        $r7 = newarray (int)[1];
+
+        staticinvoke <android.opengl.GLES20: void glGenTextures(int,int[],int)>(1, $r7, 0);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("genTextures");
+
+        $i0 = $r7[0];
+
+        staticinvoke <android.opengl.GLES20: void glBindTexture(int,int)>(36197, $i0);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("bindTextures");
+
+        staticinvoke <android.opengl.GLES20: void glTexParameteri(int,int,int)>(36197, 10240, 9729);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("texParameteri");
+
+        staticinvoke <android.opengl.GLES20: void glTexParameteri(int,int,int)>(36197, 10241, 9729);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("texParameteri");
+
+        staticinvoke <android.opengl.GLES20: void glTexParameteri(int,int,int)>(36197, 10242, 33071);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("texParameteri");
+
+        staticinvoke <android.opengl.GLES20: void glTexParameteri(int,int,int)>(36197, 10243, 33071);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("texParameteri");
+
+        $i3 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzq>;
+
+        $i3 = staticinvoke <android.opengl.GLES20: int glGetUniformLocation(int,java.lang.String)>($i3, "uVMat");
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: int zzr> = $i3;
+
+        $r19 = newarray (float)[9];
+
+        $r19[0] = 1.0F;
+
+        $r19[1] = 0.0F;
+
+        $r19[2] = 0.0F;
+
+        $r19[3] = 0.0F;
+
+        $r19[4] = 1.0F;
+
+        $r19[5] = 0.0F;
+
+        $r19[6] = 0.0F;
+
+        $r19[7] = 0.0F;
+
+        $r19[8] = 1.0F;
+
+        staticinvoke <android.opengl.GLES20: void glUniformMatrix3fv(int,int,boolean,float[],int)>($i3, 1, 0, $r19, 0);
+
+        $i3 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzq>;
+
+        if $z0 == 0 goto label122;
+
+        if $i3 != 0 goto label020;
+
+        goto label122;
+
+     label020:
+        $r32 = new android.graphics.SurfaceTexture;
+
+        specialinvoke $r32.<android.graphics.SurfaceTexture: void <init>(int)>($i0);
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: android.graphics.SurfaceTexture zzo> = $r32;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcgj: android.graphics.SurfaceTexture zzo>;
+
+        virtualinvoke $r1.<android.graphics.SurfaceTexture: void setOnFrameAvailableListener(android.graphics.SurfaceTexture$OnFrameAvailableListener)>(r0);
+
+        $r20 = r0.<com.google.android.gms.internal.ads.zzcgj: java.util.concurrent.CountDownLatch zzu>;
+
+        virtualinvoke $r20.<java.util.concurrent.CountDownLatch: void countDown()>();
+
+        $r21 = r0.<com.google.android.gms.internal.ads.zzcgj: com.google.android.gms.internal.ads.zzcgi zzb>;
+
+        virtualinvoke $r21.<com.google.android.gms.internal.ads.zzcgi: void zzc()>();
+
+     label021:
+        r0.<com.google.android.gms.internal.ads.zzcgj: boolean zzA> = 1;
+
+     label022:
+        $z0 = r0.<com.google.android.gms.internal.ads.zzcgj: boolean zzB>;
+
+     label023:
+        if $z0 == 0 goto label024;
+
+        goto label120;
+
+     label024:
+        $i0 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzs>;
+
+     label025:
+        if $i0 <= 0 goto label032;
+
+     label026:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcgj: android.graphics.SurfaceTexture zzo>;
+
+     label027:
+        virtualinvoke $r1.<android.graphics.SurfaceTexture: void updateTexImage()>();
+
+     label028:
+        $i0 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzs>;
+
+     label029:
+        $i0 = $i0 + -1;
+
+     label030:
+        r0.<com.google.android.gms.internal.ads.zzcgj: int zzs> = $i0;
+
+     label031:
+        goto label024;
+
+     label032:
+        $r21 = r0.<com.google.android.gms.internal.ads.zzcgj: com.google.android.gms.internal.ads.zzcgi zzb>;
+
+        $r19 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzc>;
+
+     label033:
+        $z0 = virtualinvoke $r21.<com.google.android.gms.internal.ads.zzcgi: boolean zze(float[])>($r19);
+
+     label034:
+        if $z0 == 0 goto label071;
+
+     label035:
+        $f0 = r0.<com.google.android.gms.internal.ads.zzcgj: float zzj>;
+
+     label036:
+        $z0 = staticinvoke <java.lang.Float: boolean isNaN(float)>($f0);
+
+     label037:
+        if $z0 == 0 goto label067;
+
+     label038:
+        $r19 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzc>;
+
+     label039:
+        $r22 = newarray (float)[3];
+
+     label040:
+        $r22[0] = 0.0F;
+
+        $r22[1] = 1.0F;
+
+        $r22[2] = 0.0F;
+
+     label041:
+        $r23 = newarray (float)[3];
+
+     label042:
+        $f0 = $r19[0];
+
+        $f1 = $r22[0];
+
+     label043:
+        $f2 = $f0 * $f1;
+
+     label044:
+        $f3 = $r19[1];
+
+        $f0 = $r22[1];
+
+     label045:
+        $f3 = $f3 * $f0;
+
+        $f2 = $f2 + $f3;
+
+     label046:
+        $f3 = $r19[2];
+
+     label047:
+        $f3 = $f3 * 0.0F;
+
+        $f2 = $f2 + $f3;
+
+     label048:
+        $r23[0] = $f2;
+
+        $f2 = $r19[3];
+
+     label049:
+        $f2 = $f2 * $f1;
+
+     label050:
+        $f3 = $r19[4];
+
+     label051:
+        $f3 = $f3 * $f0;
+
+        $f2 = $f2 + $f3;
+
+     label052:
+        $f3 = $r19[5];
+
+     label053:
+        $f3 = $f3 * 0.0F;
+
+        $f2 = $f2 + $f3;
+
+     label054:
+        $r23[1] = $f2;
+
+        $f2 = $r19[6];
+
+     label055:
+        $f1 = $f2 * $f1;
+
+     label056:
+        $f2 = $r19[7];
+
+     label057:
+        $f0 = $f2 * $f0;
+
+        $f0 = $f1 + $f0;
+
+     label058:
+        $f1 = $r19[8];
+
+     label059:
+        $f1 = $f1 * 0.0F;
+
+        $f0 = $f0 + $f1;
+
+     label060:
+        $r23[2] = $f0;
+
+        $f0 = $r23[1];
+
+     label061:
+        $d0 = (double) $f0;
+
+     label062:
+        $f0 = $r23[0];
+
+     label063:
+        $d1 = (double) $f0;
+
+     label064:
+        $d0 = staticinvoke <java.lang.Math: double atan2(double,double)>($d0, $d1);
+
+     label065:
+        $f0 = (float) $d0;
+
+        $f0 = $f0 + -1.5707964F;
+
+        $f0 = neg $f0;
+
+     label066:
+        r0.<com.google.android.gms.internal.ads.zzcgj: float zzj> = $f0;
+
+     label067:
+        $r19 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzh>;
+
+        $f0 = r0.<com.google.android.gms.internal.ads.zzcgj: float zzj>;
+
+        $f1 = r0.<com.google.android.gms.internal.ads.zzcgj: float zzk>;
+
+     label068:
+        $f0 = $f0 + $f1;
+
+     label069:
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzk(float[],float)>($r19, $f0);
+
+     label070:
+        goto label075;
+
+     label071:
+        $r19 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzc>;
+
+     label072:
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzj(float[],float)>($r19, -1.5707964F);
+
+     label073:
+        $r19 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzh>;
+
+        $f0 = r0.<com.google.android.gms.internal.ads.zzcgj: float zzk>;
+
+     label074:
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzk(float[],float)>($r19, $f0);
+
+     label075:
+        $r19 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzd>;
+
+     label076:
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzj(float[],float)>($r19, 1.5707964F);
+
+     label077:
+        $r19 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zze>;
+
+        $r22 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzh>;
+
+        $r23 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzd>;
+
+     label078:
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzi(float[],float[],float[])>($r19, $r22, $r23);
+
+     label079:
+        $r19 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzf>;
+
+        $r22 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzc>;
+
+        $r23 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zze>;
+
+     label080:
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzi(float[],float[],float[])>($r19, $r22, $r23);
+
+     label081:
+        $r19 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzg>;
+
+        $f0 = r0.<com.google.android.gms.internal.ads.zzcgj: float zzl>;
+
+     label082:
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzj(float[],float)>($r19, $f0);
+
+     label083:
+        $r19 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzi>;
+
+        $r22 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzg>;
+
+        $r23 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzf>;
+
+     label084:
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzi(float[],float[],float[])>($r19, $r22, $r23);
+
+     label085:
+        $i0 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzr>;
+
+        $r19 = r0.<com.google.android.gms.internal.ads.zzcgj: float[] zzi>;
+
+     label086:
+        staticinvoke <android.opengl.GLES20: void glUniformMatrix3fv(int,int,boolean,float[],int)>($i0, 1, 0, $r19, 0);
+
+        staticinvoke <android.opengl.GLES20: void glDrawArrays(int,int,int)>(5, 0, 4);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("drawArrays");
+
+        staticinvoke <android.opengl.GLES20: void glFinish()>();
+
+     label087:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGL10 zzw>;
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLDisplay zzx>;
+
+        $r13 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLSurface zzz>;
+
+     label088:
+        interfaceinvoke $r3.<javax.microedition.khronos.egl.EGL10: boolean eglSwapBuffers(javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLSurface)>($r5, $r13);
+
+     label089:
+        $z0 = r0.<com.google.android.gms.internal.ads.zzcgj: boolean zzA>;
+
+     label090:
+        if $z0 == 0 goto label109;
+
+     label091:
+        $i0 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzn>;
+
+        $i3 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzm>;
+
+     label092:
+        staticinvoke <android.opengl.GLES20: void glViewport(int,int,int,int)>(0, 0, $i0, $i3);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcgj: void zzh(java.lang.String)>("viewport");
+
+     label093:
+        $i0 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzq>;
+
+     label094:
+        $i3 = staticinvoke <android.opengl.GLES20: int glGetUniformLocation(int,java.lang.String)>($i0, "uFOVx");
+
+     label095:
+        $i0 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzq>;
+
+     label096:
+        $i0 = staticinvoke <android.opengl.GLES20: int glGetUniformLocation(int,java.lang.String)>($i0, "uFOVy");
+
+     label097:
+        $i1 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzn>;
+
+        $i2 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzm>;
+
+     label098:
+        if $i1 <= $i2 goto label106;
+
+     label099:
+        staticinvoke <android.opengl.GLES20: void glUniform1f(int,float)>($i3, 0.87266463F);
+
+     label100:
+        $i3 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzm>;
+
+     label101:
+        $f0 = (float) $i3;
+
+        $f0 = $f0 * 0.87266463F;
+
+     label102:
+        $i3 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzn>;
+
+     label103:
+        $f1 = (float) $i3;
+
+        $f0 = $f0 / $f1;
+
+     label104:
+        staticinvoke <android.opengl.GLES20: void glUniform1f(int,float)>($i0, $f0);
+
+     label105:
+        goto label108;
+
+     label106:
+        $f0 = (float) $i1;
+
+        $f0 = $f0 * 0.87266463F;
+
+        $f1 = (float) $i2;
+
+        $f0 = $f0 / $f1;
+
+     label107:
+        staticinvoke <android.opengl.GLES20: void glUniform1f(int,float)>($i3, $f0);
+
+        staticinvoke <android.opengl.GLES20: void glUniform1f(int,float)>($i0, 0.87266463F);
+
+     label108:
+        r0.<com.google.android.gms.internal.ads.zzcgj: boolean zzA> = 0;
+
+     label109:
+        $r4 = r0.<com.google.android.gms.internal.ads.zzcgj: java.lang.Object zzv>;
+
+        entermonitor $r4;
+
+     label110:
+        $z0 = r0.<com.google.android.gms.internal.ads.zzcgj: boolean zzB>;
+
+        if $z0 != 0 goto label111;
+
+        $z0 = r0.<com.google.android.gms.internal.ads.zzcgj: boolean zzA>;
+
+        if $z0 != 0 goto label111;
+
+        $i0 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzs>;
+
+        if $i0 != 0 goto label111;
+
+        $r24 = r0.<com.google.android.gms.internal.ads.zzcgj: java.lang.Object zzv>;
+
+        virtualinvoke $r24.<java.lang.Object: void wait()>();
+
+     label111:
+        exitmonitor $r4;
+
+     label112:
+        goto label022;
+
+     label113:
+        $r25 := @caughtexception;
+
+        exitmonitor $r4;
+
+     label114:
+        throw $r25;
+
+     label115:
+        $r26 := @caughtexception;
+
+        goto label022;
+
+     label116:
+        $r27 := @caughtexception;
+
+     label117:
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzh(java.lang.String,java.lang.Throwable)>("SphericalVideoProcessor died.", $r27);
+
+        $r28 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzcdl zzo()>();
+
+        virtualinvoke $r28.<com.google.android.gms.internal.ads.zzcdl: void zzw(java.lang.Throwable,java.lang.String)>($r27, "SphericalVideoProcessor.run.2");
+
+        goto label120;
+
+     label118:
+        $r29 := @caughtexception;
+
+     label119:
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>("SphericalVideoProcessor halted unexpectedly.");
+
+     label120:
+        $r21 = r0.<com.google.android.gms.internal.ads.zzcgj: com.google.android.gms.internal.ads.zzcgi zzb>;
+
+        virtualinvoke $r21.<com.google.android.gms.internal.ads.zzcgi: void zzd()>();
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcgj: android.graphics.SurfaceTexture zzo>;
+
+        virtualinvoke $r1.<android.graphics.SurfaceTexture: void setOnFrameAvailableListener(android.graphics.SurfaceTexture$OnFrameAvailableListener)>(null);
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: android.graphics.SurfaceTexture zzo> = null;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzcgj: boolean zzg()>();
+
+        return;
+
+     label121:
+        $r30 := @caughtexception;
+
+        $r21 = r0.<com.google.android.gms.internal.ads.zzcgj: com.google.android.gms.internal.ads.zzcgi zzb>;
+
+        virtualinvoke $r21.<com.google.android.gms.internal.ads.zzcgi: void zzd()>();
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcgj: android.graphics.SurfaceTexture zzo>;
+
+        virtualinvoke $r1.<android.graphics.SurfaceTexture: void setOnFrameAvailableListener(android.graphics.SurfaceTexture$OnFrameAvailableListener)>(null);
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: android.graphics.SurfaceTexture zzo> = null;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzcgj: boolean zzg()>();
+
+        throw $r30;
+
+     label122:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGL10 zzw>;
+
+        $i0 = interfaceinvoke $r3.<javax.microedition.khronos.egl.EGL10: int eglGetError()>();
+
+        $r17 = staticinvoke <android.opengl.GLUtils: java.lang.String getEGLErrorString(int)>($i0);
+
+        $r17 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r17);
+
+        $r31 = "EGL initialization failed: ";
+
+        $r17 = virtualinvoke $r31.<java.lang.String: java.lang.String concat(java.lang.String)>($r17);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzg(java.lang.String)>($r17);
+
+        $r28 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzcdl zzo()>();
+
+        $r27 = new java.lang.Throwable;
+
+        specialinvoke $r27.<java.lang.Throwable: void <init>(java.lang.String)>($r17);
+
+        virtualinvoke $r28.<com.google.android.gms.internal.ads.zzcdl: void zzw(java.lang.Throwable,java.lang.String)>($r27, "SphericalVideoProcessor.run.1");
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzcgj: boolean zzg()>();
+
+        $r20 = r0.<com.google.android.gms.internal.ads.zzcgj: java.util.concurrent.CountDownLatch zzu>;
+
+        virtualinvoke $r20.<java.util.concurrent.CountDownLatch: void countDown()>();
+
+        return;
+
+     label123:
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzg(java.lang.String)>("SphericalVideoProcessor started with no output texture.");
+
+        $r20 = r0.<com.google.android.gms.internal.ads.zzcgj: java.util.concurrent.CountDownLatch zzu>;
+
+        virtualinvoke $r20.<java.util.concurrent.CountDownLatch: void countDown()>();
+
+        return;
+
+        catch java.lang.IllegalStateException from label027 to label028 with label118;
+        catch java.lang.IllegalStateException from label033 to label034 with label118;
+        catch java.lang.IllegalStateException from label036 to label037 with label118;
+        catch java.lang.IllegalStateException from label064 to label065 with label118;
+        catch java.lang.IllegalStateException from label069 to label070 with label118;
+        catch java.lang.IllegalStateException from label072 to label073 with label118;
+        catch java.lang.IllegalStateException from label074 to label075 with label118;
+        catch java.lang.IllegalStateException from label076 to label077 with label118;
+        catch java.lang.IllegalStateException from label078 to label079 with label118;
+        catch java.lang.IllegalStateException from label080 to label081 with label118;
+        catch java.lang.IllegalStateException from label082 to label083 with label118;
+        catch java.lang.IllegalStateException from label084 to label085 with label118;
+        catch java.lang.IllegalStateException from label086 to label087 with label118;
+        catch java.lang.IllegalStateException from label088 to label089 with label118;
+        catch java.lang.IllegalStateException from label092 to label093 with label118;
+        catch java.lang.IllegalStateException from label094 to label095 with label118;
+        catch java.lang.IllegalStateException from label096 to label097 with label118;
+        catch java.lang.IllegalStateException from label099 to label100 with label118;
+        catch java.lang.IllegalStateException from label104 to label105 with label118;
+        catch java.lang.IllegalStateException from label107 to label108 with label118;
+        catch java.lang.Throwable from label021 to label023 with label116;
+        catch java.lang.Throwable from label024 to label025 with label116;
+        catch java.lang.Throwable from label026 to label029 with label116;
+        catch java.lang.Throwable from label030 to label031 with label116;
+        catch java.lang.Throwable from label032 to label034 with label116;
+        catch java.lang.Throwable from label035 to label037 with label116;
+        catch java.lang.Throwable from label038 to label039 with label116;
+        catch java.lang.Throwable from label040 to label041 with label116;
+        catch java.lang.Throwable from label042 to label043 with label116;
+        catch java.lang.Throwable from label044 to label045 with label116;
+        catch java.lang.Throwable from label046 to label047 with label116;
+        catch java.lang.Throwable from label048 to label049 with label116;
+        catch java.lang.Throwable from label050 to label051 with label116;
+        catch java.lang.Throwable from label052 to label053 with label116;
+        catch java.lang.Throwable from label054 to label055 with label116;
+        catch java.lang.Throwable from label056 to label057 with label116;
+        catch java.lang.Throwable from label058 to label059 with label116;
+        catch java.lang.Throwable from label060 to label061 with label116;
+        catch java.lang.Throwable from label062 to label063 with label116;
+        catch java.lang.Throwable from label064 to label065 with label116;
+        catch java.lang.Throwable from label066 to label068 with label116;
+        catch java.lang.Throwable from label069 to label070 with label116;
+        catch java.lang.Throwable from label071 to label090 with label116;
+        catch java.lang.Throwable from label091 to label098 with label116;
+        catch java.lang.Throwable from label099 to label101 with label116;
+        catch java.lang.Throwable from label102 to label103 with label116;
+        catch java.lang.Throwable from label104 to label105 with label116;
+        catch java.lang.Throwable from label107 to label109 with label116;
+        catch java.lang.Throwable from label109 to label110 with label116;
+        catch java.lang.Throwable from label110 to label112 with label113;
+        catch java.lang.Throwable from label113 to label114 with label113;
+        catch java.lang.InterruptedException from label114 to label115 with label115;
+        catch java.lang.IllegalStateException from label114 to label115 with label118;
+        catch java.lang.Throwable from label114 to label115 with label116;
+        catch java.lang.Throwable from label117 to label118 with label121;
+        catch java.lang.Throwable from label119 to label120 with label121;
+    }
+
+    public final void zza()
+    {
+        java.lang.Throwable $r3;
+        com.google.android.gms.internal.ads.zzcgj r0;
+        java.lang.Object $r1, $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcgj;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcgj: java.lang.Object zzv>;
+
+        entermonitor $r1;
+
+     label1:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgj: java.lang.Object zzv>;
+
+        virtualinvoke $r2.<java.lang.Object: void notifyAll()>();
+
+        exitmonitor $r1;
+
+     label2:
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label4:
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public final android.graphics.SurfaceTexture zzb()
+    {
+        android.graphics.SurfaceTexture $r1;
+        java.util.concurrent.CountDownLatch $r2;
+        com.google.android.gms.internal.ads.zzcgj r0;
+        java.lang.InterruptedException $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcgj;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcgj: android.graphics.SurfaceTexture zzp>;
+
+        if $r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgj: java.util.concurrent.CountDownLatch zzu>;
+
+     label2:
+        virtualinvoke $r2.<java.util.concurrent.CountDownLatch: void await()>();
+
+     label3:
+        goto label5;
+
+     label4:
+        $r3 := @caughtexception;
+
+     label5:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcgj: android.graphics.SurfaceTexture zzo>;
+
+        return $r1;
+
+        catch java.lang.InterruptedException from label2 to label3 with label4;
+    }
+
+    public final void zzc(int, int)
+    {
+        java.lang.Throwable $r3;
+        com.google.android.gms.internal.ads.zzcgj r0;
+        int $i0, $i1;
+        java.lang.Object $r1, $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcgj;
+
+        $i1 := @parameter0: int;
+
+        $i0 := @parameter1: int;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcgj: java.lang.Object zzv>;
+
+        entermonitor $r1;
+
+     label1:
+        r0.<com.google.android.gms.internal.ads.zzcgj: int zzn> = $i1;
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: int zzm> = $i0;
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: boolean zzA> = 1;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgj: java.lang.Object zzv>;
+
+        virtualinvoke $r2.<java.lang.Object: void notifyAll()>();
+
+        exitmonitor $r1;
+
+     label2:
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label4:
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public final void zzd(android.graphics.SurfaceTexture, int, int)
+    {
+        android.graphics.SurfaceTexture $r1;
+        com.google.android.gms.internal.ads.zzcgj r0;
+        int $i0, $i1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcgj;
+
+        $r1 := @parameter0: android.graphics.SurfaceTexture;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: int zzn> = $i0;
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: int zzm> = $i1;
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: android.graphics.SurfaceTexture zzp> = $r1;
+
+        return;
+    }
+
+    public final void zze()
+    {
+        java.lang.Throwable $r3;
+        com.google.android.gms.internal.ads.zzcgj r0;
+        java.lang.Object $r1, $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcgj;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcgj: java.lang.Object zzv>;
+
+        entermonitor $r1;
+
+     label1:
+        r0.<com.google.android.gms.internal.ads.zzcgj: boolean zzB> = 1;
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: android.graphics.SurfaceTexture zzp> = null;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgj: java.lang.Object zzv>;
+
+        virtualinvoke $r2.<java.lang.Object: void notifyAll()>();
+
+        exitmonitor $r1;
+
+     label2:
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label4:
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public final void zzf(float, float)
+    {
+        com.google.android.gms.internal.ads.zzcgj r0;
+        byte $b2;
+        int $i0, $i1;
+        float $f0, $f1, $f2, $f3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcgj;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $i0 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzn>;
+
+        $i1 = r0.<com.google.android.gms.internal.ads.zzcgj: int zzm>;
+
+        if $i0 > $i1 goto label1;
+
+        $i0 = $i1;
+
+     label1:
+        $f2 = r0.<com.google.android.gms.internal.ads.zzcgj: float zzk>;
+
+        $f3 = $f0 * 1.7453293F;
+
+        $f0 = (float) $i0;
+
+        $f3 = $f3 / $f0;
+
+        $f2 = $f2 - $f3;
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: float zzk> = $f2;
+
+        $f2 = r0.<com.google.android.gms.internal.ads.zzcgj: float zzl>;
+
+        $f1 = $f1 * 1.7453293F;
+
+        $f0 = $f1 / $f0;
+
+        $f0 = $f2 - $f0;
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: float zzl> = $f0;
+
+        $b2 = $f0 cmpg -1.5707964F;
+
+        $i0 = (int) $b2;
+
+        if $i0 >= 0 goto label2;
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: float zzl> = -1.5707964F;
+
+        $f0 = -1.5707964F;
+
+     label2:
+        $b2 = $f0 cmpl 1.5707964F;
+
+        $i0 = (int) $b2;
+
+        if $i0 <= 0 goto label3;
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: float zzl> = 1.5707964F;
+
+     label3:
+        return;
+    }
+
+    final boolean zzg()
+    {
+        javax.microedition.khronos.egl.EGLSurface $r2, $r3;
+        javax.microedition.khronos.egl.EGL10 $r4;
+        com.google.android.gms.internal.ads.zzcgj r0;
+        javax.microedition.khronos.egl.EGLDisplay $r5;
+        javax.microedition.khronos.egl.EGLContext $r1;
+        boolean $z0, $z1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcgj;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLSurface zzz>;
+
+        $z0 = 0;
+
+        if $r2 == null goto label1;
+
+        $r3 = <javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLSurface EGL_NO_SURFACE>;
+
+        if $r2 == $r3 goto label1;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGL10 zzw>;
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLDisplay zzx>;
+
+        $r2 = <javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLSurface EGL_NO_SURFACE>;
+
+        $r3 = <javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLSurface EGL_NO_SURFACE>;
+
+        $r1 = <javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLContext EGL_NO_CONTEXT>;
+
+        $z0 = interfaceinvoke $r4.<javax.microedition.khronos.egl.EGL10: boolean eglMakeCurrent(javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLSurface,javax.microedition.khronos.egl.EGLSurface,javax.microedition.khronos.egl.EGLContext)>($r5, $r2, $r3, $r1);
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGL10 zzw>;
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLDisplay zzx>;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLSurface zzz>;
+
+        $z1 = interfaceinvoke $r4.<javax.microedition.khronos.egl.EGL10: boolean eglDestroySurface(javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLSurface)>($r5, $r2);
+
+        $z0 = $z1 | $z0;
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLSurface zzz> = null;
+
+        goto label1;
+
+     label1:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLContext zzy>;
+
+        if $r1 == null goto label2;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGL10 zzw>;
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLDisplay zzx>;
+
+        $z1 = interfaceinvoke $r4.<javax.microedition.khronos.egl.EGL10: boolean eglDestroyContext(javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLContext)>($r5, $r1);
+
+        $z0 = $z0 | $z1;
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLContext zzy> = null;
+
+     label2:
+        $r5 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLDisplay zzx>;
+
+        if $r5 == null goto label3;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGL10 zzw>;
+
+        $z1 = interfaceinvoke $r4.<javax.microedition.khronos.egl.EGL10: boolean eglTerminate(javax.microedition.khronos.egl.EGLDisplay)>($r5);
+
+        $z0 = $z1 | $z0;
+
+        r0.<com.google.android.gms.internal.ads.zzcgj: javax.microedition.khronos.egl.EGLDisplay zzx> = null;
+
+     label3:
+        return $z0;
+    }
+}

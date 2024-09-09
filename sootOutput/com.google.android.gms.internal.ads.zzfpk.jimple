@@ -1,0 +1,74 @@
+final class com.google.android.gms.internal.ads.zzfpk extends android.webkit.WebViewClient
+{
+    final java.lang.String zza;
+    final com.google.android.gms.internal.ads.zzfpm zzb;
+
+    void <init>(com.google.android.gms.internal.ads.zzfpm)
+    {
+        com.google.android.gms.internal.ads.zzfpk r0;
+        com.google.android.gms.internal.ads.zzfpm $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfpk;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzfpm;
+
+        r0.<com.google.android.gms.internal.ads.zzfpk: com.google.android.gms.internal.ads.zzfpm zzb> = $r1;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzfpk: java.lang.String zza> = "OMID NativeBridge WebViewClient";
+
+        return;
+    }
+
+    public final boolean onRenderProcessGone(android.webkit.WebView, android.webkit.RenderProcessGoneDetail)
+    {
+        com.google.android.gms.internal.ads.zzfpk r0;
+        com.google.android.gms.internal.ads.zzfpm $r6;
+        android.webkit.RenderProcessGoneDetail $r4;
+        java.lang.String $r1, $r2, $r5;
+        android.webkit.WebView $r3, $r7;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfpk;
+
+        $r3 := @parameter0: android.webkit.WebView;
+
+        $r4 := @parameter1: android.webkit.RenderProcessGoneDetail;
+
+        $r1 = virtualinvoke $r4.<java.lang.Object: java.lang.String toString()>();
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r1);
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfpk: java.lang.String zza>;
+
+        $r2 = "WebView renderer gone: ";
+
+        $r2 = virtualinvoke $r2.<java.lang.String: java.lang.String concat(java.lang.String)>($r5);
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>($r1, $r2);
+
+        $r6 = r0.<com.google.android.gms.internal.ads.zzfpk: com.google.android.gms.internal.ads.zzfpm zzb>;
+
+        $r7 = virtualinvoke $r6.<com.google.android.gms.internal.ads.zzfpi: android.webkit.WebView zza()>();
+
+        if $r7 != $r3 goto label1;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfpk: java.lang.String zza>;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>($r1, "Deallocating the Native bridge as it is unusable. No further events will be generated for this session.");
+
+        $r6 = r0.<com.google.android.gms.internal.ads.zzfpk: com.google.android.gms.internal.ads.zzfpm zzb>;
+
+        virtualinvoke $r6.<com.google.android.gms.internal.ads.zzfpi: void zzj(android.webkit.WebView)>(null);
+
+        virtualinvoke $r3.<android.webkit.WebView: void destroy()>();
+
+        return 1;
+
+     label1:
+        $z0 = specialinvoke r0.<android.webkit.WebViewClient: boolean onRenderProcessGone(android.webkit.WebView,android.webkit.RenderProcessGoneDetail)>($r3, $r4);
+
+        return $z0;
+    }
+}

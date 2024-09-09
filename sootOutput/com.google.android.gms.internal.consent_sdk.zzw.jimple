@@ -1,0 +1,295 @@
+final class com.google.android.gms.internal.consent_sdk.zzw extends java.lang.Object
+{
+    private final com.google.android.gms.internal.consent_sdk.zzx zza;
+    private final com.google.android.gms.internal.consent_sdk.zzck zzb;
+    private int zzc;
+    private com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus zzd;
+
+    void <init>(com.google.android.gms.internal.consent_sdk.zzx, com.google.android.gms.internal.consent_sdk.zzck)
+    {
+        com.google.android.gms.internal.consent_sdk.zzx $r1;
+        com.google.android.gms.internal.consent_sdk.zzck $r2;
+        com.google.android.gms.internal.consent_sdk.zzw r0;
+        com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus $r3;
+
+        r0 := @this: com.google.android.gms.internal.consent_sdk.zzw;
+
+        $r1 := @parameter0: com.google.android.gms.internal.consent_sdk.zzx;
+
+        $r2 := @parameter1: com.google.android.gms.internal.consent_sdk.zzck;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzw: int zzc> = 0;
+
+        $r3 = <com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus: com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus UNKNOWN>;
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzw: com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus zzd> = $r3;
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzw: com.google.android.gms.internal.consent_sdk.zzx zza> = $r1;
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzw: com.google.android.gms.internal.consent_sdk.zzck zzb> = $r2;
+
+        return;
+    }
+
+    final com.google.android.gms.internal.consent_sdk.zzz zza() throws com.google.android.gms.internal.consent_sdk.zzg
+    {
+        com.google.android.gms.internal.consent_sdk.zzck $r2;
+        com.google.android.gms.internal.consent_sdk.zzcj $r12;
+        com.google.android.gms.internal.consent_sdk.zzg $r15;
+        com.google.android.gms.internal.consent_sdk.zze $r13;
+        com.google.android.gms.internal.consent_sdk.zzan $r14;
+        java.lang.NullPointerException $r18;
+        com.google.android.gms.internal.consent_sdk.zzx $r7;
+        java.util.HashSet $r17;
+        com.google.android.gms.internal.consent_sdk.zzw r0;
+        int $i0, $i1;
+        java.lang.String $r3, $r4;
+        com.google.android.gms.internal.consent_sdk.zzap $r8;
+        com.google.android.gms.internal.consent_sdk.zzz $r19;
+        boolean $z0;
+        java.util.Iterator $r10;
+        com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus $r5;
+        java.util.List $r9;
+        com.google.android.gms.internal.consent_sdk.zzd[] $r1;
+        com.google.android.gms.internal.consent_sdk.zzbp $r6, $r16;
+        java.lang.Object $r11;
+
+        r0 := @this: com.google.android.gms.internal.consent_sdk.zzw;
+
+        $r2 = r0.<com.google.android.gms.internal.consent_sdk.zzw: com.google.android.gms.internal.consent_sdk.zzck zzb>;
+
+        $i0 = $r2.<com.google.android.gms.internal.consent_sdk.zzck: int zzf>;
+
+        $i1 = $i0 + -1;
+
+        if $i0 == 0 goto label23;
+
+        lookupswitch($i1)
+        {
+            case 1: goto label06;
+            case 2: goto label06;
+            case 3: goto label06;
+            case 4: goto label05;
+            case 5: goto label04;
+            case 6: goto label03;
+            case 7: goto label02;
+            default: goto label01;
+        };
+
+     label01:
+        $r15 = new com.google.android.gms.internal.consent_sdk.zzg;
+
+        specialinvoke $r15.<com.google.android.gms.internal.consent_sdk.zzg: void <init>(int,java.lang.String)>(1, "Invalid response from server.");
+
+        throw $r15;
+
+     label02:
+        $r15 = new com.google.android.gms.internal.consent_sdk.zzg;
+
+        $r3 = $r2.<com.google.android.gms.internal.consent_sdk.zzck: java.lang.String zzc>;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r3);
+
+        $r4 = "Publisher misconfiguration: ";
+
+        $r3 = virtualinvoke $r4.<java.lang.String: java.lang.String concat(java.lang.String)>($r3);
+
+        specialinvoke $r15.<com.google.android.gms.internal.consent_sdk.zzg: void <init>(int,java.lang.String)>(3, $r3);
+
+        throw $r15;
+
+     label03:
+        $r15 = new com.google.android.gms.internal.consent_sdk.zzg;
+
+        $r3 = $r2.<com.google.android.gms.internal.consent_sdk.zzck: java.lang.String zzc>;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r3);
+
+        $r4 = "Invalid response from server: ";
+
+        $r3 = virtualinvoke $r4.<java.lang.String: java.lang.String concat(java.lang.String)>($r3);
+
+        specialinvoke $r15.<com.google.android.gms.internal.consent_sdk.zzg: void <init>(int,java.lang.String)>(1, $r3);
+
+        throw $r15;
+
+     label04:
+        r0.<com.google.android.gms.internal.consent_sdk.zzw: int zzc> = 1;
+
+        goto label07;
+
+     label05:
+        r0.<com.google.android.gms.internal.consent_sdk.zzw: int zzc> = 2;
+
+        goto label07;
+
+     label06:
+        r0.<com.google.android.gms.internal.consent_sdk.zzw: int zzc> = 3;
+
+     label07:
+        $i0 = $r2.<com.google.android.gms.internal.consent_sdk.zzck: int zzg>;
+
+        $i1 = $i0 + -1;
+
+        if $i0 == 0 goto label22;
+
+        lookupswitch($i1)
+        {
+            case 1: goto label10;
+            case 2: goto label09;
+            default: goto label08;
+        };
+
+     label08:
+        $r15 = new com.google.android.gms.internal.consent_sdk.zzg;
+
+        specialinvoke $r15.<com.google.android.gms.internal.consent_sdk.zzg: void <init>(int,java.lang.String)>(1, "Invalid response from server.");
+
+        throw $r15;
+
+     label09:
+        $r5 = <com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus: com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus NOT_REQUIRED>;
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzw: com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus zzd> = $r5;
+
+        goto label11;
+
+     label10:
+        $r5 = <com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus: com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus REQUIRED>;
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzw: com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus zzd> = $r5;
+
+     label11:
+        $r2 = r0.<com.google.android.gms.internal.consent_sdk.zzw: com.google.android.gms.internal.consent_sdk.zzck zzb>;
+
+        $r3 = $r2.<com.google.android.gms.internal.consent_sdk.zzck: java.lang.String zza>;
+
+        if $r3 != null goto label12;
+
+        $r6 = null;
+
+        goto label13;
+
+     label12:
+        $r16 = new com.google.android.gms.internal.consent_sdk.zzbp;
+
+        $r6 = $r16;
+
+        $r4 = $r2.<com.google.android.gms.internal.consent_sdk.zzck: java.lang.String zzb>;
+
+        specialinvoke $r16.<com.google.android.gms.internal.consent_sdk.zzbp: void <init>(java.lang.String,java.lang.String)>($r4, $r3);
+
+     label13:
+        $r7 = r0.<com.google.android.gms.internal.consent_sdk.zzw: com.google.android.gms.internal.consent_sdk.zzx zza>;
+
+        $r8 = staticinvoke <com.google.android.gms.internal.consent_sdk.zzx: com.google.android.gms.internal.consent_sdk.zzap zzc(com.google.android.gms.internal.consent_sdk.zzx)>($r7);
+
+        $r17 = new java.util.HashSet;
+
+        $r9 = $r2.<com.google.android.gms.internal.consent_sdk.zzck: java.util.List zzd>;
+
+        specialinvoke $r17.<java.util.HashSet: void <init>(java.util.Collection)>($r9);
+
+        virtualinvoke $r8.<com.google.android.gms.internal.consent_sdk.zzap: void zzi(java.util.Set)>($r17);
+
+        $r2 = r0.<com.google.android.gms.internal.consent_sdk.zzw: com.google.android.gms.internal.consent_sdk.zzck zzb>;
+
+        $r9 = $r2.<com.google.android.gms.internal.consent_sdk.zzck: java.util.List zze>;
+
+        $r10 = interfaceinvoke $r9.<java.util.List: java.util.Iterator iterator()>();
+
+     label14:
+        $z0 = interfaceinvoke $r10.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label21;
+
+        $r11 = interfaceinvoke $r10.<java.util.Iterator: java.lang.Object next()>();
+
+        $r12 = (com.google.android.gms.internal.consent_sdk.zzcj) $r11;
+
+        $i0 = $r12.<com.google.android.gms.internal.consent_sdk.zzcj: int zzb>;
+
+        $i1 = $i0 + -1;
+
+        if $i0 == 0 goto label20;
+
+        lookupswitch($i1)
+        {
+            case 0: goto label18;
+            case 1: goto label17;
+            case 2: goto label16;
+            default: goto label15;
+        };
+
+     label15:
+        $r3 = null;
+
+        goto label19;
+
+     label16:
+        $r3 = "clear";
+
+        goto label19;
+
+     label17:
+        $r3 = "write";
+
+        goto label19;
+
+     label18:
+        $r3 = null;
+
+     label19:
+        if $r3 == null goto label14;
+
+        $r7 = r0.<com.google.android.gms.internal.consent_sdk.zzw: com.google.android.gms.internal.consent_sdk.zzx zza>;
+
+        $r13 = staticinvoke <com.google.android.gms.internal.consent_sdk.zzx: com.google.android.gms.internal.consent_sdk.zze zza(com.google.android.gms.internal.consent_sdk.zzx)>($r7);
+
+        $r4 = $r12.<com.google.android.gms.internal.consent_sdk.zzcj: java.lang.String zza>;
+
+        $r1 = newarray (com.google.android.gms.internal.consent_sdk.zzd)[1];
+
+        $r14 = staticinvoke <com.google.android.gms.internal.consent_sdk.zzx: com.google.android.gms.internal.consent_sdk.zzan zzb(com.google.android.gms.internal.consent_sdk.zzx)>($r7);
+
+        $r1[0] = $r14;
+
+        virtualinvoke $r13.<com.google.android.gms.internal.consent_sdk.zze: void zzb(java.lang.String,java.lang.String,com.google.android.gms.internal.consent_sdk.zzd[])>($r3, $r4, $r1);
+
+        goto label14;
+
+     label20:
+        $r18 = new java.lang.NullPointerException;
+
+        specialinvoke $r18.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+        throw $r18;
+
+     label21:
+        $r19 = new com.google.android.gms.internal.consent_sdk.zzz;
+
+        $i0 = r0.<com.google.android.gms.internal.consent_sdk.zzw: int zzc>;
+
+        $r5 = r0.<com.google.android.gms.internal.consent_sdk.zzw: com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus zzd>;
+
+        specialinvoke $r19.<com.google.android.gms.internal.consent_sdk.zzz: void <init>(int,com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus,com.google.android.gms.internal.consent_sdk.zzbp,com.google.android.gms.internal.consent_sdk.zzy)>($i0, $r5, $r6, null);
+
+        return $r19;
+
+     label22:
+        $r18 = new java.lang.NullPointerException;
+
+        specialinvoke $r18.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+        throw $r18;
+
+     label23:
+        $r18 = new java.lang.NullPointerException;
+
+        specialinvoke $r18.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+        throw $r18;
+    }
+}

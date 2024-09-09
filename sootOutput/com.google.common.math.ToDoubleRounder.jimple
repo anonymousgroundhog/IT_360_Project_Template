@@ -1,0 +1,367 @@
+abstract class com.google.common.math.ToDoubleRounder extends java.lang.Object
+{
+
+    void <init>()
+    {
+        com.google.common.math.ToDoubleRounder r0;
+
+        r0 := @this: com.google.common.math.ToDoubleRounder;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    abstract java.lang.Number minus(java.lang.Number, java.lang.Number);
+
+    final double roundToDouble(java.lang.Number, java.math.RoundingMode)
+    {
+        long $l3;
+        java.lang.AssertionError $r11;
+        byte b1;
+        int[] r3;
+        int $i0, $i2;
+        java.lang.ArithmeticException r4;
+        java.lang.String $r5, $r6;
+        java.lang.Number r1, $r9, r12;
+        java.math.RoundingMode $r2, r8;
+        double $d0, d1, $d2, d3;
+        boolean $z0;
+        java.lang.StringBuilder r7;
+        java.lang.Comparable r10;
+        com.google.common.math.ToDoubleRounder r0;
+
+        r0 := @this: com.google.common.math.ToDoubleRounder;
+
+        r1 := @parameter0: java.lang.Number;
+
+        $r2 := @parameter1: java.math.RoundingMode;
+
+        staticinvoke <com.google.common.base.Preconditions: java.lang.Object checkNotNull(java.lang.Object,java.lang.Object)>(r1, "x");
+
+        staticinvoke <com.google.common.base.Preconditions: java.lang.Object checkNotNull(java.lang.Object,java.lang.Object)>($r2, "mode");
+
+        $d0 = virtualinvoke r0.<com.google.common.math.ToDoubleRounder: double roundToDoubleArbitrarily(java.lang.Number)>(r1);
+
+        $z0 = staticinvoke <java.lang.Double: boolean isInfinite(double)>($d0);
+
+        if $z0 == 0 goto label09;
+
+        r3 = <com.google.common.math.ToDoubleRounder$1: int[] $SwitchMap$java$math$RoundingMode>;
+
+        $i0 = virtualinvoke $r2.<java.math.RoundingMode: int ordinal()>();
+
+        $i0 = r3[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label08;
+            case 2: goto label08;
+            case 3: goto label08;
+            case 4: goto label08;
+            case 5: goto label06;
+            case 6: goto label04;
+            case 7: goto label03;
+            case 8: goto label02;
+            default: goto label01;
+        };
+
+     label01:
+        goto label09;
+
+     label02:
+        r4 = new java.lang.ArithmeticException;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r1);
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r5);
+
+        $i0 = virtualinvoke $r6.<java.lang.String: int length()>();
+
+        $i0 = $i0 + 44;
+
+        r7 = new java.lang.StringBuilder;
+
+        specialinvoke r7.<java.lang.StringBuilder: void <init>(int)>($i0);
+
+        r7 = virtualinvoke r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        r7 = virtualinvoke r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" cannot be represented precisely as a double");
+
+        $r5 = virtualinvoke r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r4.<java.lang.ArithmeticException: void <init>(java.lang.String)>($r5);
+
+        throw r4;
+
+     label03:
+        return $d0;
+
+     label04:
+        b1 = $d0 cmpl #Infinity;
+
+        if b1 != 0 goto label05;
+
+        return #Infinity;
+
+     label05:
+        return -1.7976931348623157E308;
+
+     label06:
+        b1 = $d0 cmpl #Infinity;
+
+        if b1 != 0 goto label07;
+
+        return 1.7976931348623157E308;
+
+     label07:
+        return #-Infinity;
+
+     label08:
+        $i0 = virtualinvoke r0.<com.google.common.math.ToDoubleRounder: int sign(java.lang.Number)>(r1);
+
+        $d0 = (double) $i0;
+
+        $d0 = $d0 * 1.7976931348623157E308;
+
+        return $d0;
+
+     label09:
+        r8 = <java.math.RoundingMode: java.math.RoundingMode UNNECESSARY>;
+
+        $r9 = virtualinvoke r0.<com.google.common.math.ToDoubleRounder: java.lang.Number toX(double,java.math.RoundingMode)>($d0, r8);
+
+        r10 = (java.lang.Comparable) r1;
+
+        $i0 = interfaceinvoke r10.<java.lang.Comparable: int compareTo(java.lang.Object)>($r9);
+
+        r3 = <com.google.common.math.ToDoubleRounder$1: int[] $SwitchMap$java$math$RoundingMode>;
+
+        $i2 = virtualinvoke $r2.<java.math.RoundingMode: int ordinal()>();
+
+        $i2 = r3[$i2];
+
+        lookupswitch($i2)
+        {
+            case 1: goto label36;
+            case 2: goto label22;
+            case 3: goto label22;
+            case 4: goto label22;
+            case 5: goto label20;
+            case 6: goto label18;
+            case 7: goto label14;
+            case 8: goto label11;
+            default: goto label10;
+        };
+
+     label10:
+        $r11 = new java.lang.AssertionError;
+
+        specialinvoke $r11.<java.lang.AssertionError: void <init>(java.lang.Object)>("impossible");
+
+        throw $r11;
+
+     label11:
+        if $i0 != 0 goto label12;
+
+        $z0 = 1;
+
+        goto label13;
+
+     label12:
+        $z0 = 0;
+
+     label13:
+        staticinvoke <com.google.common.math.MathPreconditions: void checkRoundingUnnecessary(boolean)>($z0);
+
+        return $d0;
+
+     label14:
+        $i2 = virtualinvoke r0.<com.google.common.math.ToDoubleRounder: int sign(java.lang.Number)>(r1);
+
+        if $i2 < 0 goto label16;
+
+        if $i0 > 0 goto label15;
+
+        return $d0;
+
+     label15:
+        $d0 = staticinvoke <java.lang.Math: double nextUp(double)>($d0);
+
+        return $d0;
+
+     label16:
+        if $i0 < 0 goto label17;
+
+        return $d0;
+
+     label17:
+        $d0 = staticinvoke <com.google.common.math.DoubleUtils: double nextDown(double)>($d0);
+
+        return $d0;
+
+     label18:
+        if $i0 > 0 goto label19;
+
+        return $d0;
+
+     label19:
+        $d0 = staticinvoke <java.lang.Math: double nextUp(double)>($d0);
+
+        return $d0;
+
+     label20:
+        if $i0 < 0 goto label21;
+
+        return $d0;
+
+     label21:
+        $d0 = staticinvoke <com.google.common.math.DoubleUtils: double nextDown(double)>($d0);
+
+        return $d0;
+
+     label22:
+        if $i0 < 0 goto label24;
+
+        d1 = $d0;
+
+        r12 = $r9;
+
+        $d2 = staticinvoke <java.lang.Math: double nextUp(double)>($d0);
+
+        d3 = $d2;
+
+        b1 = $d2 cmpl #Infinity;
+
+        if b1 != 0 goto label23;
+
+        return $d0;
+
+     label23:
+        r8 = <java.math.RoundingMode: java.math.RoundingMode CEILING>;
+
+        $r9 = virtualinvoke r0.<com.google.common.math.ToDoubleRounder: java.lang.Number toX(double,java.math.RoundingMode)>($d2, r8);
+
+        goto label26;
+
+     label24:
+        d3 = $d0;
+
+        d1 = staticinvoke <com.google.common.math.DoubleUtils: double nextDown(double)>($d0);
+
+        b1 = d1 cmpl #-Infinity;
+
+        if b1 != 0 goto label25;
+
+        return $d0;
+
+     label25:
+        r8 = <java.math.RoundingMode: java.math.RoundingMode FLOOR>;
+
+        r12 = virtualinvoke r0.<com.google.common.math.ToDoubleRounder: java.lang.Number toX(double,java.math.RoundingMode)>(d1, r8);
+
+     label26:
+        r12 = virtualinvoke r0.<com.google.common.math.ToDoubleRounder: java.lang.Number minus(java.lang.Number,java.lang.Number)>(r1, r12);
+
+        $r9 = virtualinvoke r0.<com.google.common.math.ToDoubleRounder: java.lang.Number minus(java.lang.Number,java.lang.Number)>($r9, r1);
+
+        r10 = (java.lang.Comparable) r12;
+
+        $i0 = interfaceinvoke r10.<java.lang.Comparable: int compareTo(java.lang.Object)>($r9);
+
+        if $i0 >= 0 goto label27;
+
+        return d1;
+
+     label27:
+        if $i0 <= 0 goto label28;
+
+        return d3;
+
+     label28:
+        r3 = <com.google.common.math.ToDoubleRounder$1: int[] $SwitchMap$java$math$RoundingMode>;
+
+        $i0 = virtualinvoke $r2.<java.math.RoundingMode: int ordinal()>();
+
+        $i0 = r3[$i0];
+
+        lookupswitch($i0)
+        {
+            case 2: goto label34;
+            case 3: goto label32;
+            case 4: goto label30;
+            default: goto label29;
+        };
+
+     label29:
+        $r11 = new java.lang.AssertionError;
+
+        specialinvoke $r11.<java.lang.AssertionError: void <init>(java.lang.Object)>("impossible");
+
+        throw $r11;
+
+     label30:
+        $i0 = virtualinvoke r0.<com.google.common.math.ToDoubleRounder: int sign(java.lang.Number)>(r1);
+
+        if $i0 < 0 goto label31;
+
+        return d3;
+
+     label31:
+        return d1;
+
+     label32:
+        $i0 = virtualinvoke r0.<com.google.common.math.ToDoubleRounder: int sign(java.lang.Number)>(r1);
+
+        if $i0 < 0 goto label33;
+
+        return d1;
+
+     label33:
+        return d3;
+
+     label34:
+        $l3 = staticinvoke <java.lang.Double: long doubleToRawLongBits(double)>(d1);
+
+        $l3 = $l3 & 1L;
+
+        b1 = $l3 cmp 0L;
+
+        if b1 != 0 goto label35;
+
+        return d1;
+
+     label35:
+        return d3;
+
+     label36:
+        $i2 = virtualinvoke r0.<com.google.common.math.ToDoubleRounder: int sign(java.lang.Number)>(r1);
+
+        if $i2 < 0 goto label38;
+
+        if $i0 < 0 goto label37;
+
+        return $d0;
+
+     label37:
+        $d0 = staticinvoke <com.google.common.math.DoubleUtils: double nextDown(double)>($d0);
+
+        return $d0;
+
+     label38:
+        if $i0 > 0 goto label39;
+
+        return $d0;
+
+     label39:
+        $d0 = staticinvoke <java.lang.Math: double nextUp(double)>($d0);
+
+        return $d0;
+    }
+
+    abstract double roundToDoubleArbitrarily(java.lang.Number);
+
+    abstract int sign(java.lang.Number);
+
+    abstract java.lang.Number toX(double, java.math.RoundingMode);
+}

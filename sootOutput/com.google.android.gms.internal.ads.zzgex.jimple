@@ -1,0 +1,77 @@
+final class com.google.android.gms.internal.ads.zzgex extends java.lang.Object
+{
+    private final java.lang.String zza;
+    private volatile java.util.logging.Logger zzb;
+
+    void <init>(java.lang.Class)
+    {
+        com.google.android.gms.internal.ads.zzgex r0;
+        java.lang.Class $r2;
+        java.lang.String $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgex;
+
+        $r2 := @parameter0: java.lang.Class;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = virtualinvoke $r2.<java.lang.Class: java.lang.String getName()>();
+
+        r0.<com.google.android.gms.internal.ads.zzgex: java.lang.String zza> = $r1;
+
+        return;
+    }
+
+    final java.util.logging.Logger zza()
+    {
+        java.lang.Throwable $r3;
+        com.google.android.gms.internal.ads.zzgex r0;
+        java.lang.String $r2;
+        java.util.logging.Logger $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgex;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgex: java.util.logging.Logger zzb>;
+
+        if $r1 == null goto label1;
+
+        return $r1;
+
+     label1:
+        entermonitor r0;
+
+     label2:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgex: java.util.logging.Logger zzb>;
+
+        if $r1 == null goto label4;
+
+        exitmonitor r0;
+
+     label3:
+        return $r1;
+
+     label4:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzgex: java.lang.String zza>;
+
+        $r1 = staticinvoke <java.util.logging.Logger: java.util.logging.Logger getLogger(java.lang.String)>($r2);
+
+        r0.<com.google.android.gms.internal.ads.zzgex: java.util.logging.Logger zzb> = $r1;
+
+        exitmonitor r0;
+
+     label5:
+        return $r1;
+
+     label6:
+        $r3 := @caughtexception;
+
+        exitmonitor r0;
+
+     label7:
+        throw $r3;
+
+        catch java.lang.Throwable from label2 to label3 with label6;
+        catch java.lang.Throwable from label4 to label5 with label6;
+        catch java.lang.Throwable from label6 to label7 with label6;
+    }
+}

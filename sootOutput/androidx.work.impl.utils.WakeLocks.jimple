@@ -1,0 +1,177 @@
+public class androidx.work.impl.utils.WakeLocks extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+    private static final java.util.WeakHashMap sWakeLocks;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+        java.util.WeakHashMap $r1;
+
+        $r0 = staticinvoke <androidx.work.Logger: java.lang.String tagWithPrefix(java.lang.String)>("WakeLocks");
+
+        <androidx.work.impl.utils.WakeLocks: java.lang.String TAG> = $r0;
+
+        $r1 = new java.util.WeakHashMap;
+
+        specialinvoke $r1.<java.util.WeakHashMap: void <init>()>();
+
+        <androidx.work.impl.utils.WakeLocks: java.util.WeakHashMap sWakeLocks> = $r1;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.work.impl.utils.WakeLocks r0;
+
+        r0 := @this: androidx.work.impl.utils.WakeLocks;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void checkWakeLocks()
+    {
+        java.lang.Throwable r12;
+        java.lang.Object[] $r7;
+        java.util.Iterator $r4;
+        java.util.Set $r3;
+        java.util.HashMap r0;
+        android.os.PowerManager$WakeLock r6;
+        androidx.work.Logger $r9;
+        java.lang.Throwable[] $r11;
+        java.lang.Object $r5;
+        java.lang.String $r8, $r10;
+        java.util.WeakHashMap $r1, r2;
+        boolean $z0;
+
+        r0 = new java.util.HashMap;
+
+        specialinvoke r0.<java.util.HashMap: void <init>()>();
+
+        $r1 = <androidx.work.impl.utils.WakeLocks: java.util.WeakHashMap sWakeLocks>;
+
+        entermonitor $r1;
+
+     label1:
+        r2 = <androidx.work.impl.utils.WakeLocks: java.util.WeakHashMap sWakeLocks>;
+
+        interfaceinvoke r0.<java.util.Map: void putAll(java.util.Map)>(r2);
+
+        exitmonitor $r1;
+
+     label2:
+        $r3 = interfaceinvoke r0.<java.util.Map: java.util.Set keySet()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.Set: java.util.Iterator iterator()>();
+
+     label3:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label4;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (android.os.PowerManager$WakeLock) $r5;
+
+        if r6 == null goto label3;
+
+        $z0 = virtualinvoke r6.<android.os.PowerManager$WakeLock: boolean isHeld()>();
+
+        if $z0 == 0 goto label3;
+
+        $r5 = interfaceinvoke r0.<java.util.Map: java.lang.Object get(java.lang.Object)>(r6);
+
+        $r7 = newarray (java.lang.Object)[1];
+
+        $r7[0] = $r5;
+
+        $r8 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("WakeLock held for %s", $r7);
+
+        $r9 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r10 = <androidx.work.impl.utils.WakeLocks: java.lang.String TAG>;
+
+        $r11 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r9.<androidx.work.Logger: void warning(java.lang.String,java.lang.String,java.lang.Throwable[])>($r10, $r8, $r11);
+
+        goto label3;
+
+     label4:
+        return;
+
+     label5:
+        r12 := @caughtexception;
+
+     label6:
+        exitmonitor $r1;
+
+     label7:
+        throw r12;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label6 to label7 with label5;
+    }
+
+    public static android.os.PowerManager$WakeLock newWakeLock(android.content.Context, java.lang.String)
+    {
+        java.lang.Throwable $r8;
+        android.content.Context $r0;
+        android.os.PowerManager$WakeLock $r6;
+        android.os.PowerManager r4;
+        java.lang.Object $r3;
+        java.lang.StringBuilder r5;
+        java.lang.String $r1;
+        java.util.WeakHashMap $r2, $r7;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r0 = virtualinvoke $r0.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        $r3 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("power");
+
+        r4 = (android.os.PowerManager) $r3;
+
+        r5 = new java.lang.StringBuilder;
+
+        specialinvoke r5.<java.lang.StringBuilder: void <init>()>();
+
+        r5 = virtualinvoke r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("WorkManager: ");
+
+        r5 = virtualinvoke r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = virtualinvoke r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r6 = virtualinvoke r4.<android.os.PowerManager: android.os.PowerManager$WakeLock newWakeLock(int,java.lang.String)>(1, $r1);
+
+        $r2 = <androidx.work.impl.utils.WakeLocks: java.util.WeakHashMap sWakeLocks>;
+
+        entermonitor $r2;
+
+     label1:
+        $r7 = <androidx.work.impl.utils.WakeLocks: java.util.WeakHashMap sWakeLocks>;
+
+        virtualinvoke $r7.<java.util.WeakHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r6, $r1);
+
+        exitmonitor $r2;
+
+     label2:
+        return $r6;
+
+     label3:
+        $r8 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label4:
+        throw $r8;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+}

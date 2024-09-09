@@ -1,0 +1,79 @@
+public class androidx.work.impl.constraints.controllers.StorageNotLowController extends androidx.work.impl.constraints.controllers.ConstraintController
+{
+
+    public void <init>(android.content.Context, androidx.work.impl.utils.taskexecutor.TaskExecutor)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r2;
+        android.content.Context $r1;
+        androidx.work.impl.constraints.controllers.StorageNotLowController r0;
+        androidx.work.impl.constraints.trackers.Trackers $r3;
+        androidx.work.impl.constraints.trackers.StorageNotLowTracker $r4;
+
+        r0 := @this: androidx.work.impl.constraints.controllers.StorageNotLowController;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.work.impl.utils.taskexecutor.TaskExecutor;
+
+        $r3 = staticinvoke <androidx.work.impl.constraints.trackers.Trackers: androidx.work.impl.constraints.trackers.Trackers getInstance(android.content.Context,androidx.work.impl.utils.taskexecutor.TaskExecutor)>($r1, $r2);
+
+        $r4 = virtualinvoke $r3.<androidx.work.impl.constraints.trackers.Trackers: androidx.work.impl.constraints.trackers.StorageNotLowTracker getStorageNotLowTracker()>();
+
+        specialinvoke r0.<androidx.work.impl.constraints.controllers.ConstraintController: void <init>(androidx.work.impl.constraints.trackers.ConstraintTracker)>($r4);
+
+        return;
+    }
+
+    boolean hasConstraint(androidx.work.impl.model.WorkSpec)
+    {
+        androidx.work.impl.constraints.controllers.StorageNotLowController r0;
+        androidx.work.Constraints $r2;
+        androidx.work.impl.model.WorkSpec $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.controllers.StorageNotLowController;
+
+        $r1 := @parameter0: androidx.work.impl.model.WorkSpec;
+
+        $r2 = $r1.<androidx.work.impl.model.WorkSpec: androidx.work.Constraints constraints>;
+
+        $z0 = virtualinvoke $r2.<androidx.work.Constraints: boolean requiresStorageNotLow()>();
+
+        return $z0;
+    }
+
+    boolean isConstrained(java.lang.Boolean)
+    {
+        java.lang.Boolean $r1;
+        androidx.work.impl.constraints.controllers.StorageNotLowController r0;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.controllers.StorageNotLowController;
+
+        $r1 := @parameter0: java.lang.Boolean;
+
+        $z0 = virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+        $z0 = $z0 ^ 1;
+
+        return $z0;
+    }
+
+    volatile boolean isConstrained(java.lang.Object)
+    {
+        androidx.work.impl.constraints.controllers.StorageNotLowController r0;
+        java.lang.Boolean $r2;
+        java.lang.Object $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.controllers.StorageNotLowController;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (java.lang.Boolean) $r1;
+
+        $z0 = virtualinvoke r0.<androidx.work.impl.constraints.controllers.StorageNotLowController: boolean isConstrained(java.lang.Boolean)>($r2);
+
+        return $z0;
+    }
+}

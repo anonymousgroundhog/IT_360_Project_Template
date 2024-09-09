@@ -1,0 +1,118 @@
+public final class androidx.savedstate.SavedStateRegistryController extends java.lang.Object
+{
+    private final androidx.savedstate.SavedStateRegistryOwner mOwner;
+    private final androidx.savedstate.SavedStateRegistry mRegistry;
+
+    private void <init>(androidx.savedstate.SavedStateRegistryOwner)
+    {
+        androidx.savedstate.SavedStateRegistryController r0;
+        androidx.savedstate.SavedStateRegistryOwner $r1;
+        androidx.savedstate.SavedStateRegistry $r2;
+
+        r0 := @this: androidx.savedstate.SavedStateRegistryController;
+
+        $r1 := @parameter0: androidx.savedstate.SavedStateRegistryOwner;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.savedstate.SavedStateRegistryController: androidx.savedstate.SavedStateRegistryOwner mOwner> = $r1;
+
+        $r2 = new androidx.savedstate.SavedStateRegistry;
+
+        specialinvoke $r2.<androidx.savedstate.SavedStateRegistry: void <init>()>();
+
+        r0.<androidx.savedstate.SavedStateRegistryController: androidx.savedstate.SavedStateRegistry mRegistry> = $r2;
+
+        return;
+    }
+
+    public static androidx.savedstate.SavedStateRegistryController create(androidx.savedstate.SavedStateRegistryOwner)
+    {
+        androidx.savedstate.SavedStateRegistryOwner $r0;
+        androidx.savedstate.SavedStateRegistryController $r1;
+
+        $r0 := @parameter0: androidx.savedstate.SavedStateRegistryOwner;
+
+        $r1 = new androidx.savedstate.SavedStateRegistryController;
+
+        specialinvoke $r1.<androidx.savedstate.SavedStateRegistryController: void <init>(androidx.savedstate.SavedStateRegistryOwner)>($r0);
+
+        return $r1;
+    }
+
+    public androidx.savedstate.SavedStateRegistry getSavedStateRegistry()
+    {
+        androidx.savedstate.SavedStateRegistryController r0;
+        androidx.savedstate.SavedStateRegistry r1;
+
+        r0 := @this: androidx.savedstate.SavedStateRegistryController;
+
+        r1 = r0.<androidx.savedstate.SavedStateRegistryController: androidx.savedstate.SavedStateRegistry mRegistry>;
+
+        return r1;
+    }
+
+    public void performRestore(android.os.Bundle)
+    {
+        androidx.savedstate.Recreator $r6;
+        java.lang.IllegalStateException $r8;
+        android.os.Bundle $r1;
+        androidx.savedstate.SavedStateRegistry $r7;
+        androidx.savedstate.SavedStateRegistryController r0;
+        androidx.lifecycle.Lifecycle $r3;
+        androidx.lifecycle.Lifecycle$State $r4, $r5;
+        androidx.savedstate.SavedStateRegistryOwner r2;
+
+        r0 := @this: androidx.savedstate.SavedStateRegistryController;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        r2 = r0.<androidx.savedstate.SavedStateRegistryController: androidx.savedstate.SavedStateRegistryOwner mOwner>;
+
+        $r3 = interfaceinvoke r2.<androidx.savedstate.SavedStateRegistryOwner: androidx.lifecycle.Lifecycle getLifecycle()>();
+
+        $r4 = virtualinvoke $r3.<androidx.lifecycle.Lifecycle: androidx.lifecycle.Lifecycle$State getCurrentState()>();
+
+        $r5 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State INITIALIZED>;
+
+        if $r4 != $r5 goto label1;
+
+        $r6 = new androidx.savedstate.Recreator;
+
+        r2 = r0.<androidx.savedstate.SavedStateRegistryController: androidx.savedstate.SavedStateRegistryOwner mOwner>;
+
+        specialinvoke $r6.<androidx.savedstate.Recreator: void <init>(androidx.savedstate.SavedStateRegistryOwner)>(r2);
+
+        virtualinvoke $r3.<androidx.lifecycle.Lifecycle: void addObserver(androidx.lifecycle.LifecycleObserver)>($r6);
+
+        $r7 = r0.<androidx.savedstate.SavedStateRegistryController: androidx.savedstate.SavedStateRegistry mRegistry>;
+
+        virtualinvoke $r7.<androidx.savedstate.SavedStateRegistry: void performRestore(androidx.lifecycle.Lifecycle,android.os.Bundle)>($r3, $r1);
+
+        return;
+
+     label1:
+        $r8 = new java.lang.IllegalStateException;
+
+        specialinvoke $r8.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Restarter must be created only during owner\'s initialization stage");
+
+        throw $r8;
+    }
+
+    public void performSave(android.os.Bundle)
+    {
+        androidx.savedstate.SavedStateRegistryController r0;
+        android.os.Bundle $r1;
+        androidx.savedstate.SavedStateRegistry $r2;
+
+        r0 := @this: androidx.savedstate.SavedStateRegistryController;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        $r2 = r0.<androidx.savedstate.SavedStateRegistryController: androidx.savedstate.SavedStateRegistry mRegistry>;
+
+        virtualinvoke $r2.<androidx.savedstate.SavedStateRegistry: void performSave(android.os.Bundle)>($r1);
+
+        return;
+    }
+}

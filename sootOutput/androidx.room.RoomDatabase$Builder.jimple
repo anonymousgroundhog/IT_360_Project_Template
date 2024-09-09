@@ -1,0 +1,597 @@
+public class androidx.room.RoomDatabase$Builder extends java.lang.Object
+{
+    private boolean mAllowDestructiveMigrationOnDowngrade;
+    private boolean mAllowMainThreadQueries;
+    private java.util.ArrayList mCallbacks;
+    private final android.content.Context mContext;
+    private java.lang.String mCopyFromAssetPath;
+    private java.io.File mCopyFromFile;
+    private final java.lang.Class mDatabaseClass;
+    private androidx.sqlite.db.SupportSQLiteOpenHelper$Factory mFactory;
+    private androidx.room.RoomDatabase$JournalMode mJournalMode;
+    private final androidx.room.RoomDatabase$MigrationContainer mMigrationContainer;
+    private java.util.Set mMigrationStartAndEndVersions;
+    private java.util.Set mMigrationsNotRequiredFrom;
+    private boolean mMultiInstanceInvalidation;
+    private final java.lang.String mName;
+    private java.util.concurrent.Executor mQueryExecutor;
+    private boolean mRequireMigration;
+    private java.util.concurrent.Executor mTransactionExecutor;
+
+    void <init>(android.content.Context, java.lang.Class, java.lang.String)
+    {
+        android.content.Context $r1;
+        androidx.room.RoomDatabase$JournalMode $r4;
+        androidx.room.RoomDatabase$Builder r0;
+        androidx.room.RoomDatabase$MigrationContainer $r5;
+        java.lang.Class r2;
+        java.lang.String $r3;
+
+        r0 := @this: androidx.room.RoomDatabase$Builder;
+
+        $r1 := @parameter0: android.content.Context;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r3 := @parameter2: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.room.RoomDatabase$Builder: android.content.Context mContext> = $r1;
+
+        r0.<androidx.room.RoomDatabase$Builder: java.lang.Class mDatabaseClass> = r2;
+
+        r0.<androidx.room.RoomDatabase$Builder: java.lang.String mName> = $r3;
+
+        $r4 = <androidx.room.RoomDatabase$JournalMode: androidx.room.RoomDatabase$JournalMode AUTOMATIC>;
+
+        r0.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$JournalMode mJournalMode> = $r4;
+
+        r0.<androidx.room.RoomDatabase$Builder: boolean mRequireMigration> = 1;
+
+        $r5 = new androidx.room.RoomDatabase$MigrationContainer;
+
+        specialinvoke $r5.<androidx.room.RoomDatabase$MigrationContainer: void <init>()>();
+
+        r0.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$MigrationContainer mMigrationContainer> = $r5;
+
+        return;
+    }
+
+    public androidx.room.RoomDatabase$Builder addCallback(androidx.room.RoomDatabase$Callback)
+    {
+        androidx.room.RoomDatabase$Builder r0;
+        androidx.room.RoomDatabase$Callback $r1;
+        java.util.ArrayList $r2;
+
+        r0 := @this: androidx.room.RoomDatabase$Builder;
+
+        $r1 := @parameter0: androidx.room.RoomDatabase$Callback;
+
+        $r2 = r0.<androidx.room.RoomDatabase$Builder: java.util.ArrayList mCallbacks>;
+
+        if $r2 != null goto label1;
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        r0.<androidx.room.RoomDatabase$Builder: java.util.ArrayList mCallbacks> = $r2;
+
+     label1:
+        $r2 = r0.<androidx.room.RoomDatabase$Builder: java.util.ArrayList mCallbacks>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+        return r0;
+    }
+
+    public transient androidx.room.RoomDatabase$Builder addMigrations(androidx.room.migration.Migration[])
+    {
+        androidx.room.RoomDatabase$Builder r0;
+        java.util.Set $r3;
+        androidx.room.migration.Migration[] $r1;
+        java.lang.Integer $r5;
+        java.util.HashSet $r4;
+        int $i0, $i1, $i2;
+        androidx.room.RoomDatabase$MigrationContainer $r6;
+        androidx.room.migration.Migration r2;
+
+        r0 := @this: androidx.room.RoomDatabase$Builder;
+
+        $r1 := @parameter0: androidx.room.migration.Migration[];
+
+        $r3 = r0.<androidx.room.RoomDatabase$Builder: java.util.Set mMigrationStartAndEndVersions>;
+
+        if $r3 != null goto label1;
+
+        $r4 = new java.util.HashSet;
+
+        specialinvoke $r4.<java.util.HashSet: void <init>()>();
+
+        r0.<androidx.room.RoomDatabase$Builder: java.util.Set mMigrationStartAndEndVersions> = $r4;
+
+     label1:
+        $i0 = lengthof $r1;
+
+        $i1 = 0;
+
+     label2:
+        if $i1 >= $i0 goto label3;
+
+        r2 = $r1[$i1];
+
+        $r3 = r0.<androidx.room.RoomDatabase$Builder: java.util.Set mMigrationStartAndEndVersions>;
+
+        $i2 = r2.<androidx.room.migration.Migration: int startVersion>;
+
+        $r5 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i2);
+
+        interfaceinvoke $r3.<java.util.Set: boolean add(java.lang.Object)>($r5);
+
+        $r3 = r0.<androidx.room.RoomDatabase$Builder: java.util.Set mMigrationStartAndEndVersions>;
+
+        $i2 = r2.<androidx.room.migration.Migration: int endVersion>;
+
+        $r5 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i2);
+
+        interfaceinvoke $r3.<java.util.Set: boolean add(java.lang.Object)>($r5);
+
+        $i1 = $i1 + 1;
+
+        goto label2;
+
+     label3:
+        $r6 = r0.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$MigrationContainer mMigrationContainer>;
+
+        virtualinvoke $r6.<androidx.room.RoomDatabase$MigrationContainer: void addMigrations(androidx.room.migration.Migration[])>($r1);
+
+        return r0;
+    }
+
+    public androidx.room.RoomDatabase$Builder allowMainThreadQueries()
+    {
+        androidx.room.RoomDatabase$Builder r0;
+
+        r0 := @this: androidx.room.RoomDatabase$Builder;
+
+        r0.<androidx.room.RoomDatabase$Builder: boolean mAllowMainThreadQueries> = 1;
+
+        return r0;
+    }
+
+    public androidx.room.RoomDatabase build()
+    {
+        androidx.sqlite.db.SupportSQLiteOpenHelper$Factory $r3;
+        android.content.Context $r1, $r20;
+        androidx.room.SQLiteCopyOpenHelperFactory r17;
+        androidx.room.RoomDatabase$Builder r0;
+        java.lang.Integer r12;
+        java.util.ArrayList $r5;
+        androidx.room.RoomDatabase$JournalMode r19;
+        androidx.room.DatabaseConfiguration r18;
+        androidx.room.RoomDatabase$MigrationContainer $r4;
+        java.lang.String $r2, $r21;
+        boolean $z0, $z1, z2, $z3;
+        java.util.Iterator $r10;
+        androidx.room.RoomDatabase r22;
+        java.util.concurrent.Executor $r6, $r7;
+        java.util.Set r9;
+        java.lang.IllegalArgumentException r13;
+        java.io.File r16;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory r15;
+        java.lang.Class r8;
+        java.lang.Object $r11;
+        java.lang.StringBuilder $r14;
+
+        r0 := @this: androidx.room.RoomDatabase$Builder;
+
+        $r1 = r0.<androidx.room.RoomDatabase$Builder: android.content.Context mContext>;
+
+        if $r1 == null goto label14;
+
+        r8 = r0.<androidx.room.RoomDatabase$Builder: java.lang.Class mDatabaseClass>;
+
+        if r8 == null goto label13;
+
+        $r6 = r0.<androidx.room.RoomDatabase$Builder: java.util.concurrent.Executor mQueryExecutor>;
+
+        if $r6 != null goto label01;
+
+        $r6 = r0.<androidx.room.RoomDatabase$Builder: java.util.concurrent.Executor mTransactionExecutor>;
+
+        if $r6 != null goto label01;
+
+        $r6 = staticinvoke <androidx.arch.core.executor.ArchTaskExecutor: java.util.concurrent.Executor getIOThreadExecutor()>();
+
+        r0.<androidx.room.RoomDatabase$Builder: java.util.concurrent.Executor mTransactionExecutor> = $r6;
+
+        r0.<androidx.room.RoomDatabase$Builder: java.util.concurrent.Executor mQueryExecutor> = $r6;
+
+        goto label03;
+
+     label01:
+        $r6 = r0.<androidx.room.RoomDatabase$Builder: java.util.concurrent.Executor mQueryExecutor>;
+
+        if $r6 == null goto label02;
+
+        $r6 = r0.<androidx.room.RoomDatabase$Builder: java.util.concurrent.Executor mTransactionExecutor>;
+
+        if $r6 != null goto label02;
+
+        $r6 = r0.<androidx.room.RoomDatabase$Builder: java.util.concurrent.Executor mQueryExecutor>;
+
+        r0.<androidx.room.RoomDatabase$Builder: java.util.concurrent.Executor mTransactionExecutor> = $r6;
+
+        goto label03;
+
+     label02:
+        $r6 = r0.<androidx.room.RoomDatabase$Builder: java.util.concurrent.Executor mQueryExecutor>;
+
+        if $r6 != null goto label03;
+
+        $r6 = r0.<androidx.room.RoomDatabase$Builder: java.util.concurrent.Executor mTransactionExecutor>;
+
+        if $r6 == null goto label03;
+
+        $r6 = r0.<androidx.room.RoomDatabase$Builder: java.util.concurrent.Executor mTransactionExecutor>;
+
+        r0.<androidx.room.RoomDatabase$Builder: java.util.concurrent.Executor mQueryExecutor> = $r6;
+
+     label03:
+        r9 = r0.<androidx.room.RoomDatabase$Builder: java.util.Set mMigrationStartAndEndVersions>;
+
+        if r9 == null goto label06;
+
+        r9 = r0.<androidx.room.RoomDatabase$Builder: java.util.Set mMigrationsNotRequiredFrom>;
+
+        if r9 == null goto label06;
+
+        r9 = r0.<androidx.room.RoomDatabase$Builder: java.util.Set mMigrationStartAndEndVersions>;
+
+        $r10 = interfaceinvoke r9.<java.util.Set: java.util.Iterator iterator()>();
+
+     label04:
+        $z0 = interfaceinvoke $r10.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label06;
+
+        $r11 = interfaceinvoke $r10.<java.util.Iterator: java.lang.Object next()>();
+
+        r12 = (java.lang.Integer) $r11;
+
+        r9 = r0.<androidx.room.RoomDatabase$Builder: java.util.Set mMigrationsNotRequiredFrom>;
+
+        $z0 = interfaceinvoke r9.<java.util.Set: boolean contains(java.lang.Object)>(r12);
+
+        if $z0 != 0 goto label05;
+
+        goto label04;
+
+     label05:
+        r13 = new java.lang.IllegalArgumentException;
+
+        $r14 = new java.lang.StringBuilder;
+
+        specialinvoke $r14.<java.lang.StringBuilder: void <init>()>();
+
+        $r14 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Inconsistency detected. A Migration was supplied to addMigration(Migration... migrations) that has a start or end version equal to a start version supplied to fallbackToDestructiveMigrationFrom(int... startVersions). Start version: ");
+
+        $r14 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r12);
+
+        $r2 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r13.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r2);
+
+        throw r13;
+
+     label06:
+        $r3 = r0.<androidx.room.RoomDatabase$Builder: androidx.sqlite.db.SupportSQLiteOpenHelper$Factory mFactory>;
+
+        if $r3 != null goto label07;
+
+        r15 = new androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory;
+
+        specialinvoke r15.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory: void <init>()>();
+
+        r0.<androidx.room.RoomDatabase$Builder: androidx.sqlite.db.SupportSQLiteOpenHelper$Factory mFactory> = r15;
+
+     label07:
+        $r2 = r0.<androidx.room.RoomDatabase$Builder: java.lang.String mCopyFromAssetPath>;
+
+        if $r2 != null goto label08;
+
+        r16 = r0.<androidx.room.RoomDatabase$Builder: java.io.File mCopyFromFile>;
+
+        if r16 == null goto label11;
+
+     label08:
+        $r2 = r0.<androidx.room.RoomDatabase$Builder: java.lang.String mName>;
+
+        if $r2 == null goto label12;
+
+        $r2 = r0.<androidx.room.RoomDatabase$Builder: java.lang.String mCopyFromAssetPath>;
+
+        if $r2 == null goto label10;
+
+        r16 = r0.<androidx.room.RoomDatabase$Builder: java.io.File mCopyFromFile>;
+
+        if r16 != null goto label09;
+
+        goto label10;
+
+     label09:
+        r13 = new java.lang.IllegalArgumentException;
+
+        specialinvoke r13.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Both createFromAsset() and createFromFile() was called on this Builder but the database can only be created using one of the two configurations.");
+
+        throw r13;
+
+     label10:
+        r17 = new androidx.room.SQLiteCopyOpenHelperFactory;
+
+        $r2 = r0.<androidx.room.RoomDatabase$Builder: java.lang.String mCopyFromAssetPath>;
+
+        r16 = r0.<androidx.room.RoomDatabase$Builder: java.io.File mCopyFromFile>;
+
+        $r3 = r0.<androidx.room.RoomDatabase$Builder: androidx.sqlite.db.SupportSQLiteOpenHelper$Factory mFactory>;
+
+        specialinvoke r17.<androidx.room.SQLiteCopyOpenHelperFactory: void <init>(java.lang.String,java.io.File,androidx.sqlite.db.SupportSQLiteOpenHelper$Factory)>($r2, r16, $r3);
+
+        r0.<androidx.room.RoomDatabase$Builder: androidx.sqlite.db.SupportSQLiteOpenHelper$Factory mFactory> = r17;
+
+     label11:
+        r18 = new androidx.room.DatabaseConfiguration;
+
+        $r1 = r0.<androidx.room.RoomDatabase$Builder: android.content.Context mContext>;
+
+        $r2 = r0.<androidx.room.RoomDatabase$Builder: java.lang.String mName>;
+
+        $r3 = r0.<androidx.room.RoomDatabase$Builder: androidx.sqlite.db.SupportSQLiteOpenHelper$Factory mFactory>;
+
+        $r4 = r0.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$MigrationContainer mMigrationContainer>;
+
+        $r5 = r0.<androidx.room.RoomDatabase$Builder: java.util.ArrayList mCallbacks>;
+
+        $z0 = r0.<androidx.room.RoomDatabase$Builder: boolean mAllowMainThreadQueries>;
+
+        r19 = r0.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$JournalMode mJournalMode>;
+
+        $r20 = r0.<androidx.room.RoomDatabase$Builder: android.content.Context mContext>;
+
+        r19 = virtualinvoke r19.<androidx.room.RoomDatabase$JournalMode: androidx.room.RoomDatabase$JournalMode resolve(android.content.Context)>($r20);
+
+        $r6 = r0.<androidx.room.RoomDatabase$Builder: java.util.concurrent.Executor mQueryExecutor>;
+
+        $r7 = r0.<androidx.room.RoomDatabase$Builder: java.util.concurrent.Executor mTransactionExecutor>;
+
+        $z1 = r0.<androidx.room.RoomDatabase$Builder: boolean mMultiInstanceInvalidation>;
+
+        z2 = r0.<androidx.room.RoomDatabase$Builder: boolean mRequireMigration>;
+
+        $z3 = r0.<androidx.room.RoomDatabase$Builder: boolean mAllowDestructiveMigrationOnDowngrade>;
+
+        r9 = r0.<androidx.room.RoomDatabase$Builder: java.util.Set mMigrationsNotRequiredFrom>;
+
+        $r21 = r0.<androidx.room.RoomDatabase$Builder: java.lang.String mCopyFromAssetPath>;
+
+        r16 = r0.<androidx.room.RoomDatabase$Builder: java.io.File mCopyFromFile>;
+
+        specialinvoke r18.<androidx.room.DatabaseConfiguration: void <init>(android.content.Context,java.lang.String,androidx.sqlite.db.SupportSQLiteOpenHelper$Factory,androidx.room.RoomDatabase$MigrationContainer,java.util.List,boolean,androidx.room.RoomDatabase$JournalMode,java.util.concurrent.Executor,java.util.concurrent.Executor,boolean,boolean,boolean,java.util.Set,java.lang.String,java.io.File)>($r1, $r2, $r3, $r4, $r5, $z0, r19, $r6, $r7, $z1, z2, $z3, r9, $r21, r16);
+
+        r8 = r0.<androidx.room.RoomDatabase$Builder: java.lang.Class mDatabaseClass>;
+
+        $r11 = staticinvoke <androidx.room.Room: java.lang.Object getGeneratedImplementation(java.lang.Class,java.lang.String)>(r8, "_Impl");
+
+        r22 = (androidx.room.RoomDatabase) $r11;
+
+        virtualinvoke r22.<androidx.room.RoomDatabase: void init(androidx.room.DatabaseConfiguration)>(r18);
+
+        return r22;
+
+     label12:
+        r13 = new java.lang.IllegalArgumentException;
+
+        specialinvoke r13.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Cannot create from asset or file for an in-memory database.");
+
+        throw r13;
+
+     label13:
+        r13 = new java.lang.IllegalArgumentException;
+
+        specialinvoke r13.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Must provide an abstract class that extends RoomDatabase");
+
+        throw r13;
+
+     label14:
+        r13 = new java.lang.IllegalArgumentException;
+
+        specialinvoke r13.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Cannot provide null context for the database.");
+
+        throw r13;
+    }
+
+    public androidx.room.RoomDatabase$Builder createFromAsset(java.lang.String)
+    {
+        androidx.room.RoomDatabase$Builder r0;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.room.RoomDatabase$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<androidx.room.RoomDatabase$Builder: java.lang.String mCopyFromAssetPath> = $r1;
+
+        return r0;
+    }
+
+    public androidx.room.RoomDatabase$Builder createFromFile(java.io.File)
+    {
+        androidx.room.RoomDatabase$Builder r0;
+        java.io.File $r1;
+
+        r0 := @this: androidx.room.RoomDatabase$Builder;
+
+        $r1 := @parameter0: java.io.File;
+
+        r0.<androidx.room.RoomDatabase$Builder: java.io.File mCopyFromFile> = $r1;
+
+        return r0;
+    }
+
+    public androidx.room.RoomDatabase$Builder enableMultiInstanceInvalidation()
+    {
+        androidx.room.RoomDatabase$Builder r0;
+        java.lang.String $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.room.RoomDatabase$Builder;
+
+        $r1 = r0.<androidx.room.RoomDatabase$Builder: java.lang.String mName>;
+
+        if $r1 == null goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        r0.<androidx.room.RoomDatabase$Builder: boolean mMultiInstanceInvalidation> = $z0;
+
+        return r0;
+    }
+
+    public androidx.room.RoomDatabase$Builder fallbackToDestructiveMigration()
+    {
+        androidx.room.RoomDatabase$Builder r0;
+
+        r0 := @this: androidx.room.RoomDatabase$Builder;
+
+        r0.<androidx.room.RoomDatabase$Builder: boolean mRequireMigration> = 0;
+
+        r0.<androidx.room.RoomDatabase$Builder: boolean mAllowDestructiveMigrationOnDowngrade> = 1;
+
+        return r0;
+    }
+
+    public transient androidx.room.RoomDatabase$Builder fallbackToDestructiveMigrationFrom(int[])
+    {
+        androidx.room.RoomDatabase$Builder r0;
+        java.util.Set $r2;
+        java.lang.Integer $r3;
+        java.util.HashSet $r4;
+        int[] $r1;
+        int i0, $i1, $i2;
+
+        r0 := @this: androidx.room.RoomDatabase$Builder;
+
+        $r1 := @parameter0: int[];
+
+        $r2 = r0.<androidx.room.RoomDatabase$Builder: java.util.Set mMigrationsNotRequiredFrom>;
+
+        if $r2 != null goto label1;
+
+        $r4 = new java.util.HashSet;
+
+        i0 = lengthof $r1;
+
+        specialinvoke $r4.<java.util.HashSet: void <init>(int)>(i0);
+
+        r0.<androidx.room.RoomDatabase$Builder: java.util.Set mMigrationsNotRequiredFrom> = $r4;
+
+     label1:
+        $i1 = lengthof $r1;
+
+        $i2 = 0;
+
+     label2:
+        if $i2 >= $i1 goto label3;
+
+        i0 = $r1[$i2];
+
+        $r2 = r0.<androidx.room.RoomDatabase$Builder: java.util.Set mMigrationsNotRequiredFrom>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(i0);
+
+        interfaceinvoke $r2.<java.util.Set: boolean add(java.lang.Object)>($r3);
+
+        $i2 = $i2 + 1;
+
+        goto label2;
+
+     label3:
+        return r0;
+    }
+
+    public androidx.room.RoomDatabase$Builder fallbackToDestructiveMigrationOnDowngrade()
+    {
+        androidx.room.RoomDatabase$Builder r0;
+
+        r0 := @this: androidx.room.RoomDatabase$Builder;
+
+        r0.<androidx.room.RoomDatabase$Builder: boolean mRequireMigration> = 1;
+
+        r0.<androidx.room.RoomDatabase$Builder: boolean mAllowDestructiveMigrationOnDowngrade> = 1;
+
+        return r0;
+    }
+
+    public androidx.room.RoomDatabase$Builder openHelperFactory(androidx.sqlite.db.SupportSQLiteOpenHelper$Factory)
+    {
+        androidx.sqlite.db.SupportSQLiteOpenHelper$Factory $r1;
+        androidx.room.RoomDatabase$Builder r0;
+
+        r0 := @this: androidx.room.RoomDatabase$Builder;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteOpenHelper$Factory;
+
+        r0.<androidx.room.RoomDatabase$Builder: androidx.sqlite.db.SupportSQLiteOpenHelper$Factory mFactory> = $r1;
+
+        return r0;
+    }
+
+    public androidx.room.RoomDatabase$Builder setJournalMode(androidx.room.RoomDatabase$JournalMode)
+    {
+        androidx.room.RoomDatabase$Builder r0;
+        androidx.room.RoomDatabase$JournalMode $r1;
+
+        r0 := @this: androidx.room.RoomDatabase$Builder;
+
+        $r1 := @parameter0: androidx.room.RoomDatabase$JournalMode;
+
+        r0.<androidx.room.RoomDatabase$Builder: androidx.room.RoomDatabase$JournalMode mJournalMode> = $r1;
+
+        return r0;
+    }
+
+    public androidx.room.RoomDatabase$Builder setQueryExecutor(java.util.concurrent.Executor)
+    {
+        androidx.room.RoomDatabase$Builder r0;
+        java.util.concurrent.Executor $r1;
+
+        r0 := @this: androidx.room.RoomDatabase$Builder;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        r0.<androidx.room.RoomDatabase$Builder: java.util.concurrent.Executor mQueryExecutor> = $r1;
+
+        return r0;
+    }
+
+    public androidx.room.RoomDatabase$Builder setTransactionExecutor(java.util.concurrent.Executor)
+    {
+        androidx.room.RoomDatabase$Builder r0;
+        java.util.concurrent.Executor $r1;
+
+        r0 := @this: androidx.room.RoomDatabase$Builder;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        r0.<androidx.room.RoomDatabase$Builder: java.util.concurrent.Executor mTransactionExecutor> = $r1;
+
+        return r0;
+    }
+}

@@ -1,0 +1,119 @@
+public final class androidx.core.graphics.RegionKt$iterator$1 extends java.lang.Object implements java.util.Iterator, kotlin.jvm.internal.markers.KMappedMarker
+{
+    private boolean hasMore;
+    private final android.graphics.RegionIterator iterator;
+    private final android.graphics.Rect rect;
+
+    void <init>(android.graphics.Region)
+    {
+        android.graphics.Rect $r2;
+        androidx.core.graphics.RegionKt$iterator$1 r0;
+        android.graphics.RegionIterator $r3;
+        android.graphics.Region $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.core.graphics.RegionKt$iterator$1;
+
+        $r1 := @parameter0: android.graphics.Region;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = new android.graphics.RegionIterator;
+
+        specialinvoke $r3.<android.graphics.RegionIterator: void <init>(android.graphics.Region)>($r1);
+
+        r0.<androidx.core.graphics.RegionKt$iterator$1: android.graphics.RegionIterator iterator> = $r3;
+
+        $r2 = new android.graphics.Rect;
+
+        specialinvoke $r2.<android.graphics.Rect: void <init>()>();
+
+        r0.<androidx.core.graphics.RegionKt$iterator$1: android.graphics.Rect rect> = $r2;
+
+        $r3 = r0.<androidx.core.graphics.RegionKt$iterator$1: android.graphics.RegionIterator iterator>;
+
+        $r2 = r0.<androidx.core.graphics.RegionKt$iterator$1: android.graphics.Rect rect>;
+
+        $z0 = virtualinvoke $r3.<android.graphics.RegionIterator: boolean next(android.graphics.Rect)>($r2);
+
+        r0.<androidx.core.graphics.RegionKt$iterator$1: boolean hasMore> = $z0;
+
+        return;
+    }
+
+    public boolean hasNext()
+    {
+        androidx.core.graphics.RegionKt$iterator$1 r0;
+        boolean z0;
+
+        r0 := @this: androidx.core.graphics.RegionKt$iterator$1;
+
+        z0 = r0.<androidx.core.graphics.RegionKt$iterator$1: boolean hasMore>;
+
+        return z0;
+    }
+
+    public android.graphics.Rect next()
+    {
+        android.graphics.Rect $r1, r2;
+        java.lang.IndexOutOfBoundsException r4;
+        androidx.core.graphics.RegionKt$iterator$1 r0;
+        android.graphics.RegionIterator $r3;
+        boolean $z0;
+
+        r0 := @this: androidx.core.graphics.RegionKt$iterator$1;
+
+        $z0 = r0.<androidx.core.graphics.RegionKt$iterator$1: boolean hasMore>;
+
+        if $z0 == 0 goto label1;
+
+        r2 = new android.graphics.Rect;
+
+        $r1 = r0.<androidx.core.graphics.RegionKt$iterator$1: android.graphics.Rect rect>;
+
+        specialinvoke r2.<android.graphics.Rect: void <init>(android.graphics.Rect)>($r1);
+
+        $r3 = r0.<androidx.core.graphics.RegionKt$iterator$1: android.graphics.RegionIterator iterator>;
+
+        $r1 = r0.<androidx.core.graphics.RegionKt$iterator$1: android.graphics.Rect rect>;
+
+        $z0 = virtualinvoke $r3.<android.graphics.RegionIterator: boolean next(android.graphics.Rect)>($r1);
+
+        r0.<androidx.core.graphics.RegionKt$iterator$1: boolean hasMore> = $z0;
+
+        return r2;
+
+     label1:
+        r4 = new java.lang.IndexOutOfBoundsException;
+
+        specialinvoke r4.<java.lang.IndexOutOfBoundsException: void <init>()>();
+
+        throw r4;
+    }
+
+    public volatile java.lang.Object next()
+    {
+        android.graphics.Rect $r1;
+        androidx.core.graphics.RegionKt$iterator$1 r0;
+
+        r0 := @this: androidx.core.graphics.RegionKt$iterator$1;
+
+        $r1 = virtualinvoke r0.<androidx.core.graphics.RegionKt$iterator$1: android.graphics.Rect next()>();
+
+        return $r1;
+    }
+
+    public void remove()
+    {
+        java.lang.UnsupportedOperationException $r1;
+        androidx.core.graphics.RegionKt$iterator$1 r0;
+
+        r0 := @this: androidx.core.graphics.RegionKt$iterator$1;
+
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Operation is not supported for read-only collection");
+
+        throw $r1;
+    }
+}

@@ -1,0 +1,54 @@
+class androidx.core.app.ActivityCompat$Api30Impl extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.app.ActivityCompat$Api30Impl r0;
+
+        r0 := @this: androidx.core.app.ActivityCompat$Api30Impl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static android.view.Display getDisplay(android.content.ContextWrapper)
+    {
+        android.view.Display $r1;
+        android.content.ContextWrapper $r0;
+
+        $r0 := @parameter0: android.content.ContextWrapper;
+
+        $r1 = virtualinvoke $r0.<android.content.ContextWrapper: android.view.Display getDisplay()>();
+
+        return $r1;
+    }
+
+    static void setLocusContext(android.app.Activity, androidx.core.content.LocusIdCompat, android.os.Bundle)
+    {
+        android.os.Bundle $r2;
+        android.app.Activity $r0;
+        android.content.LocusId $r3;
+        androidx.core.content.LocusIdCompat $r1;
+
+        $r0 := @parameter0: android.app.Activity;
+
+        $r1 := @parameter1: androidx.core.content.LocusIdCompat;
+
+        $r2 := @parameter2: android.os.Bundle;
+
+        if $r1 != null goto label1;
+
+        $r3 = null;
+
+        goto label2;
+
+     label1:
+        $r3 = virtualinvoke $r1.<androidx.core.content.LocusIdCompat: android.content.LocusId toLocusId()>();
+
+     label2:
+        virtualinvoke $r0.<android.app.Activity: void setLocusContext(android.content.LocusId,android.os.Bundle)>($r3, $r2);
+
+        return;
+    }
+}

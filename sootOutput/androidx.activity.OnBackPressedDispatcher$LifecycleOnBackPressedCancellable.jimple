@@ -1,0 +1,121 @@
+class androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable extends java.lang.Object implements androidx.lifecycle.LifecycleEventObserver, androidx.activity.Cancellable
+{
+    private androidx.activity.Cancellable mCurrentCancellable;
+    private final androidx.lifecycle.Lifecycle mLifecycle;
+    private final androidx.activity.OnBackPressedCallback mOnBackPressedCallback;
+    final androidx.activity.OnBackPressedDispatcher this$0;
+
+    void <init>(androidx.activity.OnBackPressedDispatcher, androidx.lifecycle.Lifecycle, androidx.activity.OnBackPressedCallback)
+    {
+        androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable r0;
+        androidx.lifecycle.Lifecycle $r2;
+        androidx.activity.OnBackPressedCallback $r3;
+        androidx.activity.OnBackPressedDispatcher $r1;
+
+        r0 := @this: androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable;
+
+        $r1 := @parameter0: androidx.activity.OnBackPressedDispatcher;
+
+        $r2 := @parameter1: androidx.lifecycle.Lifecycle;
+
+        $r3 := @parameter2: androidx.activity.OnBackPressedCallback;
+
+        r0.<androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable: androidx.activity.OnBackPressedDispatcher this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable: androidx.lifecycle.Lifecycle mLifecycle> = $r2;
+
+        r0.<androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable: androidx.activity.OnBackPressedCallback mOnBackPressedCallback> = $r3;
+
+        virtualinvoke $r2.<androidx.lifecycle.Lifecycle: void addObserver(androidx.lifecycle.LifecycleObserver)>(r0);
+
+        return;
+    }
+
+    public void cancel()
+    {
+        androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable r0;
+        androidx.lifecycle.Lifecycle $r1;
+        androidx.activity.OnBackPressedCallback $r2;
+        androidx.activity.Cancellable $r3;
+
+        r0 := @this: androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable;
+
+        $r1 = r0.<androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable: androidx.lifecycle.Lifecycle mLifecycle>;
+
+        virtualinvoke $r1.<androidx.lifecycle.Lifecycle: void removeObserver(androidx.lifecycle.LifecycleObserver)>(r0);
+
+        $r2 = r0.<androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable: androidx.activity.OnBackPressedCallback mOnBackPressedCallback>;
+
+        virtualinvoke $r2.<androidx.activity.OnBackPressedCallback: void removeCancellable(androidx.activity.Cancellable)>(r0);
+
+        $r3 = r0.<androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable: androidx.activity.Cancellable mCurrentCancellable>;
+
+        if $r3 == null goto label1;
+
+        $r3 = r0.<androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable: androidx.activity.Cancellable mCurrentCancellable>;
+
+        interfaceinvoke $r3.<androidx.activity.Cancellable: void cancel()>();
+
+        r0.<androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable: androidx.activity.Cancellable mCurrentCancellable> = null;
+
+     label1:
+        return;
+    }
+
+    public void onStateChanged(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Lifecycle$Event)
+    {
+        androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable r0;
+        androidx.activity.OnBackPressedCallback $r3;
+        androidx.lifecycle.LifecycleOwner $r1;
+        androidx.activity.Cancellable $r4;
+        androidx.activity.OnBackPressedDispatcher $r6;
+        androidx.lifecycle.Lifecycle$Event $r2, $r5;
+
+        r0 := @this: androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable;
+
+        $r1 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        $r2 := @parameter1: androidx.lifecycle.Lifecycle$Event;
+
+        $r5 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_START>;
+
+        if $r2 != $r5 goto label1;
+
+        $r6 = r0.<androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable: androidx.activity.OnBackPressedDispatcher this$0>;
+
+        $r3 = r0.<androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable: androidx.activity.OnBackPressedCallback mOnBackPressedCallback>;
+
+        $r4 = virtualinvoke $r6.<androidx.activity.OnBackPressedDispatcher: androidx.activity.Cancellable addCancellableCallback(androidx.activity.OnBackPressedCallback)>($r3);
+
+        r0.<androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable: androidx.activity.Cancellable mCurrentCancellable> = $r4;
+
+        return;
+
+     label1:
+        $r5 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_STOP>;
+
+        if $r2 != $r5 goto label2;
+
+        $r4 = r0.<androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable: androidx.activity.Cancellable mCurrentCancellable>;
+
+        if $r4 == null goto label3;
+
+        $r4 = r0.<androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable: androidx.activity.Cancellable mCurrentCancellable>;
+
+        interfaceinvoke $r4.<androidx.activity.Cancellable: void cancel()>();
+
+        return;
+
+     label2:
+        $r5 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_DESTROY>;
+
+        if $r2 != $r5 goto label3;
+
+        virtualinvoke r0.<androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable: void cancel()>();
+
+     label3:
+        return;
+    }
+}

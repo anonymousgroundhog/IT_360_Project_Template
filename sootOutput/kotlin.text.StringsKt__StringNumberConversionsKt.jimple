@@ -1,0 +1,463 @@
+class kotlin.text.StringsKt__StringNumberConversionsKt extends kotlin.text.StringsKt__StringNumberConversionsJVMKt
+{
+
+    public void <init>()
+    {
+        kotlin.text.StringsKt__StringNumberConversionsKt r0;
+
+        r0 := @this: kotlin.text.StringsKt__StringNumberConversionsKt;
+
+        specialinvoke r0.<kotlin.text.StringsKt__StringNumberConversionsJVMKt: void <init>()>();
+
+        return;
+    }
+
+    public static final java.lang.Void numberFormatError(java.lang.String)
+    {
+        java.lang.NumberFormatException $r1;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "input");
+
+        $r1 = new java.lang.NumberFormatException;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Invalid number format: \'");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39);
+
+        $r0 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r1.<java.lang.NumberFormatException: void <init>(java.lang.String)>($r0);
+
+        throw $r1;
+    }
+
+    public static final java.lang.Byte toByteOrNull(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.lang.Byte $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = staticinvoke <kotlin.text.StringsKt: java.lang.Byte toByteOrNull(java.lang.String,int)>($r0, 10);
+
+        return $r1;
+    }
+
+    public static final java.lang.Byte toByteOrNull(java.lang.String, int)
+    {
+        byte $b1;
+        int $i0;
+        java.lang.String $r0;
+        java.lang.Byte $r2;
+        java.lang.Integer $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = staticinvoke <kotlin.text.StringsKt: java.lang.Integer toIntOrNull(java.lang.String,int)>($r0, $i0);
+
+        if $r1 == null goto label2;
+
+        $i0 = virtualinvoke $r1.<java.lang.Integer: int intValue()>();
+
+        if $i0 < -128 goto label2;
+
+        if $i0 <= 127 goto label1;
+
+        return null;
+
+     label1:
+        $b1 = (byte) $i0;
+
+        $r2 = staticinvoke <java.lang.Byte: java.lang.Byte valueOf(byte)>($b1);
+
+        return $r2;
+
+     label2:
+        return null;
+    }
+
+    public static final java.lang.Integer toIntOrNull(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.lang.Integer $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = staticinvoke <kotlin.text.StringsKt: java.lang.Integer toIntOrNull(java.lang.String,int)>($r0, 10);
+
+        return $r1;
+    }
+
+    public static final java.lang.Integer toIntOrNull(java.lang.String, int)
+    {
+        char $c3;
+        java.lang.Integer $r1;
+        byte b5;
+        int $i0, $i1, $i2, $i4, i6, i7, $i8, i9;
+        java.lang.String $r0;
+        boolean z0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.text.CharsKt: int checkRadix(int)>($i0);
+
+        $i2 = virtualinvoke $r0.<java.lang.String: int length()>();
+
+        if $i2 != 0 goto label01;
+
+        return null;
+
+     label01:
+        $c3 = virtualinvoke $r0.<java.lang.String: char charAt(int)>(0);
+
+        $i4 = (int) $c3;
+
+        $i4 = staticinvoke <kotlin.jvm.internal.Intrinsics: int compare(int,int)>($i4, 48);
+
+        if $i4 >= 0 goto label05;
+
+        if $i2 != 1 goto label02;
+
+        return null;
+
+     label02:
+        b5 = 1;
+
+        $i4 = (int) $c3;
+
+        if $i4 != 45 goto label03;
+
+        z0 = 1;
+
+        $i4 = -2147483648;
+
+        goto label06;
+
+     label03:
+        $i4 = (int) $c3;
+
+        if $i4 != 43 goto label04;
+
+        z0 = 0;
+
+        $i4 = -2147483647;
+
+        goto label06;
+
+     label04:
+        return null;
+
+     label05:
+        b5 = 0;
+
+        z0 = 0;
+
+        $i4 = -2147483647;
+
+     label06:
+        i6 = -59652323;
+
+        $i1 = 0;
+
+        i7 = b5;
+
+     label07:
+        if i7 >= $i2 goto label12;
+
+        $c3 = virtualinvoke $r0.<java.lang.String: char charAt(int)>(i7);
+
+        $i8 = staticinvoke <kotlin.text.CharsKt: int digitOf(char,int)>($c3, $i0);
+
+        if $i8 >= 0 goto label08;
+
+        return null;
+
+     label08:
+        if $i1 >= i6 goto label10;
+
+        if i6 != -59652323 goto label09;
+
+        i6 = $i4 / $i0;
+
+        if $i1 >= i6 goto label10;
+
+     label09:
+        return null;
+
+     label10:
+        i9 = $i1 * $i0;
+
+        $i1 = $i4 + $i8;
+
+        if i9 >= $i1 goto label11;
+
+        return null;
+
+     label11:
+        $i1 = i9 - $i8;
+
+        i7 = i7 + 1;
+
+        goto label07;
+
+     label12:
+        if z0 == 0 goto label13;
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i1);
+
+        return $r1;
+
+     label13:
+        $i0 = neg $i1;
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        return $r1;
+    }
+
+    public static final java.lang.Long toLongOrNull(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.lang.Long $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = staticinvoke <kotlin.text.StringsKt: java.lang.Long toLongOrNull(java.lang.String,int)>($r0, 10);
+
+        return $r1;
+    }
+
+    public static final java.lang.Long toLongOrNull(java.lang.String, int)
+    {
+        char $c2;
+        long l5, l6, l7, l9;
+        byte b4;
+        java.lang.Long $r1;
+        int $i0, $i1, $i3, $i8, $i10;
+        java.lang.String $r0;
+        boolean z0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.text.CharsKt: int checkRadix(int)>($i0);
+
+        $i1 = virtualinvoke $r0.<java.lang.String: int length()>();
+
+        if $i1 != 0 goto label01;
+
+        return null;
+
+     label01:
+        $c2 = virtualinvoke $r0.<java.lang.String: char charAt(int)>(0);
+
+        $i3 = (int) $c2;
+
+        $i3 = staticinvoke <kotlin.jvm.internal.Intrinsics: int compare(int,int)>($i3, 48);
+
+        if $i3 >= 0 goto label05;
+
+        if $i1 != 1 goto label02;
+
+        return null;
+
+     label02:
+        b4 = 1;
+
+        $i3 = (int) $c2;
+
+        if $i3 != 45 goto label03;
+
+        z0 = 1;
+
+        l5 = -9223372036854775808L;
+
+        goto label06;
+
+     label03:
+        $i3 = (int) $c2;
+
+        if $i3 != 43 goto label04;
+
+        z0 = 0;
+
+        l5 = -9223372036854775807L;
+
+        goto label06;
+
+     label04:
+        return null;
+
+     label05:
+        b4 = 0;
+
+        z0 = 0;
+
+        l5 = -9223372036854775807L;
+
+     label06:
+        l6 = -256204778801521550L;
+
+        l7 = 0L;
+
+        $i3 = b4;
+
+     label07:
+        if $i3 >= $i1 goto label13;
+
+        $c2 = virtualinvoke $r0.<java.lang.String: char charAt(int)>($i3);
+
+        $i8 = staticinvoke <kotlin.text.CharsKt: int digitOf(char,int)>($c2, $i0);
+
+        if $i8 >= 0 goto label08;
+
+        return null;
+
+     label08:
+        b4 = l7 cmp l6;
+
+        $i10 = (int) b4;
+
+        if $i10 >= 0 goto label11;
+
+        b4 = l6 cmp -256204778801521550L;
+
+        if b4 != 0 goto label10;
+
+        l6 = (long) $i0;
+
+        l6 = l5 / l6;
+
+        b4 = l7 cmp l6;
+
+        $i10 = (int) b4;
+
+        if $i10 >= 0 goto label09;
+
+        return null;
+
+     label09:
+        goto label11;
+
+     label10:
+        return null;
+
+     label11:
+        l9 = (long) $i0;
+
+        l7 = l7 * l9;
+
+        l9 = (long) $i8;
+
+        l9 = l9 + l5;
+
+        b4 = l7 cmp l9;
+
+        $i10 = (int) b4;
+
+        if $i10 >= 0 goto label12;
+
+        return null;
+
+     label12:
+        l9 = (long) $i8;
+
+        l7 = l7 - l9;
+
+        $i3 = $i3 + 1;
+
+        goto label07;
+
+     label13:
+        if z0 == 0 goto label14;
+
+        $r1 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>(l7);
+
+        return $r1;
+
+     label14:
+        l5 = neg l7;
+
+        $r1 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>(l5);
+
+        return $r1;
+    }
+
+    public static final java.lang.Short toShortOrNull(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.lang.Short $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = staticinvoke <kotlin.text.StringsKt: java.lang.Short toShortOrNull(java.lang.String,int)>($r0, 10);
+
+        return $r1;
+    }
+
+    public static final java.lang.Short toShortOrNull(java.lang.String, int)
+    {
+        short $s1;
+        java.lang.Short $r2;
+        int $i0;
+        java.lang.String $r0;
+        java.lang.Integer $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = staticinvoke <kotlin.text.StringsKt: java.lang.Integer toIntOrNull(java.lang.String,int)>($r0, $i0);
+
+        if $r1 == null goto label2;
+
+        $i0 = virtualinvoke $r1.<java.lang.Integer: int intValue()>();
+
+        if $i0 < -32768 goto label2;
+
+        if $i0 <= 32767 goto label1;
+
+        return null;
+
+     label1:
+        $s1 = (short) $i0;
+
+        $r2 = staticinvoke <java.lang.Short: java.lang.Short valueOf(short)>($s1);
+
+        return $r2;
+
+     label2:
+        return null;
+    }
+}

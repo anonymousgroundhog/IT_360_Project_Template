@@ -1,0 +1,318 @@
+public final class androidx.sqlite.db.SimpleSQLiteQuery extends java.lang.Object implements androidx.sqlite.db.SupportSQLiteQuery
+{
+    private final java.lang.Object[] mBindArgs;
+    private final java.lang.String mQuery;
+
+    public void <init>(java.lang.String)
+    {
+        java.lang.String $r1;
+        androidx.sqlite.db.SimpleSQLiteQuery r0;
+
+        r0 := @this: androidx.sqlite.db.SimpleSQLiteQuery;
+
+        $r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<androidx.sqlite.db.SimpleSQLiteQuery: void <init>(java.lang.String,java.lang.Object[])>($r1, null);
+
+        return;
+    }
+
+    public void <init>(java.lang.String, java.lang.Object[])
+    {
+        java.lang.String $r1;
+        java.lang.Object[] $r2;
+        androidx.sqlite.db.SimpleSQLiteQuery r0;
+
+        r0 := @this: androidx.sqlite.db.SimpleSQLiteQuery;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.Object[];
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.sqlite.db.SimpleSQLiteQuery: java.lang.String mQuery> = $r1;
+
+        r0.<androidx.sqlite.db.SimpleSQLiteQuery: java.lang.Object[] mBindArgs> = $r2;
+
+        return;
+    }
+
+    private static void bind(androidx.sqlite.db.SupportSQLiteProgram, int, java.lang.Object)
+    {
+        byte[] $r2;
+        java.lang.Float $r3;
+        java.lang.Double $r4;
+        long $l1;
+        java.lang.Integer $r6;
+        short $s3;
+        byte $b4;
+        java.lang.Long $r5;
+        java.lang.Short $r7;
+        int $i0, $i2;
+        java.lang.Boolean $r10;
+        java.lang.String $r9;
+        java.lang.Byte $r8;
+        boolean $z0;
+        double $d0;
+        java.lang.IllegalArgumentException $r11;
+        androidx.sqlite.db.SupportSQLiteProgram $r0;
+        float $f0;
+        java.lang.Object $r1;
+        java.lang.StringBuilder $r12;
+
+        $r0 := @parameter0: androidx.sqlite.db.SupportSQLiteProgram;
+
+        $i0 := @parameter1: int;
+
+        $r1 := @parameter2: java.lang.Object;
+
+        if $r1 != null goto label01;
+
+        interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteProgram: void bindNull(int)>($i0);
+
+        return;
+
+     label01:
+        $z0 = $r1 instanceof byte[];
+
+        if $z0 == 0 goto label02;
+
+        $r2 = (byte[]) $r1;
+
+        interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteProgram: void bindBlob(int,byte[])>($i0, $r2);
+
+        return;
+
+     label02:
+        $z0 = $r1 instanceof java.lang.Float;
+
+        if $z0 == 0 goto label03;
+
+        $r3 = (java.lang.Float) $r1;
+
+        $f0 = virtualinvoke $r3.<java.lang.Float: float floatValue()>();
+
+        $d0 = (double) $f0;
+
+        interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteProgram: void bindDouble(int,double)>($i0, $d0);
+
+        return;
+
+     label03:
+        $z0 = $r1 instanceof java.lang.Double;
+
+        if $z0 == 0 goto label04;
+
+        $r4 = (java.lang.Double) $r1;
+
+        $d0 = virtualinvoke $r4.<java.lang.Double: double doubleValue()>();
+
+        interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteProgram: void bindDouble(int,double)>($i0, $d0);
+
+        return;
+
+     label04:
+        $z0 = $r1 instanceof java.lang.Long;
+
+        if $z0 == 0 goto label05;
+
+        $r5 = (java.lang.Long) $r1;
+
+        $l1 = virtualinvoke $r5.<java.lang.Long: long longValue()>();
+
+        interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteProgram: void bindLong(int,long)>($i0, $l1);
+
+        return;
+
+     label05:
+        $z0 = $r1 instanceof java.lang.Integer;
+
+        if $z0 == 0 goto label06;
+
+        $r6 = (java.lang.Integer) $r1;
+
+        $i2 = virtualinvoke $r6.<java.lang.Integer: int intValue()>();
+
+        $l1 = (long) $i2;
+
+        interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteProgram: void bindLong(int,long)>($i0, $l1);
+
+        return;
+
+     label06:
+        $z0 = $r1 instanceof java.lang.Short;
+
+        if $z0 == 0 goto label07;
+
+        $r7 = (java.lang.Short) $r1;
+
+        $s3 = virtualinvoke $r7.<java.lang.Short: short shortValue()>();
+
+        $l1 = (long) $s3;
+
+        interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteProgram: void bindLong(int,long)>($i0, $l1);
+
+        return;
+
+     label07:
+        $z0 = $r1 instanceof java.lang.Byte;
+
+        if $z0 == 0 goto label08;
+
+        $r8 = (java.lang.Byte) $r1;
+
+        $b4 = virtualinvoke $r8.<java.lang.Byte: byte byteValue()>();
+
+        $l1 = (long) $b4;
+
+        interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteProgram: void bindLong(int,long)>($i0, $l1);
+
+        return;
+
+     label08:
+        $z0 = $r1 instanceof java.lang.String;
+
+        if $z0 == 0 goto label09;
+
+        $r9 = (java.lang.String) $r1;
+
+        interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteProgram: void bindString(int,java.lang.String)>($i0, $r9);
+
+        return;
+
+     label09:
+        $z0 = $r1 instanceof java.lang.Boolean;
+
+        if $z0 == 0 goto label12;
+
+        $r10 = (java.lang.Boolean) $r1;
+
+        $z0 = virtualinvoke $r10.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label10;
+
+        $l1 = 1L;
+
+        goto label11;
+
+     label10:
+        $l1 = 0L;
+
+     label11:
+        interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteProgram: void bindLong(int,long)>($i0, $l1);
+
+        return;
+
+     label12:
+        $r11 = new java.lang.IllegalArgumentException;
+
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>()>();
+
+        $r12 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Cannot bind ");
+
+        $r12 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r12 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" at index ");
+
+        $r12 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r12 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" Supported types: null, byte[], float, double, long, int, short, byte, string");
+
+        $r9 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r11.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r9);
+
+        throw $r11;
+    }
+
+    public static void bind(androidx.sqlite.db.SupportSQLiteProgram, java.lang.Object[])
+    {
+        java.lang.Object[] $r1;
+        int i0, $i1, i2;
+        java.lang.Object r2;
+        androidx.sqlite.db.SupportSQLiteProgram $r0;
+
+        $r0 := @parameter0: androidx.sqlite.db.SupportSQLiteProgram;
+
+        $r1 := @parameter1: java.lang.Object[];
+
+        if $r1 != null goto label1;
+
+        return;
+
+     label1:
+        i0 = lengthof $r1;
+
+        i2 = 0;
+
+     label2:
+        if i2 >= i0 goto label3;
+
+        r2 = $r1[i2];
+
+        $i1 = i2 + 1;
+
+        staticinvoke <androidx.sqlite.db.SimpleSQLiteQuery: void bind(androidx.sqlite.db.SupportSQLiteProgram,int,java.lang.Object)>($r0, $i1, r2);
+
+        i2 = i2 + 1;
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    public void bindTo(androidx.sqlite.db.SupportSQLiteProgram)
+    {
+        java.lang.Object[] $r2;
+        androidx.sqlite.db.SupportSQLiteProgram $r1;
+        androidx.sqlite.db.SimpleSQLiteQuery r0;
+
+        r0 := @this: androidx.sqlite.db.SimpleSQLiteQuery;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteProgram;
+
+        $r2 = r0.<androidx.sqlite.db.SimpleSQLiteQuery: java.lang.Object[] mBindArgs>;
+
+        staticinvoke <androidx.sqlite.db.SimpleSQLiteQuery: void bind(androidx.sqlite.db.SupportSQLiteProgram,java.lang.Object[])>($r1, $r2);
+
+        return;
+    }
+
+    public int getArgCount()
+    {
+        int $i0;
+        java.lang.Object[] $r1;
+        androidx.sqlite.db.SimpleSQLiteQuery r0;
+
+        r0 := @this: androidx.sqlite.db.SimpleSQLiteQuery;
+
+        $r1 = r0.<androidx.sqlite.db.SimpleSQLiteQuery: java.lang.Object[] mBindArgs>;
+
+        if $r1 != null goto label1;
+
+        return 0;
+
+     label1:
+        $r1 = r0.<androidx.sqlite.db.SimpleSQLiteQuery: java.lang.Object[] mBindArgs>;
+
+        $i0 = lengthof $r1;
+
+        return $i0;
+    }
+
+    public java.lang.String getSql()
+    {
+        java.lang.String r1;
+        androidx.sqlite.db.SimpleSQLiteQuery r0;
+
+        r0 := @this: androidx.sqlite.db.SimpleSQLiteQuery;
+
+        r1 = r0.<androidx.sqlite.db.SimpleSQLiteQuery: java.lang.String mQuery>;
+
+        return r1;
+    }
+}

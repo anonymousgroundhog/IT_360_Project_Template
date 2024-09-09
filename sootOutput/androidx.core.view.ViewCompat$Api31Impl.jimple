@@ -1,0 +1,84 @@
+final class androidx.core.view.ViewCompat$Api31Impl extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.view.ViewCompat$Api31Impl r0;
+
+        r0 := @this: androidx.core.view.ViewCompat$Api31Impl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.lang.String[] getReceiveContentMimeTypes(android.view.View)
+    {
+        android.view.View $r0;
+        java.lang.String[] $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 = virtualinvoke $r0.<android.view.View: java.lang.String[] getReceiveContentMimeTypes()>();
+
+        return $r1;
+    }
+
+    public static androidx.core.view.ContentInfoCompat performReceiveContent(android.view.View, androidx.core.view.ContentInfoCompat)
+    {
+        androidx.core.view.ContentInfoCompat $r1;
+        android.view.View $r0;
+        android.view.ContentInfo $r2, $r3;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: androidx.core.view.ContentInfoCompat;
+
+        $r2 = virtualinvoke $r1.<androidx.core.view.ContentInfoCompat: android.view.ContentInfo toContentInfo()>();
+
+        $r3 = virtualinvoke $r0.<android.view.View: android.view.ContentInfo performReceiveContent(android.view.ContentInfo)>($r2);
+
+        if $r3 != null goto label1;
+
+        return null;
+
+     label1:
+        if $r3 != $r2 goto label2;
+
+        return $r1;
+
+     label2:
+        $r1 = staticinvoke <androidx.core.view.ContentInfoCompat: androidx.core.view.ContentInfoCompat toContentInfoCompat(android.view.ContentInfo)>($r3);
+
+        return $r1;
+    }
+
+    public static void setOnReceiveContentListener(android.view.View, java.lang.String[], androidx.core.view.OnReceiveContentListener)
+    {
+        android.view.View $r0;
+        java.lang.String[] $r1;
+        androidx.core.view.ViewCompat$OnReceiveContentListenerAdapter $r3;
+        androidx.core.view.OnReceiveContentListener $r2;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: java.lang.String[];
+
+        $r2 := @parameter2: androidx.core.view.OnReceiveContentListener;
+
+        if $r2 != null goto label1;
+
+        virtualinvoke $r0.<android.view.View: void setOnReceiveContentListener(java.lang.String[],android.view.OnReceiveContentListener)>($r1, null);
+
+        return;
+
+     label1:
+        $r3 = new androidx.core.view.ViewCompat$OnReceiveContentListenerAdapter;
+
+        specialinvoke $r3.<androidx.core.view.ViewCompat$OnReceiveContentListenerAdapter: void <init>(androidx.core.view.OnReceiveContentListener)>($r2);
+
+        virtualinvoke $r0.<android.view.View: void setOnReceiveContentListener(java.lang.String[],android.view.OnReceiveContentListener)>($r1, $r3);
+
+        return;
+    }
+}

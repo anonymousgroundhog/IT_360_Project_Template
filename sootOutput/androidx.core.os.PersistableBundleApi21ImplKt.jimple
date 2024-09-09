@@ -1,0 +1,316 @@
+final class androidx.core.os.PersistableBundleApi21ImplKt extends java.lang.Object
+{
+    public static final androidx.core.os.PersistableBundleApi21ImplKt INSTANCE;
+
+    static void <clinit>()
+    {
+        androidx.core.os.PersistableBundleApi21ImplKt $r0;
+
+        $r0 = new androidx.core.os.PersistableBundleApi21ImplKt;
+
+        specialinvoke $r0.<androidx.core.os.PersistableBundleApi21ImplKt: void <init>()>();
+
+        <androidx.core.os.PersistableBundleApi21ImplKt: androidx.core.os.PersistableBundleApi21ImplKt INSTANCE> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.core.os.PersistableBundleApi21ImplKt r0;
+
+        r0 := @this: androidx.core.os.PersistableBundleApi21ImplKt;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static final android.os.PersistableBundle createPersistableBundle(int)
+    {
+        int $i0;
+        android.os.PersistableBundle $r0;
+
+        $i0 := @parameter0: int;
+
+        $r0 = new android.os.PersistableBundle;
+
+        specialinvoke $r0.<android.os.PersistableBundle: void <init>(int)>($i0);
+
+        return $r0;
+    }
+
+    public static final void putValue(android.os.PersistableBundle, java.lang.String, java.lang.Object)
+    {
+        double[] r9;
+        long $l1;
+        java.lang.String[] $r14;
+        java.lang.NullPointerException $r15;
+        long[] r11;
+        int[] r10;
+        android.os.PersistableBundle $r0;
+        int i0;
+        java.lang.Boolean r3;
+        java.lang.String $r1, r7;
+        java.lang.Number r6;
+        boolean z0;
+        double $d0;
+        boolean[] r8;
+        java.lang.IllegalArgumentException r4;
+        java.lang.Object $r2;
+        java.lang.StringBuilder $r5;
+        java.lang.Class $r12, r13;
+
+        $r0 := @parameter0: android.os.PersistableBundle;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 := @parameter2: java.lang.Object;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "persistableBundle");
+
+        if $r2 != null goto label01;
+
+        virtualinvoke $r0.<android.os.PersistableBundle: void putString(java.lang.String,java.lang.String)>($r1, null);
+
+        goto label13;
+
+     label01:
+        z0 = $r2 instanceof java.lang.Boolean;
+
+        if z0 == 0 goto label03;
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 22 goto label02;
+
+        r3 = (java.lang.Boolean) $r2;
+
+        z0 = virtualinvoke r3.<java.lang.Boolean: boolean booleanValue()>();
+
+        staticinvoke <androidx.core.os.PersistableBundleApi22ImplKt: void putBoolean(android.os.PersistableBundle,java.lang.String,boolean)>($r0, $r1, z0);
+
+        goto label13;
+
+     label02:
+        r4 = new java.lang.IllegalArgumentException;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal value type boolean for key \"");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(34);
+
+        $r1 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r1);
+
+        throw r4;
+
+     label03:
+        z0 = $r2 instanceof java.lang.Double;
+
+        if z0 == 0 goto label04;
+
+        r6 = (java.lang.Number) $r2;
+
+        $d0 = virtualinvoke r6.<java.lang.Number: double doubleValue()>();
+
+        virtualinvoke $r0.<android.os.PersistableBundle: void putDouble(java.lang.String,double)>($r1, $d0);
+
+        goto label13;
+
+     label04:
+        z0 = $r2 instanceof java.lang.Integer;
+
+        if z0 == 0 goto label05;
+
+        r6 = (java.lang.Number) $r2;
+
+        i0 = virtualinvoke r6.<java.lang.Number: int intValue()>();
+
+        virtualinvoke $r0.<android.os.PersistableBundle: void putInt(java.lang.String,int)>($r1, i0);
+
+        goto label13;
+
+     label05:
+        z0 = $r2 instanceof java.lang.Long;
+
+        if z0 == 0 goto label06;
+
+        r6 = (java.lang.Number) $r2;
+
+        $l1 = virtualinvoke r6.<java.lang.Number: long longValue()>();
+
+        virtualinvoke $r0.<android.os.PersistableBundle: void putLong(java.lang.String,long)>($r1, $l1);
+
+        goto label13;
+
+     label06:
+        z0 = $r2 instanceof java.lang.String;
+
+        if z0 == 0 goto label07;
+
+        r7 = (java.lang.String) $r2;
+
+        virtualinvoke $r0.<android.os.PersistableBundle: void putString(java.lang.String,java.lang.String)>($r1, r7);
+
+        goto label13;
+
+     label07:
+        z0 = $r2 instanceof boolean[];
+
+        if z0 == 0 goto label09;
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 22 goto label08;
+
+        r8 = (boolean[]) $r2;
+
+        staticinvoke <androidx.core.os.PersistableBundleApi22ImplKt: void putBooleanArray(android.os.PersistableBundle,java.lang.String,boolean[])>($r0, $r1, r8);
+
+        goto label13;
+
+     label08:
+        r4 = new java.lang.IllegalArgumentException;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal value type boolean[] for key \"");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(34);
+
+        $r1 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r1);
+
+        throw r4;
+
+     label09:
+        z0 = $r2 instanceof double[];
+
+        if z0 == 0 goto label10;
+
+        r9 = (double[]) $r2;
+
+        virtualinvoke $r0.<android.os.PersistableBundle: void putDoubleArray(java.lang.String,double[])>($r1, r9);
+
+        goto label13;
+
+     label10:
+        z0 = $r2 instanceof int[];
+
+        if z0 == 0 goto label11;
+
+        r10 = (int[]) $r2;
+
+        virtualinvoke $r0.<android.os.PersistableBundle: void putIntArray(java.lang.String,int[])>($r1, r10);
+
+        goto label13;
+
+     label11:
+        z0 = $r2 instanceof long[];
+
+        if z0 == 0 goto label12;
+
+        r11 = (long[]) $r2;
+
+        virtualinvoke $r0.<android.os.PersistableBundle: void putLongArray(java.lang.String,long[])>($r1, r11);
+
+        goto label13;
+
+     label12:
+        z0 = $r2 instanceof java.lang.Object[];
+
+        if z0 == 0 goto label16;
+
+        $r12 = virtualinvoke $r2.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r12 = virtualinvoke $r12.<java.lang.Class: java.lang.Class getComponentType()>();
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNull(java.lang.Object)>($r12);
+
+        r13 = class "Ljava/lang/String;";
+
+        z0 = virtualinvoke r13.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r12);
+
+        if z0 == 0 goto label15;
+
+        if $r2 == null goto label14;
+
+        $r14 = (java.lang.String[]) $r2;
+
+        virtualinvoke $r0.<android.os.PersistableBundle: void putStringArray(java.lang.String,java.lang.String[])>($r1, $r14);
+
+     label13:
+        return;
+
+     label14:
+        $r15 = new java.lang.NullPointerException;
+
+        specialinvoke $r15.<java.lang.NullPointerException: void <init>(java.lang.String)>("null cannot be cast to non-null type kotlin.Array<kotlin.String>");
+
+        throw $r15;
+
+     label15:
+        r7 = virtualinvoke $r12.<java.lang.Class: java.lang.String getCanonicalName()>();
+
+        r4 = new java.lang.IllegalArgumentException;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal value array type ");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r7);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" for key \"");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(34);
+
+        $r1 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r1);
+
+        throw r4;
+
+     label16:
+        $r12 = virtualinvoke $r2.<java.lang.Object: java.lang.Class getClass()>();
+
+        r7 = virtualinvoke $r12.<java.lang.Class: java.lang.String getCanonicalName()>();
+
+        r4 = new java.lang.IllegalArgumentException;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal value type ");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r7);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" for key \"");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(34);
+
+        $r1 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r1);
+
+        throw r4;
+    }
+}

@@ -1,0 +1,198 @@
+public class com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager extends java.lang.Object
+{
+    private static com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager instance;
+    private final com.google.android.ump.ConsentInformation consentInformation;
+
+    private void <init>(android.content.Context)
+    {
+        com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager r0;
+        android.content.Context $r1;
+        com.google.android.ump.ConsentInformation $r2;
+
+        r0 := @this: com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = staticinvoke <com.google.android.ump.UserMessagingPlatform: com.google.android.ump.ConsentInformation getConsentInformation(android.content.Context)>($r1);
+
+        r0.<com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager: com.google.android.ump.ConsentInformation consentInformation> = $r2;
+
+        return;
+    }
+
+    public static com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager getInstance(android.content.Context)
+    {
+        com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager $r1;
+        android.content.Context $r0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = <com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager: com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager instance>;
+
+        if $r1 != null goto label1;
+
+        $r1 = new com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager;
+
+        specialinvoke $r1.<com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager: void <init>(android.content.Context)>($r0);
+
+        <com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager: com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager instance> = $r1;
+
+     label1:
+        $r1 = <com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager: com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager instance>;
+
+        return $r1;
+    }
+
+    static void lambda$gatherConsent$0(com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener, com.google.android.ump.FormError)
+    {
+        com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener $r0;
+        com.google.android.ump.FormError $r1;
+
+        $r0 := @parameter0: com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener;
+
+        $r1 := @parameter1: com.google.android.ump.FormError;
+
+        interfaceinvoke $r0.<com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener: void consentGatheringComplete(com.google.android.ump.FormError)>($r1);
+
+        return;
+    }
+
+    static void lambda$gatherConsent$1(android.app.Activity, com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener)
+    {
+        com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener $r1;
+        android.app.Activity $r0;
+        com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$$ExternalSyntheticLambda0 $r2;
+
+        $r0 := @parameter0: android.app.Activity;
+
+        $r1 := @parameter1: com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener;
+
+        $r2 = new com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$$ExternalSyntheticLambda0;
+
+        specialinvoke $r2.<com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$$ExternalSyntheticLambda0: void <init>(com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener)>($r1);
+
+        staticinvoke <com.google.android.ump.UserMessagingPlatform: void loadAndShowConsentFormIfRequired(android.app.Activity,com.google.android.ump.ConsentForm$OnConsentFormDismissedListener)>($r0, $r2);
+
+        return;
+    }
+
+    static void lambda$gatherConsent$2(com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener, com.google.android.ump.FormError)
+    {
+        com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener $r0;
+        com.google.android.ump.FormError $r1;
+
+        $r0 := @parameter0: com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener;
+
+        $r1 := @parameter1: com.google.android.ump.FormError;
+
+        interfaceinvoke $r0.<com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener: void consentGatheringComplete(com.google.android.ump.FormError)>($r1);
+
+        return;
+    }
+
+    public boolean canRequestAds()
+    {
+        com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager r0;
+        com.google.android.ump.ConsentInformation $r1;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager;
+
+        $r1 = r0.<com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager: com.google.android.ump.ConsentInformation consentInformation>;
+
+        $z0 = interfaceinvoke $r1.<com.google.android.ump.ConsentInformation: boolean canRequestAds()>();
+
+        return $z0;
+    }
+
+    public void gatherConsent(android.app.Activity, com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener)
+    {
+        com.google.android.ump.ConsentDebugSettings $r7;
+        com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager r0;
+        com.google.android.ump.ConsentRequestParameters$Builder r8;
+        com.google.android.ump.ConsentInformation $r3;
+        com.google.android.ump.ConsentDebugSettings$Builder r6;
+        com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener $r2;
+        com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$$ExternalSyntheticLambda2 $r5;
+        com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$$ExternalSyntheticLambda1 $r4;
+        com.google.android.ump.ConsentRequestParameters $r9;
+        android.app.Activity $r1;
+
+        r0 := @this: com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $r2 := @parameter1: com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener;
+
+        r6 = new com.google.android.ump.ConsentDebugSettings$Builder;
+
+        specialinvoke r6.<com.google.android.ump.ConsentDebugSettings$Builder: void <init>(android.content.Context)>($r1);
+
+        r6 = virtualinvoke r6.<com.google.android.ump.ConsentDebugSettings$Builder: com.google.android.ump.ConsentDebugSettings$Builder addTestDeviceHashedId(java.lang.String)>("TEST-DEVICE-HASHED-ID");
+
+        $r7 = virtualinvoke r6.<com.google.android.ump.ConsentDebugSettings$Builder: com.google.android.ump.ConsentDebugSettings build()>();
+
+        r8 = new com.google.android.ump.ConsentRequestParameters$Builder;
+
+        specialinvoke r8.<com.google.android.ump.ConsentRequestParameters$Builder: void <init>()>();
+
+        r8 = virtualinvoke r8.<com.google.android.ump.ConsentRequestParameters$Builder: com.google.android.ump.ConsentRequestParameters$Builder setConsentDebugSettings(com.google.android.ump.ConsentDebugSettings)>($r7);
+
+        $r9 = virtualinvoke r8.<com.google.android.ump.ConsentRequestParameters$Builder: com.google.android.ump.ConsentRequestParameters build()>();
+
+        $r3 = r0.<com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager: com.google.android.ump.ConsentInformation consentInformation>;
+
+        $r4 = new com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$$ExternalSyntheticLambda1;
+
+        specialinvoke $r4.<com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$$ExternalSyntheticLambda1: void <init>(android.app.Activity,com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener)>($r1, $r2);
+
+        $r5 = new com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$$ExternalSyntheticLambda2;
+
+        specialinvoke $r5.<com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$$ExternalSyntheticLambda2: void <init>(com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager$OnConsentGatheringCompleteListener)>($r2);
+
+        interfaceinvoke $r3.<com.google.android.ump.ConsentInformation: void requestConsentInfoUpdate(android.app.Activity,com.google.android.ump.ConsentRequestParameters,com.google.android.ump.ConsentInformation$OnConsentInfoUpdateSuccessListener,com.google.android.ump.ConsentInformation$OnConsentInfoUpdateFailureListener)>($r1, $r9, $r4, $r5);
+
+        return;
+    }
+
+    public boolean isPrivacyOptionsRequired()
+    {
+        com.google.android.ump.ConsentInformation $r3;
+        com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager r0;
+        com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus $r1, $r2;
+
+        r0 := @this: com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager;
+
+        $r3 = r0.<com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager: com.google.android.ump.ConsentInformation consentInformation>;
+
+        $r2 = interfaceinvoke $r3.<com.google.android.ump.ConsentInformation: com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus getPrivacyOptionsRequirementStatus()>();
+
+        $r1 = <com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus: com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus REQUIRED>;
+
+        if $r2 != $r1 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void showPrivacyOptionsForm(android.app.Activity, com.google.android.ump.ConsentForm$OnConsentFormDismissedListener)
+    {
+        com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager r0;
+        com.google.android.ump.ConsentForm$OnConsentFormDismissedListener $r2;
+        android.app.Activity $r1;
+
+        r0 := @this: com.google.android.gms.example.bannerexample.GoogleMobileAdsConsentManager;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $r2 := @parameter1: com.google.android.ump.ConsentForm$OnConsentFormDismissedListener;
+
+        staticinvoke <com.google.android.ump.UserMessagingPlatform: void showPrivacyOptionsForm(android.app.Activity,com.google.android.ump.ConsentForm$OnConsentFormDismissedListener)>($r1, $r2);
+
+        return;
+    }
+}

@@ -1,0 +1,77 @@
+public abstract class androidx.work.ListenableWorker$Result extends java.lang.Object
+{
+
+    void <init>()
+    {
+        androidx.work.ListenableWorker$Result r0;
+
+        r0 := @this: androidx.work.ListenableWorker$Result;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static androidx.work.ListenableWorker$Result failure()
+    {
+        androidx.work.ListenableWorker$Result$Failure $r0;
+
+        $r0 = new androidx.work.ListenableWorker$Result$Failure;
+
+        specialinvoke $r0.<androidx.work.ListenableWorker$Result$Failure: void <init>()>();
+
+        return $r0;
+    }
+
+    public static androidx.work.ListenableWorker$Result failure(androidx.work.Data)
+    {
+        androidx.work.ListenableWorker$Result$Failure $r1;
+        androidx.work.Data $r0;
+
+        $r0 := @parameter0: androidx.work.Data;
+
+        $r1 = new androidx.work.ListenableWorker$Result$Failure;
+
+        specialinvoke $r1.<androidx.work.ListenableWorker$Result$Failure: void <init>(androidx.work.Data)>($r0);
+
+        return $r1;
+    }
+
+    public static androidx.work.ListenableWorker$Result retry()
+    {
+        androidx.work.ListenableWorker$Result$Retry $r0;
+
+        $r0 = new androidx.work.ListenableWorker$Result$Retry;
+
+        specialinvoke $r0.<androidx.work.ListenableWorker$Result$Retry: void <init>()>();
+
+        return $r0;
+    }
+
+    public static androidx.work.ListenableWorker$Result success()
+    {
+        androidx.work.ListenableWorker$Result$Success $r0;
+
+        $r0 = new androidx.work.ListenableWorker$Result$Success;
+
+        specialinvoke $r0.<androidx.work.ListenableWorker$Result$Success: void <init>()>();
+
+        return $r0;
+    }
+
+    public static androidx.work.ListenableWorker$Result success(androidx.work.Data)
+    {
+        androidx.work.Data $r0;
+        androidx.work.ListenableWorker$Result$Success $r1;
+
+        $r0 := @parameter0: androidx.work.Data;
+
+        $r1 = new androidx.work.ListenableWorker$Result$Success;
+
+        specialinvoke $r1.<androidx.work.ListenableWorker$Result$Success: void <init>(androidx.work.Data)>($r0);
+
+        return $r1;
+    }
+
+    public abstract androidx.work.Data getOutputData();
+}

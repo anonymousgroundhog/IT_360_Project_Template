@@ -1,0 +1,976 @@
+final class com.google.android.gms.internal.measurement.zzip extends java.lang.Object
+{
+
+    static int zza(byte[], int, com.google.android.gms.internal.measurement.zzio) throws com.google.android.gms.internal.measurement.zzkm
+    {
+        byte[] $r1;
+        com.google.android.gms.internal.measurement.zzkm $r3;
+        int $i0, $i1, $i2;
+        com.google.android.gms.internal.measurement.zzjb $r2;
+        com.google.android.gms.internal.measurement.zzio $r0;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $r0 := @parameter2: com.google.android.gms.internal.measurement.zzio;
+
+        $i1 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzj(byte[],int,com.google.android.gms.internal.measurement.zzio)>($r1, $i0, $r0);
+
+        $i0 = $r0.<com.google.android.gms.internal.measurement.zzio: int zza>;
+
+        if $i0 < 0 goto label3;
+
+        $i2 = lengthof $r1;
+
+        $i2 = $i2 - $i1;
+
+        if $i0 > $i2 goto label2;
+
+        if $i0 != 0 goto label1;
+
+        $r2 = <com.google.android.gms.internal.measurement.zzjb: com.google.android.gms.internal.measurement.zzjb zzb>;
+
+        $r0.<com.google.android.gms.internal.measurement.zzio: java.lang.Object zzc> = $r2;
+
+        return $i1;
+
+     label1:
+        $r2 = staticinvoke <com.google.android.gms.internal.measurement.zzjb: com.google.android.gms.internal.measurement.zzjb zzl(byte[],int,int)>($r1, $i1, $i0);
+
+        $r0.<com.google.android.gms.internal.measurement.zzio: java.lang.Object zzc> = $r2;
+
+        $i0 = $i1 + $i0;
+
+        return $i0;
+
+     label2:
+        $r3 = staticinvoke <com.google.android.gms.internal.measurement.zzkm: com.google.android.gms.internal.measurement.zzkm zzf()>();
+
+        throw $r3;
+
+     label3:
+        $r3 = staticinvoke <com.google.android.gms.internal.measurement.zzkm: com.google.android.gms.internal.measurement.zzkm zzd()>();
+
+        throw $r3;
+    }
+
+    static int zzb(byte[], int)
+    {
+        byte[] $r0;
+        short $s2, $s4;
+        byte $b1;
+        int $i0, $i3, $i5;
+
+        $r0 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $b1 = $r0[$i0];
+
+        $s2 = (short) $b1;
+
+        $s2 = $s2 & 255;
+
+        $i3 = $i0 + 1;
+
+        $b1 = $r0[$i3];
+
+        $s4 = (short) $b1;
+
+        $s4 = $s4 & 255;
+
+        $i3 = (int) $s4;
+
+        $i3 = $i3 << 8;
+
+        $i5 = (int) $s2;
+
+        $i3 = $i5 | $i3;
+
+        $i5 = $i0 + 2;
+
+        $b1 = $r0[$i5];
+
+        $s2 = (short) $b1;
+
+        $s2 = $s2 & 255;
+
+        $i5 = (int) $s2;
+
+        $i5 = $i5 << 16;
+
+        $i3 = $i3 | $i5;
+
+        $i0 = $i0 + 3;
+
+        $b1 = $r0[$i0];
+
+        $s2 = (short) $b1;
+
+        $s2 = $s2 & 255;
+
+        $i0 = (int) $s2;
+
+        $i0 = $i0 << 24;
+
+        $i0 = $i0 | $i3;
+
+        return $i0;
+    }
+
+    static int zzc(com.google.android.gms.internal.measurement.zzlu, byte[], int, int, int, com.google.android.gms.internal.measurement.zzio) throws java.io.IOException
+    {
+        byte[] $r2;
+        com.google.android.gms.internal.measurement.zzlu $r1;
+        com.google.android.gms.internal.measurement.zzio $r0;
+        com.google.android.gms.internal.measurement.zzlm $r3;
+        int $i0, $i1, $i2;
+        java.lang.Object $r4;
+
+        $r1 := @parameter0: com.google.android.gms.internal.measurement.zzlu;
+
+        $r2 := @parameter1: byte[];
+
+        $i0 := @parameter2: int;
+
+        $i1 := @parameter3: int;
+
+        $i2 := @parameter4: int;
+
+        $r0 := @parameter5: com.google.android.gms.internal.measurement.zzio;
+
+        $r3 = (com.google.android.gms.internal.measurement.zzlm) $r1;
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.internal.measurement.zzlm: java.lang.Object zze()>();
+
+        $i0 = virtualinvoke $r3.<com.google.android.gms.internal.measurement.zzlm: int zzc(java.lang.Object,byte[],int,int,int,com.google.android.gms.internal.measurement.zzio)>($r4, $r2, $i0, $i1, $i2, $r0);
+
+        virtualinvoke $r3.<com.google.android.gms.internal.measurement.zzlm: void zzf(java.lang.Object)>($r4);
+
+        $r0.<com.google.android.gms.internal.measurement.zzio: java.lang.Object zzc> = $r4;
+
+        return $i0;
+    }
+
+    static int zzd(com.google.android.gms.internal.measurement.zzlu, byte[], int, int, com.google.android.gms.internal.measurement.zzio) throws java.io.IOException
+    {
+        byte[] $r0;
+        com.google.android.gms.internal.measurement.zzlu $r2;
+        com.google.android.gms.internal.measurement.zzio $r1;
+        com.google.android.gms.internal.measurement.zzkm $r4;
+        int $i0, $i1, $i2;
+        java.lang.Object $r3;
+
+        $r2 := @parameter0: com.google.android.gms.internal.measurement.zzlu;
+
+        $r0 := @parameter1: byte[];
+
+        $i0 := @parameter2: int;
+
+        $i1 := @parameter3: int;
+
+        $r1 := @parameter4: com.google.android.gms.internal.measurement.zzio;
+
+        $i2 = $i0 + 1;
+
+        $i0 = $r0[$i0];
+
+        if $i0 >= 0 goto label1;
+
+        $i2 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzk(int,byte[],int,com.google.android.gms.internal.measurement.zzio)>($i0, $r0, $i2, $r1);
+
+        $i0 = $r1.<com.google.android.gms.internal.measurement.zzio: int zza>;
+
+        goto label1;
+
+     label1:
+        if $i0 < 0 goto label2;
+
+        $i1 = $i1 - $i2;
+
+        if $i0 > $i1 goto label2;
+
+        $r3 = interfaceinvoke $r2.<com.google.android.gms.internal.measurement.zzlu: java.lang.Object zze()>();
+
+        $i0 = $i0 + $i2;
+
+        interfaceinvoke $r2.<com.google.android.gms.internal.measurement.zzlu: void zzh(java.lang.Object,byte[],int,int,com.google.android.gms.internal.measurement.zzio)>($r3, $r0, $i2, $i0, $r1);
+
+        interfaceinvoke $r2.<com.google.android.gms.internal.measurement.zzlu: void zzf(java.lang.Object)>($r3);
+
+        $r1.<com.google.android.gms.internal.measurement.zzio: java.lang.Object zzc> = $r3;
+
+        return $i0;
+
+     label2:
+        $r4 = staticinvoke <com.google.android.gms.internal.measurement.zzkm: com.google.android.gms.internal.measurement.zzkm zzf()>();
+
+        throw $r4;
+    }
+
+    static int zze(com.google.android.gms.internal.measurement.zzlu, int, byte[], int, int, com.google.android.gms.internal.measurement.zzkj, com.google.android.gms.internal.measurement.zzio) throws java.io.IOException
+    {
+        byte[] $r1;
+        com.google.android.gms.internal.measurement.zzlu $r0;
+        com.google.android.gms.internal.measurement.zzio $r3;
+        com.google.android.gms.internal.measurement.zzkj $r2;
+        int $i0, $i1, $i2, $i3, $i4;
+        java.lang.Object $r4;
+
+        $r0 := @parameter0: com.google.android.gms.internal.measurement.zzlu;
+
+        $i0 := @parameter1: int;
+
+        $r1 := @parameter2: byte[];
+
+        $i2 := @parameter3: int;
+
+        $i1 := @parameter4: int;
+
+        $r2 := @parameter5: com.google.android.gms.internal.measurement.zzkj;
+
+        $r3 := @parameter6: com.google.android.gms.internal.measurement.zzio;
+
+        $i3 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzd(com.google.android.gms.internal.measurement.zzlu,byte[],int,int,com.google.android.gms.internal.measurement.zzio)>($r0, $r1, $i2, $i1, $r3);
+
+        $r4 = $r3.<com.google.android.gms.internal.measurement.zzio: java.lang.Object zzc>;
+
+        interfaceinvoke $r2.<com.google.android.gms.internal.measurement.zzkj: boolean add(java.lang.Object)>($r4);
+
+     label1:
+        if $i3 >= $i1 goto label3;
+
+        $i4 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzj(byte[],int,com.google.android.gms.internal.measurement.zzio)>($r1, $i3, $r3);
+
+        $i2 = $r3.<com.google.android.gms.internal.measurement.zzio: int zza>;
+
+        if $i0 == $i2 goto label2;
+
+        return $i3;
+
+     label2:
+        $i3 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzd(com.google.android.gms.internal.measurement.zzlu,byte[],int,int,com.google.android.gms.internal.measurement.zzio)>($r0, $r1, $i4, $i1, $r3);
+
+        $r4 = $r3.<com.google.android.gms.internal.measurement.zzio: java.lang.Object zzc>;
+
+        interfaceinvoke $r2.<com.google.android.gms.internal.measurement.zzkj: boolean add(java.lang.Object)>($r4);
+
+        goto label1;
+
+     label3:
+        return $i3;
+    }
+
+    static int zzf(byte[], int, com.google.android.gms.internal.measurement.zzkj, com.google.android.gms.internal.measurement.zzio) throws java.io.IOException
+    {
+        byte[] $r1;
+        com.google.android.gms.internal.measurement.zzio $r0;
+        com.google.android.gms.internal.measurement.zzkm $r4;
+        com.google.android.gms.internal.measurement.zzkj $r2;
+        int $i0, $i1, $i2;
+        com.google.android.gms.internal.measurement.zzkd $r3;
+
+        $r1 := @parameter0: byte[];
+
+        $i1 := @parameter1: int;
+
+        $r2 := @parameter2: com.google.android.gms.internal.measurement.zzkj;
+
+        $r0 := @parameter3: com.google.android.gms.internal.measurement.zzio;
+
+        $r3 = (com.google.android.gms.internal.measurement.zzkd) $r2;
+
+        $i2 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzj(byte[],int,com.google.android.gms.internal.measurement.zzio)>($r1, $i1, $r0);
+
+        $i1 = $i2;
+
+        $i0 = $r0.<com.google.android.gms.internal.measurement.zzio: int zza>;
+
+        $i2 = $i0 + $i2;
+
+     label1:
+        if $i1 >= $i2 goto label2;
+
+        $i1 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzj(byte[],int,com.google.android.gms.internal.measurement.zzio)>($r1, $i1, $r0);
+
+        $i0 = $r0.<com.google.android.gms.internal.measurement.zzio: int zza>;
+
+        virtualinvoke $r3.<com.google.android.gms.internal.measurement.zzkd: void zzh(int)>($i0);
+
+        goto label1;
+
+     label2:
+        if $i1 != $i2 goto label3;
+
+        return $i1;
+
+     label3:
+        $r4 = staticinvoke <com.google.android.gms.internal.measurement.zzkm: com.google.android.gms.internal.measurement.zzkm zzf()>();
+
+        throw $r4;
+    }
+
+    static int zzg(byte[], int, com.google.android.gms.internal.measurement.zzio) throws com.google.android.gms.internal.measurement.zzkm
+    {
+        byte[] $r3;
+        com.google.android.gms.internal.measurement.zzkm $r4;
+        java.nio.charset.Charset $r2;
+        int $i0, $i1;
+        java.lang.String $r1;
+        com.google.android.gms.internal.measurement.zzio $r0;
+
+        $r3 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $r0 := @parameter2: com.google.android.gms.internal.measurement.zzio;
+
+        $i1 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzj(byte[],int,com.google.android.gms.internal.measurement.zzio)>($r3, $i0, $r0);
+
+        $i0 = $r0.<com.google.android.gms.internal.measurement.zzio: int zza>;
+
+        if $i0 < 0 goto label2;
+
+        if $i0 != 0 goto label1;
+
+        $r0.<com.google.android.gms.internal.measurement.zzio: java.lang.Object zzc> = "";
+
+        return $i1;
+
+     label1:
+        $r1 = new java.lang.String;
+
+        $r2 = <com.google.android.gms.internal.measurement.zzkk: java.nio.charset.Charset zzb>;
+
+        specialinvoke $r1.<java.lang.String: void <init>(byte[],int,int,java.nio.charset.Charset)>($r3, $i1, $i0, $r2);
+
+        $r0.<com.google.android.gms.internal.measurement.zzio: java.lang.Object zzc> = $r1;
+
+        $i0 = $i1 + $i0;
+
+        return $i0;
+
+     label2:
+        $r4 = staticinvoke <com.google.android.gms.internal.measurement.zzkm: com.google.android.gms.internal.measurement.zzkm zzd()>();
+
+        throw $r4;
+    }
+
+    static int zzh(byte[], int, com.google.android.gms.internal.measurement.zzio) throws com.google.android.gms.internal.measurement.zzkm
+    {
+        byte[] $r1;
+        com.google.android.gms.internal.measurement.zzkm $r3;
+        int $i0, $i1;
+        java.lang.String $r2;
+        com.google.android.gms.internal.measurement.zzio $r0;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $r0 := @parameter2: com.google.android.gms.internal.measurement.zzio;
+
+        $i1 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzj(byte[],int,com.google.android.gms.internal.measurement.zzio)>($r1, $i0, $r0);
+
+        $i0 = $r0.<com.google.android.gms.internal.measurement.zzio: int zza>;
+
+        if $i0 < 0 goto label2;
+
+        if $i0 != 0 goto label1;
+
+        $r0.<com.google.android.gms.internal.measurement.zzio: java.lang.Object zzc> = "";
+
+        return $i1;
+
+     label1:
+        $r2 = staticinvoke <com.google.android.gms.internal.measurement.zzna: java.lang.String zzd(byte[],int,int)>($r1, $i1, $i0);
+
+        $r0.<com.google.android.gms.internal.measurement.zzio: java.lang.Object zzc> = $r2;
+
+        $i0 = $i1 + $i0;
+
+        return $i0;
+
+     label2:
+        $r3 = staticinvoke <com.google.android.gms.internal.measurement.zzkm: com.google.android.gms.internal.measurement.zzkm zzd()>();
+
+        throw $r3;
+    }
+
+    static int zzi(int, byte[], int, int, com.google.android.gms.internal.measurement.zzmm, com.google.android.gms.internal.measurement.zzio) throws com.google.android.gms.internal.measurement.zzkm
+    {
+        byte[] $r1;
+        long $l5;
+        java.lang.Integer $r4;
+        com.google.android.gms.internal.measurement.zzio $r2;
+        com.google.android.gms.internal.measurement.zzkm $r3;
+        com.google.android.gms.internal.measurement.zzmm $r0, $r5;
+        java.lang.Long $r7;
+        int $i0, $i1, $i2, $i3, $i4;
+        com.google.android.gms.internal.measurement.zzjb $r6;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: byte[];
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $r0 := @parameter4: com.google.android.gms.internal.measurement.zzmm;
+
+        $r2 := @parameter5: com.google.android.gms.internal.measurement.zzio;
+
+        $i3 = $i0 >>> 3;
+
+        if $i3 == 0 goto label15;
+
+        $i3 = $i0 & 7;
+
+        lookupswitch($i3)
+        {
+            case 0: goto label14;
+            case 1: goto label13;
+            case 2: goto label08;
+            case 3: goto label03;
+            case 4: goto label01;
+            case 5: goto label02;
+            default: goto label01;
+        };
+
+     label01:
+        $r3 = staticinvoke <com.google.android.gms.internal.measurement.zzkm: com.google.android.gms.internal.measurement.zzkm zzb()>();
+
+        throw $r3;
+
+     label02:
+        $i2 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzb(byte[],int)>($r1, $i1);
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i2);
+
+        virtualinvoke $r0.<com.google.android.gms.internal.measurement.zzmm: void zzh(int,java.lang.Object)>($i0, $r4);
+
+        $i0 = $i1 + 4;
+
+        return $i0;
+
+     label03:
+        $i3 = $i0 & -8;
+
+        $i3 = $i3 | 4;
+
+        $r5 = staticinvoke <com.google.android.gms.internal.measurement.zzmm: com.google.android.gms.internal.measurement.zzmm zze()>();
+
+        $i4 = 0;
+
+     label04:
+        if $i1 >= $i2 goto label06;
+
+        $i1 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzj(byte[],int,com.google.android.gms.internal.measurement.zzio)>($r1, $i1, $r2);
+
+        $i4 = $r2.<com.google.android.gms.internal.measurement.zzio: int zza>;
+
+        if $i4 != $i3 goto label05;
+
+        goto label06;
+
+     label05:
+        $i1 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzi(int,byte[],int,int,com.google.android.gms.internal.measurement.zzmm,com.google.android.gms.internal.measurement.zzio)>($i4, $r1, $i1, $i2, $r5, $r2);
+
+        goto label04;
+
+     label06:
+        if $i1 > $i2 goto label07;
+
+        if $i4 != $i3 goto label07;
+
+        virtualinvoke $r0.<com.google.android.gms.internal.measurement.zzmm: void zzh(int,java.lang.Object)>($i0, $r5);
+
+        return $i1;
+
+     label07:
+        $r3 = staticinvoke <com.google.android.gms.internal.measurement.zzkm: com.google.android.gms.internal.measurement.zzkm zze()>();
+
+        throw $r3;
+
+     label08:
+        $i1 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzj(byte[],int,com.google.android.gms.internal.measurement.zzio)>($r1, $i1, $r2);
+
+        $i2 = $r2.<com.google.android.gms.internal.measurement.zzio: int zza>;
+
+        if $i2 < 0 goto label12;
+
+        $i3 = lengthof $r1;
+
+        $i3 = $i3 - $i1;
+
+        if $i2 > $i3 goto label11;
+
+        if $i2 != 0 goto label09;
+
+        $r6 = <com.google.android.gms.internal.measurement.zzjb: com.google.android.gms.internal.measurement.zzjb zzb>;
+
+        virtualinvoke $r0.<com.google.android.gms.internal.measurement.zzmm: void zzh(int,java.lang.Object)>($i0, $r6);
+
+        goto label10;
+
+     label09:
+        $r6 = staticinvoke <com.google.android.gms.internal.measurement.zzjb: com.google.android.gms.internal.measurement.zzjb zzl(byte[],int,int)>($r1, $i1, $i2);
+
+        virtualinvoke $r0.<com.google.android.gms.internal.measurement.zzmm: void zzh(int,java.lang.Object)>($i0, $r6);
+
+     label10:
+        $i0 = $i1 + $i2;
+
+        return $i0;
+
+     label11:
+        $r3 = staticinvoke <com.google.android.gms.internal.measurement.zzkm: com.google.android.gms.internal.measurement.zzkm zzf()>();
+
+        throw $r3;
+
+     label12:
+        $r3 = staticinvoke <com.google.android.gms.internal.measurement.zzkm: com.google.android.gms.internal.measurement.zzkm zzd()>();
+
+        throw $r3;
+
+     label13:
+        $l5 = staticinvoke <com.google.android.gms.internal.measurement.zzip: long zzn(byte[],int)>($r1, $i1);
+
+        $r7 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l5);
+
+        virtualinvoke $r0.<com.google.android.gms.internal.measurement.zzmm: void zzh(int,java.lang.Object)>($i0, $r7);
+
+        $i0 = $i1 + 8;
+
+        return $i0;
+
+     label14:
+        $i1 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzm(byte[],int,com.google.android.gms.internal.measurement.zzio)>($r1, $i1, $r2);
+
+        $l5 = $r2.<com.google.android.gms.internal.measurement.zzio: long zzb>;
+
+        $r7 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l5);
+
+        virtualinvoke $r0.<com.google.android.gms.internal.measurement.zzmm: void zzh(int,java.lang.Object)>($i0, $r7);
+
+        return $i1;
+
+     label15:
+        $r3 = staticinvoke <com.google.android.gms.internal.measurement.zzkm: com.google.android.gms.internal.measurement.zzkm zzb()>();
+
+        throw $r3;
+    }
+
+    static int zzj(byte[], int, com.google.android.gms.internal.measurement.zzio)
+    {
+        byte[] $r1;
+        byte $b2;
+        int $i0, $i1;
+        com.google.android.gms.internal.measurement.zzio $r0;
+
+        $r1 := @parameter0: byte[];
+
+        $i1 := @parameter1: int;
+
+        $r0 := @parameter2: com.google.android.gms.internal.measurement.zzio;
+
+        $i0 = $i1 + 1;
+
+        $b2 = $r1[$i1];
+
+        $i1 = (int) $b2;
+
+        if $i1 < 0 goto label1;
+
+        $i1 = (int) $b2;
+
+        $r0.<com.google.android.gms.internal.measurement.zzio: int zza> = $i1;
+
+        return $i0;
+
+     label1:
+        $i1 = (int) $b2;
+
+        $i1 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzk(int,byte[],int,com.google.android.gms.internal.measurement.zzio)>($i1, $r1, $i0, $r0);
+
+        return $i1;
+    }
+
+    static int zzk(int, byte[], int, com.google.android.gms.internal.measurement.zzio)
+    {
+        byte[] $r1;
+        byte $b3;
+        int $i0, $i1, $i2;
+        com.google.android.gms.internal.measurement.zzio $r0;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: byte[];
+
+        $i1 := @parameter2: int;
+
+        $r0 := @parameter3: com.google.android.gms.internal.measurement.zzio;
+
+        $i2 = $i0 & 127;
+
+        $i0 = $i1 + 1;
+
+        $b3 = $r1[$i1];
+
+        $i1 = (int) $b3;
+
+        if $i1 < 0 goto label1;
+
+        $i1 = (int) $b3;
+
+        $i1 = $i1 << 7;
+
+        $i1 = $i2 | $i1;
+
+        $r0.<com.google.android.gms.internal.measurement.zzio: int zza> = $i1;
+
+        return $i0;
+
+     label1:
+        $b3 = $b3 & 127;
+
+        $i1 = (int) $b3;
+
+        $i1 = $i1 << 7;
+
+        $i2 = $i2 | $i1;
+
+        $i1 = $i0 + 1;
+
+        $b3 = $r1[$i0];
+
+        $i0 = (int) $b3;
+
+        if $i0 < 0 goto label2;
+
+        $i0 = (int) $b3;
+
+        $i0 = $i0 << 14;
+
+        $i0 = $i2 | $i0;
+
+        $r0.<com.google.android.gms.internal.measurement.zzio: int zza> = $i0;
+
+        return $i1;
+
+     label2:
+        $b3 = $b3 & 127;
+
+        $i0 = (int) $b3;
+
+        $i0 = $i0 << 14;
+
+        $i2 = $i2 | $i0;
+
+        $i0 = $i1 + 1;
+
+        $b3 = $r1[$i1];
+
+        $i1 = (int) $b3;
+
+        if $i1 < 0 goto label3;
+
+        $i1 = (int) $b3;
+
+        $i1 = $i1 << 21;
+
+        $i1 = $i2 | $i1;
+
+        $r0.<com.google.android.gms.internal.measurement.zzio: int zza> = $i1;
+
+        return $i0;
+
+     label3:
+        $b3 = $b3 & 127;
+
+        $i1 = (int) $b3;
+
+        $i1 = $i1 << 21;
+
+        $i2 = $i2 | $i1;
+
+        $i1 = $i0 + 1;
+
+        $b3 = $r1[$i0];
+
+        $i0 = (int) $b3;
+
+        if $i0 < 0 goto label4;
+
+        $i0 = (int) $b3;
+
+        $i0 = $i0 << 28;
+
+        $i0 = $i2 | $i0;
+
+        $r0.<com.google.android.gms.internal.measurement.zzio: int zza> = $i0;
+
+        return $i1;
+
+     label4:
+        $b3 = $b3 & 127;
+
+        $i0 = (int) $b3;
+
+        $i0 = $i0 << 28;
+
+        $i0 = $i2 | $i0;
+
+     label5:
+        $i2 = $i1 + 1;
+
+        $b3 = $r1[$i1];
+
+        $i1 = (int) $b3;
+
+        if $i1 >= 0 goto label6;
+
+        $i1 = $i2;
+
+        goto label5;
+
+     label6:
+        $r0.<com.google.android.gms.internal.measurement.zzio: int zza> = $i0;
+
+        return $i2;
+    }
+
+    static int zzl(int, byte[], int, int, com.google.android.gms.internal.measurement.zzkj, com.google.android.gms.internal.measurement.zzio)
+    {
+        byte[] $r0;
+        com.google.android.gms.internal.measurement.zzio $r1;
+        com.google.android.gms.internal.measurement.zzkj $r2;
+        int $i0, $i1, $i2, $i3, $i4;
+        com.google.android.gms.internal.measurement.zzkd $r3;
+
+        $i0 := @parameter0: int;
+
+        $r0 := @parameter1: byte[];
+
+        $i3 := @parameter2: int;
+
+        $i1 := @parameter3: int;
+
+        $r2 := @parameter4: com.google.android.gms.internal.measurement.zzkj;
+
+        $r1 := @parameter5: com.google.android.gms.internal.measurement.zzio;
+
+        $r3 = (com.google.android.gms.internal.measurement.zzkd) $r2;
+
+        $i3 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzj(byte[],int,com.google.android.gms.internal.measurement.zzio)>($r0, $i3, $r1);
+
+        $i2 = $r1.<com.google.android.gms.internal.measurement.zzio: int zza>;
+
+        virtualinvoke $r3.<com.google.android.gms.internal.measurement.zzkd: void zzh(int)>($i2);
+
+     label1:
+        if $i3 >= $i1 goto label3;
+
+        $i4 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzj(byte[],int,com.google.android.gms.internal.measurement.zzio)>($r0, $i3, $r1);
+
+        $i2 = $r1.<com.google.android.gms.internal.measurement.zzio: int zza>;
+
+        if $i0 == $i2 goto label2;
+
+        return $i3;
+
+     label2:
+        $i3 = staticinvoke <com.google.android.gms.internal.measurement.zzip: int zzj(byte[],int,com.google.android.gms.internal.measurement.zzio)>($r0, $i4, $r1);
+
+        $i2 = $r1.<com.google.android.gms.internal.measurement.zzio: int zza>;
+
+        virtualinvoke $r3.<com.google.android.gms.internal.measurement.zzkd: void zzh(int)>($i2);
+
+        goto label1;
+
+     label3:
+        return $i3;
+    }
+
+    static int zzm(byte[], int, com.google.android.gms.internal.measurement.zzio)
+    {
+        byte[] $r0;
+        long $l3, $l5;
+        com.google.android.gms.internal.measurement.zzio $r1;
+        byte $b0, $b4;
+        int $i1, $i2, $i6;
+
+        $r0 := @parameter0: byte[];
+
+        $i1 := @parameter1: int;
+
+        $r1 := @parameter2: com.google.android.gms.internal.measurement.zzio;
+
+        $i2 = $i1 + 1;
+
+        $b0 = $r0[$i1];
+
+        $l3 = (long) $b0;
+
+        $b0 = $l3 cmp 0L;
+
+        $i1 = (int) $b0;
+
+        if $i1 < 0 goto label1;
+
+        $r1.<com.google.android.gms.internal.measurement.zzio: long zzb> = $l3;
+
+        return $i2;
+
+     label1:
+        $i1 = $i2 + 1;
+
+        $b0 = $r0[$i2];
+
+        $l3 = $l3 & 127L;
+
+        $b4 = $b0 & 127;
+
+        $l5 = (long) $b4;
+
+        $l5 = $l5 << 7;
+
+        $l3 = $l3 | $l5;
+
+        $i2 = 7;
+
+     label2:
+        $i6 = (int) $b0;
+
+        if $i6 >= 0 goto label3;
+
+        $b4 = $r0[$i1];
+
+        $i2 = $i2 + 7;
+
+        $b0 = $b4 & 127;
+
+        $l5 = (long) $b0;
+
+        $l5 = $l5 << $i2;
+
+        $l3 = $l3 | $l5;
+
+        $b0 = $b4;
+
+        $i1 = $i1 + 1;
+
+        goto label2;
+
+     label3:
+        $r1.<com.google.android.gms.internal.measurement.zzio: long zzb> = $l3;
+
+        return $i1;
+    }
+
+    static long zzn(byte[], int)
+    {
+        byte[] $r0;
+        byte $b1;
+        int $i0, $i3;
+        long $l2, $l4;
+
+        $r0 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $b1 = $r0[$i0];
+
+        $l2 = (long) $b1;
+
+        $l2 = $l2 & 255L;
+
+        $i3 = $i0 + 1;
+
+        $b1 = $r0[$i3];
+
+        $l4 = (long) $b1;
+
+        $l4 = $l4 & 255L;
+
+        $l4 = $l4 << 8;
+
+        $l2 = $l2 | $l4;
+
+        $i3 = $i0 + 2;
+
+        $b1 = $r0[$i3];
+
+        $l4 = (long) $b1;
+
+        $l4 = $l4 & 255L;
+
+        $l4 = $l4 << 16;
+
+        $l2 = $l2 | $l4;
+
+        $i3 = $i0 + 3;
+
+        $b1 = $r0[$i3];
+
+        $l4 = (long) $b1;
+
+        $l4 = $l4 & 255L;
+
+        $l4 = $l4 << 24;
+
+        $l2 = $l2 | $l4;
+
+        $i3 = $i0 + 4;
+
+        $b1 = $r0[$i3];
+
+        $l4 = (long) $b1;
+
+        $l4 = $l4 & 255L;
+
+        $l4 = $l4 << 32;
+
+        $l2 = $l2 | $l4;
+
+        $i3 = $i0 + 5;
+
+        $b1 = $r0[$i3];
+
+        $l4 = (long) $b1;
+
+        $l4 = $l4 & 255L;
+
+        $l4 = $l4 << 40;
+
+        $l2 = $l2 | $l4;
+
+        $i3 = $i0 + 6;
+
+        $b1 = $r0[$i3];
+
+        $l4 = (long) $b1;
+
+        $l4 = $l4 & 255L;
+
+        $l4 = $l4 << 48;
+
+        $l2 = $l2 | $l4;
+
+        $i0 = $i0 + 7;
+
+        $b1 = $r0[$i0];
+
+        $l4 = (long) $b1;
+
+        $l4 = $l4 & 255L;
+
+        $l4 = $l4 << 56;
+
+        $l2 = $l4 | $l2;
+
+        return $l2;
+    }
+}

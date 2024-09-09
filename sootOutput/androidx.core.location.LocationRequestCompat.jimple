@@ -1,0 +1,493 @@
+public final class androidx.core.location.LocationRequestCompat extends java.lang.Object
+{
+    private static final long IMPLICIT_MIN_UPDATE_INTERVAL;
+    public static final long PASSIVE_INTERVAL;
+    public static final int QUALITY_BALANCED_POWER_ACCURACY;
+    public static final int QUALITY_HIGH_ACCURACY;
+    public static final int QUALITY_LOW_POWER;
+    final long mDurationMillis;
+    final long mIntervalMillis;
+    final long mMaxUpdateDelayMillis;
+    final int mMaxUpdates;
+    final float mMinUpdateDistanceMeters;
+    final long mMinUpdateIntervalMillis;
+    final int mQuality;
+
+    void <init>(long, int, long, int, long, float, long)
+    {
+        androidx.core.location.LocationRequestCompat r0;
+        long $l0, $l2, $l4, $l5;
+        int $i1, $i3;
+        float $f0;
+
+        r0 := @this: androidx.core.location.LocationRequestCompat;
+
+        $l0 := @parameter0: long;
+
+        $i1 := @parameter1: int;
+
+        $l2 := @parameter2: long;
+
+        $i3 := @parameter3: int;
+
+        $l4 := @parameter4: long;
+
+        $f0 := @parameter5: float;
+
+        $l5 := @parameter6: long;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.location.LocationRequestCompat: long mIntervalMillis> = $l0;
+
+        r0.<androidx.core.location.LocationRequestCompat: int mQuality> = $i1;
+
+        r0.<androidx.core.location.LocationRequestCompat: long mMinUpdateIntervalMillis> = $l4;
+
+        r0.<androidx.core.location.LocationRequestCompat: long mDurationMillis> = $l2;
+
+        r0.<androidx.core.location.LocationRequestCompat: int mMaxUpdates> = $i3;
+
+        r0.<androidx.core.location.LocationRequestCompat: float mMinUpdateDistanceMeters> = $f0;
+
+        r0.<androidx.core.location.LocationRequestCompat: long mMaxUpdateDelayMillis> = $l5;
+
+        return;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.core.location.LocationRequestCompat r0, r2;
+        long $l2, $l3;
+        byte $b4;
+        int $i0, $i1;
+        float $f0, $f1;
+        java.lang.Object $r1;
+        boolean z0;
+
+        r0 := @this: androidx.core.location.LocationRequestCompat;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if r0 != $r1 goto label1;
+
+        return 1;
+
+     label1:
+        z0 = $r1 instanceof androidx.core.location.LocationRequestCompat;
+
+        if z0 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        r2 = (androidx.core.location.LocationRequestCompat) $r1;
+
+        $i0 = r0.<androidx.core.location.LocationRequestCompat: int mQuality>;
+
+        $i1 = r2.<androidx.core.location.LocationRequestCompat: int mQuality>;
+
+        if $i0 != $i1 goto label3;
+
+        $l2 = r0.<androidx.core.location.LocationRequestCompat: long mIntervalMillis>;
+
+        $l3 = r2.<androidx.core.location.LocationRequestCompat: long mIntervalMillis>;
+
+        $b4 = $l2 cmp $l3;
+
+        if $b4 != 0 goto label3;
+
+        $l2 = r0.<androidx.core.location.LocationRequestCompat: long mMinUpdateIntervalMillis>;
+
+        $l3 = r2.<androidx.core.location.LocationRequestCompat: long mMinUpdateIntervalMillis>;
+
+        $b4 = $l2 cmp $l3;
+
+        if $b4 != 0 goto label3;
+
+        $l2 = r0.<androidx.core.location.LocationRequestCompat: long mDurationMillis>;
+
+        $l3 = r2.<androidx.core.location.LocationRequestCompat: long mDurationMillis>;
+
+        $b4 = $l2 cmp $l3;
+
+        if $b4 != 0 goto label3;
+
+        $i0 = r0.<androidx.core.location.LocationRequestCompat: int mMaxUpdates>;
+
+        $i1 = r2.<androidx.core.location.LocationRequestCompat: int mMaxUpdates>;
+
+        if $i0 != $i1 goto label3;
+
+        $f0 = r2.<androidx.core.location.LocationRequestCompat: float mMinUpdateDistanceMeters>;
+
+        $f1 = r0.<androidx.core.location.LocationRequestCompat: float mMinUpdateDistanceMeters>;
+
+        $i0 = staticinvoke <java.lang.Float: int compare(float,float)>($f0, $f1);
+
+        if $i0 != 0 goto label3;
+
+        $l2 = r0.<androidx.core.location.LocationRequestCompat: long mMaxUpdateDelayMillis>;
+
+        $l3 = r2.<androidx.core.location.LocationRequestCompat: long mMaxUpdateDelayMillis>;
+
+        $b4 = $l2 cmp $l3;
+
+        if $b4 != 0 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public long getDurationMillis()
+    {
+        androidx.core.location.LocationRequestCompat r0;
+        long l0;
+
+        r0 := @this: androidx.core.location.LocationRequestCompat;
+
+        l0 = r0.<androidx.core.location.LocationRequestCompat: long mDurationMillis>;
+
+        return l0;
+    }
+
+    public long getIntervalMillis()
+    {
+        androidx.core.location.LocationRequestCompat r0;
+        long l0;
+
+        r0 := @this: androidx.core.location.LocationRequestCompat;
+
+        l0 = r0.<androidx.core.location.LocationRequestCompat: long mIntervalMillis>;
+
+        return l0;
+    }
+
+    public long getMaxUpdateDelayMillis()
+    {
+        androidx.core.location.LocationRequestCompat r0;
+        long l0;
+
+        r0 := @this: androidx.core.location.LocationRequestCompat;
+
+        l0 = r0.<androidx.core.location.LocationRequestCompat: long mMaxUpdateDelayMillis>;
+
+        return l0;
+    }
+
+    public int getMaxUpdates()
+    {
+        int i0;
+        androidx.core.location.LocationRequestCompat r0;
+
+        r0 := @this: androidx.core.location.LocationRequestCompat;
+
+        i0 = r0.<androidx.core.location.LocationRequestCompat: int mMaxUpdates>;
+
+        return i0;
+    }
+
+    public float getMinUpdateDistanceMeters()
+    {
+        androidx.core.location.LocationRequestCompat r0;
+        float f0;
+
+        r0 := @this: androidx.core.location.LocationRequestCompat;
+
+        f0 = r0.<androidx.core.location.LocationRequestCompat: float mMinUpdateDistanceMeters>;
+
+        return f0;
+    }
+
+    public long getMinUpdateIntervalMillis()
+    {
+        androidx.core.location.LocationRequestCompat r0;
+        long $l1;
+        byte $b0;
+
+        r0 := @this: androidx.core.location.LocationRequestCompat;
+
+        $l1 = r0.<androidx.core.location.LocationRequestCompat: long mMinUpdateIntervalMillis>;
+
+        $b0 = $l1 cmp -1L;
+
+        if $b0 != 0 goto label1;
+
+        $l1 = r0.<androidx.core.location.LocationRequestCompat: long mIntervalMillis>;
+
+        return $l1;
+
+     label1:
+        $l1 = r0.<androidx.core.location.LocationRequestCompat: long mMinUpdateIntervalMillis>;
+
+        return $l1;
+    }
+
+    public int getQuality()
+    {
+        int i0;
+        androidx.core.location.LocationRequestCompat r0;
+
+        r0 := @this: androidx.core.location.LocationRequestCompat;
+
+        i0 = r0.<androidx.core.location.LocationRequestCompat: int mQuality>;
+
+        return i0;
+    }
+
+    public int hashCode()
+    {
+        int i0, $i3;
+        androidx.core.location.LocationRequestCompat r0;
+        long $l1, $l2;
+
+        r0 := @this: androidx.core.location.LocationRequestCompat;
+
+        i0 = r0.<androidx.core.location.LocationRequestCompat: int mQuality>;
+
+        i0 = i0 * 31;
+
+        $l1 = r0.<androidx.core.location.LocationRequestCompat: long mIntervalMillis>;
+
+        $l2 = r0.<androidx.core.location.LocationRequestCompat: long mIntervalMillis>;
+
+        $l2 = $l2 >>> 32;
+
+        $l1 = $l1 ^ $l2;
+
+        $i3 = (int) $l1;
+
+        i0 = i0 + $i3;
+
+        i0 = i0 * 31;
+
+        $l1 = r0.<androidx.core.location.LocationRequestCompat: long mMinUpdateIntervalMillis>;
+
+        $l2 = r0.<androidx.core.location.LocationRequestCompat: long mMinUpdateIntervalMillis>;
+
+        $l2 = $l2 >>> 32;
+
+        $l1 = $l1 ^ $l2;
+
+        $i3 = (int) $l1;
+
+        i0 = i0 + $i3;
+
+        return i0;
+    }
+
+    public android.location.LocationRequest toLocationRequest()
+    {
+        androidx.core.location.LocationRequestCompat r0;
+        android.location.LocationRequest $r1;
+
+        r0 := @this: androidx.core.location.LocationRequestCompat;
+
+        $r1 = staticinvoke <androidx.core.location.LocationRequestCompat$Api31Impl: android.location.LocationRequest toLocationRequest(androidx.core.location.LocationRequestCompat)>(r0);
+
+        return $r1;
+    }
+
+    public android.location.LocationRequest toLocationRequest(java.lang.String)
+    {
+        int $i0;
+        androidx.core.location.LocationRequestCompat r0;
+        android.location.LocationRequest $r2;
+        java.lang.Object $r3;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.core.location.LocationRequestCompat;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 31 goto label1;
+
+        $r2 = virtualinvoke r0.<androidx.core.location.LocationRequestCompat: android.location.LocationRequest toLocationRequest()>();
+
+        return $r2;
+
+     label1:
+        $r3 = staticinvoke <androidx.core.location.LocationRequestCompat$Api19Impl: java.lang.Object toLocationRequest(androidx.core.location.LocationRequestCompat,java.lang.String)>(r0, $r1);
+
+        $r2 = (android.location.LocationRequest) $r3;
+
+        return $r2;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.core.location.LocationRequestCompat r0;
+        long $l0, $l3;
+        byte $b1;
+        int $i2;
+        float $f0;
+        java.lang.StringBuilder r1, $r2;
+        java.lang.String $r3;
+        double $d0;
+
+        r0 := @this: androidx.core.location.LocationRequestCompat;
+
+        $r2 = new java.lang.StringBuilder;
+
+        r1 = $r2;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Request[");
+
+        $l0 = r0.<androidx.core.location.LocationRequestCompat: long mIntervalMillis>;
+
+        $b1 = $l0 cmp 9223372036854775807L;
+
+        if $b1 == 0 goto label06;
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("@");
+
+        $l0 = r0.<androidx.core.location.LocationRequestCompat: long mIntervalMillis>;
+
+        staticinvoke <androidx.core.util.TimeUtils: void formatDuration(long,java.lang.StringBuilder)>($l0, $r2);
+
+        $i2 = r0.<androidx.core.location.LocationRequestCompat: int mQuality>;
+
+        lookupswitch($i2)
+        {
+            case 100: goto label04;
+            case 101: goto label01;
+            case 102: goto label03;
+            case 103: goto label01;
+            case 104: goto label02;
+            default: goto label01;
+        };
+
+     label01:
+        goto label05;
+
+     label02:
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" LOW_POWER");
+
+        goto label05;
+
+     label03:
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" BALANCED");
+
+        goto label05;
+
+     label04:
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" HIGH_ACCURACY");
+
+     label05:
+        goto label07;
+
+     label06:
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("PASSIVE");
+
+     label07:
+        $l0 = r0.<androidx.core.location.LocationRequestCompat: long mDurationMillis>;
+
+        $b1 = $l0 cmp 9223372036854775807L;
+
+        if $b1 == 0 goto label08;
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", duration=");
+
+        $l0 = r0.<androidx.core.location.LocationRequestCompat: long mDurationMillis>;
+
+        staticinvoke <androidx.core.util.TimeUtils: void formatDuration(long,java.lang.StringBuilder)>($l0, r1);
+
+     label08:
+        $i2 = r0.<androidx.core.location.LocationRequestCompat: int mMaxUpdates>;
+
+        if $i2 == 2147483647 goto label09;
+
+        $r2 = virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", maxUpdates=");
+
+        $i2 = r0.<androidx.core.location.LocationRequestCompat: int mMaxUpdates>;
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i2);
+
+     label09:
+        $l0 = r0.<androidx.core.location.LocationRequestCompat: long mMinUpdateIntervalMillis>;
+
+        $b1 = $l0 cmp -1L;
+
+        if $b1 == 0 goto label10;
+
+        $l0 = r0.<androidx.core.location.LocationRequestCompat: long mMinUpdateIntervalMillis>;
+
+        $l3 = r0.<androidx.core.location.LocationRequestCompat: long mIntervalMillis>;
+
+        $b1 = $l0 cmp $l3;
+
+        $i2 = (int) $b1;
+
+        if $i2 >= 0 goto label10;
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", minUpdateInterval=");
+
+        $l0 = r0.<androidx.core.location.LocationRequestCompat: long mMinUpdateIntervalMillis>;
+
+        staticinvoke <androidx.core.util.TimeUtils: void formatDuration(long,java.lang.StringBuilder)>($l0, r1);
+
+     label10:
+        $f0 = r0.<androidx.core.location.LocationRequestCompat: float mMinUpdateDistanceMeters>;
+
+        $d0 = (double) $f0;
+
+        $b1 = $d0 cmpl 0.0;
+
+        $i2 = (int) $b1;
+
+        if $i2 <= 0 goto label11;
+
+        $r2 = virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", minUpdateDistance=");
+
+        $f0 = r0.<androidx.core.location.LocationRequestCompat: float mMinUpdateDistanceMeters>;
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($f0);
+
+     label11:
+        $l0 = r0.<androidx.core.location.LocationRequestCompat: long mMaxUpdateDelayMillis>;
+
+        $l0 = $l0 / 2L;
+
+        $l3 = r0.<androidx.core.location.LocationRequestCompat: long mIntervalMillis>;
+
+        $b1 = $l0 cmp $l3;
+
+        $i2 = (int) $b1;
+
+        if $i2 <= 0 goto label12;
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", maxUpdateDelay=");
+
+        $l0 = r0.<androidx.core.location.LocationRequestCompat: long mMaxUpdateDelayMillis>;
+
+        staticinvoke <androidx.core.util.TimeUtils: void formatDuration(long,java.lang.StringBuilder)>($l0, r1);
+
+     label12:
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(93);
+
+        $r3 = virtualinvoke r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.location.LocationRequestCompat: int QUALITY_LOW_POWER> = 104;
+
+        <androidx.core.location.LocationRequestCompat: int QUALITY_HIGH_ACCURACY> = 100;
+
+        <androidx.core.location.LocationRequestCompat: int QUALITY_BALANCED_POWER_ACCURACY> = 102;
+
+        <androidx.core.location.LocationRequestCompat: long PASSIVE_INTERVAL> = 9223372036854775807L;
+
+        <androidx.core.location.LocationRequestCompat: long IMPLICIT_MIN_UPDATE_INTERVAL> = -1L;
+
+        return;
+    }
+}

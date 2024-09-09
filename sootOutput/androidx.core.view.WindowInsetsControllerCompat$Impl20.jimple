@@ -1,0 +1,430 @@
+class androidx.core.view.WindowInsetsControllerCompat$Impl20 extends androidx.core.view.WindowInsetsControllerCompat$Impl
+{
+    private final android.view.View mView;
+    protected final android.view.Window mWindow;
+
+    void <init>(android.view.Window, android.view.View)
+    {
+        android.view.View $r2;
+        androidx.core.view.WindowInsetsControllerCompat$Impl20 r0;
+        android.view.Window $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsControllerCompat$Impl20;
+
+        $r1 := @parameter0: android.view.Window;
+
+        $r2 := @parameter1: android.view.View;
+
+        specialinvoke r0.<androidx.core.view.WindowInsetsControllerCompat$Impl: void <init>()>();
+
+        r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: android.view.Window mWindow> = $r1;
+
+        r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: android.view.View mView> = $r2;
+
+        return;
+    }
+
+    private void hideForType(int)
+    {
+        android.content.Context $r2;
+        android.os.IBinder $r6;
+        android.view.inputmethod.InputMethodManager $r4;
+        androidx.core.view.WindowInsetsControllerCompat$Impl20 r0;
+        int $i0;
+        android.view.View $r5;
+        java.lang.Object $r3;
+        android.view.Window $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsControllerCompat$Impl20;
+
+        $i0 := @parameter0: int;
+
+        lookupswitch($i0)
+        {
+            case 1: goto label4;
+            case 2: goto label3;
+            case 8: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        $r1 = r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: android.view.Window mWindow>;
+
+        $r2 = virtualinvoke $r1.<android.view.Window: android.content.Context getContext()>();
+
+        $r3 = virtualinvoke $r2.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("input_method");
+
+        $r4 = (android.view.inputmethod.InputMethodManager) $r3;
+
+        $r1 = r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: android.view.Window mWindow>;
+
+        $r5 = virtualinvoke $r1.<android.view.Window: android.view.View getDecorView()>();
+
+        $r6 = virtualinvoke $r5.<android.view.View: android.os.IBinder getWindowToken()>();
+
+        virtualinvoke $r4.<android.view.inputmethod.InputMethodManager: boolean hideSoftInputFromWindow(android.os.IBinder,int)>($r6, 0);
+
+        return;
+
+     label3:
+        virtualinvoke r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: void setSystemUiFlag(int)>(2);
+
+        return;
+
+     label4:
+        virtualinvoke r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: void setSystemUiFlag(int)>(4);
+
+        return;
+    }
+
+    static void lambda$showForType$0(android.view.View)
+    {
+        android.content.Context $r1;
+        android.view.View $r0;
+        java.lang.Object $r2;
+        android.view.inputmethod.InputMethodManager r3;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.content.Context getContext()>();
+
+        $r2 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("input_method");
+
+        r3 = (android.view.inputmethod.InputMethodManager) $r2;
+
+        virtualinvoke r3.<android.view.inputmethod.InputMethodManager: boolean showSoftInput(android.view.View,int)>($r0, 0);
+
+        return;
+    }
+
+    private void showForType(int)
+    {
+        androidx.core.view.WindowInsetsControllerCompat$Impl20 r0;
+        int $i0;
+        android.view.View r1;
+        androidx.core.view.WindowInsetsControllerCompat$Impl20$$ExternalSyntheticLambda0 $r3;
+        android.view.Window r2;
+        boolean $z0;
+
+        r0 := @this: androidx.core.view.WindowInsetsControllerCompat$Impl20;
+
+        $i0 := @parameter0: int;
+
+        lookupswitch($i0)
+        {
+            case 1: goto label8;
+            case 2: goto label7;
+            case 8: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        r1 = r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: android.view.View mView>;
+
+        $z0 = virtualinvoke r1.<android.view.View: boolean isInEditMode()>();
+
+        if $z0 != 0 goto label4;
+
+        $z0 = virtualinvoke r1.<android.view.View: boolean onCheckIsTextEditor()>();
+
+        if $z0 == 0 goto label3;
+
+        goto label4;
+
+     label3:
+        r2 = r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: android.view.Window mWindow>;
+
+        r1 = virtualinvoke r2.<android.view.Window: android.view.View getCurrentFocus()>();
+
+        goto label5;
+
+     label4:
+        virtualinvoke r1.<android.view.View: boolean requestFocus()>();
+
+     label5:
+        if r1 != null goto label6;
+
+        r2 = r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: android.view.Window mWindow>;
+
+        r1 = virtualinvoke r2.<android.view.Window: android.view.View findViewById(int)>(16908290);
+
+     label6:
+        if r1 == null goto label9;
+
+        $z0 = virtualinvoke r1.<android.view.View: boolean hasWindowFocus()>();
+
+        if $z0 == 0 goto label9;
+
+        $r3 = new androidx.core.view.WindowInsetsControllerCompat$Impl20$$ExternalSyntheticLambda0;
+
+        specialinvoke $r3.<androidx.core.view.WindowInsetsControllerCompat$Impl20$$ExternalSyntheticLambda0: void <init>(android.view.View)>(r1);
+
+        virtualinvoke r1.<android.view.View: boolean post(java.lang.Runnable)>($r3);
+
+        return;
+
+     label7:
+        virtualinvoke r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: void unsetSystemUiFlag(int)>(2);
+
+        return;
+
+     label8:
+        virtualinvoke r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: void unsetSystemUiFlag(int)>(4);
+
+        virtualinvoke r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: void unsetWindowFlag(int)>(1024);
+
+     label9:
+        return;
+    }
+
+    void addOnControllableInsetsChangedListener(androidx.core.view.WindowInsetsControllerCompat$OnControllableInsetsChangedListener)
+    {
+        androidx.core.view.WindowInsetsControllerCompat$Impl20 r0;
+        androidx.core.view.WindowInsetsControllerCompat$OnControllableInsetsChangedListener $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsControllerCompat$Impl20;
+
+        $r1 := @parameter0: androidx.core.view.WindowInsetsControllerCompat$OnControllableInsetsChangedListener;
+
+        return;
+    }
+
+    void controlWindowInsetsAnimation(int, long, android.view.animation.Interpolator, android.os.CancellationSignal, androidx.core.view.WindowInsetsAnimationControlListenerCompat)
+    {
+        androidx.core.view.WindowInsetsControllerCompat$Impl20 r0;
+        android.view.animation.Interpolator $r1;
+        int $i0;
+        android.os.CancellationSignal $r2;
+        long $l1;
+        androidx.core.view.WindowInsetsAnimationControlListenerCompat $r3;
+
+        r0 := @this: androidx.core.view.WindowInsetsControllerCompat$Impl20;
+
+        $i0 := @parameter0: int;
+
+        $l1 := @parameter1: long;
+
+        $r1 := @parameter2: android.view.animation.Interpolator;
+
+        $r2 := @parameter3: android.os.CancellationSignal;
+
+        $r3 := @parameter4: androidx.core.view.WindowInsetsAnimationControlListenerCompat;
+
+        return;
+    }
+
+    int getSystemBarsBehavior()
+    {
+        androidx.core.view.WindowInsetsControllerCompat$Impl20 r0;
+
+        r0 := @this: androidx.core.view.WindowInsetsControllerCompat$Impl20;
+
+        return 0;
+    }
+
+    void hide(int)
+    {
+        androidx.core.view.WindowInsetsControllerCompat$Impl20 r0;
+        int $i0, i1, $i2;
+
+        r0 := @this: androidx.core.view.WindowInsetsControllerCompat$Impl20;
+
+        $i0 := @parameter0: int;
+
+        i1 = 1;
+
+     label1:
+        if i1 > 256 goto label4;
+
+        $i2 = $i0 & i1;
+
+        if $i2 != 0 goto label2;
+
+        goto label3;
+
+     label2:
+        specialinvoke r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: void hideForType(int)>(i1);
+
+     label3:
+        i1 = i1 << 1;
+
+        goto label1;
+
+     label4:
+        return;
+    }
+
+    void removeOnControllableInsetsChangedListener(androidx.core.view.WindowInsetsControllerCompat$OnControllableInsetsChangedListener)
+    {
+        androidx.core.view.WindowInsetsControllerCompat$Impl20 r0;
+        androidx.core.view.WindowInsetsControllerCompat$OnControllableInsetsChangedListener $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsControllerCompat$Impl20;
+
+        $r1 := @parameter0: androidx.core.view.WindowInsetsControllerCompat$OnControllableInsetsChangedListener;
+
+        return;
+    }
+
+    void setSystemBarsBehavior(int)
+    {
+        int $i0;
+        androidx.core.view.WindowInsetsControllerCompat$Impl20 r0;
+
+        r0 := @this: androidx.core.view.WindowInsetsControllerCompat$Impl20;
+
+        $i0 := @parameter0: int;
+
+        lookupswitch($i0)
+        {
+            case 0: goto label4;
+            case 1: goto label3;
+            case 2: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        virtualinvoke r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: void unsetSystemUiFlag(int)>(2048);
+
+        virtualinvoke r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: void setSystemUiFlag(int)>(4096);
+
+        return;
+
+     label3:
+        virtualinvoke r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: void unsetSystemUiFlag(int)>(4096);
+
+        virtualinvoke r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: void setSystemUiFlag(int)>(2048);
+
+        return;
+
+     label4:
+        virtualinvoke r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: void unsetSystemUiFlag(int)>(6144);
+
+        return;
+    }
+
+    protected void setSystemUiFlag(int)
+    {
+        androidx.core.view.WindowInsetsControllerCompat$Impl20 r0;
+        int $i0, $i1;
+        android.view.View $r2;
+        android.view.Window r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsControllerCompat$Impl20;
+
+        $i0 := @parameter0: int;
+
+        r1 = r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: android.view.Window mWindow>;
+
+        $r2 = virtualinvoke r1.<android.view.Window: android.view.View getDecorView()>();
+
+        $i1 = virtualinvoke $r2.<android.view.View: int getSystemUiVisibility()>();
+
+        $i0 = $i1 | $i0;
+
+        virtualinvoke $r2.<android.view.View: void setSystemUiVisibility(int)>($i0);
+
+        return;
+    }
+
+    protected void setWindowFlag(int)
+    {
+        int $i0;
+        androidx.core.view.WindowInsetsControllerCompat$Impl20 r0;
+        android.view.Window $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsControllerCompat$Impl20;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: android.view.Window mWindow>;
+
+        virtualinvoke $r1.<android.view.Window: void addFlags(int)>($i0);
+
+        return;
+    }
+
+    void show(int)
+    {
+        androidx.core.view.WindowInsetsControllerCompat$Impl20 r0;
+        int $i0, i1, $i2;
+
+        r0 := @this: androidx.core.view.WindowInsetsControllerCompat$Impl20;
+
+        $i0 := @parameter0: int;
+
+        i1 = 1;
+
+     label1:
+        if i1 > 256 goto label4;
+
+        $i2 = $i0 & i1;
+
+        if $i2 != 0 goto label2;
+
+        goto label3;
+
+     label2:
+        specialinvoke r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: void showForType(int)>(i1);
+
+     label3:
+        i1 = i1 << 1;
+
+        goto label1;
+
+     label4:
+        return;
+    }
+
+    protected void unsetSystemUiFlag(int)
+    {
+        androidx.core.view.WindowInsetsControllerCompat$Impl20 r0;
+        int $i0, $i1;
+        android.view.View $r2;
+        android.view.Window r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsControllerCompat$Impl20;
+
+        $i0 := @parameter0: int;
+
+        r1 = r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: android.view.Window mWindow>;
+
+        $r2 = virtualinvoke r1.<android.view.Window: android.view.View getDecorView()>();
+
+        $i1 = virtualinvoke $r2.<android.view.View: int getSystemUiVisibility()>();
+
+        $i0 = $i0 ^ -1;
+
+        $i0 = $i1 & $i0;
+
+        virtualinvoke $r2.<android.view.View: void setSystemUiVisibility(int)>($i0);
+
+        return;
+    }
+
+    protected void unsetWindowFlag(int)
+    {
+        int $i0;
+        androidx.core.view.WindowInsetsControllerCompat$Impl20 r0;
+        android.view.Window $r1;
+
+        r0 := @this: androidx.core.view.WindowInsetsControllerCompat$Impl20;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.core.view.WindowInsetsControllerCompat$Impl20: android.view.Window mWindow>;
+
+        virtualinvoke $r1.<android.view.Window: void clearFlags(int)>($i0);
+
+        return;
+    }
+}

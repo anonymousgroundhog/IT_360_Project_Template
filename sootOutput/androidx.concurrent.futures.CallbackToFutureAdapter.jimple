@@ -1,0 +1,62 @@
+public final class androidx.concurrent.futures.CallbackToFutureAdapter extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.concurrent.futures.CallbackToFutureAdapter r0;
+
+        r0 := @this: androidx.concurrent.futures.CallbackToFutureAdapter;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static com.google.common.util.concurrent.ListenableFuture getFuture(androidx.concurrent.futures.CallbackToFutureAdapter$Resolver)
+    {
+        androidx.concurrent.futures.CallbackToFutureAdapter$Completer r1;
+        androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture r2;
+        androidx.concurrent.futures.CallbackToFutureAdapter$Resolver r0;
+        java.lang.Class $r3;
+        java.lang.Object $r4;
+        java.lang.Exception r5;
+
+        r0 := @parameter0: androidx.concurrent.futures.CallbackToFutureAdapter$Resolver;
+
+        r1 = new androidx.concurrent.futures.CallbackToFutureAdapter$Completer;
+
+        specialinvoke r1.<androidx.concurrent.futures.CallbackToFutureAdapter$Completer: void <init>()>();
+
+        r2 = new androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture;
+
+        specialinvoke r2.<androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture: void <init>(androidx.concurrent.futures.CallbackToFutureAdapter$Completer)>(r1);
+
+        r1.<androidx.concurrent.futures.CallbackToFutureAdapter$Completer: androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture future> = r2;
+
+        $r3 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        r1.<androidx.concurrent.futures.CallbackToFutureAdapter$Completer: java.lang.Object tag> = $r3;
+
+     label1:
+        $r4 = interfaceinvoke r0.<androidx.concurrent.futures.CallbackToFutureAdapter$Resolver: java.lang.Object attachCompleter(androidx.concurrent.futures.CallbackToFutureAdapter$Completer)>(r1);
+
+     label2:
+        if $r4 == null goto label4;
+
+     label3:
+        r1.<androidx.concurrent.futures.CallbackToFutureAdapter$Completer: java.lang.Object tag> = $r4;
+
+     label4:
+        return r2;
+
+     label5:
+        r5 := @caughtexception;
+
+        virtualinvoke r2.<androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture: boolean setException(java.lang.Throwable)>(r5);
+
+        return r2;
+
+        catch java.lang.Exception from label1 to label2 with label5;
+        catch java.lang.Exception from label3 to label4 with label5;
+    }
+}

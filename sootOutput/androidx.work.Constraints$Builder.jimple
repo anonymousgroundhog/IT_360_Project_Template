@@ -1,0 +1,311 @@
+public final class androidx.work.Constraints$Builder extends java.lang.Object
+{
+    androidx.work.ContentUriTriggers mContentUriTriggers;
+    androidx.work.NetworkType mRequiredNetworkType;
+    boolean mRequiresBatteryNotLow;
+    boolean mRequiresCharging;
+    boolean mRequiresDeviceIdle;
+    boolean mRequiresStorageNotLow;
+    long mTriggerContentMaxDelay;
+    long mTriggerContentUpdateDelay;
+
+    public void <init>()
+    {
+        androidx.work.NetworkType $r1;
+        androidx.work.Constraints$Builder r0;
+        androidx.work.ContentUriTriggers $r2;
+
+        r0 := @this: androidx.work.Constraints$Builder;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.work.Constraints$Builder: boolean mRequiresCharging> = 0;
+
+        r0.<androidx.work.Constraints$Builder: boolean mRequiresDeviceIdle> = 0;
+
+        $r1 = <androidx.work.NetworkType: androidx.work.NetworkType NOT_REQUIRED>;
+
+        r0.<androidx.work.Constraints$Builder: androidx.work.NetworkType mRequiredNetworkType> = $r1;
+
+        r0.<androidx.work.Constraints$Builder: boolean mRequiresBatteryNotLow> = 0;
+
+        r0.<androidx.work.Constraints$Builder: boolean mRequiresStorageNotLow> = 0;
+
+        r0.<androidx.work.Constraints$Builder: long mTriggerContentUpdateDelay> = -1L;
+
+        r0.<androidx.work.Constraints$Builder: long mTriggerContentMaxDelay> = -1L;
+
+        $r2 = new androidx.work.ContentUriTriggers;
+
+        specialinvoke $r2.<androidx.work.ContentUriTriggers: void <init>()>();
+
+        r0.<androidx.work.Constraints$Builder: androidx.work.ContentUriTriggers mContentUriTriggers> = $r2;
+
+        return;
+    }
+
+    public void <init>(androidx.work.Constraints)
+    {
+        androidx.work.NetworkType $r2;
+        androidx.work.Constraints $r1;
+        long $l1;
+        androidx.work.ContentUriTriggers $r3;
+        int $i0;
+        androidx.work.Constraints$Builder r0;
+        boolean $z0, $z1;
+
+        r0 := @this: androidx.work.Constraints$Builder;
+
+        $r1 := @parameter0: androidx.work.Constraints;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $z0 = 0;
+
+        r0.<androidx.work.Constraints$Builder: boolean mRequiresCharging> = 0;
+
+        r0.<androidx.work.Constraints$Builder: boolean mRequiresDeviceIdle> = 0;
+
+        $r2 = <androidx.work.NetworkType: androidx.work.NetworkType NOT_REQUIRED>;
+
+        r0.<androidx.work.Constraints$Builder: androidx.work.NetworkType mRequiredNetworkType> = $r2;
+
+        r0.<androidx.work.Constraints$Builder: boolean mRequiresBatteryNotLow> = 0;
+
+        r0.<androidx.work.Constraints$Builder: boolean mRequiresStorageNotLow> = 0;
+
+        r0.<androidx.work.Constraints$Builder: long mTriggerContentUpdateDelay> = -1L;
+
+        r0.<androidx.work.Constraints$Builder: long mTriggerContentMaxDelay> = -1L;
+
+        $r3 = new androidx.work.ContentUriTriggers;
+
+        specialinvoke $r3.<androidx.work.ContentUriTriggers: void <init>()>();
+
+        r0.<androidx.work.Constraints$Builder: androidx.work.ContentUriTriggers mContentUriTriggers> = $r3;
+
+        $z1 = virtualinvoke $r1.<androidx.work.Constraints: boolean requiresCharging()>();
+
+        r0.<androidx.work.Constraints$Builder: boolean mRequiresCharging> = $z1;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 23 goto label1;
+
+        $z1 = virtualinvoke $r1.<androidx.work.Constraints: boolean requiresDeviceIdle()>();
+
+        if $z1 == 0 goto label1;
+
+        $z0 = 1;
+
+     label1:
+        r0.<androidx.work.Constraints$Builder: boolean mRequiresDeviceIdle> = $z0;
+
+        $r2 = virtualinvoke $r1.<androidx.work.Constraints: androidx.work.NetworkType getRequiredNetworkType()>();
+
+        r0.<androidx.work.Constraints$Builder: androidx.work.NetworkType mRequiredNetworkType> = $r2;
+
+        $z0 = virtualinvoke $r1.<androidx.work.Constraints: boolean requiresBatteryNotLow()>();
+
+        r0.<androidx.work.Constraints$Builder: boolean mRequiresBatteryNotLow> = $z0;
+
+        $z0 = virtualinvoke $r1.<androidx.work.Constraints: boolean requiresStorageNotLow()>();
+
+        r0.<androidx.work.Constraints$Builder: boolean mRequiresStorageNotLow> = $z0;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 24 goto label2;
+
+        $l1 = virtualinvoke $r1.<androidx.work.Constraints: long getTriggerContentUpdateDelay()>();
+
+        r0.<androidx.work.Constraints$Builder: long mTriggerContentUpdateDelay> = $l1;
+
+        $l1 = virtualinvoke $r1.<androidx.work.Constraints: long getTriggerMaxContentDelay()>();
+
+        r0.<androidx.work.Constraints$Builder: long mTriggerContentMaxDelay> = $l1;
+
+        $r3 = virtualinvoke $r1.<androidx.work.Constraints: androidx.work.ContentUriTriggers getContentUriTriggers()>();
+
+        r0.<androidx.work.Constraints$Builder: androidx.work.ContentUriTriggers mContentUriTriggers> = $r3;
+
+     label2:
+        return;
+    }
+
+    public androidx.work.Constraints$Builder addContentUriTrigger(android.net.Uri, boolean)
+    {
+        androidx.work.ContentUriTriggers $r2;
+        android.net.Uri $r1;
+        androidx.work.Constraints$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.work.Constraints$Builder;
+
+        $r1 := @parameter0: android.net.Uri;
+
+        $z0 := @parameter1: boolean;
+
+        $r2 = r0.<androidx.work.Constraints$Builder: androidx.work.ContentUriTriggers mContentUriTriggers>;
+
+        virtualinvoke $r2.<androidx.work.ContentUriTriggers: void add(android.net.Uri,boolean)>($r1, $z0);
+
+        return r0;
+    }
+
+    public androidx.work.Constraints build()
+    {
+        androidx.work.Constraints$Builder r0;
+        androidx.work.Constraints $r1;
+
+        r0 := @this: androidx.work.Constraints$Builder;
+
+        $r1 = new androidx.work.Constraints;
+
+        specialinvoke $r1.<androidx.work.Constraints: void <init>(androidx.work.Constraints$Builder)>(r0);
+
+        return $r1;
+    }
+
+    public androidx.work.Constraints$Builder setRequiredNetworkType(androidx.work.NetworkType)
+    {
+        androidx.work.NetworkType $r1;
+        androidx.work.Constraints$Builder r0;
+
+        r0 := @this: androidx.work.Constraints$Builder;
+
+        $r1 := @parameter0: androidx.work.NetworkType;
+
+        r0.<androidx.work.Constraints$Builder: androidx.work.NetworkType mRequiredNetworkType> = $r1;
+
+        return r0;
+    }
+
+    public androidx.work.Constraints$Builder setRequiresBatteryNotLow(boolean)
+    {
+        androidx.work.Constraints$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.work.Constraints$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.work.Constraints$Builder: boolean mRequiresBatteryNotLow> = $z0;
+
+        return r0;
+    }
+
+    public androidx.work.Constraints$Builder setRequiresCharging(boolean)
+    {
+        androidx.work.Constraints$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.work.Constraints$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.work.Constraints$Builder: boolean mRequiresCharging> = $z0;
+
+        return r0;
+    }
+
+    public androidx.work.Constraints$Builder setRequiresDeviceIdle(boolean)
+    {
+        androidx.work.Constraints$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.work.Constraints$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.work.Constraints$Builder: boolean mRequiresDeviceIdle> = $z0;
+
+        return r0;
+    }
+
+    public androidx.work.Constraints$Builder setRequiresStorageNotLow(boolean)
+    {
+        androidx.work.Constraints$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.work.Constraints$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.work.Constraints$Builder: boolean mRequiresStorageNotLow> = $z0;
+
+        return r0;
+    }
+
+    public androidx.work.Constraints$Builder setTriggerContentMaxDelay(long, java.util.concurrent.TimeUnit)
+    {
+        java.util.concurrent.TimeUnit $r1;
+        long $l0;
+        androidx.work.Constraints$Builder r0;
+
+        r0 := @this: androidx.work.Constraints$Builder;
+
+        $l0 := @parameter0: long;
+
+        $r1 := @parameter1: java.util.concurrent.TimeUnit;
+
+        $l0 = virtualinvoke $r1.<java.util.concurrent.TimeUnit: long toMillis(long)>($l0);
+
+        r0.<androidx.work.Constraints$Builder: long mTriggerContentMaxDelay> = $l0;
+
+        return r0;
+    }
+
+    public androidx.work.Constraints$Builder setTriggerContentMaxDelay(java.time.Duration)
+    {
+        long $l0;
+        androidx.work.Constraints$Builder r0;
+        java.time.Duration $r1;
+
+        r0 := @this: androidx.work.Constraints$Builder;
+
+        $r1 := @parameter0: java.time.Duration;
+
+        $l0 = virtualinvoke $r1.<java.time.Duration: long toMillis()>();
+
+        r0.<androidx.work.Constraints$Builder: long mTriggerContentMaxDelay> = $l0;
+
+        return r0;
+    }
+
+    public androidx.work.Constraints$Builder setTriggerContentUpdateDelay(long, java.util.concurrent.TimeUnit)
+    {
+        java.util.concurrent.TimeUnit $r1;
+        long $l0;
+        androidx.work.Constraints$Builder r0;
+
+        r0 := @this: androidx.work.Constraints$Builder;
+
+        $l0 := @parameter0: long;
+
+        $r1 := @parameter1: java.util.concurrent.TimeUnit;
+
+        $l0 = virtualinvoke $r1.<java.util.concurrent.TimeUnit: long toMillis(long)>($l0);
+
+        r0.<androidx.work.Constraints$Builder: long mTriggerContentUpdateDelay> = $l0;
+
+        return r0;
+    }
+
+    public androidx.work.Constraints$Builder setTriggerContentUpdateDelay(java.time.Duration)
+    {
+        long $l0;
+        androidx.work.Constraints$Builder r0;
+        java.time.Duration $r1;
+
+        r0 := @this: androidx.work.Constraints$Builder;
+
+        $r1 := @parameter0: java.time.Duration;
+
+        $l0 = virtualinvoke $r1.<java.time.Duration: long toMillis()>();
+
+        r0.<androidx.work.Constraints$Builder: long mTriggerContentUpdateDelay> = $l0;
+
+        return r0;
+    }
+}

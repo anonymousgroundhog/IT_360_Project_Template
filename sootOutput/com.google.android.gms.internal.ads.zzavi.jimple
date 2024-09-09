@@ -1,0 +1,510 @@
+public final class com.google.android.gms.internal.ads.zzavi extends java.lang.Object
+{
+    private static final java.lang.String[] zza;
+    private final java.lang.String zzb;
+    private final java.lang.String[] zzc;
+    private final com.google.android.gms.internal.ads.zzave zzd;
+
+    static void <clinit>()
+    {
+        java.lang.String[] $r0;
+
+        $r0 = newarray (java.lang.String)[3];
+
+        $r0[0] = "/aclk";
+
+        $r0[1] = "/pcs/click";
+
+        $r0[2] = "/dbm/clk";
+
+        <com.google.android.gms.internal.ads.zzavi: java.lang.String[] zza> = $r0;
+
+        return;
+    }
+
+    public void <init>(com.google.android.gms.internal.ads.zzave)
+    {
+        com.google.android.gms.internal.ads.zzave $r1;
+        java.lang.String[] $r2;
+        com.google.android.gms.internal.ads.zzavi r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzavi;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzave;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzavi: java.lang.String zzb> = "ad.doubleclick.net";
+
+        $r2 = newarray (java.lang.String)[3];
+
+        $r2[0] = ".doubleclick.net";
+
+        $r2[1] = ".googleadservices.com";
+
+        $r2[2] = ".googlesyndication.com";
+
+        r0.<com.google.android.gms.internal.ads.zzavi: java.lang.String[] zzc> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzavi: com.google.android.gms.internal.ads.zzave zzd> = $r1;
+
+        return;
+    }
+
+    private final android.net.Uri zzg(android.net.Uri, java.lang.String) throws com.google.android.gms.internal.ads.zzavj
+    {
+        java.lang.UnsupportedOperationException $r6;
+        android.net.Uri $r1;
+        java.lang.NullPointerException $r7, $r11;
+        com.google.android.gms.internal.ads.zzavj $r10;
+        com.google.android.gms.internal.ads.zzavi r0;
+        int $i0, $i1;
+        java.lang.StringBuilder $r9;
+        java.lang.String $r2, $r3, $r4, $r5;
+        android.net.Uri$Builder $r8;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzavi;
+
+        $r1 := @parameter0: android.net.Uri;
+
+        $r2 := @parameter1: java.lang.String;
+
+        if $r1 == null goto label39;
+
+     label01:
+        $r3 = virtualinvoke $r1.<android.net.Uri: java.lang.String getHost()>();
+
+     label02:
+        $r4 = r0.<com.google.android.gms.internal.ads.zzavi: java.lang.String zzb>;
+
+     label03:
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>($r4);
+
+     label04:
+        if $z0 == 0 goto label26;
+
+     label05:
+        $r3 = virtualinvoke $r1.<android.net.Uri: java.lang.String getPath()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean contains(java.lang.CharSequence)>(";");
+
+     label06:
+        if $z0 == 0 goto label26;
+
+     label07:
+        $r3 = virtualinvoke $r1.<android.net.Uri: java.lang.String toString()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean contains(java.lang.CharSequence)>("dc_ms=");
+
+     label08:
+        if $z0 != 0 goto label21;
+
+     label09:
+        $r3 = virtualinvoke $r1.<android.net.Uri: java.lang.String toString()>();
+
+        $i0 = virtualinvoke $r3.<java.lang.String: int indexOf(java.lang.String)>(";adurl");
+
+     label10:
+        if $i0 == -1 goto label13;
+
+        $r9 = new java.lang.StringBuilder;
+
+        $i0 = $i0 + 1;
+
+     label11:
+        $r4 = virtualinvoke $r3.<java.lang.String: java.lang.String substring(int,int)>(0, $i0);
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>($r4);
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("dc_ms");
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("=");
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(";");
+
+        $r2 = virtualinvoke $r3.<java.lang.String: java.lang.String substring(int)>($i0);
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r1 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r2);
+
+     label12:
+        return $r1;
+
+     label13:
+        $r4 = virtualinvoke $r1.<android.net.Uri: java.lang.String getEncodedPath()>();
+
+        $i0 = virtualinvoke $r3.<java.lang.String: int indexOf(java.lang.String)>($r4);
+
+     label14:
+        $r9 = new java.lang.StringBuilder;
+
+     label15:
+        $i1 = virtualinvoke $r4.<java.lang.String: int length()>();
+
+     label16:
+        $i1 = $i1 + $i0;
+
+     label17:
+        $r5 = virtualinvoke $r3.<java.lang.String: java.lang.String substring(int,int)>(0, $i1);
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(";");
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("dc_ms");
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("=");
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(";");
+
+        $i1 = virtualinvoke $r4.<java.lang.String: int length()>();
+
+     label18:
+        $i0 = $i0 + $i1;
+
+     label19:
+        $r2 = virtualinvoke $r3.<java.lang.String: java.lang.String substring(int)>($i0);
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r1 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r2);
+
+     label20:
+        return $r1;
+
+     label21:
+        $r10 = new com.google.android.gms.internal.ads.zzavj;
+
+     label22:
+        specialinvoke $r10.<com.google.android.gms.internal.ads.zzavj: void <init>(java.lang.String)>("Parameter already exists: dc_ms");
+
+     label23:
+        throw $r10;
+
+     label24:
+        $r6 := @caughtexception;
+
+        goto label42;
+
+     label25:
+        $r7 := @caughtexception;
+
+     label26:
+        $r3 = virtualinvoke $r1.<android.net.Uri: java.lang.String getQueryParameter(java.lang.String)>("ms");
+
+     label27:
+        if $r3 != null goto label36;
+
+     label28:
+        $r3 = virtualinvoke $r1.<android.net.Uri: java.lang.String toString()>();
+
+        $i1 = virtualinvoke $r3.<java.lang.String: int indexOf(java.lang.String)>("&adurl");
+
+     label29:
+        $i0 = $i1;
+
+        if $i1 != -1 goto label31;
+
+     label30:
+        $i0 = virtualinvoke $r3.<java.lang.String: int indexOf(java.lang.String)>("?adurl");
+
+     label31:
+        if $i0 == -1 goto label34;
+
+        $r9 = new java.lang.StringBuilder;
+
+        $i0 = $i0 + 1;
+
+     label32:
+        $r4 = virtualinvoke $r3.<java.lang.String: java.lang.String substring(int,int)>(0, $i0);
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>($r4);
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ms");
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("=");
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&");
+
+        $r2 = virtualinvoke $r3.<java.lang.String: java.lang.String substring(int)>($i0);
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r1 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r2);
+
+     label33:
+        return $r1;
+
+     label34:
+        $r8 = virtualinvoke $r1.<android.net.Uri: android.net.Uri$Builder buildUpon()>();
+
+        $r8 = virtualinvoke $r8.<android.net.Uri$Builder: android.net.Uri$Builder appendQueryParameter(java.lang.String,java.lang.String)>("ms", $r2);
+
+        $r1 = virtualinvoke $r8.<android.net.Uri$Builder: android.net.Uri build()>();
+
+     label35:
+        return $r1;
+
+     label36:
+        $r10 = new com.google.android.gms.internal.ads.zzavj;
+
+     label37:
+        specialinvoke $r10.<com.google.android.gms.internal.ads.zzavj: void <init>(java.lang.String)>("Query parameter already exists: ms");
+
+     label38:
+        throw $r10;
+
+     label39:
+        $r11 = new java.lang.NullPointerException;
+
+     label40:
+        specialinvoke $r11.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+     label41:
+        throw $r11;
+
+     label42:
+        $r10 = new com.google.android.gms.internal.ads.zzavj;
+
+        specialinvoke $r10.<com.google.android.gms.internal.ads.zzavj: void <init>(java.lang.String)>("Provided Uri is not in a valid state");
+
+        throw $r10;
+
+        catch java.lang.NullPointerException from label01 to label04 with label25;
+        catch java.lang.NullPointerException from label05 to label06 with label25;
+        catch java.lang.UnsupportedOperationException from label01 to label02 with label24;
+        catch java.lang.UnsupportedOperationException from label03 to label04 with label24;
+        catch java.lang.UnsupportedOperationException from label05 to label06 with label24;
+        catch java.lang.UnsupportedOperationException from label07 to label08 with label24;
+        catch java.lang.UnsupportedOperationException from label09 to label10 with label24;
+        catch java.lang.UnsupportedOperationException from label11 to label12 with label24;
+        catch java.lang.UnsupportedOperationException from label13 to label14 with label24;
+        catch java.lang.UnsupportedOperationException from label15 to label16 with label24;
+        catch java.lang.UnsupportedOperationException from label17 to label18 with label24;
+        catch java.lang.UnsupportedOperationException from label19 to label20 with label24;
+        catch java.lang.UnsupportedOperationException from label22 to label23 with label24;
+        catch java.lang.UnsupportedOperationException from label26 to label27 with label24;
+        catch java.lang.UnsupportedOperationException from label28 to label29 with label24;
+        catch java.lang.UnsupportedOperationException from label30 to label31 with label24;
+        catch java.lang.UnsupportedOperationException from label32 to label33 with label24;
+        catch java.lang.UnsupportedOperationException from label34 to label35 with label24;
+        catch java.lang.UnsupportedOperationException from label37 to label38 with label24;
+        catch java.lang.UnsupportedOperationException from label40 to label41 with label24;
+    }
+
+    public final android.net.Uri zza(android.net.Uri, android.content.Context, android.view.View, android.app.Activity) throws com.google.android.gms.internal.ads.zzavj
+    {
+        android.content.Context $r5;
+        java.lang.UnsupportedOperationException $r7;
+        android.net.Uri $r4;
+        com.google.android.gms.internal.ads.zzave $r3;
+        com.google.android.gms.internal.ads.zzavj $r8;
+        com.google.android.gms.internal.ads.zzavi r0;
+        android.view.View $r1;
+        java.lang.String $r6;
+        android.app.Activity $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzavi;
+
+        $r4 := @parameter0: android.net.Uri;
+
+        $r5 := @parameter1: android.content.Context;
+
+        $r1 := @parameter2: android.view.View;
+
+        $r2 := @parameter3: android.app.Activity;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzavi: com.google.android.gms.internal.ads.zzave zzd>;
+
+     label1:
+        $r6 = virtualinvoke $r4.<android.net.Uri: java.lang.String getQueryParameter(java.lang.String)>("ai");
+
+        $r6 = interfaceinvoke $r3.<com.google.android.gms.internal.ads.zzave: java.lang.String zzf(android.content.Context,java.lang.String,android.view.View,android.app.Activity)>($r5, $r6, $r1, $r2);
+
+        $r4 = specialinvoke r0.<com.google.android.gms.internal.ads.zzavi: android.net.Uri zzg(android.net.Uri,java.lang.String)>($r4, $r6);
+
+     label2:
+        return $r4;
+
+     label3:
+        $r7 := @caughtexception;
+
+        $r8 = new com.google.android.gms.internal.ads.zzavj;
+
+        specialinvoke $r8.<com.google.android.gms.internal.ads.zzavj: void <init>(java.lang.String)>("Provided Uri is not in a valid state");
+
+        throw $r8;
+
+        catch java.lang.UnsupportedOperationException from label1 to label2 with label3;
+    }
+
+    public final android.net.Uri zzb(android.net.Uri, android.content.Context) throws com.google.android.gms.internal.ads.zzavj
+    {
+        android.content.Context $r3;
+        com.google.android.gms.internal.ads.zzave $r1;
+        com.google.android.gms.internal.ads.zzavi r0;
+        android.net.Uri $r2;
+        java.lang.String $r4;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzavi;
+
+        $r2 := @parameter0: android.net.Uri;
+
+        $r3 := @parameter1: android.content.Context;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzavi: com.google.android.gms.internal.ads.zzave zzd>;
+
+        $r4 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzave: java.lang.String zzg(android.content.Context)>($r3);
+
+        $r2 = specialinvoke r0.<com.google.android.gms.internal.ads.zzavi: android.net.Uri zzg(android.net.Uri,java.lang.String)>($r2, $r4);
+
+        return $r2;
+    }
+
+    public final com.google.android.gms.internal.ads.zzave zzc()
+    {
+        com.google.android.gms.internal.ads.zzave r1;
+        com.google.android.gms.internal.ads.zzavi r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzavi;
+
+        r1 = r0.<com.google.android.gms.internal.ads.zzavi: com.google.android.gms.internal.ads.zzave zzd>;
+
+        return r1;
+    }
+
+    public final void zzd(android.view.MotionEvent)
+    {
+        com.google.android.gms.internal.ads.zzave $r2;
+        com.google.android.gms.internal.ads.zzavi r0;
+        android.view.MotionEvent $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzavi;
+
+        $r1 := @parameter0: android.view.MotionEvent;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzavi: com.google.android.gms.internal.ads.zzave zzd>;
+
+        interfaceinvoke $r2.<com.google.android.gms.internal.ads.zzave: void zzk(android.view.MotionEvent)>($r1);
+
+        return;
+    }
+
+    public final boolean zze(android.net.Uri)
+    {
+        com.google.android.gms.internal.ads.zzavi r0;
+        android.net.Uri $r1;
+        int $i0;
+        java.lang.String[] $r2;
+        java.lang.String $r3, $r4;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzavi;
+
+        $r1 := @parameter0: android.net.Uri;
+
+        $z0 = virtualinvoke r0.<com.google.android.gms.internal.ads.zzavi: boolean zzf(android.net.Uri)>($r1);
+
+        if $z0 == 0 goto label3;
+
+        $r2 = <com.google.android.gms.internal.ads.zzavi: java.lang.String[] zza>;
+
+        $i0 = 0;
+
+     label1:
+        if $i0 >= 3 goto label3;
+
+        $r3 = $r2[$i0];
+
+        $r4 = virtualinvoke $r1.<android.net.Uri: java.lang.String getPath()>();
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean endsWith(java.lang.String)>($r3);
+
+        if $z0 == 0 goto label2;
+
+        return 1;
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        return 0;
+    }
+
+    public final boolean zzf(android.net.Uri)
+    {
+        android.net.Uri $r2;
+        java.lang.String[] $r1;
+        java.lang.NullPointerException $r5;
+        com.google.android.gms.internal.ads.zzavi r0;
+        int $i0;
+        java.lang.String $r3, $r4;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzavi;
+
+        $r2 := @parameter0: android.net.Uri;
+
+        if $r2 == null goto label9;
+
+     label1:
+        $r3 = virtualinvoke $r2.<android.net.Uri: java.lang.String getHost()>();
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzavi: java.lang.String[] zzc>;
+
+     label2:
+        $i0 = 0;
+
+     label3:
+        if $i0 >= 3 goto label7;
+
+     label4:
+        $r4 = $r1[$i0];
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean endsWith(java.lang.String)>($r4);
+
+     label5:
+        if $z0 == 0 goto label6;
+
+        return 1;
+
+     label6:
+        $i0 = $i0 + 1;
+
+        goto label3;
+
+     label7:
+        return 0;
+
+     label8:
+        $r5 := @caughtexception;
+
+        return 0;
+
+     label9:
+        $r5 = new java.lang.NullPointerException;
+
+        specialinvoke $r5.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+        throw $r5;
+
+        catch java.lang.NullPointerException from label1 to label2 with label8;
+        catch java.lang.NullPointerException from label4 to label5 with label8;
+    }
+}

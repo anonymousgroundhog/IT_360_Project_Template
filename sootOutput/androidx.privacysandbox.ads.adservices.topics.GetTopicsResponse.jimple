@@ -1,0 +1,142 @@
+public final class androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse extends java.lang.Object
+{
+    private final java.util.List topics;
+
+    public void <init>(java.util.List)
+    {
+        androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse r0;
+        java.util.List $r1;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse;
+
+        $r1 := @parameter0: java.util.List;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "topics");
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse: java.util.List topics> = $r1;
+
+        return;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse r0, $r3;
+        java.util.Collection $r5;
+        java.util.HashSet $r4, $r6;
+        java.util.List $r2;
+        int $i0, $i1;
+        java.lang.Object $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if r0 != $r1 goto label1;
+
+        return 1;
+
+     label1:
+        $z0 = $r1 instanceof androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse;
+
+        if $z0 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        $r2 = r0.<androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse: java.util.List topics>;
+
+        $i0 = interfaceinvoke $r2.<java.util.List: int size()>();
+
+        $r3 = (androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse) $r1;
+
+        $r2 = $r3.<androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse: java.util.List topics>;
+
+        $i1 = interfaceinvoke $r2.<java.util.List: int size()>();
+
+        if $i0 == $i1 goto label3;
+
+        return 0;
+
+     label3:
+        $r4 = new java.util.HashSet;
+
+        $r2 = r0.<androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse: java.util.List topics>;
+
+        $r5 = (java.util.Collection) $r2;
+
+        specialinvoke $r4.<java.util.HashSet: void <init>(java.util.Collection)>($r5);
+
+        $r6 = new java.util.HashSet;
+
+        r0 = (androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse) $r1;
+
+        $r2 = r0.<androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse: java.util.List topics>;
+
+        $r5 = (java.util.Collection) $r2;
+
+        specialinvoke $r6.<java.util.HashSet: void <init>(java.util.Collection)>($r5);
+
+        $z0 = staticinvoke <kotlin.jvm.internal.Intrinsics: boolean areEqual(java.lang.Object,java.lang.Object)>($r4, $r6);
+
+        return $z0;
+    }
+
+    public final java.util.List getTopics()
+    {
+        androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse r0;
+        java.util.List r1;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse;
+
+        r1 = r0.<androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse: java.util.List topics>;
+
+        return r1;
+    }
+
+    public int hashCode()
+    {
+        androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse r0;
+        java.util.List $r1;
+        java.lang.Object[] $r2;
+        int $i0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse;
+
+        $r1 = r0.<androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse: java.util.List topics>;
+
+        $r2 = newarray (java.lang.Object)[1];
+
+        $r2[0] = $r1;
+
+        $i0 = staticinvoke <java.util.Objects: int hash(java.lang.Object[])>($r2);
+
+        return $i0;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse r0;
+        java.util.List $r2;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r3;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Topics=");
+
+        $r2 = r0.<androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse: java.util.List topics>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+}

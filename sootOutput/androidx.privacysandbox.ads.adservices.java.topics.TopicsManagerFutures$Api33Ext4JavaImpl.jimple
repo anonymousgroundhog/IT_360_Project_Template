@@ -1,0 +1,71 @@
+final class androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures$Api33Ext4JavaImpl extends androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures
+{
+    private final androidx.privacysandbox.ads.adservices.topics.TopicsManager mTopicsManager;
+
+    public void <init>(androidx.privacysandbox.ads.adservices.topics.TopicsManager)
+    {
+        androidx.privacysandbox.ads.adservices.topics.TopicsManager $r1;
+        androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures$Api33Ext4JavaImpl r0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures$Api33Ext4JavaImpl;
+
+        $r1 := @parameter0: androidx.privacysandbox.ads.adservices.topics.TopicsManager;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "mTopicsManager");
+
+        specialinvoke r0.<androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures: void <init>()>();
+
+        r0.<androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures$Api33Ext4JavaImpl: androidx.privacysandbox.ads.adservices.topics.TopicsManager mTopicsManager> = $r1;
+
+        return;
+    }
+
+    public static final androidx.privacysandbox.ads.adservices.topics.TopicsManager access$getMTopicsManager$p(androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures$Api33Ext4JavaImpl)
+    {
+        androidx.privacysandbox.ads.adservices.topics.TopicsManager r1;
+        androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures$Api33Ext4JavaImpl $r0;
+
+        $r0 := @parameter0: androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures$Api33Ext4JavaImpl;
+
+        r1 = $r0.<androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures$Api33Ext4JavaImpl: androidx.privacysandbox.ads.adservices.topics.TopicsManager mTopicsManager>;
+
+        return r1;
+    }
+
+    public com.google.common.util.concurrent.ListenableFuture getTopicsAsync(androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest)
+    {
+        com.google.common.util.concurrent.ListenableFuture $r8;
+        kotlinx.coroutines.Deferred $r7;
+        kotlinx.coroutines.MainCoroutineDispatcher $r2;
+        kotlin.jvm.functions.Function2 $r6;
+        kotlin.coroutines.CoroutineContext $r3;
+        androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures$Api33Ext4JavaImpl$getTopicsAsync$1 $r5;
+        kotlinx.coroutines.CoroutineScope $r4;
+        androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest $r1;
+        androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures$Api33Ext4JavaImpl r0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures$Api33Ext4JavaImpl;
+
+        $r1 := @parameter0: androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "request");
+
+        $r2 = staticinvoke <kotlinx.coroutines.Dispatchers: kotlinx.coroutines.MainCoroutineDispatcher getMain()>();
+
+        $r3 = (kotlin.coroutines.CoroutineContext) $r2;
+
+        $r4 = staticinvoke <kotlinx.coroutines.CoroutineScopeKt: kotlinx.coroutines.CoroutineScope CoroutineScope(kotlin.coroutines.CoroutineContext)>($r3);
+
+        $r5 = new androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures$Api33Ext4JavaImpl$getTopicsAsync$1;
+
+        specialinvoke $r5.<androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures$Api33Ext4JavaImpl$getTopicsAsync$1: void <init>(androidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures$Api33Ext4JavaImpl,androidx.privacysandbox.ads.adservices.topics.GetTopicsRequest,kotlin.coroutines.Continuation)>(r0, $r1, null);
+
+        $r6 = (kotlin.jvm.functions.Function2) $r5;
+
+        $r7 = staticinvoke <kotlinx.coroutines.BuildersKt: kotlinx.coroutines.Deferred async$default(kotlinx.coroutines.CoroutineScope,kotlin.coroutines.CoroutineContext,kotlinx.coroutines.CoroutineStart,kotlin.jvm.functions.Function2,int,java.lang.Object)>($r4, null, null, $r6, 3, null);
+
+        $r8 = staticinvoke <androidx.privacysandbox.ads.adservices.java.internal.CoroutineAdapterKt: com.google.common.util.concurrent.ListenableFuture asListenableFuture$default(kotlinx.coroutines.Deferred,java.lang.Object,int,java.lang.Object)>($r7, null, 1, null);
+
+        return $r8;
+    }
+}

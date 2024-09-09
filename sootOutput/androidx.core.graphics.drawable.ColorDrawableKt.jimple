@@ -1,0 +1,36 @@
+public final class androidx.core.graphics.drawable.ColorDrawableKt extends java.lang.Object
+{
+
+    public static final android.graphics.drawable.ColorDrawable toDrawable(int)
+    {
+        int $i0;
+        android.graphics.drawable.ColorDrawable $r0;
+
+        $i0 := @parameter0: int;
+
+        $r0 = new android.graphics.drawable.ColorDrawable;
+
+        specialinvoke $r0.<android.graphics.drawable.ColorDrawable: void <init>(int)>($i0);
+
+        return $r0;
+    }
+
+    public static final android.graphics.drawable.ColorDrawable toDrawable(android.graphics.Color)
+    {
+        android.graphics.Color $r0;
+        int $i0;
+        android.graphics.drawable.ColorDrawable $r1;
+
+        $r0 := @parameter0: android.graphics.Color;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = new android.graphics.drawable.ColorDrawable;
+
+        $i0 = virtualinvoke $r0.<android.graphics.Color: int toArgb()>();
+
+        specialinvoke $r1.<android.graphics.drawable.ColorDrawable: void <init>(int)>($i0);
+
+        return $r1;
+    }
+}

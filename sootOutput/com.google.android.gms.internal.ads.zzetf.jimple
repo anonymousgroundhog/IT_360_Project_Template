@@ -1,0 +1,132 @@
+public final class com.google.android.gms.internal.ads.zzetf extends java.lang.Object implements com.google.android.gms.internal.ads.zzexq
+{
+    private final com.google.android.gms.internal.ads.zzgey zza;
+    private final android.content.Context zzb;
+
+    public void <init>(com.google.android.gms.internal.ads.zzgey, android.content.Context)
+    {
+        android.content.Context $r2;
+        com.google.android.gms.internal.ads.zzetf r0;
+        com.google.android.gms.internal.ads.zzgey $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzetf;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzgey;
+
+        $r2 := @parameter1: android.content.Context;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzetf: com.google.android.gms.internal.ads.zzgey zza> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzetf: android.content.Context zzb> = $r2;
+
+        return;
+    }
+
+    public final int zza()
+    {
+        com.google.android.gms.internal.ads.zzetf r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzetf;
+
+        return 13;
+    }
+
+    public final com.google.common.util.concurrent.ListenableFuture zzb()
+    {
+        com.google.common.util.concurrent.ListenableFuture $r2;
+        com.google.android.gms.internal.ads.zzete $r3;
+        com.google.android.gms.internal.ads.zzetf r0;
+        com.google.android.gms.internal.ads.zzgey $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzetf;
+
+        $r3 = new com.google.android.gms.internal.ads.zzete;
+
+        specialinvoke $r3.<com.google.android.gms.internal.ads.zzete: void <init>(com.google.android.gms.internal.ads.zzetf)>(r0);
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzetf: com.google.android.gms.internal.ads.zzgey zza>;
+
+        $r2 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzgey: com.google.common.util.concurrent.ListenableFuture zzb(java.util.concurrent.Callable)>($r3);
+
+        return $r2;
+    }
+
+    final com.google.android.gms.internal.ads.zzetg zzc() throws java.lang.Exception
+    {
+        android.content.Context $r1;
+        com.google.android.gms.internal.ads.zzbga $r5;
+        android.media.AudioManager $r3;
+        com.google.android.gms.internal.ads.zzbfu $r4;
+        int $i0, $i1, $i2, $i3, $i4, $i5;
+        java.lang.Boolean $r6;
+        boolean $z0, $z1, $z2;
+        com.google.android.gms.ads.internal.util.zzac $r8;
+        com.google.android.gms.ads.internal.util.zzab $r7;
+        com.google.android.gms.internal.ads.zzetg $r9;
+        com.google.android.gms.internal.ads.zzetf r0;
+        float $f0;
+        java.lang.Object $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzetf;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzetf: android.content.Context zzb>;
+
+        $r2 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("audio");
+
+        $r3 = (android.media.AudioManager) $r2;
+
+        $i0 = virtualinvoke $r3.<android.media.AudioManager: int getMode()>();
+
+        $z0 = virtualinvoke $r3.<android.media.AudioManager: boolean isMusicActive()>();
+
+        $z1 = virtualinvoke $r3.<android.media.AudioManager: boolean isSpeakerphoneOn()>();
+
+        $i1 = virtualinvoke $r3.<android.media.AudioManager: int getStreamVolume(int)>(3);
+
+        $r4 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzkv>;
+
+        $r5 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r2 = virtualinvoke $r5.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r4);
+
+        $r6 = (java.lang.Boolean) $r2;
+
+        $z2 = virtualinvoke $r6.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z2 == 0 goto label1;
+
+        $r7 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.ads.internal.util.zzab zzq()>();
+
+        $i2 = virtualinvoke $r7.<com.google.android.gms.ads.internal.util.zzab: int zzj(android.media.AudioManager)>($r3);
+
+        $i3 = virtualinvoke $r3.<android.media.AudioManager: int getStreamMaxVolume(int)>(3);
+
+        goto label2;
+
+     label1:
+        $i2 = -1;
+
+        $i3 = -1;
+
+     label2:
+        $i4 = virtualinvoke $r3.<android.media.AudioManager: int getRingerMode()>();
+
+        $i5 = virtualinvoke $r3.<android.media.AudioManager: int getStreamVolume(int)>(2);
+
+        $r8 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.ads.internal.util.zzac zzr()>();
+
+        $f0 = virtualinvoke $r8.<com.google.android.gms.ads.internal.util.zzac: float zza()>();
+
+        $r8 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.ads.internal.util.zzac zzr()>();
+
+        $z2 = virtualinvoke $r8.<com.google.android.gms.ads.internal.util.zzac: boolean zze()>();
+
+        $r9 = new com.google.android.gms.internal.ads.zzetg;
+
+        specialinvoke $r9.<com.google.android.gms.internal.ads.zzetg: void <init>(int,boolean,boolean,int,int,int,int,int,float,boolean)>($i0, $z0, $z1, $i1, $i2, $i3, $i4, $i5, $f0, $z2);
+
+        return $r9;
+    }
+}

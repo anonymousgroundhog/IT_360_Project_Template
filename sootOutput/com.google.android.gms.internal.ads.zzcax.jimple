@@ -1,0 +1,80 @@
+public final class com.google.android.gms.internal.ads.zzcax extends java.lang.Object implements com.google.android.gms.ads.rewarded.RewardItem
+{
+    private final com.google.android.gms.internal.ads.zzcak zza;
+
+    public void <init>(com.google.android.gms.internal.ads.zzcak)
+    {
+        com.google.android.gms.internal.ads.zzcax r0;
+        com.google.android.gms.internal.ads.zzcak $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcax;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzcak;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzcax: com.google.android.gms.internal.ads.zzcak zza> = $r1;
+
+        return;
+    }
+
+    public final int getAmount()
+    {
+        com.google.android.gms.internal.ads.zzcax r0;
+        int $i0;
+        android.os.RemoteException $r2;
+        com.google.android.gms.internal.ads.zzcak $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcax;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcax: com.google.android.gms.internal.ads.zzcak zza>;
+
+        if $r1 == null goto label4;
+
+     label1:
+        $i0 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzcak: int zze()>();
+
+     label2:
+        return $i0;
+
+     label3:
+        $r2 := @caughtexception;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzk(java.lang.String,java.lang.Throwable)>("Could not forward getAmount to RewardItem", $r2);
+
+     label4:
+        return 0;
+
+        catch android.os.RemoteException from label1 to label2 with label3;
+    }
+
+    public final java.lang.String getType()
+    {
+        com.google.android.gms.internal.ads.zzcax r0;
+        android.os.RemoteException $r3;
+        java.lang.String $r1;
+        com.google.android.gms.internal.ads.zzcak $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcax;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcax: com.google.android.gms.internal.ads.zzcak zza>;
+
+        if $r2 == null goto label4;
+
+     label1:
+        $r1 = interfaceinvoke $r2.<com.google.android.gms.internal.ads.zzcak: java.lang.String zzf()>();
+
+     label2:
+        return $r1;
+
+     label3:
+        $r3 := @caughtexception;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzk(java.lang.String,java.lang.Throwable)>("Could not forward getType to RewardItem", $r3);
+
+     label4:
+        return null;
+
+        catch android.os.RemoteException from label1 to label2 with label3;
+    }
+}

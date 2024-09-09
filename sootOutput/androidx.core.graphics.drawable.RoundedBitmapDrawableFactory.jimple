@@ -1,0 +1,112 @@
+public final class androidx.core.graphics.drawable.RoundedBitmapDrawableFactory extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+
+    private void <init>()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawableFactory r0;
+
+        r0 := @this: androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static androidx.core.graphics.drawable.RoundedBitmapDrawable create(android.content.res.Resources, android.graphics.Bitmap)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable21 $r2;
+        android.graphics.Bitmap $r1;
+        android.content.res.Resources $r0;
+
+        $r0 := @parameter0: android.content.res.Resources;
+
+        $r1 := @parameter1: android.graphics.Bitmap;
+
+        $r2 = new androidx.core.graphics.drawable.RoundedBitmapDrawable21;
+
+        specialinvoke $r2.<androidx.core.graphics.drawable.RoundedBitmapDrawable21: void <init>(android.content.res.Resources,android.graphics.Bitmap)>($r0, $r1);
+
+        return $r2;
+    }
+
+    public static androidx.core.graphics.drawable.RoundedBitmapDrawable create(android.content.res.Resources, java.io.InputStream)
+    {
+        android.graphics.Bitmap $r2;
+        androidx.core.graphics.drawable.RoundedBitmapDrawable $r3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+        android.content.res.Resources $r0;
+        java.io.InputStream $r1;
+
+        $r0 := @parameter0: android.content.res.Resources;
+
+        $r1 := @parameter1: java.io.InputStream;
+
+        $r2 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeStream(java.io.InputStream)>($r1);
+
+        $r3 = staticinvoke <androidx.core.graphics.drawable.RoundedBitmapDrawableFactory: androidx.core.graphics.drawable.RoundedBitmapDrawable create(android.content.res.Resources,android.graphics.Bitmap)>($r0, $r2);
+
+        $r2 = virtualinvoke $r3.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Bitmap getBitmap()>();
+
+        if $r2 != null goto label1;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("RoundedBitmapDrawable cannot decode ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("RoundedBitmapDrawableFa", $r5);
+
+     label1:
+        return $r3;
+    }
+
+    public static androidx.core.graphics.drawable.RoundedBitmapDrawable create(android.content.res.Resources, java.lang.String)
+    {
+        android.graphics.Bitmap $r2;
+        androidx.core.graphics.drawable.RoundedBitmapDrawable $r3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r1;
+        android.content.res.Resources $r0;
+
+        $r0 := @parameter0: android.content.res.Resources;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeFile(java.lang.String)>($r1);
+
+        $r3 = staticinvoke <androidx.core.graphics.drawable.RoundedBitmapDrawableFactory: androidx.core.graphics.drawable.RoundedBitmapDrawable create(android.content.res.Resources,android.graphics.Bitmap)>($r0, $r2);
+
+        $r2 = virtualinvoke $r3.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Bitmap getBitmap()>();
+
+        if $r2 != null goto label1;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("RoundedBitmapDrawable cannot decode ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("RoundedBitmapDrawableFa", $r1);
+
+     label1:
+        return $r3;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.graphics.drawable.RoundedBitmapDrawableFactory: java.lang.String TAG> = "RoundedBitmapDrawableFa";
+
+        return;
+    }
+}

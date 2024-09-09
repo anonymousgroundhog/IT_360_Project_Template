@@ -1,0 +1,248 @@
+public final class com.google.android.gms.internal.measurement.zzkk extends java.lang.Object
+{
+    static final java.nio.charset.Charset zza;
+    static final java.nio.charset.Charset zzb;
+    static final java.nio.charset.Charset zzc;
+    public static final byte[] zzd;
+    public static final java.nio.ByteBuffer zze;
+    public static final com.google.android.gms.internal.measurement.zzjf zzf;
+
+    static void <clinit>()
+    {
+        byte[] $r0;
+        com.google.android.gms.internal.measurement.zzkm $r4;
+        java.nio.charset.Charset $r1;
+        int $i0;
+        com.google.android.gms.internal.measurement.zzjd $r3;
+        java.lang.IllegalArgumentException $r5;
+        java.nio.ByteBuffer $r2;
+
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("US-ASCII");
+
+        <com.google.android.gms.internal.measurement.zzkk: java.nio.charset.Charset zza> = $r1;
+
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("UTF-8");
+
+        <com.google.android.gms.internal.measurement.zzkk: java.nio.charset.Charset zzb> = $r1;
+
+        $r1 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("ISO-8859-1");
+
+        <com.google.android.gms.internal.measurement.zzkk: java.nio.charset.Charset zzc> = $r1;
+
+        $r0 = newarray (byte)[0];
+
+        <com.google.android.gms.internal.measurement.zzkk: byte[] zzd> = $r0;
+
+        $r0 = <com.google.android.gms.internal.measurement.zzkk: byte[] zzd>;
+
+        $r2 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer wrap(byte[])>($r0);
+
+        <com.google.android.gms.internal.measurement.zzkk: java.nio.ByteBuffer zze> = $r2;
+
+        $r0 = <com.google.android.gms.internal.measurement.zzkk: byte[] zzd>;
+
+        $i0 = <com.google.android.gms.internal.measurement.zzjf: int zza>;
+
+        $i0 = lengthof $r0;
+
+        $r3 = new com.google.android.gms.internal.measurement.zzjd;
+
+        specialinvoke $r3.<com.google.android.gms.internal.measurement.zzjd: void <init>(byte[],int,int,boolean,com.google.android.gms.internal.measurement.zzjc)>($r0, 0, 0, 0, null);
+
+     label1:
+        virtualinvoke $r3.<com.google.android.gms.internal.measurement.zzjd: int zza(int)>(0);
+
+     label2:
+        <com.google.android.gms.internal.measurement.zzkk: com.google.android.gms.internal.measurement.zzjf zzf> = $r3;
+
+        return;
+
+     label3:
+        $r4 := @caughtexception;
+
+        $r5 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.Throwable)>($r4);
+
+        throw $r5;
+
+        catch com.google.android.gms.internal.measurement.zzkm from label1 to label2 with label3;
+    }
+
+    public static int zza(boolean)
+    {
+        boolean $z0;
+
+        $z0 := @parameter0: boolean;
+
+        if $z0 == 0 goto label1;
+
+        return 1231;
+
+     label1:
+        return 1237;
+    }
+
+    public static int zzb(byte[])
+    {
+        int $i0;
+        byte[] $r0;
+
+        $r0 := @parameter0: byte[];
+
+        $i0 = lengthof $r0;
+
+        $i0 = staticinvoke <com.google.android.gms.internal.measurement.zzkk: int zzd(int,byte[],int,int)>($i0, $r0, 0, $i0);
+
+        if $i0 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        return $i0;
+    }
+
+    public static int zzc(long)
+    {
+        int $i0;
+        long $l1, $l2;
+
+        $l1 := @parameter0: long;
+
+        $l2 = $l1 >>> 32;
+
+        $l1 = $l1 ^ $l2;
+
+        $i0 = (int) $l1;
+
+        return $i0;
+    }
+
+    static int zzd(int, byte[], int, int)
+    {
+        byte[] $r0;
+        byte $b1;
+        int $i0, $i2, $i3, $i4;
+
+        $i2 := @parameter0: int;
+
+        $r0 := @parameter1: byte[];
+
+        $i3 := @parameter2: int;
+
+        $i0 := @parameter3: int;
+
+        $i3 = 0;
+
+     label1:
+        if $i3 >= $i0 goto label2;
+
+        $i2 = $i2 * 31;
+
+        $b1 = $r0[$i3];
+
+        $i4 = (int) $b1;
+
+        $i2 = $i2 + $i4;
+
+        $i3 = $i3 + 1;
+
+        goto label1;
+
+     label2:
+        return $i2;
+    }
+
+    static java.lang.Object zze(java.lang.Object)
+    {
+        java.lang.Object $r0;
+        java.lang.NullPointerException r1;
+
+        $r0 := @parameter0: java.lang.Object;
+
+        if $r0 == null goto label1;
+
+        return $r0;
+
+     label1:
+        r1 = new java.lang.NullPointerException;
+
+        specialinvoke r1.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+        throw r1;
+    }
+
+    static java.lang.Object zzf(java.lang.Object, java.lang.String)
+    {
+        java.lang.Object $r1;
+        java.lang.String $r0;
+        java.lang.NullPointerException $r2;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r0 := @parameter1: java.lang.String;
+
+        if $r1 == null goto label1;
+
+        return $r1;
+
+     label1:
+        $r2 = new java.lang.NullPointerException;
+
+        specialinvoke $r2.<java.lang.NullPointerException: void <init>(java.lang.String)>($r0);
+
+        throw $r2;
+    }
+
+    static java.lang.Object zzg(java.lang.Object, java.lang.Object)
+    {
+        com.google.android.gms.internal.measurement.zzli $r3;
+        com.google.android.gms.internal.measurement.zzlj $r2;
+        java.lang.Object $r0, $r1;
+
+        $r0 := @parameter0: java.lang.Object;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        $r2 = (com.google.android.gms.internal.measurement.zzlj) $r0;
+
+        $r3 = interfaceinvoke $r2.<com.google.android.gms.internal.measurement.zzlj: com.google.android.gms.internal.measurement.zzli zzbJ()>();
+
+        $r2 = (com.google.android.gms.internal.measurement.zzlj) $r1;
+
+        $r3 = interfaceinvoke $r3.<com.google.android.gms.internal.measurement.zzli: com.google.android.gms.internal.measurement.zzli zzay(com.google.android.gms.internal.measurement.zzlj)>($r2);
+
+        $r2 = interfaceinvoke $r3.<com.google.android.gms.internal.measurement.zzli: com.google.android.gms.internal.measurement.zzlj zzaG()>();
+
+        return $r2;
+    }
+
+    public static java.lang.String zzh(byte[])
+    {
+        byte[] $r0;
+        java.lang.String $r1;
+        java.nio.charset.Charset $r2;
+
+        $r0 := @parameter0: byte[];
+
+        $r1 = new java.lang.String;
+
+        $r2 = <com.google.android.gms.internal.measurement.zzkk: java.nio.charset.Charset zzb>;
+
+        specialinvoke $r1.<java.lang.String: void <init>(byte[],java.nio.charset.Charset)>($r0, $r2);
+
+        return $r1;
+    }
+
+    public static boolean zzi(byte[])
+    {
+        byte[] $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: byte[];
+
+        $z0 = staticinvoke <com.google.android.gms.internal.measurement.zzna: boolean zze(byte[])>($r0);
+
+        return $z0;
+    }
+}

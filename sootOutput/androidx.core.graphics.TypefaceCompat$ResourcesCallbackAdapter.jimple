@@ -1,0 +1,64 @@
+public class androidx.core.graphics.TypefaceCompat$ResourcesCallbackAdapter extends androidx.core.provider.FontsContractCompat$FontRequestCallback
+{
+    private androidx.core.content.res.ResourcesCompat$FontCallback mFontCallback;
+
+    public void <init>(androidx.core.content.res.ResourcesCompat$FontCallback)
+    {
+        androidx.core.content.res.ResourcesCompat$FontCallback $r1;
+        androidx.core.graphics.TypefaceCompat$ResourcesCallbackAdapter r0;
+
+        r0 := @this: androidx.core.graphics.TypefaceCompat$ResourcesCallbackAdapter;
+
+        $r1 := @parameter0: androidx.core.content.res.ResourcesCompat$FontCallback;
+
+        specialinvoke r0.<androidx.core.provider.FontsContractCompat$FontRequestCallback: void <init>()>();
+
+        r0.<androidx.core.graphics.TypefaceCompat$ResourcesCallbackAdapter: androidx.core.content.res.ResourcesCompat$FontCallback mFontCallback> = $r1;
+
+        return;
+    }
+
+    public void onTypefaceRequestFailed(int)
+    {
+        int $i0;
+        androidx.core.content.res.ResourcesCompat$FontCallback $r1;
+        androidx.core.graphics.TypefaceCompat$ResourcesCallbackAdapter r0;
+
+        r0 := @this: androidx.core.graphics.TypefaceCompat$ResourcesCallbackAdapter;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.core.graphics.TypefaceCompat$ResourcesCallbackAdapter: androidx.core.content.res.ResourcesCompat$FontCallback mFontCallback>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<androidx.core.graphics.TypefaceCompat$ResourcesCallbackAdapter: androidx.core.content.res.ResourcesCompat$FontCallback mFontCallback>;
+
+        virtualinvoke $r1.<androidx.core.content.res.ResourcesCompat$FontCallback: void onFontRetrievalFailed(int)>($i0);
+
+     label1:
+        return;
+    }
+
+    public void onTypefaceRetrieved(android.graphics.Typeface)
+    {
+        android.graphics.Typeface $r1;
+        androidx.core.content.res.ResourcesCompat$FontCallback $r2;
+        androidx.core.graphics.TypefaceCompat$ResourcesCallbackAdapter r0;
+
+        r0 := @this: androidx.core.graphics.TypefaceCompat$ResourcesCallbackAdapter;
+
+        $r1 := @parameter0: android.graphics.Typeface;
+
+        $r2 = r0.<androidx.core.graphics.TypefaceCompat$ResourcesCallbackAdapter: androidx.core.content.res.ResourcesCompat$FontCallback mFontCallback>;
+
+        if $r2 == null goto label1;
+
+        $r2 = r0.<androidx.core.graphics.TypefaceCompat$ResourcesCallbackAdapter: androidx.core.content.res.ResourcesCompat$FontCallback mFontCallback>;
+
+        virtualinvoke $r2.<androidx.core.content.res.ResourcesCompat$FontCallback: void onFontRetrieved(android.graphics.Typeface)>($r1);
+
+     label1:
+        return;
+    }
+}

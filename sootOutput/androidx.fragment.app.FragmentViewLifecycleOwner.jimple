@@ -1,0 +1,86 @@
+class androidx.fragment.app.FragmentViewLifecycleOwner extends java.lang.Object implements androidx.lifecycle.LifecycleOwner
+{
+    private androidx.lifecycle.LifecycleRegistry mLifecycleRegistry;
+
+    void <init>()
+    {
+        androidx.fragment.app.FragmentViewLifecycleOwner r0;
+
+        r0 := @this: androidx.fragment.app.FragmentViewLifecycleOwner;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.fragment.app.FragmentViewLifecycleOwner: androidx.lifecycle.LifecycleRegistry mLifecycleRegistry> = null;
+
+        return;
+    }
+
+    public androidx.lifecycle.Lifecycle getLifecycle()
+    {
+        androidx.fragment.app.FragmentViewLifecycleOwner r0;
+        androidx.lifecycle.LifecycleRegistry r1;
+
+        r0 := @this: androidx.fragment.app.FragmentViewLifecycleOwner;
+
+        virtualinvoke r0.<androidx.fragment.app.FragmentViewLifecycleOwner: void initialize()>();
+
+        r1 = r0.<androidx.fragment.app.FragmentViewLifecycleOwner: androidx.lifecycle.LifecycleRegistry mLifecycleRegistry>;
+
+        return r1;
+    }
+
+    void handleLifecycleEvent(androidx.lifecycle.Lifecycle$Event)
+    {
+        androidx.fragment.app.FragmentViewLifecycleOwner r0;
+        androidx.lifecycle.LifecycleRegistry $r2;
+        androidx.lifecycle.Lifecycle$Event $r1;
+
+        r0 := @this: androidx.fragment.app.FragmentViewLifecycleOwner;
+
+        $r1 := @parameter0: androidx.lifecycle.Lifecycle$Event;
+
+        $r2 = r0.<androidx.fragment.app.FragmentViewLifecycleOwner: androidx.lifecycle.LifecycleRegistry mLifecycleRegistry>;
+
+        virtualinvoke $r2.<androidx.lifecycle.LifecycleRegistry: void handleLifecycleEvent(androidx.lifecycle.Lifecycle$Event)>($r1);
+
+        return;
+    }
+
+    void initialize()
+    {
+        androidx.fragment.app.FragmentViewLifecycleOwner r0;
+        androidx.lifecycle.LifecycleRegistry $r1;
+
+        r0 := @this: androidx.fragment.app.FragmentViewLifecycleOwner;
+
+        $r1 = r0.<androidx.fragment.app.FragmentViewLifecycleOwner: androidx.lifecycle.LifecycleRegistry mLifecycleRegistry>;
+
+        if $r1 != null goto label1;
+
+        $r1 = new androidx.lifecycle.LifecycleRegistry;
+
+        specialinvoke $r1.<androidx.lifecycle.LifecycleRegistry: void <init>(androidx.lifecycle.LifecycleOwner)>(r0);
+
+        r0.<androidx.fragment.app.FragmentViewLifecycleOwner: androidx.lifecycle.LifecycleRegistry mLifecycleRegistry> = $r1;
+
+     label1:
+        return;
+    }
+
+    boolean isInitialized()
+    {
+        androidx.fragment.app.FragmentViewLifecycleOwner r0;
+        androidx.lifecycle.LifecycleRegistry $r1;
+
+        r0 := @this: androidx.fragment.app.FragmentViewLifecycleOwner;
+
+        $r1 = r0.<androidx.fragment.app.FragmentViewLifecycleOwner: androidx.lifecycle.LifecycleRegistry mLifecycleRegistry>;
+
+        if $r1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+}

@@ -1,0 +1,85 @@
+final class com.google.android.gms.internal.ads.zzgzi extends java.lang.Object
+{
+    private static final com.google.android.gms.internal.ads.zzgzg zza;
+    private static final com.google.android.gms.internal.ads.zzgzg zzb;
+
+    static void <clinit>()
+    {
+        java.lang.Object[] $r4;
+        java.lang.Class[] $r0;
+        java.lang.reflect.Constructor $r3;
+        java.lang.Exception $r7;
+        com.google.android.gms.internal.ads.zzgzh $r1;
+        com.google.android.gms.internal.ads.zzgzg $r6;
+        java.lang.Class $r2;
+        java.lang.Object $r5;
+
+        $r1 = new com.google.android.gms.internal.ads.zzgzh;
+
+        specialinvoke $r1.<com.google.android.gms.internal.ads.zzgzh: void <init>()>();
+
+        <com.google.android.gms.internal.ads.zzgzi: com.google.android.gms.internal.ads.zzgzg zza> = $r1;
+
+     label1:
+        $r2 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("com.google.protobuf.ExtensionSchemaFull");
+
+     label2:
+        $r0 = newarray (java.lang.Class)[0];
+
+     label3:
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.reflect.Constructor getDeclaredConstructor(java.lang.Class[])>($r0);
+
+     label4:
+        $r4 = newarray (java.lang.Object)[0];
+
+     label5:
+        $r5 = virtualinvoke $r3.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r4);
+
+        $r6 = (com.google.android.gms.internal.ads.zzgzg) $r5;
+
+     label6:
+        goto label8;
+
+     label7:
+        $r7 := @caughtexception;
+
+        $r6 = null;
+
+     label8:
+        <com.google.android.gms.internal.ads.zzgzi: com.google.android.gms.internal.ads.zzgzg zzb> = $r6;
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label7;
+        catch java.lang.Exception from label3 to label4 with label7;
+        catch java.lang.Exception from label5 to label6 with label7;
+    }
+
+    static com.google.android.gms.internal.ads.zzgzg zza()
+    {
+        java.lang.IllegalStateException $r1;
+        com.google.android.gms.internal.ads.zzgzg $r0;
+
+        $r0 = <com.google.android.gms.internal.ads.zzgzi: com.google.android.gms.internal.ads.zzgzg zzb>;
+
+        if $r0 == null goto label1;
+
+        return $r0;
+
+     label1:
+        $r1 = new java.lang.IllegalStateException;
+
+        specialinvoke $r1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Protobuf runtime is not correctly loaded.");
+
+        throw $r1;
+    }
+
+    static com.google.android.gms.internal.ads.zzgzg zzb()
+    {
+        com.google.android.gms.internal.ads.zzgzg r0;
+
+        r0 = <com.google.android.gms.internal.ads.zzgzi: com.google.android.gms.internal.ads.zzgzg zza>;
+
+        return r0;
+    }
+}

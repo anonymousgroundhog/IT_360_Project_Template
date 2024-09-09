@@ -1,0 +1,124 @@
+final class androidx.core.graphics.drawable.WrappedDrawableState extends android.graphics.drawable.Drawable$ConstantState
+{
+    int mChangingConfigurations;
+    android.graphics.drawable.Drawable$ConstantState mDrawableState;
+    android.content.res.ColorStateList mTint;
+    android.graphics.PorterDuff$Mode mTintMode;
+
+    void <init>(androidx.core.graphics.drawable.WrappedDrawableState)
+    {
+        android.content.res.ColorStateList $r4;
+        androidx.core.graphics.drawable.WrappedDrawableState r0, $r1;
+        android.graphics.drawable.Drawable$ConstantState $r3;
+        int $i0;
+        android.graphics.PorterDuff$Mode $r2;
+
+        r0 := @this: androidx.core.graphics.drawable.WrappedDrawableState;
+
+        $r1 := @parameter0: androidx.core.graphics.drawable.WrappedDrawableState;
+
+        specialinvoke r0.<android.graphics.drawable.Drawable$ConstantState: void <init>()>();
+
+        r0.<androidx.core.graphics.drawable.WrappedDrawableState: android.content.res.ColorStateList mTint> = null;
+
+        $r2 = <androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.PorterDuff$Mode DEFAULT_TINT_MODE>;
+
+        r0.<androidx.core.graphics.drawable.WrappedDrawableState: android.graphics.PorterDuff$Mode mTintMode> = $r2;
+
+        if $r1 == null goto label1;
+
+        $i0 = $r1.<androidx.core.graphics.drawable.WrappedDrawableState: int mChangingConfigurations>;
+
+        r0.<androidx.core.graphics.drawable.WrappedDrawableState: int mChangingConfigurations> = $i0;
+
+        $r3 = $r1.<androidx.core.graphics.drawable.WrappedDrawableState: android.graphics.drawable.Drawable$ConstantState mDrawableState>;
+
+        r0.<androidx.core.graphics.drawable.WrappedDrawableState: android.graphics.drawable.Drawable$ConstantState mDrawableState> = $r3;
+
+        $r4 = $r1.<androidx.core.graphics.drawable.WrappedDrawableState: android.content.res.ColorStateList mTint>;
+
+        r0.<androidx.core.graphics.drawable.WrappedDrawableState: android.content.res.ColorStateList mTint> = $r4;
+
+        $r2 = $r1.<androidx.core.graphics.drawable.WrappedDrawableState: android.graphics.PorterDuff$Mode mTintMode>;
+
+        r0.<androidx.core.graphics.drawable.WrappedDrawableState: android.graphics.PorterDuff$Mode mTintMode> = $r2;
+
+     label1:
+        return;
+    }
+
+    boolean canConstantState()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableState r0;
+        android.graphics.drawable.Drawable$ConstantState $r1;
+
+        r0 := @this: androidx.core.graphics.drawable.WrappedDrawableState;
+
+        $r1 = r0.<androidx.core.graphics.drawable.WrappedDrawableState: android.graphics.drawable.Drawable$ConstantState mDrawableState>;
+
+        if $r1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public int getChangingConfigurations()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableState r0;
+        android.graphics.drawable.Drawable$ConstantState $r1;
+        int $i0, $i1;
+
+        r0 := @this: androidx.core.graphics.drawable.WrappedDrawableState;
+
+        $i1 = r0.<androidx.core.graphics.drawable.WrappedDrawableState: int mChangingConfigurations>;
+
+        $r1 = r0.<androidx.core.graphics.drawable.WrappedDrawableState: android.graphics.drawable.Drawable$ConstantState mDrawableState>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<androidx.core.graphics.drawable.WrappedDrawableState: android.graphics.drawable.Drawable$ConstantState mDrawableState>;
+
+        $i0 = virtualinvoke $r1.<android.graphics.drawable.Drawable$ConstantState: int getChangingConfigurations()>();
+
+        goto label2;
+
+     label1:
+        $i0 = 0;
+
+     label2:
+        $i1 = $i1 | $i0;
+
+        return $i1;
+    }
+
+    public android.graphics.drawable.Drawable newDrawable()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableState r0;
+        android.graphics.drawable.Drawable $r1;
+
+        r0 := @this: androidx.core.graphics.drawable.WrappedDrawableState;
+
+        $r1 = virtualinvoke r0.<androidx.core.graphics.drawable.WrappedDrawableState: android.graphics.drawable.Drawable newDrawable(android.content.res.Resources)>(null);
+
+        return $r1;
+    }
+
+    public android.graphics.drawable.Drawable newDrawable(android.content.res.Resources)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableState r0;
+        androidx.core.graphics.drawable.WrappedDrawableApi21 $r2;
+        android.content.res.Resources $r1;
+
+        r0 := @this: androidx.core.graphics.drawable.WrappedDrawableState;
+
+        $r1 := @parameter0: android.content.res.Resources;
+
+        $r2 = new androidx.core.graphics.drawable.WrappedDrawableApi21;
+
+        specialinvoke $r2.<androidx.core.graphics.drawable.WrappedDrawableApi21: void <init>(androidx.core.graphics.drawable.WrappedDrawableState,android.content.res.Resources)>(r0, $r1);
+
+        return $r2;
+    }
+}

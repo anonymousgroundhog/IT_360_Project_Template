@@ -1,0 +1,88 @@
+public abstract class androidx.room.RoomOpenHelper$Delegate extends java.lang.Object
+{
+    public final int version;
+
+    public void <init>(int)
+    {
+        int $i0;
+        androidx.room.RoomOpenHelper$Delegate r0;
+
+        r0 := @this: androidx.room.RoomOpenHelper$Delegate;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.room.RoomOpenHelper$Delegate: int version> = $i0;
+
+        return;
+    }
+
+    protected abstract void createAllTables(androidx.sqlite.db.SupportSQLiteDatabase);
+
+    protected abstract void dropAllTables(androidx.sqlite.db.SupportSQLiteDatabase);
+
+    protected abstract void onCreate(androidx.sqlite.db.SupportSQLiteDatabase);
+
+    protected abstract void onOpen(androidx.sqlite.db.SupportSQLiteDatabase);
+
+    protected void onPostMigrate(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        androidx.room.RoomOpenHelper$Delegate r0;
+
+        r0 := @this: androidx.room.RoomOpenHelper$Delegate;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        return;
+    }
+
+    protected void onPreMigrate(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        androidx.room.RoomOpenHelper$Delegate r0;
+
+        r0 := @this: androidx.room.RoomOpenHelper$Delegate;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        return;
+    }
+
+    protected androidx.room.RoomOpenHelper$ValidationResult onValidateSchema(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        androidx.room.RoomOpenHelper$ValidationResult $r2;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        androidx.room.RoomOpenHelper$Delegate r0;
+
+        r0 := @this: androidx.room.RoomOpenHelper$Delegate;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        virtualinvoke r0.<androidx.room.RoomOpenHelper$Delegate: void validateMigration(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        $r2 = new androidx.room.RoomOpenHelper$ValidationResult;
+
+        specialinvoke $r2.<androidx.room.RoomOpenHelper$ValidationResult: void <init>(boolean,java.lang.String)>(1, null);
+
+        return $r2;
+    }
+
+    protected void validateMigration(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        java.lang.UnsupportedOperationException $r2;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        androidx.room.RoomOpenHelper$Delegate r0;
+
+        r0 := @this: androidx.room.RoomOpenHelper$Delegate;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        $r2 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r2.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("validateMigration is deprecated");
+
+        throw $r2;
+    }
+}

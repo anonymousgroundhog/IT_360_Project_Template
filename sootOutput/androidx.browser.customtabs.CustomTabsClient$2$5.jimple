@@ -1,0 +1,73 @@
+class androidx.browser.customtabs.CustomTabsClient$2$5 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.browser.customtabs.CustomTabsClient$2 this$1;
+    final android.os.Bundle val$extras;
+    final int val$relation;
+    final android.net.Uri val$requestedOrigin;
+    final boolean val$result;
+
+    void <init>(androidx.browser.customtabs.CustomTabsClient$2, int, android.net.Uri, boolean, android.os.Bundle)
+    {
+        androidx.browser.customtabs.CustomTabsClient$2 $r1;
+        android.os.Bundle $r3;
+        int $i0;
+        android.net.Uri $r2;
+        androidx.browser.customtabs.CustomTabsClient$2$5 r0;
+        boolean $z0;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsClient$2$5;
+
+        $r1 := @parameter0: androidx.browser.customtabs.CustomTabsClient$2;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: android.net.Uri;
+
+        $z0 := @parameter3: boolean;
+
+        $r3 := @parameter4: android.os.Bundle;
+
+        r0.<androidx.browser.customtabs.CustomTabsClient$2$5: androidx.browser.customtabs.CustomTabsClient$2 this$1> = $r1;
+
+        r0.<androidx.browser.customtabs.CustomTabsClient$2$5: int val$relation> = $i0;
+
+        r0.<androidx.browser.customtabs.CustomTabsClient$2$5: android.net.Uri val$requestedOrigin> = $r2;
+
+        r0.<androidx.browser.customtabs.CustomTabsClient$2$5: boolean val$result> = $z0;
+
+        r0.<androidx.browser.customtabs.CustomTabsClient$2$5: android.os.Bundle val$extras> = $r3;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.browser.customtabs.CustomTabsClient$2 $r3;
+        android.os.Bundle $r2;
+        int $i0;
+        android.net.Uri $r1;
+        androidx.browser.customtabs.CustomTabsClient$2$5 r0;
+        androidx.browser.customtabs.CustomTabsCallback $r4;
+        boolean $z0;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsClient$2$5;
+
+        $r3 = r0.<androidx.browser.customtabs.CustomTabsClient$2$5: androidx.browser.customtabs.CustomTabsClient$2 this$1>;
+
+        $r4 = $r3.<androidx.browser.customtabs.CustomTabsClient$2: androidx.browser.customtabs.CustomTabsCallback val$callback>;
+
+        $i0 = r0.<androidx.browser.customtabs.CustomTabsClient$2$5: int val$relation>;
+
+        $r1 = r0.<androidx.browser.customtabs.CustomTabsClient$2$5: android.net.Uri val$requestedOrigin>;
+
+        $z0 = r0.<androidx.browser.customtabs.CustomTabsClient$2$5: boolean val$result>;
+
+        $r2 = r0.<androidx.browser.customtabs.CustomTabsClient$2$5: android.os.Bundle val$extras>;
+
+        virtualinvoke $r4.<androidx.browser.customtabs.CustomTabsCallback: void onRelationshipValidationResult(int,android.net.Uri,boolean,android.os.Bundle)>($i0, $r1, $z0, $r2);
+
+        return;
+    }
+}

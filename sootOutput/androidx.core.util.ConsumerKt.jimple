@@ -1,0 +1,22 @@
+public final class androidx.core.util.ConsumerKt extends java.lang.Object
+{
+
+    public static final java.util.function.Consumer asConsumer(kotlin.coroutines.Continuation)
+    {
+        java.util.function.Consumer $r2;
+        kotlin.coroutines.Continuation $r0;
+        androidx.core.util.ContinuationConsumer $r1;
+
+        $r0 := @parameter0: kotlin.coroutines.Continuation;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = new androidx.core.util.ContinuationConsumer;
+
+        specialinvoke $r1.<androidx.core.util.ContinuationConsumer: void <init>(kotlin.coroutines.Continuation)>($r0);
+
+        $r2 = (java.util.function.Consumer) $r1;
+
+        return $r2;
+    }
+}

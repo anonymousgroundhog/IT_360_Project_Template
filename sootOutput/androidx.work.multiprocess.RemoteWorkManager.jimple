@@ -1,0 +1,131 @@
+public abstract class androidx.work.multiprocess.RemoteWorkManager extends java.lang.Object
+{
+
+    protected void <init>()
+    {
+        androidx.work.multiprocess.RemoteWorkManager r0;
+
+        r0 := @this: androidx.work.multiprocess.RemoteWorkManager;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static androidx.work.multiprocess.RemoteWorkManager getInstance(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.IllegalStateException $r1;
+        androidx.work.impl.WorkManagerImpl $r2;
+        androidx.work.multiprocess.RemoteWorkManager $r3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r2 = staticinvoke <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl getInstance(android.content.Context)>($r0);
+
+        $r3 = virtualinvoke $r2.<androidx.work.impl.WorkManagerImpl: androidx.work.multiprocess.RemoteWorkManager getRemoteWorkManager()>();
+
+        if $r3 == null goto label1;
+
+        return $r3;
+
+     label1:
+        $r1 = new java.lang.IllegalStateException;
+
+        specialinvoke $r1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Unable to initialize RemoteWorkManager");
+
+        throw $r1;
+    }
+
+    public final androidx.work.multiprocess.RemoteWorkContinuation beginUniqueWork(java.lang.String, androidx.work.ExistingWorkPolicy, androidx.work.OneTimeWorkRequest)
+    {
+        java.util.List $r4;
+        androidx.work.ExistingWorkPolicy $r2;
+        androidx.work.OneTimeWorkRequest $r3;
+        androidx.work.multiprocess.RemoteWorkContinuation $r5;
+        androidx.work.multiprocess.RemoteWorkManager r0;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.multiprocess.RemoteWorkManager;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: androidx.work.ExistingWorkPolicy;
+
+        $r3 := @parameter2: androidx.work.OneTimeWorkRequest;
+
+        $r4 = staticinvoke <java.util.Collections: java.util.List singletonList(java.lang.Object)>($r3);
+
+        $r5 = virtualinvoke r0.<androidx.work.multiprocess.RemoteWorkManager: androidx.work.multiprocess.RemoteWorkContinuation beginUniqueWork(java.lang.String,androidx.work.ExistingWorkPolicy,java.util.List)>($r1, $r2, $r4);
+
+        return $r5;
+    }
+
+    public abstract androidx.work.multiprocess.RemoteWorkContinuation beginUniqueWork(java.lang.String, androidx.work.ExistingWorkPolicy, java.util.List);
+
+    public final androidx.work.multiprocess.RemoteWorkContinuation beginWith(androidx.work.OneTimeWorkRequest)
+    {
+        java.util.List $r2;
+        androidx.work.OneTimeWorkRequest $r1;
+        androidx.work.multiprocess.RemoteWorkContinuation $r3;
+        androidx.work.multiprocess.RemoteWorkManager r0;
+
+        r0 := @this: androidx.work.multiprocess.RemoteWorkManager;
+
+        $r1 := @parameter0: androidx.work.OneTimeWorkRequest;
+
+        $r2 = staticinvoke <java.util.Collections: java.util.List singletonList(java.lang.Object)>($r1);
+
+        $r3 = virtualinvoke r0.<androidx.work.multiprocess.RemoteWorkManager: androidx.work.multiprocess.RemoteWorkContinuation beginWith(java.util.List)>($r2);
+
+        return $r3;
+    }
+
+    public abstract androidx.work.multiprocess.RemoteWorkContinuation beginWith(java.util.List);
+
+    public abstract com.google.common.util.concurrent.ListenableFuture cancelAllWork();
+
+    public abstract com.google.common.util.concurrent.ListenableFuture cancelAllWorkByTag(java.lang.String);
+
+    public abstract com.google.common.util.concurrent.ListenableFuture cancelUniqueWork(java.lang.String);
+
+    public abstract com.google.common.util.concurrent.ListenableFuture cancelWorkById(java.util.UUID);
+
+    public abstract com.google.common.util.concurrent.ListenableFuture enqueue(androidx.work.WorkContinuation);
+
+    public abstract com.google.common.util.concurrent.ListenableFuture enqueue(androidx.work.WorkRequest);
+
+    public abstract com.google.common.util.concurrent.ListenableFuture enqueue(java.util.List);
+
+    public abstract com.google.common.util.concurrent.ListenableFuture enqueueUniquePeriodicWork(java.lang.String, androidx.work.ExistingPeriodicWorkPolicy, androidx.work.PeriodicWorkRequest);
+
+    public final com.google.common.util.concurrent.ListenableFuture enqueueUniqueWork(java.lang.String, androidx.work.ExistingWorkPolicy, androidx.work.OneTimeWorkRequest)
+    {
+        java.util.List $r4;
+        androidx.work.ExistingWorkPolicy $r2;
+        com.google.common.util.concurrent.ListenableFuture $r5;
+        androidx.work.OneTimeWorkRequest $r3;
+        androidx.work.multiprocess.RemoteWorkManager r0;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.multiprocess.RemoteWorkManager;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: androidx.work.ExistingWorkPolicy;
+
+        $r3 := @parameter2: androidx.work.OneTimeWorkRequest;
+
+        $r4 = staticinvoke <java.util.Collections: java.util.List singletonList(java.lang.Object)>($r3);
+
+        $r5 = virtualinvoke r0.<androidx.work.multiprocess.RemoteWorkManager: com.google.common.util.concurrent.ListenableFuture enqueueUniqueWork(java.lang.String,androidx.work.ExistingWorkPolicy,java.util.List)>($r1, $r2, $r4);
+
+        return $r5;
+    }
+
+    public abstract com.google.common.util.concurrent.ListenableFuture enqueueUniqueWork(java.lang.String, androidx.work.ExistingWorkPolicy, java.util.List);
+
+    public abstract com.google.common.util.concurrent.ListenableFuture getWorkInfos(androidx.work.WorkQuery);
+
+    public abstract com.google.common.util.concurrent.ListenableFuture setProgress(java.util.UUID, androidx.work.Data);
+}

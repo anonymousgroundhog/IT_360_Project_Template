@@ -1,0 +1,246 @@
+final class com.google.common.collect.RegularImmutableBiMap extends com.google.common.collect.ImmutableBiMap
+{
+    static final com.google.common.collect.RegularImmutableBiMap EMPTY;
+    final transient java.lang.Object[] alternatingKeysAndValues;
+    private final transient com.google.common.collect.RegularImmutableBiMap inverse;
+    private final transient java.lang.Object keyHashTable;
+    private final transient int keyOffset;
+    private final transient int size;
+
+    static void <clinit>()
+    {
+        com.google.common.collect.RegularImmutableBiMap $r0;
+
+        $r0 = new com.google.common.collect.RegularImmutableBiMap;
+
+        specialinvoke $r0.<com.google.common.collect.RegularImmutableBiMap: void <init>()>();
+
+        <com.google.common.collect.RegularImmutableBiMap: com.google.common.collect.RegularImmutableBiMap EMPTY> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        java.lang.Object[] $r1;
+        com.google.common.collect.RegularImmutableBiMap r0;
+
+        r0 := @this: com.google.common.collect.RegularImmutableBiMap;
+
+        specialinvoke r0.<com.google.common.collect.ImmutableBiMap: void <init>()>();
+
+        r0.<com.google.common.collect.RegularImmutableBiMap: java.lang.Object keyHashTable> = null;
+
+        $r1 = newarray (java.lang.Object)[0];
+
+        r0.<com.google.common.collect.RegularImmutableBiMap: java.lang.Object[] alternatingKeysAndValues> = $r1;
+
+        r0.<com.google.common.collect.RegularImmutableBiMap: int keyOffset> = 0;
+
+        r0.<com.google.common.collect.RegularImmutableBiMap: int size> = 0;
+
+        r0.<com.google.common.collect.RegularImmutableBiMap: com.google.common.collect.RegularImmutableBiMap inverse> = r0;
+
+        return;
+    }
+
+    private void <init>(java.lang.Object, java.lang.Object[], int, com.google.common.collect.RegularImmutableBiMap)
+    {
+        java.lang.Object[] $r2;
+        com.google.common.collect.RegularImmutableBiMap r0, r3;
+        int $i0;
+        java.lang.Object $r1;
+
+        r0 := @this: com.google.common.collect.RegularImmutableBiMap;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object[];
+
+        $i0 := @parameter2: int;
+
+        r3 := @parameter3: com.google.common.collect.RegularImmutableBiMap;
+
+        specialinvoke r0.<com.google.common.collect.ImmutableBiMap: void <init>()>();
+
+        r0.<com.google.common.collect.RegularImmutableBiMap: java.lang.Object keyHashTable> = $r1;
+
+        r0.<com.google.common.collect.RegularImmutableBiMap: java.lang.Object[] alternatingKeysAndValues> = $r2;
+
+        r0.<com.google.common.collect.RegularImmutableBiMap: int keyOffset> = 1;
+
+        r0.<com.google.common.collect.RegularImmutableBiMap: int size> = $i0;
+
+        r0.<com.google.common.collect.RegularImmutableBiMap: com.google.common.collect.RegularImmutableBiMap inverse> = r3;
+
+        return;
+    }
+
+    void <init>(java.lang.Object[], int)
+    {
+        java.lang.Object[] $r1;
+        com.google.common.collect.RegularImmutableBiMap r0, $r2;
+        int $i0, $i1;
+        java.lang.Object $r3;
+
+        r0 := @this: com.google.common.collect.RegularImmutableBiMap;
+
+        $r1 := @parameter0: java.lang.Object[];
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<com.google.common.collect.ImmutableBiMap: void <init>()>();
+
+        r0.<com.google.common.collect.RegularImmutableBiMap: java.lang.Object[] alternatingKeysAndValues> = $r1;
+
+        r0.<com.google.common.collect.RegularImmutableBiMap: int size> = $i0;
+
+        r0.<com.google.common.collect.RegularImmutableBiMap: int keyOffset> = 0;
+
+        if $i0 < 2 goto label1;
+
+        $i1 = staticinvoke <com.google.common.collect.ImmutableSet: int chooseTableSize(int)>($i0);
+
+        goto label2;
+
+     label1:
+        $i1 = 0;
+
+     label2:
+        $r3 = staticinvoke <com.google.common.collect.RegularImmutableMap: java.lang.Object createHashTableOrThrow(java.lang.Object[],int,int,int)>($r1, $i0, $i1, 0);
+
+        r0.<com.google.common.collect.RegularImmutableBiMap: java.lang.Object keyHashTable> = $r3;
+
+        $r3 = staticinvoke <com.google.common.collect.RegularImmutableMap: java.lang.Object createHashTableOrThrow(java.lang.Object[],int,int,int)>($r1, $i0, $i1, 1);
+
+        $r2 = new com.google.common.collect.RegularImmutableBiMap;
+
+        specialinvoke $r2.<com.google.common.collect.RegularImmutableBiMap: void <init>(java.lang.Object,java.lang.Object[],int,com.google.common.collect.RegularImmutableBiMap)>($r3, $r1, $i0, r0);
+
+        r0.<com.google.common.collect.RegularImmutableBiMap: com.google.common.collect.RegularImmutableBiMap inverse> = $r2;
+
+        return;
+    }
+
+    com.google.common.collect.ImmutableSet createEntrySet()
+    {
+        com.google.common.collect.RegularImmutableMap$EntrySet $r1;
+        java.lang.Object[] $r2;
+        com.google.common.collect.RegularImmutableBiMap r0;
+        int $i0, $i1;
+
+        r0 := @this: com.google.common.collect.RegularImmutableBiMap;
+
+        $r1 = new com.google.common.collect.RegularImmutableMap$EntrySet;
+
+        $r2 = r0.<com.google.common.collect.RegularImmutableBiMap: java.lang.Object[] alternatingKeysAndValues>;
+
+        $i0 = r0.<com.google.common.collect.RegularImmutableBiMap: int keyOffset>;
+
+        $i1 = r0.<com.google.common.collect.RegularImmutableBiMap: int size>;
+
+        specialinvoke $r1.<com.google.common.collect.RegularImmutableMap$EntrySet: void <init>(com.google.common.collect.ImmutableMap,java.lang.Object[],int,int)>(r0, $r2, $i0, $i1);
+
+        return $r1;
+    }
+
+    com.google.common.collect.ImmutableSet createKeySet()
+    {
+        java.lang.Object[] $r2;
+        com.google.common.collect.RegularImmutableBiMap r0;
+        com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList r1;
+        int $i0, $i1;
+        com.google.common.collect.RegularImmutableMap$KeySet $r3;
+
+        r0 := @this: com.google.common.collect.RegularImmutableBiMap;
+
+        r1 = new com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList;
+
+        $r2 = r0.<com.google.common.collect.RegularImmutableBiMap: java.lang.Object[] alternatingKeysAndValues>;
+
+        $i0 = r0.<com.google.common.collect.RegularImmutableBiMap: int keyOffset>;
+
+        $i1 = r0.<com.google.common.collect.RegularImmutableBiMap: int size>;
+
+        specialinvoke r1.<com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList: void <init>(java.lang.Object[],int,int)>($r2, $i0, $i1);
+
+        $r3 = new com.google.common.collect.RegularImmutableMap$KeySet;
+
+        specialinvoke $r3.<com.google.common.collect.RegularImmutableMap$KeySet: void <init>(com.google.common.collect.ImmutableMap,com.google.common.collect.ImmutableList)>(r0, r1);
+
+        return $r3;
+    }
+
+    public java.lang.Object get(java.lang.Object)
+    {
+        java.lang.Object[] $r3;
+        com.google.common.collect.RegularImmutableBiMap r0;
+        int $i0, $i1;
+        java.lang.Object $r1, r2;
+
+        r0 := @this: com.google.common.collect.RegularImmutableBiMap;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        r2 = r0.<com.google.common.collect.RegularImmutableBiMap: java.lang.Object keyHashTable>;
+
+        $r3 = r0.<com.google.common.collect.RegularImmutableBiMap: java.lang.Object[] alternatingKeysAndValues>;
+
+        $i0 = r0.<com.google.common.collect.RegularImmutableBiMap: int size>;
+
+        $i1 = r0.<com.google.common.collect.RegularImmutableBiMap: int keyOffset>;
+
+        $r1 = staticinvoke <com.google.common.collect.RegularImmutableMap: java.lang.Object get(java.lang.Object,java.lang.Object[],int,int,java.lang.Object)>(r2, $r3, $i0, $i1, $r1);
+
+        if $r1 != null goto label1;
+
+        return null;
+
+     label1:
+        return $r1;
+    }
+
+    public volatile com.google.common.collect.BiMap inverse()
+    {
+        com.google.common.collect.ImmutableBiMap $r1;
+        com.google.common.collect.RegularImmutableBiMap r0;
+
+        r0 := @this: com.google.common.collect.RegularImmutableBiMap;
+
+        $r1 = virtualinvoke r0.<com.google.common.collect.RegularImmutableBiMap: com.google.common.collect.ImmutableBiMap inverse()>();
+
+        return $r1;
+    }
+
+    public com.google.common.collect.ImmutableBiMap inverse()
+    {
+        com.google.common.collect.RegularImmutableBiMap r0;
+
+        r0 := @this: com.google.common.collect.RegularImmutableBiMap;
+
+        r0 = r0.<com.google.common.collect.RegularImmutableBiMap: com.google.common.collect.RegularImmutableBiMap inverse>;
+
+        return r0;
+    }
+
+    boolean isPartialView()
+    {
+        com.google.common.collect.RegularImmutableBiMap r0;
+
+        r0 := @this: com.google.common.collect.RegularImmutableBiMap;
+
+        return 0;
+    }
+
+    public int size()
+    {
+        int i0;
+        com.google.common.collect.RegularImmutableBiMap r0;
+
+        r0 := @this: com.google.common.collect.RegularImmutableBiMap;
+
+        i0 = r0.<com.google.common.collect.RegularImmutableBiMap: int size>;
+
+        return i0;
+    }
+}

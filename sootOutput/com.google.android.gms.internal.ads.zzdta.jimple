@@ -1,0 +1,76 @@
+public final class com.google.android.gms.internal.ads.zzdta extends java.lang.Object implements com.google.android.gms.internal.ads.zzckw
+{
+    public final com.google.android.gms.internal.ads.zzceu zza;
+
+    public void <init>(com.google.android.gms.internal.ads.zzceu)
+    {
+        com.google.android.gms.internal.ads.zzdta r0;
+        com.google.android.gms.internal.ads.zzceu $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdta;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzceu;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzdta: com.google.android.gms.internal.ads.zzceu zza> = $r1;
+
+        return;
+    }
+
+    public final void zza(boolean, int, java.lang.String, java.lang.String)
+    {
+        java.lang.Exception $r5;
+        com.google.android.gms.internal.ads.zzdta r0;
+        com.google.android.gms.internal.ads.zzceu $r3;
+        int $i0;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r1, $r2;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdta;
+
+        $z0 := @parameter0: boolean;
+
+        $i0 := @parameter1: int;
+
+        $r1 := @parameter2: java.lang.String;
+
+        $r2 := @parameter3: java.lang.String;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzdta: com.google.android.gms.internal.ads.zzceu zza>;
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke $r3.<com.google.android.gms.internal.ads.zzceu: boolean zzc(java.lang.Object)>(null);
+
+        return;
+
+     label1:
+        $r5 = new java.lang.Exception;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Ad Web View failed to load. Error code: ");
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", Description: ");
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", Failing URL: ");
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r5.<java.lang.Exception: void <init>(java.lang.String)>($r1);
+
+        virtualinvoke $r3.<com.google.android.gms.internal.ads.zzceu: boolean zzd(java.lang.Throwable)>($r5);
+
+        return;
+    }
+}

@@ -1,0 +1,500 @@
+public final class androidx.core.view.ContentInfoCompat extends java.lang.Object
+{
+    public static final int FLAG_CONVERT_TO_PLAIN_TEXT;
+    public static final int SOURCE_APP;
+    public static final int SOURCE_AUTOFILL;
+    public static final int SOURCE_CLIPBOARD;
+    public static final int SOURCE_DRAG_AND_DROP;
+    public static final int SOURCE_INPUT_METHOD;
+    public static final int SOURCE_PROCESS_TEXT;
+    private final androidx.core.view.ContentInfoCompat$Compat mCompat;
+
+    void <init>(androidx.core.view.ContentInfoCompat$Compat)
+    {
+        androidx.core.view.ContentInfoCompat r0;
+        androidx.core.view.ContentInfoCompat$Compat $r1;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat;
+
+        $r1 := @parameter0: androidx.core.view.ContentInfoCompat$Compat;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.view.ContentInfoCompat: androidx.core.view.ContentInfoCompat$Compat mCompat> = $r1;
+
+        return;
+    }
+
+    static android.content.ClipData buildClipData(android.content.ClipDescription, java.util.List)
+    {
+        android.content.ClipData$Item $r5;
+        android.content.ClipData r2;
+        java.util.List r1;
+        int i0, $i1;
+        android.content.ClipDescription $r0, r3;
+        java.lang.Object $r4;
+
+        $r0 := @parameter0: android.content.ClipDescription;
+
+        r1 := @parameter1: java.util.List;
+
+        r2 = new android.content.ClipData;
+
+        r3 = new android.content.ClipDescription;
+
+        specialinvoke r3.<android.content.ClipDescription: void <init>(android.content.ClipDescription)>($r0);
+
+        $r4 = interfaceinvoke r1.<java.util.List: java.lang.Object get(int)>(0);
+
+        $r5 = (android.content.ClipData$Item) $r4;
+
+        specialinvoke r2.<android.content.ClipData: void <init>(android.content.ClipDescription,android.content.ClipData$Item)>(r3, $r5);
+
+        i0 = 1;
+
+     label1:
+        $i1 = interfaceinvoke r1.<java.util.List: int size()>();
+
+        if i0 >= $i1 goto label2;
+
+        $r4 = interfaceinvoke r1.<java.util.List: java.lang.Object get(int)>(i0);
+
+        $r5 = (android.content.ClipData$Item) $r4;
+
+        virtualinvoke r2.<android.content.ClipData: void addItem(android.content.ClipData$Item)>($r5);
+
+        i0 = i0 + 1;
+
+        goto label1;
+
+     label2:
+        return r2;
+    }
+
+    static java.lang.String flagsToString(int)
+    {
+        int $i0, $i1;
+        java.lang.String $r0;
+
+        $i0 := @parameter0: int;
+
+        $i1 = $i0 & 1;
+
+        if $i1 == 0 goto label1;
+
+        return "FLAG_CONVERT_TO_PLAIN_TEXT";
+
+     label1:
+        $r0 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        return $r0;
+    }
+
+    static android.util.Pair partition(android.content.ClipData, androidx.core.util.Predicate)
+    {
+        android.util.Pair $r6;
+        android.content.ClipData$Item $r4;
+        androidx.core.util.Predicate r1;
+        java.util.ArrayList r2, r3, $r5;
+        android.content.ClipData $r0, $r8;
+        int i0, $i1;
+        android.content.ClipDescription $r7;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.ClipData;
+
+        r1 := @parameter1: androidx.core.util.Predicate;
+
+        r2 = null;
+
+        r3 = null;
+
+        i0 = 0;
+
+     label01:
+        $i1 = virtualinvoke $r0.<android.content.ClipData: int getItemCount()>();
+
+        if i0 >= $i1 goto label08;
+
+        $r4 = virtualinvoke $r0.<android.content.ClipData: android.content.ClipData$Item getItemAt(int)>(i0);
+
+        $z0 = interfaceinvoke r1.<androidx.core.util.Predicate: boolean test(java.lang.Object)>($r4);
+
+        if $z0 == 0 goto label04;
+
+        if r2 != null goto label02;
+
+        $r5 = new java.util.ArrayList;
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>()>();
+
+        goto label03;
+
+     label02:
+        $r5 = r2;
+
+     label03:
+        r2 = $r5;
+
+        virtualinvoke $r5.<java.util.ArrayList: boolean add(java.lang.Object)>($r4);
+
+        goto label07;
+
+     label04:
+        if r3 != null goto label05;
+
+        $r5 = new java.util.ArrayList;
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>()>();
+
+        goto label06;
+
+     label05:
+        $r5 = r3;
+
+     label06:
+        r3 = $r5;
+
+        virtualinvoke $r5.<java.util.ArrayList: boolean add(java.lang.Object)>($r4);
+
+     label07:
+        i0 = i0 + 1;
+
+        goto label01;
+
+     label08:
+        if r2 != null goto label09;
+
+        $r6 = staticinvoke <android.util.Pair: android.util.Pair create(java.lang.Object,java.lang.Object)>(null, $r0);
+
+        return $r6;
+
+     label09:
+        if r3 != null goto label10;
+
+        $r6 = staticinvoke <android.util.Pair: android.util.Pair create(java.lang.Object,java.lang.Object)>($r0, null);
+
+        return $r6;
+
+     label10:
+        $r7 = virtualinvoke $r0.<android.content.ClipData: android.content.ClipDescription getDescription()>();
+
+        $r8 = staticinvoke <androidx.core.view.ContentInfoCompat: android.content.ClipData buildClipData(android.content.ClipDescription,java.util.List)>($r7, r2);
+
+        $r7 = virtualinvoke $r0.<android.content.ClipData: android.content.ClipDescription getDescription()>();
+
+        $r0 = staticinvoke <androidx.core.view.ContentInfoCompat: android.content.ClipData buildClipData(android.content.ClipDescription,java.util.List)>($r7, r3);
+
+        $r6 = staticinvoke <android.util.Pair: android.util.Pair create(java.lang.Object,java.lang.Object)>($r8, $r0);
+
+        return $r6;
+    }
+
+    public static android.util.Pair partition(android.view.ContentInfo, java.util.function.Predicate)
+    {
+        android.util.Pair $r2;
+        android.view.ContentInfo $r0;
+        java.util.function.Predicate r1;
+
+        $r0 := @parameter0: android.view.ContentInfo;
+
+        r1 := @parameter1: java.util.function.Predicate;
+
+        $r2 = staticinvoke <androidx.core.view.ContentInfoCompat$Api31Impl: android.util.Pair partition(android.view.ContentInfo,java.util.function.Predicate)>($r0, r1);
+
+        return $r2;
+    }
+
+    static java.lang.String sourceToString(int)
+    {
+        int $i0;
+        java.lang.String $r0;
+
+        $i0 := @parameter0: int;
+
+        lookupswitch($i0)
+        {
+            case 0: goto label7;
+            case 1: goto label6;
+            case 2: goto label5;
+            case 3: goto label4;
+            case 4: goto label3;
+            case 5: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        $r0 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        return $r0;
+
+     label2:
+        return "SOURCE_PROCESS_TEXT";
+
+     label3:
+        return "SOURCE_AUTOFILL";
+
+     label4:
+        return "SOURCE_DRAG_AND_DROP";
+
+     label5:
+        return "SOURCE_INPUT_METHOD";
+
+     label6:
+        return "SOURCE_CLIPBOARD";
+
+     label7:
+        return "SOURCE_APP";
+    }
+
+    public static androidx.core.view.ContentInfoCompat toContentInfoCompat(android.view.ContentInfo)
+    {
+        androidx.core.view.ContentInfoCompat $r1;
+        androidx.core.view.ContentInfoCompat$Compat31Impl $r2;
+        android.view.ContentInfo $r0;
+
+        $r0 := @parameter0: android.view.ContentInfo;
+
+        $r1 = new androidx.core.view.ContentInfoCompat;
+
+        $r2 = new androidx.core.view.ContentInfoCompat$Compat31Impl;
+
+        specialinvoke $r2.<androidx.core.view.ContentInfoCompat$Compat31Impl: void <init>(android.view.ContentInfo)>($r0);
+
+        specialinvoke $r1.<androidx.core.view.ContentInfoCompat: void <init>(androidx.core.view.ContentInfoCompat$Compat)>($r2);
+
+        return $r1;
+    }
+
+    public android.content.ClipData getClip()
+    {
+        androidx.core.view.ContentInfoCompat r0;
+        android.content.ClipData $r1;
+        androidx.core.view.ContentInfoCompat$Compat $r2;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat;
+
+        $r2 = r0.<androidx.core.view.ContentInfoCompat: androidx.core.view.ContentInfoCompat$Compat mCompat>;
+
+        $r1 = interfaceinvoke $r2.<androidx.core.view.ContentInfoCompat$Compat: android.content.ClipData getClip()>();
+
+        return $r1;
+    }
+
+    public android.os.Bundle getExtras()
+    {
+        androidx.core.view.ContentInfoCompat r0;
+        androidx.core.view.ContentInfoCompat$Compat $r2;
+        android.os.Bundle $r1;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat;
+
+        $r2 = r0.<androidx.core.view.ContentInfoCompat: androidx.core.view.ContentInfoCompat$Compat mCompat>;
+
+        $r1 = interfaceinvoke $r2.<androidx.core.view.ContentInfoCompat$Compat: android.os.Bundle getExtras()>();
+
+        return $r1;
+    }
+
+    public int getFlags()
+    {
+        androidx.core.view.ContentInfoCompat r0;
+        int $i0;
+        androidx.core.view.ContentInfoCompat$Compat $r1;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat;
+
+        $r1 = r0.<androidx.core.view.ContentInfoCompat: androidx.core.view.ContentInfoCompat$Compat mCompat>;
+
+        $i0 = interfaceinvoke $r1.<androidx.core.view.ContentInfoCompat$Compat: int getFlags()>();
+
+        return $i0;
+    }
+
+    public android.net.Uri getLinkUri()
+    {
+        androidx.core.view.ContentInfoCompat r0;
+        android.net.Uri $r1;
+        androidx.core.view.ContentInfoCompat$Compat $r2;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat;
+
+        $r2 = r0.<androidx.core.view.ContentInfoCompat: androidx.core.view.ContentInfoCompat$Compat mCompat>;
+
+        $r1 = interfaceinvoke $r2.<androidx.core.view.ContentInfoCompat$Compat: android.net.Uri getLinkUri()>();
+
+        return $r1;
+    }
+
+    public int getSource()
+    {
+        androidx.core.view.ContentInfoCompat r0;
+        int $i0;
+        androidx.core.view.ContentInfoCompat$Compat $r1;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat;
+
+        $r1 = r0.<androidx.core.view.ContentInfoCompat: androidx.core.view.ContentInfoCompat$Compat mCompat>;
+
+        $i0 = interfaceinvoke $r1.<androidx.core.view.ContentInfoCompat$Compat: int getSource()>();
+
+        return $i0;
+    }
+
+    public android.util.Pair partition(androidx.core.util.Predicate)
+    {
+        androidx.core.view.ContentInfoCompat$Builder $r9;
+        android.util.Pair $r7;
+        android.content.ClipData$Item $r5;
+        androidx.core.util.Predicate r1;
+        androidx.core.view.ContentInfoCompat r0, $r4, $r6;
+        android.content.ClipData $r3;
+        int $i0;
+        androidx.core.view.ContentInfoCompat$Compat r2;
+        java.lang.Object $r8;
+        boolean $z0;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat;
+
+        r1 := @parameter0: androidx.core.util.Predicate;
+
+        r2 = r0.<androidx.core.view.ContentInfoCompat: androidx.core.view.ContentInfoCompat$Compat mCompat>;
+
+        $r3 = interfaceinvoke r2.<androidx.core.view.ContentInfoCompat$Compat: android.content.ClipData getClip()>();
+
+        $i0 = virtualinvoke $r3.<android.content.ClipData: int getItemCount()>();
+
+        $r4 = null;
+
+        if $i0 != 1 goto label5;
+
+        $r5 = virtualinvoke $r3.<android.content.ClipData: android.content.ClipData$Item getItemAt(int)>(0);
+
+        $z0 = interfaceinvoke r1.<androidx.core.util.Predicate: boolean test(java.lang.Object)>($r5);
+
+        if $z0 == 0 goto label1;
+
+        $r6 = r0;
+
+        goto label2;
+
+     label1:
+        $r6 = null;
+
+     label2:
+        if $z0 == 0 goto label3;
+
+        goto label4;
+
+     label3:
+        $r4 = r0;
+
+     label4:
+        $r7 = staticinvoke <android.util.Pair: android.util.Pair create(java.lang.Object,java.lang.Object)>($r6, $r4);
+
+        return $r7;
+
+     label5:
+        $r7 = staticinvoke <androidx.core.view.ContentInfoCompat: android.util.Pair partition(android.content.ClipData,androidx.core.util.Predicate)>($r3, r1);
+
+        $r8 = $r7.<android.util.Pair: java.lang.Object first>;
+
+        if $r8 != null goto label6;
+
+        $r7 = staticinvoke <android.util.Pair: android.util.Pair create(java.lang.Object,java.lang.Object)>(null, r0);
+
+        return $r7;
+
+     label6:
+        $r8 = $r7.<android.util.Pair: java.lang.Object second>;
+
+        if $r8 != null goto label7;
+
+        $r7 = staticinvoke <android.util.Pair: android.util.Pair create(java.lang.Object,java.lang.Object)>(r0, null);
+
+        return $r7;
+
+     label7:
+        $r9 = new androidx.core.view.ContentInfoCompat$Builder;
+
+        specialinvoke $r9.<androidx.core.view.ContentInfoCompat$Builder: void <init>(androidx.core.view.ContentInfoCompat)>(r0);
+
+        $r8 = $r7.<android.util.Pair: java.lang.Object first>;
+
+        $r3 = (android.content.ClipData) $r8;
+
+        $r9 = virtualinvoke $r9.<androidx.core.view.ContentInfoCompat$Builder: androidx.core.view.ContentInfoCompat$Builder setClip(android.content.ClipData)>($r3);
+
+        $r4 = virtualinvoke $r9.<androidx.core.view.ContentInfoCompat$Builder: androidx.core.view.ContentInfoCompat build()>();
+
+        $r9 = new androidx.core.view.ContentInfoCompat$Builder;
+
+        specialinvoke $r9.<androidx.core.view.ContentInfoCompat$Builder: void <init>(androidx.core.view.ContentInfoCompat)>(r0);
+
+        $r8 = $r7.<android.util.Pair: java.lang.Object second>;
+
+        $r3 = (android.content.ClipData) $r8;
+
+        $r9 = virtualinvoke $r9.<androidx.core.view.ContentInfoCompat$Builder: androidx.core.view.ContentInfoCompat$Builder setClip(android.content.ClipData)>($r3);
+
+        r0 = virtualinvoke $r9.<androidx.core.view.ContentInfoCompat$Builder: androidx.core.view.ContentInfoCompat build()>();
+
+        $r7 = staticinvoke <android.util.Pair: android.util.Pair create(java.lang.Object,java.lang.Object)>($r4, r0);
+
+        return $r7;
+    }
+
+    public android.view.ContentInfo toContentInfo()
+    {
+        androidx.core.view.ContentInfoCompat r0;
+        androidx.core.view.ContentInfoCompat$Compat $r1;
+        java.lang.Object $r3;
+        android.view.ContentInfo $r2;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat;
+
+        $r1 = r0.<androidx.core.view.ContentInfoCompat: androidx.core.view.ContentInfoCompat$Compat mCompat>;
+
+        $r2 = interfaceinvoke $r1.<androidx.core.view.ContentInfoCompat$Compat: android.view.ContentInfo getWrapped()>();
+
+        $r3 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>($r2);
+
+        $r2 = (android.view.ContentInfo) $r3;
+
+        return $r2;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.core.view.ContentInfoCompat r0;
+        androidx.core.view.ContentInfoCompat$Compat $r2;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.core.view.ContentInfoCompat;
+
+        $r2 = r0.<androidx.core.view.ContentInfoCompat: androidx.core.view.ContentInfoCompat$Compat mCompat>;
+
+        $r1 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        return $r1;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.view.ContentInfoCompat: int SOURCE_PROCESS_TEXT> = 5;
+
+        <androidx.core.view.ContentInfoCompat: int SOURCE_INPUT_METHOD> = 2;
+
+        <androidx.core.view.ContentInfoCompat: int SOURCE_DRAG_AND_DROP> = 3;
+
+        <androidx.core.view.ContentInfoCompat: int SOURCE_CLIPBOARD> = 1;
+
+        <androidx.core.view.ContentInfoCompat: int SOURCE_AUTOFILL> = 4;
+
+        <androidx.core.view.ContentInfoCompat: int SOURCE_APP> = 0;
+
+        <androidx.core.view.ContentInfoCompat: int FLAG_CONVERT_TO_PLAIN_TEXT> = 1;
+
+        return;
+    }
+}

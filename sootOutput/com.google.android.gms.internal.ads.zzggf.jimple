@@ -1,0 +1,69 @@
+public final class com.google.android.gms.internal.ads.zzggf extends java.lang.Object
+{
+
+    public static final com.google.android.gms.internal.ads.zzggq zza(com.google.android.gms.internal.ads.zzggq) throws java.security.GeneralSecurityException
+    {
+        com.google.android.gms.internal.ads.zzggq $r0;
+        byte[] $r2;
+        com.google.android.gms.internal.ads.zzguy $r1;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzggq;
+
+        if $r0 == null goto label1;
+
+        return $r0;
+
+     label1:
+        $r1 = staticinvoke <com.google.android.gms.internal.ads.zzggf: com.google.android.gms.internal.ads.zzguy zzb(com.google.android.gms.internal.ads.zzggq)>(null);
+
+        $r2 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzgxt: byte[] zzax()>();
+
+        $r0 = staticinvoke <com.google.android.gms.internal.ads.zzghe: com.google.android.gms.internal.ads.zzggq zza(byte[])>($r2);
+
+        return $r0;
+    }
+
+    static final com.google.android.gms.internal.ads.zzguy zzb(com.google.android.gms.internal.ads.zzggq)
+    {
+        com.google.android.gms.internal.ads.zzgpl $r6;
+        com.google.android.gms.internal.ads.zzgpc $r2;
+        com.google.android.gms.internal.ads.zzgoe $r1;
+        com.google.android.gms.internal.ads.zzggq $r0;
+        com.google.android.gms.internal.ads.zzgoy $r3;
+        java.security.GeneralSecurityException $r5;
+        java.lang.String $r7;
+        com.google.android.gms.internal.ads.zzguy $r4;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzggq;
+
+     label1:
+        $r1 = staticinvoke <com.google.android.gms.internal.ads.zzgoe: com.google.android.gms.internal.ads.zzgoe zzd()>();
+
+        $r2 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzgoe: com.google.android.gms.internal.ads.zzgpc zzf(com.google.android.gms.internal.ads.zzggq,java.lang.Class)>(null, class "Lcom/google/android/gms/internal/ads/zzgoy;");
+
+     label2:
+        $r3 = (com.google.android.gms.internal.ads.zzgoy) $r2;
+
+     label3:
+        $r4 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgoy: com.google.android.gms.internal.ads.zzguy zzc()>();
+
+     label4:
+        return $r4;
+
+     label5:
+        $r5 := @caughtexception;
+
+        $r6 = new com.google.android.gms.internal.ads.zzgpl;
+
+        $r7 = "Parsing parameters failed in getProto(). You probably want to call some Tink register function for ";
+
+        $r7 = virtualinvoke $r7.<java.lang.String: java.lang.String concat(java.lang.String)>("null");
+
+        specialinvoke $r6.<com.google.android.gms.internal.ads.zzgpl: void <init>(java.lang.String,java.lang.Throwable)>($r7, $r5);
+
+        throw $r6;
+
+        catch java.security.GeneralSecurityException from label1 to label2 with label5;
+        catch java.security.GeneralSecurityException from label3 to label4 with label5;
+    }
+}

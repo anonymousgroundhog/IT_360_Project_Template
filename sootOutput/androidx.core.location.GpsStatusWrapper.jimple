@@ -1,0 +1,599 @@
+class androidx.core.location.GpsStatusWrapper extends androidx.core.location.GnssStatusCompat
+{
+    private static final int BEIDOU_PRN_COUNT;
+    private static final int BEIDOU_PRN_OFFSET;
+    private static final int GLONASS_PRN_COUNT;
+    private static final int GLONASS_PRN_OFFSET;
+    private static final int GPS_PRN_COUNT;
+    private static final int GPS_PRN_OFFSET;
+    private static final int QZSS_SVID_MAX;
+    private static final int QZSS_SVID_MIN;
+    private static final int SBAS_PRN_MAX;
+    private static final int SBAS_PRN_MIN;
+    private static final int SBAS_PRN_OFFSET;
+    private java.util.Iterator mCachedIterator;
+    private int mCachedIteratorPosition;
+    private android.location.GpsSatellite mCachedSatellite;
+    private int mCachedSatelliteCount;
+    private final android.location.GpsStatus mWrapped;
+
+    void <init>(android.location.GpsStatus)
+    {
+        android.location.GpsStatus $r1;
+        java.util.Iterator $r4;
+        androidx.core.location.GpsStatusWrapper r0;
+        java.lang.Object $r2;
+        java.lang.Iterable $r3;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $r1 := @parameter0: android.location.GpsStatus;
+
+        specialinvoke r0.<androidx.core.location.GnssStatusCompat: void <init>()>();
+
+        $r2 = staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r1);
+
+        $r1 = (android.location.GpsStatus) $r2;
+
+        r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsStatus mWrapped> = $r1;
+
+        r0.<androidx.core.location.GpsStatusWrapper: int mCachedSatelliteCount> = -1;
+
+        $r1 = r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsStatus mWrapped>;
+
+        $r3 = virtualinvoke $r1.<android.location.GpsStatus: java.lang.Iterable getSatellites()>();
+
+        $r4 = interfaceinvoke $r3.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+        r0.<androidx.core.location.GpsStatusWrapper: java.util.Iterator mCachedIterator> = $r4;
+
+        r0.<androidx.core.location.GpsStatusWrapper: int mCachedIteratorPosition> = -1;
+
+        r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsSatellite mCachedSatellite> = null;
+
+        return;
+    }
+
+    private static int getConstellationFromPrn(int)
+    {
+        int $i0;
+
+        $i0 := @parameter0: int;
+
+        if $i0 <= 0 goto label1;
+
+        if $i0 > 32 goto label1;
+
+        return 1;
+
+     label1:
+        if $i0 < 33 goto label2;
+
+        if $i0 > 64 goto label2;
+
+        return 2;
+
+     label2:
+        if $i0 <= 64 goto label3;
+
+        if $i0 > 88 goto label3;
+
+        return 3;
+
+     label3:
+        if $i0 <= 200 goto label4;
+
+        if $i0 > 235 goto label4;
+
+        return 5;
+
+     label4:
+        if $i0 < 193 goto label5;
+
+        if $i0 > 200 goto label5;
+
+        return 4;
+
+     label5:
+        return 0;
+    }
+
+    private android.location.GpsSatellite getSatellite(int)
+    {
+        java.lang.Throwable r7;
+        java.util.Iterator $r4;
+        android.location.GpsSatellite r6;
+        java.lang.Iterable $r3;
+        android.location.GpsStatus $r1, r2;
+        int $i0, i1;
+        androidx.core.location.GpsStatusWrapper r0;
+        java.lang.Object $r5;
+        boolean $z0;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsStatus mWrapped>;
+
+        entermonitor $r1;
+
+     label1:
+        i1 = r0.<androidx.core.location.GpsStatusWrapper: int mCachedIteratorPosition>;
+
+        if $i0 >= i1 goto label2;
+
+        r2 = r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsStatus mWrapped>;
+
+        $r3 = virtualinvoke r2.<android.location.GpsStatus: java.lang.Iterable getSatellites()>();
+
+        $r4 = interfaceinvoke $r3.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+        r0.<androidx.core.location.GpsStatusWrapper: java.util.Iterator mCachedIterator> = $r4;
+
+        r0.<androidx.core.location.GpsStatusWrapper: int mCachedIteratorPosition> = -1;
+
+     label2:
+        i1 = r0.<androidx.core.location.GpsStatusWrapper: int mCachedIteratorPosition>;
+
+        if i1 >= $i0 goto label4;
+
+        i1 = r0.<androidx.core.location.GpsStatusWrapper: int mCachedIteratorPosition>;
+
+        i1 = i1 + 1;
+
+        r0.<androidx.core.location.GpsStatusWrapper: int mCachedIteratorPosition> = i1;
+
+        $r4 = r0.<androidx.core.location.GpsStatusWrapper: java.util.Iterator mCachedIterator>;
+
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label3;
+
+        r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsSatellite mCachedSatellite> = null;
+
+        goto label4;
+
+     label3:
+        $r4 = r0.<androidx.core.location.GpsStatusWrapper: java.util.Iterator mCachedIterator>;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (android.location.GpsSatellite) $r5;
+
+        r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsSatellite mCachedSatellite> = r6;
+
+        goto label2;
+
+     label4:
+        r6 = r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsSatellite mCachedSatellite>;
+
+        exitmonitor $r1;
+
+     label5:
+        $r5 = staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>(r6);
+
+        r6 = (android.location.GpsSatellite) $r5;
+
+        return r6;
+
+     label6:
+        r7 := @caughtexception;
+
+     label7:
+        exitmonitor $r1;
+
+     label8:
+        throw r7;
+
+        catch java.lang.Throwable from label1 to label5 with label6;
+        catch java.lang.Throwable from label7 to label8 with label6;
+    }
+
+    private static int getSvidFromPrn(int)
+    {
+        int $i0, $i1;
+
+        $i1 := @parameter0: int;
+
+        $i0 = staticinvoke <androidx.core.location.GpsStatusWrapper: int getConstellationFromPrn(int)>($i1);
+
+        lookupswitch($i0)
+        {
+            case 2: goto label4;
+            case 3: goto label3;
+            case 4: goto label1;
+            case 5: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return $i1;
+
+     label2:
+        $i1 = $i1 + -200;
+
+        return $i1;
+
+     label3:
+        $i1 = $i1 + -64;
+
+        return $i1;
+
+     label4:
+        $i1 = $i1 + 87;
+
+        return $i1;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        android.location.GpsStatus $r2, $r4;
+        androidx.core.location.GpsStatusWrapper r0, r3;
+        java.lang.Object $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if r0 != $r1 goto label1;
+
+        return 1;
+
+     label1:
+        $z0 = $r1 instanceof androidx.core.location.GpsStatusWrapper;
+
+        if $z0 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        r3 = (androidx.core.location.GpsStatusWrapper) $r1;
+
+        $r4 = r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsStatus mWrapped>;
+
+        $r2 = r3.<androidx.core.location.GpsStatusWrapper: android.location.GpsStatus mWrapped>;
+
+        $z0 = virtualinvoke $r4.<java.lang.Object: boolean equals(java.lang.Object)>($r2);
+
+        return $z0;
+    }
+
+    public float getAzimuthDegrees(int)
+    {
+        android.location.GpsSatellite $r1;
+        int $i0;
+        androidx.core.location.GpsStatusWrapper r0;
+        float $f0;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $i0 := @parameter0: int;
+
+        $r1 = specialinvoke r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsSatellite getSatellite(int)>($i0);
+
+        $f0 = virtualinvoke $r1.<android.location.GpsSatellite: float getAzimuth()>();
+
+        return $f0;
+    }
+
+    public float getBasebandCn0DbHz(int)
+    {
+        int $i0;
+        androidx.core.location.GpsStatusWrapper r0;
+        java.lang.UnsupportedOperationException $r1;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $i0 := @parameter0: int;
+
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $r1;
+    }
+
+    public float getCarrierFrequencyHz(int)
+    {
+        int $i0;
+        androidx.core.location.GpsStatusWrapper r0;
+        java.lang.UnsupportedOperationException $r1;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $i0 := @parameter0: int;
+
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $r1;
+    }
+
+    public float getCn0DbHz(int)
+    {
+        android.location.GpsSatellite $r1;
+        int $i0;
+        androidx.core.location.GpsStatusWrapper r0;
+        float $f0;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $i0 := @parameter0: int;
+
+        $r1 = specialinvoke r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsSatellite getSatellite(int)>($i0);
+
+        $f0 = virtualinvoke $r1.<android.location.GpsSatellite: float getSnr()>();
+
+        return $f0;
+    }
+
+    public int getConstellationType(int)
+    {
+        android.location.GpsSatellite $r1;
+        int $i0, $i1;
+        androidx.core.location.GpsStatusWrapper r0;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $i0 := @parameter0: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 >= 24 goto label1;
+
+        return 1;
+
+     label1:
+        $r1 = specialinvoke r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsSatellite getSatellite(int)>($i0);
+
+        $i0 = virtualinvoke $r1.<android.location.GpsSatellite: int getPrn()>();
+
+        $i0 = staticinvoke <androidx.core.location.GpsStatusWrapper: int getConstellationFromPrn(int)>($i0);
+
+        return $i0;
+    }
+
+    public float getElevationDegrees(int)
+    {
+        android.location.GpsSatellite $r1;
+        int $i0;
+        androidx.core.location.GpsStatusWrapper r0;
+        float $f0;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $i0 := @parameter0: int;
+
+        $r1 = specialinvoke r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsSatellite getSatellite(int)>($i0);
+
+        $f0 = virtualinvoke $r1.<android.location.GpsSatellite: float getElevation()>();
+
+        return $f0;
+    }
+
+    public int getSatelliteCount()
+    {
+        java.lang.Throwable $r7;
+        java.util.Iterator $r4;
+        android.location.GpsSatellite r6;
+        java.lang.Iterable $r3;
+        android.location.GpsStatus $r1, $r2;
+        int $i0;
+        androidx.core.location.GpsStatusWrapper r0;
+        java.lang.Object $r5;
+        boolean $z0;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $r1 = r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsStatus mWrapped>;
+
+        entermonitor $r1;
+
+     label1:
+        $i0 = r0.<androidx.core.location.GpsStatusWrapper: int mCachedSatelliteCount>;
+
+        if $i0 != -1 goto label4;
+
+        $r2 = r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsStatus mWrapped>;
+
+        $r3 = virtualinvoke $r2.<android.location.GpsStatus: java.lang.Iterable getSatellites()>();
+
+        $r4 = interfaceinvoke $r3.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (android.location.GpsSatellite) $r5;
+
+        $i0 = r0.<androidx.core.location.GpsStatusWrapper: int mCachedSatelliteCount>;
+
+        $i0 = $i0 + 1;
+
+        r0.<androidx.core.location.GpsStatusWrapper: int mCachedSatelliteCount> = $i0;
+
+        goto label2;
+
+     label3:
+        $i0 = r0.<androidx.core.location.GpsStatusWrapper: int mCachedSatelliteCount>;
+
+        $i0 = $i0 + 1;
+
+        r0.<androidx.core.location.GpsStatusWrapper: int mCachedSatelliteCount> = $i0;
+
+     label4:
+        $i0 = r0.<androidx.core.location.GpsStatusWrapper: int mCachedSatelliteCount>;
+
+        exitmonitor $r1;
+
+     label5:
+        return $i0;
+
+     label6:
+        $r7 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label7:
+        throw $r7;
+
+        catch java.lang.Throwable from label1 to label5 with label6;
+        catch java.lang.Throwable from label6 to label7 with label6;
+    }
+
+    public int getSvid(int)
+    {
+        android.location.GpsSatellite $r1;
+        int $i0, $i1;
+        androidx.core.location.GpsStatusWrapper r0;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $i0 := @parameter0: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 >= 24 goto label1;
+
+        $r1 = specialinvoke r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsSatellite getSatellite(int)>($i0);
+
+        $i0 = virtualinvoke $r1.<android.location.GpsSatellite: int getPrn()>();
+
+        return $i0;
+
+     label1:
+        $r1 = specialinvoke r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsSatellite getSatellite(int)>($i0);
+
+        $i0 = virtualinvoke $r1.<android.location.GpsSatellite: int getPrn()>();
+
+        $i0 = staticinvoke <androidx.core.location.GpsStatusWrapper: int getSvidFromPrn(int)>($i0);
+
+        return $i0;
+    }
+
+    public boolean hasAlmanacData(int)
+    {
+        android.location.GpsSatellite $r1;
+        int $i0;
+        androidx.core.location.GpsStatusWrapper r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $i0 := @parameter0: int;
+
+        $r1 = specialinvoke r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsSatellite getSatellite(int)>($i0);
+
+        $z0 = virtualinvoke $r1.<android.location.GpsSatellite: boolean hasAlmanac()>();
+
+        return $z0;
+    }
+
+    public boolean hasBasebandCn0DbHz(int)
+    {
+        int $i0;
+        androidx.core.location.GpsStatusWrapper r0;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $i0 := @parameter0: int;
+
+        return 0;
+    }
+
+    public boolean hasCarrierFrequencyHz(int)
+    {
+        int $i0;
+        androidx.core.location.GpsStatusWrapper r0;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $i0 := @parameter0: int;
+
+        return 0;
+    }
+
+    public boolean hasEphemerisData(int)
+    {
+        android.location.GpsSatellite $r1;
+        int $i0;
+        androidx.core.location.GpsStatusWrapper r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $i0 := @parameter0: int;
+
+        $r1 = specialinvoke r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsSatellite getSatellite(int)>($i0);
+
+        $z0 = virtualinvoke $r1.<android.location.GpsSatellite: boolean hasEphemeris()>();
+
+        return $z0;
+    }
+
+    public int hashCode()
+    {
+        int $i0;
+        androidx.core.location.GpsStatusWrapper r0;
+        android.location.GpsStatus $r1;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $r1 = r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsStatus mWrapped>;
+
+        $i0 = virtualinvoke $r1.<java.lang.Object: int hashCode()>();
+
+        return $i0;
+    }
+
+    public boolean usedInFix(int)
+    {
+        android.location.GpsSatellite $r1;
+        int $i0;
+        androidx.core.location.GpsStatusWrapper r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.location.GpsStatusWrapper;
+
+        $i0 := @parameter0: int;
+
+        $r1 = specialinvoke r0.<androidx.core.location.GpsStatusWrapper: android.location.GpsSatellite getSatellite(int)>($i0);
+
+        $z0 = virtualinvoke $r1.<android.location.GpsSatellite: boolean usedInFix()>();
+
+        return $z0;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.location.GpsStatusWrapper: int SBAS_PRN_OFFSET> = -87;
+
+        <androidx.core.location.GpsStatusWrapper: int SBAS_PRN_MIN> = 33;
+
+        <androidx.core.location.GpsStatusWrapper: int SBAS_PRN_MAX> = 64;
+
+        <androidx.core.location.GpsStatusWrapper: int QZSS_SVID_MIN> = 193;
+
+        <androidx.core.location.GpsStatusWrapper: int QZSS_SVID_MAX> = 200;
+
+        <androidx.core.location.GpsStatusWrapper: int GPS_PRN_OFFSET> = 0;
+
+        <androidx.core.location.GpsStatusWrapper: int GPS_PRN_COUNT> = 32;
+
+        <androidx.core.location.GpsStatusWrapper: int GLONASS_PRN_OFFSET> = 64;
+
+        <androidx.core.location.GpsStatusWrapper: int GLONASS_PRN_COUNT> = 24;
+
+        <androidx.core.location.GpsStatusWrapper: int BEIDOU_PRN_OFFSET> = 200;
+
+        <androidx.core.location.GpsStatusWrapper: int BEIDOU_PRN_COUNT> = 35;
+
+        return;
+    }
+}

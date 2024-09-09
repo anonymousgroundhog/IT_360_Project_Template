@@ -1,0 +1,158 @@
+public final class com.google.android.gms.internal.ads.zzbjg extends com.google.android.gms.ads.formats.NativeAd$AdChoicesInfo
+{
+    private final com.google.android.gms.internal.ads.zzbjf zza;
+    private final java.util.List zzb;
+    private java.lang.String zzc;
+
+    public void <init>(com.google.android.gms.internal.ads.zzbjf)
+    {
+        android.os.RemoteException $r4, $r11;
+        android.os.IBinder $r9;
+        java.util.ArrayList $r12;
+        java.lang.String $r3;
+        boolean $z0;
+        com.google.android.gms.internal.ads.zzbjg r0;
+        java.util.Iterator $r6;
+        com.google.android.gms.internal.ads.zzbjn $r14;
+        com.google.android.gms.internal.ads.zzbjm $r8;
+        android.os.IInterface $r10;
+        com.google.android.gms.internal.ads.zzbjk $r13;
+        com.google.android.gms.internal.ads.zzbjf $r1, $r2;
+        java.util.List $r5;
+        java.lang.Object $r7;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbjg;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzbjf;
+
+        specialinvoke r0.<com.google.android.gms.ads.formats.NativeAd$AdChoicesInfo: void <init>()>();
+
+        $r12 = new java.util.ArrayList;
+
+        specialinvoke $r12.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzbjg: java.util.List zzb> = $r12;
+
+        r0.<com.google.android.gms.internal.ads.zzbjg: com.google.android.gms.internal.ads.zzbjf zza> = $r1;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzbjg: com.google.android.gms.internal.ads.zzbjf zza>;
+
+     label01:
+        $r3 = interfaceinvoke $r2.<com.google.android.gms.internal.ads.zzbjf: java.lang.String zzg()>();
+
+     label02:
+        r0.<com.google.android.gms.internal.ads.zzbjg: java.lang.String zzc> = $r3;
+
+        goto label04;
+
+     label03:
+        $r4 := @caughtexception;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzh(java.lang.String,java.lang.Throwable)>("", $r4);
+
+        r0.<com.google.android.gms.internal.ads.zzbjg: java.lang.String zzc> = "";
+
+     label04:
+        $r5 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzbjf: java.util.List zzh()>();
+
+        $r6 = interfaceinvoke $r5.<java.util.List: java.util.Iterator iterator()>();
+
+     label05:
+        $z0 = interfaceinvoke $r6.<java.util.Iterator: boolean hasNext()>();
+
+     label06:
+        if $z0 == 0 goto label16;
+
+     label07:
+        $r7 = interfaceinvoke $r6.<java.util.Iterator: java.lang.Object next()>();
+
+     label08:
+        $z0 = $r7 instanceof android.os.IBinder;
+
+        $r8 = null;
+
+        if $z0 == 0 goto label13;
+
+        $r9 = (android.os.IBinder) $r7;
+
+        if $r9 != null goto label09;
+
+        goto label13;
+
+     label09:
+        $r10 = interfaceinvoke $r9.<android.os.IBinder: android.os.IInterface queryLocalInterface(java.lang.String)>("com.google.android.gms.ads.internal.formats.client.INativeAdImage");
+
+     label10:
+        $z0 = $r10 instanceof com.google.android.gms.internal.ads.zzbjm;
+
+        if $z0 == 0 goto label11;
+
+        $r8 = (com.google.android.gms.internal.ads.zzbjm) $r10;
+
+        goto label13;
+
+     label11:
+        $r13 = new com.google.android.gms.internal.ads.zzbjk;
+
+        $r8 = $r13;
+
+     label12:
+        specialinvoke $r13.<com.google.android.gms.internal.ads.zzbjk: void <init>(android.os.IBinder)>($r9);
+
+     label13:
+        if $r8 == null goto label05;
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzbjg: java.util.List zzb>;
+
+        $r14 = new com.google.android.gms.internal.ads.zzbjn;
+
+     label14:
+        specialinvoke $r14.<com.google.android.gms.internal.ads.zzbjn: void <init>(com.google.android.gms.internal.ads.zzbjm)>($r8);
+
+        interfaceinvoke $r5.<java.util.List: boolean add(java.lang.Object)>($r14);
+
+     label15:
+        goto label05;
+
+     label16:
+        return;
+
+     label17:
+        $r11 := @caughtexception;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzh(java.lang.String,java.lang.Throwable)>("", $r11);
+
+        return;
+
+        catch android.os.RemoteException from label01 to label02 with label03;
+        catch android.os.RemoteException from label04 to label06 with label17;
+        catch android.os.RemoteException from label07 to label08 with label17;
+        catch android.os.RemoteException from label09 to label10 with label17;
+        catch android.os.RemoteException from label12 to label13 with label17;
+        catch android.os.RemoteException from label14 to label15 with label17;
+    }
+
+    public final java.util.List getImages()
+    {
+        java.util.List r1;
+        com.google.android.gms.internal.ads.zzbjg r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbjg;
+
+        r1 = r0.<com.google.android.gms.internal.ads.zzbjg: java.util.List zzb>;
+
+        return r1;
+    }
+
+    public final java.lang.CharSequence getText()
+    {
+        com.google.android.gms.internal.ads.zzbjg r0;
+        java.lang.String r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbjg;
+
+        r1 = r0.<com.google.android.gms.internal.ads.zzbjg: java.lang.String zzc>;
+
+        return r1;
+    }
+}

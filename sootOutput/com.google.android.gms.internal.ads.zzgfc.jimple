@@ -1,0 +1,84 @@
+final class com.google.android.gms.internal.ads.zzgfc extends com.google.android.gms.internal.ads.zzgdb$zzi implements java.lang.Runnable
+{
+    private final java.lang.Runnable zza;
+
+    public void <init>(java.lang.Runnable)
+    {
+        java.lang.Runnable $r1;
+        com.google.android.gms.internal.ads.zzgfc r0;
+        java.lang.NullPointerException r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgfc;
+
+        $r1 := @parameter0: java.lang.Runnable;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzgdb$zzi: void <init>()>();
+
+        if $r1 == null goto label1;
+
+        r0.<com.google.android.gms.internal.ads.zzgfc: java.lang.Runnable zza> = $r1;
+
+        return;
+
+     label1:
+        r2 = new java.lang.NullPointerException;
+
+        specialinvoke r2.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+        throw r2;
+    }
+
+    public final void run()
+    {
+        java.lang.Throwable $r2;
+        java.lang.Runnable $r1;
+        com.google.android.gms.internal.ads.zzgfc r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgfc;
+
+     label1:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgfc: java.lang.Runnable zza>;
+
+        interfaceinvoke $r1.<java.lang.Runnable: void run()>();
+
+     label2:
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzgdb: boolean zzd(java.lang.Throwable)>($r2);
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    protected final java.lang.String zza()
+    {
+        com.google.android.gms.internal.ads.zzgfc r0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r3;
+        java.lang.Runnable $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgfc;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzgfc: java.lang.Runnable zza>;
+
+        $r3 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("task=[");
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+}

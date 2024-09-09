@@ -1,0 +1,611 @@
+public final class androidx.core.app.NotificationCompat$Action$Builder extends java.lang.Object
+{
+    private boolean mAllowGeneratedReplies;
+    private boolean mAuthenticationRequired;
+    private final android.os.Bundle mExtras;
+    private final androidx.core.graphics.drawable.IconCompat mIcon;
+    private final android.app.PendingIntent mIntent;
+    private boolean mIsContextual;
+    private java.util.ArrayList mRemoteInputs;
+    private int mSemanticAction;
+    private boolean mShowsUserInterface;
+    private final java.lang.CharSequence mTitle;
+
+    public void <init>(int, java.lang.CharSequence, android.app.PendingIntent)
+    {
+        androidx.core.app.NotificationCompat$Action$Builder r0;
+        android.os.Bundle $r3;
+        java.lang.CharSequence $r1;
+        androidx.core.graphics.drawable.IconCompat $r4;
+        int $i0;
+        android.app.PendingIntent $r2;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Action$Builder;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: java.lang.CharSequence;
+
+        $r2 := @parameter2: android.app.PendingIntent;
+
+        $r4 = null;
+
+        if $i0 != 0 goto label1;
+
+        goto label2;
+
+     label1:
+        $r4 = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createWithResource(android.content.res.Resources,java.lang.String,int)>(null, "", $i0);
+
+     label2:
+        $r3 = new android.os.Bundle;
+
+        specialinvoke $r3.<android.os.Bundle: void <init>()>();
+
+        specialinvoke r0.<androidx.core.app.NotificationCompat$Action$Builder: void <init>(androidx.core.graphics.drawable.IconCompat,java.lang.CharSequence,android.app.PendingIntent,android.os.Bundle,androidx.core.app.RemoteInput[],boolean,int,boolean,boolean,boolean)>($r4, $r1, $r2, $r3, null, 1, 0, 1, 0, 0);
+
+        return;
+    }
+
+    public void <init>(androidx.core.app.NotificationCompat$Action)
+    {
+        androidx.core.app.NotificationCompat$Action$Builder r0;
+        android.os.Bundle $r4, $r6;
+        androidx.core.app.RemoteInput[] $r7;
+        java.lang.CharSequence $r2;
+        android.app.PendingIntent $r3;
+        androidx.core.app.NotificationCompat$Action $r1;
+        androidx.core.graphics.drawable.IconCompat $r5;
+        int $i0;
+        boolean $z0, $z1, $z2, $z3;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Action$Builder;
+
+        $r1 := @parameter0: androidx.core.app.NotificationCompat$Action;
+
+        $r5 = virtualinvoke $r1.<androidx.core.app.NotificationCompat$Action: androidx.core.graphics.drawable.IconCompat getIconCompat()>();
+
+        $r2 = $r1.<androidx.core.app.NotificationCompat$Action: java.lang.CharSequence title>;
+
+        $r3 = $r1.<androidx.core.app.NotificationCompat$Action: android.app.PendingIntent actionIntent>;
+
+        $r4 = new android.os.Bundle;
+
+        $r6 = $r1.<androidx.core.app.NotificationCompat$Action: android.os.Bundle mExtras>;
+
+        specialinvoke $r4.<android.os.Bundle: void <init>(android.os.Bundle)>($r6);
+
+        $r7 = virtualinvoke $r1.<androidx.core.app.NotificationCompat$Action: androidx.core.app.RemoteInput[] getRemoteInputs()>();
+
+        $z1 = virtualinvoke $r1.<androidx.core.app.NotificationCompat$Action: boolean getAllowGeneratedReplies()>();
+
+        $i0 = virtualinvoke $r1.<androidx.core.app.NotificationCompat$Action: int getSemanticAction()>();
+
+        $z0 = $r1.<androidx.core.app.NotificationCompat$Action: boolean mShowsUserInterface>;
+
+        $z2 = virtualinvoke $r1.<androidx.core.app.NotificationCompat$Action: boolean isContextual()>();
+
+        $z3 = virtualinvoke $r1.<androidx.core.app.NotificationCompat$Action: boolean isAuthenticationRequired()>();
+
+        specialinvoke r0.<androidx.core.app.NotificationCompat$Action$Builder: void <init>(androidx.core.graphics.drawable.IconCompat,java.lang.CharSequence,android.app.PendingIntent,android.os.Bundle,androidx.core.app.RemoteInput[],boolean,int,boolean,boolean,boolean)>($r5, $r2, $r3, $r4, $r7, $z1, $i0, $z0, $z2, $z3);
+
+        return;
+    }
+
+    public void <init>(androidx.core.graphics.drawable.IconCompat, java.lang.CharSequence, android.app.PendingIntent)
+    {
+        androidx.core.app.NotificationCompat$Action$Builder r0;
+        android.os.Bundle $r4;
+        java.lang.CharSequence $r2;
+        androidx.core.graphics.drawable.IconCompat $r1;
+        android.app.PendingIntent $r3;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Action$Builder;
+
+        $r1 := @parameter0: androidx.core.graphics.drawable.IconCompat;
+
+        $r2 := @parameter1: java.lang.CharSequence;
+
+        $r3 := @parameter2: android.app.PendingIntent;
+
+        $r4 = new android.os.Bundle;
+
+        specialinvoke $r4.<android.os.Bundle: void <init>()>();
+
+        specialinvoke r0.<androidx.core.app.NotificationCompat$Action$Builder: void <init>(androidx.core.graphics.drawable.IconCompat,java.lang.CharSequence,android.app.PendingIntent,android.os.Bundle,androidx.core.app.RemoteInput[],boolean,int,boolean,boolean,boolean)>($r1, $r2, $r3, $r4, null, 1, 0, 1, 0, 0);
+
+        return;
+    }
+
+    private void <init>(androidx.core.graphics.drawable.IconCompat, java.lang.CharSequence, android.app.PendingIntent, android.os.Bundle, androidx.core.app.RemoteInput[], boolean, int, boolean, boolean, boolean)
+    {
+        androidx.core.app.NotificationCompat$Action$Builder r0;
+        android.os.Bundle $r4;
+        androidx.core.app.RemoteInput[] $r5;
+        java.lang.CharSequence $r2;
+        android.app.PendingIntent $r3;
+        java.util.ArrayList $r6;
+        java.util.List $r7;
+        androidx.core.graphics.drawable.IconCompat $r1;
+        int $i0;
+        boolean $z0, $z1, $z2, $z3;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Action$Builder;
+
+        $r1 := @parameter0: androidx.core.graphics.drawable.IconCompat;
+
+        $r2 := @parameter1: java.lang.CharSequence;
+
+        $r3 := @parameter2: android.app.PendingIntent;
+
+        $r4 := @parameter3: android.os.Bundle;
+
+        $r5 := @parameter4: androidx.core.app.RemoteInput[];
+
+        $z0 := @parameter5: boolean;
+
+        $i0 := @parameter6: int;
+
+        $z1 := @parameter7: boolean;
+
+        $z2 := @parameter8: boolean;
+
+        $z3 := @parameter9: boolean;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: boolean mAllowGeneratedReplies> = 1;
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: boolean mShowsUserInterface> = 1;
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: androidx.core.graphics.drawable.IconCompat mIcon> = $r1;
+
+        $r2 = staticinvoke <androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)>($r2);
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: java.lang.CharSequence mTitle> = $r2;
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: android.app.PendingIntent mIntent> = $r3;
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: android.os.Bundle mExtras> = $r4;
+
+        if $r5 != null goto label1;
+
+        $r6 = null;
+
+        goto label2;
+
+     label1:
+        $r6 = new java.util.ArrayList;
+
+        $r7 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r5);
+
+        specialinvoke $r6.<java.util.ArrayList: void <init>(java.util.Collection)>($r7);
+
+     label2:
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: java.util.ArrayList mRemoteInputs> = $r6;
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: boolean mAllowGeneratedReplies> = $z0;
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: int mSemanticAction> = $i0;
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: boolean mShowsUserInterface> = $z1;
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: boolean mIsContextual> = $z2;
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: boolean mAuthenticationRequired> = $z3;
+
+        return;
+    }
+
+    private void checkContextualActionNullFields()
+    {
+        androidx.core.app.NotificationCompat$Action$Builder r0;
+        android.app.PendingIntent $r1;
+        java.lang.NullPointerException $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Action$Builder;
+
+        $z0 = r0.<androidx.core.app.NotificationCompat$Action$Builder: boolean mIsContextual>;
+
+        if $z0 != 0 goto label1;
+
+        return;
+
+     label1:
+        $r1 = r0.<androidx.core.app.NotificationCompat$Action$Builder: android.app.PendingIntent mIntent>;
+
+        if $r1 == null goto label2;
+
+        return;
+
+     label2:
+        $r2 = new java.lang.NullPointerException;
+
+        specialinvoke $r2.<java.lang.NullPointerException: void <init>(java.lang.String)>("Contextual Actions must contain a valid PendingIntent");
+
+        throw $r2;
+    }
+
+    public static androidx.core.app.NotificationCompat$Action$Builder fromAndroidAction(android.app.Notification$Action)
+    {
+        androidx.core.app.NotificationCompat$Action$Builder r4;
+        java.lang.CharSequence $r5;
+        android.app.Notification$Action $r0;
+        android.app.PendingIntent $r6;
+        android.app.RemoteInput[] $r7;
+        android.app.RemoteInput r1;
+        androidx.core.app.RemoteInput $r8;
+        androidx.core.graphics.drawable.IconCompat $r3;
+        int i0, $i1;
+        android.graphics.drawable.Icon $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.app.Notification$Action;
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 23 goto label1;
+
+        $r2 = virtualinvoke $r0.<android.app.Notification$Action: android.graphics.drawable.Icon getIcon()>();
+
+        if $r2 == null goto label1;
+
+        $r2 = virtualinvoke $r0.<android.app.Notification$Action: android.graphics.drawable.Icon getIcon()>();
+
+        $r3 = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createFromIcon(android.graphics.drawable.Icon)>($r2);
+
+        r4 = new androidx.core.app.NotificationCompat$Action$Builder;
+
+        $r5 = $r0.<android.app.Notification$Action: java.lang.CharSequence title>;
+
+        $r6 = $r0.<android.app.Notification$Action: android.app.PendingIntent actionIntent>;
+
+        specialinvoke r4.<androidx.core.app.NotificationCompat$Action$Builder: void <init>(androidx.core.graphics.drawable.IconCompat,java.lang.CharSequence,android.app.PendingIntent)>($r3, $r5, $r6);
+
+        goto label2;
+
+     label1:
+        r4 = new androidx.core.app.NotificationCompat$Action$Builder;
+
+        i0 = $r0.<android.app.Notification$Action: int icon>;
+
+        $r5 = $r0.<android.app.Notification$Action: java.lang.CharSequence title>;
+
+        $r6 = $r0.<android.app.Notification$Action: android.app.PendingIntent actionIntent>;
+
+        specialinvoke r4.<androidx.core.app.NotificationCompat$Action$Builder: void <init>(int,java.lang.CharSequence,android.app.PendingIntent)>(i0, $r5, $r6);
+
+     label2:
+        $r7 = virtualinvoke $r0.<android.app.Notification$Action: android.app.RemoteInput[] getRemoteInputs()>();
+
+        if $r7 == null goto label4;
+
+        i0 = lengthof $r7;
+
+        if i0 == 0 goto label4;
+
+        i0 = lengthof $r7;
+
+        $i1 = 0;
+
+     label3:
+        if $i1 >= i0 goto label4;
+
+        r1 = $r7[$i1];
+
+        $r8 = staticinvoke <androidx.core.app.RemoteInput: androidx.core.app.RemoteInput fromPlatform(android.app.RemoteInput)>(r1);
+
+        virtualinvoke r4.<androidx.core.app.NotificationCompat$Action$Builder: androidx.core.app.NotificationCompat$Action$Builder addRemoteInput(androidx.core.app.RemoteInput)>($r8);
+
+        $i1 = $i1 + 1;
+
+        goto label3;
+
+     label4:
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 24 goto label5;
+
+        $z0 = virtualinvoke $r0.<android.app.Notification$Action: boolean getAllowGeneratedReplies()>();
+
+        r4.<androidx.core.app.NotificationCompat$Action$Builder: boolean mAllowGeneratedReplies> = $z0;
+
+     label5:
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 28 goto label6;
+
+        i0 = virtualinvoke $r0.<android.app.Notification$Action: int getSemanticAction()>();
+
+        virtualinvoke r4.<androidx.core.app.NotificationCompat$Action$Builder: androidx.core.app.NotificationCompat$Action$Builder setSemanticAction(int)>(i0);
+
+     label6:
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 29 goto label7;
+
+        $z0 = virtualinvoke $r0.<android.app.Notification$Action: boolean isContextual()>();
+
+        virtualinvoke r4.<androidx.core.app.NotificationCompat$Action$Builder: androidx.core.app.NotificationCompat$Action$Builder setContextual(boolean)>($z0);
+
+     label7:
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 31 goto label8;
+
+        $z0 = virtualinvoke $r0.<android.app.Notification$Action: boolean isAuthenticationRequired()>();
+
+        virtualinvoke r4.<androidx.core.app.NotificationCompat$Action$Builder: androidx.core.app.NotificationCompat$Action$Builder setAuthenticationRequired(boolean)>($z0);
+
+     label8:
+        return r4;
+    }
+
+    public androidx.core.app.NotificationCompat$Action$Builder addExtras(android.os.Bundle)
+    {
+        androidx.core.app.NotificationCompat$Action$Builder r0;
+        android.os.Bundle $r1, $r2;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Action$Builder;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Action$Builder: android.os.Bundle mExtras>;
+
+        virtualinvoke $r2.<android.os.Bundle: void putAll(android.os.Bundle)>($r1);
+
+     label1:
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Action$Builder addRemoteInput(androidx.core.app.RemoteInput)
+    {
+        androidx.core.app.NotificationCompat$Action$Builder r0;
+        androidx.core.app.RemoteInput $r1;
+        java.util.ArrayList $r2;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Action$Builder;
+
+        $r1 := @parameter0: androidx.core.app.RemoteInput;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Action$Builder: java.util.ArrayList mRemoteInputs>;
+
+        if $r2 != null goto label1;
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: java.util.ArrayList mRemoteInputs> = $r2;
+
+     label1:
+        if $r1 == null goto label2;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$Action$Builder: java.util.ArrayList mRemoteInputs>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+     label2:
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Action build()
+    {
+        android.os.Bundle $r6;
+        androidx.core.app.RemoteInput[] r11, r12;
+        java.lang.Object[] $r13;
+        android.app.PendingIntent $r5;
+        androidx.core.app.NotificationCompat$Action $r14;
+        java.util.ArrayList r1, r2, $r7;
+        androidx.core.app.RemoteInput r10;
+        int $i0;
+        boolean $z0, $z1, $z2, z3;
+        androidx.core.app.NotificationCompat$Action$Builder r0;
+        java.lang.CharSequence $r4;
+        java.util.Iterator $r8;
+        androidx.core.graphics.drawable.IconCompat $r3;
+        java.lang.Object $r9;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Action$Builder;
+
+        specialinvoke r0.<androidx.core.app.NotificationCompat$Action$Builder: void checkContextualActionNullFields()>();
+
+        r1 = new java.util.ArrayList;
+
+        specialinvoke r1.<java.util.ArrayList: void <init>()>();
+
+        r2 = new java.util.ArrayList;
+
+        specialinvoke r2.<java.util.ArrayList: void <init>()>();
+
+        $r7 = r0.<androidx.core.app.NotificationCompat$Action$Builder: java.util.ArrayList mRemoteInputs>;
+
+        if $r7 == null goto label3;
+
+        $r7 = r0.<androidx.core.app.NotificationCompat$Action$Builder: java.util.ArrayList mRemoteInputs>;
+
+        $r8 = virtualinvoke $r7.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r8.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r9 = interfaceinvoke $r8.<java.util.Iterator: java.lang.Object next()>();
+
+        r10 = (androidx.core.app.RemoteInput) $r9;
+
+        $z0 = virtualinvoke r10.<androidx.core.app.RemoteInput: boolean isDataOnly()>();
+
+        if $z0 == 0 goto label2;
+
+        interfaceinvoke r1.<java.util.List: boolean add(java.lang.Object)>(r10);
+
+        goto label1;
+
+     label2:
+        interfaceinvoke r2.<java.util.List: boolean add(java.lang.Object)>(r10);
+
+        goto label1;
+
+     label3:
+        $z0 = interfaceinvoke r1.<java.util.List: boolean isEmpty()>();
+
+        r11 = null;
+
+        if $z0 == 0 goto label4;
+
+        r12 = null;
+
+        goto label5;
+
+     label4:
+        $i0 = interfaceinvoke r1.<java.util.List: int size()>();
+
+        r12 = newarray (androidx.core.app.RemoteInput)[$i0];
+
+        $r13 = interfaceinvoke r1.<java.util.List: java.lang.Object[] toArray(java.lang.Object[])>(r12);
+
+        r12 = (androidx.core.app.RemoteInput[]) $r13;
+
+     label5:
+        $z0 = interfaceinvoke r2.<java.util.List: boolean isEmpty()>();
+
+        if $z0 == 0 goto label6;
+
+        goto label7;
+
+     label6:
+        $i0 = interfaceinvoke r2.<java.util.List: int size()>();
+
+        r11 = newarray (androidx.core.app.RemoteInput)[$i0];
+
+        $r13 = interfaceinvoke r2.<java.util.List: java.lang.Object[] toArray(java.lang.Object[])>(r11);
+
+        r11 = (androidx.core.app.RemoteInput[]) $r13;
+
+     label7:
+        $r14 = new androidx.core.app.NotificationCompat$Action;
+
+        $r3 = r0.<androidx.core.app.NotificationCompat$Action$Builder: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        $r4 = r0.<androidx.core.app.NotificationCompat$Action$Builder: java.lang.CharSequence mTitle>;
+
+        $r5 = r0.<androidx.core.app.NotificationCompat$Action$Builder: android.app.PendingIntent mIntent>;
+
+        $r6 = r0.<androidx.core.app.NotificationCompat$Action$Builder: android.os.Bundle mExtras>;
+
+        $z0 = r0.<androidx.core.app.NotificationCompat$Action$Builder: boolean mAllowGeneratedReplies>;
+
+        $i0 = r0.<androidx.core.app.NotificationCompat$Action$Builder: int mSemanticAction>;
+
+        $z1 = r0.<androidx.core.app.NotificationCompat$Action$Builder: boolean mShowsUserInterface>;
+
+        $z2 = r0.<androidx.core.app.NotificationCompat$Action$Builder: boolean mIsContextual>;
+
+        z3 = r0.<androidx.core.app.NotificationCompat$Action$Builder: boolean mAuthenticationRequired>;
+
+        specialinvoke $r14.<androidx.core.app.NotificationCompat$Action: void <init>(androidx.core.graphics.drawable.IconCompat,java.lang.CharSequence,android.app.PendingIntent,android.os.Bundle,androidx.core.app.RemoteInput[],androidx.core.app.RemoteInput[],boolean,int,boolean,boolean,boolean)>($r3, $r4, $r5, $r6, r11, r12, $z0, $i0, $z1, $z2, z3);
+
+        return $r14;
+    }
+
+    public androidx.core.app.NotificationCompat$Action$Builder extend(androidx.core.app.NotificationCompat$Action$Extender)
+    {
+        androidx.core.app.NotificationCompat$Action$Builder r0;
+        androidx.core.app.NotificationCompat$Action$Extender $r1;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Action$Builder;
+
+        $r1 := @parameter0: androidx.core.app.NotificationCompat$Action$Extender;
+
+        interfaceinvoke $r1.<androidx.core.app.NotificationCompat$Action$Extender: androidx.core.app.NotificationCompat$Action$Builder extend(androidx.core.app.NotificationCompat$Action$Builder)>(r0);
+
+        return r0;
+    }
+
+    public android.os.Bundle getExtras()
+    {
+        androidx.core.app.NotificationCompat$Action$Builder r0;
+        android.os.Bundle r1;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Action$Builder;
+
+        r1 = r0.<androidx.core.app.NotificationCompat$Action$Builder: android.os.Bundle mExtras>;
+
+        return r1;
+    }
+
+    public androidx.core.app.NotificationCompat$Action$Builder setAllowGeneratedReplies(boolean)
+    {
+        androidx.core.app.NotificationCompat$Action$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Action$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: boolean mAllowGeneratedReplies> = $z0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Action$Builder setAuthenticationRequired(boolean)
+    {
+        androidx.core.app.NotificationCompat$Action$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Action$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: boolean mAuthenticationRequired> = $z0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Action$Builder setContextual(boolean)
+    {
+        androidx.core.app.NotificationCompat$Action$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Action$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: boolean mIsContextual> = $z0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Action$Builder setSemanticAction(int)
+    {
+        int $i0;
+        androidx.core.app.NotificationCompat$Action$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Action$Builder;
+
+        $i0 := @parameter0: int;
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: int mSemanticAction> = $i0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$Action$Builder setShowsUserInterface(boolean)
+    {
+        androidx.core.app.NotificationCompat$Action$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$Action$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.core.app.NotificationCompat$Action$Builder: boolean mShowsUserInterface> = $z0;
+
+        return r0;
+    }
+}

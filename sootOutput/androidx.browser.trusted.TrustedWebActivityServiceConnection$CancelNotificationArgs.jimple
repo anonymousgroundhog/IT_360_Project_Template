@@ -1,0 +1,74 @@
+class androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs extends java.lang.Object
+{
+    public final int platformId;
+    public final java.lang.String platformTag;
+
+    void <init>(java.lang.String, int)
+    {
+        int $i0;
+        java.lang.String $r1;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs r0;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs: java.lang.String platformTag> = $r1;
+
+        r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs: int platformId> = $i0;
+
+        return;
+    }
+
+    public static androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs fromBundle(android.os.Bundle)
+    {
+        android.os.Bundle $r0;
+        int $i0;
+        java.lang.String $r2;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs $r1;
+
+        $r0 := @parameter0: android.os.Bundle;
+
+        staticinvoke <androidx.browser.trusted.TrustedWebActivityServiceConnection: void ensureBundleContains(android.os.Bundle,java.lang.String)>($r0, "android.support.customtabs.trusted.PLATFORM_TAG");
+
+        staticinvoke <androidx.browser.trusted.TrustedWebActivityServiceConnection: void ensureBundleContains(android.os.Bundle,java.lang.String)>($r0, "android.support.customtabs.trusted.PLATFORM_ID");
+
+        $r1 = new androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs;
+
+        $r2 = virtualinvoke $r0.<android.os.Bundle: java.lang.String getString(java.lang.String)>("android.support.customtabs.trusted.PLATFORM_TAG");
+
+        $i0 = virtualinvoke $r0.<android.os.Bundle: int getInt(java.lang.String)>("android.support.customtabs.trusted.PLATFORM_ID");
+
+        specialinvoke $r1.<androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs: void <init>(java.lang.String,int)>($r2, $i0);
+
+        return $r1;
+    }
+
+    public android.os.Bundle toBundle()
+    {
+        android.os.Bundle r1;
+        int $i0;
+        java.lang.String $r2;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs r0;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs;
+
+        r1 = new android.os.Bundle;
+
+        specialinvoke r1.<android.os.Bundle: void <init>()>();
+
+        $r2 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs: java.lang.String platformTag>;
+
+        virtualinvoke r1.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("android.support.customtabs.trusted.PLATFORM_TAG", $r2);
+
+        $i0 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs: int platformId>;
+
+        virtualinvoke r1.<android.os.Bundle: void putInt(java.lang.String,int)>("android.support.customtabs.trusted.PLATFORM_ID", $i0);
+
+        return r1;
+    }
+}

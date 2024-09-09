@@ -1,0 +1,550 @@
+public class com.google.common.collect.ImmutableSortedMap$Builder extends com.google.common.collect.ImmutableMap$Builder
+{
+    private final java.util.Comparator comparator;
+    private transient java.lang.Object[] keys;
+    private transient java.lang.Object[] values;
+
+    public void <init>(java.util.Comparator)
+    {
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+        java.util.Comparator r1;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        r1 := @parameter0: java.util.Comparator;
+
+        specialinvoke r0.<com.google.common.collect.ImmutableSortedMap$Builder: void <init>(java.util.Comparator,int)>(r1, 4);
+
+        return;
+    }
+
+    private void <init>(java.util.Comparator, int)
+    {
+        java.lang.Object[] $r3;
+        int $i0;
+        java.lang.Object $r2;
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+        java.util.Comparator r1;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        r1 := @parameter0: java.util.Comparator;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<com.google.common.collect.ImmutableMap$Builder: void <init>()>();
+
+        $r2 = staticinvoke <com.google.common.base.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>(r1);
+
+        r1 = (java.util.Comparator) $r2;
+
+        r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.util.Comparator comparator> = r1;
+
+        $r3 = newarray (java.lang.Object)[$i0];
+
+        r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] keys> = $r3;
+
+        $r3 = newarray (java.lang.Object)[$i0];
+
+        r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] values> = $r3;
+
+        return;
+    }
+
+    private void ensureCapacity(int)
+    {
+        java.lang.Object[] r1;
+        int $i0, i1;
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        $i0 := @parameter0: int;
+
+        r1 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] keys>;
+
+        i1 = lengthof r1;
+
+        if $i0 <= i1 goto label1;
+
+        r1 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] keys>;
+
+        i1 = lengthof r1;
+
+        $i0 = staticinvoke <com.google.common.collect.ImmutableCollection$Builder: int expandedCapacity(int,int)>(i1, $i0);
+
+        r1 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] keys>;
+
+        r1 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>(r1, $i0);
+
+        r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] keys> = r1;
+
+        r1 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] values>;
+
+        r1 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>(r1, $i0);
+
+        r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] values> = r1;
+
+     label1:
+        return;
+    }
+
+    public volatile com.google.common.collect.ImmutableMap build()
+    {
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+        com.google.common.collect.ImmutableSortedMap $r1;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        $r1 = virtualinvoke r0.<com.google.common.collect.ImmutableSortedMap$Builder: com.google.common.collect.ImmutableSortedMap build()>();
+
+        return $r1;
+    }
+
+    public com.google.common.collect.ImmutableSortedMap build()
+    {
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+        com.google.common.collect.ImmutableSortedMap $r1;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        $r1 = virtualinvoke r0.<com.google.common.collect.ImmutableSortedMap$Builder: com.google.common.collect.ImmutableSortedMap buildOrThrow()>();
+
+        return $r1;
+    }
+
+    public volatile com.google.common.collect.ImmutableMap buildKeepingLast()
+    {
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+        com.google.common.collect.ImmutableSortedMap $r1;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        $r1 = virtualinvoke r0.<com.google.common.collect.ImmutableSortedMap$Builder: com.google.common.collect.ImmutableSortedMap buildKeepingLast()>();
+
+        return $r1;
+    }
+
+    public final com.google.common.collect.ImmutableSortedMap buildKeepingLast()
+    {
+        java.lang.UnsupportedOperationException $r1;
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("ImmutableSortedMap.Builder does not yet implement buildKeepingLast()");
+
+        throw $r1;
+    }
+
+    public volatile com.google.common.collect.ImmutableMap buildOrThrow()
+    {
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+        com.google.common.collect.ImmutableSortedMap $r1;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        $r1 = virtualinvoke r0.<com.google.common.collect.ImmutableSortedMap$Builder: com.google.common.collect.ImmutableSortedMap buildOrThrow()>();
+
+        return $r1;
+    }
+
+    public com.google.common.collect.ImmutableSortedMap buildOrThrow()
+    {
+        java.lang.Object[] r1, r3, r11;
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+        com.google.common.collect.ImmutableList $r12;
+        int i0, i1;
+        java.lang.String $r7, $r8, $r9;
+        com.google.common.collect.ImmutableSortedMap $r6, $r16;
+        java.lang.IllegalArgumentException $r14;
+        java.lang.Object r4, r5;
+        java.lang.StringBuilder $r10, $r13;
+        java.util.Comparator r2;
+        com.google.common.collect.RegularImmutableSortedSet $r15;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        i0 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: int size>;
+
+        lookupswitch(i0)
+        {
+            case 0: goto label3;
+            case 1: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        r1 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] keys>;
+
+        i0 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: int size>;
+
+        r1 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>(r1, i0);
+
+        r2 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.util.Comparator comparator>;
+
+        staticinvoke <java.util.Arrays: void sort(java.lang.Object[],java.util.Comparator)>(r1, r2);
+
+        i0 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: int size>;
+
+        r3 = newarray (java.lang.Object)[i0];
+
+        i0 = 0;
+
+        goto label4;
+
+     label2:
+        r2 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.util.Comparator comparator>;
+
+        r1 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] keys>;
+
+        r4 = r1[0];
+
+        r4 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(r4);
+
+        r1 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] values>;
+
+        r5 = r1[0];
+
+        r5 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(r5);
+
+        $r6 = staticinvoke <com.google.common.collect.ImmutableSortedMap: com.google.common.collect.ImmutableSortedMap access$000(java.util.Comparator,java.lang.Object,java.lang.Object)>(r2, r4, r5);
+
+        return $r6;
+
+     label3:
+        r2 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.util.Comparator comparator>;
+
+        $r6 = staticinvoke <com.google.common.collect.ImmutableSortedMap: com.google.common.collect.ImmutableSortedMap emptyMap(java.util.Comparator)>(r2);
+
+        return $r6;
+
+     label4:
+        i1 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: int size>;
+
+        if i0 >= i1 goto label7;
+
+        if i0 <= 0 goto label6;
+
+        r2 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.util.Comparator comparator>;
+
+        i1 = i0 + -1;
+
+        r4 = r1[i1];
+
+        r5 = r1[i0];
+
+        i1 = interfaceinvoke r2.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>(r4, r5);
+
+        if i1 == 0 goto label5;
+
+        goto label6;
+
+     label5:
+        $r14 = new java.lang.IllegalArgumentException;
+
+        i1 = i0 + -1;
+
+        r4 = r1[i1];
+
+        $r7 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r4);
+
+        r4 = r1[i0];
+
+        $r8 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r4);
+
+        $r9 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r7);
+
+        i0 = virtualinvoke $r9.<java.lang.String: int length()>();
+
+        i0 = i0 + 57;
+
+        $r9 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r8);
+
+        i1 = virtualinvoke $r9.<java.lang.String: int length()>();
+
+        i0 = i0 + i1;
+
+        $r13 = new java.lang.StringBuilder;
+
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>(int)>(i0);
+
+        $r10 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("keys required to be distinct but compared as equal: ");
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" and ");
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r7 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r14.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r7);
+
+        throw $r14;
+
+     label6:
+        r11 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] keys>;
+
+        r4 = r11[i0];
+
+        r4 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(r4);
+
+        r2 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.util.Comparator comparator>;
+
+        i1 = staticinvoke <java.util.Arrays: int binarySearch(java.lang.Object[],java.lang.Object,java.util.Comparator)>(r1, r4, r2);
+
+        r11 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] values>;
+
+        r4 = r11[i0];
+
+        r4 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(r4);
+
+        r3[i1] = r4;
+
+        i0 = i0 + 1;
+
+        goto label4;
+
+     label7:
+        $r16 = new com.google.common.collect.ImmutableSortedMap;
+
+        $r15 = new com.google.common.collect.RegularImmutableSortedSet;
+
+        $r12 = staticinvoke <com.google.common.collect.ImmutableList: com.google.common.collect.ImmutableList asImmutableList(java.lang.Object[])>(r1);
+
+        r2 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.util.Comparator comparator>;
+
+        specialinvoke $r15.<com.google.common.collect.RegularImmutableSortedSet: void <init>(com.google.common.collect.ImmutableList,java.util.Comparator)>($r12, r2);
+
+        $r12 = staticinvoke <com.google.common.collect.ImmutableList: com.google.common.collect.ImmutableList asImmutableList(java.lang.Object[])>(r3);
+
+        specialinvoke $r16.<com.google.common.collect.ImmutableSortedMap: void <init>(com.google.common.collect.RegularImmutableSortedSet,com.google.common.collect.ImmutableList)>($r15, $r12);
+
+        return $r16;
+    }
+
+    com.google.common.collect.ImmutableSortedMap$Builder combine(com.google.common.collect.ImmutableSortedMap$Builder)
+    {
+        java.lang.Object[] $r2, $r3;
+        int $i0, $i1;
+        com.google.common.collect.ImmutableSortedMap$Builder r0, r1;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        r1 := @parameter0: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        $i0 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: int size>;
+
+        $i1 = r1.<com.google.common.collect.ImmutableSortedMap$Builder: int size>;
+
+        $i0 = $i0 + $i1;
+
+        specialinvoke r0.<com.google.common.collect.ImmutableSortedMap$Builder: void ensureCapacity(int)>($i0);
+
+        $r2 = r1.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] keys>;
+
+        $r3 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] keys>;
+
+        $i0 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: int size>;
+
+        $i1 = r1.<com.google.common.collect.ImmutableSortedMap$Builder: int size>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r2, 0, $r3, $i0, $i1);
+
+        $r2 = r1.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] values>;
+
+        $r3 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] values>;
+
+        $i0 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: int size>;
+
+        $i1 = r1.<com.google.common.collect.ImmutableSortedMap$Builder: int size>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r2, 0, $r3, $i0, $i1);
+
+        $i0 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: int size>;
+
+        $i1 = r1.<com.google.common.collect.ImmutableSortedMap$Builder: int size>;
+
+        $i0 = $i0 + $i1;
+
+        r0.<com.google.common.collect.ImmutableSortedMap$Builder: int size> = $i0;
+
+        return r0;
+    }
+
+    public volatile com.google.common.collect.ImmutableMap$Builder orderEntriesByValue(java.util.Comparator)
+    {
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+        java.util.Comparator $r1;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        $r1 := @parameter0: java.util.Comparator;
+
+        r0 = virtualinvoke r0.<com.google.common.collect.ImmutableSortedMap$Builder: com.google.common.collect.ImmutableSortedMap$Builder orderEntriesByValue(java.util.Comparator)>($r1);
+
+        return r0;
+    }
+
+    public final com.google.common.collect.ImmutableSortedMap$Builder orderEntriesByValue(java.util.Comparator)
+    {
+        java.lang.UnsupportedOperationException $r2;
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+        java.util.Comparator r1;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        r1 := @parameter0: java.util.Comparator;
+
+        $r2 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r2.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Not available on ImmutableSortedMap.Builder");
+
+        throw $r2;
+    }
+
+    public volatile com.google.common.collect.ImmutableMap$Builder put(java.lang.Object, java.lang.Object)
+    {
+        java.lang.Object $r1, $r2;
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        $r2 := @parameter0: java.lang.Object;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        r0 = virtualinvoke r0.<com.google.common.collect.ImmutableSortedMap$Builder: com.google.common.collect.ImmutableSortedMap$Builder put(java.lang.Object,java.lang.Object)>($r2, $r1);
+
+        return r0;
+    }
+
+    public volatile com.google.common.collect.ImmutableMap$Builder put(java.util.Map$Entry)
+    {
+        java.util.Map$Entry $r1;
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        $r1 := @parameter0: java.util.Map$Entry;
+
+        r0 = virtualinvoke r0.<com.google.common.collect.ImmutableSortedMap$Builder: com.google.common.collect.ImmutableSortedMap$Builder put(java.util.Map$Entry)>($r1);
+
+        return r0;
+    }
+
+    public com.google.common.collect.ImmutableSortedMap$Builder put(java.lang.Object, java.lang.Object)
+    {
+        java.lang.Object[] $r3;
+        int $i0;
+        java.lang.Object r1, r2;
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Object;
+
+        $i0 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: int size>;
+
+        $i0 = $i0 + 1;
+
+        specialinvoke r0.<com.google.common.collect.ImmutableSortedMap$Builder: void ensureCapacity(int)>($i0);
+
+        staticinvoke <com.google.common.collect.CollectPreconditions: void checkEntryNotNull(java.lang.Object,java.lang.Object)>(r1, r2);
+
+        $r3 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] keys>;
+
+        $i0 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: int size>;
+
+        $r3[$i0] = r1;
+
+        $r3 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: java.lang.Object[] values>;
+
+        $i0 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: int size>;
+
+        $r3[$i0] = r2;
+
+        $i0 = r0.<com.google.common.collect.ImmutableSortedMap$Builder: int size>;
+
+        $i0 = $i0 + 1;
+
+        r0.<com.google.common.collect.ImmutableSortedMap$Builder: int size> = $i0;
+
+        return r0;
+    }
+
+    public com.google.common.collect.ImmutableSortedMap$Builder put(java.util.Map$Entry)
+    {
+        java.util.Map$Entry r1;
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        r1 := @parameter0: java.util.Map$Entry;
+
+        specialinvoke r0.<com.google.common.collect.ImmutableMap$Builder: com.google.common.collect.ImmutableMap$Builder put(java.util.Map$Entry)>(r1);
+
+        return r0;
+    }
+
+    public volatile com.google.common.collect.ImmutableMap$Builder putAll(java.lang.Iterable)
+    {
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+        java.lang.Iterable $r1;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        $r1 := @parameter0: java.lang.Iterable;
+
+        r0 = virtualinvoke r0.<com.google.common.collect.ImmutableSortedMap$Builder: com.google.common.collect.ImmutableSortedMap$Builder putAll(java.lang.Iterable)>($r1);
+
+        return r0;
+    }
+
+    public volatile com.google.common.collect.ImmutableMap$Builder putAll(java.util.Map)
+    {
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+        java.util.Map $r1;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        $r1 := @parameter0: java.util.Map;
+
+        r0 = virtualinvoke r0.<com.google.common.collect.ImmutableSortedMap$Builder: com.google.common.collect.ImmutableSortedMap$Builder putAll(java.util.Map)>($r1);
+
+        return r0;
+    }
+
+    public com.google.common.collect.ImmutableSortedMap$Builder putAll(java.lang.Iterable)
+    {
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+        java.lang.Iterable r1;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        r1 := @parameter0: java.lang.Iterable;
+
+        specialinvoke r0.<com.google.common.collect.ImmutableMap$Builder: com.google.common.collect.ImmutableMap$Builder putAll(java.lang.Iterable)>(r1);
+
+        return r0;
+    }
+
+    public com.google.common.collect.ImmutableSortedMap$Builder putAll(java.util.Map)
+    {
+        com.google.common.collect.ImmutableSortedMap$Builder r0;
+        java.util.Map r1;
+
+        r0 := @this: com.google.common.collect.ImmutableSortedMap$Builder;
+
+        r1 := @parameter0: java.util.Map;
+
+        specialinvoke r0.<com.google.common.collect.ImmutableMap$Builder: com.google.common.collect.ImmutableMap$Builder putAll(java.util.Map)>(r1);
+
+        return r0;
+    }
+}

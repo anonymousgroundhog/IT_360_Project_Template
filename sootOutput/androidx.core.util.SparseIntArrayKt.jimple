@@ -1,0 +1,361 @@
+public final class androidx.core.util.SparseIntArrayKt extends java.lang.Object
+{
+
+    public static final boolean contains(android.util.SparseIntArray, int)
+    {
+        int $i0;
+        android.util.SparseIntArray $r0;
+
+        $r0 := @parameter0: android.util.SparseIntArray;
+
+        $i0 := @parameter1: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = virtualinvoke $r0.<android.util.SparseIntArray: int indexOfKey(int)>($i0);
+
+        if $i0 < 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final boolean containsKey(android.util.SparseIntArray, int)
+    {
+        int $i0;
+        android.util.SparseIntArray $r0;
+
+        $r0 := @parameter0: android.util.SparseIntArray;
+
+        $i0 := @parameter1: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = virtualinvoke $r0.<android.util.SparseIntArray: int indexOfKey(int)>($i0);
+
+        if $i0 < 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final boolean containsValue(android.util.SparseIntArray, int)
+    {
+        int $i0;
+        android.util.SparseIntArray $r0;
+
+        $r0 := @parameter0: android.util.SparseIntArray;
+
+        $i0 := @parameter1: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = virtualinvoke $r0.<android.util.SparseIntArray: int indexOfValue(int)>($i0);
+
+        if $i0 < 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final void forEach(android.util.SparseIntArray, kotlin.jvm.functions.Function2)
+    {
+        android.util.SparseIntArray $r0;
+        int i0, $i1, $i2;
+        kotlin.jvm.functions.Function2 $r1;
+        java.lang.Integer $r2, $r3;
+
+        $r0 := @parameter0: android.util.SparseIntArray;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function2;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "action");
+
+        i0 = 0;
+
+        $i1 = virtualinvoke $r0.<android.util.SparseIntArray: int size()>();
+
+     label1:
+        if i0 >= $i1 goto label2;
+
+        $i2 = virtualinvoke $r0.<android.util.SparseIntArray: int keyAt(int)>(i0);
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i2);
+
+        $i2 = virtualinvoke $r0.<android.util.SparseIntArray: int valueAt(int)>(i0);
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i2);
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function2: java.lang.Object invoke(java.lang.Object,java.lang.Object)>($r2, $r3);
+
+        i0 = i0 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public static final int getOrDefault(android.util.SparseIntArray, int, int)
+    {
+        int $i0, $i1;
+        android.util.SparseIntArray $r0;
+
+        $r0 := @parameter0: android.util.SparseIntArray;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = virtualinvoke $r0.<android.util.SparseIntArray: int get(int,int)>($i0, $i1);
+
+        return $i0;
+    }
+
+    public static final int getOrElse(android.util.SparseIntArray, int, kotlin.jvm.functions.Function0)
+    {
+        android.util.SparseIntArray $r0;
+        int $i0;
+        java.lang.Object $r2;
+        java.lang.Number $r3;
+        kotlin.jvm.functions.Function0 $r1;
+
+        $r0 := @parameter0: android.util.SparseIntArray;
+
+        $i0 := @parameter1: int;
+
+        $r1 := @parameter2: kotlin.jvm.functions.Function0;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "defaultValue");
+
+        $i0 = virtualinvoke $r0.<android.util.SparseIntArray: int indexOfKey(int)>($i0);
+
+        if $i0 < 0 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.util.SparseIntArray: int valueAt(int)>($i0);
+
+        return $i0;
+
+     label1:
+        $r2 = interfaceinvoke $r1.<kotlin.jvm.functions.Function0: java.lang.Object invoke()>();
+
+        $r3 = (java.lang.Number) $r2;
+
+        $i0 = virtualinvoke $r3.<java.lang.Number: int intValue()>();
+
+        return $i0;
+    }
+
+    public static final int getSize(android.util.SparseIntArray)
+    {
+        int $i0;
+        android.util.SparseIntArray $r0;
+
+        $r0 := @parameter0: android.util.SparseIntArray;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = virtualinvoke $r0.<android.util.SparseIntArray: int size()>();
+
+        return $i0;
+    }
+
+    public static final boolean isEmpty(android.util.SparseIntArray)
+    {
+        int $i0;
+        android.util.SparseIntArray $r0;
+
+        $r0 := @parameter0: android.util.SparseIntArray;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = virtualinvoke $r0.<android.util.SparseIntArray: int size()>();
+
+        if $i0 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final boolean isNotEmpty(android.util.SparseIntArray)
+    {
+        int $i0;
+        android.util.SparseIntArray $r0;
+
+        $r0 := @parameter0: android.util.SparseIntArray;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = virtualinvoke $r0.<android.util.SparseIntArray: int size()>();
+
+        if $i0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final kotlin.collections.IntIterator keyIterator(android.util.SparseIntArray)
+    {
+        android.util.SparseIntArray $r0;
+        kotlin.collections.IntIterator $r2;
+        androidx.core.util.SparseIntArrayKt$keyIterator$1 $r1;
+
+        $r0 := @parameter0: android.util.SparseIntArray;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = new androidx.core.util.SparseIntArrayKt$keyIterator$1;
+
+        specialinvoke $r1.<androidx.core.util.SparseIntArrayKt$keyIterator$1: void <init>(android.util.SparseIntArray)>($r0);
+
+        $r2 = (kotlin.collections.IntIterator) $r1;
+
+        return $r2;
+    }
+
+    public static final android.util.SparseIntArray plus(android.util.SparseIntArray, android.util.SparseIntArray)
+    {
+        android.util.SparseIntArray $r0, $r1, r2;
+        int $i0, $i1;
+
+        $r0 := @parameter0: android.util.SparseIntArray;
+
+        $r1 := @parameter1: android.util.SparseIntArray;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "other");
+
+        r2 = new android.util.SparseIntArray;
+
+        $i0 = virtualinvoke $r0.<android.util.SparseIntArray: int size()>();
+
+        $i1 = virtualinvoke $r1.<android.util.SparseIntArray: int size()>();
+
+        $i0 = $i0 + $i1;
+
+        specialinvoke r2.<android.util.SparseIntArray: void <init>(int)>($i0);
+
+        staticinvoke <androidx.core.util.SparseIntArrayKt: void putAll(android.util.SparseIntArray,android.util.SparseIntArray)>(r2, $r0);
+
+        staticinvoke <androidx.core.util.SparseIntArrayKt: void putAll(android.util.SparseIntArray,android.util.SparseIntArray)>(r2, $r1);
+
+        return r2;
+    }
+
+    public static final void putAll(android.util.SparseIntArray, android.util.SparseIntArray)
+    {
+        android.util.SparseIntArray $r0, $r1;
+        int i0, $i1, $i2, $i3;
+
+        $r0 := @parameter0: android.util.SparseIntArray;
+
+        $r1 := @parameter1: android.util.SparseIntArray;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "other");
+
+        i0 = 0;
+
+        $i1 = virtualinvoke $r1.<android.util.SparseIntArray: int size()>();
+
+     label1:
+        if i0 >= $i1 goto label2;
+
+        $i2 = virtualinvoke $r1.<android.util.SparseIntArray: int keyAt(int)>(i0);
+
+        $i3 = virtualinvoke $r1.<android.util.SparseIntArray: int valueAt(int)>(i0);
+
+        virtualinvoke $r0.<android.util.SparseIntArray: void put(int,int)>($i2, $i3);
+
+        i0 = i0 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public static final boolean remove(android.util.SparseIntArray, int, int)
+    {
+        android.util.SparseIntArray $r0;
+        int $i0, $i1, $i2;
+
+        $r0 := @parameter0: android.util.SparseIntArray;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = virtualinvoke $r0.<android.util.SparseIntArray: int indexOfKey(int)>($i0);
+
+        if $i0 < 0 goto label1;
+
+        $i2 = virtualinvoke $r0.<android.util.SparseIntArray: int valueAt(int)>($i0);
+
+        if $i1 != $i2 goto label1;
+
+        virtualinvoke $r0.<android.util.SparseIntArray: void removeAt(int)>($i0);
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final void set(android.util.SparseIntArray, int, int)
+    {
+        int $i0, $i1;
+        android.util.SparseIntArray $r0;
+
+        $r0 := @parameter0: android.util.SparseIntArray;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        virtualinvoke $r0.<android.util.SparseIntArray: void put(int,int)>($i0, $i1);
+
+        return;
+    }
+
+    public static final kotlin.collections.IntIterator valueIterator(android.util.SparseIntArray)
+    {
+        androidx.core.util.SparseIntArrayKt$valueIterator$1 $r1;
+        android.util.SparseIntArray $r0;
+        kotlin.collections.IntIterator $r2;
+
+        $r0 := @parameter0: android.util.SparseIntArray;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = new androidx.core.util.SparseIntArrayKt$valueIterator$1;
+
+        specialinvoke $r1.<androidx.core.util.SparseIntArrayKt$valueIterator$1: void <init>(android.util.SparseIntArray)>($r0);
+
+        $r2 = (kotlin.collections.IntIterator) $r1;
+
+        return $r2;
+    }
+}

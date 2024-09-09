@@ -1,0 +1,110 @@
+public final class com.google.android.gms.internal.ads.zzeyd extends java.lang.Object implements com.google.android.gms.internal.ads.zzgdu
+{
+    public static final com.google.android.gms.internal.ads.zzeyd zza;
+
+    static void <clinit>()
+    {
+        com.google.android.gms.internal.ads.zzeyd $r0;
+
+        $r0 = new com.google.android.gms.internal.ads.zzeyd;
+
+        specialinvoke $r0.<com.google.android.gms.internal.ads.zzeyd: void <init>()>();
+
+        <com.google.android.gms.internal.ads.zzeyd: com.google.android.gms.internal.ads.zzeyd zza> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        com.google.android.gms.internal.ads.zzeyd r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzeyd;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public final com.google.common.util.concurrent.ListenableFuture zza(java.lang.Object)
+    {
+        byte[] $r11;
+        com.google.common.util.concurrent.ListenableFuture $r14;
+        long $l1;
+        com.google.android.gms.internal.ads.zzhdn $r3;
+        com.google.android.gms.internal.ads.zzhdm $r9;
+        com.google.android.gms.internal.ads.zzeyd r0;
+        com.google.android.gms.internal.ads.zzhdl $r7;
+        androidx.privacysandbox.ads.adservices.topics.Topic $r6;
+        com.google.android.gms.internal.ads.zzeyh $r13;
+        com.google.android.gms.internal.ads.zzhdo $r10;
+        int $i0;
+        java.lang.String $r12;
+        boolean $z0;
+        com.google.android.gms.internal.ads.zzgzu $r8;
+        androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse $r2;
+        java.util.Iterator $r5;
+        java.util.List $r4;
+        java.lang.Object $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzeyd;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse) $r1;
+
+        $r3 = staticinvoke <com.google.android.gms.internal.ads.zzhdo: com.google.android.gms.internal.ads.zzhdn zza()>();
+
+        $r4 = virtualinvoke $r2.<androidx.privacysandbox.ads.adservices.topics.GetTopicsResponse: java.util.List getTopics()>();
+
+        $r5 = interfaceinvoke $r4.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r1 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        $r6 = (androidx.privacysandbox.ads.adservices.topics.Topic) $r1;
+
+        $r7 = staticinvoke <com.google.android.gms.internal.ads.zzhdm: com.google.android.gms.internal.ads.zzhdl zza()>();
+
+        $i0 = virtualinvoke $r6.<androidx.privacysandbox.ads.adservices.topics.Topic: int getTopicId()>();
+
+        virtualinvoke $r7.<com.google.android.gms.internal.ads.zzhdl: com.google.android.gms.internal.ads.zzhdl zzc(int)>($i0);
+
+        $l1 = virtualinvoke $r6.<androidx.privacysandbox.ads.adservices.topics.Topic: long getModelVersion()>();
+
+        virtualinvoke $r7.<com.google.android.gms.internal.ads.zzhdl: com.google.android.gms.internal.ads.zzhdl zza(long)>($l1);
+
+        $l1 = virtualinvoke $r6.<androidx.privacysandbox.ads.adservices.topics.Topic: long getTaxonomyVersion()>();
+
+        virtualinvoke $r7.<com.google.android.gms.internal.ads.zzhdl: com.google.android.gms.internal.ads.zzhdl zzb(long)>($l1);
+
+        $r8 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzgzp: com.google.android.gms.internal.ads.zzgzu zzal()>();
+
+        $r9 = (com.google.android.gms.internal.ads.zzhdm) $r8;
+
+        virtualinvoke $r3.<com.google.android.gms.internal.ads.zzhdn: com.google.android.gms.internal.ads.zzhdn zza(com.google.android.gms.internal.ads.zzhdm)>($r9);
+
+        goto label1;
+
+     label2:
+        $r8 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgzp: com.google.android.gms.internal.ads.zzgzu zzal()>();
+
+        $r10 = (com.google.android.gms.internal.ads.zzhdo) $r8;
+
+        $r11 = virtualinvoke $r10.<com.google.android.gms.internal.ads.zzgxt: byte[] zzax()>();
+
+        $r12 = staticinvoke <android.util.Base64: java.lang.String encodeToString(byte[],int)>($r11, 1);
+
+        $r13 = new com.google.android.gms.internal.ads.zzeyh;
+
+        specialinvoke $r13.<com.google.android.gms.internal.ads.zzeyh: void <init>(java.lang.String,int,com.google.android.gms.internal.ads.zzeyg)>($r12, 1, null);
+
+        $r14 = staticinvoke <com.google.android.gms.internal.ads.zzgen: com.google.common.util.concurrent.ListenableFuture zzh(java.lang.Object)>($r13);
+
+        return $r14;
+    }
+}

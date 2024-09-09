@@ -1,0 +1,149 @@
+class androidx.work.impl.model.WorkSpecDao_Impl$10 extends java.lang.Object implements java.util.concurrent.Callable
+{
+    final androidx.work.impl.model.WorkSpecDao_Impl this$0;
+    final androidx.room.RoomSQLiteQuery val$_statement;
+
+    void <init>(androidx.work.impl.model.WorkSpecDao_Impl, androidx.room.RoomSQLiteQuery)
+    {
+        androidx.work.impl.model.WorkSpecDao_Impl$10 r0;
+        androidx.room.RoomSQLiteQuery $r2;
+        androidx.work.impl.model.WorkSpecDao_Impl $r1;
+
+        r0 := @this: androidx.work.impl.model.WorkSpecDao_Impl$10;
+
+        $r1 := @parameter0: androidx.work.impl.model.WorkSpecDao_Impl;
+
+        $r2 := @parameter1: androidx.room.RoomSQLiteQuery;
+
+        r0.<androidx.work.impl.model.WorkSpecDao_Impl$10: androidx.work.impl.model.WorkSpecDao_Impl this$0> = $r1;
+
+        r0.<androidx.work.impl.model.WorkSpecDao_Impl$10: androidx.room.RoomSQLiteQuery val$_statement> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public volatile java.lang.Object call() throws java.lang.Exception
+    {
+        androidx.work.impl.model.WorkSpecDao_Impl$10 r0;
+        java.util.List $r1;
+
+        r0 := @this: androidx.work.impl.model.WorkSpecDao_Impl$10;
+
+        $r1 = virtualinvoke r0.<androidx.work.impl.model.WorkSpecDao_Impl$10: java.util.List call()>();
+
+        return $r1;
+    }
+
+    public java.util.List call() throws java.lang.Exception
+    {
+        java.lang.Throwable r7, r8;
+        androidx.room.RoomSQLiteQuery r3;
+        androidx.room.RoomDatabase $r2;
+        androidx.work.impl.model.WorkSpecDao_Impl r1;
+        java.util.ArrayList r5;
+        androidx.work.impl.model.WorkSpecDao_Impl$10 r0;
+        int $i0;
+        java.lang.String $r6;
+        android.database.Cursor $r4;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.model.WorkSpecDao_Impl$10;
+
+        r1 = r0.<androidx.work.impl.model.WorkSpecDao_Impl$10: androidx.work.impl.model.WorkSpecDao_Impl this$0>;
+
+        $r2 = staticinvoke <androidx.work.impl.model.WorkSpecDao_Impl: androidx.room.RoomDatabase access$000(androidx.work.impl.model.WorkSpecDao_Impl)>(r1);
+
+        virtualinvoke $r2.<androidx.room.RoomDatabase: void beginTransaction()>();
+
+     label01:
+        r1 = r0.<androidx.work.impl.model.WorkSpecDao_Impl$10: androidx.work.impl.model.WorkSpecDao_Impl this$0>;
+
+        $r2 = staticinvoke <androidx.work.impl.model.WorkSpecDao_Impl: androidx.room.RoomDatabase access$000(androidx.work.impl.model.WorkSpecDao_Impl)>(r1);
+
+        r3 = r0.<androidx.work.impl.model.WorkSpecDao_Impl$10: androidx.room.RoomSQLiteQuery val$_statement>;
+
+        $r4 = staticinvoke <androidx.room.util.DBUtil: android.database.Cursor query(androidx.room.RoomDatabase,androidx.sqlite.db.SupportSQLiteQuery,boolean,android.os.CancellationSignal)>($r2, r3, 0, null);
+
+     label02:
+        r5 = new java.util.ArrayList;
+
+        $i0 = interfaceinvoke $r4.<android.database.Cursor: int getCount()>();
+
+        specialinvoke r5.<java.util.ArrayList: void <init>(int)>($i0);
+
+     label03:
+        $z0 = interfaceinvoke $r4.<android.database.Cursor: boolean moveToNext()>();
+
+     label04:
+        if $z0 == 0 goto label07;
+
+     label05:
+        $r6 = interfaceinvoke $r4.<android.database.Cursor: java.lang.String getString(int)>(0);
+
+        interfaceinvoke r5.<java.util.List: boolean add(java.lang.Object)>($r6);
+
+     label06:
+        goto label03;
+
+     label07:
+        r1 = r0.<androidx.work.impl.model.WorkSpecDao_Impl$10: androidx.work.impl.model.WorkSpecDao_Impl this$0>;
+
+        $r2 = staticinvoke <androidx.work.impl.model.WorkSpecDao_Impl: androidx.room.RoomDatabase access$000(androidx.work.impl.model.WorkSpecDao_Impl)>(r1);
+
+        virtualinvoke $r2.<androidx.room.RoomDatabase: void setTransactionSuccessful()>();
+
+     label08:
+        interfaceinvoke $r4.<android.database.Cursor: void close()>();
+
+     label09:
+        r1 = r0.<androidx.work.impl.model.WorkSpecDao_Impl$10: androidx.work.impl.model.WorkSpecDao_Impl this$0>;
+
+        $r2 = staticinvoke <androidx.work.impl.model.WorkSpecDao_Impl: androidx.room.RoomDatabase access$000(androidx.work.impl.model.WorkSpecDao_Impl)>(r1);
+
+        virtualinvoke $r2.<androidx.room.RoomDatabase: void endTransaction()>();
+
+        return r5;
+
+     label10:
+        r7 := @caughtexception;
+
+     label11:
+        interfaceinvoke $r4.<android.database.Cursor: void close()>();
+
+        throw r7;
+
+     label12:
+        r8 := @caughtexception;
+
+        r1 = r0.<androidx.work.impl.model.WorkSpecDao_Impl$10: androidx.work.impl.model.WorkSpecDao_Impl this$0>;
+
+        $r2 = staticinvoke <androidx.work.impl.model.WorkSpecDao_Impl: androidx.room.RoomDatabase access$000(androidx.work.impl.model.WorkSpecDao_Impl)>(r1);
+
+        virtualinvoke $r2.<androidx.room.RoomDatabase: void endTransaction()>();
+
+        throw r8;
+
+        catch java.lang.Throwable from label01 to label02 with label12;
+        catch java.lang.Throwable from label02 to label04 with label10;
+        catch java.lang.Throwable from label05 to label06 with label10;
+        catch java.lang.Throwable from label07 to label08 with label10;
+        catch java.lang.Throwable from label08 to label09 with label12;
+        catch java.lang.Throwable from label11 to label12 with label12;
+    }
+
+    protected void finalize()
+    {
+        androidx.work.impl.model.WorkSpecDao_Impl$10 r0;
+        androidx.room.RoomSQLiteQuery $r1;
+
+        r0 := @this: androidx.work.impl.model.WorkSpecDao_Impl$10;
+
+        $r1 = r0.<androidx.work.impl.model.WorkSpecDao_Impl$10: androidx.room.RoomSQLiteQuery val$_statement>;
+
+        virtualinvoke $r1.<androidx.room.RoomSQLiteQuery: void release()>();
+
+        return;
+    }
+}

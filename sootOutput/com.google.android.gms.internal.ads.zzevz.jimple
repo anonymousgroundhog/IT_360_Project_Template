@@ -1,0 +1,153 @@
+public final class com.google.android.gms.internal.ads.zzevz extends java.lang.Object implements com.google.android.gms.internal.ads.zzexq, com.google.android.gms.internal.ads.zzexp
+{
+    private final android.content.pm.ApplicationInfo zza;
+    private final android.content.pm.PackageInfo zzb;
+    private final android.content.Context zzc;
+
+    void <init>(android.content.pm.ApplicationInfo, android.content.pm.PackageInfo, android.content.Context)
+    {
+        android.content.Context $r3;
+        com.google.android.gms.internal.ads.zzevz r0;
+        android.content.pm.ApplicationInfo $r1;
+        android.content.pm.PackageInfo $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzevz;
+
+        $r1 := @parameter0: android.content.pm.ApplicationInfo;
+
+        $r2 := @parameter1: android.content.pm.PackageInfo;
+
+        $r3 := @parameter2: android.content.Context;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzevz: android.content.pm.ApplicationInfo zza> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzevz: android.content.pm.PackageInfo zzb> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzevz: android.content.Context zzc> = $r3;
+
+        return;
+    }
+
+    public final int zza()
+    {
+        com.google.android.gms.internal.ads.zzevz r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzevz;
+
+        return 29;
+    }
+
+    public final com.google.common.util.concurrent.ListenableFuture zzb()
+    {
+        com.google.android.gms.internal.ads.zzevz r0;
+        com.google.common.util.concurrent.ListenableFuture $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzevz;
+
+        $r1 = staticinvoke <com.google.android.gms.internal.ads.zzgen: com.google.common.util.concurrent.ListenableFuture zzh(java.lang.Object)>(r0);
+
+        return $r1;
+    }
+
+    public final volatile void zzj(java.lang.Object)
+    {
+        android.content.Context $r8;
+        android.os.Bundle $r2;
+        com.google.android.gms.internal.ads.zzftt $r9;
+        java.lang.CharSequence $r11;
+        android.content.pm.PackageManager$NameNotFoundException $r12;
+        com.google.android.gms.common.wrappers.PackageManagerWrapper $r10;
+        android.content.pm.PackageInfo $r5;
+        java.lang.Integer $r7;
+        int $i0;
+        com.google.android.gms.internal.ads.zzevz r0;
+        java.lang.Object $r1;
+        java.lang.String $r4, $r6;
+        android.content.pm.ApplicationInfo $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzevz;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (android.os.Bundle) $r1;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzevz: android.content.pm.ApplicationInfo zza>;
+
+        $r4 = $r3.<android.content.pm.ApplicationInfo: java.lang.String packageName>;
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzevz: android.content.pm.PackageInfo zzb>;
+
+        $r6 = null;
+
+        if $r5 != null goto label01;
+
+        $r7 = null;
+
+        goto label02;
+
+     label01:
+        $i0 = $r5.<android.content.pm.PackageInfo: int versionCode>;
+
+        $r7 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+     label02:
+        virtualinvoke $r2.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("pn", $r4);
+
+        if $r7 == null goto label03;
+
+        $i0 = virtualinvoke $r7.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke $r2.<android.os.Bundle: void putInt(java.lang.String,int)>("vc", $i0);
+
+     label03:
+        $r5 = r0.<com.google.android.gms.internal.ads.zzevz: android.content.pm.PackageInfo zzb>;
+
+        if $r5 != null goto label04;
+
+        goto label05;
+
+     label04:
+        $r6 = $r5.<android.content.pm.PackageInfo: java.lang.String versionName>;
+
+     label05:
+        if $r6 == null goto label06;
+
+        virtualinvoke $r2.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("vnm", $r6);
+
+     label06:
+        $r8 = r0.<com.google.android.gms.internal.ads.zzevz: android.content.Context zzc>;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzevz: android.content.pm.ApplicationInfo zza>;
+
+        $r4 = $r3.<android.content.pm.ApplicationInfo: java.lang.String packageName>;
+
+        $r9 = <com.google.android.gms.ads.internal.util.zzt: com.google.android.gms.internal.ads.zzftt zza>;
+
+     label07:
+        $r10 = staticinvoke <com.google.android.gms.common.wrappers.Wrappers: com.google.android.gms.common.wrappers.PackageManagerWrapper packageManager(android.content.Context)>($r8);
+
+        $r11 = virtualinvoke $r10.<com.google.android.gms.common.wrappers.PackageManagerWrapper: java.lang.CharSequence getApplicationLabel(java.lang.String)>($r4);
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r11);
+
+     label08:
+        if $r4 == null goto label12;
+
+     label09:
+        virtualinvoke $r2.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("dl", $r4);
+
+     label10:
+        return;
+
+     label11:
+        $r12 := @caughtexception;
+
+     label12:
+        return;
+
+        catch android.content.pm.PackageManager$NameNotFoundException from label07 to label08 with label11;
+        catch android.content.pm.PackageManager$NameNotFoundException from label09 to label10 with label11;
+    }
+}

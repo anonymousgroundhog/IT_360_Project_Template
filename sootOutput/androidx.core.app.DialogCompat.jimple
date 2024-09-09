@@ -1,0 +1,51 @@
+public class androidx.core.app.DialogCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.app.DialogCompat r0;
+
+        r0 := @this: androidx.core.app.DialogCompat;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static android.view.View requireViewById(android.app.Dialog, int)
+    {
+        int $i0, i1;
+        android.view.View r2;
+        android.app.Dialog $r0;
+        java.lang.Object $r1;
+        java.lang.IllegalArgumentException $r3;
+
+        $r0 := @parameter0: android.app.Dialog;
+
+        $i0 := @parameter1: int;
+
+        i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i1 < 28 goto label1;
+
+        $r1 = staticinvoke <androidx.core.app.DialogCompat$Api28Impl: java.lang.Object requireViewById(android.app.Dialog,int)>($r0, $i0);
+
+        r2 = (android.view.View) $r1;
+
+        return r2;
+
+     label1:
+        r2 = virtualinvoke $r0.<android.app.Dialog: android.view.View findViewById(int)>($i0);
+
+        if r2 == null goto label2;
+
+        return r2;
+
+     label2:
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("ID does not reference a View inside this Dialog");
+
+        throw $r3;
+    }
+}

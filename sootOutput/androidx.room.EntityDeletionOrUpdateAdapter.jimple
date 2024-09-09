@@ -1,0 +1,167 @@
+public abstract class androidx.room.EntityDeletionOrUpdateAdapter extends androidx.room.SharedSQLiteStatement
+{
+
+    public void <init>(androidx.room.RoomDatabase)
+    {
+        androidx.room.EntityDeletionOrUpdateAdapter r0;
+        androidx.room.RoomDatabase $r1;
+
+        r0 := @this: androidx.room.EntityDeletionOrUpdateAdapter;
+
+        $r1 := @parameter0: androidx.room.RoomDatabase;
+
+        specialinvoke r0.<androidx.room.SharedSQLiteStatement: void <init>(androidx.room.RoomDatabase)>($r1);
+
+        return;
+    }
+
+    protected abstract void bind(androidx.sqlite.db.SupportSQLiteStatement, java.lang.Object);
+
+    protected abstract java.lang.String createQuery();
+
+    public final int handle(java.lang.Object)
+    {
+        java.lang.Throwable $r3;
+        androidx.room.EntityDeletionOrUpdateAdapter r0;
+        int $i0;
+        java.lang.Object r1;
+        androidx.sqlite.db.SupportSQLiteStatement $r2;
+
+        r0 := @this: androidx.room.EntityDeletionOrUpdateAdapter;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $r2 = virtualinvoke r0.<androidx.room.EntityDeletionOrUpdateAdapter: androidx.sqlite.db.SupportSQLiteStatement acquire()>();
+
+     label1:
+        virtualinvoke r0.<androidx.room.EntityDeletionOrUpdateAdapter: void bind(androidx.sqlite.db.SupportSQLiteStatement,java.lang.Object)>($r2, r1);
+
+        $i0 = interfaceinvoke $r2.<androidx.sqlite.db.SupportSQLiteStatement: int executeUpdateDelete()>();
+
+     label2:
+        virtualinvoke r0.<androidx.room.EntityDeletionOrUpdateAdapter: void release(androidx.sqlite.db.SupportSQLiteStatement)>($r2);
+
+        return $i0;
+
+     label3:
+        $r3 := @caughtexception;
+
+        virtualinvoke r0.<androidx.room.EntityDeletionOrUpdateAdapter: void release(androidx.sqlite.db.SupportSQLiteStatement)>($r2);
+
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final int handleMultiple(java.lang.Iterable)
+    {
+        java.lang.Throwable r5;
+        androidx.room.EntityDeletionOrUpdateAdapter r0;
+        java.util.Iterator $r3;
+        java.lang.Iterable r1;
+        int i0, $i1;
+        java.lang.Object $r4;
+        androidx.sqlite.db.SupportSQLiteStatement $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.room.EntityDeletionOrUpdateAdapter;
+
+        r1 := @parameter0: java.lang.Iterable;
+
+        $r2 = virtualinvoke r0.<androidx.room.EntityDeletionOrUpdateAdapter: androidx.sqlite.db.SupportSQLiteStatement acquire()>();
+
+        i0 = 0;
+
+     label1:
+        $r3 = interfaceinvoke r1.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+     label3:
+        if $z0 == 0 goto label6;
+
+     label4:
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        virtualinvoke r0.<androidx.room.EntityDeletionOrUpdateAdapter: void bind(androidx.sqlite.db.SupportSQLiteStatement,java.lang.Object)>($r2, $r4);
+
+        $i1 = interfaceinvoke $r2.<androidx.sqlite.db.SupportSQLiteStatement: int executeUpdateDelete()>();
+
+     label5:
+        i0 = i0 + $i1;
+
+        goto label2;
+
+     label6:
+        virtualinvoke r0.<androidx.room.EntityDeletionOrUpdateAdapter: void release(androidx.sqlite.db.SupportSQLiteStatement)>($r2);
+
+        return i0;
+
+     label7:
+        r5 := @caughtexception;
+
+        virtualinvoke r0.<androidx.room.EntityDeletionOrUpdateAdapter: void release(androidx.sqlite.db.SupportSQLiteStatement)>($r2);
+
+        throw r5;
+
+        catch java.lang.Throwable from label1 to label3 with label7;
+        catch java.lang.Throwable from label4 to label5 with label7;
+    }
+
+    public final int handleMultiple(java.lang.Object[])
+    {
+        java.lang.Throwable r4;
+        java.lang.Object[] r1;
+        androidx.room.EntityDeletionOrUpdateAdapter r0;
+        int $i0, i1, $i2, $i3;
+        java.lang.Object r2;
+        androidx.sqlite.db.SupportSQLiteStatement $r3;
+
+        r0 := @this: androidx.room.EntityDeletionOrUpdateAdapter;
+
+        r1 := @parameter0: java.lang.Object[];
+
+        $r3 = virtualinvoke r0.<androidx.room.EntityDeletionOrUpdateAdapter: androidx.sqlite.db.SupportSQLiteStatement acquire()>();
+
+        i1 = 0;
+
+     label1:
+        $i0 = lengthof r1;
+
+     label2:
+        $i2 = 0;
+
+     label3:
+        if $i2 >= $i0 goto label6;
+
+     label4:
+        r2 = r1[$i2];
+
+        virtualinvoke r0.<androidx.room.EntityDeletionOrUpdateAdapter: void bind(androidx.sqlite.db.SupportSQLiteStatement,java.lang.Object)>($r3, r2);
+
+        $i3 = interfaceinvoke $r3.<androidx.sqlite.db.SupportSQLiteStatement: int executeUpdateDelete()>();
+
+     label5:
+        i1 = i1 + $i3;
+
+        $i2 = $i2 + 1;
+
+        goto label3;
+
+     label6:
+        virtualinvoke r0.<androidx.room.EntityDeletionOrUpdateAdapter: void release(androidx.sqlite.db.SupportSQLiteStatement)>($r3);
+
+        return i1;
+
+     label7:
+        r4 := @caughtexception;
+
+        virtualinvoke r0.<androidx.room.EntityDeletionOrUpdateAdapter: void release(androidx.sqlite.db.SupportSQLiteStatement)>($r3);
+
+        throw r4;
+
+        catch java.lang.Throwable from label1 to label2 with label7;
+        catch java.lang.Throwable from label4 to label5 with label7;
+    }
+}

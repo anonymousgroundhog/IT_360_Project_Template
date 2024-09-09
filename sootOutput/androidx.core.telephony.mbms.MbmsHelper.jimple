@@ -1,0 +1,37 @@
+public final class androidx.core.telephony.mbms.MbmsHelper extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.telephony.mbms.MbmsHelper r0;
+
+        r0 := @this: androidx.core.telephony.mbms.MbmsHelper;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.lang.CharSequence getBestNameForService(android.content.Context, android.telephony.mbms.ServiceInfo)
+    {
+        android.content.Context $r0;
+        java.lang.CharSequence $r2;
+        android.telephony.mbms.ServiceInfo $r1;
+        int $i0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: android.telephony.mbms.ServiceInfo;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 28 goto label1;
+
+        $r2 = staticinvoke <androidx.core.telephony.mbms.MbmsHelper$Api28Impl: java.lang.CharSequence getBestNameForService(android.content.Context,android.telephony.mbms.ServiceInfo)>($r0, $r1);
+
+        return $r2;
+
+     label1:
+        return null;
+    }
+}

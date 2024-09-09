@@ -1,0 +1,141 @@
+public final class com.google.android.gms.internal.ads.zzetj extends java.lang.Object implements com.google.android.gms.internal.ads.zzexq
+{
+    private final com.google.android.gms.internal.ads.zzgey zza;
+    private final android.content.Context zzb;
+
+    void <init>(com.google.android.gms.internal.ads.zzgey, android.content.Context)
+    {
+        android.content.Context $r2;
+        com.google.android.gms.internal.ads.zzetj r0;
+        com.google.android.gms.internal.ads.zzgey $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzetj;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzgey;
+
+        $r2 := @parameter1: android.content.Context;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzetj: com.google.android.gms.internal.ads.zzgey zza> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzetj: android.content.Context zzb> = $r2;
+
+        return;
+    }
+
+    public final int zza()
+    {
+        com.google.android.gms.internal.ads.zzetj r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzetj;
+
+        return 14;
+    }
+
+    public final com.google.common.util.concurrent.ListenableFuture zzb()
+    {
+        com.google.common.util.concurrent.ListenableFuture $r2;
+        com.google.android.gms.internal.ads.zzeti $r3;
+        com.google.android.gms.internal.ads.zzetj r0;
+        com.google.android.gms.internal.ads.zzgey $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzetj;
+
+        $r3 = new com.google.android.gms.internal.ads.zzeti;
+
+        specialinvoke $r3.<com.google.android.gms.internal.ads.zzeti: void <init>(com.google.android.gms.internal.ads.zzetj)>(r0);
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzetj: com.google.android.gms.internal.ads.zzgey zza>;
+
+        $r2 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzgey: com.google.common.util.concurrent.ListenableFuture zzb(java.util.concurrent.Callable)>($r3);
+
+        return $r2;
+    }
+
+    final com.google.android.gms.internal.ads.zzetk zzc() throws java.lang.Exception
+    {
+        android.content.Context $r5;
+        android.content.IntentFilter $r7;
+        android.content.Intent $r6;
+        com.google.android.gms.internal.ads.zzbga $r2;
+        com.google.android.gms.internal.ads.zzetk $r8;
+        com.google.android.gms.internal.ads.zzetj r0;
+        com.google.android.gms.internal.ads.zzbfu $r1;
+        int $i0, $i1, $i2;
+        java.lang.Boolean $r4;
+        java.lang.Object $r3;
+        boolean $z0;
+        double $d0, $d1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzetj;
+
+        $r7 = new android.content.IntentFilter;
+
+        specialinvoke $r7.<android.content.IntentFilter: void <init>(java.lang.String)>("android.intent.action.BATTERY_CHANGED");
+
+        $r1 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzkw>;
+
+        $r2 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r1);
+
+        $r4 = (java.lang.Boolean) $r3;
+
+        $z0 = virtualinvoke $r4.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label1;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 33 goto label1;
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzetj: android.content.Context zzb>;
+
+        $r6 = virtualinvoke $r5.<android.content.Context: android.content.Intent registerReceiver(android.content.BroadcastReceiver,android.content.IntentFilter,int)>(null, $r7, 4);
+
+        goto label2;
+
+     label1:
+        $r5 = r0.<com.google.android.gms.internal.ads.zzetj: android.content.Context zzb>;
+
+        $r6 = virtualinvoke $r5.<android.content.Context: android.content.Intent registerReceiver(android.content.BroadcastReceiver,android.content.IntentFilter)>(null, $r7);
+
+     label2:
+        $z0 = 0;
+
+        if $r6 == null goto label5;
+
+        $i0 = virtualinvoke $r6.<android.content.Intent: int getIntExtra(java.lang.String,int)>("status", -1);
+
+        $i1 = virtualinvoke $r6.<android.content.Intent: int getIntExtra(java.lang.String,int)>("level", -1);
+
+        $i2 = virtualinvoke $r6.<android.content.Intent: int getIntExtra(java.lang.String,int)>("scale", -1);
+
+        $d0 = (double) $i1;
+
+        $d1 = (double) $i2;
+
+        if $i0 == 2 goto label3;
+
+        if $i0 != 5 goto label4;
+
+     label3:
+        $z0 = 1;
+
+     label4:
+        $d0 = $d0 / $d1;
+
+        goto label6;
+
+     label5:
+        $d0 = -1.0;
+
+     label6:
+        $r8 = new com.google.android.gms.internal.ads.zzetk;
+
+        specialinvoke $r8.<com.google.android.gms.internal.ads.zzetk: void <init>(double,boolean)>($d0, $z0);
+
+        return $r8;
+    }
+}

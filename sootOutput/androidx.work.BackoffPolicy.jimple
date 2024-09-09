@@ -1,0 +1,84 @@
+public final enum class androidx.work.BackoffPolicy extends java.lang.Enum
+{
+    private static final androidx.work.BackoffPolicy[] $VALUES;
+    public static final enum androidx.work.BackoffPolicy EXPONENTIAL;
+    public static final enum androidx.work.BackoffPolicy LINEAR;
+
+    static void <clinit>()
+    {
+        androidx.work.BackoffPolicy $r0;
+        androidx.work.BackoffPolicy[] $r1;
+
+        $r0 = new androidx.work.BackoffPolicy;
+
+        specialinvoke $r0.<androidx.work.BackoffPolicy: void <init>(java.lang.String,int)>("EXPONENTIAL", 0);
+
+        <androidx.work.BackoffPolicy: androidx.work.BackoffPolicy EXPONENTIAL> = $r0;
+
+        $r0 = new androidx.work.BackoffPolicy;
+
+        specialinvoke $r0.<androidx.work.BackoffPolicy: void <init>(java.lang.String,int)>("LINEAR", 1);
+
+        <androidx.work.BackoffPolicy: androidx.work.BackoffPolicy LINEAR> = $r0;
+
+        $r1 = newarray (androidx.work.BackoffPolicy)[2];
+
+        $r0 = <androidx.work.BackoffPolicy: androidx.work.BackoffPolicy EXPONENTIAL>;
+
+        $r1[0] = $r0;
+
+        $r0 = <androidx.work.BackoffPolicy: androidx.work.BackoffPolicy LINEAR>;
+
+        $r1[1] = $r0;
+
+        <androidx.work.BackoffPolicy: androidx.work.BackoffPolicy[] $VALUES> = $r1;
+
+        return;
+    }
+
+    private void <init>(java.lang.String, int)
+    {
+        int $i0;
+        java.lang.String $r1;
+        androidx.work.BackoffPolicy r0;
+
+        r0 := @this: androidx.work.BackoffPolicy;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<java.lang.Enum: void <init>(java.lang.String,int)>($r1, $i0);
+
+        return;
+    }
+
+    public static androidx.work.BackoffPolicy valueOf(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.lang.Enum $r1;
+        androidx.work.BackoffPolicy $r2;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "Landroidx/work/BackoffPolicy;", $r0);
+
+        $r2 = (androidx.work.BackoffPolicy) $r1;
+
+        return $r2;
+    }
+
+    public static androidx.work.BackoffPolicy[] values()
+    {
+        java.lang.Object $r0;
+        androidx.work.BackoffPolicy[] $r1;
+
+        $r1 = <androidx.work.BackoffPolicy: androidx.work.BackoffPolicy[] $VALUES>;
+
+        $r0 = virtualinvoke $r1.<java.lang.Object: java.lang.Object clone()>();
+
+        $r1 = (androidx.work.BackoffPolicy[]) $r0;
+
+        return $r1;
+    }
+}

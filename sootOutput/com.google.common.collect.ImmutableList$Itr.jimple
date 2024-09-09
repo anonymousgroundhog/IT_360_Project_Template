@@ -1,0 +1,43 @@
+class com.google.common.collect.ImmutableList$Itr extends com.google.common.collect.AbstractIndexedListIterator
+{
+    private final com.google.common.collect.ImmutableList list;
+
+    void <init>(com.google.common.collect.ImmutableList, int)
+    {
+        com.google.common.collect.ImmutableList$Itr r0;
+        com.google.common.collect.ImmutableList r1;
+        int $i0, $i1;
+
+        r0 := @this: com.google.common.collect.ImmutableList$Itr;
+
+        r1 := @parameter0: com.google.common.collect.ImmutableList;
+
+        $i0 := @parameter1: int;
+
+        $i1 = virtualinvoke r1.<com.google.common.collect.ImmutableList: int size()>();
+
+        specialinvoke r0.<com.google.common.collect.AbstractIndexedListIterator: void <init>(int,int)>($i1, $i0);
+
+        r0.<com.google.common.collect.ImmutableList$Itr: com.google.common.collect.ImmutableList list> = r1;
+
+        return;
+    }
+
+    protected java.lang.Object get(int)
+    {
+        com.google.common.collect.ImmutableList$Itr r0;
+        com.google.common.collect.ImmutableList $r2;
+        int $i0;
+        java.lang.Object $r1;
+
+        r0 := @this: com.google.common.collect.ImmutableList$Itr;
+
+        $i0 := @parameter0: int;
+
+        $r2 = r0.<com.google.common.collect.ImmutableList$Itr: com.google.common.collect.ImmutableList list>;
+
+        $r1 = virtualinvoke $r2.<com.google.common.collect.ImmutableList: java.lang.Object get(int)>($i0);
+
+        return $r1;
+    }
+}

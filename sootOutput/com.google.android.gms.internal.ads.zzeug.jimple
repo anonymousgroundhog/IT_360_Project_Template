@@ -1,0 +1,197 @@
+public final class com.google.android.gms.internal.ads.zzeug extends java.lang.Object implements com.google.android.gms.internal.ads.zzexq
+{
+    private final android.content.Context zza;
+    private final com.google.android.gms.internal.ads.zzgey zzb;
+
+    void <init>(android.content.Context, com.google.android.gms.internal.ads.zzgey)
+    {
+        android.content.Context $r1;
+        com.google.android.gms.internal.ads.zzeug r0;
+        com.google.android.gms.internal.ads.zzgey $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzeug;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.google.android.gms.internal.ads.zzgey;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzeug: android.content.Context zza> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzeug: com.google.android.gms.internal.ads.zzgey zzb> = $r2;
+
+        return;
+    }
+
+    public final int zza()
+    {
+        com.google.android.gms.internal.ads.zzeug r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzeug;
+
+        return 18;
+    }
+
+    public final com.google.common.util.concurrent.ListenableFuture zzb()
+    {
+        com.google.common.util.concurrent.ListenableFuture $r2;
+        com.google.android.gms.internal.ads.zzeud $r3;
+        com.google.android.gms.internal.ads.zzeug r0;
+        com.google.android.gms.internal.ads.zzgey $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzeug;
+
+        $r3 = new com.google.android.gms.internal.ads.zzeud;
+
+        specialinvoke $r3.<com.google.android.gms.internal.ads.zzeud: void <init>(com.google.android.gms.internal.ads.zzeug)>(r0);
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzeug: com.google.android.gms.internal.ads.zzgey zzb>;
+
+        $r2 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzgey: com.google.common.util.concurrent.ListenableFuture zzb(java.util.concurrent.Callable)>($r3);
+
+        return $r2;
+    }
+
+    final com.google.android.gms.internal.ads.zzeuf zzc() throws java.lang.Exception
+    {
+        android.content.Context $r8;
+        android.os.Bundle $r10;
+        java.lang.String[] $r11;
+        com.google.android.gms.internal.ads.zzeug r0;
+        com.google.android.gms.internal.ads.zzbga $r3;
+        com.google.android.gms.internal.ads.zzbfu $r2;
+        com.google.android.gms.internal.ads.zzeuf $r1;
+        int $i0;
+        java.lang.Boolean $r5;
+        java.lang.String $r6, $r7, $r12, $r13;
+        boolean $z0;
+        android.content.SharedPreferences $r9;
+        java.lang.Object $r4;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzeug;
+
+        $r1 = new com.google.android.gms.internal.ads.zzeuf;
+
+        staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.ads.internal.util.zzt zzp()>();
+
+        $r2 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzgc>;
+
+        $r3 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r2);
+
+        $r5 = (java.lang.Boolean) $r4;
+
+        $z0 = virtualinvoke $r5.<java.lang.Boolean: boolean booleanValue()>();
+
+        $r6 = "";
+
+        $i0 = 0;
+
+        if $z0 != 0 goto label1;
+
+        $r7 = "";
+
+        goto label2;
+
+     label1:
+        $r8 = r0.<com.google.android.gms.internal.ads.zzeug: android.content.Context zza>;
+
+        $r9 = virtualinvoke $r8.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("mobileads_consent", 0);
+
+        $r7 = interfaceinvoke $r9.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("consent_string", "");
+
+     label2:
+        $r2 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzge>;
+
+        $r3 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r2);
+
+        $r5 = (java.lang.Boolean) $r4;
+
+        $z0 = virtualinvoke $r5.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label3;
+
+        goto label4;
+
+     label3:
+        $r8 = r0.<com.google.android.gms.internal.ads.zzeug: android.content.Context zza>;
+
+        $r9 = virtualinvoke $r8.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("mobileads_consent", 0);
+
+        $r6 = interfaceinvoke $r9.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("fc_consent", "");
+
+     label4:
+        staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.ads.internal.util.zzt zzp()>();
+
+        $r8 = r0.<com.google.android.gms.internal.ads.zzeug: android.content.Context zza>;
+
+        $r2 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzgd>;
+
+        $r3 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r2);
+
+        $r5 = (java.lang.Boolean) $r4;
+
+        $z0 = virtualinvoke $r5.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label5;
+
+        $r10 = null;
+
+        goto label9;
+
+     label5:
+        $r9 = staticinvoke <android.preference.PreferenceManager: android.content.SharedPreferences getDefaultSharedPreferences(android.content.Context)>($r8);
+
+        $r10 = new android.os.Bundle;
+
+        specialinvoke $r10.<android.os.Bundle: void <init>()>();
+
+        $z0 = interfaceinvoke $r9.<android.content.SharedPreferences: boolean contains(java.lang.String)>("IABConsent_CMPPresent");
+
+        if $z0 == 0 goto label6;
+
+        $z0 = interfaceinvoke $r9.<android.content.SharedPreferences: boolean getBoolean(java.lang.String,boolean)>("IABConsent_CMPPresent", 0);
+
+        virtualinvoke $r10.<android.os.Bundle: void putBoolean(java.lang.String,boolean)>("IABConsent_CMPPresent", $z0);
+
+     label6:
+        $r11 = newarray (java.lang.String)[4];
+
+        $r11[0] = "IABConsent_SubjectToGDPR";
+
+        $r11[1] = "IABConsent_ConsentString";
+
+        $r11[2] = "IABConsent_ParsedPurposeConsents";
+
+        $r11[3] = "IABConsent_ParsedVendorConsents";
+
+     label7:
+        if $i0 >= 4 goto label9;
+
+        $r12 = $r11[$i0];
+
+        $z0 = interfaceinvoke $r9.<android.content.SharedPreferences: boolean contains(java.lang.String)>($r12);
+
+        if $z0 == 0 goto label8;
+
+        $r13 = interfaceinvoke $r9.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>($r12, null);
+
+        virtualinvoke $r10.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>($r12, $r13);
+
+     label8:
+        $i0 = $i0 + 1;
+
+        goto label7;
+
+     label9:
+        specialinvoke $r1.<com.google.android.gms.internal.ads.zzeuf: void <init>(java.lang.String,java.lang.String,android.os.Bundle,com.google.android.gms.internal.ads.zzeue)>($r7, $r6, $r10, null);
+
+        return $r1;
+    }
+}

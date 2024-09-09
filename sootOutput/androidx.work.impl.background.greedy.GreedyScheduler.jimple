@@ -1,0 +1,726 @@
+public class androidx.work.impl.background.greedy.GreedyScheduler extends java.lang.Object implements androidx.work.impl.Scheduler, androidx.work.impl.constraints.WorkConstraintsCallback, androidx.work.impl.ExecutionListener
+{
+    private static final java.lang.String TAG;
+    private final java.util.Set mConstrainedWorkSpecs;
+    private final android.content.Context mContext;
+    private androidx.work.impl.background.greedy.DelayedWorkTracker mDelayedWorkTracker;
+    java.lang.Boolean mInDefaultProcess;
+    private final java.lang.Object mLock;
+    private boolean mRegisteredExecutionListener;
+    private final androidx.work.impl.constraints.WorkConstraintsTracker mWorkConstraintsTracker;
+    private final androidx.work.impl.WorkManagerImpl mWorkManagerImpl;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+
+        $r0 = staticinvoke <androidx.work.Logger: java.lang.String tagWithPrefix(java.lang.String)>("GreedyScheduler");
+
+        <androidx.work.impl.background.greedy.GreedyScheduler: java.lang.String TAG> = $r0;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, androidx.work.Configuration, androidx.work.impl.utils.taskexecutor.TaskExecutor, androidx.work.impl.WorkManagerImpl)
+    {
+        android.content.Context $r1;
+        androidx.work.impl.background.greedy.DelayedWorkTracker $r8;
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r3;
+        java.util.HashSet $r6;
+        androidx.work.Configuration $r2;
+        androidx.work.impl.constraints.WorkConstraintsTracker $r7;
+        androidx.work.impl.background.greedy.GreedyScheduler r0;
+        androidx.work.impl.WorkManagerImpl $r4;
+        java.lang.Object $r9;
+        androidx.work.RunnableScheduler $r5;
+
+        r0 := @this: androidx.work.impl.background.greedy.GreedyScheduler;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.work.Configuration;
+
+        $r3 := @parameter2: androidx.work.impl.utils.taskexecutor.TaskExecutor;
+
+        $r4 := @parameter3: androidx.work.impl.WorkManagerImpl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r6 = new java.util.HashSet;
+
+        specialinvoke $r6.<java.util.HashSet: void <init>()>();
+
+        r0.<androidx.work.impl.background.greedy.GreedyScheduler: java.util.Set mConstrainedWorkSpecs> = $r6;
+
+        r0.<androidx.work.impl.background.greedy.GreedyScheduler: android.content.Context mContext> = $r1;
+
+        r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.WorkManagerImpl mWorkManagerImpl> = $r4;
+
+        $r7 = new androidx.work.impl.constraints.WorkConstraintsTracker;
+
+        specialinvoke $r7.<androidx.work.impl.constraints.WorkConstraintsTracker: void <init>(android.content.Context,androidx.work.impl.utils.taskexecutor.TaskExecutor,androidx.work.impl.constraints.WorkConstraintsCallback)>($r1, $r3, r0);
+
+        r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.constraints.WorkConstraintsTracker mWorkConstraintsTracker> = $r7;
+
+        $r8 = new androidx.work.impl.background.greedy.DelayedWorkTracker;
+
+        $r5 = virtualinvoke $r2.<androidx.work.Configuration: androidx.work.RunnableScheduler getRunnableScheduler()>();
+
+        specialinvoke $r8.<androidx.work.impl.background.greedy.DelayedWorkTracker: void <init>(androidx.work.impl.background.greedy.GreedyScheduler,androidx.work.RunnableScheduler)>(r0, $r5);
+
+        r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.background.greedy.DelayedWorkTracker mDelayedWorkTracker> = $r8;
+
+        $r9 = new java.lang.Object;
+
+        specialinvoke $r9.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.work.impl.background.greedy.GreedyScheduler: java.lang.Object mLock> = $r9;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, androidx.work.impl.WorkManagerImpl, androidx.work.impl.constraints.WorkConstraintsTracker)
+    {
+        java.util.HashSet $r4;
+        android.content.Context $r1;
+        androidx.work.impl.constraints.WorkConstraintsTracker $r3;
+        androidx.work.impl.background.greedy.GreedyScheduler r0;
+        androidx.work.impl.WorkManagerImpl $r2;
+        java.lang.Object $r5;
+
+        r0 := @this: androidx.work.impl.background.greedy.GreedyScheduler;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.work.impl.WorkManagerImpl;
+
+        $r3 := @parameter2: androidx.work.impl.constraints.WorkConstraintsTracker;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r4 = new java.util.HashSet;
+
+        specialinvoke $r4.<java.util.HashSet: void <init>()>();
+
+        r0.<androidx.work.impl.background.greedy.GreedyScheduler: java.util.Set mConstrainedWorkSpecs> = $r4;
+
+        r0.<androidx.work.impl.background.greedy.GreedyScheduler: android.content.Context mContext> = $r1;
+
+        r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.WorkManagerImpl mWorkManagerImpl> = $r2;
+
+        r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.constraints.WorkConstraintsTracker mWorkConstraintsTracker> = $r3;
+
+        $r5 = new java.lang.Object;
+
+        specialinvoke $r5.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.work.impl.background.greedy.GreedyScheduler: java.lang.Object mLock> = $r5;
+
+        return;
+    }
+
+    private void checkDefaultProcess()
+    {
+        android.content.Context $r3;
+        androidx.work.Configuration $r2;
+        java.lang.Boolean $r4;
+        androidx.work.impl.background.greedy.GreedyScheduler r0;
+        androidx.work.impl.WorkManagerImpl r1;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.background.greedy.GreedyScheduler;
+
+        r1 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.WorkManagerImpl mWorkManagerImpl>;
+
+        $r2 = virtualinvoke r1.<androidx.work.impl.WorkManagerImpl: androidx.work.Configuration getConfiguration()>();
+
+        $r3 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: android.content.Context mContext>;
+
+        $z0 = staticinvoke <androidx.work.impl.utils.ProcessUtils: boolean isDefaultProcess(android.content.Context,androidx.work.Configuration)>($r3, $r2);
+
+        $r4 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        r0.<androidx.work.impl.background.greedy.GreedyScheduler: java.lang.Boolean mInDefaultProcess> = $r4;
+
+        return;
+    }
+
+    private void registerExecutionListenerIfNeeded()
+    {
+        androidx.work.impl.background.greedy.GreedyScheduler r0;
+        androidx.work.impl.WorkManagerImpl $r2;
+        androidx.work.impl.Processor $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.background.greedy.GreedyScheduler;
+
+        $z0 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: boolean mRegisteredExecutionListener>;
+
+        if $z0 != 0 goto label1;
+
+        $r2 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.WorkManagerImpl mWorkManagerImpl>;
+
+        $r1 = virtualinvoke $r2.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.Processor getProcessor()>();
+
+        virtualinvoke $r1.<androidx.work.impl.Processor: void addExecutionListener(androidx.work.impl.ExecutionListener)>(r0);
+
+        r0.<androidx.work.impl.background.greedy.GreedyScheduler: boolean mRegisteredExecutionListener> = 1;
+
+     label1:
+        return;
+    }
+
+    private void removeConstraintTrackingFor(java.lang.String)
+    {
+        java.lang.Throwable $r12;
+        java.lang.Object[] $r9;
+        java.util.Iterator $r4;
+        java.util.Set $r3;
+        androidx.work.impl.model.WorkSpec r6;
+        androidx.work.Logger $r8;
+        androidx.work.impl.constraints.WorkConstraintsTracker $r11;
+        java.lang.Throwable[] $r10;
+        androidx.work.impl.background.greedy.GreedyScheduler r0;
+        java.lang.Object $r2, $r5;
+        java.lang.String $r1, $r7;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.background.greedy.GreedyScheduler;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: java.lang.Object mLock>;
+
+        entermonitor $r2;
+
+     label1:
+        $r3 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: java.util.Set mConstrainedWorkSpecs>;
+
+        $r4 = interfaceinvoke $r3.<java.util.Set: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (androidx.work.impl.model.WorkSpec) $r5;
+
+        $r7 = r6.<androidx.work.impl.model.WorkSpec: java.lang.String id>;
+
+        $z0 = virtualinvoke $r7.<java.lang.String: boolean equals(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label2;
+
+        $r8 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r7 = <androidx.work.impl.background.greedy.GreedyScheduler: java.lang.String TAG>;
+
+        $r9 = newarray (java.lang.Object)[1];
+
+        $r9[0] = $r1;
+
+        $r1 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Stopping tracking for %s", $r9);
+
+        $r10 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r8.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>($r7, $r1, $r10);
+
+        $r3 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: java.util.Set mConstrainedWorkSpecs>;
+
+        interfaceinvoke $r3.<java.util.Set: boolean remove(java.lang.Object)>(r6);
+
+        $r11 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.constraints.WorkConstraintsTracker mWorkConstraintsTracker>;
+
+        $r3 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: java.util.Set mConstrainedWorkSpecs>;
+
+        virtualinvoke $r11.<androidx.work.impl.constraints.WorkConstraintsTracker: void replace(java.lang.Iterable)>($r3);
+
+        goto label3;
+
+     label3:
+        exitmonitor $r2;
+
+     label4:
+        return;
+
+     label5:
+        $r12 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label6:
+        throw $r12;
+
+        catch java.lang.Throwable from label1 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    public void cancel(java.lang.String)
+    {
+        java.lang.Object[] $r6;
+        androidx.work.impl.background.greedy.DelayedWorkTracker $r8;
+        androidx.work.Logger $r3;
+        java.lang.Throwable[] $r4;
+        java.lang.Boolean $r2;
+        androidx.work.impl.background.greedy.GreedyScheduler r0;
+        androidx.work.impl.WorkManagerImpl $r9;
+        java.lang.String $r1, $r5, $r7;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.background.greedy.GreedyScheduler;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: java.lang.Boolean mInDefaultProcess>;
+
+        if $r2 != null goto label1;
+
+        specialinvoke r0.<androidx.work.impl.background.greedy.GreedyScheduler: void checkDefaultProcess()>();
+
+     label1:
+        $r2 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: java.lang.Boolean mInDefaultProcess>;
+
+        $z0 = virtualinvoke $r2.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label2;
+
+        $r3 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r1 = <androidx.work.impl.background.greedy.GreedyScheduler: java.lang.String TAG>;
+
+        $r4 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r3.<androidx.work.Logger: void info(java.lang.String,java.lang.String,java.lang.Throwable[])>($r1, "Ignoring schedule request in non-main process", $r4);
+
+        return;
+
+     label2:
+        specialinvoke r0.<androidx.work.impl.background.greedy.GreedyScheduler: void registerExecutionListenerIfNeeded()>();
+
+        $r3 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r5 = <androidx.work.impl.background.greedy.GreedyScheduler: java.lang.String TAG>;
+
+        $r6 = newarray (java.lang.Object)[1];
+
+        $r6[0] = $r1;
+
+        $r7 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Cancelling work ID %s", $r6);
+
+        $r4 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r3.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>($r5, $r7, $r4);
+
+        $r8 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.background.greedy.DelayedWorkTracker mDelayedWorkTracker>;
+
+        if $r8 == null goto label3;
+
+        $r8 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.background.greedy.DelayedWorkTracker mDelayedWorkTracker>;
+
+        virtualinvoke $r8.<androidx.work.impl.background.greedy.DelayedWorkTracker: void unschedule(java.lang.String)>($r1);
+
+     label3:
+        $r9 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.WorkManagerImpl mWorkManagerImpl>;
+
+        virtualinvoke $r9.<androidx.work.impl.WorkManagerImpl: void stopWork(java.lang.String)>($r1);
+
+        return;
+    }
+
+    public boolean hasLimitedSchedulingSlots()
+    {
+        androidx.work.impl.background.greedy.GreedyScheduler r0;
+
+        r0 := @this: androidx.work.impl.background.greedy.GreedyScheduler;
+
+        return 0;
+    }
+
+    public void onAllConstraintsMet(java.util.List)
+    {
+        java.lang.Object[] $r7;
+        java.util.Iterator $r3;
+        java.util.List r1;
+        androidx.work.Logger $r6;
+        java.lang.Throwable[] $r9;
+        androidx.work.impl.background.greedy.GreedyScheduler r0;
+        java.lang.Object $r4;
+        androidx.work.impl.WorkManagerImpl $r10;
+        java.lang.String $r2, r5, $r8;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.background.greedy.GreedyScheduler;
+
+        r1 := @parameter0: java.util.List;
+
+        $r3 = interfaceinvoke r1.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (java.lang.String) $r4;
+
+        $r6 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r2 = <androidx.work.impl.background.greedy.GreedyScheduler: java.lang.String TAG>;
+
+        $r7 = newarray (java.lang.Object)[1];
+
+        $r7[0] = r5;
+
+        $r8 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Constraints met: Scheduling work ID %s", $r7);
+
+        $r9 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r6.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>($r2, $r8, $r9);
+
+        $r10 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.WorkManagerImpl mWorkManagerImpl>;
+
+        virtualinvoke $r10.<androidx.work.impl.WorkManagerImpl: void startWork(java.lang.String)>(r5);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void onAllConstraintsNotMet(java.util.List)
+    {
+        java.lang.Object[] $r7;
+        java.util.Iterator $r3;
+        java.util.List r1;
+        androidx.work.Logger $r6;
+        java.lang.Throwable[] $r9;
+        androidx.work.impl.background.greedy.GreedyScheduler r0;
+        java.lang.Object $r4;
+        androidx.work.impl.WorkManagerImpl $r10;
+        java.lang.String $r2, r5, $r8;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.background.greedy.GreedyScheduler;
+
+        r1 := @parameter0: java.util.List;
+
+        $r3 = interfaceinvoke r1.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (java.lang.String) $r4;
+
+        $r6 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r2 = <androidx.work.impl.background.greedy.GreedyScheduler: java.lang.String TAG>;
+
+        $r7 = newarray (java.lang.Object)[1];
+
+        $r7[0] = r5;
+
+        $r8 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Constraints not met: Cancelling work ID %s", $r7);
+
+        $r9 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r6.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>($r2, $r8, $r9);
+
+        $r10 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.WorkManagerImpl mWorkManagerImpl>;
+
+        virtualinvoke $r10.<androidx.work.impl.WorkManagerImpl: void stopWork(java.lang.String)>(r5);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void onExecuted(java.lang.String, boolean)
+    {
+        androidx.work.impl.background.greedy.GreedyScheduler r0;
+        java.lang.String $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.background.greedy.GreedyScheduler;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $z0 := @parameter1: boolean;
+
+        specialinvoke r0.<androidx.work.impl.background.greedy.GreedyScheduler: void removeConstraintTrackingFor(java.lang.String)>($r1);
+
+        return;
+    }
+
+    public transient void schedule(androidx.work.impl.model.WorkSpec[])
+    {
+        java.lang.Throwable $r19;
+        java.lang.Object[] $r13;
+        androidx.work.Constraints $r12;
+        long $l2, $l3;
+        androidx.work.impl.model.WorkSpec r8;
+        androidx.work.impl.background.greedy.DelayedWorkTracker $r11;
+        java.util.HashSet $r7, $r20;
+        androidx.work.Logger $r3;
+        androidx.work.impl.constraints.WorkConstraintsTracker $r18;
+        byte $b4;
+        int $i0, $i1, $i5;
+        java.lang.Boolean $r2;
+        androidx.work.impl.background.greedy.GreedyScheduler r0;
+        java.lang.String r4, $r14;
+        boolean $z0;
+        java.util.Set $r17;
+        java.lang.Throwable[] $r5;
+        androidx.work.WorkInfo$State $r9, $r10;
+        androidx.work.impl.WorkManagerImpl $r15;
+        java.lang.Object $r16;
+        androidx.work.impl.model.WorkSpec[] $r1;
+
+        r0 := @this: androidx.work.impl.background.greedy.GreedyScheduler;
+
+        $r1 := @parameter0: androidx.work.impl.model.WorkSpec[];
+
+        $r2 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: java.lang.Boolean mInDefaultProcess>;
+
+        if $r2 != null goto label01;
+
+        specialinvoke r0.<androidx.work.impl.background.greedy.GreedyScheduler: void checkDefaultProcess()>();
+
+     label01:
+        $r2 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: java.lang.Boolean mInDefaultProcess>;
+
+        $z0 = virtualinvoke $r2.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label02;
+
+        $r3 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r4 = <androidx.work.impl.background.greedy.GreedyScheduler: java.lang.String TAG>;
+
+        $r5 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r3.<androidx.work.Logger: void info(java.lang.String,java.lang.String,java.lang.Throwable[])>(r4, "Ignoring schedule request in a secondary process", $r5);
+
+        return;
+
+     label02:
+        specialinvoke r0.<androidx.work.impl.background.greedy.GreedyScheduler: void registerExecutionListenerIfNeeded()>();
+
+        $r7 = new java.util.HashSet;
+
+        specialinvoke $r7.<java.util.HashSet: void <init>()>();
+
+        $r20 = new java.util.HashSet;
+
+        specialinvoke $r20.<java.util.HashSet: void <init>()>();
+
+        $i0 = lengthof $r1;
+
+        $i1 = 0;
+
+     label03:
+        if $i1 >= $i0 goto label10;
+
+        r8 = $r1[$i1];
+
+        $l2 = virtualinvoke r8.<androidx.work.impl.model.WorkSpec: long calculateNextRunTime()>();
+
+        $l3 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $r9 = r8.<androidx.work.impl.model.WorkSpec: androidx.work.WorkInfo$State state>;
+
+        $r10 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State ENQUEUED>;
+
+        if $r9 != $r10 goto label09;
+
+        $b4 = $l3 cmp $l2;
+
+        $i5 = (int) $b4;
+
+        if $i5 >= 0 goto label05;
+
+        $r11 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.background.greedy.DelayedWorkTracker mDelayedWorkTracker>;
+
+        if $r11 == null goto label04;
+
+        $r11 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.background.greedy.DelayedWorkTracker mDelayedWorkTracker>;
+
+        virtualinvoke $r11.<androidx.work.impl.background.greedy.DelayedWorkTracker: void schedule(androidx.work.impl.model.WorkSpec)>(r8);
+
+        goto label09;
+
+     label04:
+        goto label09;
+
+     label05:
+        $z0 = virtualinvoke r8.<androidx.work.impl.model.WorkSpec: boolean hasConstraints()>();
+
+        if $z0 == 0 goto label08;
+
+        $i5 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i5 < 23 goto label06;
+
+        $r12 = r8.<androidx.work.impl.model.WorkSpec: androidx.work.Constraints constraints>;
+
+        $z0 = virtualinvoke $r12.<androidx.work.Constraints: boolean requiresDeviceIdle()>();
+
+        if $z0 == 0 goto label06;
+
+        $r3 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r4 = <androidx.work.impl.background.greedy.GreedyScheduler: java.lang.String TAG>;
+
+        $r13 = newarray (java.lang.Object)[1];
+
+        $r13[0] = r8;
+
+        $r14 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Ignoring WorkSpec %s, Requires device idle.", $r13);
+
+        $r5 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r3.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>(r4, $r14, $r5);
+
+        goto label09;
+
+     label06:
+        $i5 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i5 < 24 goto label07;
+
+        $r12 = r8.<androidx.work.impl.model.WorkSpec: androidx.work.Constraints constraints>;
+
+        $z0 = virtualinvoke $r12.<androidx.work.Constraints: boolean hasContentUriTriggers()>();
+
+        if $z0 == 0 goto label07;
+
+        $r3 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r4 = <androidx.work.impl.background.greedy.GreedyScheduler: java.lang.String TAG>;
+
+        $r13 = newarray (java.lang.Object)[1];
+
+        $r13[0] = r8;
+
+        $r14 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Ignoring WorkSpec %s, Requires ContentUri triggers.", $r13);
+
+        $r5 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r3.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>(r4, $r14, $r5);
+
+        goto label09;
+
+     label07:
+        interfaceinvoke $r7.<java.util.Set: boolean add(java.lang.Object)>(r8);
+
+        r4 = r8.<androidx.work.impl.model.WorkSpec: java.lang.String id>;
+
+        interfaceinvoke $r20.<java.util.Set: boolean add(java.lang.Object)>(r4);
+
+        goto label09;
+
+     label08:
+        $r3 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r4 = <androidx.work.impl.background.greedy.GreedyScheduler: java.lang.String TAG>;
+
+        $r14 = r8.<androidx.work.impl.model.WorkSpec: java.lang.String id>;
+
+        $r13 = newarray (java.lang.Object)[1];
+
+        $r13[0] = $r14;
+
+        $r14 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Starting work for %s", $r13);
+
+        $r5 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r3.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>(r4, $r14, $r5);
+
+        $r15 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.WorkManagerImpl mWorkManagerImpl>;
+
+        r4 = r8.<androidx.work.impl.model.WorkSpec: java.lang.String id>;
+
+        virtualinvoke $r15.<androidx.work.impl.WorkManagerImpl: void startWork(java.lang.String)>(r4);
+
+        goto label09;
+
+     label09:
+        $i1 = $i1 + 1;
+
+        goto label03;
+
+     label10:
+        $r16 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: java.lang.Object mLock>;
+
+        entermonitor $r16;
+
+     label11:
+        $z0 = interfaceinvoke $r7.<java.util.Set: boolean isEmpty()>();
+
+        if $z0 != 0 goto label12;
+
+        $r3 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r4 = <androidx.work.impl.background.greedy.GreedyScheduler: java.lang.String TAG>;
+
+        $r13 = newarray (java.lang.Object)[1];
+
+        $r14 = staticinvoke <android.text.TextUtils: java.lang.String join(java.lang.CharSequence,java.lang.Iterable)>(",", $r20);
+
+        $r13[0] = $r14;
+
+        $r14 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Starting tracking for [%s]", $r13);
+
+        $r5 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r3.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>(r4, $r14, $r5);
+
+        $r17 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: java.util.Set mConstrainedWorkSpecs>;
+
+        interfaceinvoke $r17.<java.util.Set: boolean addAll(java.util.Collection)>($r7);
+
+        $r18 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.constraints.WorkConstraintsTracker mWorkConstraintsTracker>;
+
+        $r17 = r0.<androidx.work.impl.background.greedy.GreedyScheduler: java.util.Set mConstrainedWorkSpecs>;
+
+        virtualinvoke $r18.<androidx.work.impl.constraints.WorkConstraintsTracker: void replace(java.lang.Iterable)>($r17);
+
+     label12:
+        exitmonitor $r16;
+
+     label13:
+        return;
+
+     label14:
+        $r19 := @caughtexception;
+
+        exitmonitor $r16;
+
+     label15:
+        throw $r19;
+
+        catch java.lang.Throwable from label11 to label13 with label14;
+        catch java.lang.Throwable from label14 to label15 with label14;
+    }
+
+    public void setDelayedWorkTracker(androidx.work.impl.background.greedy.DelayedWorkTracker)
+    {
+        androidx.work.impl.background.greedy.GreedyScheduler r0;
+        androidx.work.impl.background.greedy.DelayedWorkTracker $r1;
+
+        r0 := @this: androidx.work.impl.background.greedy.GreedyScheduler;
+
+        $r1 := @parameter0: androidx.work.impl.background.greedy.DelayedWorkTracker;
+
+        r0.<androidx.work.impl.background.greedy.GreedyScheduler: androidx.work.impl.background.greedy.DelayedWorkTracker mDelayedWorkTracker> = $r1;
+
+        return;
+    }
+}

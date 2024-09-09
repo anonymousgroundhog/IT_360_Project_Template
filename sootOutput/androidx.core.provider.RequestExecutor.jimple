@@ -1,0 +1,150 @@
+class androidx.core.provider.RequestExecutor extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.provider.RequestExecutor r0;
+
+        r0 := @this: androidx.core.provider.RequestExecutor;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static java.util.concurrent.ThreadPoolExecutor createDefaultExecutor(java.lang.String, int, int)
+    {
+        java.util.concurrent.ThreadPoolExecutor $r4;
+        long $l2;
+        java.util.concurrent.TimeUnit $r1;
+        int $i0, $i1;
+        java.util.concurrent.LinkedBlockingDeque $r2;
+        java.lang.String $r0;
+        androidx.core.provider.RequestExecutor$DefaultThreadFactory r3;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        r3 = new androidx.core.provider.RequestExecutor$DefaultThreadFactory;
+
+        specialinvoke r3.<androidx.core.provider.RequestExecutor$DefaultThreadFactory: void <init>(java.lang.String,int)>($r0, $i0);
+
+        $r4 = new java.util.concurrent.ThreadPoolExecutor;
+
+        $l2 = (long) $i1;
+
+        $r1 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit MILLISECONDS>;
+
+        $r2 = new java.util.concurrent.LinkedBlockingDeque;
+
+        specialinvoke $r2.<java.util.concurrent.LinkedBlockingDeque: void <init>()>();
+
+        specialinvoke $r4.<java.util.concurrent.ThreadPoolExecutor: void <init>(int,int,long,java.util.concurrent.TimeUnit,java.util.concurrent.BlockingQueue,java.util.concurrent.ThreadFactory)>(0, 1, $l2, $r1, $r2, r3);
+
+        virtualinvoke $r4.<java.util.concurrent.ThreadPoolExecutor: void allowCoreThreadTimeOut(boolean)>(1);
+
+        return $r4;
+    }
+
+    static java.util.concurrent.Executor createHandlerExecutor(android.os.Handler)
+    {
+        androidx.core.provider.RequestExecutor$HandlerExecutor $r1;
+        android.os.Handler $r0;
+
+        $r0 := @parameter0: android.os.Handler;
+
+        $r1 = new androidx.core.provider.RequestExecutor$HandlerExecutor;
+
+        specialinvoke $r1.<androidx.core.provider.RequestExecutor$HandlerExecutor: void <init>(android.os.Handler)>($r0);
+
+        return $r1;
+    }
+
+    static void execute(java.util.concurrent.Executor, java.util.concurrent.Callable, androidx.core.util.Consumer)
+    {
+        androidx.core.util.Consumer r2;
+        androidx.core.provider.RequestExecutor$ReplyRunnable $r3;
+        java.util.concurrent.Executor $r0;
+        android.os.Handler $r4;
+        java.util.concurrent.Callable r1;
+
+        $r0 := @parameter0: java.util.concurrent.Executor;
+
+        r1 := @parameter1: java.util.concurrent.Callable;
+
+        r2 := @parameter2: androidx.core.util.Consumer;
+
+        $r4 = staticinvoke <androidx.core.provider.CalleeHandler: android.os.Handler create()>();
+
+        $r3 = new androidx.core.provider.RequestExecutor$ReplyRunnable;
+
+        specialinvoke $r3.<androidx.core.provider.RequestExecutor$ReplyRunnable: void <init>(android.os.Handler,java.util.concurrent.Callable,androidx.core.util.Consumer)>($r4, r1, r2);
+
+        interfaceinvoke $r0.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r3);
+
+        return;
+    }
+
+    static java.lang.Object submit(java.util.concurrent.ExecutorService, java.util.concurrent.Callable, int) throws java.lang.InterruptedException
+    {
+        java.util.concurrent.TimeoutException r5;
+        java.util.concurrent.Callable r1;
+        long l1;
+        java.lang.RuntimeException $r8;
+        java.util.concurrent.TimeUnit $r3;
+        java.util.concurrent.ExecutionException r7;
+        java.util.concurrent.Future $r2;
+        java.lang.InterruptedException $r6;
+        int $i0;
+        java.lang.Object $r4;
+        java.util.concurrent.ExecutorService $r0;
+
+        $r0 := @parameter0: java.util.concurrent.ExecutorService;
+
+        r1 := @parameter1: java.util.concurrent.Callable;
+
+        $i0 := @parameter2: int;
+
+        $r2 = interfaceinvoke $r0.<java.util.concurrent.ExecutorService: java.util.concurrent.Future submit(java.util.concurrent.Callable)>(r1);
+
+        l1 = (long) $i0;
+
+        $r3 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit MILLISECONDS>;
+
+     label1:
+        $r4 = interfaceinvoke $r2.<java.util.concurrent.Future: java.lang.Object get(long,java.util.concurrent.TimeUnit)>(l1, $r3);
+
+     label2:
+        return $r4;
+
+     label3:
+        r5 := @caughtexception;
+
+        $r6 = new java.lang.InterruptedException;
+
+        specialinvoke $r6.<java.lang.InterruptedException: void <init>(java.lang.String)>("timeout");
+
+        throw $r6;
+
+     label4:
+        $r6 := @caughtexception;
+
+        throw $r6;
+
+     label5:
+        r7 := @caughtexception;
+
+        $r8 = new java.lang.RuntimeException;
+
+        specialinvoke $r8.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>(r7);
+
+        throw $r8;
+
+        catch java.util.concurrent.ExecutionException from label1 to label2 with label5;
+        catch java.lang.InterruptedException from label1 to label2 with label4;
+        catch java.util.concurrent.TimeoutException from label1 to label2 with label3;
+    }
+}

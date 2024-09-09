@@ -1,0 +1,234 @@
+final class com.google.common.base.Platform extends java.lang.Object
+{
+    private static final java.util.logging.Logger logger;
+    private static final com.google.common.base.PatternCompiler patternCompiler;
+
+    static void <clinit>()
+    {
+        com.google.common.base.PatternCompiler $r3;
+        java.lang.Class $r0;
+        java.lang.String $r1;
+        java.util.logging.Logger $r2;
+
+        $r0 = class "Lcom/google/common/base/Platform;";
+
+        $r1 = virtualinvoke $r0.<java.lang.Class: java.lang.String getName()>();
+
+        $r2 = staticinvoke <java.util.logging.Logger: java.util.logging.Logger getLogger(java.lang.String)>($r1);
+
+        <com.google.common.base.Platform: java.util.logging.Logger logger> = $r2;
+
+        $r3 = staticinvoke <com.google.common.base.Platform: com.google.common.base.PatternCompiler loadPatternCompiler()>();
+
+        <com.google.common.base.Platform: com.google.common.base.PatternCompiler patternCompiler> = $r3;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        com.google.common.base.Platform r0;
+
+        r0 := @this: com.google.common.base.Platform;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static void checkGwtRpcEnabled()
+    {
+        return;
+    }
+
+    static com.google.common.base.CommonPattern compilePattern(java.lang.String)
+    {
+        java.lang.String $r0;
+        com.google.common.base.PatternCompiler $r2;
+        com.google.common.base.CommonPattern $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        staticinvoke <com.google.common.base.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r0);
+
+        $r2 = <com.google.common.base.Platform: com.google.common.base.PatternCompiler patternCompiler>;
+
+        $r1 = interfaceinvoke $r2.<com.google.common.base.PatternCompiler: com.google.common.base.CommonPattern compile(java.lang.String)>($r0);
+
+        return $r1;
+    }
+
+    static java.lang.String emptyToNull(java.lang.String)
+    {
+        java.lang.String $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $z0 = staticinvoke <com.google.common.base.Platform: boolean stringIsNullOrEmpty(java.lang.String)>($r0);
+
+        if $z0 == 0 goto label1;
+
+        return null;
+
+     label1:
+        return $r0;
+    }
+
+    static java.lang.String formatCompact4Digits(double)
+    {
+        java.lang.Object[] $r2;
+        java.lang.Double $r1;
+        java.util.Locale $r0;
+        java.lang.String $r3;
+        double $d0;
+
+        $d0 := @parameter0: double;
+
+        $r0 = <java.util.Locale: java.util.Locale ROOT>;
+
+        $r1 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>($d0);
+
+        $r2 = newarray (java.lang.Object)[1];
+
+        $r2[0] = $r1;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String format(java.util.Locale,java.lang.String,java.lang.Object[])>($r0, "%.4g", $r2);
+
+        return $r3;
+    }
+
+    static com.google.common.base.Optional getEnumIfPresent(java.lang.Class, java.lang.String)
+    {
+        java.lang.Enum $r6;
+        com.google.common.base.Optional $r5;
+        java.util.Map $r2;
+        java.lang.Class r0;
+        java.lang.Object $r3;
+        java.lang.String $r1;
+        java.lang.ref.WeakReference r4;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <com.google.common.base.Enums: java.util.Map getEnumConstants(java.lang.Class)>(r0);
+
+        $r3 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r1);
+
+        r4 = (java.lang.ref.WeakReference) $r3;
+
+        if r4 != null goto label1;
+
+        $r5 = staticinvoke <com.google.common.base.Optional: com.google.common.base.Optional absent()>();
+
+        return $r5;
+
+     label1:
+        $r3 = virtualinvoke r4.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $r3 = virtualinvoke r0.<java.lang.Class: java.lang.Object cast(java.lang.Object)>($r3);
+
+        $r6 = (java.lang.Enum) $r3;
+
+        $r5 = staticinvoke <com.google.common.base.Optional: com.google.common.base.Optional of(java.lang.Object)>($r6);
+
+        return $r5;
+    }
+
+    private static com.google.common.base.PatternCompiler loadPatternCompiler()
+    {
+        com.google.common.base.Platform$JdkPatternCompiler $r0;
+
+        $r0 = new com.google.common.base.Platform$JdkPatternCompiler;
+
+        specialinvoke $r0.<com.google.common.base.Platform$JdkPatternCompiler: void <init>(com.google.common.base.Platform$1)>(null);
+
+        return $r0;
+    }
+
+    private static void logPatternCompilerError(java.util.ServiceConfigurationError)
+    {
+        java.util.ServiceConfigurationError $r0;
+        java.util.logging.Logger $r1;
+        java.util.logging.Level $r2;
+
+        $r0 := @parameter0: java.util.ServiceConfigurationError;
+
+        $r1 = <com.google.common.base.Platform: java.util.logging.Logger logger>;
+
+        $r2 = <java.util.logging.Level: java.util.logging.Level WARNING>;
+
+        virtualinvoke $r1.<java.util.logging.Logger: void log(java.util.logging.Level,java.lang.String,java.lang.Throwable)>($r2, "Error loading regex compiler, falling back to next option", $r0);
+
+        return;
+    }
+
+    static java.lang.String nullToEmpty(java.lang.String)
+    {
+        java.lang.String $r0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        if $r0 != null goto label1;
+
+        return "";
+
+     label1:
+        return $r0;
+    }
+
+    static boolean patternCompilerIsPcreLike()
+    {
+        com.google.common.base.PatternCompiler $r0;
+        boolean $z0;
+
+        $r0 = <com.google.common.base.Platform: com.google.common.base.PatternCompiler patternCompiler>;
+
+        $z0 = interfaceinvoke $r0.<com.google.common.base.PatternCompiler: boolean isPcreLike()>();
+
+        return $z0;
+    }
+
+    static com.google.common.base.CharMatcher precomputeCharMatcher(com.google.common.base.CharMatcher)
+    {
+        com.google.common.base.CharMatcher $r0;
+
+        $r0 := @parameter0: com.google.common.base.CharMatcher;
+
+        $r0 = virtualinvoke $r0.<com.google.common.base.CharMatcher: com.google.common.base.CharMatcher precomputedInternal()>();
+
+        return $r0;
+    }
+
+    static boolean stringIsNullOrEmpty(java.lang.String)
+    {
+        java.lang.String $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        if $r0 == null goto label2;
+
+        $z0 = virtualinvoke $r0.<java.lang.String: boolean isEmpty()>();
+
+        if $z0 == 0 goto label1;
+
+        goto label2;
+
+     label1:
+        return 0;
+
+     label2:
+        return 1;
+    }
+
+    static long systemNanoTime()
+    {
+        long $l0;
+
+        $l0 = staticinvoke <java.lang.System: long nanoTime()>();
+
+        return $l0;
+    }
+}

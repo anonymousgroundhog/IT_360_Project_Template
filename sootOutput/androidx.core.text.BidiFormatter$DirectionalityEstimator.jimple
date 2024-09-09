@@ -1,0 +1,785 @@
+class androidx.core.text.BidiFormatter$DirectionalityEstimator extends java.lang.Object
+{
+    private static final byte[] DIR_TYPE_CACHE;
+    private static final int DIR_TYPE_CACHE_SIZE;
+    private int charIndex;
+    private final boolean isHtml;
+    private char lastChar;
+    private final int length;
+    private final java.lang.CharSequence text;
+
+    static void <clinit>()
+    {
+        int i1;
+        byte[] $r0;
+        byte $b0;
+
+        <androidx.core.text.BidiFormatter$DirectionalityEstimator: int DIR_TYPE_CACHE_SIZE> = 1792;
+
+        $r0 = newarray (byte)[1792];
+
+        <androidx.core.text.BidiFormatter$DirectionalityEstimator: byte[] DIR_TYPE_CACHE> = $r0;
+
+        i1 = 0;
+
+     label1:
+        if i1 >= 1792 goto label2;
+
+        $r0 = <androidx.core.text.BidiFormatter$DirectionalityEstimator: byte[] DIR_TYPE_CACHE>;
+
+        $b0 = staticinvoke <java.lang.Character: byte getDirectionality(int)>(i1);
+
+        $r0[i1] = $b0;
+
+        i1 = i1 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    void <init>(java.lang.CharSequence, boolean)
+    {
+        java.lang.CharSequence $r1;
+        int $i0;
+        androidx.core.text.BidiFormatter$DirectionalityEstimator r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $z0 := @parameter1: boolean;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text> = $r1;
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: boolean isHtml> = $z0;
+
+        $i0 = interfaceinvoke $r1.<java.lang.CharSequence: int length()>();
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int length> = $i0;
+
+        return;
+    }
+
+    private static byte getCachedDirectionality(char)
+    {
+        byte[] $r0;
+        byte $b1;
+        int $i2;
+        char $c0;
+
+        $c0 := @parameter0: char;
+
+        $i2 = (int) $c0;
+
+        if $i2 >= 1792 goto label1;
+
+        $r0 = <androidx.core.text.BidiFormatter$DirectionalityEstimator: byte[] DIR_TYPE_CACHE>;
+
+        $i2 = (int) $c0;
+
+        $b1 = $r0[$i2];
+
+        return $b1;
+
+     label1:
+        $b1 = staticinvoke <java.lang.Character: byte getDirectionality(char)>($c0);
+
+        return $b1;
+    }
+
+    private byte skipEntityBackward()
+    {
+        java.lang.CharSequence $r1;
+        int i0, $i2;
+        char $c1;
+        androidx.core.text.BidiFormatter$DirectionalityEstimator r0;
+
+        r0 := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+        i0 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+     label1:
+        $i2 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        if $i2 <= 0 goto label3;
+
+        $r1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        $i2 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $i2 = $i2 + -1;
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = $i2;
+
+        $c1 = interfaceinvoke $r1.<java.lang.CharSequence: char charAt(int)>($i2);
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = $c1;
+
+        $c1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        $i2 = (int) $c1;
+
+        if $i2 != 38 goto label2;
+
+        return 12;
+
+     label2:
+        $c1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        $i2 = (int) $c1;
+
+        if $i2 != 59 goto label1;
+
+     label3:
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = i0;
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = 59;
+
+        return 13;
+    }
+
+    private byte skipEntityForward()
+    {
+        java.lang.CharSequence $r1;
+        int $i0, $i2;
+        char $c1;
+        androidx.core.text.BidiFormatter$DirectionalityEstimator r0;
+
+        r0 := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+     label1:
+        $i0 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $i2 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int length>;
+
+        if $i0 >= $i2 goto label2;
+
+        $r1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        $i2 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $i0 = $i2 + 1;
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = $i0;
+
+        $c1 = interfaceinvoke $r1.<java.lang.CharSequence: char charAt(int)>($i2);
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = $c1;
+
+        $i0 = (int) $c1;
+
+        if $i0 == 59 goto label2;
+
+        goto label1;
+
+     label2:
+        return 12;
+    }
+
+    private byte skipTagBackward()
+    {
+        java.lang.CharSequence r1;
+        int i0, i1, $i4;
+        char $c2, $c3;
+        androidx.core.text.BidiFormatter$DirectionalityEstimator r0;
+
+        r0 := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+        i0 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+     label1:
+        i1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        if i1 <= 0 goto label6;
+
+        r1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        i1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        i1 = i1 + -1;
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = i1;
+
+        $c2 = interfaceinvoke r1.<java.lang.CharSequence: char charAt(int)>(i1);
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = $c2;
+
+        $c2 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        i1 = (int) $c2;
+
+        if i1 != 60 goto label2;
+
+        return 12;
+
+     label2:
+        $c2 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        i1 = (int) $c2;
+
+        if i1 != 62 goto label3;
+
+        goto label6;
+
+     label3:
+        $c2 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        i1 = (int) $c2;
+
+        if i1 == 34 goto label4;
+
+        $c2 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        i1 = (int) $c2;
+
+        if i1 != 39 goto label1;
+
+     label4:
+        $c2 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+     label5:
+        i1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        if i1 <= 0 goto label1;
+
+        r1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        i1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        i1 = i1 + -1;
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = i1;
+
+        $c3 = interfaceinvoke r1.<java.lang.CharSequence: char charAt(int)>(i1);
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = $c3;
+
+        i1 = (int) $c3;
+
+        $i4 = (int) $c2;
+
+        if i1 == $i4 goto label1;
+
+        goto label5;
+
+     label6:
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = i0;
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = 62;
+
+        return 13;
+    }
+
+    private byte skipTagForward()
+    {
+        java.lang.CharSequence r1;
+        int i0, $i1, $i2;
+        char $c3, $c4;
+        androidx.core.text.BidiFormatter$DirectionalityEstimator r0;
+
+        r0 := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+        i0 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+     label1:
+        $i1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $i2 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int length>;
+
+        if $i1 >= $i2 goto label5;
+
+        r1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        $i1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $i2 = $i1 + 1;
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = $i2;
+
+        $c3 = interfaceinvoke r1.<java.lang.CharSequence: char charAt(int)>($i1);
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = $c3;
+
+        $c3 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        $i1 = (int) $c3;
+
+        if $i1 != 62 goto label2;
+
+        return 12;
+
+     label2:
+        $c3 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        $i1 = (int) $c3;
+
+        if $i1 == 34 goto label3;
+
+        $c3 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        $i1 = (int) $c3;
+
+        if $i1 != 39 goto label1;
+
+     label3:
+        $c3 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+     label4:
+        $i1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $i2 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int length>;
+
+        if $i1 >= $i2 goto label1;
+
+        r1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        $i2 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $i1 = $i2 + 1;
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = $i1;
+
+        $c4 = interfaceinvoke r1.<java.lang.CharSequence: char charAt(int)>($i2);
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = $c4;
+
+        $i1 = (int) $c4;
+
+        $i2 = (int) $c3;
+
+        if $i1 == $i2 goto label1;
+
+        goto label4;
+
+     label5:
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = i0;
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = 60;
+
+        return 13;
+    }
+
+    byte dirTypeBackward()
+    {
+        java.lang.CharSequence r1;
+        char $c1;
+        androidx.core.text.BidiFormatter$DirectionalityEstimator r0;
+        byte $b4;
+        int $i0, $i2, $i3;
+        boolean $z0;
+
+        r0 := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+        r1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        $i0 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $i0 = $i0 + -1;
+
+        $c1 = interfaceinvoke r1.<java.lang.CharSequence: char charAt(int)>($i0);
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = $c1;
+
+        $c1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        $z0 = staticinvoke <java.lang.Character: boolean isLowSurrogate(char)>($c1);
+
+        if $z0 == 0 goto label1;
+
+        r1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        $i0 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $i0 = staticinvoke <java.lang.Character: int codePointBefore(java.lang.CharSequence,int)>(r1, $i0);
+
+        $i2 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $i3 = staticinvoke <java.lang.Character: int charCount(int)>($i0);
+
+        $i2 = $i2 - $i3;
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = $i2;
+
+        $b4 = staticinvoke <java.lang.Character: byte getDirectionality(int)>($i0);
+
+        return $b4;
+
+     label1:
+        $i0 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $i0 = $i0 + -1;
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = $i0;
+
+        $c1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        $b4 = staticinvoke <androidx.core.text.BidiFormatter$DirectionalityEstimator: byte getCachedDirectionality(char)>($c1);
+
+        $z0 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: boolean isHtml>;
+
+        if $z0 == 0 goto label3;
+
+        $c1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        $i0 = (int) $c1;
+
+        if $i0 != 62 goto label2;
+
+        $b4 = specialinvoke r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: byte skipTagBackward()>();
+
+        return $b4;
+
+     label2:
+        $c1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        $i0 = (int) $c1;
+
+        if $i0 != 59 goto label3;
+
+        $b4 = specialinvoke r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: byte skipEntityBackward()>();
+
+     label3:
+        return $b4;
+    }
+
+    byte dirTypeForward()
+    {
+        java.lang.CharSequence r1;
+        char $c1;
+        androidx.core.text.BidiFormatter$DirectionalityEstimator r0;
+        byte $b4;
+        int $i0, $i2, $i3;
+        boolean $z0;
+
+        r0 := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+        r1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        $i0 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $c1 = interfaceinvoke r1.<java.lang.CharSequence: char charAt(int)>($i0);
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = $c1;
+
+        $c1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        $z0 = staticinvoke <java.lang.Character: boolean isHighSurrogate(char)>($c1);
+
+        if $z0 == 0 goto label1;
+
+        r1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        $i0 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $i0 = staticinvoke <java.lang.Character: int codePointAt(java.lang.CharSequence,int)>(r1, $i0);
+
+        $i2 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $i3 = staticinvoke <java.lang.Character: int charCount(int)>($i0);
+
+        $i2 = $i2 + $i3;
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = $i2;
+
+        $b4 = staticinvoke <java.lang.Character: byte getDirectionality(int)>($i0);
+
+        return $b4;
+
+     label1:
+        $i0 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $i0 = $i0 + 1;
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = $i0;
+
+        $c1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        $b4 = staticinvoke <androidx.core.text.BidiFormatter$DirectionalityEstimator: byte getCachedDirectionality(char)>($c1);
+
+        $z0 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: boolean isHtml>;
+
+        if $z0 == 0 goto label3;
+
+        $c1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        $i0 = (int) $c1;
+
+        if $i0 != 60 goto label2;
+
+        $b4 = specialinvoke r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: byte skipTagForward()>();
+
+        return $b4;
+
+     label2:
+        $c1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        $i0 = (int) $c1;
+
+        if $i0 != 38 goto label3;
+
+        $b4 = specialinvoke r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: byte skipEntityForward()>();
+
+     label3:
+        return $b4;
+    }
+
+    int getEntryDir()
+    {
+        byte b2, $b5;
+        int $i0, i1, i3, $i4;
+        androidx.core.text.BidiFormatter$DirectionalityEstimator r0;
+
+        r0 := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = 0;
+
+        i1 = 0;
+
+        b2 = 0;
+
+        i3 = 0;
+
+     label01:
+        $i4 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $i0 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int length>;
+
+        if $i4 >= $i0 goto label11;
+
+        if i3 != 0 goto label11;
+
+        $b5 = virtualinvoke r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: byte dirTypeForward()>();
+
+        $i0 = (int) $b5;
+
+        lookupswitch($i0)
+        {
+            case 0: goto label09;
+            case 1: goto label07;
+            case 2: goto label07;
+            case 9: goto label06;
+            case 14: goto label05;
+            case 15: goto label05;
+            case 16: goto label04;
+            case 17: goto label04;
+            case 18: goto label03;
+            default: goto label02;
+        };
+
+     label02:
+        i3 = i1;
+
+        goto label01;
+
+     label03:
+        i1 = i1 + -1;
+
+        b2 = 0;
+
+        goto label01;
+
+     label04:
+        i1 = i1 + 1;
+
+        b2 = 1;
+
+        goto label01;
+
+     label05:
+        i1 = i1 + 1;
+
+        b2 = -1;
+
+        goto label01;
+
+     label06:
+        goto label01;
+
+     label07:
+        if i1 != 0 goto label08;
+
+        return 1;
+
+     label08:
+        i3 = i1;
+
+        goto label01;
+
+     label09:
+        if i1 != 0 goto label10;
+
+        return -1;
+
+     label10:
+        i3 = i1;
+
+        goto label01;
+
+     label11:
+        if i3 != 0 goto label12;
+
+        return 0;
+
+     label12:
+        if b2 == 0 goto label13;
+
+        return b2;
+
+     label13:
+        $i0 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        if $i0 <= 0 goto label20;
+
+        b2 = virtualinvoke r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: byte dirTypeBackward()>();
+
+        $i0 = (int) b2;
+
+        lookupswitch($i0)
+        {
+            case 14: goto label18;
+            case 15: goto label18;
+            case 16: goto label16;
+            case 17: goto label16;
+            case 18: goto label15;
+            default: goto label14;
+        };
+
+     label14:
+        goto label13;
+
+     label15:
+        i1 = i1 + 1;
+
+        goto label13;
+
+     label16:
+        if i3 != i1 goto label17;
+
+        return 1;
+
+     label17:
+        i1 = i1 + -1;
+
+        goto label13;
+
+     label18:
+        if i3 != i1 goto label19;
+
+        return -1;
+
+     label19:
+        i1 = i1 + -1;
+
+        goto label13;
+
+     label20:
+        return 0;
+    }
+
+    int getExitDir()
+    {
+        byte $b0;
+        int i1, i2, $i3;
+        androidx.core.text.BidiFormatter$DirectionalityEstimator r0;
+
+        r0 := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+        i1 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int length>;
+
+        r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = i1;
+
+        i1 = 0;
+
+        i2 = 0;
+
+     label01:
+        $i3 = r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        if $i3 <= 0 goto label13;
+
+        $b0 = virtualinvoke r0.<androidx.core.text.BidiFormatter$DirectionalityEstimator: byte dirTypeBackward()>();
+
+        $i3 = (int) $b0;
+
+        lookupswitch($i3)
+        {
+            case 0: goto label11;
+            case 1: goto label09;
+            case 2: goto label09;
+            case 9: goto label08;
+            case 14: goto label06;
+            case 15: goto label06;
+            case 16: goto label04;
+            case 17: goto label04;
+            case 18: goto label03;
+            default: goto label02;
+        };
+
+     label02:
+        if i2 != 0 goto label01;
+
+        i2 = i1;
+
+        goto label01;
+
+     label03:
+        i1 = i1 + 1;
+
+        goto label01;
+
+     label04:
+        if i2 != i1 goto label05;
+
+        return 1;
+
+     label05:
+        i1 = i1 + -1;
+
+        goto label01;
+
+     label06:
+        if i2 != i1 goto label07;
+
+        return -1;
+
+     label07:
+        i1 = i1 + -1;
+
+        goto label01;
+
+     label08:
+        goto label01;
+
+     label09:
+        if i1 != 0 goto label10;
+
+        return 1;
+
+     label10:
+        if i2 != 0 goto label01;
+
+        i2 = i1;
+
+        goto label01;
+
+     label11:
+        if i1 != 0 goto label12;
+
+        return -1;
+
+     label12:
+        if i2 != 0 goto label01;
+
+        i2 = i1;
+
+        goto label01;
+
+     label13:
+        return 0;
+    }
+}

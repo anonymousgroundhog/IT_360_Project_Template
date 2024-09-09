@@ -1,0 +1,62 @@
+public class androidx.room.RoomMasterTable extends java.lang.Object
+{
+    private static final java.lang.String COLUMN_ID;
+    private static final java.lang.String COLUMN_IDENTITY_HASH;
+    public static final java.lang.String CREATE_QUERY;
+    public static final java.lang.String DEFAULT_ID;
+    public static final java.lang.String NAME;
+    public static final java.lang.String READ_QUERY;
+    public static final java.lang.String TABLE_NAME;
+
+    private void <init>()
+    {
+        androidx.room.RoomMasterTable r0;
+
+        r0 := @this: androidx.room.RoomMasterTable;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.lang.String createInsertQuery(java.lang.String)
+    {
+        java.lang.StringBuilder $r1;
+        java.lang.String $r0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \'");
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\')");
+
+        $r0 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r0;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.room.RoomMasterTable: java.lang.String TABLE_NAME> = "room_master_table";
+
+        <androidx.room.RoomMasterTable: java.lang.String READ_QUERY> = "SELECT identity_hash FROM room_master_table WHERE id = 42 LIMIT 1";
+
+        <androidx.room.RoomMasterTable: java.lang.String NAME> = "room_master_table";
+
+        <androidx.room.RoomMasterTable: java.lang.String DEFAULT_ID> = "42";
+
+        <androidx.room.RoomMasterTable: java.lang.String CREATE_QUERY> = "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)";
+
+        <androidx.room.RoomMasterTable: java.lang.String COLUMN_IDENTITY_HASH> = "identity_hash";
+
+        <androidx.room.RoomMasterTable: java.lang.String COLUMN_ID> = "id";
+
+        return;
+    }
+}

@@ -1,0 +1,191 @@
+final class androidx.work.impl.utils.futures.AbstractFuture$SynchronizedHelper extends androidx.work.impl.utils.futures.AbstractFuture$AtomicHelper
+{
+
+    void <init>()
+    {
+        androidx.work.impl.utils.futures.AbstractFuture$SynchronizedHelper r0;
+
+        r0 := @this: androidx.work.impl.utils.futures.AbstractFuture$SynchronizedHelper;
+
+        specialinvoke r0.<androidx.work.impl.utils.futures.AbstractFuture$AtomicHelper: void <init>(androidx.work.impl.utils.futures.AbstractFuture$1)>(null);
+
+        return;
+    }
+
+    boolean casListeners(androidx.work.impl.utils.futures.AbstractFuture, androidx.work.impl.utils.futures.AbstractFuture$Listener, androidx.work.impl.utils.futures.AbstractFuture$Listener)
+    {
+        java.lang.Throwable $r5;
+        androidx.work.impl.utils.futures.AbstractFuture r1;
+        androidx.work.impl.utils.futures.AbstractFuture$SynchronizedHelper r0;
+        androidx.work.impl.utils.futures.AbstractFuture$Listener $r2, $r3, $r4;
+
+        r0 := @this: androidx.work.impl.utils.futures.AbstractFuture$SynchronizedHelper;
+
+        r1 := @parameter0: androidx.work.impl.utils.futures.AbstractFuture;
+
+        $r2 := @parameter1: androidx.work.impl.utils.futures.AbstractFuture$Listener;
+
+        $r3 := @parameter2: androidx.work.impl.utils.futures.AbstractFuture$Listener;
+
+        entermonitor r1;
+
+     label1:
+        $r4 = r1.<androidx.work.impl.utils.futures.AbstractFuture: androidx.work.impl.utils.futures.AbstractFuture$Listener listeners>;
+
+        if $r4 != $r2 goto label3;
+
+        r1.<androidx.work.impl.utils.futures.AbstractFuture: androidx.work.impl.utils.futures.AbstractFuture$Listener listeners> = $r3;
+
+        exitmonitor r1;
+
+     label2:
+        return 1;
+
+     label3:
+        exitmonitor r1;
+
+     label4:
+        return 0;
+
+     label5:
+        $r5 := @caughtexception;
+
+        exitmonitor r1;
+
+     label6:
+        throw $r5;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label3 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    boolean casValue(androidx.work.impl.utils.futures.AbstractFuture, java.lang.Object, java.lang.Object)
+    {
+        java.lang.Throwable $r5;
+        androidx.work.impl.utils.futures.AbstractFuture r1;
+        androidx.work.impl.utils.futures.AbstractFuture$SynchronizedHelper r0;
+        java.lang.Object $r2, $r3, $r4;
+
+        r0 := @this: androidx.work.impl.utils.futures.AbstractFuture$SynchronizedHelper;
+
+        r1 := @parameter0: androidx.work.impl.utils.futures.AbstractFuture;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 := @parameter2: java.lang.Object;
+
+        entermonitor r1;
+
+     label1:
+        $r4 = r1.<androidx.work.impl.utils.futures.AbstractFuture: java.lang.Object value>;
+
+        if $r4 != $r2 goto label3;
+
+        r1.<androidx.work.impl.utils.futures.AbstractFuture: java.lang.Object value> = $r3;
+
+        exitmonitor r1;
+
+     label2:
+        return 1;
+
+     label3:
+        exitmonitor r1;
+
+     label4:
+        return 0;
+
+     label5:
+        $r5 := @caughtexception;
+
+        exitmonitor r1;
+
+     label6:
+        throw $r5;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label3 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    boolean casWaiters(androidx.work.impl.utils.futures.AbstractFuture, androidx.work.impl.utils.futures.AbstractFuture$Waiter, androidx.work.impl.utils.futures.AbstractFuture$Waiter)
+    {
+        java.lang.Throwable $r5;
+        androidx.work.impl.utils.futures.AbstractFuture r1;
+        androidx.work.impl.utils.futures.AbstractFuture$SynchronizedHelper r0;
+        androidx.work.impl.utils.futures.AbstractFuture$Waiter $r2, $r3, $r4;
+
+        r0 := @this: androidx.work.impl.utils.futures.AbstractFuture$SynchronizedHelper;
+
+        r1 := @parameter0: androidx.work.impl.utils.futures.AbstractFuture;
+
+        $r2 := @parameter1: androidx.work.impl.utils.futures.AbstractFuture$Waiter;
+
+        $r3 := @parameter2: androidx.work.impl.utils.futures.AbstractFuture$Waiter;
+
+        entermonitor r1;
+
+     label1:
+        $r4 = r1.<androidx.work.impl.utils.futures.AbstractFuture: androidx.work.impl.utils.futures.AbstractFuture$Waiter waiters>;
+
+        if $r4 != $r2 goto label3;
+
+        r1.<androidx.work.impl.utils.futures.AbstractFuture: androidx.work.impl.utils.futures.AbstractFuture$Waiter waiters> = $r3;
+
+        exitmonitor r1;
+
+     label2:
+        return 1;
+
+     label3:
+        exitmonitor r1;
+
+     label4:
+        return 0;
+
+     label5:
+        $r5 := @caughtexception;
+
+        exitmonitor r1;
+
+     label6:
+        throw $r5;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label3 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    void putNext(androidx.work.impl.utils.futures.AbstractFuture$Waiter, androidx.work.impl.utils.futures.AbstractFuture$Waiter)
+    {
+        androidx.work.impl.utils.futures.AbstractFuture$SynchronizedHelper r0;
+        androidx.work.impl.utils.futures.AbstractFuture$Waiter $r1, $r2;
+
+        r0 := @this: androidx.work.impl.utils.futures.AbstractFuture$SynchronizedHelper;
+
+        $r1 := @parameter0: androidx.work.impl.utils.futures.AbstractFuture$Waiter;
+
+        $r2 := @parameter1: androidx.work.impl.utils.futures.AbstractFuture$Waiter;
+
+        $r1.<androidx.work.impl.utils.futures.AbstractFuture$Waiter: androidx.work.impl.utils.futures.AbstractFuture$Waiter next> = $r2;
+
+        return;
+    }
+
+    void putThread(androidx.work.impl.utils.futures.AbstractFuture$Waiter, java.lang.Thread)
+    {
+        androidx.work.impl.utils.futures.AbstractFuture$SynchronizedHelper r0;
+        androidx.work.impl.utils.futures.AbstractFuture$Waiter $r1;
+        java.lang.Thread $r2;
+
+        r0 := @this: androidx.work.impl.utils.futures.AbstractFuture$SynchronizedHelper;
+
+        $r1 := @parameter0: androidx.work.impl.utils.futures.AbstractFuture$Waiter;
+
+        $r2 := @parameter1: java.lang.Thread;
+
+        $r1.<androidx.work.impl.utils.futures.AbstractFuture$Waiter: java.lang.Thread thread> = $r2;
+
+        return;
+    }
+}

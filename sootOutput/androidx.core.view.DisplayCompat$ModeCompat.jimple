@@ -1,0 +1,144 @@
+public final class androidx.core.view.DisplayCompat$ModeCompat extends java.lang.Object
+{
+    private final boolean mIsNative;
+    private final android.view.Display$Mode mMode;
+    private final android.graphics.Point mPhysicalSize;
+
+    void <init>(android.graphics.Point)
+    {
+        androidx.core.view.DisplayCompat$ModeCompat r0;
+        android.graphics.Point $r1;
+
+        r0 := @this: androidx.core.view.DisplayCompat$ModeCompat;
+
+        $r1 := @parameter0: android.graphics.Point;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object,java.lang.Object)>($r1, "physicalSize == null");
+
+        r0.<androidx.core.view.DisplayCompat$ModeCompat: android.graphics.Point mPhysicalSize> = $r1;
+
+        r0.<androidx.core.view.DisplayCompat$ModeCompat: android.view.Display$Mode mMode> = null;
+
+        r0.<androidx.core.view.DisplayCompat$ModeCompat: boolean mIsNative> = 1;
+
+        return;
+    }
+
+    void <init>(android.view.Display$Mode, android.graphics.Point)
+    {
+        androidx.core.view.DisplayCompat$ModeCompat r0;
+        android.graphics.Point $r2;
+        android.view.Display$Mode $r1;
+
+        r0 := @this: androidx.core.view.DisplayCompat$ModeCompat;
+
+        $r1 := @parameter0: android.view.Display$Mode;
+
+        $r2 := @parameter1: android.graphics.Point;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object,java.lang.Object)>($r1, "mode == null, can\'t wrap a null reference");
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object,java.lang.Object)>($r2, "physicalSize == null");
+
+        r0.<androidx.core.view.DisplayCompat$ModeCompat: android.graphics.Point mPhysicalSize> = $r2;
+
+        r0.<androidx.core.view.DisplayCompat$ModeCompat: android.view.Display$Mode mMode> = $r1;
+
+        r0.<androidx.core.view.DisplayCompat$ModeCompat: boolean mIsNative> = 1;
+
+        return;
+    }
+
+    void <init>(android.view.Display$Mode, boolean)
+    {
+        androidx.core.view.DisplayCompat$ModeCompat r0;
+        int $i0, $i1;
+        android.graphics.Point $r2;
+        android.view.Display$Mode $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.core.view.DisplayCompat$ModeCompat;
+
+        $r1 := @parameter0: android.view.Display$Mode;
+
+        $z0 := @parameter1: boolean;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object,java.lang.Object)>($r1, "mode == null, can\'t wrap a null reference");
+
+        $r2 = new android.graphics.Point;
+
+        $i0 = staticinvoke <androidx.core.view.DisplayCompat$ModeCompat$Api23Impl: int getPhysicalWidth(android.view.Display$Mode)>($r1);
+
+        $i1 = staticinvoke <androidx.core.view.DisplayCompat$ModeCompat$Api23Impl: int getPhysicalHeight(android.view.Display$Mode)>($r1);
+
+        specialinvoke $r2.<android.graphics.Point: void <init>(int,int)>($i0, $i1);
+
+        r0.<androidx.core.view.DisplayCompat$ModeCompat: android.graphics.Point mPhysicalSize> = $r2;
+
+        r0.<androidx.core.view.DisplayCompat$ModeCompat: android.view.Display$Mode mMode> = $r1;
+
+        r0.<androidx.core.view.DisplayCompat$ModeCompat: boolean mIsNative> = $z0;
+
+        return;
+    }
+
+    public int getPhysicalHeight()
+    {
+        androidx.core.view.DisplayCompat$ModeCompat r0;
+        int i0;
+        android.graphics.Point $r1;
+
+        r0 := @this: androidx.core.view.DisplayCompat$ModeCompat;
+
+        $r1 = r0.<androidx.core.view.DisplayCompat$ModeCompat: android.graphics.Point mPhysicalSize>;
+
+        i0 = $r1.<android.graphics.Point: int y>;
+
+        return i0;
+    }
+
+    public int getPhysicalWidth()
+    {
+        androidx.core.view.DisplayCompat$ModeCompat r0;
+        int i0;
+        android.graphics.Point $r1;
+
+        r0 := @this: androidx.core.view.DisplayCompat$ModeCompat;
+
+        $r1 = r0.<androidx.core.view.DisplayCompat$ModeCompat: android.graphics.Point mPhysicalSize>;
+
+        i0 = $r1.<android.graphics.Point: int x>;
+
+        return i0;
+    }
+
+    public boolean isNative()
+    {
+        androidx.core.view.DisplayCompat$ModeCompat r0;
+        boolean z0;
+
+        r0 := @this: androidx.core.view.DisplayCompat$ModeCompat;
+
+        z0 = r0.<androidx.core.view.DisplayCompat$ModeCompat: boolean mIsNative>;
+
+        return z0;
+    }
+
+    public android.view.Display$Mode toMode()
+    {
+        androidx.core.view.DisplayCompat$ModeCompat r0;
+        android.view.Display$Mode r1;
+
+        r0 := @this: androidx.core.view.DisplayCompat$ModeCompat;
+
+        r1 = r0.<androidx.core.view.DisplayCompat$ModeCompat: android.view.Display$Mode mMode>;
+
+        return r1;
+    }
+}

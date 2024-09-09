@@ -1,0 +1,119 @@
+class com.google.common.collect.RegularImmutableMap$EntrySet$1 extends com.google.common.collect.ImmutableList
+{
+    final com.google.common.collect.RegularImmutableMap$EntrySet this$0;
+
+    void <init>(com.google.common.collect.RegularImmutableMap$EntrySet)
+    {
+        com.google.common.collect.RegularImmutableMap$EntrySet $r1;
+        com.google.common.collect.RegularImmutableMap$EntrySet$1 r0;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMap$EntrySet$1;
+
+        $r1 := @parameter0: com.google.common.collect.RegularImmutableMap$EntrySet;
+
+        r0.<com.google.common.collect.RegularImmutableMap$EntrySet$1: com.google.common.collect.RegularImmutableMap$EntrySet this$0> = $r1;
+
+        specialinvoke r0.<com.google.common.collect.ImmutableList: void <init>()>();
+
+        return;
+    }
+
+    public volatile java.lang.Object get(int)
+    {
+        int $i0;
+        java.util.Map$Entry $r1;
+        com.google.common.collect.RegularImmutableMap$EntrySet$1 r0;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMap$EntrySet$1;
+
+        $i0 := @parameter0: int;
+
+        $r1 = virtualinvoke r0.<com.google.common.collect.RegularImmutableMap$EntrySet$1: java.util.Map$Entry get(int)>($i0);
+
+        return $r1;
+    }
+
+    public java.util.Map$Entry get(int)
+    {
+        com.google.common.collect.RegularImmutableMap$EntrySet r1;
+        java.lang.Object[] $r2;
+        java.util.AbstractMap$SimpleImmutableEntry $r5;
+        com.google.common.collect.RegularImmutableMap$EntrySet$1 r0;
+        int $i0, $i1, $i2;
+        java.lang.Object r3, r4;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMap$EntrySet$1;
+
+        $i0 := @parameter0: int;
+
+        r1 = r0.<com.google.common.collect.RegularImmutableMap$EntrySet$1: com.google.common.collect.RegularImmutableMap$EntrySet this$0>;
+
+        $i1 = staticinvoke <com.google.common.collect.RegularImmutableMap$EntrySet: int access$000(com.google.common.collect.RegularImmutableMap$EntrySet)>(r1);
+
+        staticinvoke <com.google.common.base.Preconditions: int checkElementIndex(int,int)>($i0, $i1);
+
+        r1 = r0.<com.google.common.collect.RegularImmutableMap$EntrySet$1: com.google.common.collect.RegularImmutableMap$EntrySet this$0>;
+
+        $r2 = staticinvoke <com.google.common.collect.RegularImmutableMap$EntrySet: java.lang.Object[] access$100(com.google.common.collect.RegularImmutableMap$EntrySet)>(r1);
+
+        $i1 = $i0 * 2;
+
+        r1 = r0.<com.google.common.collect.RegularImmutableMap$EntrySet$1: com.google.common.collect.RegularImmutableMap$EntrySet this$0>;
+
+        $i2 = staticinvoke <com.google.common.collect.RegularImmutableMap$EntrySet: int access$200(com.google.common.collect.RegularImmutableMap$EntrySet)>(r1);
+
+        $i1 = $i1 + $i2;
+
+        r3 = $r2[$i1];
+
+        r3 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(r3);
+
+        r1 = r0.<com.google.common.collect.RegularImmutableMap$EntrySet$1: com.google.common.collect.RegularImmutableMap$EntrySet this$0>;
+
+        $r2 = staticinvoke <com.google.common.collect.RegularImmutableMap$EntrySet: java.lang.Object[] access$100(com.google.common.collect.RegularImmutableMap$EntrySet)>(r1);
+
+        $i0 = $i0 * 2;
+
+        r1 = r0.<com.google.common.collect.RegularImmutableMap$EntrySet$1: com.google.common.collect.RegularImmutableMap$EntrySet this$0>;
+
+        $i1 = staticinvoke <com.google.common.collect.RegularImmutableMap$EntrySet: int access$200(com.google.common.collect.RegularImmutableMap$EntrySet)>(r1);
+
+        $i1 = $i1 ^ 1;
+
+        $i0 = $i0 + $i1;
+
+        r4 = $r2[$i0];
+
+        r4 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(r4);
+
+        $r5 = new java.util.AbstractMap$SimpleImmutableEntry;
+
+        specialinvoke $r5.<java.util.AbstractMap$SimpleImmutableEntry: void <init>(java.lang.Object,java.lang.Object)>(r3, r4);
+
+        return $r5;
+    }
+
+    public boolean isPartialView()
+    {
+        com.google.common.collect.RegularImmutableMap$EntrySet$1 r0;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMap$EntrySet$1;
+
+        return 1;
+    }
+
+    public int size()
+    {
+        int $i0;
+        com.google.common.collect.RegularImmutableMap$EntrySet $r1;
+        com.google.common.collect.RegularImmutableMap$EntrySet$1 r0;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMap$EntrySet$1;
+
+        $r1 = r0.<com.google.common.collect.RegularImmutableMap$EntrySet$1: com.google.common.collect.RegularImmutableMap$EntrySet this$0>;
+
+        $i0 = staticinvoke <com.google.common.collect.RegularImmutableMap$EntrySet: int access$000(com.google.common.collect.RegularImmutableMap$EntrySet)>($r1);
+
+        return $i0;
+    }
+}

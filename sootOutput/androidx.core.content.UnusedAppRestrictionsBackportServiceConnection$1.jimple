@@ -1,0 +1,73 @@
+class androidx.core.content.UnusedAppRestrictionsBackportServiceConnection$1 extends androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportCallback$Stub
+{
+    final androidx.core.content.UnusedAppRestrictionsBackportServiceConnection this$0;
+
+    void <init>(androidx.core.content.UnusedAppRestrictionsBackportServiceConnection)
+    {
+        androidx.core.content.UnusedAppRestrictionsBackportServiceConnection $r1;
+        androidx.core.content.UnusedAppRestrictionsBackportServiceConnection$1 r0;
+
+        r0 := @this: androidx.core.content.UnusedAppRestrictionsBackportServiceConnection$1;
+
+        $r1 := @parameter0: androidx.core.content.UnusedAppRestrictionsBackportServiceConnection;
+
+        r0.<androidx.core.content.UnusedAppRestrictionsBackportServiceConnection$1: androidx.core.content.UnusedAppRestrictionsBackportServiceConnection this$0> = $r1;
+
+        specialinvoke r0.<androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportCallback$Stub: void <init>()>();
+
+        return;
+    }
+
+    public void onIsPermissionRevocationEnabledForAppResult(boolean, boolean) throws android.os.RemoteException
+    {
+        androidx.core.content.UnusedAppRestrictionsBackportServiceConnection $r1;
+        androidx.core.content.UnusedAppRestrictionsBackportServiceConnection$1 r0;
+        androidx.concurrent.futures.ResolvableFuture $r2;
+        java.lang.Integer $r3;
+        boolean $z0, $z1;
+
+        r0 := @this: androidx.core.content.UnusedAppRestrictionsBackportServiceConnection$1;
+
+        $z0 := @parameter0: boolean;
+
+        $z1 := @parameter1: boolean;
+
+        if $z0 == 0 goto label2;
+
+        if $z1 == 0 goto label1;
+
+        $r1 = r0.<androidx.core.content.UnusedAppRestrictionsBackportServiceConnection$1: androidx.core.content.UnusedAppRestrictionsBackportServiceConnection this$0>;
+
+        $r2 = $r1.<androidx.core.content.UnusedAppRestrictionsBackportServiceConnection: androidx.concurrent.futures.ResolvableFuture mResultFuture>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(3);
+
+        virtualinvoke $r2.<androidx.concurrent.futures.ResolvableFuture: boolean set(java.lang.Object)>($r3);
+
+        return;
+
+     label1:
+        $r1 = r0.<androidx.core.content.UnusedAppRestrictionsBackportServiceConnection$1: androidx.core.content.UnusedAppRestrictionsBackportServiceConnection this$0>;
+
+        $r2 = $r1.<androidx.core.content.UnusedAppRestrictionsBackportServiceConnection: androidx.concurrent.futures.ResolvableFuture mResultFuture>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(2);
+
+        virtualinvoke $r2.<androidx.concurrent.futures.ResolvableFuture: boolean set(java.lang.Object)>($r3);
+
+        return;
+
+     label2:
+        $r1 = r0.<androidx.core.content.UnusedAppRestrictionsBackportServiceConnection$1: androidx.core.content.UnusedAppRestrictionsBackportServiceConnection this$0>;
+
+        $r2 = $r1.<androidx.core.content.UnusedAppRestrictionsBackportServiceConnection: androidx.concurrent.futures.ResolvableFuture mResultFuture>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(0);
+
+        virtualinvoke $r2.<androidx.concurrent.futures.ResolvableFuture: boolean set(java.lang.Object)>($r3);
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("PackageManagerCompat", "Unable to retrieve the permission revocation setting from the backport");
+
+        return;
+    }
+}

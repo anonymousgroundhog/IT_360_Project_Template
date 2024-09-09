@@ -1,0 +1,256 @@
+public final class com.google.android.gms.internal.ads.zzdpm extends java.lang.Object
+{
+    private final com.google.android.gms.ads.internal.util.zzbq zza;
+    private final com.google.android.gms.common.util.Clock zzb;
+    private final java.util.concurrent.Executor zzc;
+
+    public void <init>(com.google.android.gms.ads.internal.util.zzbq, com.google.android.gms.common.util.Clock, java.util.concurrent.Executor)
+    {
+        com.google.android.gms.internal.ads.zzdpm r0;
+        com.google.android.gms.common.util.Clock $r2;
+        java.util.concurrent.Executor $r3;
+        com.google.android.gms.ads.internal.util.zzbq $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdpm;
+
+        $r1 := @parameter0: com.google.android.gms.ads.internal.util.zzbq;
+
+        $r2 := @parameter1: com.google.android.gms.common.util.Clock;
+
+        $r3 := @parameter2: java.util.concurrent.Executor;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzdpm: com.google.android.gms.ads.internal.util.zzbq zza> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzdpm: com.google.android.gms.common.util.Clock zzb> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzdpm: java.util.concurrent.Executor zzc> = $r3;
+
+        return;
+    }
+
+    private final android.graphics.Bitmap zzc(byte[], android.graphics.BitmapFactory$Options)
+    {
+        byte[] $r1;
+        long $l0, $l2;
+        android.os.Looper $r5;
+        java.lang.Thread $r6, $r7;
+        int $i1, $i3, $i4;
+        java.lang.String $r9;
+        boolean $z0;
+        com.google.android.gms.internal.ads.zzdpm r0;
+        com.google.android.gms.common.util.Clock $r3;
+        android.graphics.Bitmap $r4;
+        java.lang.StringBuilder $r8;
+        android.graphics.BitmapFactory$Options $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdpm;
+
+        $r1 := @parameter0: byte[];
+
+        $r2 := @parameter1: android.graphics.BitmapFactory$Options;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzdpm: com.google.android.gms.common.util.Clock zzb>;
+
+        $l0 = interfaceinvoke $r3.<com.google.android.gms.common.util.Clock: long elapsedRealtime()>();
+
+        $i1 = lengthof $r1;
+
+        $z0 = 0;
+
+        $r4 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeByteArray(byte[],int,int,android.graphics.BitmapFactory$Options)>($r1, 0, $i1, $r2);
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzdpm: com.google.android.gms.common.util.Clock zzb>;
+
+        $l2 = interfaceinvoke $r3.<com.google.android.gms.common.util.Clock: long elapsedRealtime()>();
+
+        if $r4 == null goto label2;
+
+        $l0 = $l2 - $l0;
+
+        $i1 = virtualinvoke $r4.<android.graphics.Bitmap: int getWidth()>();
+
+        $i3 = virtualinvoke $r4.<android.graphics.Bitmap: int getHeight()>();
+
+        $i4 = virtualinvoke $r4.<android.graphics.Bitmap: int getAllocationByteCount()>();
+
+        $r5 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        $r6 = virtualinvoke $r5.<android.os.Looper: java.lang.Thread getThread()>();
+
+        $r7 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        if $r6 != $r7 goto label1;
+
+        $z0 = 1;
+
+        goto label1;
+
+     label1:
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Decoded image w: ");
+
+        virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" h:");
+
+        virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i3);
+
+        virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" bytes: ");
+
+        virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i4);
+
+        virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" time: ");
+
+        virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" on ui thread: ");
+
+        virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.google.android.gms.ads.internal.util.zze: void zza(java.lang.String)>($r9);
+
+     label2:
+        return $r4;
+    }
+
+    final android.graphics.Bitmap zza(double, boolean, com.google.android.gms.internal.ads.zzapw)
+    {
+        com.google.android.gms.internal.ads.zzdpm r0;
+        byte[] $r2;
+        android.graphics.Bitmap$Config $r3;
+        java.lang.Integer $r8;
+        com.google.android.gms.internal.ads.zzbga $r5;
+        com.google.android.gms.internal.ads.zzbfu $r4;
+        android.graphics.Bitmap $r9;
+        int $i0, $i1;
+        java.lang.Boolean $r7;
+        com.google.android.gms.internal.ads.zzapw $r1;
+        java.lang.Object $r6;
+        double $d0;
+        boolean $z0;
+        android.graphics.BitmapFactory$Options $r10;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdpm;
+
+        $d0 := @parameter0: double;
+
+        $z0 := @parameter1: boolean;
+
+        $r1 := @parameter2: com.google.android.gms.internal.ads.zzapw;
+
+        $r2 = $r1.<com.google.android.gms.internal.ads.zzapw: byte[] zzb>;
+
+        $r10 = new android.graphics.BitmapFactory$Options;
+
+        specialinvoke $r10.<android.graphics.BitmapFactory$Options: void <init>()>();
+
+        $d0 = $d0 * 160.0;
+
+        $i0 = (int) $d0;
+
+        $r10.<android.graphics.BitmapFactory$Options: int inDensity> = $i0;
+
+        if $z0 != 0 goto label1;
+
+        $r3 = <android.graphics.Bitmap$Config: android.graphics.Bitmap$Config RGB_565>;
+
+        $r10.<android.graphics.BitmapFactory$Options: android.graphics.Bitmap$Config inPreferredConfig> = $r3;
+
+     label1:
+        $r4 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzgg>;
+
+        $r5 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r6 = virtualinvoke $r5.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r4);
+
+        $r7 = (java.lang.Boolean) $r6;
+
+        $z0 = virtualinvoke $r7.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label2;
+
+        $r10.<android.graphics.BitmapFactory$Options: boolean inJustDecodeBounds> = 1;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzdpm: android.graphics.Bitmap zzc(byte[],android.graphics.BitmapFactory$Options)>($r2, $r10);
+
+        $r10.<android.graphics.BitmapFactory$Options: boolean inJustDecodeBounds> = 0;
+
+        $i0 = $r10.<android.graphics.BitmapFactory$Options: int outWidth>;
+
+        $i1 = $r10.<android.graphics.BitmapFactory$Options: int outHeight>;
+
+        $i1 = $i0 * $i1;
+
+        if $i1 <= 0 goto label2;
+
+        $r4 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzgh>;
+
+        $r5 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r6 = virtualinvoke $r5.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r4);
+
+        $r8 = (java.lang.Integer) $r6;
+
+        $i0 = virtualinvoke $r8.<java.lang.Integer: int intValue()>();
+
+        $i1 = $i1 + -1;
+
+        $i0 = $i1 / $i0;
+
+        $i0 = staticinvoke <java.lang.Integer: int numberOfLeadingZeros(int)>($i0);
+
+        $i0 = 33 - $i0;
+
+        $i0 = $i0 / 2;
+
+        $i0 = 1 << $i0;
+
+        $r10.<android.graphics.BitmapFactory$Options: int inSampleSize> = $i0;
+
+     label2:
+        $r9 = specialinvoke r0.<com.google.android.gms.internal.ads.zzdpm: android.graphics.Bitmap zzc(byte[],android.graphics.BitmapFactory$Options)>($r2, $r10);
+
+        return $r9;
+    }
+
+    public final com.google.common.util.concurrent.ListenableFuture zzb(java.lang.String, double, boolean)
+    {
+        com.google.android.gms.internal.ads.zzdpm r0;
+        com.google.android.gms.internal.ads.zzdpl $r4;
+        com.google.common.util.concurrent.ListenableFuture $r3;
+        java.util.concurrent.Executor $r5;
+        com.google.android.gms.ads.internal.util.zzbq $r2;
+        java.lang.String $r1;
+        boolean $z0;
+        double $d0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdpm;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $d0 := @parameter1: double;
+
+        $z0 := @parameter2: boolean;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzdpm: com.google.android.gms.ads.internal.util.zzbq zza>;
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.ads.internal.util.zzbq: com.google.common.util.concurrent.ListenableFuture zza(java.lang.String)>($r1);
+
+        $r4 = new com.google.android.gms.internal.ads.zzdpl;
+
+        specialinvoke $r4.<com.google.android.gms.internal.ads.zzdpl: void <init>(com.google.android.gms.internal.ads.zzdpm,double,boolean)>(r0, $d0, $z0);
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzdpm: java.util.concurrent.Executor zzc>;
+
+        $r3 = staticinvoke <com.google.android.gms.internal.ads.zzgen: com.google.common.util.concurrent.ListenableFuture zzm(com.google.common.util.concurrent.ListenableFuture,com.google.android.gms.internal.ads.zzfws,java.util.concurrent.Executor)>($r3, $r4, $r5);
+
+        return $r3;
+    }
+}

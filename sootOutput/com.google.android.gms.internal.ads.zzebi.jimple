@@ -1,0 +1,123 @@
+public final class com.google.android.gms.internal.ads.zzebi extends java.lang.Object implements com.google.android.gms.internal.ads.zzgdu
+{
+    public final com.google.android.gms.internal.ads.zzebl zza;
+    public final java.lang.String zzb;
+    public final java.lang.String zzc;
+
+    public void <init>(com.google.android.gms.internal.ads.zzebl, java.lang.String, java.lang.String)
+    {
+        com.google.android.gms.internal.ads.zzebl $r1;
+        java.lang.String $r2, $r3;
+        com.google.android.gms.internal.ads.zzebi r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzebi;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzebl;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzebi: com.google.android.gms.internal.ads.zzebl zza> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzebi: java.lang.String zzb> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzebi: java.lang.String zzc> = $r3;
+
+        return;
+    }
+
+    public final com.google.common.util.concurrent.ListenableFuture zza(java.lang.Object)
+    {
+        java.lang.Throwable $r11;
+        com.google.common.util.concurrent.ListenableFuture $r8;
+        org.json.JSONException $r9, $r10;
+        org.json.JSONObject $r2, $r4, $r5, $r6;
+        java.lang.Object $r3;
+        java.lang.String $r1, $r7;
+        com.google.android.gms.internal.ads.zzebi r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzebi;
+
+        $r3 := @parameter0: java.lang.Object;
+
+        $r1 = (java.lang.String) $r3;
+
+        $r4 = new org.json.JSONObject;
+
+        specialinvoke $r4.<org.json.JSONObject: void <init>()>();
+
+        $r5 = new org.json.JSONObject;
+
+        specialinvoke $r5.<org.json.JSONObject: void <init>()>();
+
+        $r6 = new org.json.JSONObject;
+
+        specialinvoke $r6.<org.json.JSONObject: void <init>()>();
+
+        $r7 = r0.<com.google.android.gms.internal.ads.zzebi: java.lang.String zzb>;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzebi: java.lang.String zzc>;
+
+        $r2 = new org.json.JSONObject;
+
+     label1:
+        specialinvoke $r2.<org.json.JSONObject: void <init>()>();
+
+        virtualinvoke $r6.<org.json.JSONObject: org.json.JSONObject put(java.lang.String,java.lang.Object)>("headers", $r2);
+
+        virtualinvoke $r6.<org.json.JSONObject: org.json.JSONObject put(java.lang.String,java.lang.Object)>("body", $r7);
+
+        virtualinvoke $r5.<org.json.JSONObject: org.json.JSONObject put(java.lang.String,java.lang.Object)>("base_url", "");
+
+     label2:
+        $r2 = new org.json.JSONObject;
+
+     label3:
+        specialinvoke $r2.<org.json.JSONObject: void <init>(java.lang.String)>($r1);
+
+        virtualinvoke $r5.<org.json.JSONObject: org.json.JSONObject put(java.lang.String,java.lang.Object)>("signals", $r2);
+
+        virtualinvoke $r4.<org.json.JSONObject: org.json.JSONObject put(java.lang.String,java.lang.Object)>("request", $r5);
+
+        virtualinvoke $r4.<org.json.JSONObject: org.json.JSONObject put(java.lang.String,java.lang.Object)>("response", $r6);
+
+     label4:
+        $r5 = new org.json.JSONObject;
+
+     label5:
+        specialinvoke $r5.<org.json.JSONObject: void <init>()>();
+
+        virtualinvoke $r4.<org.json.JSONObject: org.json.JSONObject put(java.lang.String,java.lang.Object)>("flags", $r5);
+
+     label6:
+        $r8 = staticinvoke <com.google.android.gms.internal.ads.zzgen: com.google.common.util.concurrent.ListenableFuture zzh(java.lang.Object)>($r4);
+
+        return $r8;
+
+     label7:
+        $r9 := @caughtexception;
+
+        $r10 = new org.json.JSONException;
+
+        $r11 = virtualinvoke $r9.<org.json.JSONException: java.lang.Throwable getCause()>();
+
+        $r1 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r11);
+
+        $r1 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r1);
+
+        $r7 = "Preloaded loader: ";
+
+        $r1 = virtualinvoke $r7.<java.lang.String: java.lang.String concat(java.lang.String)>($r1);
+
+        specialinvoke $r10.<org.json.JSONException: void <init>(java.lang.String)>($r1);
+
+        throw $r10;
+
+        catch org.json.JSONException from label1 to label2 with label7;
+        catch org.json.JSONException from label3 to label4 with label7;
+        catch org.json.JSONException from label5 to label6 with label7;
+    }
+}

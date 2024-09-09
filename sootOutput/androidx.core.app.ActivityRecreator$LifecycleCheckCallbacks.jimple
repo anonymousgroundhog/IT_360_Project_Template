@@ -1,0 +1,172 @@
+final class androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks extends java.lang.Object implements android.app.Application$ActivityLifecycleCallbacks
+{
+    java.lang.Object currentlyRecreatingToken;
+    private android.app.Activity mActivity;
+    private boolean mDestroyed;
+    private final int mRecreatingHashCode;
+    private boolean mStarted;
+    private boolean mStopQueued;
+
+    void <init>(android.app.Activity)
+    {
+        int $i0;
+        android.app.Activity $r1;
+        androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks r0;
+
+        r0 := @this: androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: boolean mStarted> = 0;
+
+        r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: boolean mDestroyed> = 0;
+
+        r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: boolean mStopQueued> = 0;
+
+        r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: android.app.Activity mActivity> = $r1;
+
+        $r1 = r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: android.app.Activity mActivity>;
+
+        $i0 = virtualinvoke $r1.<java.lang.Object: int hashCode()>();
+
+        r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: int mRecreatingHashCode> = $i0;
+
+        return;
+    }
+
+    public void onActivityCreated(android.app.Activity, android.os.Bundle)
+    {
+        android.os.Bundle $r2;
+        android.app.Activity $r1;
+        androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks r0;
+
+        r0 := @this: androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $r2 := @parameter1: android.os.Bundle;
+
+        return;
+    }
+
+    public void onActivityDestroyed(android.app.Activity)
+    {
+        android.app.Activity $r1, $r2;
+        androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks r0;
+
+        r0 := @this: androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $r2 = r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: android.app.Activity mActivity>;
+
+        if $r2 != $r1 goto label1;
+
+        r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: android.app.Activity mActivity> = null;
+
+        r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: boolean mDestroyed> = 1;
+
+     label1:
+        return;
+    }
+
+    public void onActivityPaused(android.app.Activity)
+    {
+        int $i0;
+        java.lang.Object $r2;
+        android.app.Activity $r1;
+        androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $z0 = r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: boolean mDestroyed>;
+
+        if $z0 == 0 goto label1;
+
+        $z0 = r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: boolean mStopQueued>;
+
+        if $z0 != 0 goto label1;
+
+        $z0 = r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: boolean mStarted>;
+
+        if $z0 != 0 goto label1;
+
+        $r2 = r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: java.lang.Object currentlyRecreatingToken>;
+
+        $i0 = r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: int mRecreatingHashCode>;
+
+        $z0 = staticinvoke <androidx.core.app.ActivityRecreator: boolean queueOnStopIfNecessary(java.lang.Object,int,android.app.Activity)>($r2, $i0, $r1);
+
+        if $z0 == 0 goto label1;
+
+        r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: boolean mStopQueued> = 1;
+
+        r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: java.lang.Object currentlyRecreatingToken> = null;
+
+     label1:
+        return;
+    }
+
+    public void onActivityResumed(android.app.Activity)
+    {
+        android.app.Activity $r1;
+        androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks r0;
+
+        r0 := @this: androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        return;
+    }
+
+    public void onActivitySaveInstanceState(android.app.Activity, android.os.Bundle)
+    {
+        android.os.Bundle $r2;
+        android.app.Activity $r1;
+        androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks r0;
+
+        r0 := @this: androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $r2 := @parameter1: android.os.Bundle;
+
+        return;
+    }
+
+    public void onActivityStarted(android.app.Activity)
+    {
+        android.app.Activity $r1, $r2;
+        androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks r0;
+
+        r0 := @this: androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $r2 = r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: android.app.Activity mActivity>;
+
+        if $r2 != $r1 goto label1;
+
+        r0.<androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks: boolean mStarted> = 1;
+
+     label1:
+        return;
+    }
+
+    public void onActivityStopped(android.app.Activity)
+    {
+        android.app.Activity $r1;
+        androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks r0;
+
+        r0 := @this: androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        return;
+    }
+}

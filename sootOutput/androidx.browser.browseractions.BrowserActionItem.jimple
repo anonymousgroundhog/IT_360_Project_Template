@@ -1,0 +1,172 @@
+public class androidx.browser.browseractions.BrowserActionItem extends java.lang.Object
+{
+    private final android.app.PendingIntent mAction;
+    private int mIconId;
+    private android.net.Uri mIconUri;
+    private java.lang.Runnable mRunnableAction;
+    private final java.lang.String mTitle;
+
+    public void <init>(java.lang.String, android.app.PendingIntent)
+    {
+        androidx.browser.browseractions.BrowserActionItem r0;
+        java.lang.String $r1;
+        android.app.PendingIntent $r2;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionItem;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: android.app.PendingIntent;
+
+        specialinvoke r0.<androidx.browser.browseractions.BrowserActionItem: void <init>(java.lang.String,android.app.PendingIntent,int)>($r1, $r2, 0);
+
+        return;
+    }
+
+    public void <init>(java.lang.String, android.app.PendingIntent, int)
+    {
+        androidx.browser.browseractions.BrowserActionItem r0;
+        int $i0;
+        java.lang.String $r1;
+        android.app.PendingIntent $r2;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionItem;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: android.app.PendingIntent;
+
+        $i0 := @parameter2: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.browser.browseractions.BrowserActionItem: java.lang.String mTitle> = $r1;
+
+        r0.<androidx.browser.browseractions.BrowserActionItem: android.app.PendingIntent mAction> = $r2;
+
+        r0.<androidx.browser.browseractions.BrowserActionItem: int mIconId> = $i0;
+
+        return;
+    }
+
+    public void <init>(java.lang.String, android.app.PendingIntent, android.net.Uri)
+    {
+        androidx.browser.browseractions.BrowserActionItem r0;
+        android.net.Uri $r3;
+        java.lang.String $r1;
+        android.app.PendingIntent $r2;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionItem;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: android.app.PendingIntent;
+
+        $r3 := @parameter2: android.net.Uri;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.browser.browseractions.BrowserActionItem: java.lang.String mTitle> = $r1;
+
+        r0.<androidx.browser.browseractions.BrowserActionItem: android.app.PendingIntent mAction> = $r2;
+
+        r0.<androidx.browser.browseractions.BrowserActionItem: android.net.Uri mIconUri> = $r3;
+
+        return;
+    }
+
+    void <init>(java.lang.String, java.lang.Runnable)
+    {
+        androidx.browser.browseractions.BrowserActionItem r0;
+        java.lang.String $r1;
+        java.lang.Runnable $r2;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionItem;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.Runnable;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.browser.browseractions.BrowserActionItem: java.lang.String mTitle> = $r1;
+
+        r0.<androidx.browser.browseractions.BrowserActionItem: android.app.PendingIntent mAction> = null;
+
+        r0.<androidx.browser.browseractions.BrowserActionItem: java.lang.Runnable mRunnableAction> = $r2;
+
+        return;
+    }
+
+    public android.app.PendingIntent getAction()
+    {
+        java.lang.IllegalStateException $r2;
+        androidx.browser.browseractions.BrowserActionItem r0;
+        android.app.PendingIntent $r1;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionItem;
+
+        $r1 = r0.<androidx.browser.browseractions.BrowserActionItem: android.app.PendingIntent mAction>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<androidx.browser.browseractions.BrowserActionItem: android.app.PendingIntent mAction>;
+
+        return $r1;
+
+     label1:
+        $r2 = new java.lang.IllegalStateException;
+
+        specialinvoke $r2.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Can\'t call getAction on BrowserActionItem with null action.");
+
+        throw $r2;
+    }
+
+    public int getIconId()
+    {
+        int i0;
+        androidx.browser.browseractions.BrowserActionItem r0;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionItem;
+
+        i0 = r0.<androidx.browser.browseractions.BrowserActionItem: int mIconId>;
+
+        return i0;
+    }
+
+    public android.net.Uri getIconUri()
+    {
+        android.net.Uri r1;
+        androidx.browser.browseractions.BrowserActionItem r0;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionItem;
+
+        r1 = r0.<androidx.browser.browseractions.BrowserActionItem: android.net.Uri mIconUri>;
+
+        return r1;
+    }
+
+    java.lang.Runnable getRunnableAction()
+    {
+        androidx.browser.browseractions.BrowserActionItem r0;
+        java.lang.Runnable r1;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionItem;
+
+        r1 = r0.<androidx.browser.browseractions.BrowserActionItem: java.lang.Runnable mRunnableAction>;
+
+        return r1;
+    }
+
+    public java.lang.String getTitle()
+    {
+        androidx.browser.browseractions.BrowserActionItem r0;
+        java.lang.String r1;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionItem;
+
+        r1 = r0.<androidx.browser.browseractions.BrowserActionItem: java.lang.String mTitle>;
+
+        return r1;
+    }
+}

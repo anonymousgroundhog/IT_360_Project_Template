@@ -1,0 +1,165 @@
+final class com.google.android.gms.internal.ads.zzfvj extends com.google.android.gms.internal.ads.zzfvu
+{
+    final com.google.android.gms.internal.ads.zzfvs zza;
+    final int zzb;
+    final com.google.android.gms.internal.ads.zzfvq zzc;
+    final com.google.android.gms.tasks.TaskCompletionSource zzd;
+    final com.google.android.gms.internal.ads.zzfvl zze;
+
+    void <init>(com.google.android.gms.internal.ads.zzfvl, com.google.android.gms.tasks.TaskCompletionSource, com.google.android.gms.internal.ads.zzfvs, int, com.google.android.gms.internal.ads.zzfvq, com.google.android.gms.tasks.TaskCompletionSource)
+    {
+        com.google.android.gms.internal.ads.zzfvq $r4;
+        com.google.android.gms.internal.ads.zzfvs $r3;
+        com.google.android.gms.internal.ads.zzfvj r0;
+        int $i0;
+        com.google.android.gms.tasks.TaskCompletionSource $r2, $r5;
+        com.google.android.gms.internal.ads.zzfvl $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfvj;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzfvl;
+
+        $r2 := @parameter1: com.google.android.gms.tasks.TaskCompletionSource;
+
+        $r3 := @parameter2: com.google.android.gms.internal.ads.zzfvs;
+
+        $i0 := @parameter3: int;
+
+        $r4 := @parameter4: com.google.android.gms.internal.ads.zzfvq;
+
+        $r5 := @parameter5: com.google.android.gms.tasks.TaskCompletionSource;
+
+        r0.<com.google.android.gms.internal.ads.zzfvj: com.google.android.gms.internal.ads.zzfvs zza> = $r3;
+
+        r0.<com.google.android.gms.internal.ads.zzfvj: int zzb> = $i0;
+
+        r0.<com.google.android.gms.internal.ads.zzfvj: com.google.android.gms.internal.ads.zzfvq zzc> = $r4;
+
+        r0.<com.google.android.gms.internal.ads.zzfvj: com.google.android.gms.tasks.TaskCompletionSource zzd> = $r5;
+
+        r0.<com.google.android.gms.internal.ads.zzfvj: com.google.android.gms.internal.ads.zzfvl zze> = $r1;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzfvu: void <init>(com.google.android.gms.tasks.TaskCompletionSource)>($r2);
+
+        return;
+    }
+
+    protected final void zza()
+    {
+        java.lang.Object[] $r11;
+        android.os.Bundle $r13;
+        android.os.RemoteException $r8;
+        com.google.android.gms.internal.ads.zzfum $r16;
+        java.lang.Integer $r10;
+        com.google.android.gms.internal.ads.zzfwe $r2;
+        int $i0;
+        java.lang.String $r5, $r6;
+        com.google.android.gms.internal.ads.zzfvq $r7;
+        android.os.IInterface $r3;
+        com.google.android.gms.internal.ads.zzfvt $r9;
+        com.google.android.gms.internal.ads.zzfvs $r4;
+        com.google.android.gms.internal.ads.zzfvj r0;
+        java.lang.RuntimeException $r15;
+        com.google.android.gms.internal.ads.zzfvl $r1;
+        com.google.android.gms.internal.ads.zzfvk $r14;
+        com.google.android.gms.tasks.TaskCompletionSource $r12;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfvj;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfvj: com.google.android.gms.internal.ads.zzfvl zze>;
+
+        $r2 = $r1.<com.google.android.gms.internal.ads.zzfvl: com.google.android.gms.internal.ads.zzfwe zza>;
+
+     label01:
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzfwe: android.os.IInterface zze()>();
+
+     label02:
+        if $r3 != null goto label03;
+
+        return;
+
+     label03:
+        $r4 = r0.<com.google.android.gms.internal.ads.zzfvj: com.google.android.gms.internal.ads.zzfvs zza>;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfvj: com.google.android.gms.internal.ads.zzfvl zze>;
+
+     label04:
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzfvl: java.lang.String zzb(com.google.android.gms.internal.ads.zzfvl)>($r1);
+
+     label05:
+        $i0 = r0.<com.google.android.gms.internal.ads.zzfvj: int zzb>;
+
+        $r13 = new android.os.Bundle;
+
+     label06:
+        specialinvoke $r13.<android.os.Bundle: void <init>()>();
+
+        $r6 = virtualinvoke $r4.<com.google.android.gms.internal.ads.zzfvs: java.lang.String zzb()>();
+
+        virtualinvoke $r13.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("sessionToken", $r6);
+
+        virtualinvoke $r13.<android.os.Bundle: void putInt(java.lang.String,int)>("displayMode", $i0);
+
+        virtualinvoke $r13.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("callerPackage", $r5);
+
+        $r5 = virtualinvoke $r4.<com.google.android.gms.internal.ads.zzfvs: java.lang.String zza()>();
+
+        virtualinvoke $r13.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("appId", $r5);
+
+     label07:
+        $r14 = new com.google.android.gms.internal.ads.zzfvk;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfvj: com.google.android.gms.internal.ads.zzfvl zze>;
+
+        $r7 = r0.<com.google.android.gms.internal.ads.zzfvj: com.google.android.gms.internal.ads.zzfvq zzc>;
+
+     label08:
+        specialinvoke $r14.<com.google.android.gms.internal.ads.zzfvk: void <init>(com.google.android.gms.internal.ads.zzfvl,com.google.android.gms.internal.ads.zzfvq)>($r1, $r7);
+
+     label09:
+        $r16 = (com.google.android.gms.internal.ads.zzfum) $r3;
+
+     label10:
+        interfaceinvoke $r16.<com.google.android.gms.internal.ads.zzfum: void zzg(android.os.Bundle,com.google.android.gms.internal.ads.zzfuo)>($r13, $r14);
+
+     label11:
+        return;
+
+     label12:
+        $r8 := @caughtexception;
+
+        $i0 = r0.<com.google.android.gms.internal.ads.zzfvj: int zzb>;
+
+        $r9 = staticinvoke <com.google.android.gms.internal.ads.zzfvl: com.google.android.gms.internal.ads.zzfvt zza()>();
+
+        $r10 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfvj: com.google.android.gms.internal.ads.zzfvl zze>;
+
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzfvl: java.lang.String zzb(com.google.android.gms.internal.ads.zzfvl)>($r1);
+
+        $r11 = newarray (java.lang.Object)[2];
+
+        $r11[0] = $r10;
+
+        $r11[1] = $r5;
+
+        virtualinvoke $r9.<com.google.android.gms.internal.ads.zzfvt: int zzb(java.lang.Throwable,java.lang.String,java.lang.Object[])>($r8, "switchDisplayMode overlay display to %d from: %s", $r11);
+
+        $r12 = r0.<com.google.android.gms.internal.ads.zzfvj: com.google.android.gms.tasks.TaskCompletionSource zzd>;
+
+        $r15 = new java.lang.RuntimeException;
+
+        specialinvoke $r15.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r8);
+
+        virtualinvoke $r12.<com.google.android.gms.tasks.TaskCompletionSource: boolean trySetException(java.lang.Exception)>($r15);
+
+        return;
+
+        catch android.os.RemoteException from label01 to label02 with label12;
+        catch android.os.RemoteException from label04 to label05 with label12;
+        catch android.os.RemoteException from label06 to label07 with label12;
+        catch android.os.RemoteException from label08 to label09 with label12;
+        catch android.os.RemoteException from label10 to label11 with label12;
+    }
+}

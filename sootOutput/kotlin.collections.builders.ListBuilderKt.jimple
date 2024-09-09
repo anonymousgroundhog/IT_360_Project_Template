@@ -1,0 +1,302 @@
+public final class kotlin.collections.builders.ListBuilderKt extends java.lang.Object
+{
+
+    public static final boolean access$subarrayContentEquals(java.lang.Object[], int, int, java.util.List)
+    {
+        java.util.List $r1;
+        java.lang.Object[] $r0;
+        int $i0, $i1;
+        boolean $z0;
+
+        $r0 := @parameter0: java.lang.Object[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r1 := @parameter3: java.util.List;
+
+        $z0 = staticinvoke <kotlin.collections.builders.ListBuilderKt: boolean subarrayContentEquals(java.lang.Object[],int,int,java.util.List)>($r0, $i0, $i1, $r1);
+
+        return $z0;
+    }
+
+    public static final int access$subarrayContentHashCode(java.lang.Object[], int, int)
+    {
+        int $i0, $i1;
+        java.lang.Object[] $r0;
+
+        $r0 := @parameter0: java.lang.Object[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i0 = staticinvoke <kotlin.collections.builders.ListBuilderKt: int subarrayContentHashCode(java.lang.Object[],int,int)>($r0, $i0, $i1);
+
+        return $i0;
+    }
+
+    public static final java.lang.String access$subarrayContentToString(java.lang.Object[], int, int)
+    {
+        java.lang.Object[] $r0;
+        int $i0, $i1;
+        java.lang.String $r1;
+
+        $r0 := @parameter0: java.lang.Object[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r1 = staticinvoke <kotlin.collections.builders.ListBuilderKt: java.lang.String subarrayContentToString(java.lang.Object[],int,int)>($r0, $i0, $i1);
+
+        return $r1;
+    }
+
+    public static final java.lang.Object[] arrayOfUninitializedElements(int)
+    {
+        java.lang.Object[] $r1;
+        int $i0;
+        java.lang.String $r0;
+        java.lang.IllegalArgumentException $r2;
+        boolean $z0;
+
+        $i0 := @parameter0: int;
+
+        if $i0 < 0 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        if $z0 == 0 goto label3;
+
+        $r1 = newarray (java.lang.Object)[$i0];
+
+        return $r1;
+
+     label3:
+        $r2 = new java.lang.IllegalArgumentException;
+
+        $r0 = "capacity must be non-negative.";
+
+        $r0 = virtualinvoke $r0.<java.lang.Object: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r0);
+
+        throw $r2;
+    }
+
+    public static final java.lang.Object[] copyOfUninitializedElements(java.lang.Object[], int)
+    {
+        int $i0;
+        java.lang.Object[] $r0;
+
+        $r0 := @parameter0: java.lang.Object[];
+
+        $i0 := @parameter1: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r0 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>($r0, $i0);
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r0, "copyOf(this, newSize)");
+
+        return $r0;
+    }
+
+    public static final void resetAt(java.lang.Object[], int)
+    {
+        int $i0;
+        java.lang.Object[] $r0;
+
+        $r0 := @parameter0: java.lang.Object[];
+
+        $i0 := @parameter1: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r0[$i0] = null;
+
+        return;
+    }
+
+    public static final void resetRange(java.lang.Object[], int, int)
+    {
+        int $i0, $i1;
+        java.lang.Object[] $r0;
+
+        $r0 := @parameter0: java.lang.Object[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+     label1:
+        if $i0 >= $i1 goto label2;
+
+        staticinvoke <kotlin.collections.builders.ListBuilderKt: void resetAt(java.lang.Object[],int)>($r0, $i0);
+
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    private static final boolean subarrayContentEquals(java.lang.Object[], int, int, java.util.List)
+    {
+        java.lang.Object[] $r0;
+        java.util.List $r1;
+        int $i0, $i1, $i2, $i3;
+        java.lang.Object $r2, $r3;
+        boolean $z0;
+
+        $r0 := @parameter0: java.lang.Object[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r1 := @parameter3: java.util.List;
+
+        $i2 = interfaceinvoke $r1.<java.util.List: int size()>();
+
+        if $i1 == $i2 goto label1;
+
+        return 0;
+
+     label1:
+        $i2 = 0;
+
+     label2:
+        if $i2 >= $i1 goto label4;
+
+        $i3 = $i0 + $i2;
+
+        $r2 = $r0[$i3];
+
+        $r3 = interfaceinvoke $r1.<java.util.List: java.lang.Object get(int)>($i2);
+
+        $z0 = staticinvoke <kotlin.jvm.internal.Intrinsics: boolean areEqual(java.lang.Object,java.lang.Object)>($r2, $r3);
+
+        if $z0 != 0 goto label3;
+
+        return 0;
+
+     label3:
+        $i2 = $i2 + 1;
+
+        goto label2;
+
+     label4:
+        return 1;
+    }
+
+    private static final int subarrayContentHashCode(java.lang.Object[], int, int)
+    {
+        java.lang.Object[] $r0;
+        int $i0, $i1, $i2, $i3, i4;
+        java.lang.Object r1;
+
+        $r0 := @parameter0: java.lang.Object[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 = 1;
+
+        i4 = 0;
+
+     label1:
+        if i4 >= $i1 goto label4;
+
+        $i3 = $i0 + i4;
+
+        r1 = $r0[$i3];
+
+        $i2 = $i2 * 31;
+
+        if r1 == null goto label2;
+
+        $i3 = virtualinvoke r1.<java.lang.Object: int hashCode()>();
+
+        goto label3;
+
+     label2:
+        $i3 = 0;
+
+     label3:
+        $i2 = $i2 + $i3;
+
+        i4 = i4 + 1;
+
+        goto label1;
+
+     label4:
+        return $i2;
+    }
+
+    private static final java.lang.String subarrayContentToString(java.lang.Object[], int, int)
+    {
+        java.lang.Object[] $r0;
+        int $i0, $i1, i2, $i3;
+        java.lang.StringBuilder r1;
+        java.lang.Object $r3;
+        java.lang.String $r2;
+
+        $r0 := @parameter0: java.lang.Object[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        r1 = new java.lang.StringBuilder;
+
+        i2 = $i1 * 3;
+
+        i2 = i2 + 2;
+
+        specialinvoke r1.<java.lang.StringBuilder: void <init>(int)>(i2);
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[");
+
+        i2 = 0;
+
+     label1:
+        if i2 >= $i1 goto label3;
+
+        if i2 <= 0 goto label2;
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", ");
+
+     label2:
+        $i3 = $i0 + i2;
+
+        $r3 = $r0[$i3];
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        i2 = i2 + 1;
+
+        goto label1;
+
+     label3:
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r2 = virtualinvoke r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r2, "sb.toString()");
+
+        return $r2;
+    }
+}

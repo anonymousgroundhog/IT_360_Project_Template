@@ -1,0 +1,62 @@
+class androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture$1 extends androidx.concurrent.futures.AbstractResolvableFuture
+{
+    final androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture this$0;
+
+    void <init>(androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture)
+    {
+        androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture $r1;
+        androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture$1 r0;
+
+        r0 := @this: androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture$1;
+
+        $r1 := @parameter0: androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture;
+
+        r0.<androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture$1: androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture this$0> = $r1;
+
+        specialinvoke r0.<androidx.concurrent.futures.AbstractResolvableFuture: void <init>()>();
+
+        return;
+    }
+
+    protected java.lang.String pendingToString()
+    {
+        androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture r1;
+        androidx.concurrent.futures.CallbackToFutureAdapter$Completer r4;
+        java.lang.Object $r3;
+        java.lang.StringBuilder $r5;
+        java.lang.String $r6;
+        java.lang.ref.WeakReference r2;
+        androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture$1 r0;
+
+        r0 := @this: androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture$1;
+
+        r1 = r0.<androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture$1: androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture this$0>;
+
+        r2 = r1.<androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture: java.lang.ref.WeakReference completerWeakReference>;
+
+        $r3 = virtualinvoke r2.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        r4 = (androidx.concurrent.futures.CallbackToFutureAdapter$Completer) $r3;
+
+        if r4 != null goto label1;
+
+        return "Completer object has been garbage collected, future will fail soon";
+
+     label1:
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("tag=[");
+
+        $r3 = r4.<androidx.concurrent.futures.CallbackToFutureAdapter$Completer: java.lang.Object tag>;
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r6;
+    }
+}

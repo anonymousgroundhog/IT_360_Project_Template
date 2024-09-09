@@ -1,0 +1,993 @@
+class androidx.work.impl.WorkDatabase_Impl$1 extends androidx.room.RoomOpenHelper$Delegate
+{
+    final androidx.work.impl.WorkDatabase_Impl this$0;
+
+    void <init>(androidx.work.impl.WorkDatabase_Impl, int)
+    {
+        androidx.work.impl.WorkDatabase_Impl $r1;
+        int $i0;
+        androidx.work.impl.WorkDatabase_Impl$1 r0;
+
+        r0 := @this: androidx.work.impl.WorkDatabase_Impl$1;
+
+        $r1 := @parameter0: androidx.work.impl.WorkDatabase_Impl;
+
+        $i0 := @parameter1: int;
+
+        r0.<androidx.work.impl.WorkDatabase_Impl$1: androidx.work.impl.WorkDatabase_Impl this$0> = $r1;
+
+        specialinvoke r0.<androidx.room.RoomOpenHelper$Delegate: void <init>(int)>($i0);
+
+        return;
+    }
+
+    public void createAllTables(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        androidx.work.impl.WorkDatabase_Impl$1 r0;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+
+        r0 := @this: androidx.work.impl.WorkDatabase_Impl$1;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("CREATE TABLE IF NOT EXISTS `Dependency` (`work_spec_id` TEXT NOT NULL, `prerequisite_id` TEXT NOT NULL, PRIMARY KEY(`work_spec_id`, `prerequisite_id`), FOREIGN KEY(`work_spec_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`prerequisite_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("CREATE INDEX IF NOT EXISTS `index_Dependency_work_spec_id` ON `Dependency` (`work_spec_id`)");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("CREATE INDEX IF NOT EXISTS `index_Dependency_prerequisite_id` ON `Dependency` (`prerequisite_id`)");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("CREATE TABLE IF NOT EXISTS `WorkSpec` (`id` TEXT NOT NULL, `state` INTEGER NOT NULL, `worker_class_name` TEXT NOT NULL, `input_merger_class_name` TEXT, `input` BLOB NOT NULL, `output` BLOB NOT NULL, `initial_delay` INTEGER NOT NULL, `interval_duration` INTEGER NOT NULL, `flex_duration` INTEGER NOT NULL, `run_attempt_count` INTEGER NOT NULL, `backoff_policy` INTEGER NOT NULL, `backoff_delay_duration` INTEGER NOT NULL, `period_start_time` INTEGER NOT NULL, `minimum_retention_duration` INTEGER NOT NULL, `schedule_requested_at` INTEGER NOT NULL, `run_in_foreground` INTEGER NOT NULL, `out_of_quota_policy` INTEGER NOT NULL, `required_network_type` INTEGER, `requires_charging` INTEGER NOT NULL, `requires_device_idle` INTEGER NOT NULL, `requires_battery_not_low` INTEGER NOT NULL, `requires_storage_not_low` INTEGER NOT NULL, `trigger_content_update_delay` INTEGER NOT NULL, `trigger_max_content_delay` INTEGER NOT NULL, `content_uri_triggers` BLOB, PRIMARY KEY(`id`))");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("CREATE INDEX IF NOT EXISTS `index_WorkSpec_schedule_requested_at` ON `WorkSpec` (`schedule_requested_at`)");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("CREATE INDEX IF NOT EXISTS `index_WorkSpec_period_start_time` ON `WorkSpec` (`period_start_time`)");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("CREATE TABLE IF NOT EXISTS `WorkTag` (`tag` TEXT NOT NULL, `work_spec_id` TEXT NOT NULL, PRIMARY KEY(`tag`, `work_spec_id`), FOREIGN KEY(`work_spec_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("CREATE INDEX IF NOT EXISTS `index_WorkTag_work_spec_id` ON `WorkTag` (`work_spec_id`)");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("CREATE TABLE IF NOT EXISTS `SystemIdInfo` (`work_spec_id` TEXT NOT NULL, `system_id` INTEGER NOT NULL, PRIMARY KEY(`work_spec_id`), FOREIGN KEY(`work_spec_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("CREATE TABLE IF NOT EXISTS `WorkName` (`name` TEXT NOT NULL, `work_spec_id` TEXT NOT NULL, PRIMARY KEY(`name`, `work_spec_id`), FOREIGN KEY(`work_spec_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("CREATE INDEX IF NOT EXISTS `index_WorkName_work_spec_id` ON `WorkName` (`work_spec_id`)");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("CREATE TABLE IF NOT EXISTS `WorkProgress` (`work_spec_id` TEXT NOT NULL, `progress` BLOB NOT NULL, PRIMARY KEY(`work_spec_id`), FOREIGN KEY(`work_spec_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("CREATE TABLE IF NOT EXISTS `Preference` (`key` TEXT NOT NULL, `long_value` INTEGER, PRIMARY KEY(`key`))");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \'c103703e120ae8cc73c9248622f3cd1e\')");
+
+        return;
+    }
+
+    public void dropAllTables(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        java.util.List $r3;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        androidx.work.impl.WorkDatabase_Impl r2;
+        int i0, $i1;
+        androidx.work.impl.WorkDatabase_Impl$1 r0;
+        androidx.room.RoomDatabase$Callback $r5;
+        java.lang.Object $r4;
+
+        r0 := @this: androidx.work.impl.WorkDatabase_Impl$1;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("DROP TABLE IF EXISTS `Dependency`");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("DROP TABLE IF EXISTS `WorkSpec`");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("DROP TABLE IF EXISTS `WorkTag`");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("DROP TABLE IF EXISTS `SystemIdInfo`");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("DROP TABLE IF EXISTS `WorkName`");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("DROP TABLE IF EXISTS `WorkProgress`");
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("DROP TABLE IF EXISTS `Preference`");
+
+        r2 = r0.<androidx.work.impl.WorkDatabase_Impl$1: androidx.work.impl.WorkDatabase_Impl this$0>;
+
+        $r3 = staticinvoke <androidx.work.impl.WorkDatabase_Impl: java.util.List access$000(androidx.work.impl.WorkDatabase_Impl)>(r2);
+
+        if $r3 == null goto label2;
+
+        i0 = 0;
+
+        r2 = r0.<androidx.work.impl.WorkDatabase_Impl$1: androidx.work.impl.WorkDatabase_Impl this$0>;
+
+        $r3 = staticinvoke <androidx.work.impl.WorkDatabase_Impl: java.util.List access$100(androidx.work.impl.WorkDatabase_Impl)>(r2);
+
+        $i1 = interfaceinvoke $r3.<java.util.List: int size()>();
+
+     label1:
+        if i0 >= $i1 goto label2;
+
+        r2 = r0.<androidx.work.impl.WorkDatabase_Impl$1: androidx.work.impl.WorkDatabase_Impl this$0>;
+
+        $r3 = staticinvoke <androidx.work.impl.WorkDatabase_Impl: java.util.List access$200(androidx.work.impl.WorkDatabase_Impl)>(r2);
+
+        $r4 = interfaceinvoke $r3.<java.util.List: java.lang.Object get(int)>(i0);
+
+        $r5 = (androidx.room.RoomDatabase$Callback) $r4;
+
+        virtualinvoke $r5.<androidx.room.RoomDatabase$Callback: void onDestructiveMigration(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        i0 = i0 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    protected void onCreate(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        java.util.List $r3;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        androidx.work.impl.WorkDatabase_Impl r2;
+        int i0, $i1;
+        androidx.work.impl.WorkDatabase_Impl$1 r0;
+        androidx.room.RoomDatabase$Callback $r5;
+        java.lang.Object $r4;
+
+        r0 := @this: androidx.work.impl.WorkDatabase_Impl$1;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        r2 = r0.<androidx.work.impl.WorkDatabase_Impl$1: androidx.work.impl.WorkDatabase_Impl this$0>;
+
+        $r3 = staticinvoke <androidx.work.impl.WorkDatabase_Impl: java.util.List access$300(androidx.work.impl.WorkDatabase_Impl)>(r2);
+
+        if $r3 == null goto label2;
+
+        i0 = 0;
+
+        r2 = r0.<androidx.work.impl.WorkDatabase_Impl$1: androidx.work.impl.WorkDatabase_Impl this$0>;
+
+        $r3 = staticinvoke <androidx.work.impl.WorkDatabase_Impl: java.util.List access$400(androidx.work.impl.WorkDatabase_Impl)>(r2);
+
+        $i1 = interfaceinvoke $r3.<java.util.List: int size()>();
+
+     label1:
+        if i0 >= $i1 goto label2;
+
+        r2 = r0.<androidx.work.impl.WorkDatabase_Impl$1: androidx.work.impl.WorkDatabase_Impl this$0>;
+
+        $r3 = staticinvoke <androidx.work.impl.WorkDatabase_Impl: java.util.List access$500(androidx.work.impl.WorkDatabase_Impl)>(r2);
+
+        $r4 = interfaceinvoke $r3.<java.util.List: java.lang.Object get(int)>(i0);
+
+        $r5 = (androidx.room.RoomDatabase$Callback) $r4;
+
+        virtualinvoke $r5.<androidx.room.RoomDatabase$Callback: void onCreate(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        i0 = i0 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void onOpen(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        java.util.List $r3;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        androidx.work.impl.WorkDatabase_Impl r2;
+        int i0, $i1;
+        androidx.work.impl.WorkDatabase_Impl$1 r0;
+        androidx.room.RoomDatabase$Callback $r5;
+        java.lang.Object $r4;
+
+        r0 := @this: androidx.work.impl.WorkDatabase_Impl$1;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        r2 = r0.<androidx.work.impl.WorkDatabase_Impl$1: androidx.work.impl.WorkDatabase_Impl this$0>;
+
+        staticinvoke <androidx.work.impl.WorkDatabase_Impl: androidx.sqlite.db.SupportSQLiteDatabase access$602(androidx.work.impl.WorkDatabase_Impl,androidx.sqlite.db.SupportSQLiteDatabase)>(r2, $r1);
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>("PRAGMA foreign_keys = ON");
+
+        r2 = r0.<androidx.work.impl.WorkDatabase_Impl$1: androidx.work.impl.WorkDatabase_Impl this$0>;
+
+        staticinvoke <androidx.work.impl.WorkDatabase_Impl: void access$700(androidx.work.impl.WorkDatabase_Impl,androidx.sqlite.db.SupportSQLiteDatabase)>(r2, $r1);
+
+        r2 = r0.<androidx.work.impl.WorkDatabase_Impl$1: androidx.work.impl.WorkDatabase_Impl this$0>;
+
+        $r3 = staticinvoke <androidx.work.impl.WorkDatabase_Impl: java.util.List access$800(androidx.work.impl.WorkDatabase_Impl)>(r2);
+
+        if $r3 == null goto label2;
+
+        i0 = 0;
+
+        r2 = r0.<androidx.work.impl.WorkDatabase_Impl$1: androidx.work.impl.WorkDatabase_Impl this$0>;
+
+        $r3 = staticinvoke <androidx.work.impl.WorkDatabase_Impl: java.util.List access$900(androidx.work.impl.WorkDatabase_Impl)>(r2);
+
+        $i1 = interfaceinvoke $r3.<java.util.List: int size()>();
+
+     label1:
+        if i0 >= $i1 goto label2;
+
+        r2 = r0.<androidx.work.impl.WorkDatabase_Impl$1: androidx.work.impl.WorkDatabase_Impl this$0>;
+
+        $r3 = staticinvoke <androidx.work.impl.WorkDatabase_Impl: java.util.List access$1000(androidx.work.impl.WorkDatabase_Impl)>(r2);
+
+        $r4 = interfaceinvoke $r3.<java.util.List: java.lang.Object get(int)>(i0);
+
+        $r5 = (androidx.room.RoomDatabase$Callback) $r4;
+
+        virtualinvoke $r5.<androidx.room.RoomDatabase$Callback: void onOpen(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        i0 = i0 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void onPostMigrate(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        androidx.work.impl.WorkDatabase_Impl$1 r0;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+
+        r0 := @this: androidx.work.impl.WorkDatabase_Impl$1;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        return;
+    }
+
+    public void onPreMigrate(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        androidx.work.impl.WorkDatabase_Impl$1 r0;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+
+        r0 := @this: androidx.work.impl.WorkDatabase_Impl$1;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        staticinvoke <androidx.room.util.DBUtil: void dropFtsSyncTriggers(androidx.sqlite.db.SupportSQLiteDatabase)>($r1);
+
+        return;
+    }
+
+    protected androidx.room.RoomOpenHelper$ValidationResult onValidateSchema(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        androidx.room.util.TableInfo$ForeignKey r5;
+        androidx.room.util.TableInfo r11, $r12;
+        java.util.HashMap r2;
+        java.lang.String[] $r6;
+        java.util.HashSet r4, r9;
+        androidx.room.RoomOpenHelper$ValidationResult r13;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        androidx.work.impl.WorkDatabase_Impl$1 r0;
+        java.lang.String $r15;
+        boolean $z0;
+        androidx.room.util.TableInfo$Column r3;
+        java.util.List $r7, $r8;
+        androidx.room.util.TableInfo$Index r10;
+        java.lang.StringBuilder r14;
+
+        r0 := @this: androidx.work.impl.WorkDatabase_Impl$1;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        r2 = new java.util.HashMap;
+
+        specialinvoke r2.<java.util.HashMap: void <init>(int)>(2);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("work_spec_id", "TEXT", 1, 1, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("work_spec_id", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("prerequisite_id", "TEXT", 1, 2, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("prerequisite_id", r3);
+
+        r4 = new java.util.HashSet;
+
+        specialinvoke r4.<java.util.HashSet: void <init>(int)>(2);
+
+        r5 = new androidx.room.util.TableInfo$ForeignKey;
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "work_spec_id";
+
+        $r7 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "id";
+
+        $r8 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        specialinvoke r5.<androidx.room.util.TableInfo$ForeignKey: void <init>(java.lang.String,java.lang.String,java.lang.String,java.util.List,java.util.List)>("WorkSpec", "CASCADE", "CASCADE", $r7, $r8);
+
+        virtualinvoke r4.<java.util.HashSet: boolean add(java.lang.Object)>(r5);
+
+        r5 = new androidx.room.util.TableInfo$ForeignKey;
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "prerequisite_id";
+
+        $r7 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "id";
+
+        $r8 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        specialinvoke r5.<androidx.room.util.TableInfo$ForeignKey: void <init>(java.lang.String,java.lang.String,java.lang.String,java.util.List,java.util.List)>("WorkSpec", "CASCADE", "CASCADE", $r7, $r8);
+
+        virtualinvoke r4.<java.util.HashSet: boolean add(java.lang.Object)>(r5);
+
+        r9 = new java.util.HashSet;
+
+        specialinvoke r9.<java.util.HashSet: void <init>(int)>(2);
+
+        r10 = new androidx.room.util.TableInfo$Index;
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "work_spec_id";
+
+        $r7 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        specialinvoke r10.<androidx.room.util.TableInfo$Index: void <init>(java.lang.String,boolean,java.util.List)>("index_Dependency_work_spec_id", 0, $r7);
+
+        virtualinvoke r9.<java.util.HashSet: boolean add(java.lang.Object)>(r10);
+
+        r10 = new androidx.room.util.TableInfo$Index;
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "prerequisite_id";
+
+        $r7 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        specialinvoke r10.<androidx.room.util.TableInfo$Index: void <init>(java.lang.String,boolean,java.util.List)>("index_Dependency_prerequisite_id", 0, $r7);
+
+        virtualinvoke r9.<java.util.HashSet: boolean add(java.lang.Object)>(r10);
+
+        r11 = new androidx.room.util.TableInfo;
+
+        specialinvoke r11.<androidx.room.util.TableInfo: void <init>(java.lang.String,java.util.Map,java.util.Set,java.util.Set)>("Dependency", r2, r4, r9);
+
+        $r12 = staticinvoke <androidx.room.util.TableInfo: androidx.room.util.TableInfo read(androidx.sqlite.db.SupportSQLiteDatabase,java.lang.String)>($r1, "Dependency");
+
+        $z0 = virtualinvoke r11.<androidx.room.util.TableInfo: boolean equals(java.lang.Object)>($r12);
+
+        if $z0 != 0 goto label1;
+
+        r13 = new androidx.room.RoomOpenHelper$ValidationResult;
+
+        r14 = new java.lang.StringBuilder;
+
+        specialinvoke r14.<java.lang.StringBuilder: void <init>()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Dependency(androidx.work.impl.model.Dependency).\n Expected:\n");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r11);
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\n Found:\n");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r12);
+
+        $r15 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r13.<androidx.room.RoomOpenHelper$ValidationResult: void <init>(boolean,java.lang.String)>(0, $r15);
+
+        return r13;
+
+     label1:
+        r2 = new java.util.HashMap;
+
+        specialinvoke r2.<java.util.HashMap: void <init>(int)>(25);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("id", "TEXT", 1, 1, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("id", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("state", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("state", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("worker_class_name", "TEXT", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("worker_class_name", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("input_merger_class_name", "TEXT", 0, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("input_merger_class_name", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("input", "BLOB", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("input", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("output", "BLOB", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("output", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("initial_delay", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("initial_delay", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("interval_duration", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("interval_duration", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("flex_duration", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("flex_duration", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("run_attempt_count", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("run_attempt_count", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("backoff_policy", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("backoff_policy", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("backoff_delay_duration", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("backoff_delay_duration", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("period_start_time", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("period_start_time", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("minimum_retention_duration", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("minimum_retention_duration", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("schedule_requested_at", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("schedule_requested_at", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("run_in_foreground", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("run_in_foreground", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("out_of_quota_policy", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("out_of_quota_policy", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("required_network_type", "INTEGER", 0, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("required_network_type", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("requires_charging", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("requires_charging", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("requires_device_idle", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("requires_device_idle", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("requires_battery_not_low", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("requires_battery_not_low", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("requires_storage_not_low", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("requires_storage_not_low", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("trigger_content_update_delay", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("trigger_content_update_delay", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("trigger_max_content_delay", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("trigger_max_content_delay", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("content_uri_triggers", "BLOB", 0, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("content_uri_triggers", r3);
+
+        r4 = new java.util.HashSet;
+
+        specialinvoke r4.<java.util.HashSet: void <init>(int)>(0);
+
+        r9 = new java.util.HashSet;
+
+        specialinvoke r9.<java.util.HashSet: void <init>(int)>(2);
+
+        r10 = new androidx.room.util.TableInfo$Index;
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "schedule_requested_at";
+
+        $r7 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        specialinvoke r10.<androidx.room.util.TableInfo$Index: void <init>(java.lang.String,boolean,java.util.List)>("index_WorkSpec_schedule_requested_at", 0, $r7);
+
+        virtualinvoke r9.<java.util.HashSet: boolean add(java.lang.Object)>(r10);
+
+        r10 = new androidx.room.util.TableInfo$Index;
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "period_start_time";
+
+        $r7 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        specialinvoke r10.<androidx.room.util.TableInfo$Index: void <init>(java.lang.String,boolean,java.util.List)>("index_WorkSpec_period_start_time", 0, $r7);
+
+        virtualinvoke r9.<java.util.HashSet: boolean add(java.lang.Object)>(r10);
+
+        r11 = new androidx.room.util.TableInfo;
+
+        specialinvoke r11.<androidx.room.util.TableInfo: void <init>(java.lang.String,java.util.Map,java.util.Set,java.util.Set)>("WorkSpec", r2, r4, r9);
+
+        $r12 = staticinvoke <androidx.room.util.TableInfo: androidx.room.util.TableInfo read(androidx.sqlite.db.SupportSQLiteDatabase,java.lang.String)>($r1, "WorkSpec");
+
+        $z0 = virtualinvoke r11.<androidx.room.util.TableInfo: boolean equals(java.lang.Object)>($r12);
+
+        if $z0 != 0 goto label2;
+
+        r13 = new androidx.room.RoomOpenHelper$ValidationResult;
+
+        r14 = new java.lang.StringBuilder;
+
+        specialinvoke r14.<java.lang.StringBuilder: void <init>()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("WorkSpec(androidx.work.impl.model.WorkSpec).\n Expected:\n");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r11);
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\n Found:\n");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r12);
+
+        $r15 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r13.<androidx.room.RoomOpenHelper$ValidationResult: void <init>(boolean,java.lang.String)>(0, $r15);
+
+        return r13;
+
+     label2:
+        r2 = new java.util.HashMap;
+
+        specialinvoke r2.<java.util.HashMap: void <init>(int)>(2);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("tag", "TEXT", 1, 1, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("tag", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("work_spec_id", "TEXT", 1, 2, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("work_spec_id", r3);
+
+        r4 = new java.util.HashSet;
+
+        specialinvoke r4.<java.util.HashSet: void <init>(int)>(1);
+
+        r5 = new androidx.room.util.TableInfo$ForeignKey;
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "work_spec_id";
+
+        $r7 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "id";
+
+        $r8 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        specialinvoke r5.<androidx.room.util.TableInfo$ForeignKey: void <init>(java.lang.String,java.lang.String,java.lang.String,java.util.List,java.util.List)>("WorkSpec", "CASCADE", "CASCADE", $r7, $r8);
+
+        virtualinvoke r4.<java.util.HashSet: boolean add(java.lang.Object)>(r5);
+
+        r9 = new java.util.HashSet;
+
+        specialinvoke r9.<java.util.HashSet: void <init>(int)>(1);
+
+        r10 = new androidx.room.util.TableInfo$Index;
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "work_spec_id";
+
+        $r7 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        specialinvoke r10.<androidx.room.util.TableInfo$Index: void <init>(java.lang.String,boolean,java.util.List)>("index_WorkTag_work_spec_id", 0, $r7);
+
+        virtualinvoke r9.<java.util.HashSet: boolean add(java.lang.Object)>(r10);
+
+        r11 = new androidx.room.util.TableInfo;
+
+        specialinvoke r11.<androidx.room.util.TableInfo: void <init>(java.lang.String,java.util.Map,java.util.Set,java.util.Set)>("WorkTag", r2, r4, r9);
+
+        $r12 = staticinvoke <androidx.room.util.TableInfo: androidx.room.util.TableInfo read(androidx.sqlite.db.SupportSQLiteDatabase,java.lang.String)>($r1, "WorkTag");
+
+        $z0 = virtualinvoke r11.<androidx.room.util.TableInfo: boolean equals(java.lang.Object)>($r12);
+
+        if $z0 != 0 goto label3;
+
+        r13 = new androidx.room.RoomOpenHelper$ValidationResult;
+
+        r14 = new java.lang.StringBuilder;
+
+        specialinvoke r14.<java.lang.StringBuilder: void <init>()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("WorkTag(androidx.work.impl.model.WorkTag).\n Expected:\n");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r11);
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\n Found:\n");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r12);
+
+        $r15 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r13.<androidx.room.RoomOpenHelper$ValidationResult: void <init>(boolean,java.lang.String)>(0, $r15);
+
+        return r13;
+
+     label3:
+        r2 = new java.util.HashMap;
+
+        specialinvoke r2.<java.util.HashMap: void <init>(int)>(2);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("work_spec_id", "TEXT", 1, 1, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("work_spec_id", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("system_id", "INTEGER", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("system_id", r3);
+
+        r4 = new java.util.HashSet;
+
+        specialinvoke r4.<java.util.HashSet: void <init>(int)>(1);
+
+        r5 = new androidx.room.util.TableInfo$ForeignKey;
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "work_spec_id";
+
+        $r7 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "id";
+
+        $r8 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        specialinvoke r5.<androidx.room.util.TableInfo$ForeignKey: void <init>(java.lang.String,java.lang.String,java.lang.String,java.util.List,java.util.List)>("WorkSpec", "CASCADE", "CASCADE", $r7, $r8);
+
+        virtualinvoke r4.<java.util.HashSet: boolean add(java.lang.Object)>(r5);
+
+        r9 = new java.util.HashSet;
+
+        specialinvoke r9.<java.util.HashSet: void <init>(int)>(0);
+
+        r11 = new androidx.room.util.TableInfo;
+
+        specialinvoke r11.<androidx.room.util.TableInfo: void <init>(java.lang.String,java.util.Map,java.util.Set,java.util.Set)>("SystemIdInfo", r2, r4, r9);
+
+        $r12 = staticinvoke <androidx.room.util.TableInfo: androidx.room.util.TableInfo read(androidx.sqlite.db.SupportSQLiteDatabase,java.lang.String)>($r1, "SystemIdInfo");
+
+        $z0 = virtualinvoke r11.<androidx.room.util.TableInfo: boolean equals(java.lang.Object)>($r12);
+
+        if $z0 != 0 goto label4;
+
+        r13 = new androidx.room.RoomOpenHelper$ValidationResult;
+
+        r14 = new java.lang.StringBuilder;
+
+        specialinvoke r14.<java.lang.StringBuilder: void <init>()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("SystemIdInfo(androidx.work.impl.model.SystemIdInfo).\n Expected:\n");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r11);
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\n Found:\n");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r12);
+
+        $r15 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r13.<androidx.room.RoomOpenHelper$ValidationResult: void <init>(boolean,java.lang.String)>(0, $r15);
+
+        return r13;
+
+     label4:
+        r2 = new java.util.HashMap;
+
+        specialinvoke r2.<java.util.HashMap: void <init>(int)>(2);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("name", "TEXT", 1, 1, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("name", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("work_spec_id", "TEXT", 1, 2, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("work_spec_id", r3);
+
+        r4 = new java.util.HashSet;
+
+        specialinvoke r4.<java.util.HashSet: void <init>(int)>(1);
+
+        r5 = new androidx.room.util.TableInfo$ForeignKey;
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "work_spec_id";
+
+        $r7 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "id";
+
+        $r8 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        specialinvoke r5.<androidx.room.util.TableInfo$ForeignKey: void <init>(java.lang.String,java.lang.String,java.lang.String,java.util.List,java.util.List)>("WorkSpec", "CASCADE", "CASCADE", $r7, $r8);
+
+        virtualinvoke r4.<java.util.HashSet: boolean add(java.lang.Object)>(r5);
+
+        r9 = new java.util.HashSet;
+
+        specialinvoke r9.<java.util.HashSet: void <init>(int)>(1);
+
+        r10 = new androidx.room.util.TableInfo$Index;
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "work_spec_id";
+
+        $r7 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        specialinvoke r10.<androidx.room.util.TableInfo$Index: void <init>(java.lang.String,boolean,java.util.List)>("index_WorkName_work_spec_id", 0, $r7);
+
+        virtualinvoke r9.<java.util.HashSet: boolean add(java.lang.Object)>(r10);
+
+        r11 = new androidx.room.util.TableInfo;
+
+        specialinvoke r11.<androidx.room.util.TableInfo: void <init>(java.lang.String,java.util.Map,java.util.Set,java.util.Set)>("WorkName", r2, r4, r9);
+
+        $r12 = staticinvoke <androidx.room.util.TableInfo: androidx.room.util.TableInfo read(androidx.sqlite.db.SupportSQLiteDatabase,java.lang.String)>($r1, "WorkName");
+
+        $z0 = virtualinvoke r11.<androidx.room.util.TableInfo: boolean equals(java.lang.Object)>($r12);
+
+        if $z0 != 0 goto label5;
+
+        r13 = new androidx.room.RoomOpenHelper$ValidationResult;
+
+        r14 = new java.lang.StringBuilder;
+
+        specialinvoke r14.<java.lang.StringBuilder: void <init>()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("WorkName(androidx.work.impl.model.WorkName).\n Expected:\n");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r11);
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\n Found:\n");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r12);
+
+        $r15 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r13.<androidx.room.RoomOpenHelper$ValidationResult: void <init>(boolean,java.lang.String)>(0, $r15);
+
+        return r13;
+
+     label5:
+        r2 = new java.util.HashMap;
+
+        specialinvoke r2.<java.util.HashMap: void <init>(int)>(2);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("work_spec_id", "TEXT", 1, 1, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("work_spec_id", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("progress", "BLOB", 1, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("progress", r3);
+
+        r4 = new java.util.HashSet;
+
+        specialinvoke r4.<java.util.HashSet: void <init>(int)>(1);
+
+        r5 = new androidx.room.util.TableInfo$ForeignKey;
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "work_spec_id";
+
+        $r7 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        $r6 = newarray (java.lang.String)[1];
+
+        $r6[0] = "id";
+
+        $r8 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r6);
+
+        specialinvoke r5.<androidx.room.util.TableInfo$ForeignKey: void <init>(java.lang.String,java.lang.String,java.lang.String,java.util.List,java.util.List)>("WorkSpec", "CASCADE", "CASCADE", $r7, $r8);
+
+        virtualinvoke r4.<java.util.HashSet: boolean add(java.lang.Object)>(r5);
+
+        r9 = new java.util.HashSet;
+
+        specialinvoke r9.<java.util.HashSet: void <init>(int)>(0);
+
+        r11 = new androidx.room.util.TableInfo;
+
+        specialinvoke r11.<androidx.room.util.TableInfo: void <init>(java.lang.String,java.util.Map,java.util.Set,java.util.Set)>("WorkProgress", r2, r4, r9);
+
+        $r12 = staticinvoke <androidx.room.util.TableInfo: androidx.room.util.TableInfo read(androidx.sqlite.db.SupportSQLiteDatabase,java.lang.String)>($r1, "WorkProgress");
+
+        $z0 = virtualinvoke r11.<androidx.room.util.TableInfo: boolean equals(java.lang.Object)>($r12);
+
+        if $z0 != 0 goto label6;
+
+        r13 = new androidx.room.RoomOpenHelper$ValidationResult;
+
+        r14 = new java.lang.StringBuilder;
+
+        specialinvoke r14.<java.lang.StringBuilder: void <init>()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("WorkProgress(androidx.work.impl.model.WorkProgress).\n Expected:\n");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r11);
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\n Found:\n");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r12);
+
+        $r15 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r13.<androidx.room.RoomOpenHelper$ValidationResult: void <init>(boolean,java.lang.String)>(0, $r15);
+
+        return r13;
+
+     label6:
+        r2 = new java.util.HashMap;
+
+        specialinvoke r2.<java.util.HashMap: void <init>(int)>(2);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("key", "TEXT", 1, 1, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("key", r3);
+
+        r3 = new androidx.room.util.TableInfo$Column;
+
+        specialinvoke r3.<androidx.room.util.TableInfo$Column: void <init>(java.lang.String,java.lang.String,boolean,int,java.lang.String,int)>("long_value", "INTEGER", 0, 0, null, 1);
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("long_value", r3);
+
+        r4 = new java.util.HashSet;
+
+        specialinvoke r4.<java.util.HashSet: void <init>(int)>(0);
+
+        r9 = new java.util.HashSet;
+
+        specialinvoke r9.<java.util.HashSet: void <init>(int)>(0);
+
+        r11 = new androidx.room.util.TableInfo;
+
+        specialinvoke r11.<androidx.room.util.TableInfo: void <init>(java.lang.String,java.util.Map,java.util.Set,java.util.Set)>("Preference", r2, r4, r9);
+
+        $r12 = staticinvoke <androidx.room.util.TableInfo: androidx.room.util.TableInfo read(androidx.sqlite.db.SupportSQLiteDatabase,java.lang.String)>($r1, "Preference");
+
+        $z0 = virtualinvoke r11.<androidx.room.util.TableInfo: boolean equals(java.lang.Object)>($r12);
+
+        if $z0 != 0 goto label7;
+
+        r13 = new androidx.room.RoomOpenHelper$ValidationResult;
+
+        r14 = new java.lang.StringBuilder;
+
+        specialinvoke r14.<java.lang.StringBuilder: void <init>()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Preference(androidx.work.impl.model.Preference).\n Expected:\n");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r11);
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\n Found:\n");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r12);
+
+        $r15 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r13.<androidx.room.RoomOpenHelper$ValidationResult: void <init>(boolean,java.lang.String)>(0, $r15);
+
+        return r13;
+
+     label7:
+        r13 = new androidx.room.RoomOpenHelper$ValidationResult;
+
+        specialinvoke r13.<androidx.room.RoomOpenHelper$ValidationResult: void <init>(boolean,java.lang.String)>(1, null);
+
+        return r13;
+    }
+}

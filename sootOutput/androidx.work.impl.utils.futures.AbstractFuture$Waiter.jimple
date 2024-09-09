@@ -1,0 +1,87 @@
+final class androidx.work.impl.utils.futures.AbstractFuture$Waiter extends java.lang.Object
+{
+    static final androidx.work.impl.utils.futures.AbstractFuture$Waiter TOMBSTONE;
+    volatile androidx.work.impl.utils.futures.AbstractFuture$Waiter next;
+    volatile java.lang.Thread thread;
+
+    static void <clinit>()
+    {
+        androidx.work.impl.utils.futures.AbstractFuture$Waiter $r0;
+
+        $r0 = new androidx.work.impl.utils.futures.AbstractFuture$Waiter;
+
+        specialinvoke $r0.<androidx.work.impl.utils.futures.AbstractFuture$Waiter: void <init>(boolean)>(0);
+
+        <androidx.work.impl.utils.futures.AbstractFuture$Waiter: androidx.work.impl.utils.futures.AbstractFuture$Waiter TOMBSTONE> = $r0;
+
+        return;
+    }
+
+    void <init>()
+    {
+        androidx.work.impl.utils.futures.AbstractFuture$AtomicHelper $r1;
+        androidx.work.impl.utils.futures.AbstractFuture$Waiter r0;
+        java.lang.Thread $r2;
+
+        r0 := @this: androidx.work.impl.utils.futures.AbstractFuture$Waiter;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = <androidx.work.impl.utils.futures.AbstractFuture: androidx.work.impl.utils.futures.AbstractFuture$AtomicHelper ATOMIC_HELPER>;
+
+        $r2 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r1.<androidx.work.impl.utils.futures.AbstractFuture$AtomicHelper: void putThread(androidx.work.impl.utils.futures.AbstractFuture$Waiter,java.lang.Thread)>(r0, $r2);
+
+        return;
+    }
+
+    void <init>(boolean)
+    {
+        androidx.work.impl.utils.futures.AbstractFuture$Waiter r0;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.utils.futures.AbstractFuture$Waiter;
+
+        $z0 := @parameter0: boolean;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    void setNext(androidx.work.impl.utils.futures.AbstractFuture$Waiter)
+    {
+        androidx.work.impl.utils.futures.AbstractFuture$AtomicHelper $r2;
+        androidx.work.impl.utils.futures.AbstractFuture$Waiter r0, $r1;
+
+        r0 := @this: androidx.work.impl.utils.futures.AbstractFuture$Waiter;
+
+        $r1 := @parameter0: androidx.work.impl.utils.futures.AbstractFuture$Waiter;
+
+        $r2 = <androidx.work.impl.utils.futures.AbstractFuture: androidx.work.impl.utils.futures.AbstractFuture$AtomicHelper ATOMIC_HELPER>;
+
+        virtualinvoke $r2.<androidx.work.impl.utils.futures.AbstractFuture$AtomicHelper: void putNext(androidx.work.impl.utils.futures.AbstractFuture$Waiter,androidx.work.impl.utils.futures.AbstractFuture$Waiter)>(r0, $r1);
+
+        return;
+    }
+
+    void unpark()
+    {
+        androidx.work.impl.utils.futures.AbstractFuture$Waiter r0;
+        java.lang.Thread r1;
+
+        r0 := @this: androidx.work.impl.utils.futures.AbstractFuture$Waiter;
+
+        r1 = r0.<androidx.work.impl.utils.futures.AbstractFuture$Waiter: java.lang.Thread thread>;
+
+        if r1 == null goto label1;
+
+        r0.<androidx.work.impl.utils.futures.AbstractFuture$Waiter: java.lang.Thread thread> = null;
+
+        staticinvoke <java.util.concurrent.locks.LockSupport: void unpark(java.lang.Thread)>(r1);
+
+     label1:
+        return;
+    }
+}

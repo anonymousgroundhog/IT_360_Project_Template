@@ -1,0 +1,171 @@
+public final class com.google.android.gms.internal.ads.zzchy extends java.lang.Object implements com.google.android.gms.internal.ads.zzftn
+{
+    public final java.lang.String zza;
+
+    public void <init>(java.lang.String)
+    {
+        java.lang.String $r1;
+        com.google.android.gms.internal.ads.zzchy r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzchy;
+
+        $r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzchy: java.lang.String zza> = $r1;
+
+        return;
+    }
+
+    public final java.net.URLConnection zza()
+    {
+        java.net.HttpURLConnection $r8;
+        com.google.android.gms.internal.ads.zzceb $r9;
+        java.net.URL $r5, $r10;
+        java.lang.Integer $r4;
+        com.google.android.gms.internal.ads.zzbga $r2;
+        com.google.android.gms.internal.ads.zzbfu $r1;
+        com.google.android.gms.internal.ads.zzchy r0;
+        java.net.URLConnection $r7;
+        int $i0, $i1, $i2;
+        java.lang.String $r6, $r11;
+        boolean $z0;
+        java.io.IOException $r12;
+        java.lang.Object $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzchy;
+
+        $i0 = <com.google.android.gms.internal.ads.zzchz: int zzd>;
+
+        staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzcev zzw()>();
+
+        $r1 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzz>;
+
+        $r2 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r1);
+
+        $r4 = (java.lang.Integer) $r3;
+
+        $i0 = virtualinvoke $r4.<java.lang.Integer: int intValue()>();
+
+        $r5 = new java.net.URL;
+
+        $r6 = r0.<com.google.android.gms.internal.ads.zzchy: java.lang.String zza>;
+
+        specialinvoke $r5.<java.net.URL: void <init>(java.lang.String)>($r6);
+
+        $i1 = 0;
+
+     label1:
+        $i1 = $i1 + 1;
+
+        if $i1 > 20 goto label7;
+
+        $r7 = virtualinvoke $r5.<java.net.URL: java.net.URLConnection openConnection()>();
+
+        virtualinvoke $r7.<java.net.URLConnection: void setConnectTimeout(int)>($i0);
+
+        virtualinvoke $r7.<java.net.URLConnection: void setReadTimeout(int)>($i0);
+
+        $z0 = $r7 instanceof java.net.HttpURLConnection;
+
+        if $z0 == 0 goto label6;
+
+        $r8 = (java.net.HttpURLConnection) $r7;
+
+        $r9 = new com.google.android.gms.internal.ads.zzceb;
+
+        specialinvoke $r9.<com.google.android.gms.internal.ads.zzceb: void <init>(java.lang.String)>(null);
+
+        virtualinvoke $r9.<com.google.android.gms.internal.ads.zzceb: void zzc(java.net.HttpURLConnection,byte[])>($r8, null);
+
+        virtualinvoke $r8.<java.net.HttpURLConnection: void setInstanceFollowRedirects(boolean)>(0);
+
+        $i2 = virtualinvoke $r8.<java.net.HttpURLConnection: int getResponseCode()>();
+
+        virtualinvoke $r9.<com.google.android.gms.internal.ads.zzceb: void zze(java.net.HttpURLConnection,int)>($r8, $i2);
+
+        $i2 = $i2 / 100;
+
+        if $i2 != 3 goto label8;
+
+        $r6 = virtualinvoke $r8.<java.net.HttpURLConnection: java.lang.String getHeaderField(java.lang.String)>("Location");
+
+        if $r6 == null goto label5;
+
+        $r10 = new java.net.URL;
+
+        specialinvoke $r10.<java.net.URL: void <init>(java.net.URL,java.lang.String)>($r5, $r6);
+
+        $r11 = virtualinvoke $r10.<java.net.URL: java.lang.String getProtocol()>();
+
+        if $r11 == null goto label4;
+
+        $z0 = virtualinvoke $r11.<java.lang.String: boolean equals(java.lang.Object)>("http");
+
+        if $z0 != 0 goto label3;
+
+        $z0 = virtualinvoke $r11.<java.lang.String: boolean equals(java.lang.Object)>("https");
+
+        if $z0 == 0 goto label2;
+
+        goto label3;
+
+     label2:
+        $r6 = "Unsupported scheme: ";
+
+        $r6 = virtualinvoke $r6.<java.lang.String: java.lang.String concat(java.lang.String)>($r11);
+
+        $r12 = new java.io.IOException;
+
+        specialinvoke $r12.<java.io.IOException: void <init>(java.lang.String)>($r6);
+
+        throw $r12;
+
+     label3:
+        $r11 = "Redirecting to ";
+
+        $r6 = virtualinvoke $r11.<java.lang.String: java.lang.String concat(java.lang.String)>($r6);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zze(java.lang.String)>($r6);
+
+        virtualinvoke $r8.<java.net.HttpURLConnection: void disconnect()>();
+
+        $r5 = $r10;
+
+        goto label1;
+
+     label4:
+        $r12 = new java.io.IOException;
+
+        specialinvoke $r12.<java.io.IOException: void <init>(java.lang.String)>("Protocol is null");
+
+        throw $r12;
+
+     label5:
+        $r12 = new java.io.IOException;
+
+        specialinvoke $r12.<java.io.IOException: void <init>(java.lang.String)>("Missing Location header in redirect");
+
+        throw $r12;
+
+     label6:
+        $r12 = new java.io.IOException;
+
+        specialinvoke $r12.<java.io.IOException: void <init>(java.lang.String)>("Invalid protocol.");
+
+        throw $r12;
+
+     label7:
+        $r12 = new java.io.IOException;
+
+        specialinvoke $r12.<java.io.IOException: void <init>(java.lang.String)>("Too many redirects (20)");
+
+        throw $r12;
+
+     label8:
+        return $r8;
+    }
+}

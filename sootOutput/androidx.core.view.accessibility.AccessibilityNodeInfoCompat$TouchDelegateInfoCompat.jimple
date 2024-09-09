@@ -1,0 +1,129 @@
+public final class androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat extends java.lang.Object
+{
+    final android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo mInfo;
+
+    void <init>(android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo)
+    {
+        android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo $r1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat r0;
+
+        r0 := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat;
+
+        $r1 := @parameter0: android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat: android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo mInfo> = $r1;
+
+        return;
+    }
+
+    public void <init>(java.util.Map)
+    {
+        java.util.Map r1;
+        int $i0;
+        android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo $r2;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat r0;
+
+        r0 := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat;
+
+        r1 := @parameter0: java.util.Map;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 29 goto label1;
+
+        $r2 = new android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo;
+
+        specialinvoke $r2.<android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo: void <init>(java.util.Map)>(r1);
+
+        r0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat: android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo mInfo> = $r2;
+
+        return;
+
+     label1:
+        r0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat: android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo mInfo> = null;
+
+        return;
+    }
+
+    public android.graphics.Region getRegionAt(int)
+    {
+        int $i0, $i1;
+        android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo $r2;
+        android.graphics.Region $r1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat r0;
+
+        r0 := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat;
+
+        $i0 := @parameter0: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 29 goto label1;
+
+        $r2 = r0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat: android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo mInfo>;
+
+        $r1 = virtualinvoke $r2.<android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo: android.graphics.Region getRegionAt(int)>($i0);
+
+        return $r1;
+
+     label1:
+        return null;
+    }
+
+    public int getRegionCount()
+    {
+        int $i0;
+        android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo $r1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat r0;
+
+        r0 := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 29 goto label1;
+
+        $r1 = r0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat: android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo mInfo>;
+
+        $i0 = virtualinvoke $r1.<android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo: int getRegionCount()>();
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat getTargetForRegion(android.graphics.Region)
+    {
+        android.view.accessibility.AccessibilityNodeInfo $r3;
+        int i0;
+        android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo r2;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $r4;
+        android.graphics.Region $r1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat r0;
+
+        r0 := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat;
+
+        $r1 := @parameter0: android.graphics.Region;
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 29 goto label1;
+
+        r2 = r0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat: android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo mInfo>;
+
+        $r3 = virtualinvoke r2.<android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo: android.view.accessibility.AccessibilityNodeInfo getTargetForRegion(android.graphics.Region)>($r1);
+
+        if $r3 == null goto label1;
+
+        $r4 = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrap(android.view.accessibility.AccessibilityNodeInfo)>($r3);
+
+        return $r4;
+
+     label1:
+        return null;
+    }
+}

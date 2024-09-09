@@ -1,0 +1,350 @@
+class androidx.work.impl.model.WorkSpecDao_Impl$11 extends java.lang.Object implements java.util.concurrent.Callable
+{
+    final androidx.work.impl.model.WorkSpecDao_Impl this$0;
+    final androidx.room.RoomSQLiteQuery val$_statement;
+
+    void <init>(androidx.work.impl.model.WorkSpecDao_Impl, androidx.room.RoomSQLiteQuery)
+    {
+        androidx.room.RoomSQLiteQuery $r2;
+        androidx.work.impl.model.WorkSpecDao_Impl $r1;
+        androidx.work.impl.model.WorkSpecDao_Impl$11 r0;
+
+        r0 := @this: androidx.work.impl.model.WorkSpecDao_Impl$11;
+
+        $r1 := @parameter0: androidx.work.impl.model.WorkSpecDao_Impl;
+
+        $r2 := @parameter1: androidx.room.RoomSQLiteQuery;
+
+        r0.<androidx.work.impl.model.WorkSpecDao_Impl$11: androidx.work.impl.model.WorkSpecDao_Impl this$0> = $r1;
+
+        r0.<androidx.work.impl.model.WorkSpecDao_Impl$11: androidx.room.RoomSQLiteQuery val$_statement> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public volatile java.lang.Object call() throws java.lang.Exception
+    {
+        java.util.List $r1;
+        androidx.work.impl.model.WorkSpecDao_Impl$11 r0;
+
+        r0 := @this: androidx.work.impl.model.WorkSpecDao_Impl$11;
+
+        $r1 = virtualinvoke r0.<androidx.work.impl.model.WorkSpecDao_Impl$11: java.util.List call()>();
+
+        return $r1;
+    }
+
+    public java.util.List call() throws java.lang.Exception
+    {
+        java.lang.Throwable r15, r16;
+        androidx.room.RoomSQLiteQuery r5;
+        byte[] $r13;
+        java.util.ArrayList r9, r10, r11, $r18;
+        int $i0, $i1, $i2, $i3, $i4;
+        java.lang.String $r7;
+        androidx.work.Data $r14;
+        androidx.collection.ArrayMap r1, r2, $r17;
+        android.database.Cursor $r6;
+        boolean $z0;
+        androidx.work.impl.model.WorkSpec$WorkInfoPojo $r19;
+        androidx.room.RoomDatabase $r4;
+        androidx.work.impl.model.WorkSpecDao_Impl r3;
+        androidx.work.impl.model.WorkSpecDao_Impl$11 r0;
+        androidx.work.WorkInfo$State $r12;
+        java.lang.Object $r8;
+
+        r0 := @this: androidx.work.impl.model.WorkSpecDao_Impl$11;
+
+        r3 = r0.<androidx.work.impl.model.WorkSpecDao_Impl$11: androidx.work.impl.model.WorkSpecDao_Impl this$0>;
+
+        $r4 = staticinvoke <androidx.work.impl.model.WorkSpecDao_Impl: androidx.room.RoomDatabase access$000(androidx.work.impl.model.WorkSpecDao_Impl)>(r3);
+
+        virtualinvoke $r4.<androidx.room.RoomDatabase: void beginTransaction()>();
+
+     label01:
+        r3 = r0.<androidx.work.impl.model.WorkSpecDao_Impl$11: androidx.work.impl.model.WorkSpecDao_Impl this$0>;
+
+        $r4 = staticinvoke <androidx.work.impl.model.WorkSpecDao_Impl: androidx.room.RoomDatabase access$000(androidx.work.impl.model.WorkSpecDao_Impl)>(r3);
+
+        r5 = r0.<androidx.work.impl.model.WorkSpecDao_Impl$11: androidx.room.RoomSQLiteQuery val$_statement>;
+
+        $r6 = staticinvoke <androidx.room.util.DBUtil: android.database.Cursor query(androidx.room.RoomDatabase,androidx.sqlite.db.SupportSQLiteQuery,boolean,android.os.CancellationSignal)>($r4, r5, 1, null);
+
+     label02:
+        $i0 = staticinvoke <androidx.room.util.CursorUtil: int getColumnIndexOrThrow(android.database.Cursor,java.lang.String)>($r6, "id");
+
+        $i1 = staticinvoke <androidx.room.util.CursorUtil: int getColumnIndexOrThrow(android.database.Cursor,java.lang.String)>($r6, "state");
+
+        $i2 = staticinvoke <androidx.room.util.CursorUtil: int getColumnIndexOrThrow(android.database.Cursor,java.lang.String)>($r6, "output");
+
+        $i3 = staticinvoke <androidx.room.util.CursorUtil: int getColumnIndexOrThrow(android.database.Cursor,java.lang.String)>($r6, "run_attempt_count");
+
+        r2 = new androidx.collection.ArrayMap;
+
+     label03:
+        r1 = r2;
+
+     label04:
+        specialinvoke r2.<androidx.collection.ArrayMap: void <init>()>();
+
+        $r17 = new androidx.collection.ArrayMap;
+
+     label05:
+        specialinvoke $r17.<androidx.collection.ArrayMap: void <init>()>();
+
+     label06:
+        $z0 = interfaceinvoke $r6.<android.database.Cursor: boolean moveToNext()>();
+
+     label07:
+        if $z0 == 0 goto label21;
+
+     label08:
+        $z0 = interfaceinvoke $r6.<android.database.Cursor: boolean isNull(int)>($i0);
+
+     label09:
+        if $z0 != 0 goto label14;
+
+     label10:
+        $r7 = interfaceinvoke $r6.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+        $r8 = virtualinvoke r1.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>($r7);
+
+        r9 = (java.util.ArrayList) $r8;
+
+     label11:
+        if r9 != null goto label14;
+
+     label12:
+        r10 = new java.util.ArrayList;
+
+     label13:
+        specialinvoke r10.<java.util.ArrayList: void <init>()>();
+
+        virtualinvoke r1.<androidx.collection.ArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r7, r10);
+
+     label14:
+        $z0 = interfaceinvoke $r6.<android.database.Cursor: boolean isNull(int)>($i0);
+
+     label15:
+        if $z0 != 0 goto label06;
+
+     label16:
+        $r7 = interfaceinvoke $r6.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+        $r8 = virtualinvoke $r17.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>($r7);
+
+        r9 = (java.util.ArrayList) $r8;
+
+     label17:
+        if r9 != null goto label06;
+
+     label18:
+        r10 = new java.util.ArrayList;
+
+     label19:
+        specialinvoke r10.<java.util.ArrayList: void <init>()>();
+
+        virtualinvoke $r17.<androidx.collection.ArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r7, r10);
+
+     label20:
+        goto label06;
+
+     label21:
+        interfaceinvoke $r6.<android.database.Cursor: boolean moveToPosition(int)>(-1);
+
+        r3 = r0.<androidx.work.impl.model.WorkSpecDao_Impl$11: androidx.work.impl.model.WorkSpecDao_Impl this$0>;
+
+        staticinvoke <androidx.work.impl.model.WorkSpecDao_Impl: void access$100(androidx.work.impl.model.WorkSpecDao_Impl,androidx.collection.ArrayMap)>(r3, r1);
+
+        r3 = r0.<androidx.work.impl.model.WorkSpecDao_Impl$11: androidx.work.impl.model.WorkSpecDao_Impl this$0>;
+
+        staticinvoke <androidx.work.impl.model.WorkSpecDao_Impl: void access$200(androidx.work.impl.model.WorkSpecDao_Impl,androidx.collection.ArrayMap)>(r3, $r17);
+
+        r10 = new java.util.ArrayList;
+
+     label22:
+        r9 = r10;
+
+     label23:
+        $i4 = interfaceinvoke $r6.<android.database.Cursor: int getCount()>();
+
+        specialinvoke r10.<java.util.ArrayList: void <init>(int)>($i4);
+
+     label24:
+        $z0 = interfaceinvoke $r6.<android.database.Cursor: boolean moveToNext()>();
+
+     label25:
+        if $z0 == 0 goto label44;
+
+        r10 = null;
+
+     label26:
+        $z0 = interfaceinvoke $r6.<android.database.Cursor: boolean isNull(int)>($i0);
+
+     label27:
+        if $z0 != 0 goto label29;
+
+     label28:
+        $r7 = interfaceinvoke $r6.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+        $r8 = virtualinvoke r1.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>($r7);
+
+        r10 = (java.util.ArrayList) $r8;
+
+     label29:
+        if r10 != null goto label33;
+
+     label30:
+        r11 = new java.util.ArrayList;
+
+     label31:
+        specialinvoke r11.<java.util.ArrayList: void <init>()>();
+
+     label32:
+        r10 = r11;
+
+     label33:
+        r11 = null;
+
+     label34:
+        $z0 = interfaceinvoke $r6.<android.database.Cursor: boolean isNull(int)>($i0);
+
+     label35:
+        if $z0 != 0 goto label37;
+
+     label36:
+        $r7 = interfaceinvoke $r6.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+        $r8 = virtualinvoke $r17.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>($r7);
+
+        r11 = (java.util.ArrayList) $r8;
+
+     label37:
+        if r11 != null goto label41;
+
+     label38:
+        $r18 = new java.util.ArrayList;
+
+     label39:
+        specialinvoke $r18.<java.util.ArrayList: void <init>()>();
+
+     label40:
+        r11 = $r18;
+
+     label41:
+        $r19 = new androidx.work.impl.model.WorkSpec$WorkInfoPojo;
+
+     label42:
+        specialinvoke $r19.<androidx.work.impl.model.WorkSpec$WorkInfoPojo: void <init>()>();
+
+        $r7 = interfaceinvoke $r6.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+        $r19.<androidx.work.impl.model.WorkSpec$WorkInfoPojo: java.lang.String id> = $r7;
+
+        $i4 = interfaceinvoke $r6.<android.database.Cursor: int getInt(int)>($i1);
+
+        $r12 = staticinvoke <androidx.work.impl.model.WorkTypeConverters: androidx.work.WorkInfo$State intToState(int)>($i4);
+
+        $r19.<androidx.work.impl.model.WorkSpec$WorkInfoPojo: androidx.work.WorkInfo$State state> = $r12;
+
+        $r13 = interfaceinvoke $r6.<android.database.Cursor: byte[] getBlob(int)>($i2);
+
+        $r14 = staticinvoke <androidx.work.Data: androidx.work.Data fromByteArray(byte[])>($r13);
+
+        $r19.<androidx.work.impl.model.WorkSpec$WorkInfoPojo: androidx.work.Data output> = $r14;
+
+        $i4 = interfaceinvoke $r6.<android.database.Cursor: int getInt(int)>($i3);
+
+        $r19.<androidx.work.impl.model.WorkSpec$WorkInfoPojo: int runAttemptCount> = $i4;
+
+        $r19.<androidx.work.impl.model.WorkSpec$WorkInfoPojo: java.util.List tags> = r10;
+
+        $r19.<androidx.work.impl.model.WorkSpec$WorkInfoPojo: java.util.List progress> = r11;
+
+        interfaceinvoke r9.<java.util.List: boolean add(java.lang.Object)>($r19);
+
+     label43:
+        goto label24;
+
+     label44:
+        r3 = r0.<androidx.work.impl.model.WorkSpecDao_Impl$11: androidx.work.impl.model.WorkSpecDao_Impl this$0>;
+
+        $r4 = staticinvoke <androidx.work.impl.model.WorkSpecDao_Impl: androidx.room.RoomDatabase access$000(androidx.work.impl.model.WorkSpecDao_Impl)>(r3);
+
+        virtualinvoke $r4.<androidx.room.RoomDatabase: void setTransactionSuccessful()>();
+
+     label45:
+        interfaceinvoke $r6.<android.database.Cursor: void close()>();
+
+     label46:
+        r3 = r0.<androidx.work.impl.model.WorkSpecDao_Impl$11: androidx.work.impl.model.WorkSpecDao_Impl this$0>;
+
+        $r4 = staticinvoke <androidx.work.impl.model.WorkSpecDao_Impl: androidx.room.RoomDatabase access$000(androidx.work.impl.model.WorkSpecDao_Impl)>(r3);
+
+        virtualinvoke $r4.<androidx.room.RoomDatabase: void endTransaction()>();
+
+        return r9;
+
+     label47:
+        r15 := @caughtexception;
+
+     label48:
+        interfaceinvoke $r6.<android.database.Cursor: void close()>();
+
+        throw r15;
+
+     label49:
+        r16 := @caughtexception;
+
+        r3 = r0.<androidx.work.impl.model.WorkSpecDao_Impl$11: androidx.work.impl.model.WorkSpecDao_Impl this$0>;
+
+        $r4 = staticinvoke <androidx.work.impl.model.WorkSpecDao_Impl: androidx.room.RoomDatabase access$000(androidx.work.impl.model.WorkSpecDao_Impl)>(r3);
+
+        virtualinvoke $r4.<androidx.room.RoomDatabase: void endTransaction()>();
+
+        throw r16;
+
+        catch java.lang.Throwable from label01 to label02 with label49;
+        catch java.lang.Throwable from label02 to label03 with label47;
+        catch java.lang.Throwable from label04 to label05 with label47;
+        catch java.lang.Throwable from label05 to label07 with label47;
+        catch java.lang.Throwable from label08 to label09 with label47;
+        catch java.lang.Throwable from label10 to label11 with label47;
+        catch java.lang.Throwable from label12 to label13 with label47;
+        catch java.lang.Throwable from label13 to label15 with label47;
+        catch java.lang.Throwable from label16 to label17 with label47;
+        catch java.lang.Throwable from label18 to label19 with label47;
+        catch java.lang.Throwable from label19 to label20 with label47;
+        catch java.lang.Throwable from label21 to label22 with label47;
+        catch java.lang.Throwable from label23 to label25 with label47;
+        catch java.lang.Throwable from label26 to label27 with label47;
+        catch java.lang.Throwable from label28 to label29 with label47;
+        catch java.lang.Throwable from label30 to label31 with label47;
+        catch java.lang.Throwable from label31 to label32 with label47;
+        catch java.lang.Throwable from label34 to label35 with label47;
+        catch java.lang.Throwable from label36 to label37 with label47;
+        catch java.lang.Throwable from label38 to label39 with label47;
+        catch java.lang.Throwable from label39 to label40 with label47;
+        catch java.lang.Throwable from label41 to label42 with label47;
+        catch java.lang.Throwable from label42 to label43 with label47;
+        catch java.lang.Throwable from label44 to label45 with label47;
+        catch java.lang.Throwable from label45 to label46 with label49;
+        catch java.lang.Throwable from label48 to label49 with label49;
+    }
+
+    protected void finalize()
+    {
+        androidx.room.RoomSQLiteQuery $r1;
+        androidx.work.impl.model.WorkSpecDao_Impl$11 r0;
+
+        r0 := @this: androidx.work.impl.model.WorkSpecDao_Impl$11;
+
+        $r1 = r0.<androidx.work.impl.model.WorkSpecDao_Impl$11: androidx.room.RoomSQLiteQuery val$_statement>;
+
+        virtualinvoke $r1.<androidx.room.RoomSQLiteQuery: void release()>();
+
+        return;
+    }
+}

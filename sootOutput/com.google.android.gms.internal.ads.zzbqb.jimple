@@ -1,0 +1,132 @@
+public final class com.google.android.gms.internal.ads.zzbqb extends java.lang.Object
+{
+
+    public static void zza(com.google.android.gms.internal.ads.zzbqc, java.lang.String, java.util.Map)
+    {
+        org.json.JSONException $r5;
+        org.json.JSONObject $r4;
+        com.google.android.gms.internal.ads.zzcdv $r3;
+        com.google.android.gms.internal.ads.zzbqc $r1;
+        java.util.Map $r2;
+        java.lang.String $r0;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzbqc;
+
+        $r0 := @parameter1: java.lang.String;
+
+        $r2 := @parameter2: java.util.Map;
+
+     label1:
+        $r3 = staticinvoke <com.google.android.gms.ads.internal.client.zzay: com.google.android.gms.internal.ads.zzcdv zzb()>();
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzcdv: org.json.JSONObject zzi(java.util.Map)>($r2);
+
+     label2:
+        interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzbqc: void zze(java.lang.String,org.json.JSONObject)>($r0, $r4);
+
+        return;
+
+     label3:
+        $r5 := @caughtexception;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>("Could not convert parameters to JSON.");
+
+        return;
+
+        catch org.json.JSONException from label1 to label2 with label3;
+    }
+
+    public static void zzb(com.google.android.gms.internal.ads.zzbqc, java.lang.String, org.json.JSONObject)
+    {
+        org.json.JSONObject $r3;
+        com.google.android.gms.internal.ads.zzbqc $r0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2, $r4;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzbqc;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: org.json.JSONObject;
+
+        $r4 = virtualinvoke $r3.<org.json.JSONObject: java.lang.String toString()>();
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("(window.AFMA_ReceiveMessage || function() {})(\'");
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\',");
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(");");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r4 = "Dispatching AFMA event: ";
+
+        $r2 = virtualinvoke $r4.<java.lang.String: java.lang.String concat(java.lang.String)>($r2);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zze(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke $r0.<com.google.android.gms.internal.ads.zzbqc: void zza(java.lang.String)>($r2);
+
+        return;
+    }
+
+    public static void zzc(com.google.android.gms.internal.ads.zzbqc, java.lang.String, java.lang.String)
+    {
+        com.google.android.gms.internal.ads.zzbqc $r0;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r1, $r3;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzbqc;
+
+        $r3 := @parameter1: java.lang.String;
+
+        $r1 := @parameter2: java.lang.String;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("(");
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(");");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke $r0.<com.google.android.gms.internal.ads.zzbqc: void zza(java.lang.String)>($r3);
+
+        return;
+    }
+
+    public static void zzd(com.google.android.gms.internal.ads.zzbqc, java.lang.String, org.json.JSONObject)
+    {
+        org.json.JSONObject $r3;
+        com.google.android.gms.internal.ads.zzbqc $r0;
+        java.lang.String $r1, $r2;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzbqc;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: org.json.JSONObject;
+
+        $r2 = virtualinvoke $r3.<org.json.JSONObject: java.lang.String toString()>();
+
+        interfaceinvoke $r0.<com.google.android.gms.internal.ads.zzbqc: void zzb(java.lang.String,java.lang.String)>($r1, $r2);
+
+        return;
+    }
+}

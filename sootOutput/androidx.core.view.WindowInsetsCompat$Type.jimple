@@ -1,0 +1,173 @@
+public final class androidx.core.view.WindowInsetsCompat$Type extends java.lang.Object
+{
+    static final int CAPTION_BAR;
+    static final int DISPLAY_CUTOUT;
+    static final int FIRST;
+    static final int IME;
+    static final int LAST;
+    static final int MANDATORY_SYSTEM_GESTURES;
+    static final int NAVIGATION_BARS;
+    static final int SIZE;
+    static final int STATUS_BARS;
+    static final int SYSTEM_GESTURES;
+    static final int TAPPABLE_ELEMENT;
+    static final int WINDOW_DECOR;
+
+    private void <init>()
+    {
+        androidx.core.view.WindowInsetsCompat$Type r0;
+
+        r0 := @this: androidx.core.view.WindowInsetsCompat$Type;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static int all()
+    {
+        return -1;
+    }
+
+    public static int captionBar()
+    {
+        return 4;
+    }
+
+    public static int displayCutout()
+    {
+        return 128;
+    }
+
+    public static int ime()
+    {
+        return 8;
+    }
+
+    static int indexOf(int)
+    {
+        int $i0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+        java.lang.IllegalArgumentException $r0;
+
+        $i0 := @parameter0: int;
+
+        lookupswitch($i0)
+        {
+            case 1: goto label10;
+            case 2: goto label09;
+            case 4: goto label08;
+            case 8: goto label07;
+            case 16: goto label06;
+            case 32: goto label05;
+            case 64: goto label04;
+            case 128: goto label03;
+            case 256: goto label02;
+            default: goto label01;
+        };
+
+     label01:
+        $r0 = new java.lang.IllegalArgumentException;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("type needs to be >= FIRST and <= LAST, type=");
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r2);
+
+        throw $r0;
+
+     label02:
+        return 8;
+
+     label03:
+        return 7;
+
+     label04:
+        return 6;
+
+     label05:
+        return 5;
+
+     label06:
+        return 4;
+
+     label07:
+        return 3;
+
+     label08:
+        return 2;
+
+     label09:
+        return 1;
+
+     label10:
+        return 0;
+    }
+
+    public static int mandatorySystemGestures()
+    {
+        return 32;
+    }
+
+    public static int navigationBars()
+    {
+        return 2;
+    }
+
+    public static int statusBars()
+    {
+        return 1;
+    }
+
+    public static int systemBars()
+    {
+        return 7;
+    }
+
+    public static int systemGestures()
+    {
+        return 16;
+    }
+
+    public static int tappableElement()
+    {
+        return 64;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.view.WindowInsetsCompat$Type: int WINDOW_DECOR> = 256;
+
+        <androidx.core.view.WindowInsetsCompat$Type: int TAPPABLE_ELEMENT> = 64;
+
+        <androidx.core.view.WindowInsetsCompat$Type: int SYSTEM_GESTURES> = 16;
+
+        <androidx.core.view.WindowInsetsCompat$Type: int STATUS_BARS> = 1;
+
+        <androidx.core.view.WindowInsetsCompat$Type: int SIZE> = 9;
+
+        <androidx.core.view.WindowInsetsCompat$Type: int NAVIGATION_BARS> = 2;
+
+        <androidx.core.view.WindowInsetsCompat$Type: int MANDATORY_SYSTEM_GESTURES> = 32;
+
+        <androidx.core.view.WindowInsetsCompat$Type: int LAST> = 256;
+
+        <androidx.core.view.WindowInsetsCompat$Type: int IME> = 8;
+
+        <androidx.core.view.WindowInsetsCompat$Type: int FIRST> = 1;
+
+        <androidx.core.view.WindowInsetsCompat$Type: int DISPLAY_CUTOUT> = 128;
+
+        <androidx.core.view.WindowInsetsCompat$Type: int CAPTION_BAR> = 4;
+
+        return;
+    }
+}

@@ -1,0 +1,198 @@
+public final class androidx.browser.customtabs.CustomTabColorSchemeParams extends java.lang.Object
+{
+    public final java.lang.Integer navigationBarColor;
+    public final java.lang.Integer navigationBarDividerColor;
+    public final java.lang.Integer secondaryToolbarColor;
+    public final java.lang.Integer toolbarColor;
+
+    void <init>(java.lang.Integer, java.lang.Integer, java.lang.Integer, java.lang.Integer)
+    {
+        java.lang.Integer $r1, $r2, $r3, $r4;
+        androidx.browser.customtabs.CustomTabColorSchemeParams r0;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabColorSchemeParams;
+
+        $r1 := @parameter0: java.lang.Integer;
+
+        $r2 := @parameter1: java.lang.Integer;
+
+        $r3 := @parameter2: java.lang.Integer;
+
+        $r4 := @parameter3: java.lang.Integer;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer toolbarColor> = $r1;
+
+        r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer secondaryToolbarColor> = $r2;
+
+        r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer navigationBarColor> = $r3;
+
+        r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer navigationBarDividerColor> = $r4;
+
+        return;
+    }
+
+    static androidx.browser.customtabs.CustomTabColorSchemeParams fromBundle(android.os.Bundle)
+    {
+        android.os.Bundle $r0;
+        java.lang.Object $r2;
+        java.lang.Integer $r3, $r4, $r5, $r6;
+        androidx.browser.customtabs.CustomTabColorSchemeParams $r1;
+
+        $r0 := @parameter0: android.os.Bundle;
+
+        if $r0 != null goto label1;
+
+        $r0 = new android.os.Bundle;
+
+        specialinvoke $r0.<android.os.Bundle: void <init>(int)>(0);
+
+     label1:
+        $r1 = new androidx.browser.customtabs.CustomTabColorSchemeParams;
+
+        $r2 = virtualinvoke $r0.<android.os.Bundle: java.lang.Object get(java.lang.String)>("android.support.customtabs.extra.TOOLBAR_COLOR");
+
+        $r3 = (java.lang.Integer) $r2;
+
+        $r2 = virtualinvoke $r0.<android.os.Bundle: java.lang.Object get(java.lang.String)>("android.support.customtabs.extra.SECONDARY_TOOLBAR_COLOR");
+
+        $r4 = (java.lang.Integer) $r2;
+
+        $r2 = virtualinvoke $r0.<android.os.Bundle: java.lang.Object get(java.lang.String)>("androidx.browser.customtabs.extra.NAVIGATION_BAR_COLOR");
+
+        $r5 = (java.lang.Integer) $r2;
+
+        $r2 = virtualinvoke $r0.<android.os.Bundle: java.lang.Object get(java.lang.String)>("androidx.browser.customtabs.extra.NAVIGATION_BAR_DIVIDER_COLOR");
+
+        $r6 = (java.lang.Integer) $r2;
+
+        specialinvoke $r1.<androidx.browser.customtabs.CustomTabColorSchemeParams: void <init>(java.lang.Integer,java.lang.Integer,java.lang.Integer,java.lang.Integer)>($r3, $r4, $r5, $r6);
+
+        return $r1;
+    }
+
+    android.os.Bundle toBundle()
+    {
+        android.os.Bundle r1;
+        int $i0;
+        java.lang.Integer $r2;
+        androidx.browser.customtabs.CustomTabColorSchemeParams r0;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabColorSchemeParams;
+
+        r1 = new android.os.Bundle;
+
+        specialinvoke r1.<android.os.Bundle: void <init>()>();
+
+        $r2 = r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer toolbarColor>;
+
+        if $r2 == null goto label1;
+
+        $r2 = r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer toolbarColor>;
+
+        $i0 = virtualinvoke $r2.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke r1.<android.os.Bundle: void putInt(java.lang.String,int)>("android.support.customtabs.extra.TOOLBAR_COLOR", $i0);
+
+     label1:
+        $r2 = r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer secondaryToolbarColor>;
+
+        if $r2 == null goto label2;
+
+        $r2 = r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer secondaryToolbarColor>;
+
+        $i0 = virtualinvoke $r2.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke r1.<android.os.Bundle: void putInt(java.lang.String,int)>("android.support.customtabs.extra.SECONDARY_TOOLBAR_COLOR", $i0);
+
+     label2:
+        $r2 = r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer navigationBarColor>;
+
+        if $r2 == null goto label3;
+
+        $r2 = r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer navigationBarColor>;
+
+        $i0 = virtualinvoke $r2.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke r1.<android.os.Bundle: void putInt(java.lang.String,int)>("androidx.browser.customtabs.extra.NAVIGATION_BAR_COLOR", $i0);
+
+     label3:
+        $r2 = r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer navigationBarDividerColor>;
+
+        if $r2 == null goto label4;
+
+        $r2 = r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer navigationBarDividerColor>;
+
+        $i0 = virtualinvoke $r2.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke r1.<android.os.Bundle: void putInt(java.lang.String,int)>("androidx.browser.customtabs.extra.NAVIGATION_BAR_DIVIDER_COLOR", $i0);
+
+     label4:
+        return r1;
+    }
+
+    androidx.browser.customtabs.CustomTabColorSchemeParams withDefaults(androidx.browser.customtabs.CustomTabColorSchemeParams)
+    {
+        java.lang.Integer $r3, $r4, $r5, $r6;
+        androidx.browser.customtabs.CustomTabColorSchemeParams r0, $r1, $r2;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabColorSchemeParams;
+
+        $r1 := @parameter0: androidx.browser.customtabs.CustomTabColorSchemeParams;
+
+        $r2 = new androidx.browser.customtabs.CustomTabColorSchemeParams;
+
+        $r3 = r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer toolbarColor>;
+
+        if $r3 != null goto label1;
+
+        $r3 = $r1.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer toolbarColor>;
+
+        goto label2;
+
+     label1:
+        $r3 = r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer toolbarColor>;
+
+     label2:
+        $r4 = r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer secondaryToolbarColor>;
+
+        if $r4 != null goto label3;
+
+        $r4 = $r1.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer secondaryToolbarColor>;
+
+        goto label4;
+
+     label3:
+        $r4 = r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer secondaryToolbarColor>;
+
+     label4:
+        $r5 = r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer navigationBarColor>;
+
+        if $r5 != null goto label5;
+
+        $r5 = $r1.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer navigationBarColor>;
+
+        goto label6;
+
+     label5:
+        $r5 = r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer navigationBarColor>;
+
+     label6:
+        $r6 = r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer navigationBarDividerColor>;
+
+        if $r6 != null goto label7;
+
+        $r6 = $r1.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer navigationBarDividerColor>;
+
+        goto label8;
+
+     label7:
+        $r6 = r0.<androidx.browser.customtabs.CustomTabColorSchemeParams: java.lang.Integer navigationBarDividerColor>;
+
+     label8:
+        specialinvoke $r2.<androidx.browser.customtabs.CustomTabColorSchemeParams: void <init>(java.lang.Integer,java.lang.Integer,java.lang.Integer,java.lang.Integer)>($r3, $r4, $r5, $r6);
+
+        return $r2;
+    }
+}

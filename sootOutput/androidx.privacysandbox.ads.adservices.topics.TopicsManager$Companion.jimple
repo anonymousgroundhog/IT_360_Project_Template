@@ -1,0 +1,77 @@
+public final class androidx.privacysandbox.ads.adservices.topics.TopicsManager$Companion extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.privacysandbox.ads.adservices.topics.TopicsManager$Companion r0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.topics.TopicsManager$Companion;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void <init>(kotlin.jvm.internal.DefaultConstructorMarker)
+    {
+        kotlin.jvm.internal.DefaultConstructorMarker $r1;
+        androidx.privacysandbox.ads.adservices.topics.TopicsManager$Companion r0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.topics.TopicsManager$Companion;
+
+        $r1 := @parameter0: kotlin.jvm.internal.DefaultConstructorMarker;
+
+        specialinvoke r0.<androidx.privacysandbox.ads.adservices.topics.TopicsManager$Companion: void <init>()>();
+
+        return;
+    }
+
+    public final androidx.privacysandbox.ads.adservices.topics.TopicsManager obtain(android.content.Context)
+    {
+        android.content.Context $r1;
+        androidx.privacysandbox.ads.adservices.topics.TopicsManagerApi33Ext4Impl $r5;
+        androidx.privacysandbox.ads.adservices.internal.AdServicesInfo $r2;
+        int $i0;
+        androidx.privacysandbox.ads.adservices.topics.TopicsManagerApi33Ext5Impl $r3;
+        androidx.privacysandbox.ads.adservices.topics.TopicsManager $r4;
+        androidx.privacysandbox.ads.adservices.topics.TopicsManager$Companion r0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.topics.TopicsManager$Companion;
+
+        $r1 := @parameter0: android.content.Context;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "context");
+
+        $r2 = <androidx.privacysandbox.ads.adservices.internal.AdServicesInfo: androidx.privacysandbox.ads.adservices.internal.AdServicesInfo INSTANCE>;
+
+        $i0 = virtualinvoke $r2.<androidx.privacysandbox.ads.adservices.internal.AdServicesInfo: int version()>();
+
+        if $i0 < 5 goto label1;
+
+        $r3 = new androidx.privacysandbox.ads.adservices.topics.TopicsManagerApi33Ext5Impl;
+
+        specialinvoke $r3.<androidx.privacysandbox.ads.adservices.topics.TopicsManagerApi33Ext5Impl: void <init>(android.content.Context)>($r1);
+
+        $r4 = (androidx.privacysandbox.ads.adservices.topics.TopicsManager) $r3;
+
+        return $r4;
+
+     label1:
+        $r2 = <androidx.privacysandbox.ads.adservices.internal.AdServicesInfo: androidx.privacysandbox.ads.adservices.internal.AdServicesInfo INSTANCE>;
+
+        $i0 = virtualinvoke $r2.<androidx.privacysandbox.ads.adservices.internal.AdServicesInfo: int version()>();
+
+        if $i0 != 4 goto label2;
+
+        $r5 = new androidx.privacysandbox.ads.adservices.topics.TopicsManagerApi33Ext4Impl;
+
+        specialinvoke $r5.<androidx.privacysandbox.ads.adservices.topics.TopicsManagerApi33Ext4Impl: void <init>(android.content.Context)>($r1);
+
+        $r4 = (androidx.privacysandbox.ads.adservices.topics.TopicsManager) $r5;
+
+        return $r4;
+
+     label2:
+        return null;
+    }
+}

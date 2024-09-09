@@ -1,0 +1,86 @@
+class androidx.room.MultiInstanceInvalidationClient$5 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.room.MultiInstanceInvalidationClient this$0;
+
+    void <init>(androidx.room.MultiInstanceInvalidationClient)
+    {
+        androidx.room.MultiInstanceInvalidationClient $r1;
+        androidx.room.MultiInstanceInvalidationClient$5 r0;
+
+        r0 := @this: androidx.room.MultiInstanceInvalidationClient$5;
+
+        $r1 := @parameter0: androidx.room.MultiInstanceInvalidationClient;
+
+        r0.<androidx.room.MultiInstanceInvalidationClient$5: androidx.room.MultiInstanceInvalidationClient this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.room.InvalidationTracker r2;
+        android.content.Context r7;
+        androidx.room.MultiInstanceInvalidationClient$5 r0;
+        androidx.room.InvalidationTracker$Observer $r3;
+        androidx.room.IMultiInstanceInvalidationCallback $r5;
+        android.os.RemoteException r6;
+        androidx.room.MultiInstanceInvalidationClient r1;
+        androidx.room.IMultiInstanceInvalidationService r4;
+        int $i0;
+        android.content.ServiceConnection $r8;
+
+        r0 := @this: androidx.room.MultiInstanceInvalidationClient$5;
+
+        r1 = r0.<androidx.room.MultiInstanceInvalidationClient$5: androidx.room.MultiInstanceInvalidationClient this$0>;
+
+        r2 = r1.<androidx.room.MultiInstanceInvalidationClient: androidx.room.InvalidationTracker mInvalidationTracker>;
+
+        r1 = r0.<androidx.room.MultiInstanceInvalidationClient$5: androidx.room.MultiInstanceInvalidationClient this$0>;
+
+        $r3 = r1.<androidx.room.MultiInstanceInvalidationClient: androidx.room.InvalidationTracker$Observer mObserver>;
+
+        virtualinvoke r2.<androidx.room.InvalidationTracker: void removeObserver(androidx.room.InvalidationTracker$Observer)>($r3);
+
+        r1 = r0.<androidx.room.MultiInstanceInvalidationClient$5: androidx.room.MultiInstanceInvalidationClient this$0>;
+
+        r4 = r1.<androidx.room.MultiInstanceInvalidationClient: androidx.room.IMultiInstanceInvalidationService mService>;
+
+        if r4 == null goto label2;
+
+        r1 = r0.<androidx.room.MultiInstanceInvalidationClient$5: androidx.room.MultiInstanceInvalidationClient this$0>;
+
+        $r5 = r1.<androidx.room.MultiInstanceInvalidationClient: androidx.room.IMultiInstanceInvalidationCallback mCallback>;
+
+        r1 = r0.<androidx.room.MultiInstanceInvalidationClient$5: androidx.room.MultiInstanceInvalidationClient this$0>;
+
+        $i0 = r1.<androidx.room.MultiInstanceInvalidationClient: int mClientId>;
+
+     label1:
+        interfaceinvoke r4.<androidx.room.IMultiInstanceInvalidationService: void unregisterCallback(androidx.room.IMultiInstanceInvalidationCallback,int)>($r5, $i0);
+
+     label2:
+        goto label4;
+
+     label3:
+        r6 := @caughtexception;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("ROOM", "Cannot unregister multi-instance invalidation callback", r6);
+
+     label4:
+        r1 = r0.<androidx.room.MultiInstanceInvalidationClient$5: androidx.room.MultiInstanceInvalidationClient this$0>;
+
+        r7 = r1.<androidx.room.MultiInstanceInvalidationClient: android.content.Context mAppContext>;
+
+        r1 = r0.<androidx.room.MultiInstanceInvalidationClient$5: androidx.room.MultiInstanceInvalidationClient this$0>;
+
+        $r8 = r1.<androidx.room.MultiInstanceInvalidationClient: android.content.ServiceConnection mServiceConnection>;
+
+        virtualinvoke r7.<android.content.Context: void unbindService(android.content.ServiceConnection)>($r8);
+
+        return;
+
+        catch android.os.RemoteException from label1 to label2 with label3;
+    }
+}

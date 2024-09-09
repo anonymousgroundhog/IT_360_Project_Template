@@ -1,0 +1,275 @@
+public final class kotlin.collections.builders.SerializedCollection extends java.lang.Object implements java.io.Externalizable
+{
+    public static final kotlin.collections.builders.SerializedCollection$Companion Companion;
+    private static final long serialVersionUID;
+    public static final int tagList;
+    public static final int tagSet;
+    private java.util.Collection collection;
+    private final int tag;
+
+    static void <clinit>()
+    {
+        kotlin.collections.builders.SerializedCollection$Companion $r0;
+
+        <kotlin.collections.builders.SerializedCollection: int tagSet> = 1;
+
+        <kotlin.collections.builders.SerializedCollection: int tagList> = 0;
+
+        <kotlin.collections.builders.SerializedCollection: long serialVersionUID> = 0L;
+
+        $r0 = new kotlin.collections.builders.SerializedCollection$Companion;
+
+        specialinvoke $r0.<kotlin.collections.builders.SerializedCollection$Companion: void <init>(kotlin.jvm.internal.DefaultConstructorMarker)>(null);
+
+        <kotlin.collections.builders.SerializedCollection: kotlin.collections.builders.SerializedCollection$Companion Companion> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        kotlin.collections.builders.SerializedCollection r0;
+        java.util.List $r1;
+        java.util.Collection $r2;
+
+        r0 := @this: kotlin.collections.builders.SerializedCollection;
+
+        $r1 = staticinvoke <kotlin.collections.CollectionsKt: java.util.List emptyList()>();
+
+        $r2 = (java.util.Collection) $r1;
+
+        specialinvoke r0.<kotlin.collections.builders.SerializedCollection: void <init>(java.util.Collection,int)>($r2, 0);
+
+        return;
+    }
+
+    public void <init>(java.util.Collection, int)
+    {
+        int $i0;
+        kotlin.collections.builders.SerializedCollection r0;
+        java.util.Collection $r1;
+
+        r0 := @this: kotlin.collections.builders.SerializedCollection;
+
+        $r1 := @parameter0: java.util.Collection;
+
+        $i0 := @parameter1: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "collection");
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<kotlin.collections.builders.SerializedCollection: java.util.Collection collection> = $r1;
+
+        r0.<kotlin.collections.builders.SerializedCollection: int tag> = $i0;
+
+        return;
+    }
+
+    private final java.lang.Object readResolve()
+    {
+        kotlin.collections.builders.SerializedCollection r0;
+        java.util.Collection r1;
+
+        r0 := @this: kotlin.collections.builders.SerializedCollection;
+
+        r1 = r0.<kotlin.collections.builders.SerializedCollection: java.util.Collection collection>;
+
+        return r1;
+    }
+
+    public void readExternal(java.io.ObjectInput)
+    {
+        kotlin.collections.builders.SerializedCollection r0;
+        byte b0, b1, $b2;
+        int $i3, $i4, $i5;
+        java.io.InvalidObjectException $r9;
+        java.lang.String $r3;
+        java.util.Collection $r6;
+        java.util.Set $r4;
+        java.util.List $r7;
+        java.io.ObjectInput $r1;
+        java.lang.StringBuilder $r2, $r8;
+        java.lang.Object $r5;
+
+        r0 := @this: kotlin.collections.builders.SerializedCollection;
+
+        $r1 := @parameter0: java.io.ObjectInput;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "input");
+
+        $b2 = interfaceinvoke $r1.<java.io.ObjectInput: byte readByte()>();
+
+        b0 = $b2 & 1;
+
+        b1 = $b2 & -2;
+
+        if b1 != 0 goto label10;
+
+        $i3 = interfaceinvoke $r1.<java.io.ObjectInput: int readInt()>();
+
+        if $i3 < 0 goto label09;
+
+        $i4 = 0;
+
+        $i5 = (int) b0;
+
+        lookupswitch($i5)
+        {
+            case 0: goto label05;
+            case 1: goto label02;
+            default: goto label01;
+        };
+
+     label01:
+        $r9 = new java.io.InvalidObjectException;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unsupported collection type tag: ");
+
+        $i3 = (int) b0;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i3);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(46);
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r9.<java.io.InvalidObjectException: void <init>(java.lang.String)>($r3);
+
+        throw $r9;
+
+     label02:
+        $r4 = staticinvoke <kotlin.collections.SetsKt: java.util.Set createSetBuilder(int)>($i3);
+
+     label03:
+        if $i4 >= $i3 goto label04;
+
+        $r5 = interfaceinvoke $r1.<java.io.ObjectInput: java.lang.Object readObject()>();
+
+        interfaceinvoke $r4.<java.util.Set: boolean add(java.lang.Object)>($r5);
+
+        $i4 = $i4 + 1;
+
+        goto label03;
+
+     label04:
+        $r4 = staticinvoke <kotlin.collections.SetsKt: java.util.Set build(java.util.Set)>($r4);
+
+        $r6 = (java.util.Collection) $r4;
+
+        goto label08;
+
+     label05:
+        $r7 = staticinvoke <kotlin.collections.CollectionsKt: java.util.List createListBuilder(int)>($i3);
+
+     label06:
+        if $i4 >= $i3 goto label07;
+
+        $r5 = interfaceinvoke $r1.<java.io.ObjectInput: java.lang.Object readObject()>();
+
+        interfaceinvoke $r7.<java.util.List: boolean add(java.lang.Object)>($r5);
+
+        $i4 = $i4 + 1;
+
+        goto label06;
+
+     label07:
+        $r7 = staticinvoke <kotlin.collections.CollectionsKt: java.util.List build(java.util.List)>($r7);
+
+        $r6 = (java.util.Collection) $r7;
+
+     label08:
+        r0.<kotlin.collections.builders.SerializedCollection: java.util.Collection collection> = $r6;
+
+        return;
+
+     label09:
+        $r9 = new java.io.InvalidObjectException;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal size value: ");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i3);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(46);
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r9.<java.io.InvalidObjectException: void <init>(java.lang.String)>($r3);
+
+        throw $r9;
+
+     label10:
+        $r9 = new java.io.InvalidObjectException;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unsupported flags value: ");
+
+        $i3 = (int) $b2;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i3);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(46);
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r9.<java.io.InvalidObjectException: void <init>(java.lang.String)>($r3);
+
+        throw $r9;
+    }
+
+    public void writeExternal(java.io.ObjectOutput)
+    {
+        kotlin.collections.builders.SerializedCollection r0;
+        java.util.Iterator $r3;
+        java.io.ObjectOutput $r1;
+        java.util.Collection $r2;
+        int $i0;
+        java.lang.Object $r4;
+        boolean $z0;
+
+        r0 := @this: kotlin.collections.builders.SerializedCollection;
+
+        $r1 := @parameter0: java.io.ObjectOutput;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "output");
+
+        $i0 = r0.<kotlin.collections.builders.SerializedCollection: int tag>;
+
+        interfaceinvoke $r1.<java.io.ObjectOutput: void writeByte(int)>($i0);
+
+        $r2 = r0.<kotlin.collections.builders.SerializedCollection: java.util.Collection collection>;
+
+        $i0 = interfaceinvoke $r2.<java.util.Collection: int size()>();
+
+        interfaceinvoke $r1.<java.io.ObjectOutput: void writeInt(int)>($i0);
+
+        $r2 = r0.<kotlin.collections.builders.SerializedCollection: java.util.Collection collection>;
+
+        $r3 = interfaceinvoke $r2.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        interfaceinvoke $r1.<java.io.ObjectOutput: void writeObject(java.lang.Object)>($r4);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+}

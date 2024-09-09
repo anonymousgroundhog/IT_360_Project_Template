@@ -1,0 +1,87 @@
+class androidx.core.widget.CheckedTextViewCompat$Api14Impl extends java.lang.Object
+{
+    private static java.lang.reflect.Field sCheckMarkDrawableField;
+    private static boolean sResolved;
+
+    private void <init>()
+    {
+        androidx.core.widget.CheckedTextViewCompat$Api14Impl r0;
+
+        r0 := @this: androidx.core.widget.CheckedTextViewCompat$Api14Impl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static android.graphics.drawable.Drawable getCheckMarkDrawable(android.widget.CheckedTextView)
+    {
+        java.lang.IllegalAccessException r6;
+        java.lang.reflect.Field $r2;
+        android.graphics.drawable.Drawable r5;
+        java.lang.NoSuchFieldException r3;
+        android.widget.CheckedTextView $r0;
+        java.lang.Class r1;
+        java.lang.Object $r4;
+        boolean z0;
+
+        $r0 := @parameter0: android.widget.CheckedTextView;
+
+        z0 = <androidx.core.widget.CheckedTextViewCompat$Api14Impl: boolean sResolved>;
+
+        if z0 != 0 goto label07;
+
+        r1 = class "Landroid/widget/CheckedTextView;";
+
+     label01:
+        $r2 = virtualinvoke r1.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("mCheckMarkDrawable");
+
+     label02:
+        <androidx.core.widget.CheckedTextViewCompat$Api14Impl: java.lang.reflect.Field sCheckMarkDrawableField> = $r2;
+
+        $r2 = <androidx.core.widget.CheckedTextViewCompat$Api14Impl: java.lang.reflect.Field sCheckMarkDrawableField>;
+
+     label03:
+        virtualinvoke $r2.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label04:
+        goto label06;
+
+     label05:
+        r3 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)>("CheckedTextViewCompat", "Failed to retrieve mCheckMarkDrawable field", r3);
+
+     label06:
+        <androidx.core.widget.CheckedTextViewCompat$Api14Impl: boolean sResolved> = 1;
+
+     label07:
+        $r2 = <androidx.core.widget.CheckedTextViewCompat$Api14Impl: java.lang.reflect.Field sCheckMarkDrawableField>;
+
+        if $r2 == null goto label11;
+
+        $r2 = <androidx.core.widget.CheckedTextViewCompat$Api14Impl: java.lang.reflect.Field sCheckMarkDrawableField>;
+
+     label08:
+        $r4 = virtualinvoke $r2.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>($r0);
+
+     label09:
+        r5 = (android.graphics.drawable.Drawable) $r4;
+
+        return r5;
+
+     label10:
+        r6 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)>("CheckedTextViewCompat", "Failed to get check mark drawable via reflection", r6);
+
+        <androidx.core.widget.CheckedTextViewCompat$Api14Impl: java.lang.reflect.Field sCheckMarkDrawableField> = null;
+
+     label11:
+        return null;
+
+        catch java.lang.NoSuchFieldException from label01 to label02 with label05;
+        catch java.lang.NoSuchFieldException from label03 to label04 with label05;
+        catch java.lang.IllegalAccessException from label08 to label09 with label10;
+    }
+}

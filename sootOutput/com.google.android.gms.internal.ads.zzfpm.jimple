@@ -1,0 +1,251 @@
+public final class com.google.android.gms.internal.ads.zzfpm extends com.google.android.gms.internal.ads.zzfpi
+{
+    private android.webkit.WebView zza;
+    private java.lang.Long zzb;
+    private final java.util.Map zzc;
+
+    public void <init>(java.util.Map, java.lang.String)
+    {
+        java.lang.String $r2;
+        com.google.android.gms.internal.ads.zzfpm r0;
+        java.util.Map $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfpm;
+
+        $r1 := @parameter0: java.util.Map;
+
+        $r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzfpi: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzfpm: java.lang.Long zzb> = null;
+
+        r0.<com.google.android.gms.internal.ads.zzfpm: java.util.Map zzc> = $r1;
+
+        return;
+    }
+
+    static volatile android.webkit.WebView zzm(com.google.android.gms.internal.ads.zzfpm)
+    {
+        android.webkit.WebView r1;
+        com.google.android.gms.internal.ads.zzfpm $r0;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzfpm;
+
+        r1 = $r0.<com.google.android.gms.internal.ads.zzfpm: android.webkit.WebView zza>;
+
+        return r1;
+    }
+
+    public final void zzc()
+    {
+        com.google.android.gms.internal.ads.zzfpl $r5;
+        com.google.android.gms.internal.ads.zzfpm r0;
+        long $l0, $l1;
+        java.util.concurrent.TimeUnit $r3, $r4;
+        java.lang.Long $r2;
+        android.os.Handler $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfpm;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzfpi: void zzc()>();
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzfpm: java.lang.Long zzb>;
+
+        if $r2 != null goto label1;
+
+        $l0 = 4000L;
+
+        goto label2;
+
+     label1:
+        $r3 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit MILLISECONDS>;
+
+        $l0 = staticinvoke <java.lang.System: long nanoTime()>();
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzfpm: java.lang.Long zzb>;
+
+        $l1 = virtualinvoke $r2.<java.lang.Long: long longValue()>();
+
+        $l0 = $l0 - $l1;
+
+        $r4 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit NANOSECONDS>;
+
+        $l0 = virtualinvoke $r3.<java.util.concurrent.TimeUnit: long convert(long,java.util.concurrent.TimeUnit)>($l0, $r4);
+
+     label2:
+        $l0 = 4000L - $l0;
+
+        $l0 = staticinvoke <java.lang.Math: long max(long,long)>($l0, 2000L);
+
+        $r1 = new android.os.Handler;
+
+        specialinvoke $r1.<android.os.Handler: void <init>()>();
+
+        $r5 = new com.google.android.gms.internal.ads.zzfpl;
+
+        specialinvoke $r5.<com.google.android.gms.internal.ads.zzfpl: void <init>(com.google.android.gms.internal.ads.zzfpm)>(r0);
+
+        virtualinvoke $r1.<android.os.Handler: boolean postDelayed(java.lang.Runnable,long)>($r5, $l0);
+
+        r0.<com.google.android.gms.internal.ads.zzfpm: android.webkit.WebView zza> = null;
+
+        return;
+    }
+
+    public final void zzg(com.google.android.gms.internal.ads.zzfoh, com.google.android.gms.internal.ads.zzfof)
+    {
+        com.google.android.gms.internal.ads.zzfoh $r3;
+        java.util.Iterator $r6;
+        com.google.android.gms.internal.ads.zzfoo $r9;
+        com.google.android.gms.internal.ads.zzfpm r0;
+        java.util.Set $r5;
+        com.google.android.gms.internal.ads.zzfof $r1;
+        java.lang.NullPointerException r10;
+        org.json.JSONObject $r2;
+        java.util.Map $r4;
+        java.lang.Object $r7;
+        java.lang.String $r8;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfpm;
+
+        $r3 := @parameter0: com.google.android.gms.internal.ads.zzfoh;
+
+        $r1 := @parameter1: com.google.android.gms.internal.ads.zzfof;
+
+        $r2 = new org.json.JSONObject;
+
+        specialinvoke $r2.<org.json.JSONObject: void <init>()>();
+
+        $r4 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzfof: java.util.Map zzi()>();
+
+        $r5 = interfaceinvoke $r4.<java.util.Map: java.util.Set keySet()>();
+
+        $r6 = interfaceinvoke $r5.<java.util.Set: java.util.Iterator iterator()>();
+
+        $z0 = interfaceinvoke $r6.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzfpi: void zzh(com.google.android.gms.internal.ads.zzfoh,com.google.android.gms.internal.ads.zzfof,org.json.JSONObject)>($r3, $r1, $r2);
+
+        return;
+
+     label1:
+        $r7 = interfaceinvoke $r6.<java.util.Iterator: java.lang.Object next()>();
+
+        $r8 = (java.lang.String) $r7;
+
+        $r7 = interfaceinvoke $r4.<java.util.Map: java.lang.Object get(java.lang.Object)>($r8);
+
+        $r9 = (com.google.android.gms.internal.ads.zzfoo) $r7;
+
+        r10 = new java.lang.NullPointerException;
+
+        specialinvoke r10.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+        throw r10;
+    }
+
+    public final void zzk()
+    {
+        android.content.Context $r3;
+        com.google.android.gms.internal.ads.zzfoo $r12;
+        long $l0;
+        java.lang.NullPointerException r13;
+        android.webkit.WebSettings $r4;
+        java.lang.Long $r9;
+        java.util.Map $r6;
+        java.lang.String $r11;
+        android.webkit.WebView $r1;
+        boolean $z0;
+        com.google.android.gms.internal.ads.zzfpk $r5;
+        java.util.Iterator $r8;
+        com.google.android.gms.internal.ads.zzfpm r0;
+        java.util.Set $r7;
+        com.google.android.gms.internal.ads.zzfoz $r2;
+        java.lang.Object $r10;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfpm;
+
+        $r1 = new android.webkit.WebView;
+
+        $r2 = staticinvoke <com.google.android.gms.internal.ads.zzfoz: com.google.android.gms.internal.ads.zzfoz zzb()>();
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzfoz: android.content.Context zza()>();
+
+        specialinvoke $r1.<android.webkit.WebView: void <init>(android.content.Context)>($r3);
+
+        r0.<com.google.android.gms.internal.ads.zzfpm: android.webkit.WebView zza> = $r1;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfpm: android.webkit.WebView zza>;
+
+        $r4 = virtualinvoke $r1.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r4.<android.webkit.WebSettings: void setJavaScriptEnabled(boolean)>(1);
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfpm: android.webkit.WebView zza>;
+
+        $r4 = virtualinvoke $r1.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r4.<android.webkit.WebSettings: void setAllowContentAccess(boolean)>(0);
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfpm: android.webkit.WebView zza>;
+
+        $r4 = virtualinvoke $r1.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r4.<android.webkit.WebSettings: void setAllowFileAccess(boolean)>(0);
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfpm: android.webkit.WebView zza>;
+
+        $r5 = new com.google.android.gms.internal.ads.zzfpk;
+
+        specialinvoke $r5.<com.google.android.gms.internal.ads.zzfpk: void <init>(com.google.android.gms.internal.ads.zzfpm)>(r0);
+
+        virtualinvoke $r1.<android.webkit.WebView: void setWebViewClient(android.webkit.WebViewClient)>($r5);
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfpm: android.webkit.WebView zza>;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzfpi: void zzj(android.webkit.WebView)>($r1);
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfpm: android.webkit.WebView zza>;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzfpb: boolean zzi(android.webkit.WebView,java.lang.String)>($r1, null);
+
+        $r6 = r0.<com.google.android.gms.internal.ads.zzfpm: java.util.Map zzc>;
+
+        $r7 = interfaceinvoke $r6.<java.util.Map: java.util.Set keySet()>();
+
+        $r8 = interfaceinvoke $r7.<java.util.Set: java.util.Iterator iterator()>();
+
+        $z0 = interfaceinvoke $r8.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 != 0 goto label1;
+
+        $l0 = staticinvoke <java.lang.System: long nanoTime()>();
+
+        $r9 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+        r0.<com.google.android.gms.internal.ads.zzfpm: java.lang.Long zzb> = $r9;
+
+        return;
+
+     label1:
+        $r10 = interfaceinvoke $r8.<java.util.Iterator: java.lang.Object next()>();
+
+        $r11 = (java.lang.String) $r10;
+
+        $r6 = r0.<com.google.android.gms.internal.ads.zzfpm: java.util.Map zzc>;
+
+        $r10 = interfaceinvoke $r6.<java.util.Map: java.lang.Object get(java.lang.Object)>($r11);
+
+        $r12 = (com.google.android.gms.internal.ads.zzfoo) $r10;
+
+        r13 = new java.lang.NullPointerException;
+
+        specialinvoke r13.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+        throw r13;
+    }
+}

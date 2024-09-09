@@ -1,0 +1,307 @@
+class androidx.appcompat.widget.AppCompatSpinner$DialogPopup extends java.lang.Object implements androidx.appcompat.widget.AppCompatSpinner$SpinnerPopup, android.content.DialogInterface$OnClickListener
+{
+    private android.widget.ListAdapter mListAdapter;
+    androidx.appcompat.app.AlertDialog mPopup;
+    private java.lang.CharSequence mPrompt;
+    final androidx.appcompat.widget.AppCompatSpinner this$0;
+
+    void <init>(androidx.appcompat.widget.AppCompatSpinner)
+    {
+        androidx.appcompat.widget.AppCompatSpinner $r1;
+        androidx.appcompat.widget.AppCompatSpinner$DialogPopup r0;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatSpinner$DialogPopup;
+
+        $r1 := @parameter0: androidx.appcompat.widget.AppCompatSpinner;
+
+        r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: androidx.appcompat.widget.AppCompatSpinner this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void dismiss()
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DialogPopup r0;
+        androidx.appcompat.app.AlertDialog $r1;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatSpinner$DialogPopup;
+
+        $r1 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: androidx.appcompat.app.AlertDialog mPopup>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: androidx.appcompat.app.AlertDialog mPopup>;
+
+        virtualinvoke $r1.<androidx.appcompat.app.AlertDialog: void dismiss()>();
+
+        r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: androidx.appcompat.app.AlertDialog mPopup> = null;
+
+     label1:
+        return;
+    }
+
+    public android.graphics.drawable.Drawable getBackground()
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DialogPopup r0;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatSpinner$DialogPopup;
+
+        return null;
+    }
+
+    public java.lang.CharSequence getHintText()
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DialogPopup r0;
+        java.lang.CharSequence r1;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatSpinner$DialogPopup;
+
+        r1 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: java.lang.CharSequence mPrompt>;
+
+        return r1;
+    }
+
+    public int getHorizontalOffset()
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DialogPopup r0;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatSpinner$DialogPopup;
+
+        return 0;
+    }
+
+    public int getHorizontalOriginalOffset()
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DialogPopup r0;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatSpinner$DialogPopup;
+
+        return 0;
+    }
+
+    public int getVerticalOffset()
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DialogPopup r0;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatSpinner$DialogPopup;
+
+        return 0;
+    }
+
+    public boolean isShowing()
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DialogPopup r0;
+        androidx.appcompat.app.AlertDialog $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatSpinner$DialogPopup;
+
+        $r1 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: androidx.appcompat.app.AlertDialog mPopup>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: androidx.appcompat.app.AlertDialog mPopup>;
+
+        $z0 = virtualinvoke $r1.<androidx.appcompat.app.AlertDialog: boolean isShowing()>();
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    public void onClick(android.content.DialogInterface, int)
+    {
+        androidx.appcompat.widget.AppCompatSpinner $r2;
+        android.widget.ListAdapter $r4;
+        int $i0;
+        long $l1;
+        androidx.appcompat.widget.AppCompatSpinner$DialogPopup r0;
+        android.widget.AdapterView$OnItemClickListener $r3;
+        android.content.DialogInterface $r1;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatSpinner$DialogPopup;
+
+        $r1 := @parameter0: android.content.DialogInterface;
+
+        $i0 := @parameter1: int;
+
+        $r2 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        virtualinvoke $r2.<androidx.appcompat.widget.AppCompatSpinner: void setSelection(int)>($i0);
+
+        $r2 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        $r3 = virtualinvoke $r2.<androidx.appcompat.widget.AppCompatSpinner: android.widget.AdapterView$OnItemClickListener getOnItemClickListener()>();
+
+        if $r3 == null goto label1;
+
+        $r2 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        $r4 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: android.widget.ListAdapter mListAdapter>;
+
+        $l1 = interfaceinvoke $r4.<android.widget.ListAdapter: long getItemId(int)>($i0);
+
+        virtualinvoke $r2.<androidx.appcompat.widget.AppCompatSpinner: boolean performItemClick(android.view.View,int,long)>(null, $i0, $l1);
+
+     label1:
+        virtualinvoke r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: void dismiss()>();
+
+        return;
+    }
+
+    public void setAdapter(android.widget.ListAdapter)
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DialogPopup r0;
+        android.widget.ListAdapter $r1;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatSpinner$DialogPopup;
+
+        $r1 := @parameter0: android.widget.ListAdapter;
+
+        r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: android.widget.ListAdapter mListAdapter> = $r1;
+
+        return;
+    }
+
+    public void setBackgroundDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DialogPopup r0;
+        android.graphics.drawable.Drawable $r1;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatSpinner$DialogPopup;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("AppCompatSpinner", "Cannot set popup background for MODE_DIALOG, ignoring");
+
+        return;
+    }
+
+    public void setHorizontalOffset(int)
+    {
+        int $i0;
+        androidx.appcompat.widget.AppCompatSpinner$DialogPopup r0;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatSpinner$DialogPopup;
+
+        $i0 := @parameter0: int;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("AppCompatSpinner", "Cannot set horizontal offset for MODE_DIALOG, ignoring");
+
+        return;
+    }
+
+    public void setHorizontalOriginalOffset(int)
+    {
+        int $i0;
+        androidx.appcompat.widget.AppCompatSpinner$DialogPopup r0;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatSpinner$DialogPopup;
+
+        $i0 := @parameter0: int;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("AppCompatSpinner", "Cannot set horizontal (original) offset for MODE_DIALOG, ignoring");
+
+        return;
+    }
+
+    public void setPromptText(java.lang.CharSequence)
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DialogPopup r0;
+        java.lang.CharSequence $r1;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatSpinner$DialogPopup;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: java.lang.CharSequence mPrompt> = $r1;
+
+        return;
+    }
+
+    public void setVerticalOffset(int)
+    {
+        int $i0;
+        androidx.appcompat.widget.AppCompatSpinner$DialogPopup r0;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatSpinner$DialogPopup;
+
+        $i0 := @parameter0: int;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("AppCompatSpinner", "Cannot set vertical offset for MODE_DIALOG, ignoring");
+
+        return;
+    }
+
+    public void show(int, int)
+    {
+        android.content.Context $r4;
+        androidx.appcompat.app.AlertDialog $r6;
+        java.lang.CharSequence r5;
+        androidx.appcompat.widget.AppCompatSpinner r3;
+        android.widget.ListAdapter r1;
+        int $i0, $i1, $i2;
+        androidx.appcompat.widget.AppCompatSpinner$DialogPopup r0;
+        androidx.appcompat.app.AlertDialog$Builder r2;
+        android.widget.ListView $r7;
+
+        r0 := @this: androidx.appcompat.widget.AppCompatSpinner$DialogPopup;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        r1 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: android.widget.ListAdapter mListAdapter>;
+
+        if r1 != null goto label1;
+
+        return;
+
+     label1:
+        r2 = new androidx.appcompat.app.AlertDialog$Builder;
+
+        r3 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        $r4 = virtualinvoke r3.<androidx.appcompat.widget.AppCompatSpinner: android.content.Context getPopupContext()>();
+
+        specialinvoke r2.<androidx.appcompat.app.AlertDialog$Builder: void <init>(android.content.Context)>($r4);
+
+        r5 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: java.lang.CharSequence mPrompt>;
+
+        if r5 == null goto label2;
+
+        r5 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: java.lang.CharSequence mPrompt>;
+
+        virtualinvoke r2.<androidx.appcompat.app.AlertDialog$Builder: androidx.appcompat.app.AlertDialog$Builder setTitle(java.lang.CharSequence)>(r5);
+
+     label2:
+        r1 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: android.widget.ListAdapter mListAdapter>;
+
+        r3 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        $i2 = virtualinvoke r3.<androidx.appcompat.widget.AppCompatSpinner: int getSelectedItemPosition()>();
+
+        r2 = virtualinvoke r2.<androidx.appcompat.app.AlertDialog$Builder: androidx.appcompat.app.AlertDialog$Builder setSingleChoiceItems(android.widget.ListAdapter,int,android.content.DialogInterface$OnClickListener)>(r1, $i2, r0);
+
+        $r6 = virtualinvoke r2.<androidx.appcompat.app.AlertDialog$Builder: androidx.appcompat.app.AlertDialog create()>();
+
+        r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: androidx.appcompat.app.AlertDialog mPopup> = $r6;
+
+        $r6 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: androidx.appcompat.app.AlertDialog mPopup>;
+
+        $r7 = virtualinvoke $r6.<androidx.appcompat.app.AlertDialog: android.widget.ListView getListView()>();
+
+        virtualinvoke $r7.<android.widget.ListView: void setTextDirection(int)>($i0);
+
+        virtualinvoke $r7.<android.widget.ListView: void setTextAlignment(int)>($i1);
+
+        $r6 = r0.<androidx.appcompat.widget.AppCompatSpinner$DialogPopup: androidx.appcompat.app.AlertDialog mPopup>;
+
+        virtualinvoke $r6.<androidx.appcompat.app.AlertDialog: void show()>();
+
+        return;
+    }
+}

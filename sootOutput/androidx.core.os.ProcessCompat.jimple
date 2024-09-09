@@ -1,0 +1,35 @@
+public final class androidx.core.os.ProcessCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.os.ProcessCompat r0;
+
+        r0 := @this: androidx.core.os.ProcessCompat;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static boolean isApplicationUid(int)
+    {
+        int $i0, $i1;
+        boolean $z0;
+
+        $i0 := @parameter0: int;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 < 24 goto label1;
+
+        $z0 = staticinvoke <androidx.core.os.ProcessCompat$Api24Impl: boolean isApplicationUid(int)>($i0);
+
+        return $z0;
+
+     label1:
+        $z0 = staticinvoke <androidx.core.os.ProcessCompat$Api17Impl: boolean isApplicationUid(int)>($i0);
+
+        return $z0;
+    }
+}

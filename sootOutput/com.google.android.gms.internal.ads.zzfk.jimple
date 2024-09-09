@@ -1,0 +1,71 @@
+final class com.google.android.gms.internal.ads.zzfk extends android.telephony.TelephonyCallback implements android.telephony.TelephonyCallback$DisplayInfoListener
+{
+    private final com.google.android.gms.internal.ads.zzfn zza;
+
+    public void <init>(com.google.android.gms.internal.ads.zzfn)
+    {
+        com.google.android.gms.internal.ads.zzfn $r1;
+        com.google.android.gms.internal.ads.zzfk r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfk;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzfn;
+
+        specialinvoke r0.<android.telephony.TelephonyCallback: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzfk: com.google.android.gms.internal.ads.zzfn zza> = $r1;
+
+        return;
+    }
+
+    public final void onDisplayInfoChanged(android.telephony.TelephonyDisplayInfo)
+    {
+        android.telephony.TelephonyDisplayInfo $r1;
+        byte $b1;
+        int $i0;
+        com.google.android.gms.internal.ads.zzfn $r2;
+        com.google.android.gms.internal.ads.zzfk r0;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfk;
+
+        $r1 := @parameter0: android.telephony.TelephonyDisplayInfo;
+
+        $i0 = virtualinvoke $r1.<android.telephony.TelephonyDisplayInfo: int getOverrideNetworkType()>();
+
+        $b1 = 5;
+
+        if $i0 == 3 goto label2;
+
+        if $i0 == 4 goto label2;
+
+        if $i0 != 5 goto label1;
+
+        $z0 = 1;
+
+        goto label3;
+
+     label1:
+        $z0 = 0;
+
+        goto label3;
+
+     label2:
+        $z0 = 1;
+
+     label3:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzfk: com.google.android.gms.internal.ads.zzfn zza>;
+
+        if 1 == $z0 goto label4;
+
+        goto label5;
+
+     label4:
+        $b1 = 10;
+
+     label5:
+        staticinvoke <com.google.android.gms.internal.ads.zzfn: void zzc(com.google.android.gms.internal.ads.zzfn,int)>($r2, $b1);
+
+        return;
+    }
+}

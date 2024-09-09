@@ -1,0 +1,145 @@
+public final class com.google.android.gms.internal.ads.zzfou extends com.google.android.gms.internal.ads.zzfox
+{
+    private static final com.google.android.gms.internal.ads.zzfou zzb;
+
+    static void <clinit>()
+    {
+        com.google.android.gms.internal.ads.zzfou $r0;
+
+        $r0 = new com.google.android.gms.internal.ads.zzfou;
+
+        specialinvoke $r0.<com.google.android.gms.internal.ads.zzfou: void <init>()>();
+
+        <com.google.android.gms.internal.ads.zzfou: com.google.android.gms.internal.ads.zzfou zzb> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        com.google.android.gms.internal.ads.zzfou r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfou;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzfox: void <init>()>();
+
+        return;
+    }
+
+    public static com.google.android.gms.internal.ads.zzfou zza()
+    {
+        com.google.android.gms.internal.ads.zzfou r0;
+
+        r0 = <com.google.android.gms.internal.ads.zzfou: com.google.android.gms.internal.ads.zzfou zzb>;
+
+        return r0;
+    }
+
+    public final void zzb(boolean)
+    {
+        com.google.android.gms.internal.ads.zzfoh $r5;
+        com.google.android.gms.internal.ads.zzfpi $r6;
+        java.lang.Object[] $r10;
+        java.util.Iterator $r3;
+        java.util.Collection $r2;
+        com.google.android.gms.internal.ads.zzfpb $r8;
+        java.lang.Object $r4;
+        java.lang.String $r7;
+        android.webkit.WebView $r9;
+        com.google.android.gms.internal.ads.zzfov $r1;
+        com.google.android.gms.internal.ads.zzfou r0;
+        boolean $z0, $z1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfou;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = staticinvoke <com.google.android.gms.internal.ads.zzfov: com.google.android.gms.internal.ads.zzfov zza()>();
+
+        $r2 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzfov: java.util.Collection zzc()>();
+
+        $r3 = interfaceinvoke $r2.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label1:
+        $z1 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 == 0 goto label4;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.google.android.gms.internal.ads.zzfoh) $r4;
+
+        $r6 = virtualinvoke $r5.<com.google.android.gms.internal.ads.zzfoh: com.google.android.gms.internal.ads.zzfpi zzg()>();
+
+        $z1 = virtualinvoke $r6.<com.google.android.gms.internal.ads.zzfpi: boolean zzl()>();
+
+        if $z1 == 0 goto label1;
+
+        if 1 == $z0 goto label2;
+
+        $r7 = "backgrounded";
+
+        goto label3;
+
+     label2:
+        $r7 = "foregrounded";
+
+     label3:
+        $r8 = staticinvoke <com.google.android.gms.internal.ads.zzfpb: com.google.android.gms.internal.ads.zzfpb zza()>();
+
+        $r9 = virtualinvoke $r6.<com.google.android.gms.internal.ads.zzfpi: android.webkit.WebView zza()>();
+
+        $r10 = newarray (java.lang.Object)[1];
+
+        $r10[0] = $r7;
+
+        virtualinvoke $r8.<com.google.android.gms.internal.ads.zzfpb: void zzb(android.webkit.WebView,java.lang.String,java.lang.Object[])>($r9, "setState", $r10);
+
+        goto label1;
+
+     label4:
+        return;
+    }
+
+    public final boolean zzc()
+    {
+        com.google.android.gms.internal.ads.zzfoh $r5;
+        java.util.Iterator $r3;
+        java.util.Collection $r2;
+        android.view.View $r6;
+        java.lang.Object $r4;
+        com.google.android.gms.internal.ads.zzfov $r1;
+        com.google.android.gms.internal.ads.zzfou r0;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfou;
+
+        $r1 = staticinvoke <com.google.android.gms.internal.ads.zzfov: com.google.android.gms.internal.ads.zzfov zza()>();
+
+        $r2 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzfov: java.util.Collection zzb()>();
+
+        $r3 = interfaceinvoke $r2.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.google.android.gms.internal.ads.zzfoh) $r4;
+
+        $r6 = virtualinvoke $r5.<com.google.android.gms.internal.ads.zzfoh: android.view.View zzf()>();
+
+        if $r6 == null goto label1;
+
+        $z0 = virtualinvoke $r6.<android.view.View: boolean hasWindowFocus()>();
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+}

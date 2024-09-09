@@ -1,0 +1,427 @@
+public final class com.google.android.gms.internal.consent_sdk.zzj extends java.lang.Object implements com.google.android.ump.ConsentInformation
+{
+    private final com.google.android.gms.internal.consent_sdk.zzap zza;
+    private final com.google.android.gms.internal.consent_sdk.zzu zzb;
+    private final com.google.android.gms.internal.consent_sdk.zzbn zzc;
+    private final java.lang.Object zzd;
+    private final java.lang.Object zze;
+    private boolean zzf;
+    private boolean zzg;
+    private com.google.android.ump.ConsentRequestParameters zzh;
+
+    public void <init>(com.google.android.gms.internal.consent_sdk.zzap, com.google.android.gms.internal.consent_sdk.zzu, com.google.android.gms.internal.consent_sdk.zzbn)
+    {
+        com.google.android.gms.internal.consent_sdk.zzbn $r3;
+        com.google.android.gms.internal.consent_sdk.zzu $r2;
+        java.lang.Object $r5;
+        com.google.android.gms.internal.consent_sdk.zzap $r1;
+        com.google.android.ump.ConsentRequestParameters $r4;
+        com.google.android.ump.ConsentRequestParameters$Builder $r6;
+        com.google.android.gms.internal.consent_sdk.zzj r0;
+
+        r0 := @this: com.google.android.gms.internal.consent_sdk.zzj;
+
+        $r1 := @parameter0: com.google.android.gms.internal.consent_sdk.zzap;
+
+        $r2 := @parameter1: com.google.android.gms.internal.consent_sdk.zzu;
+
+        $r3 := @parameter2: com.google.android.gms.internal.consent_sdk.zzbn;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r5 = new java.lang.Object;
+
+        specialinvoke $r5.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzj: java.lang.Object zzd> = $r5;
+
+        $r5 = new java.lang.Object;
+
+        specialinvoke $r5.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzj: java.lang.Object zze> = $r5;
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzj: boolean zzf> = 0;
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzj: boolean zzg> = 0;
+
+        $r6 = new com.google.android.ump.ConsentRequestParameters$Builder;
+
+        specialinvoke $r6.<com.google.android.ump.ConsentRequestParameters$Builder: void <init>()>();
+
+        $r4 = virtualinvoke $r6.<com.google.android.ump.ConsentRequestParameters$Builder: com.google.android.ump.ConsentRequestParameters build()>();
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzj: com.google.android.ump.ConsentRequestParameters zzh> = $r4;
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzj: com.google.android.gms.internal.consent_sdk.zzap zza> = $r1;
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzj: com.google.android.gms.internal.consent_sdk.zzu zzb> = $r2;
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzj: com.google.android.gms.internal.consent_sdk.zzbn zzc> = $r3;
+
+        return;
+    }
+
+    public final boolean canRequestAds()
+    {
+        int $i0;
+        com.google.android.gms.internal.consent_sdk.zzap $r1;
+        com.google.android.gms.internal.consent_sdk.zzj r0;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.consent_sdk.zzj;
+
+        $z0 = virtualinvoke r0.<com.google.android.gms.internal.consent_sdk.zzj: boolean zzc()>();
+
+        if $z0 != 0 goto label1;
+
+        $i0 = 0;
+
+        goto label2;
+
+     label1:
+        $r1 = r0.<com.google.android.gms.internal.consent_sdk.zzj: com.google.android.gms.internal.consent_sdk.zzap zza>;
+
+        $i0 = virtualinvoke $r1.<com.google.android.gms.internal.consent_sdk.zzap: int zza()>();
+
+     label2:
+        if $i0 == 1 goto label4;
+
+        if $i0 != 3 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+
+     label4:
+        return 1;
+    }
+
+    public final int getConsentStatus()
+    {
+        int $i0;
+        com.google.android.gms.internal.consent_sdk.zzap $r1;
+        com.google.android.gms.internal.consent_sdk.zzj r0;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.consent_sdk.zzj;
+
+        $z0 = virtualinvoke r0.<com.google.android.gms.internal.consent_sdk.zzj: boolean zzc()>();
+
+        if $z0 != 0 goto label1;
+
+        return 0;
+
+     label1:
+        $r1 = r0.<com.google.android.gms.internal.consent_sdk.zzj: com.google.android.gms.internal.consent_sdk.zzap zza>;
+
+        $i0 = virtualinvoke $r1.<com.google.android.gms.internal.consent_sdk.zzap: int zza()>();
+
+        return $i0;
+    }
+
+    public final com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus getPrivacyOptionsRequirementStatus()
+    {
+        com.google.android.gms.internal.consent_sdk.zzap $r1;
+        com.google.android.gms.internal.consent_sdk.zzj r0;
+        com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus $r2;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.consent_sdk.zzj;
+
+        $z0 = virtualinvoke r0.<com.google.android.gms.internal.consent_sdk.zzj: boolean zzc()>();
+
+        if $z0 != 0 goto label1;
+
+        $r2 = <com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus: com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus UNKNOWN>;
+
+        return $r2;
+
+     label1:
+        $r1 = r0.<com.google.android.gms.internal.consent_sdk.zzj: com.google.android.gms.internal.consent_sdk.zzap zza>;
+
+        $r2 = virtualinvoke $r1.<com.google.android.gms.internal.consent_sdk.zzap: com.google.android.ump.ConsentInformation$PrivacyOptionsRequirementStatus zzb()>();
+
+        return $r2;
+    }
+
+    public final boolean isConsentFormAvailable()
+    {
+        com.google.android.gms.internal.consent_sdk.zzbn $r1;
+        com.google.android.gms.internal.consent_sdk.zzj r0;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.consent_sdk.zzj;
+
+        $r1 = r0.<com.google.android.gms.internal.consent_sdk.zzj: com.google.android.gms.internal.consent_sdk.zzbn zzc>;
+
+        $z0 = virtualinvoke $r1.<com.google.android.gms.internal.consent_sdk.zzbn: boolean zzf()>();
+
+        return $z0;
+    }
+
+    public final void requestConsentInfoUpdate(android.app.Activity, com.google.android.ump.ConsentRequestParameters, com.google.android.ump.ConsentInformation$OnConsentInfoUpdateSuccessListener, com.google.android.ump.ConsentInformation$OnConsentInfoUpdateFailureListener)
+    {
+        java.lang.Throwable $r7;
+        com.google.android.ump.ConsentInformation$OnConsentInfoUpdateFailureListener $r3;
+        com.google.android.gms.internal.consent_sdk.zzj r0;
+        com.google.android.ump.ConsentInformation$OnConsentInfoUpdateSuccessListener $r2;
+        com.google.android.gms.internal.consent_sdk.zzu $r6;
+        java.lang.Object $r5;
+        com.google.android.ump.ConsentRequestParameters $r1;
+        android.app.Activity $r4;
+
+        r0 := @this: com.google.android.gms.internal.consent_sdk.zzj;
+
+        $r4 := @parameter0: android.app.Activity;
+
+        $r1 := @parameter1: com.google.android.ump.ConsentRequestParameters;
+
+        $r2 := @parameter2: com.google.android.ump.ConsentInformation$OnConsentInfoUpdateSuccessListener;
+
+        $r3 := @parameter3: com.google.android.ump.ConsentInformation$OnConsentInfoUpdateFailureListener;
+
+        $r5 = r0.<com.google.android.gms.internal.consent_sdk.zzj: java.lang.Object zzd>;
+
+        entermonitor $r5;
+
+     label1:
+        r0.<com.google.android.gms.internal.consent_sdk.zzj: boolean zzf> = 1;
+
+        exitmonitor $r5;
+
+     label2:
+        r0.<com.google.android.gms.internal.consent_sdk.zzj: com.google.android.ump.ConsentRequestParameters zzh> = $r1;
+
+        $r6 = r0.<com.google.android.gms.internal.consent_sdk.zzj: com.google.android.gms.internal.consent_sdk.zzu zzb>;
+
+        virtualinvoke $r6.<com.google.android.gms.internal.consent_sdk.zzu: void zzc(android.app.Activity,com.google.android.ump.ConsentRequestParameters,com.google.android.ump.ConsentInformation$OnConsentInfoUpdateSuccessListener,com.google.android.ump.ConsentInformation$OnConsentInfoUpdateFailureListener)>($r4, $r1, $r2, $r3);
+
+        return;
+
+     label3:
+        $r7 := @caughtexception;
+
+     label4:
+        exitmonitor $r5;
+
+     label5:
+        throw $r7;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label4 to label5 with label3;
+    }
+
+    public final void reset()
+    {
+        java.lang.Throwable $r4;
+        com.google.android.gms.internal.consent_sdk.zzbn $r1;
+        java.lang.Object $r3;
+        com.google.android.gms.internal.consent_sdk.zzap $r2;
+        com.google.android.gms.internal.consent_sdk.zzj r0;
+
+        r0 := @this: com.google.android.gms.internal.consent_sdk.zzj;
+
+        $r1 = r0.<com.google.android.gms.internal.consent_sdk.zzj: com.google.android.gms.internal.consent_sdk.zzbn zzc>;
+
+        virtualinvoke $r1.<com.google.android.gms.internal.consent_sdk.zzbn: void zzd(com.google.android.gms.internal.consent_sdk.zzbp)>(null);
+
+        $r2 = r0.<com.google.android.gms.internal.consent_sdk.zzj: com.google.android.gms.internal.consent_sdk.zzap zza>;
+
+        virtualinvoke $r2.<com.google.android.gms.internal.consent_sdk.zzap: void zze()>();
+
+        $r3 = r0.<com.google.android.gms.internal.consent_sdk.zzj: java.lang.Object zzd>;
+
+        entermonitor $r3;
+
+     label1:
+        r0.<com.google.android.gms.internal.consent_sdk.zzj: boolean zzf> = 0;
+
+        exitmonitor $r3;
+
+     label2:
+        return;
+
+     label3:
+        $r4 := @caughtexception;
+
+        exitmonitor $r3;
+
+     label4:
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public final void zza(android.app.Activity)
+    {
+        com.google.android.gms.internal.consent_sdk.zzh $r5;
+        com.google.android.gms.internal.consent_sdk.zzi $r1;
+        com.google.android.gms.internal.consent_sdk.zzj r0;
+        com.google.android.gms.internal.consent_sdk.zzu $r3;
+        java.lang.StringBuilder $r6;
+        com.google.android.ump.ConsentRequestParameters $r4;
+        java.lang.String $r7;
+        android.app.Activity $r2;
+        boolean $z0, $z1;
+
+        r0 := @this: com.google.android.gms.internal.consent_sdk.zzj;
+
+        $r2 := @parameter0: android.app.Activity;
+
+        $z0 = virtualinvoke r0.<com.google.android.gms.internal.consent_sdk.zzj: boolean zzc()>();
+
+        if $z0 == 0 goto label2;
+
+        $z0 = virtualinvoke r0.<com.google.android.gms.internal.consent_sdk.zzj: boolean zzd()>();
+
+        if $z0 == 0 goto label1;
+
+        goto label2;
+
+     label1:
+        virtualinvoke r0.<com.google.android.gms.internal.consent_sdk.zzj: void zzb(boolean)>(1);
+
+        $r3 = r0.<com.google.android.gms.internal.consent_sdk.zzj: com.google.android.gms.internal.consent_sdk.zzu zzb>;
+
+        $r4 = r0.<com.google.android.gms.internal.consent_sdk.zzj: com.google.android.ump.ConsentRequestParameters zzh>;
+
+        $r5 = new com.google.android.gms.internal.consent_sdk.zzh;
+
+        specialinvoke $r5.<com.google.android.gms.internal.consent_sdk.zzh: void <init>(com.google.android.gms.internal.consent_sdk.zzj)>(r0);
+
+        $r1 = new com.google.android.gms.internal.consent_sdk.zzi;
+
+        specialinvoke $r1.<com.google.android.gms.internal.consent_sdk.zzi: void <init>(com.google.android.gms.internal.consent_sdk.zzj)>(r0);
+
+        virtualinvoke $r3.<com.google.android.gms.internal.consent_sdk.zzu: void zzc(android.app.Activity,com.google.android.ump.ConsentRequestParameters,com.google.android.ump.ConsentInformation$OnConsentInfoUpdateSuccessListener,com.google.android.ump.ConsentInformation$OnConsentInfoUpdateFailureListener)>($r2, $r4, $r5, $r1);
+
+        return;
+
+     label2:
+        $z0 = virtualinvoke r0.<com.google.android.gms.internal.consent_sdk.zzj: boolean zzc()>();
+
+        $z1 = virtualinvoke r0.<com.google.android.gms.internal.consent_sdk.zzj: boolean zzd()>();
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Retry request is not executed. consentInfoUpdateHasBeenCalled=");
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", retryRequestIsInProgress=");
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z1);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("UserMessagingPlatform", $r7);
+
+        return;
+    }
+
+    public final void zzb(boolean)
+    {
+        java.lang.Throwable $r2;
+        java.lang.Object $r1;
+        com.google.android.gms.internal.consent_sdk.zzj r0;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.consent_sdk.zzj;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = r0.<com.google.android.gms.internal.consent_sdk.zzj: java.lang.Object zze>;
+
+        entermonitor $r1;
+
+     label1:
+        r0.<com.google.android.gms.internal.consent_sdk.zzj: boolean zzg> = $z0;
+
+        exitmonitor $r1;
+
+     label2:
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label4:
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public final boolean zzc()
+    {
+        java.lang.Throwable $r2;
+        java.lang.Object $r1;
+        com.google.android.gms.internal.consent_sdk.zzj r0;
+        boolean z0;
+
+        r0 := @this: com.google.android.gms.internal.consent_sdk.zzj;
+
+        $r1 = r0.<com.google.android.gms.internal.consent_sdk.zzj: java.lang.Object zzd>;
+
+        entermonitor $r1;
+
+     label1:
+        z0 = r0.<com.google.android.gms.internal.consent_sdk.zzj: boolean zzf>;
+
+        exitmonitor $r1;
+
+     label2:
+        return z0;
+
+     label3:
+        $r2 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label4:
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public final boolean zzd()
+    {
+        java.lang.Throwable $r2;
+        java.lang.Object $r1;
+        com.google.android.gms.internal.consent_sdk.zzj r0;
+        boolean z0;
+
+        r0 := @this: com.google.android.gms.internal.consent_sdk.zzj;
+
+        $r1 = r0.<com.google.android.gms.internal.consent_sdk.zzj: java.lang.Object zze>;
+
+        entermonitor $r1;
+
+     label1:
+        z0 = r0.<com.google.android.gms.internal.consent_sdk.zzj: boolean zzg>;
+
+        exitmonitor $r1;
+
+     label2:
+        return z0;
+
+     label3:
+        $r2 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label4:
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+}

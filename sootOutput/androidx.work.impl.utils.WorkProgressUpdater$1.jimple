@@ -1,0 +1,210 @@
+class androidx.work.impl.utils.WorkProgressUpdater$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.work.impl.utils.WorkProgressUpdater this$0;
+    final androidx.work.Data val$data;
+    final androidx.work.impl.utils.futures.SettableFuture val$future;
+    final java.util.UUID val$id;
+
+    void <init>(androidx.work.impl.utils.WorkProgressUpdater, java.util.UUID, androidx.work.Data, androidx.work.impl.utils.futures.SettableFuture)
+    {
+        androidx.work.impl.utils.WorkProgressUpdater $r1;
+        androidx.work.impl.utils.WorkProgressUpdater$1 r0;
+        java.util.UUID $r2;
+        androidx.work.impl.utils.futures.SettableFuture $r4;
+        androidx.work.Data $r3;
+
+        r0 := @this: androidx.work.impl.utils.WorkProgressUpdater$1;
+
+        $r1 := @parameter0: androidx.work.impl.utils.WorkProgressUpdater;
+
+        $r2 := @parameter1: java.util.UUID;
+
+        $r3 := @parameter2: androidx.work.Data;
+
+        $r4 := @parameter3: androidx.work.impl.utils.futures.SettableFuture;
+
+        r0.<androidx.work.impl.utils.WorkProgressUpdater$1: androidx.work.impl.utils.WorkProgressUpdater this$0> = $r1;
+
+        r0.<androidx.work.impl.utils.WorkProgressUpdater$1: java.util.UUID val$id> = $r2;
+
+        r0.<androidx.work.impl.utils.WorkProgressUpdater$1: androidx.work.Data val$data> = $r3;
+
+        r0.<androidx.work.impl.utils.WorkProgressUpdater$1: androidx.work.impl.utils.futures.SettableFuture val$future> = $r4;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        java.lang.Throwable r19, r20;
+        java.lang.IllegalStateException r18;
+        java.lang.Object[] r6;
+        androidx.work.impl.model.WorkProgress r15;
+        androidx.work.impl.model.WorkSpec $r12;
+        androidx.work.Logger $r3;
+        androidx.work.impl.utils.WorkProgressUpdater r9;
+        androidx.work.impl.WorkDatabase r10;
+        java.lang.String $r2, r4, $r7;
+        androidx.work.Data r5;
+        androidx.work.impl.utils.WorkProgressUpdater$1 r0;
+        androidx.work.impl.model.WorkSpecDao $r11;
+        java.util.UUID r1;
+        androidx.work.impl.model.WorkProgressDao $r16;
+        java.lang.Throwable[] r8;
+        androidx.work.WorkInfo$State r13, r14;
+        androidx.work.impl.utils.futures.SettableFuture r17;
+
+        r0 := @this: androidx.work.impl.utils.WorkProgressUpdater$1;
+
+        r1 = r0.<androidx.work.impl.utils.WorkProgressUpdater$1: java.util.UUID val$id>;
+
+        $r2 = virtualinvoke r1.<java.util.UUID: java.lang.String toString()>();
+
+        $r3 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r4 = <androidx.work.impl.utils.WorkProgressUpdater: java.lang.String TAG>;
+
+        r1 = r0.<androidx.work.impl.utils.WorkProgressUpdater$1: java.util.UUID val$id>;
+
+        r5 = r0.<androidx.work.impl.utils.WorkProgressUpdater$1: androidx.work.Data val$data>;
+
+        r6 = newarray (java.lang.Object)[2];
+
+        r6[0] = r1;
+
+        r6[1] = r5;
+
+        $r7 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Updating progress for %s (%s)", r6);
+
+        r8 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r3.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>(r4, $r7, r8);
+
+        r9 = r0.<androidx.work.impl.utils.WorkProgressUpdater$1: androidx.work.impl.utils.WorkProgressUpdater this$0>;
+
+        r10 = r9.<androidx.work.impl.utils.WorkProgressUpdater: androidx.work.impl.WorkDatabase mWorkDatabase>;
+
+        virtualinvoke r10.<androidx.work.impl.WorkDatabase: void beginTransaction()>();
+
+     label01:
+        r9 = r0.<androidx.work.impl.utils.WorkProgressUpdater$1: androidx.work.impl.utils.WorkProgressUpdater this$0>;
+
+        r10 = r9.<androidx.work.impl.utils.WorkProgressUpdater: androidx.work.impl.WorkDatabase mWorkDatabase>;
+
+        $r11 = virtualinvoke r10.<androidx.work.impl.WorkDatabase: androidx.work.impl.model.WorkSpecDao workSpecDao()>();
+
+        $r12 = interfaceinvoke $r11.<androidx.work.impl.model.WorkSpecDao: androidx.work.impl.model.WorkSpec getWorkSpec(java.lang.String)>($r2);
+
+     label02:
+        if $r12 == null goto label10;
+
+     label03:
+        r13 = $r12.<androidx.work.impl.model.WorkSpec: androidx.work.WorkInfo$State state>;
+
+        r14 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State RUNNING>;
+
+     label04:
+        if r13 != r14 goto label07;
+
+     label05:
+        r15 = new androidx.work.impl.model.WorkProgress;
+
+        r5 = r0.<androidx.work.impl.utils.WorkProgressUpdater$1: androidx.work.Data val$data>;
+
+        specialinvoke r15.<androidx.work.impl.model.WorkProgress: void <init>(java.lang.String,androidx.work.Data)>($r2, r5);
+
+        r9 = r0.<androidx.work.impl.utils.WorkProgressUpdater$1: androidx.work.impl.utils.WorkProgressUpdater this$0>;
+
+        r10 = r9.<androidx.work.impl.utils.WorkProgressUpdater: androidx.work.impl.WorkDatabase mWorkDatabase>;
+
+        $r16 = virtualinvoke r10.<androidx.work.impl.WorkDatabase: androidx.work.impl.model.WorkProgressDao workProgressDao()>();
+
+        interfaceinvoke $r16.<androidx.work.impl.model.WorkProgressDao: void insert(androidx.work.impl.model.WorkProgress)>(r15);
+
+     label06:
+        goto label08;
+
+     label07:
+        $r3 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r4 = <androidx.work.impl.utils.WorkProgressUpdater: java.lang.String TAG>;
+
+        r6 = newarray (java.lang.Object)[1];
+
+        r6[0] = $r2;
+
+        $r2 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Ignoring setProgressAsync(...). WorkSpec (%s) is not in a RUNNING state.", r6);
+
+        r8 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r3.<androidx.work.Logger: void warning(java.lang.String,java.lang.String,java.lang.Throwable[])>(r4, $r2, r8);
+
+     label08:
+        r17 = r0.<androidx.work.impl.utils.WorkProgressUpdater$1: androidx.work.impl.utils.futures.SettableFuture val$future>;
+
+        virtualinvoke r17.<androidx.work.impl.utils.futures.SettableFuture: boolean set(java.lang.Object)>(null);
+
+        r9 = r0.<androidx.work.impl.utils.WorkProgressUpdater$1: androidx.work.impl.utils.WorkProgressUpdater this$0>;
+
+        r10 = r9.<androidx.work.impl.utils.WorkProgressUpdater: androidx.work.impl.WorkDatabase mWorkDatabase>;
+
+        virtualinvoke r10.<androidx.work.impl.WorkDatabase: void setTransactionSuccessful()>();
+
+     label09:
+        goto label13;
+
+     label10:
+        r18 = new java.lang.IllegalStateException;
+
+        specialinvoke r18.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Calls to setProgressAsync() must complete before a ListenableWorker signals completion of work by returning an instance of Result.");
+
+        throw r18;
+
+     label11:
+        r19 := @caughtexception;
+
+     label12:
+        $r3 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r2 = <androidx.work.impl.utils.WorkProgressUpdater: java.lang.String TAG>;
+
+        r8 = newarray (java.lang.Throwable)[1];
+
+        r8[0] = r19;
+
+        virtualinvoke $r3.<androidx.work.Logger: void error(java.lang.String,java.lang.String,java.lang.Throwable[])>($r2, "Error updating Worker progress", r8);
+
+        r17 = r0.<androidx.work.impl.utils.WorkProgressUpdater$1: androidx.work.impl.utils.futures.SettableFuture val$future>;
+
+        virtualinvoke r17.<androidx.work.impl.utils.futures.SettableFuture: boolean setException(java.lang.Throwable)>(r19);
+
+     label13:
+        r9 = r0.<androidx.work.impl.utils.WorkProgressUpdater$1: androidx.work.impl.utils.WorkProgressUpdater this$0>;
+
+        r10 = r9.<androidx.work.impl.utils.WorkProgressUpdater: androidx.work.impl.WorkDatabase mWorkDatabase>;
+
+        virtualinvoke r10.<androidx.work.impl.WorkDatabase: void endTransaction()>();
+
+        return;
+
+     label14:
+        r20 := @caughtexception;
+
+        r9 = r0.<androidx.work.impl.utils.WorkProgressUpdater$1: androidx.work.impl.utils.WorkProgressUpdater this$0>;
+
+        r10 = r9.<androidx.work.impl.utils.WorkProgressUpdater: androidx.work.impl.WorkDatabase mWorkDatabase>;
+
+        virtualinvoke r10.<androidx.work.impl.WorkDatabase: void endTransaction()>();
+
+        throw r20;
+
+        catch java.lang.Throwable from label01 to label02 with label11;
+        catch java.lang.Throwable from label03 to label04 with label11;
+        catch java.lang.Throwable from label05 to label06 with label11;
+        catch java.lang.Throwable from label07 to label09 with label11;
+        catch java.lang.Throwable from label10 to label11 with label11;
+        catch java.lang.Throwable from label12 to label13 with label14;
+    }
+}

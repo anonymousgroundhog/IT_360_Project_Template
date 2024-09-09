@@ -1,0 +1,369 @@
+public final class androidx.core.util.LongSparseArrayKt extends java.lang.Object
+{
+
+    public static final boolean contains(android.util.LongSparseArray, long)
+    {
+        int $i1;
+        long $l0;
+        android.util.LongSparseArray $r0;
+
+        $r0 := @parameter0: android.util.LongSparseArray;
+
+        $l0 := @parameter1: long;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i1 = virtualinvoke $r0.<android.util.LongSparseArray: int indexOfKey(long)>($l0);
+
+        if $i1 < 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final boolean containsKey(android.util.LongSparseArray, long)
+    {
+        int $i1;
+        long $l0;
+        android.util.LongSparseArray $r0;
+
+        $r0 := @parameter0: android.util.LongSparseArray;
+
+        $l0 := @parameter1: long;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i1 = virtualinvoke $r0.<android.util.LongSparseArray: int indexOfKey(long)>($l0);
+
+        if $i1 < 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final boolean containsValue(android.util.LongSparseArray, java.lang.Object)
+    {
+        int $i0;
+        java.lang.Object $r1;
+        android.util.LongSparseArray $r0;
+
+        $r0 := @parameter0: android.util.LongSparseArray;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = virtualinvoke $r0.<android.util.LongSparseArray: int indexOfValue(java.lang.Object)>($r1);
+
+        if $i0 < 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final void forEach(android.util.LongSparseArray, kotlin.jvm.functions.Function2)
+    {
+        java.lang.Long $r2;
+        int i0, $i1;
+        long $l2;
+        java.lang.Object $r3;
+        kotlin.jvm.functions.Function2 $r1;
+        android.util.LongSparseArray $r0;
+
+        $r0 := @parameter0: android.util.LongSparseArray;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function2;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "action");
+
+        i0 = 0;
+
+        $i1 = virtualinvoke $r0.<android.util.LongSparseArray: int size()>();
+
+     label1:
+        if i0 >= $i1 goto label2;
+
+        $l2 = virtualinvoke $r0.<android.util.LongSparseArray: long keyAt(int)>(i0);
+
+        $r2 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l2);
+
+        $r3 = virtualinvoke $r0.<android.util.LongSparseArray: java.lang.Object valueAt(int)>(i0);
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function2: java.lang.Object invoke(java.lang.Object,java.lang.Object)>($r2, $r3);
+
+        i0 = i0 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public static final java.lang.Object getOrDefault(android.util.LongSparseArray, long, java.lang.Object)
+    {
+        long $l0;
+        java.lang.Object $r1, $r2;
+        android.util.LongSparseArray $r0;
+
+        $r0 := @parameter0: android.util.LongSparseArray;
+
+        $l0 := @parameter1: long;
+
+        $r1 := @parameter2: java.lang.Object;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r2 = virtualinvoke $r0.<android.util.LongSparseArray: java.lang.Object get(long)>($l0);
+
+        if $r2 != null goto label1;
+
+        return $r1;
+
+     label1:
+        return $r2;
+    }
+
+    public static final java.lang.Object getOrElse(android.util.LongSparseArray, long, kotlin.jvm.functions.Function0)
+    {
+        long $l0;
+        java.lang.Object $r2;
+        android.util.LongSparseArray $r0;
+        kotlin.jvm.functions.Function0 $r1;
+
+        $r0 := @parameter0: android.util.LongSparseArray;
+
+        $l0 := @parameter1: long;
+
+        $r1 := @parameter2: kotlin.jvm.functions.Function0;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "defaultValue");
+
+        $r2 = virtualinvoke $r0.<android.util.LongSparseArray: java.lang.Object get(long)>($l0);
+
+        if $r2 != null goto label1;
+
+        $r2 = interfaceinvoke $r1.<kotlin.jvm.functions.Function0: java.lang.Object invoke()>();
+
+     label1:
+        return $r2;
+    }
+
+    public static final int getSize(android.util.LongSparseArray)
+    {
+        int $i0;
+        android.util.LongSparseArray $r0;
+
+        $r0 := @parameter0: android.util.LongSparseArray;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = virtualinvoke $r0.<android.util.LongSparseArray: int size()>();
+
+        return $i0;
+    }
+
+    public static final boolean isEmpty(android.util.LongSparseArray)
+    {
+        int $i0;
+        android.util.LongSparseArray $r0;
+
+        $r0 := @parameter0: android.util.LongSparseArray;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = virtualinvoke $r0.<android.util.LongSparseArray: int size()>();
+
+        if $i0 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final boolean isNotEmpty(android.util.LongSparseArray)
+    {
+        int $i0;
+        android.util.LongSparseArray $r0;
+
+        $r0 := @parameter0: android.util.LongSparseArray;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = virtualinvoke $r0.<android.util.LongSparseArray: int size()>();
+
+        if $i0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final kotlin.collections.LongIterator keyIterator(android.util.LongSparseArray)
+    {
+        androidx.core.util.LongSparseArrayKt$keyIterator$1 $r1;
+        android.util.LongSparseArray $r0;
+        kotlin.collections.LongIterator $r2;
+
+        $r0 := @parameter0: android.util.LongSparseArray;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = new androidx.core.util.LongSparseArrayKt$keyIterator$1;
+
+        specialinvoke $r1.<androidx.core.util.LongSparseArrayKt$keyIterator$1: void <init>(android.util.LongSparseArray)>($r0);
+
+        $r2 = (kotlin.collections.LongIterator) $r1;
+
+        return $r2;
+    }
+
+    public static final android.util.LongSparseArray plus(android.util.LongSparseArray, android.util.LongSparseArray)
+    {
+        int $i0, $i1;
+        android.util.LongSparseArray $r0, $r1, r2;
+
+        $r0 := @parameter0: android.util.LongSparseArray;
+
+        $r1 := @parameter1: android.util.LongSparseArray;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "other");
+
+        r2 = new android.util.LongSparseArray;
+
+        $i0 = virtualinvoke $r0.<android.util.LongSparseArray: int size()>();
+
+        $i1 = virtualinvoke $r1.<android.util.LongSparseArray: int size()>();
+
+        $i0 = $i0 + $i1;
+
+        specialinvoke r2.<android.util.LongSparseArray: void <init>(int)>($i0);
+
+        staticinvoke <androidx.core.util.LongSparseArrayKt: void putAll(android.util.LongSparseArray,android.util.LongSparseArray)>(r2, $r0);
+
+        staticinvoke <androidx.core.util.LongSparseArrayKt: void putAll(android.util.LongSparseArray,android.util.LongSparseArray)>(r2, $r1);
+
+        return r2;
+    }
+
+    public static final void putAll(android.util.LongSparseArray, android.util.LongSparseArray)
+    {
+        int i0, $i1;
+        long $l2;
+        java.lang.Object $r2;
+        android.util.LongSparseArray $r0, $r1;
+
+        $r0 := @parameter0: android.util.LongSparseArray;
+
+        $r1 := @parameter1: android.util.LongSparseArray;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "other");
+
+        i0 = 0;
+
+        $i1 = virtualinvoke $r1.<android.util.LongSparseArray: int size()>();
+
+     label1:
+        if i0 >= $i1 goto label2;
+
+        $l2 = virtualinvoke $r1.<android.util.LongSparseArray: long keyAt(int)>(i0);
+
+        $r2 = virtualinvoke $r1.<android.util.LongSparseArray: java.lang.Object valueAt(int)>(i0);
+
+        virtualinvoke $r0.<android.util.LongSparseArray: void put(long,java.lang.Object)>($l2, $r2);
+
+        i0 = i0 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public static final boolean remove(android.util.LongSparseArray, long, java.lang.Object)
+    {
+        int $i1;
+        long $l0;
+        java.lang.Object $r1, $r2;
+        android.util.LongSparseArray $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.util.LongSparseArray;
+
+        $l0 := @parameter1: long;
+
+        $r1 := @parameter2: java.lang.Object;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i1 = virtualinvoke $r0.<android.util.LongSparseArray: int indexOfKey(long)>($l0);
+
+        if $i1 < 0 goto label1;
+
+        $r2 = virtualinvoke $r0.<android.util.LongSparseArray: java.lang.Object valueAt(int)>($i1);
+
+        $z0 = staticinvoke <kotlin.jvm.internal.Intrinsics: boolean areEqual(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke $r0.<android.util.LongSparseArray: void removeAt(int)>($i1);
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final void set(android.util.LongSparseArray, long, java.lang.Object)
+    {
+        long $l0;
+        java.lang.Object $r1;
+        android.util.LongSparseArray $r0;
+
+        $r0 := @parameter0: android.util.LongSparseArray;
+
+        $l0 := @parameter1: long;
+
+        $r1 := @parameter2: java.lang.Object;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        virtualinvoke $r0.<android.util.LongSparseArray: void put(long,java.lang.Object)>($l0, $r1);
+
+        return;
+    }
+
+    public static final java.util.Iterator valueIterator(android.util.LongSparseArray)
+    {
+        androidx.core.util.LongSparseArrayKt$valueIterator$1 $r1;
+        java.util.Iterator $r2;
+        android.util.LongSparseArray $r0;
+
+        $r0 := @parameter0: android.util.LongSparseArray;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = new androidx.core.util.LongSparseArrayKt$valueIterator$1;
+
+        specialinvoke $r1.<androidx.core.util.LongSparseArrayKt$valueIterator$1: void <init>(android.util.LongSparseArray)>($r0);
+
+        $r2 = (java.util.Iterator) $r1;
+
+        return $r2;
+    }
+}

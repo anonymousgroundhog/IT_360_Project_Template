@@ -1,0 +1,641 @@
+public final class com.google.android.gms.internal.consent_sdk.zzck extends java.lang.Object
+{
+    public java.lang.String zza;
+    public java.lang.String zzb;
+    public java.lang.String zzc;
+    public java.util.List zzd;
+    public java.util.List zze;
+    public int zzf;
+    public int zzg;
+
+    public void <init>()
+    {
+        com.google.android.gms.internal.consent_sdk.zzck r0;
+        java.util.List $r1;
+
+        r0 := @this: com.google.android.gms.internal.consent_sdk.zzck;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzck: int zzf> = 1;
+
+        $r1 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzck: java.util.List zzd> = $r1;
+
+        $r1 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzck: java.util.List zze> = $r1;
+
+        r0.<com.google.android.gms.internal.consent_sdk.zzck: int zzg> = 1;
+
+        return;
+    }
+
+    public static com.google.android.gms.internal.consent_sdk.zzck zza(android.util.JsonReader) throws java.io.IOException
+    {
+        com.google.android.gms.internal.consent_sdk.zzck $r1;
+        android.util.JsonReader $r0;
+        com.google.android.gms.internal.consent_sdk.zzcj $r6;
+        java.io.IOException $r3;
+        java.util.ArrayList $r5;
+        java.util.List $r7;
+        byte $b1, $b2, $b3, $b4;
+        int $i0;
+        java.lang.String $r2, $r4;
+        boolean $z0;
+
+        $r0 := @parameter0: android.util.JsonReader;
+
+        $r1 = new com.google.android.gms.internal.consent_sdk.zzck;
+
+        specialinvoke $r1.<com.google.android.gms.internal.consent_sdk.zzck: void <init>()>();
+
+        virtualinvoke $r0.<android.util.JsonReader: void beginObject()>();
+
+     label01:
+        $z0 = virtualinvoke $r0.<android.util.JsonReader: boolean hasNext()>();
+
+        if $z0 == 0 goto label75;
+
+        $r2 = virtualinvoke $r0.<android.util.JsonReader: java.lang.String nextName()>();
+
+        $i0 = virtualinvoke $r2.<java.lang.String: int hashCode()>();
+
+        $b1 = 4;
+
+        $b2 = 3;
+
+        $b3 = 0;
+
+        lookupswitch($i0)
+        {
+            case -2001388947: goto label09;
+            case -1938755376: goto label08;
+            case -1851537225: goto label07;
+            case -1324537865: goto label06;
+            case -1161803523: goto label05;
+            case -986806987: goto label04;
+            case -790907624: goto label03;
+            default: goto label02;
+        };
+
+     label02:
+        goto label10;
+
+     label03:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("consent_form_payload");
+
+        if $z0 == 0 goto label02;
+
+        $b4 = 1;
+
+        goto label11;
+
+     label04:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("request_info_keys");
+
+        if $z0 == 0 goto label02;
+
+        $b4 = 4;
+
+        goto label11;
+
+     label05:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("actions");
+
+        if $z0 == 0 goto label02;
+
+        $b4 = 5;
+
+        goto label11;
+
+     label06:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("privacy_options_required");
+
+        if $z0 == 0 goto label02;
+
+        $b4 = 6;
+
+        goto label11;
+
+     label07:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("consent_form_base_url");
+
+        if $z0 == 0 goto label02;
+
+        $b4 = 2;
+
+        goto label11;
+
+     label08:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("error_message");
+
+        if $z0 == 0 goto label02;
+
+        $b4 = 3;
+
+        goto label11;
+
+     label09:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("consent_signal");
+
+        if $z0 == 0 goto label02;
+
+        $b4 = 0;
+
+        goto label11;
+
+     label10:
+        $b4 = -1;
+
+     label11:
+        lookupswitch($b4)
+        {
+            case 0: goto label54;
+            case 1: goto label53;
+            case 2: goto label52;
+            case 3: goto label51;
+            case 4: goto label48;
+            case 5: goto label24;
+            case 6: goto label13;
+            default: goto label12;
+        };
+
+     label12:
+        virtualinvoke $r0.<android.util.JsonReader: void skipValue()>();
+
+        goto label01;
+
+     label13:
+        $r2 = virtualinvoke $r0.<android.util.JsonReader: java.lang.String nextString()>();
+
+        $i0 = virtualinvoke $r2.<java.lang.String: int hashCode()>();
+
+        lookupswitch($i0)
+        {
+            case -1888946261: goto label17;
+            case 389487519: goto label16;
+            case 433141802: goto label15;
+            default: goto label14;
+        };
+
+     label14:
+        goto label18;
+
+     label15:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("UNKNOWN");
+
+        if $z0 == 0 goto label14;
+
+        goto label19;
+
+     label16:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("REQUIRED");
+
+        if $z0 == 0 goto label14;
+
+        $b3 = 1;
+
+        goto label19;
+
+     label17:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("NOT_REQUIRED");
+
+        if $z0 == 0 goto label14;
+
+        $b3 = 2;
+
+        goto label19;
+
+     label18:
+        $b3 = -1;
+
+     label19:
+        lookupswitch($b3)
+        {
+            case 0: goto label22;
+            case 1: goto label21;
+            case 2: goto label23;
+            default: goto label20;
+        };
+
+     label20:
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r2);
+
+        $r3 = new java.io.IOException;
+
+        $r4 = "Failed to parse contentads.contributor.direct.serving.appswitchboard.proto.ApplicationGdprResponse.PrivacyOptionsRequirementStatusfrom: ";
+
+        $r2 = virtualinvoke $r4.<java.lang.String: java.lang.String concat(java.lang.String)>($r2);
+
+        specialinvoke $r3.<java.io.IOException: void <init>(java.lang.String)>($r2);
+
+        throw $r3;
+
+     label21:
+        $b2 = 2;
+
+        goto label23;
+
+     label22:
+        $b2 = 1;
+
+     label23:
+        $r1.<com.google.android.gms.internal.consent_sdk.zzck: int zzg> = $b2;
+
+        goto label01;
+
+     label24:
+        $r5 = new java.util.ArrayList;
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>()>();
+
+        $r1.<com.google.android.gms.internal.consent_sdk.zzck: java.util.List zze> = $r5;
+
+        virtualinvoke $r0.<android.util.JsonReader: void beginArray()>();
+
+     label25:
+        $z0 = virtualinvoke $r0.<android.util.JsonReader: boolean hasNext()>();
+
+        if $z0 == 0 goto label47;
+
+        $r6 = new com.google.android.gms.internal.consent_sdk.zzcj;
+
+        specialinvoke $r6.<com.google.android.gms.internal.consent_sdk.zzcj: void <init>()>();
+
+        virtualinvoke $r0.<android.util.JsonReader: void beginObject()>();
+
+     label26:
+        $z0 = virtualinvoke $r0.<android.util.JsonReader: boolean hasNext()>();
+
+        if $z0 == 0 goto label46;
+
+        $r2 = virtualinvoke $r0.<android.util.JsonReader: java.lang.String nextName()>();
+
+        $i0 = virtualinvoke $r2.<java.lang.String: int hashCode()>();
+
+        lookupswitch($i0)
+        {
+            case -2105551094: goto label29;
+            case 1583758243: goto label28;
+            default: goto label27;
+        };
+
+     label27:
+        goto label30;
+
+     label28:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("action_type");
+
+        if $z0 == 0 goto label27;
+
+        $b1 = 0;
+
+        goto label31;
+
+     label29:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("args_json");
+
+        if $z0 == 0 goto label27;
+
+        $b1 = 1;
+
+        goto label31;
+
+     label30:
+        $b1 = -1;
+
+     label31:
+        lookupswitch($b1)
+        {
+            case 0: goto label34;
+            case 1: goto label33;
+            default: goto label32;
+        };
+
+     label32:
+        virtualinvoke $r0.<android.util.JsonReader: void skipValue()>();
+
+        goto label26;
+
+     label33:
+        $r2 = virtualinvoke $r0.<android.util.JsonReader: java.lang.String nextString()>();
+
+        $r6.<com.google.android.gms.internal.consent_sdk.zzcj: java.lang.String zza> = $r2;
+
+        goto label26;
+
+     label34:
+        $r2 = virtualinvoke $r0.<android.util.JsonReader: java.lang.String nextString()>();
+
+        $i0 = virtualinvoke $r2.<java.lang.String: int hashCode()>();
+
+        lookupswitch($i0)
+        {
+            case 64208429: goto label38;
+            case 82862015: goto label37;
+            case 1856333582: goto label36;
+            default: goto label35;
+        };
+
+     label35:
+        goto label39;
+
+     label36:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("UNKNOWN_ACTION_TYPE");
+
+        if $z0 == 0 goto label35;
+
+        $b1 = 0;
+
+        goto label40;
+
+     label37:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("WRITE");
+
+        if $z0 == 0 goto label35;
+
+        $b1 = 1;
+
+        goto label40;
+
+     label38:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("CLEAR");
+
+        if $z0 == 0 goto label35;
+
+        $b1 = 2;
+
+        goto label40;
+
+     label39:
+        $b1 = -1;
+
+     label40:
+        lookupswitch($b1)
+        {
+            case 0: goto label44;
+            case 1: goto label43;
+            case 2: goto label42;
+            default: goto label41;
+        };
+
+     label41:
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r2);
+
+        $r3 = new java.io.IOException;
+
+        $r4 = "Failed to parse contentads.contributor.direct.serving.appswitchboard.proto.ApplicationGdprResponse.Action.ActionTypefrom: ";
+
+        $r2 = virtualinvoke $r4.<java.lang.String: java.lang.String concat(java.lang.String)>($r2);
+
+        specialinvoke $r3.<java.io.IOException: void <init>(java.lang.String)>($r2);
+
+        throw $r3;
+
+     label42:
+        $b1 = 3;
+
+        goto label45;
+
+     label43:
+        $b1 = 2;
+
+        goto label45;
+
+     label44:
+        $b1 = 1;
+
+     label45:
+        $r6.<com.google.android.gms.internal.consent_sdk.zzcj: int zzb> = $b1;
+
+        goto label26;
+
+     label46:
+        virtualinvoke $r0.<android.util.JsonReader: void endObject()>();
+
+        $r7 = $r1.<com.google.android.gms.internal.consent_sdk.zzck: java.util.List zze>;
+
+        interfaceinvoke $r7.<java.util.List: boolean add(java.lang.Object)>($r6);
+
+        goto label25;
+
+     label47:
+        virtualinvoke $r0.<android.util.JsonReader: void endArray()>();
+
+        goto label01;
+
+     label48:
+        $r5 = new java.util.ArrayList;
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>()>();
+
+        $r1.<com.google.android.gms.internal.consent_sdk.zzck: java.util.List zzd> = $r5;
+
+        virtualinvoke $r0.<android.util.JsonReader: void beginArray()>();
+
+     label49:
+        $z0 = virtualinvoke $r0.<android.util.JsonReader: boolean hasNext()>();
+
+        if $z0 == 0 goto label50;
+
+        $r2 = virtualinvoke $r0.<android.util.JsonReader: java.lang.String nextString()>();
+
+        $r7 = $r1.<com.google.android.gms.internal.consent_sdk.zzck: java.util.List zzd>;
+
+        interfaceinvoke $r7.<java.util.List: boolean add(java.lang.Object)>($r2);
+
+        goto label49;
+
+     label50:
+        virtualinvoke $r0.<android.util.JsonReader: void endArray()>();
+
+        goto label01;
+
+     label51:
+        $r2 = virtualinvoke $r0.<android.util.JsonReader: java.lang.String nextString()>();
+
+        $r1.<com.google.android.gms.internal.consent_sdk.zzck: java.lang.String zzc> = $r2;
+
+        goto label01;
+
+     label52:
+        $r2 = virtualinvoke $r0.<android.util.JsonReader: java.lang.String nextString()>();
+
+        $r1.<com.google.android.gms.internal.consent_sdk.zzck: java.lang.String zzb> = $r2;
+
+        goto label01;
+
+     label53:
+        $r2 = virtualinvoke $r0.<android.util.JsonReader: java.lang.String nextString()>();
+
+        $r1.<com.google.android.gms.internal.consent_sdk.zzck: java.lang.String zza> = $r2;
+
+        goto label01;
+
+     label54:
+        $r2 = virtualinvoke $r0.<android.util.JsonReader: java.lang.String nextString()>();
+
+        $i0 = virtualinvoke $r2.<java.lang.String: int hashCode()>();
+
+        lookupswitch($i0)
+        {
+            case -2058725357: goto label63;
+            case -1969035850: goto label62;
+            case -1263695752: goto label61;
+            case -954325659: goto label60;
+            case -918677260: goto label59;
+            case 429411856: goto label58;
+            case 467888915: goto label57;
+            case 1725474845: goto label56;
+            default: goto label55;
+        };
+
+     label55:
+        goto label64;
+
+     label56:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("CONSENT_SIGNAL_NOT_REQUIRED");
+
+        if $z0 == 0 goto label55;
+
+        $b3 = 5;
+
+        goto label65;
+
+     label57:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("CONSENT_SIGNAL_PERSONALIZED_ADS");
+
+        if $z0 == 0 goto label55;
+
+        $b3 = 1;
+
+        goto label65;
+
+     label58:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("CONSENT_SIGNAL_SUFFICIENT");
+
+        if $z0 == 0 goto label55;
+
+        $b3 = 3;
+
+        goto label65;
+
+     label59:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("CONSENT_SIGNAL_PUBLISHER_MISCONFIGURATION");
+
+        if $z0 == 0 goto label55;
+
+        $b3 = 7;
+
+        goto label65;
+
+     label60:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("CONSENT_SIGNAL_NON_PERSONALIZED_ADS");
+
+        if $z0 == 0 goto label55;
+
+        $b3 = 2;
+
+        goto label65;
+
+     label61:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("CONSENT_SIGNAL_UNKNOWN");
+
+        if $z0 == 0 goto label55;
+
+        goto label65;
+
+     label62:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("CONSENT_SIGNAL_ERROR");
+
+        if $z0 == 0 goto label55;
+
+        $b3 = 6;
+
+        goto label65;
+
+     label63:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("CONSENT_SIGNAL_COLLECT_CONSENT");
+
+        if $z0 == 0 goto label55;
+
+        $b3 = 4;
+
+        goto label65;
+
+     label64:
+        $b3 = -1;
+
+     label65:
+        lookupswitch($b3)
+        {
+            case 0: goto label73;
+            case 1: goto label72;
+            case 2: goto label71;
+            case 3: goto label74;
+            case 4: goto label70;
+            case 5: goto label69;
+            case 6: goto label68;
+            case 7: goto label67;
+            default: goto label66;
+        };
+
+     label66:
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r2);
+
+        $r3 = new java.io.IOException;
+
+        $r4 = "Failed to parse contentads.contributor.direct.serving.appswitchboard.proto.ApplicationGdprResponse.ConsentSignalfrom: ";
+
+        $r2 = virtualinvoke $r4.<java.lang.String: java.lang.String concat(java.lang.String)>($r2);
+
+        specialinvoke $r3.<java.io.IOException: void <init>(java.lang.String)>($r2);
+
+        throw $r3;
+
+     label67:
+        $b1 = 8;
+
+        goto label74;
+
+     label68:
+        $b1 = 7;
+
+        goto label74;
+
+     label69:
+        $b1 = 6;
+
+        goto label74;
+
+     label70:
+        $b1 = 5;
+
+        goto label74;
+
+     label71:
+        $b1 = 3;
+
+        goto label74;
+
+     label72:
+        $b1 = 2;
+
+        goto label74;
+
+     label73:
+        $b1 = 1;
+
+     label74:
+        $r1.<com.google.android.gms.internal.consent_sdk.zzck: int zzf> = $b1;
+
+        goto label01;
+
+     label75:
+        virtualinvoke $r0.<android.util.JsonReader: void endObject()>();
+
+        return $r1;
+    }
+}

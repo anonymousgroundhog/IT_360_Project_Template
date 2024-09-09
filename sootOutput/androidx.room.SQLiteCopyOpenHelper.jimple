@@ -1,0 +1,540 @@
+class androidx.room.SQLiteCopyOpenHelper extends java.lang.Object implements androidx.sqlite.db.SupportSQLiteOpenHelper
+{
+    private final android.content.Context mContext;
+    private final java.lang.String mCopyFromAssetPath;
+    private final java.io.File mCopyFromFile;
+    private androidx.room.DatabaseConfiguration mDatabaseConfiguration;
+    private final int mDatabaseVersion;
+    private final androidx.sqlite.db.SupportSQLiteOpenHelper mDelegate;
+    private boolean mVerified;
+
+    void <init>(android.content.Context, java.lang.String, java.io.File, int, androidx.sqlite.db.SupportSQLiteOpenHelper)
+    {
+        android.content.Context $r1;
+        androidx.room.SQLiteCopyOpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper $r4;
+        int $i0;
+        java.lang.String $r2;
+        java.io.File $r3;
+
+        r0 := @this: androidx.room.SQLiteCopyOpenHelper;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.io.File;
+
+        $i0 := @parameter3: int;
+
+        $r4 := @parameter4: androidx.sqlite.db.SupportSQLiteOpenHelper;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.room.SQLiteCopyOpenHelper: android.content.Context mContext> = $r1;
+
+        r0.<androidx.room.SQLiteCopyOpenHelper: java.lang.String mCopyFromAssetPath> = $r2;
+
+        r0.<androidx.room.SQLiteCopyOpenHelper: java.io.File mCopyFromFile> = $r3;
+
+        r0.<androidx.room.SQLiteCopyOpenHelper: int mDatabaseVersion> = $i0;
+
+        r0.<androidx.room.SQLiteCopyOpenHelper: androidx.sqlite.db.SupportSQLiteOpenHelper mDelegate> = $r4;
+
+        return;
+    }
+
+    private void copyDatabaseFile(java.io.File) throws java.io.IOException
+    {
+        android.content.Context r3;
+        java.lang.IllegalStateException r14;
+        androidx.room.SQLiteCopyOpenHelper r0;
+        android.content.res.AssetManager $r4;
+        java.lang.String r2;
+        boolean $z0;
+        java.nio.channels.ReadableByteChannel $r6;
+        java.io.FileOutputStream r10;
+        java.io.IOException $r12;
+        java.io.FileInputStream r8;
+        java.io.File $r1, r7, $r11;
+        java.lang.StringBuilder $r13;
+        java.nio.channels.FileChannel $r9;
+        java.io.InputStream $r5;
+
+        r0 := @this: androidx.room.SQLiteCopyOpenHelper;
+
+        $r1 := @parameter0: java.io.File;
+
+        r2 = r0.<androidx.room.SQLiteCopyOpenHelper: java.lang.String mCopyFromAssetPath>;
+
+        if r2 == null goto label1;
+
+        r3 = r0.<androidx.room.SQLiteCopyOpenHelper: android.content.Context mContext>;
+
+        $r4 = virtualinvoke r3.<android.content.Context: android.content.res.AssetManager getAssets()>();
+
+        r2 = r0.<androidx.room.SQLiteCopyOpenHelper: java.lang.String mCopyFromAssetPath>;
+
+        $r5 = virtualinvoke $r4.<android.content.res.AssetManager: java.io.InputStream open(java.lang.String)>(r2);
+
+        $r6 = staticinvoke <java.nio.channels.Channels: java.nio.channels.ReadableByteChannel newChannel(java.io.InputStream)>($r5);
+
+        goto label2;
+
+     label1:
+        r7 = r0.<androidx.room.SQLiteCopyOpenHelper: java.io.File mCopyFromFile>;
+
+        if r7 == null goto label6;
+
+        r8 = new java.io.FileInputStream;
+
+        r7 = r0.<androidx.room.SQLiteCopyOpenHelper: java.io.File mCopyFromFile>;
+
+        specialinvoke r8.<java.io.FileInputStream: void <init>(java.io.File)>(r7);
+
+        $r6 = virtualinvoke r8.<java.io.FileInputStream: java.nio.channels.FileChannel getChannel()>();
+
+     label2:
+        r3 = r0.<androidx.room.SQLiteCopyOpenHelper: android.content.Context mContext>;
+
+        r7 = virtualinvoke r3.<android.content.Context: java.io.File getCacheDir()>();
+
+        r7 = staticinvoke <java.io.File: java.io.File createTempFile(java.lang.String,java.lang.String,java.io.File)>("room-copy-helper", ".tmp", r7);
+
+        virtualinvoke r7.<java.io.File: void deleteOnExit()>();
+
+        r10 = new java.io.FileOutputStream;
+
+        specialinvoke r10.<java.io.FileOutputStream: void <init>(java.io.File)>(r7);
+
+        $r9 = virtualinvoke r10.<java.io.FileOutputStream: java.nio.channels.FileChannel getChannel()>();
+
+        staticinvoke <androidx.room.util.FileUtil: void copy(java.nio.channels.ReadableByteChannel,java.nio.channels.FileChannel)>($r6, $r9);
+
+        $r11 = virtualinvoke $r1.<java.io.File: java.io.File getParentFile()>();
+
+        if $r11 == null goto label4;
+
+        $z0 = virtualinvoke $r11.<java.io.File: boolean exists()>();
+
+        if $z0 != 0 goto label4;
+
+        $z0 = virtualinvoke $r11.<java.io.File: boolean mkdirs()>();
+
+        if $z0 == 0 goto label3;
+
+        goto label4;
+
+     label3:
+        $r12 = new java.io.IOException;
+
+        $r13 = new java.lang.StringBuilder;
+
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>()>();
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to create directories for ");
+
+        r2 = virtualinvoke $r1.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        r2 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r12.<java.io.IOException: void <init>(java.lang.String)>(r2);
+
+        throw $r12;
+
+     label4:
+        $z0 = virtualinvoke r7.<java.io.File: boolean renameTo(java.io.File)>($r1);
+
+        if $z0 == 0 goto label5;
+
+        return;
+
+     label5:
+        $r12 = new java.io.IOException;
+
+        $r13 = new java.lang.StringBuilder;
+
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>()>();
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to move intermediate file (");
+
+        r2 = virtualinvoke r7.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") to destination (");
+
+        r2 = virtualinvoke $r1.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(").");
+
+        r2 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r12.<java.io.IOException: void <init>(java.lang.String)>(r2);
+
+        throw $r12;
+
+     label6:
+        r14 = new java.lang.IllegalStateException;
+
+        specialinvoke r14.<java.lang.IllegalStateException: void <init>(java.lang.String)>("copyFromAssetPath and copyFromFile == null!");
+
+        throw r14;
+    }
+
+    private void verifyDatabaseFile()
+    {
+        java.lang.Throwable r12;
+        android.content.Context r3;
+        androidx.room.SQLiteCopyOpenHelper r0;
+        int $i0, $i1;
+        androidx.room.DatabaseConfiguration r5;
+        androidx.room.util.CopyLock r1;
+        java.lang.String $r2;
+        boolean z0;
+        java.io.IOException r7, r9, r11;
+        java.lang.RuntimeException r8;
+        java.io.File $r4, $r6;
+        java.lang.StringBuilder $r10;
+
+        r0 := @this: androidx.room.SQLiteCopyOpenHelper;
+
+        $r2 = virtualinvoke r0.<androidx.room.SQLiteCopyOpenHelper: java.lang.String getDatabaseName()>();
+
+        r3 = r0.<androidx.room.SQLiteCopyOpenHelper: android.content.Context mContext>;
+
+        $r4 = virtualinvoke r3.<android.content.Context: java.io.File getDatabasePath(java.lang.String)>($r2);
+
+        r5 = r0.<androidx.room.SQLiteCopyOpenHelper: androidx.room.DatabaseConfiguration mDatabaseConfiguration>;
+
+        if r5 == null goto label02;
+
+        r5 = r0.<androidx.room.SQLiteCopyOpenHelper: androidx.room.DatabaseConfiguration mDatabaseConfiguration>;
+
+        z0 = r5.<androidx.room.DatabaseConfiguration: boolean multiInstanceInvalidation>;
+
+        if z0 == 0 goto label01;
+
+        goto label02;
+
+     label01:
+        z0 = 0;
+
+        goto label03;
+
+     label02:
+        z0 = 1;
+
+     label03:
+        r1 = new androidx.room.util.CopyLock;
+
+        r3 = r0.<androidx.room.SQLiteCopyOpenHelper: android.content.Context mContext>;
+
+        $r6 = virtualinvoke r3.<android.content.Context: java.io.File getFilesDir()>();
+
+        specialinvoke r1.<androidx.room.util.CopyLock: void <init>(java.lang.String,java.io.File,boolean)>($r2, $r6, z0);
+
+     label04:
+        virtualinvoke r1.<androidx.room.util.CopyLock: void lock()>();
+
+        z0 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+     label05:
+        if z0 != 0 goto label10;
+
+     label06:
+        specialinvoke r0.<androidx.room.SQLiteCopyOpenHelper: void copyDatabaseFile(java.io.File)>($r4);
+
+     label07:
+        virtualinvoke r1.<androidx.room.util.CopyLock: void unlock()>();
+
+        return;
+
+     label08:
+        r7 := @caughtexception;
+
+     label09:
+        r8 = new java.lang.RuntimeException;
+
+        specialinvoke r8.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("Unable to copy database file.", r7);
+
+        throw r8;
+
+     label10:
+        r5 = r0.<androidx.room.SQLiteCopyOpenHelper: androidx.room.DatabaseConfiguration mDatabaseConfiguration>;
+
+     label11:
+        if r5 != null goto label12;
+
+        virtualinvoke r1.<androidx.room.util.CopyLock: void unlock()>();
+
+        return;
+
+     label12:
+        $i1 = staticinvoke <androidx.room.util.DBUtil: int readVersion(java.io.File)>($r4);
+
+     label13:
+        $i0 = r0.<androidx.room.SQLiteCopyOpenHelper: int mDatabaseVersion>;
+
+     label14:
+        if $i1 != $i0 goto label15;
+
+        virtualinvoke r1.<androidx.room.util.CopyLock: void unlock()>();
+
+        return;
+
+     label15:
+        r5 = r0.<androidx.room.SQLiteCopyOpenHelper: androidx.room.DatabaseConfiguration mDatabaseConfiguration>;
+
+        $i0 = r0.<androidx.room.SQLiteCopyOpenHelper: int mDatabaseVersion>;
+
+        z0 = virtualinvoke r5.<androidx.room.DatabaseConfiguration: boolean isMigrationRequired(int,int)>($i1, $i0);
+
+     label16:
+        if z0 == 0 goto label17;
+
+        virtualinvoke r1.<androidx.room.util.CopyLock: void unlock()>();
+
+        return;
+
+     label17:
+        r3 = r0.<androidx.room.SQLiteCopyOpenHelper: android.content.Context mContext>;
+
+        z0 = virtualinvoke r3.<android.content.Context: boolean deleteDatabase(java.lang.String)>($r2);
+
+     label18:
+        if z0 == 0 goto label24;
+
+     label19:
+        specialinvoke r0.<androidx.room.SQLiteCopyOpenHelper: void copyDatabaseFile(java.io.File)>($r4);
+
+     label20:
+        goto label25;
+
+     label21:
+        r9 := @caughtexception;
+
+     label22:
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("ROOM", "Unable to copy database file.", r9);
+
+     label23:
+        goto label25;
+
+     label24:
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to delete database file (");
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") for a copy destructive migration.");
+
+        $r2 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("ROOM", $r2);
+
+     label25:
+        virtualinvoke r1.<androidx.room.util.CopyLock: void unlock()>();
+
+        return;
+
+     label26:
+        r11 := @caughtexception;
+
+     label27:
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("ROOM", "Unable to read database version.", r11);
+
+     label28:
+        virtualinvoke r1.<androidx.room.util.CopyLock: void unlock()>();
+
+        return;
+
+     label29:
+        r12 := @caughtexception;
+
+        virtualinvoke r1.<androidx.room.util.CopyLock: void unlock()>();
+
+        throw r12;
+
+        catch java.lang.Throwable from label04 to label05 with label29;
+        catch java.io.IOException from label06 to label07 with label08;
+        catch java.lang.Throwable from label06 to label07 with label29;
+        catch java.lang.Throwable from label09 to label11 with label29;
+        catch java.io.IOException from label12 to label13 with label26;
+        catch java.lang.Throwable from label12 to label13 with label29;
+        catch java.lang.Throwable from label13 to label14 with label29;
+        catch java.lang.Throwable from label15 to label16 with label29;
+        catch java.lang.Throwable from label17 to label18 with label29;
+        catch java.io.IOException from label19 to label20 with label21;
+        catch java.lang.Throwable from label19 to label20 with label29;
+        catch java.lang.Throwable from label22 to label23 with label29;
+        catch java.lang.Throwable from label24 to label25 with label29;
+        catch java.lang.Throwable from label27 to label28 with label29;
+    }
+
+    public void close()
+    {
+        java.lang.Throwable $r2;
+        androidx.room.SQLiteCopyOpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper $r1;
+
+        r0 := @this: androidx.room.SQLiteCopyOpenHelper;
+
+        entermonitor r0;
+
+     label1:
+        $r1 = r0.<androidx.room.SQLiteCopyOpenHelper: androidx.sqlite.db.SupportSQLiteOpenHelper mDelegate>;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteOpenHelper: void close()>();
+
+        r0.<androidx.room.SQLiteCopyOpenHelper: boolean mVerified> = 0;
+
+     label2:
+        exitmonitor r0;
+
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public java.lang.String getDatabaseName()
+    {
+        java.lang.String $r1;
+        androidx.room.SQLiteCopyOpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper $r2;
+
+        r0 := @this: androidx.room.SQLiteCopyOpenHelper;
+
+        $r2 = r0.<androidx.room.SQLiteCopyOpenHelper: androidx.sqlite.db.SupportSQLiteOpenHelper mDelegate>;
+
+        $r1 = interfaceinvoke $r2.<androidx.sqlite.db.SupportSQLiteOpenHelper: java.lang.String getDatabaseName()>();
+
+        return $r1;
+    }
+
+    public androidx.sqlite.db.SupportSQLiteDatabase getReadableDatabase()
+    {
+        java.lang.Throwable $r3;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        androidx.room.SQLiteCopyOpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.room.SQLiteCopyOpenHelper;
+
+        entermonitor r0;
+
+     label1:
+        $z0 = r0.<androidx.room.SQLiteCopyOpenHelper: boolean mVerified>;
+
+        if $z0 != 0 goto label2;
+
+        specialinvoke r0.<androidx.room.SQLiteCopyOpenHelper: void verifyDatabaseFile()>();
+
+        r0.<androidx.room.SQLiteCopyOpenHelper: boolean mVerified> = 1;
+
+     label2:
+        $r2 = r0.<androidx.room.SQLiteCopyOpenHelper: androidx.sqlite.db.SupportSQLiteOpenHelper mDelegate>;
+
+        $r1 = interfaceinvoke $r2.<androidx.sqlite.db.SupportSQLiteOpenHelper: androidx.sqlite.db.SupportSQLiteDatabase getReadableDatabase()>();
+
+     label3:
+        exitmonitor r0;
+
+        return $r1;
+
+     label4:
+        $r3 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+    }
+
+    public androidx.sqlite.db.SupportSQLiteDatabase getWritableDatabase()
+    {
+        java.lang.Throwable $r3;
+        androidx.sqlite.db.SupportSQLiteDatabase $r1;
+        androidx.room.SQLiteCopyOpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.room.SQLiteCopyOpenHelper;
+
+        entermonitor r0;
+
+     label1:
+        $z0 = r0.<androidx.room.SQLiteCopyOpenHelper: boolean mVerified>;
+
+        if $z0 != 0 goto label2;
+
+        specialinvoke r0.<androidx.room.SQLiteCopyOpenHelper: void verifyDatabaseFile()>();
+
+        r0.<androidx.room.SQLiteCopyOpenHelper: boolean mVerified> = 1;
+
+     label2:
+        $r2 = r0.<androidx.room.SQLiteCopyOpenHelper: androidx.sqlite.db.SupportSQLiteOpenHelper mDelegate>;
+
+        $r1 = interfaceinvoke $r2.<androidx.sqlite.db.SupportSQLiteOpenHelper: androidx.sqlite.db.SupportSQLiteDatabase getWritableDatabase()>();
+
+     label3:
+        exitmonitor r0;
+
+        return $r1;
+
+     label4:
+        $r3 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+    }
+
+    void setDatabaseConfiguration(androidx.room.DatabaseConfiguration)
+    {
+        androidx.room.DatabaseConfiguration $r1;
+        androidx.room.SQLiteCopyOpenHelper r0;
+
+        r0 := @this: androidx.room.SQLiteCopyOpenHelper;
+
+        $r1 := @parameter0: androidx.room.DatabaseConfiguration;
+
+        r0.<androidx.room.SQLiteCopyOpenHelper: androidx.room.DatabaseConfiguration mDatabaseConfiguration> = $r1;
+
+        return;
+    }
+
+    public void setWriteAheadLoggingEnabled(boolean)
+    {
+        androidx.room.SQLiteCopyOpenHelper r0;
+        boolean $z0;
+        androidx.sqlite.db.SupportSQLiteOpenHelper $r1;
+
+        r0 := @this: androidx.room.SQLiteCopyOpenHelper;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = r0.<androidx.room.SQLiteCopyOpenHelper: androidx.sqlite.db.SupportSQLiteOpenHelper mDelegate>;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteOpenHelper: void setWriteAheadLoggingEnabled(boolean)>($z0);
+
+        return;
+    }
+}

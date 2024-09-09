@@ -1,0 +1,229 @@
+public final class com.google.common.math.Quantiles$ScaleAndIndex extends java.lang.Object
+{
+    private final int index;
+    private final int scale;
+
+    private void <init>(int, int)
+    {
+        int $i0, $i1;
+        com.google.common.math.Quantiles$ScaleAndIndex r0;
+
+        r0 := @this: com.google.common.math.Quantiles$ScaleAndIndex;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        staticinvoke <com.google.common.math.Quantiles: void access$300(int,int)>($i1, $i0);
+
+        r0.<com.google.common.math.Quantiles$ScaleAndIndex: int scale> = $i0;
+
+        r0.<com.google.common.math.Quantiles$ScaleAndIndex: int index> = $i1;
+
+        return;
+    }
+
+    void <init>(int, int, com.google.common.math.Quantiles$1)
+    {
+        com.google.common.math.Quantiles$ScaleAndIndex r0;
+        int $i0, $i1;
+        com.google.common.math.Quantiles$1 $r1;
+
+        r0 := @this: com.google.common.math.Quantiles$ScaleAndIndex;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 := @parameter2: com.google.common.math.Quantiles$1;
+
+        specialinvoke r0.<com.google.common.math.Quantiles$ScaleAndIndex: void <init>(int,int)>($i0, $i1);
+
+        return;
+    }
+
+    public double compute(java.util.Collection)
+    {
+        com.google.common.math.Quantiles$ScaleAndIndex r0;
+        java.util.Collection r1;
+        double[] $r2;
+        double $d0;
+
+        r0 := @this: com.google.common.math.Quantiles$ScaleAndIndex;
+
+        r1 := @parameter0: java.util.Collection;
+
+        $r2 = staticinvoke <com.google.common.primitives.Doubles: double[] toArray(java.util.Collection)>(r1);
+
+        $d0 = virtualinvoke r0.<com.google.common.math.Quantiles$ScaleAndIndex: double computeInPlace(double[])>($r2);
+
+        return $d0;
+    }
+
+    public transient double compute(double[])
+    {
+        com.google.common.math.Quantiles$ScaleAndIndex r0;
+        double[] $r1;
+        java.lang.Object $r2;
+        double $d0;
+
+        r0 := @this: com.google.common.math.Quantiles$ScaleAndIndex;
+
+        $r1 := @parameter0: double[];
+
+        $r2 = virtualinvoke $r1.<java.lang.Object: java.lang.Object clone()>();
+
+        $r1 = (double[]) $r2;
+
+        $d0 = virtualinvoke r0.<com.google.common.math.Quantiles$ScaleAndIndex: double computeInPlace(double[])>($r1);
+
+        return $d0;
+    }
+
+    public transient double compute(int[])
+    {
+        com.google.common.math.Quantiles$ScaleAndIndex r0;
+        int[] $r1;
+        double[] $r2;
+        double $d0;
+
+        r0 := @this: com.google.common.math.Quantiles$ScaleAndIndex;
+
+        $r1 := @parameter0: int[];
+
+        $r2 = staticinvoke <com.google.common.math.Quantiles: double[] access$500(int[])>($r1);
+
+        $d0 = virtualinvoke r0.<com.google.common.math.Quantiles$ScaleAndIndex: double computeInPlace(double[])>($r2);
+
+        return $d0;
+    }
+
+    public transient double compute(long[])
+    {
+        com.google.common.math.Quantiles$ScaleAndIndex r0;
+        long[] $r1;
+        double[] $r2;
+        double $d0;
+
+        r0 := @this: com.google.common.math.Quantiles$ScaleAndIndex;
+
+        $r1 := @parameter0: long[];
+
+        $r2 = staticinvoke <com.google.common.math.Quantiles: double[] access$400(long[])>($r1);
+
+        $d0 = virtualinvoke r0.<com.google.common.math.Quantiles$ScaleAndIndex: double computeInPlace(double[])>($r2);
+
+        return $d0;
+    }
+
+    public transient double computeInPlace(double[])
+    {
+        double[] $r1;
+        long l1, $l2, $l4;
+        com.google.common.math.Quantiles$ScaleAndIndex r0;
+        int i0, i3, $i5, $i6, $i7;
+        double $d0, $d1, $d2, $d3;
+        boolean z0;
+        java.math.RoundingMode r2;
+
+        r0 := @this: com.google.common.math.Quantiles$ScaleAndIndex;
+
+        $r1 := @parameter0: double[];
+
+        i0 = lengthof $r1;
+
+        if i0 <= 0 goto label1;
+
+        z0 = 1;
+
+        goto label2;
+
+     label1:
+        z0 = 0;
+
+     label2:
+        staticinvoke <com.google.common.base.Preconditions: void checkArgument(boolean,java.lang.Object)>(z0, "Cannot calculate quantiles of an empty dataset");
+
+        z0 = staticinvoke <com.google.common.math.Quantiles: boolean access$600(double[])>($r1);
+
+        if z0 == 0 goto label3;
+
+        return #NaN;
+
+     label3:
+        i0 = r0.<com.google.common.math.Quantiles$ScaleAndIndex: int index>;
+
+        l1 = (long) i0;
+
+        i0 = lengthof $r1;
+
+        i0 = i0 - 1;
+
+        $l2 = (long) i0;
+
+        l1 = l1 * $l2;
+
+        i0 = r0.<com.google.common.math.Quantiles$ScaleAndIndex: int scale>;
+
+        $l2 = (long) i0;
+
+        r2 = <java.math.RoundingMode: java.math.RoundingMode DOWN>;
+
+        $l2 = staticinvoke <com.google.common.math.LongMath: long divide(long,long,java.math.RoundingMode)>(l1, $l2, r2);
+
+        i3 = (int) $l2;
+
+        $l2 = (long) i3;
+
+        i0 = r0.<com.google.common.math.Quantiles$ScaleAndIndex: int scale>;
+
+        $l4 = (long) i0;
+
+        $l2 = $l2 * $l4;
+
+        l1 = l1 - $l2;
+
+        i0 = (int) l1;
+
+        $i5 = lengthof $r1;
+
+        $i5 = $i5 - 1;
+
+        staticinvoke <com.google.common.math.Quantiles: void access$700(int,double[],int,int)>(i3, $r1, 0, $i5);
+
+        if i0 != 0 goto label4;
+
+        $d0 = $r1[i3];
+
+        return $d0;
+
+     label4:
+        $i5 = i3 + 1;
+
+        $i6 = i3 + 1;
+
+        $i7 = lengthof $r1;
+
+        $i7 = $i7 - 1;
+
+        staticinvoke <com.google.common.math.Quantiles: void access$700(int,double[],int,int)>($i5, $r1, $i6, $i7);
+
+        $d0 = $r1[i3];
+
+        i3 = i3 + 1;
+
+        $d1 = $r1[i3];
+
+        $d2 = (double) i0;
+
+        i0 = r0.<com.google.common.math.Quantiles$ScaleAndIndex: int scale>;
+
+        $d3 = (double) i0;
+
+        $d0 = staticinvoke <com.google.common.math.Quantiles: double access$800(double,double,double,double)>($d0, $d1, $d2, $d3);
+
+        return $d0;
+    }
+}

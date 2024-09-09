@@ -1,0 +1,56 @@
+public final class com.google.android.gms.internal.ads.zzgru extends java.lang.Object
+{
+    private java.util.HashMap zza;
+
+    public void <init>()
+    {
+        com.google.android.gms.internal.ads.zzgru r0;
+        java.util.HashMap $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgru;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.HashMap;
+
+        specialinvoke $r1.<java.util.HashMap: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzgru: java.util.HashMap zza> = $r1;
+
+        return;
+    }
+
+    public final com.google.android.gms.internal.ads.zzgrw zza()
+    {
+        java.lang.IllegalStateException $r4;
+        java.util.Map $r1;
+        com.google.android.gms.internal.ads.zzgru r0;
+        java.util.HashMap $r2;
+        com.google.android.gms.internal.ads.zzgrw $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgru;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzgru: java.util.HashMap zza>;
+
+        if $r2 == null goto label1;
+
+        $r3 = new com.google.android.gms.internal.ads.zzgrw;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzgru: java.util.HashMap zza>;
+
+        $r1 = staticinvoke <java.util.Collections: java.util.Map unmodifiableMap(java.util.Map)>($r2);
+
+        specialinvoke $r3.<com.google.android.gms.internal.ads.zzgrw: void <init>(java.util.Map,com.google.android.gms.internal.ads.zzgrv)>($r1, null);
+
+        r0.<com.google.android.gms.internal.ads.zzgru: java.util.HashMap zza> = null;
+
+        return $r3;
+
+     label1:
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("cannot call build() twice");
+
+        throw $r4;
+    }
+}

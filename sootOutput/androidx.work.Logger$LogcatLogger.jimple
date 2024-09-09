@@ -1,0 +1,215 @@
+public class androidx.work.Logger$LogcatLogger extends androidx.work.Logger
+{
+    private int mLoggingLevel;
+
+    public void <init>(int)
+    {
+        int $i0;
+        androidx.work.Logger$LogcatLogger r0;
+
+        r0 := @this: androidx.work.Logger$LogcatLogger;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke r0.<androidx.work.Logger: void <init>(int)>($i0);
+
+        r0.<androidx.work.Logger$LogcatLogger: int mLoggingLevel> = $i0;
+
+        return;
+    }
+
+    public transient void debug(java.lang.String, java.lang.String, java.lang.Throwable[])
+    {
+        java.lang.Throwable $r4;
+        androidx.work.Logger$LogcatLogger r0;
+        java.lang.Throwable[] $r3;
+        int $i0;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: androidx.work.Logger$LogcatLogger;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.Throwable[];
+
+        $i0 = r0.<androidx.work.Logger$LogcatLogger: int mLoggingLevel>;
+
+        if $i0 > 3 goto label2;
+
+        if $r3 == null goto label1;
+
+        $i0 = lengthof $r3;
+
+        if $i0 < 1 goto label1;
+
+        $r4 = $r3[0];
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String,java.lang.Throwable)>($r1, $r2, $r4);
+
+        return;
+
+     label1:
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r1, $r2);
+
+     label2:
+        return;
+    }
+
+    public transient void error(java.lang.String, java.lang.String, java.lang.Throwable[])
+    {
+        java.lang.Throwable $r4;
+        androidx.work.Logger$LogcatLogger r0;
+        java.lang.Throwable[] $r3;
+        int $i0;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: androidx.work.Logger$LogcatLogger;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.Throwable[];
+
+        $i0 = r0.<androidx.work.Logger$LogcatLogger: int mLoggingLevel>;
+
+        if $i0 > 6 goto label2;
+
+        if $r3 == null goto label1;
+
+        $i0 = lengthof $r3;
+
+        if $i0 < 1 goto label1;
+
+        $r4 = $r3[0];
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>($r1, $r2, $r4);
+
+        return;
+
+     label1:
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>($r1, $r2);
+
+     label2:
+        return;
+    }
+
+    public transient void info(java.lang.String, java.lang.String, java.lang.Throwable[])
+    {
+        java.lang.Throwable $r4;
+        androidx.work.Logger$LogcatLogger r0;
+        java.lang.Throwable[] $r3;
+        int $i0;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: androidx.work.Logger$LogcatLogger;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.Throwable[];
+
+        $i0 = r0.<androidx.work.Logger$LogcatLogger: int mLoggingLevel>;
+
+        if $i0 > 4 goto label2;
+
+        if $r3 == null goto label1;
+
+        $i0 = lengthof $r3;
+
+        if $i0 < 1 goto label1;
+
+        $r4 = $r3[0];
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)>($r1, $r2, $r4);
+
+        return;
+
+     label1:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>($r1, $r2);
+
+     label2:
+        return;
+    }
+
+    public transient void verbose(java.lang.String, java.lang.String, java.lang.Throwable[])
+    {
+        java.lang.Throwable $r4;
+        androidx.work.Logger$LogcatLogger r0;
+        java.lang.Throwable[] $r3;
+        int $i0;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: androidx.work.Logger$LogcatLogger;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.Throwable[];
+
+        $i0 = r0.<androidx.work.Logger$LogcatLogger: int mLoggingLevel>;
+
+        if $i0 > 2 goto label2;
+
+        if $r3 == null goto label1;
+
+        $i0 = lengthof $r3;
+
+        if $i0 < 1 goto label1;
+
+        $r4 = $r3[0];
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String,java.lang.Throwable)>($r1, $r2, $r4);
+
+        return;
+
+     label1:
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>($r1, $r2);
+
+     label2:
+        return;
+    }
+
+    public transient void warning(java.lang.String, java.lang.String, java.lang.Throwable[])
+    {
+        java.lang.Throwable $r4;
+        androidx.work.Logger$LogcatLogger r0;
+        java.lang.Throwable[] $r3;
+        int $i0;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: androidx.work.Logger$LogcatLogger;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.Throwable[];
+
+        $i0 = r0.<androidx.work.Logger$LogcatLogger: int mLoggingLevel>;
+
+        if $i0 > 5 goto label2;
+
+        if $r3 == null goto label1;
+
+        $i0 = lengthof $r3;
+
+        if $i0 < 1 goto label1;
+
+        $r4 = $r3[0];
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>($r1, $r2, $r4);
+
+        return;
+
+     label1:
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>($r1, $r2);
+
+     label2:
+        return;
+    }
+}

@@ -1,0 +1,293 @@
+class androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport extends android.location.GnssStatus$Callback
+{
+    final androidx.core.location.GnssStatusCompat$Callback mCallback;
+    volatile java.util.concurrent.Executor mExecutor;
+
+    void <init>(androidx.core.location.GnssStatusCompat$Callback)
+    {
+        androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport r0;
+        androidx.core.location.GnssStatusCompat$Callback $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport;
+
+        $r1 := @parameter0: androidx.core.location.GnssStatusCompat$Callback;
+
+        specialinvoke r0.<android.location.GnssStatus$Callback: void <init>()>();
+
+        if $r1 == null goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        staticinvoke <androidx.core.util.Preconditions: void checkArgument(boolean,java.lang.Object)>($z0, "invalid null callback");
+
+        r0.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport: androidx.core.location.GnssStatusCompat$Callback mCallback> = $r1;
+
+        return;
+    }
+
+    void lambda$onFirstFix$2$androidx-core-location-LocationManagerCompat$PreRGnssStatusTransport(java.util.concurrent.Executor, int)
+    {
+        java.util.concurrent.Executor $r1, $r2;
+        int $i0;
+        androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport r0;
+        androidx.core.location.GnssStatusCompat$Callback $r3;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        $i0 := @parameter1: int;
+
+        $r2 = r0.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport: java.util.concurrent.Executor mExecutor>;
+
+        if $r2 == $r1 goto label1;
+
+        return;
+
+     label1:
+        $r3 = r0.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport: androidx.core.location.GnssStatusCompat$Callback mCallback>;
+
+        virtualinvoke $r3.<androidx.core.location.GnssStatusCompat$Callback: void onFirstFix(int)>($i0);
+
+        return;
+    }
+
+    void lambda$onSatelliteStatusChanged$3$androidx-core-location-LocationManagerCompat$PreRGnssStatusTransport(java.util.concurrent.Executor, android.location.GnssStatus)
+    {
+        java.util.concurrent.Executor $r1, $r4;
+        androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport r0;
+        androidx.core.location.GnssStatusCompat$Callback $r5;
+        android.location.GnssStatus $r2;
+        androidx.core.location.GnssStatusCompat $r3;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        $r2 := @parameter1: android.location.GnssStatus;
+
+        $r4 = r0.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport: java.util.concurrent.Executor mExecutor>;
+
+        if $r4 == $r1 goto label1;
+
+        return;
+
+     label1:
+        $r5 = r0.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport: androidx.core.location.GnssStatusCompat$Callback mCallback>;
+
+        $r3 = staticinvoke <androidx.core.location.GnssStatusCompat: androidx.core.location.GnssStatusCompat wrap(android.location.GnssStatus)>($r2);
+
+        virtualinvoke $r5.<androidx.core.location.GnssStatusCompat$Callback: void onSatelliteStatusChanged(androidx.core.location.GnssStatusCompat)>($r3);
+
+        return;
+    }
+
+    void lambda$onStarted$0$androidx-core-location-LocationManagerCompat$PreRGnssStatusTransport(java.util.concurrent.Executor)
+    {
+        java.util.concurrent.Executor $r1, $r2;
+        androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport r0;
+        androidx.core.location.GnssStatusCompat$Callback $r3;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        $r2 = r0.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport: java.util.concurrent.Executor mExecutor>;
+
+        if $r2 == $r1 goto label1;
+
+        return;
+
+     label1:
+        $r3 = r0.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport: androidx.core.location.GnssStatusCompat$Callback mCallback>;
+
+        virtualinvoke $r3.<androidx.core.location.GnssStatusCompat$Callback: void onStarted()>();
+
+        return;
+    }
+
+    void lambda$onStopped$1$androidx-core-location-LocationManagerCompat$PreRGnssStatusTransport(java.util.concurrent.Executor)
+    {
+        java.util.concurrent.Executor $r1, $r2;
+        androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport r0;
+        androidx.core.location.GnssStatusCompat$Callback $r3;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        $r2 = r0.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport: java.util.concurrent.Executor mExecutor>;
+
+        if $r2 == $r1 goto label1;
+
+        return;
+
+     label1:
+        $r3 = r0.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport: androidx.core.location.GnssStatusCompat$Callback mCallback>;
+
+        virtualinvoke $r3.<androidx.core.location.GnssStatusCompat$Callback: void onStopped()>();
+
+        return;
+    }
+
+    public void onFirstFix(int)
+    {
+        androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport$$ExternalSyntheticLambda0 $r2;
+        java.util.concurrent.Executor r1;
+        int $i0;
+        androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport r0;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport;
+
+        $i0 := @parameter0: int;
+
+        r1 = r0.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport: java.util.concurrent.Executor mExecutor>;
+
+        if r1 != null goto label1;
+
+        return;
+
+     label1:
+        $r2 = new androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport$$ExternalSyntheticLambda0;
+
+        specialinvoke $r2.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport$$ExternalSyntheticLambda0: void <init>(androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport,java.util.concurrent.Executor,int)>(r0, r1, $i0);
+
+        interfaceinvoke r1.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r2);
+
+        return;
+    }
+
+    public void onSatelliteStatusChanged(android.location.GnssStatus)
+    {
+        java.util.concurrent.Executor r2;
+        androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport r0;
+        androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport$$ExternalSyntheticLambda1 $r3;
+        android.location.GnssStatus $r1;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport;
+
+        $r1 := @parameter0: android.location.GnssStatus;
+
+        r2 = r0.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport: java.util.concurrent.Executor mExecutor>;
+
+        if r2 != null goto label1;
+
+        return;
+
+     label1:
+        $r3 = new androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport$$ExternalSyntheticLambda1;
+
+        specialinvoke $r3.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport$$ExternalSyntheticLambda1: void <init>(androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport,java.util.concurrent.Executor,android.location.GnssStatus)>(r0, r2, $r1);
+
+        interfaceinvoke r2.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r3);
+
+        return;
+    }
+
+    public void onStarted()
+    {
+        androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport r0;
+        java.util.concurrent.Executor r1;
+        androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport$$ExternalSyntheticLambda3 $r2;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport;
+
+        r1 = r0.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport: java.util.concurrent.Executor mExecutor>;
+
+        if r1 != null goto label1;
+
+        return;
+
+     label1:
+        $r2 = new androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport$$ExternalSyntheticLambda3;
+
+        specialinvoke $r2.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport$$ExternalSyntheticLambda3: void <init>(androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport,java.util.concurrent.Executor)>(r0, r1);
+
+        interfaceinvoke r1.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r2);
+
+        return;
+    }
+
+    public void onStopped()
+    {
+        androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport r0;
+        androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport$$ExternalSyntheticLambda2 $r2;
+        java.util.concurrent.Executor r1;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport;
+
+        r1 = r0.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport: java.util.concurrent.Executor mExecutor>;
+
+        if r1 != null goto label1;
+
+        return;
+
+     label1:
+        $r2 = new androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport$$ExternalSyntheticLambda2;
+
+        specialinvoke $r2.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport$$ExternalSyntheticLambda2: void <init>(androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport,java.util.concurrent.Executor)>(r0, r1);
+
+        interfaceinvoke r1.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r2);
+
+        return;
+    }
+
+    public void register(java.util.concurrent.Executor)
+    {
+        java.util.concurrent.Executor $r1, $r2;
+        androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport r0;
+        boolean $z0, $z1;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        $z0 = 1;
+
+        if $r1 == null goto label1;
+
+        $z1 = 1;
+
+        goto label2;
+
+     label1:
+        $z1 = 0;
+
+     label2:
+        staticinvoke <androidx.core.util.Preconditions: void checkArgument(boolean,java.lang.Object)>($z1, "invalid null executor");
+
+        $r2 = r0.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport: java.util.concurrent.Executor mExecutor>;
+
+        if $r2 != null goto label3;
+
+        goto label4;
+
+     label3:
+        $z0 = 0;
+
+     label4:
+        staticinvoke <androidx.core.util.Preconditions: void checkState(boolean)>($z0);
+
+        r0.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport: java.util.concurrent.Executor mExecutor> = $r1;
+
+        return;
+    }
+
+    public void unregister()
+    {
+        androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport r0;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport;
+
+        r0.<androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport: java.util.concurrent.Executor mExecutor> = null;
+
+        return;
+    }
+}

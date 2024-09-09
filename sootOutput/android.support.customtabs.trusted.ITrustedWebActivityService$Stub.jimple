@@ -1,0 +1,360 @@
+public abstract class android.support.customtabs.trusted.ITrustedWebActivityService$Stub extends android.os.Binder implements android.support.customtabs.trusted.ITrustedWebActivityService
+{
+    private static final java.lang.String DESCRIPTOR;
+    static final int TRANSACTION_areNotificationsEnabled;
+    static final int TRANSACTION_cancelNotification;
+    static final int TRANSACTION_extraCommand;
+    static final int TRANSACTION_getActiveNotifications;
+    static final int TRANSACTION_getSmallIconBitmap;
+    static final int TRANSACTION_getSmallIconId;
+    static final int TRANSACTION_notifyNotificationWithChannel;
+
+    public void <init>()
+    {
+        android.support.customtabs.trusted.ITrustedWebActivityService$Stub r0;
+
+        r0 := @this: android.support.customtabs.trusted.ITrustedWebActivityService$Stub;
+
+        specialinvoke r0.<android.os.Binder: void <init>()>();
+
+        virtualinvoke r0.<android.support.customtabs.trusted.ITrustedWebActivityService$Stub: void attachInterface(android.os.IInterface,java.lang.String)>(r0, "android.support.customtabs.trusted.ITrustedWebActivityService");
+
+        return;
+    }
+
+    public static android.support.customtabs.trusted.ITrustedWebActivityService asInterface(android.os.IBinder)
+    {
+        android.os.IInterface $r1;
+        android.support.customtabs.trusted.ITrustedWebActivityService$Stub$Proxy $r3;
+        android.os.IBinder $r0;
+        boolean $z0;
+        android.support.customtabs.trusted.ITrustedWebActivityService $r2;
+
+        $r0 := @parameter0: android.os.IBinder;
+
+        if $r0 != null goto label1;
+
+        return null;
+
+     label1:
+        $r1 = interfaceinvoke $r0.<android.os.IBinder: android.os.IInterface queryLocalInterface(java.lang.String)>("android.support.customtabs.trusted.ITrustedWebActivityService");
+
+        if $r1 == null goto label2;
+
+        $z0 = $r1 instanceof android.support.customtabs.trusted.ITrustedWebActivityService;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (android.support.customtabs.trusted.ITrustedWebActivityService) $r1;
+
+        return $r2;
+
+     label2:
+        $r3 = new android.support.customtabs.trusted.ITrustedWebActivityService$Stub$Proxy;
+
+        specialinvoke $r3.<android.support.customtabs.trusted.ITrustedWebActivityService$Stub$Proxy: void <init>(android.os.IBinder)>($r0);
+
+        return $r3;
+    }
+
+    public static android.support.customtabs.trusted.ITrustedWebActivityService getDefaultImpl()
+    {
+        android.support.customtabs.trusted.ITrustedWebActivityService r0;
+
+        r0 = <android.support.customtabs.trusted.ITrustedWebActivityService$Stub$Proxy: android.support.customtabs.trusted.ITrustedWebActivityService sDefaultImpl>;
+
+        return r0;
+    }
+
+    public static boolean setDefaultImpl(android.support.customtabs.trusted.ITrustedWebActivityService)
+    {
+        java.lang.IllegalStateException $r2;
+        android.support.customtabs.trusted.ITrustedWebActivityService $r0, $r1;
+
+        $r0 := @parameter0: android.support.customtabs.trusted.ITrustedWebActivityService;
+
+        $r1 = <android.support.customtabs.trusted.ITrustedWebActivityService$Stub$Proxy: android.support.customtabs.trusted.ITrustedWebActivityService sDefaultImpl>;
+
+        if $r1 != null goto label2;
+
+        if $r0 == null goto label1;
+
+        <android.support.customtabs.trusted.ITrustedWebActivityService$Stub$Proxy: android.support.customtabs.trusted.ITrustedWebActivityService sDefaultImpl> = $r0;
+
+        return 1;
+
+     label1:
+        return 0;
+
+     label2:
+        $r2 = new java.lang.IllegalStateException;
+
+        specialinvoke $r2.<java.lang.IllegalStateException: void <init>(java.lang.String)>("setDefaultImpl() called twice");
+
+        throw $r2;
+    }
+
+    public android.os.IBinder asBinder()
+    {
+        android.support.customtabs.trusted.ITrustedWebActivityService$Stub r0;
+
+        r0 := @this: android.support.customtabs.trusted.ITrustedWebActivityService$Stub;
+
+        return r0;
+    }
+
+    public boolean onTransact(int, android.os.Parcel, android.os.Parcel, int) throws android.os.RemoteException
+    {
+        android.support.customtabs.trusted.ITrustedWebActivityService$Stub r0;
+        android.os.Bundle r6;
+        android.os.Parcelable$Creator r4;
+        android.os.Parcel $r1, $r2;
+        android.os.IBinder $r7;
+        int $i0, $i1;
+        java.lang.Object $r5;
+        java.lang.String $r3;
+        boolean $z0;
+
+        r0 := @this: android.support.customtabs.trusted.ITrustedWebActivityService$Stub;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.os.Parcel;
+
+        $r2 := @parameter2: android.os.Parcel;
+
+        $i1 := @parameter3: int;
+
+        lookupswitch($i0)
+        {
+            case 2: goto label19;
+            case 3: goto label16;
+            case 4: goto label15;
+            case 5: goto label13;
+            case 6: goto label09;
+            case 7: goto label07;
+            case 9: goto label03;
+            case 1598968902: goto label02;
+            default: goto label01;
+        };
+
+     label01:
+        $z0 = specialinvoke r0.<android.os.Binder: boolean onTransact(int,android.os.Parcel,android.os.Parcel,int)>($i0, $r1, $r2, $i1);
+
+        return $z0;
+
+     label02:
+        virtualinvoke $r2.<android.os.Parcel: void writeString(java.lang.String)>("android.support.customtabs.trusted.ITrustedWebActivityService");
+
+        return 1;
+
+     label03:
+        virtualinvoke $r1.<android.os.Parcel: void enforceInterface(java.lang.String)>("android.support.customtabs.trusted.ITrustedWebActivityService");
+
+        $r3 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        if $i0 == 0 goto label04;
+
+        r4 = <android.os.Bundle: android.os.Parcelable$Creator CREATOR>;
+
+        $r5 = interfaceinvoke r4.<android.os.Parcelable$Creator: java.lang.Object createFromParcel(android.os.Parcel)>($r1);
+
+        r6 = (android.os.Bundle) $r5;
+
+        goto label05;
+
+     label04:
+        r6 = null;
+
+     label05:
+        $r7 = virtualinvoke $r1.<android.os.Parcel: android.os.IBinder readStrongBinder()>();
+
+        r6 = virtualinvoke r0.<android.support.customtabs.trusted.ITrustedWebActivityService$Stub: android.os.Bundle extraCommand(java.lang.String,android.os.Bundle,android.os.IBinder)>($r3, r6, $r7);
+
+        virtualinvoke $r2.<android.os.Parcel: void writeNoException()>();
+
+        if r6 == null goto label06;
+
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>(1);
+
+        virtualinvoke r6.<android.os.Bundle: void writeToParcel(android.os.Parcel,int)>($r2, 1);
+
+        return 1;
+
+     label06:
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>(0);
+
+        return 1;
+
+     label07:
+        virtualinvoke $r1.<android.os.Parcel: void enforceInterface(java.lang.String)>("android.support.customtabs.trusted.ITrustedWebActivityService");
+
+        r6 = virtualinvoke r0.<android.support.customtabs.trusted.ITrustedWebActivityService$Stub: android.os.Bundle getSmallIconBitmap()>();
+
+        virtualinvoke $r2.<android.os.Parcel: void writeNoException()>();
+
+        if r6 == null goto label08;
+
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>(1);
+
+        virtualinvoke r6.<android.os.Bundle: void writeToParcel(android.os.Parcel,int)>($r2, 1);
+
+        return 1;
+
+     label08:
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>(0);
+
+        return 1;
+
+     label09:
+        virtualinvoke $r1.<android.os.Parcel: void enforceInterface(java.lang.String)>("android.support.customtabs.trusted.ITrustedWebActivityService");
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        if $i0 == 0 goto label10;
+
+        r4 = <android.os.Bundle: android.os.Parcelable$Creator CREATOR>;
+
+        $r5 = interfaceinvoke r4.<android.os.Parcelable$Creator: java.lang.Object createFromParcel(android.os.Parcel)>($r1);
+
+        r6 = (android.os.Bundle) $r5;
+
+        goto label11;
+
+     label10:
+        r6 = null;
+
+     label11:
+        r6 = virtualinvoke r0.<android.support.customtabs.trusted.ITrustedWebActivityService$Stub: android.os.Bundle areNotificationsEnabled(android.os.Bundle)>(r6);
+
+        virtualinvoke $r2.<android.os.Parcel: void writeNoException()>();
+
+        if r6 == null goto label12;
+
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>(1);
+
+        virtualinvoke r6.<android.os.Bundle: void writeToParcel(android.os.Parcel,int)>($r2, 1);
+
+        return 1;
+
+     label12:
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>(0);
+
+        return 1;
+
+     label13:
+        virtualinvoke $r1.<android.os.Parcel: void enforceInterface(java.lang.String)>("android.support.customtabs.trusted.ITrustedWebActivityService");
+
+        r6 = virtualinvoke r0.<android.support.customtabs.trusted.ITrustedWebActivityService$Stub: android.os.Bundle getActiveNotifications()>();
+
+        virtualinvoke $r2.<android.os.Parcel: void writeNoException()>();
+
+        if r6 == null goto label14;
+
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>(1);
+
+        virtualinvoke r6.<android.os.Bundle: void writeToParcel(android.os.Parcel,int)>($r2, 1);
+
+        return 1;
+
+     label14:
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>(0);
+
+        return 1;
+
+     label15:
+        virtualinvoke $r1.<android.os.Parcel: void enforceInterface(java.lang.String)>("android.support.customtabs.trusted.ITrustedWebActivityService");
+
+        $i0 = virtualinvoke r0.<android.support.customtabs.trusted.ITrustedWebActivityService$Stub: int getSmallIconId()>();
+
+        virtualinvoke $r2.<android.os.Parcel: void writeNoException()>();
+
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>($i0);
+
+        return 1;
+
+     label16:
+        virtualinvoke $r1.<android.os.Parcel: void enforceInterface(java.lang.String)>("android.support.customtabs.trusted.ITrustedWebActivityService");
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        if $i0 == 0 goto label17;
+
+        r4 = <android.os.Bundle: android.os.Parcelable$Creator CREATOR>;
+
+        $r5 = interfaceinvoke r4.<android.os.Parcelable$Creator: java.lang.Object createFromParcel(android.os.Parcel)>($r1);
+
+        r6 = (android.os.Bundle) $r5;
+
+        goto label18;
+
+     label17:
+        r6 = null;
+
+     label18:
+        virtualinvoke r0.<android.support.customtabs.trusted.ITrustedWebActivityService$Stub: void cancelNotification(android.os.Bundle)>(r6);
+
+        virtualinvoke $r2.<android.os.Parcel: void writeNoException()>();
+
+        return 1;
+
+     label19:
+        virtualinvoke $r1.<android.os.Parcel: void enforceInterface(java.lang.String)>("android.support.customtabs.trusted.ITrustedWebActivityService");
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        if $i0 == 0 goto label20;
+
+        r4 = <android.os.Bundle: android.os.Parcelable$Creator CREATOR>;
+
+        $r5 = interfaceinvoke r4.<android.os.Parcelable$Creator: java.lang.Object createFromParcel(android.os.Parcel)>($r1);
+
+        r6 = (android.os.Bundle) $r5;
+
+        goto label21;
+
+     label20:
+        r6 = null;
+
+     label21:
+        r6 = virtualinvoke r0.<android.support.customtabs.trusted.ITrustedWebActivityService$Stub: android.os.Bundle notifyNotificationWithChannel(android.os.Bundle)>(r6);
+
+        virtualinvoke $r2.<android.os.Parcel: void writeNoException()>();
+
+        if r6 == null goto label22;
+
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>(1);
+
+        virtualinvoke r6.<android.os.Bundle: void writeToParcel(android.os.Parcel,int)>($r2, 1);
+
+        return 1;
+
+     label22:
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>(0);
+
+        return 1;
+    }
+
+    public static void <clinit>()
+    {
+        <android.support.customtabs.trusted.ITrustedWebActivityService$Stub: int TRANSACTION_notifyNotificationWithChannel> = 2;
+
+        <android.support.customtabs.trusted.ITrustedWebActivityService$Stub: int TRANSACTION_getSmallIconId> = 4;
+
+        <android.support.customtabs.trusted.ITrustedWebActivityService$Stub: int TRANSACTION_getSmallIconBitmap> = 7;
+
+        <android.support.customtabs.trusted.ITrustedWebActivityService$Stub: int TRANSACTION_getActiveNotifications> = 5;
+
+        <android.support.customtabs.trusted.ITrustedWebActivityService$Stub: int TRANSACTION_extraCommand> = 9;
+
+        <android.support.customtabs.trusted.ITrustedWebActivityService$Stub: int TRANSACTION_cancelNotification> = 3;
+
+        <android.support.customtabs.trusted.ITrustedWebActivityService$Stub: int TRANSACTION_areNotificationsEnabled> = 6;
+
+        <android.support.customtabs.trusted.ITrustedWebActivityService$Stub: java.lang.String DESCRIPTOR> = "android.support.customtabs.trusted.ITrustedWebActivityService";
+
+        return;
+    }
+}

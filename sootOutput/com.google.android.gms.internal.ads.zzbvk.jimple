@@ -1,0 +1,227 @@
+public final class com.google.android.gms.internal.ads.zzbvk extends java.lang.Object implements com.google.android.gms.ads.mediation.MediationInterstitialAdapter
+{
+    private android.app.Activity zza;
+    private com.google.android.gms.ads.mediation.MediationInterstitialListener zzb;
+    private android.net.Uri zzc;
+
+    public void <init>()
+    {
+        com.google.android.gms.internal.ads.zzbvk r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbvk;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static volatile android.app.Activity zza(com.google.android.gms.internal.ads.zzbvk)
+    {
+        com.google.android.gms.internal.ads.zzbvk $r0;
+        android.app.Activity r1;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzbvk;
+
+        r1 = $r0.<com.google.android.gms.internal.ads.zzbvk: android.app.Activity zza>;
+
+        return r1;
+    }
+
+    static volatile com.google.android.gms.ads.mediation.MediationInterstitialListener zzb(com.google.android.gms.internal.ads.zzbvk)
+    {
+        com.google.android.gms.internal.ads.zzbvk $r0;
+        com.google.android.gms.ads.mediation.MediationInterstitialListener r1;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzbvk;
+
+        r1 = $r0.<com.google.android.gms.internal.ads.zzbvk: com.google.android.gms.ads.mediation.MediationInterstitialListener zzb>;
+
+        return r1;
+    }
+
+    public final void onDestroy()
+    {
+        com.google.android.gms.internal.ads.zzbvk r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbvk;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zze(java.lang.String)>("Destroying AdMobCustomTabsAdapter adapter.");
+
+        return;
+    }
+
+    public final void onPause()
+    {
+        com.google.android.gms.internal.ads.zzbvk r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbvk;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zze(java.lang.String)>("Pausing AdMobCustomTabsAdapter adapter.");
+
+        return;
+    }
+
+    public final void onResume()
+    {
+        com.google.android.gms.internal.ads.zzbvk r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbvk;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zze(java.lang.String)>("Resuming AdMobCustomTabsAdapter adapter.");
+
+        return;
+    }
+
+    public final void requestInterstitialAd(android.content.Context, com.google.android.gms.ads.mediation.MediationInterstitialListener, android.os.Bundle, com.google.android.gms.ads.mediation.MediationAdRequest, android.os.Bundle)
+    {
+        android.content.Context $r2;
+        android.os.Bundle $r1, $r4;
+        android.net.Uri $r8;
+        com.google.android.gms.internal.ads.zzbvk r0;
+        java.lang.String $r6;
+        com.google.android.gms.ads.mediation.MediationInterstitialListener $r3;
+        android.app.Activity $r7;
+        com.google.android.gms.ads.mediation.MediationAdRequest $r5;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbvk;
+
+        $r2 := @parameter0: android.content.Context;
+
+        $r3 := @parameter1: com.google.android.gms.ads.mediation.MediationInterstitialListener;
+
+        $r4 := @parameter2: android.os.Bundle;
+
+        $r5 := @parameter3: com.google.android.gms.ads.mediation.MediationAdRequest;
+
+        $r1 := @parameter4: android.os.Bundle;
+
+        r0.<com.google.android.gms.internal.ads.zzbvk: com.google.android.gms.ads.mediation.MediationInterstitialListener zzb> = $r3;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzbvk: com.google.android.gms.ads.mediation.MediationInterstitialListener zzb>;
+
+        if $r3 != null goto label1;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>("Listener not set for mediation. Returning.");
+
+        return;
+
+     label1:
+        $z0 = $r2 instanceof android.app.Activity;
+
+        if $z0 == 0 goto label4;
+
+        $z0 = staticinvoke <com.google.android.gms.internal.ads.zzbhd: boolean zzg(android.content.Context)>($r2);
+
+        if $z0 != 0 goto label2;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>("Default browser does not support custom tabs. Bailing out.");
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzbvk: com.google.android.gms.ads.mediation.MediationInterstitialListener zzb>;
+
+        interfaceinvoke $r3.<com.google.android.gms.ads.mediation.MediationInterstitialListener: void onAdFailedToLoad(com.google.android.gms.ads.mediation.MediationInterstitialAdapter,int)>(r0, 0);
+
+        return;
+
+     label2:
+        $r6 = virtualinvoke $r4.<android.os.Bundle: java.lang.String getString(java.lang.String)>("tab_url");
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r6);
+
+        if $z0 == 0 goto label3;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>("The tab_url retrieved from mediation metadata is empty. Bailing out.");
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzbvk: com.google.android.gms.ads.mediation.MediationInterstitialListener zzb>;
+
+        interfaceinvoke $r3.<com.google.android.gms.ads.mediation.MediationInterstitialListener: void onAdFailedToLoad(com.google.android.gms.ads.mediation.MediationInterstitialAdapter,int)>(r0, 0);
+
+        return;
+
+     label3:
+        $r7 = (android.app.Activity) $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzbvk: android.app.Activity zza> = $r7;
+
+        $r8 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r6);
+
+        r0.<com.google.android.gms.internal.ads.zzbvk: android.net.Uri zzc> = $r8;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzbvk: com.google.android.gms.ads.mediation.MediationInterstitialListener zzb>;
+
+        interfaceinvoke $r3.<com.google.android.gms.ads.mediation.MediationInterstitialListener: void onAdLoaded(com.google.android.gms.ads.mediation.MediationInterstitialAdapter)>(r0);
+
+        return;
+
+     label4:
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>("AdMobCustomTabs can only work with Activity context. Bailing out.");
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzbvk: com.google.android.gms.ads.mediation.MediationInterstitialListener zzb>;
+
+        interfaceinvoke $r3.<com.google.android.gms.ads.mediation.MediationInterstitialListener: void onAdFailedToLoad(com.google.android.gms.ads.mediation.MediationInterstitialAdapter,int)>(r0, 0);
+
+        return;
+    }
+
+    public final void showInterstitial()
+    {
+        com.google.android.gms.internal.ads.zzftt $r9;
+        android.net.Uri $r6;
+        com.google.android.gms.ads.internal.overlay.zzc $r1;
+        android.content.Intent $r5;
+        com.google.android.gms.internal.ads.zzbvk r0;
+        androidx.browser.customtabs.CustomTabsIntent$Builder $r3;
+        androidx.browser.customtabs.CustomTabsIntent $r4;
+        com.google.android.gms.internal.ads.zzbvj $r10;
+        com.google.android.gms.internal.ads.zzbvi $r2;
+        com.google.android.gms.internal.ads.zzcei $r8;
+        com.google.android.gms.ads.internal.overlay.AdOverlayInfoParcel $r7;
+        com.google.android.gms.internal.ads.zzcdl $r11;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbvk;
+
+        $r3 = new androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        specialinvoke $r3.<androidx.browser.customtabs.CustomTabsIntent$Builder: void <init>()>();
+
+        $r4 = virtualinvoke $r3.<androidx.browser.customtabs.CustomTabsIntent$Builder: androidx.browser.customtabs.CustomTabsIntent build()>();
+
+        $r5 = $r4.<androidx.browser.customtabs.CustomTabsIntent: android.content.Intent intent>;
+
+        $r6 = r0.<com.google.android.gms.internal.ads.zzbvk: android.net.Uri zzc>;
+
+        virtualinvoke $r5.<android.content.Intent: android.content.Intent setData(android.net.Uri)>($r6);
+
+        $r1 = new com.google.android.gms.ads.internal.overlay.zzc;
+
+        $r5 = $r4.<androidx.browser.customtabs.CustomTabsIntent: android.content.Intent intent>;
+
+        specialinvoke $r1.<com.google.android.gms.ads.internal.overlay.zzc: void <init>(android.content.Intent,com.google.android.gms.ads.internal.overlay.zzy)>($r5, null);
+
+        $r7 = new com.google.android.gms.ads.internal.overlay.AdOverlayInfoParcel;
+
+        $r2 = new com.google.android.gms.internal.ads.zzbvi;
+
+        specialinvoke $r2.<com.google.android.gms.internal.ads.zzbvi: void <init>(com.google.android.gms.internal.ads.zzbvk)>(r0);
+
+        $r8 = new com.google.android.gms.internal.ads.zzcei;
+
+        specialinvoke $r8.<com.google.android.gms.internal.ads.zzcei: void <init>(int,int,boolean,boolean,boolean)>(0, 0, 0, 0, 0);
+
+        specialinvoke $r7.<com.google.android.gms.ads.internal.overlay.AdOverlayInfoParcel: void <init>(com.google.android.gms.ads.internal.overlay.zzc,com.google.android.gms.ads.internal.client.zza,com.google.android.gms.ads.internal.overlay.zzp,com.google.android.gms.ads.internal.overlay.zzaa,com.google.android.gms.internal.ads.zzcei,com.google.android.gms.internal.ads.zzcjk,com.google.android.gms.internal.ads.zzdiu)>($r1, null, $r2, null, $r8, null, null);
+
+        $r9 = <com.google.android.gms.ads.internal.util.zzt: com.google.android.gms.internal.ads.zzftt zza>;
+
+        $r10 = new com.google.android.gms.internal.ads.zzbvj;
+
+        specialinvoke $r10.<com.google.android.gms.internal.ads.zzbvj: void <init>(com.google.android.gms.internal.ads.zzbvk,com.google.android.gms.ads.internal.overlay.AdOverlayInfoParcel)>(r0, $r7);
+
+        virtualinvoke $r9.<com.google.android.gms.internal.ads.zzftt: boolean post(java.lang.Runnable)>($r10);
+
+        $r11 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzcdl zzo()>();
+
+        virtualinvoke $r11.<com.google.android.gms.internal.ads.zzcdl: void zzq()>();
+
+        return;
+    }
+}

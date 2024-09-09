@@ -1,0 +1,45 @@
+class androidx.appcompat.app.AppCompatDelegateImpl$ConfigurationImplApi24 extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$ConfigurationImplApi24 r0;
+
+        r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$ConfigurationImplApi24;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static void generateConfigDelta_locale(android.content.res.Configuration, android.content.res.Configuration, android.content.res.Configuration)
+    {
+        java.util.Locale $r5;
+        android.content.res.Configuration $r0, $r1, $r2;
+        android.os.LocaleList $r3, $r4;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.res.Configuration;
+
+        $r1 := @parameter1: android.content.res.Configuration;
+
+        $r2 := @parameter2: android.content.res.Configuration;
+
+        $r3 = virtualinvoke $r0.<android.content.res.Configuration: android.os.LocaleList getLocales()>();
+
+        $r4 = virtualinvoke $r1.<android.content.res.Configuration: android.os.LocaleList getLocales()>();
+
+        $z0 = virtualinvoke $r3.<android.os.LocaleList: boolean equals(java.lang.Object)>($r4);
+
+        if $z0 != 0 goto label1;
+
+        virtualinvoke $r2.<android.content.res.Configuration: void setLocales(android.os.LocaleList)>($r4);
+
+        $r5 = $r1.<android.content.res.Configuration: java.util.Locale locale>;
+
+        $r2.<android.content.res.Configuration: java.util.Locale locale> = $r5;
+
+     label1:
+        return;
+    }
+}

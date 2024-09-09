@@ -1,0 +1,384 @@
+public final class com.google.android.gms.internal.ads.zzggs extends java.lang.Object
+{
+    private final java.lang.Class zza;
+    private java.util.concurrent.ConcurrentMap zzb;
+    private final java.util.List zzc;
+    private com.google.android.gms.internal.ads.zzggt zzd;
+    private com.google.android.gms.internal.ads.zzgrw zze;
+
+    void <init>(java.lang.Class, com.google.android.gms.internal.ads.zzggr)
+    {
+        com.google.android.gms.internal.ads.zzggr $r2;
+        com.google.android.gms.internal.ads.zzggs r0;
+        java.util.concurrent.ConcurrentHashMap $r3;
+        java.lang.Class $r1;
+        com.google.android.gms.internal.ads.zzgrw $r5;
+        java.util.ArrayList $r4;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzggs;
+
+        $r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: com.google.android.gms.internal.ads.zzggr;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = new java.util.concurrent.ConcurrentHashMap;
+
+        specialinvoke $r3.<java.util.concurrent.ConcurrentHashMap: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzggs: java.util.concurrent.ConcurrentMap zzb> = $r3;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzggs: java.util.List zzc> = $r4;
+
+        r0.<com.google.android.gms.internal.ads.zzggs: java.lang.Class zza> = $r1;
+
+        $r5 = <com.google.android.gms.internal.ads.zzgrw: com.google.android.gms.internal.ads.zzgrw zza>;
+
+        r0.<com.google.android.gms.internal.ads.zzggs: com.google.android.gms.internal.ads.zzgrw zze> = $r5;
+
+        return;
+    }
+
+    private final com.google.android.gms.internal.ads.zzggs zze(java.lang.Object, java.lang.Object, com.google.android.gms.internal.ads.zzgvf, boolean) throws java.security.GeneralSecurityException
+    {
+        byte[] $r18;
+        java.lang.IllegalStateException $r25;
+        com.google.android.gms.internal.ads.zzgut $r10;
+        com.google.android.gms.internal.ads.zzgus $r13;
+        com.google.android.gms.internal.ads.zzggc $r16;
+        com.google.android.gms.internal.ads.zzgyl $r12;
+        java.lang.Integer $r6;
+        com.google.android.gms.internal.ads.zzgoe $r9;
+        java.nio.ByteBuffer $r19;
+        java.util.concurrent.ConcurrentMap $r4;
+        java.util.ArrayList $r21;
+        java.security.GeneralSecurityException $r5;
+        int $i0, $i1;
+        java.lang.String $r11;
+        boolean $z0;
+        com.google.android.gms.internal.ads.zzgvz $r7, $r8;
+        com.google.android.gms.internal.ads.zzghc $r15;
+        com.google.android.gms.internal.ads.zzgvf $r3;
+        com.google.android.gms.internal.ads.zzgox $r14;
+        java.util.List $r20, $r23;
+        com.google.android.gms.internal.ads.zzggv $r22;
+        com.google.android.gms.internal.ads.zzggt $r17, $r24;
+        com.google.android.gms.internal.ads.zzggs r0;
+        java.lang.Object $r1, $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzggs;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 := @parameter2: com.google.android.gms.internal.ads.zzgvf;
+
+        $z0 := @parameter3: boolean;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzggs: java.util.concurrent.ConcurrentMap zzb>;
+
+        if $r4 == null goto label12;
+
+        if $r1 != null goto label02;
+
+        if $r2 == null goto label01;
+
+        goto label02;
+
+     label01:
+        $r5 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r5.<java.security.GeneralSecurityException: void <init>(java.lang.String)>("at least one of the `fullPrimitive` or `primitive` must be set");
+
+        throw $r5;
+
+     label02:
+        $i0 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgvf: int zzk()>();
+
+        if $i0 != 3 goto label11;
+
+        $i0 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgvf: int zza()>();
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r7 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgvf: com.google.android.gms.internal.ads.zzgvz zzf()>();
+
+        $r8 = <com.google.android.gms.internal.ads.zzgvz: com.google.android.gms.internal.ads.zzgvz zzd>;
+
+        if $r7 != $r8 goto label03;
+
+        $r6 = null;
+
+     label03:
+        $r9 = staticinvoke <com.google.android.gms.internal.ads.zzgoe: com.google.android.gms.internal.ads.zzgoe zzd()>();
+
+        $r10 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgvf: com.google.android.gms.internal.ads.zzgut zzc()>();
+
+        $r11 = virtualinvoke $r10.<com.google.android.gms.internal.ads.zzgut: java.lang.String zzg()>();
+
+        $r10 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgvf: com.google.android.gms.internal.ads.zzgut zzc()>();
+
+        $r12 = virtualinvoke $r10.<com.google.android.gms.internal.ads.zzgut: com.google.android.gms.internal.ads.zzgyl zzf()>();
+
+        $r10 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgvf: com.google.android.gms.internal.ads.zzgut zzc()>();
+
+        $r13 = virtualinvoke $r10.<com.google.android.gms.internal.ads.zzgut: com.google.android.gms.internal.ads.zzgus zzc()>();
+
+        $r7 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgvf: com.google.android.gms.internal.ads.zzgvz zzf()>();
+
+        $r14 = staticinvoke <com.google.android.gms.internal.ads.zzgox: com.google.android.gms.internal.ads.zzgox zza(java.lang.String,com.google.android.gms.internal.ads.zzgyl,com.google.android.gms.internal.ads.zzgus,com.google.android.gms.internal.ads.zzgvz,java.lang.Integer)>($r11, $r12, $r13, $r7, $r6);
+
+        $r15 = staticinvoke <com.google.android.gms.internal.ads.zzghc: com.google.android.gms.internal.ads.zzghc zza()>();
+
+        $r16 = virtualinvoke $r9.<com.google.android.gms.internal.ads.zzgoe: com.google.android.gms.internal.ads.zzggc zzb(com.google.android.gms.internal.ads.zzgox,com.google.android.gms.internal.ads.zzghc)>($r14, $r15);
+
+        $r17 = new com.google.android.gms.internal.ads.zzggt;
+
+        $r7 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgvf: com.google.android.gms.internal.ads.zzgvz zzf()>();
+
+        $i0 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzgvz: int ordinal()>();
+
+        lookupswitch($i0)
+        {
+            case 1: goto label07;
+            case 2: goto label06;
+            case 3: goto label05;
+            case 4: goto label06;
+            default: goto label04;
+        };
+
+     label04:
+        $r5 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r5.<java.security.GeneralSecurityException: void <init>(java.lang.String)>("unknown output prefix type");
+
+        throw $r5;
+
+     label05:
+        $r18 = <com.google.android.gms.internal.ads.zzgfx: byte[] zza>;
+
+        goto label08;
+
+     label06:
+        $r19 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer allocate(int)>(5);
+
+        $r19 = virtualinvoke $r19.<java.nio.ByteBuffer: java.nio.ByteBuffer put(byte)>(0);
+
+        $i0 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgvf: int zza()>();
+
+        $r19 = virtualinvoke $r19.<java.nio.ByteBuffer: java.nio.ByteBuffer putInt(int)>($i0);
+
+        $r18 = virtualinvoke $r19.<java.nio.ByteBuffer: byte[] array()>();
+
+        goto label08;
+
+     label07:
+        $r19 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer allocate(int)>(5);
+
+        $r19 = virtualinvoke $r19.<java.nio.ByteBuffer: java.nio.ByteBuffer put(byte)>(1);
+
+        $i0 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgvf: int zza()>();
+
+        $r19 = virtualinvoke $r19.<java.nio.ByteBuffer: java.nio.ByteBuffer putInt(int)>($i0);
+
+        $r18 = virtualinvoke $r19.<java.nio.ByteBuffer: byte[] array()>();
+
+     label08:
+        $i0 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgvf: int zzk()>();
+
+        $r7 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgvf: com.google.android.gms.internal.ads.zzgvz zzf()>();
+
+        $i1 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgvf: int zza()>();
+
+        $r10 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgvf: com.google.android.gms.internal.ads.zzgut zzc()>();
+
+        $r11 = virtualinvoke $r10.<com.google.android.gms.internal.ads.zzgut: java.lang.String zzg()>();
+
+        specialinvoke $r17.<com.google.android.gms.internal.ads.zzggt: void <init>(java.lang.Object,java.lang.Object,byte[],int,com.google.android.gms.internal.ads.zzgvz,int,java.lang.String,com.google.android.gms.internal.ads.zzggc)>($r1, $r2, $r18, $i0, $r7, $i1, $r11, $r16);
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzggs: java.util.concurrent.ConcurrentMap zzb>;
+
+        $r20 = r0.<com.google.android.gms.internal.ads.zzggs: java.util.List zzc>;
+
+        $r21 = new java.util.ArrayList;
+
+        specialinvoke $r21.<java.util.ArrayList: void <init>()>();
+
+        interfaceinvoke $r21.<java.util.List: boolean add(java.lang.Object)>($r17);
+
+        $r22 = new com.google.android.gms.internal.ads.zzggv;
+
+        $r18 = virtualinvoke $r17.<com.google.android.gms.internal.ads.zzggt: byte[] zzg()>();
+
+        specialinvoke $r22.<com.google.android.gms.internal.ads.zzggv: void <init>(byte[],com.google.android.gms.internal.ads.zzggu)>($r18, null);
+
+        $r23 = staticinvoke <java.util.Collections: java.util.List unmodifiableList(java.util.List)>($r21);
+
+        $r1 = interfaceinvoke $r4.<java.util.concurrent.ConcurrentMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r22, $r23);
+
+        $r23 = (java.util.List) $r1;
+
+        if $r23 == null goto label09;
+
+        $r21 = new java.util.ArrayList;
+
+        specialinvoke $r21.<java.util.ArrayList: void <init>()>();
+
+        interfaceinvoke $r21.<java.util.List: boolean addAll(java.util.Collection)>($r23);
+
+        interfaceinvoke $r21.<java.util.List: boolean add(java.lang.Object)>($r17);
+
+        $r23 = staticinvoke <java.util.Collections: java.util.List unmodifiableList(java.util.List)>($r21);
+
+        interfaceinvoke $r4.<java.util.concurrent.ConcurrentMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r22, $r23);
+
+     label09:
+        interfaceinvoke $r20.<java.util.List: boolean add(java.lang.Object)>($r17);
+
+        if $z0 == 0 goto label13;
+
+        $r24 = r0.<com.google.android.gms.internal.ads.zzggs: com.google.android.gms.internal.ads.zzggt zzd>;
+
+        if $r24 != null goto label10;
+
+        r0.<com.google.android.gms.internal.ads.zzggs: com.google.android.gms.internal.ads.zzggt zzd> = $r17;
+
+        return r0;
+
+     label10:
+        $r25 = new java.lang.IllegalStateException;
+
+        specialinvoke $r25.<java.lang.IllegalStateException: void <init>(java.lang.String)>("you cannot set two primary primitives");
+
+        throw $r25;
+
+     label11:
+        $r5 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r5.<java.security.GeneralSecurityException: void <init>(java.lang.String)>("only ENABLED key is allowed");
+
+        throw $r5;
+
+     label12:
+        $r25 = new java.lang.IllegalStateException;
+
+        specialinvoke $r25.<java.lang.IllegalStateException: void <init>(java.lang.String)>("addPrimitive cannot be called after build");
+
+        throw $r25;
+
+     label13:
+        return r0;
+    }
+
+    public final com.google.android.gms.internal.ads.zzggs zza(java.lang.Object, java.lang.Object, com.google.android.gms.internal.ads.zzgvf) throws java.security.GeneralSecurityException
+    {
+        com.google.android.gms.internal.ads.zzggs r0;
+        java.lang.Object $r1, $r2;
+        com.google.android.gms.internal.ads.zzgvf $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzggs;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 := @parameter2: com.google.android.gms.internal.ads.zzgvf;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzggs: com.google.android.gms.internal.ads.zzggs zze(java.lang.Object,java.lang.Object,com.google.android.gms.internal.ads.zzgvf,boolean)>($r1, $r2, $r3, 0);
+
+        return r0;
+    }
+
+    public final com.google.android.gms.internal.ads.zzggs zzb(java.lang.Object, java.lang.Object, com.google.android.gms.internal.ads.zzgvf) throws java.security.GeneralSecurityException
+    {
+        com.google.android.gms.internal.ads.zzggs r0;
+        java.lang.Object $r1, $r2;
+        com.google.android.gms.internal.ads.zzgvf $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzggs;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 := @parameter2: com.google.android.gms.internal.ads.zzgvf;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzggs: com.google.android.gms.internal.ads.zzggs zze(java.lang.Object,java.lang.Object,com.google.android.gms.internal.ads.zzgvf,boolean)>($r1, $r2, $r3, 1);
+
+        return r0;
+    }
+
+    public final com.google.android.gms.internal.ads.zzggs zzc(com.google.android.gms.internal.ads.zzgrw)
+    {
+        java.lang.IllegalStateException $r3;
+        com.google.android.gms.internal.ads.zzggs r0;
+        com.google.android.gms.internal.ads.zzgrw $r1;
+        java.util.concurrent.ConcurrentMap $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzggs;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzgrw;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzggs: java.util.concurrent.ConcurrentMap zzb>;
+
+        if $r2 == null goto label1;
+
+        r0.<com.google.android.gms.internal.ads.zzggs: com.google.android.gms.internal.ads.zzgrw zze> = $r1;
+
+        return r0;
+
+     label1:
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("setAnnotations cannot be called after build");
+
+        throw $r3;
+    }
+
+    public final com.google.android.gms.internal.ads.zzggx zzd() throws java.security.GeneralSecurityException
+    {
+        java.lang.IllegalStateException $r7;
+        com.google.android.gms.internal.ads.zzggx $r5;
+        java.util.concurrent.ConcurrentMap $r6;
+        java.util.List $r1;
+        com.google.android.gms.internal.ads.zzggt $r2;
+        com.google.android.gms.internal.ads.zzggs r0;
+        java.lang.Class $r4;
+        com.google.android.gms.internal.ads.zzgrw $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzggs;
+
+        $r6 = r0.<com.google.android.gms.internal.ads.zzggs: java.util.concurrent.ConcurrentMap zzb>;
+
+        if $r6 == null goto label1;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzggs: java.util.List zzc>;
+
+        $r5 = new com.google.android.gms.internal.ads.zzggx;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzggs: com.google.android.gms.internal.ads.zzggt zzd>;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzggs: com.google.android.gms.internal.ads.zzgrw zze>;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzggs: java.lang.Class zza>;
+
+        specialinvoke $r5.<com.google.android.gms.internal.ads.zzggx: void <init>(java.util.concurrent.ConcurrentMap,java.util.List,com.google.android.gms.internal.ads.zzggt,com.google.android.gms.internal.ads.zzgrw,java.lang.Class,com.google.android.gms.internal.ads.zzggw)>($r6, $r1, $r2, $r3, $r4, null);
+
+        r0.<com.google.android.gms.internal.ads.zzggs: java.util.concurrent.ConcurrentMap zzb> = null;
+
+        return $r5;
+
+     label1:
+        $r7 = new java.lang.IllegalStateException;
+
+        specialinvoke $r7.<java.lang.IllegalStateException: void <init>(java.lang.String)>("build cannot be called twice");
+
+        throw $r7;
+    }
+}

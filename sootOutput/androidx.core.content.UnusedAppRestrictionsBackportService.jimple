@@ -1,0 +1,47 @@
+public abstract class androidx.core.content.UnusedAppRestrictionsBackportService extends android.app.Service
+{
+    public static final java.lang.String ACTION_UNUSED_APP_RESTRICTIONS_BACKPORT_CONNECTION;
+    private androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportService$Stub mBinder;
+
+    public void <init>()
+    {
+        androidx.core.content.UnusedAppRestrictionsBackportService r0;
+        androidx.core.content.UnusedAppRestrictionsBackportService$1 $r1;
+
+        r0 := @this: androidx.core.content.UnusedAppRestrictionsBackportService;
+
+        specialinvoke r0.<android.app.Service: void <init>()>();
+
+        $r1 = new androidx.core.content.UnusedAppRestrictionsBackportService$1;
+
+        specialinvoke $r1.<androidx.core.content.UnusedAppRestrictionsBackportService$1: void <init>(androidx.core.content.UnusedAppRestrictionsBackportService)>(r0);
+
+        r0.<androidx.core.content.UnusedAppRestrictionsBackportService: androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportService$Stub mBinder> = $r1;
+
+        return;
+    }
+
+    protected abstract void isPermissionRevocationEnabled(androidx.core.content.UnusedAppRestrictionsBackportCallback);
+
+    public android.os.IBinder onBind(android.content.Intent)
+    {
+        android.content.Intent $r1;
+        androidx.core.content.UnusedAppRestrictionsBackportService r0;
+        androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportService$Stub r2;
+
+        r0 := @this: androidx.core.content.UnusedAppRestrictionsBackportService;
+
+        $r1 := @parameter0: android.content.Intent;
+
+        r2 = r0.<androidx.core.content.UnusedAppRestrictionsBackportService: androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportService$Stub mBinder>;
+
+        return r2;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.content.UnusedAppRestrictionsBackportService: java.lang.String ACTION_UNUSED_APP_RESTRICTIONS_BACKPORT_CONNECTION> = "android.support.unusedapprestrictions.action.CustomUnusedAppRestrictionsBackportService";
+
+        return;
+    }
+}

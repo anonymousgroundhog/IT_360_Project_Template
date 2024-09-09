@@ -1,0 +1,125 @@
+final class com.google.android.gms.internal.ads.zzame extends java.lang.Object
+{
+    public final java.lang.String zza;
+    public final int zzb;
+    public final java.lang.String zzc;
+    public final java.util.Set zzd;
+
+    private void <init>(java.lang.String, int, java.lang.String, java.util.Set)
+    {
+        int $i0;
+        com.google.android.gms.internal.ads.zzame r0;
+        java.util.Set $r3;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzame;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r3 := @parameter3: java.util.Set;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzame: int zzb> = $i0;
+
+        r0.<com.google.android.gms.internal.ads.zzame: java.lang.String zza> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzame: java.lang.String zzc> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzame: java.util.Set zzd> = $r3;
+
+        return;
+    }
+
+    public static com.google.android.gms.internal.ads.zzame zza(java.lang.String, int)
+    {
+        com.google.android.gms.internal.ads.zzame $r5;
+        java.lang.String[] $r3;
+        java.util.HashSet $r4;
+        int $i0, $i1, $i2;
+        java.lang.String $r0, $r1, $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r0 = virtualinvoke $r0.<java.lang.String: java.lang.String trim()>();
+
+        $r1 = $r0;
+
+        $z0 = virtualinvoke $r0.<java.lang.String: boolean isEmpty()>();
+
+        $i1 = 1;
+
+        $z0 = $z0 ^ 1;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzek: void zzd(boolean)>($z0);
+
+        $i2 = virtualinvoke $r0.<java.lang.String: int indexOf(java.lang.String)>(" ");
+
+        if $i2 != -1 goto label1;
+
+        $r0 = "";
+
+        goto label2;
+
+     label1:
+        $r1 = virtualinvoke $r0.<java.lang.String: java.lang.String substring(int)>($i2);
+
+        $r2 = virtualinvoke $r1.<java.lang.String: java.lang.String trim()>();
+
+        $r1 = virtualinvoke $r0.<java.lang.String: java.lang.String substring(int,int)>(0, $i2);
+
+        $r0 = $r2;
+
+     label2:
+        $i2 = <com.google.android.gms.internal.ads.zzfy: int zza>;
+
+        $r3 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String,int)>("\\.", -1);
+
+        $r1 = $r3[0];
+
+        $r4 = new java.util.HashSet;
+
+        specialinvoke $r4.<java.util.HashSet: void <init>()>();
+
+     label3:
+        $i2 = lengthof $r3;
+
+        if $i1 >= $i2 goto label4;
+
+        $r2 = $r3[$i1];
+
+        interfaceinvoke $r4.<java.util.Set: boolean add(java.lang.Object)>($r2);
+
+        $i1 = $i1 + 1;
+
+        goto label3;
+
+     label4:
+        $r5 = new com.google.android.gms.internal.ads.zzame;
+
+        specialinvoke $r5.<com.google.android.gms.internal.ads.zzame: void <init>(java.lang.String,int,java.lang.String,java.util.Set)>($r1, $i0, $r0, $r4);
+
+        return $r5;
+    }
+
+    public static com.google.android.gms.internal.ads.zzame zzb()
+    {
+        com.google.android.gms.internal.ads.zzame $r0;
+        java.util.Set $r1;
+
+        $r0 = new com.google.android.gms.internal.ads.zzame;
+
+        $r1 = staticinvoke <java.util.Collections: java.util.Set emptySet()>();
+
+        specialinvoke $r0.<com.google.android.gms.internal.ads.zzame: void <init>(java.lang.String,int,java.lang.String,java.util.Set)>("", 0, "", $r1);
+
+        return $r0;
+    }
+}

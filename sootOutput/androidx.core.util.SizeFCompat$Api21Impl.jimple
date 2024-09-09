@@ -1,0 +1,56 @@
+final class androidx.core.util.SizeFCompat$Api21Impl extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.util.SizeFCompat$Api21Impl r0;
+
+        r0 := @this: androidx.core.util.SizeFCompat$Api21Impl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static android.util.SizeF toSizeF(androidx.core.util.SizeFCompat)
+    {
+        androidx.core.util.SizeFCompat $r0;
+        android.util.SizeF $r1;
+        float $f0, $f1;
+
+        $r0 := @parameter0: androidx.core.util.SizeFCompat;
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r0);
+
+        $r1 = new android.util.SizeF;
+
+        $f0 = virtualinvoke $r0.<androidx.core.util.SizeFCompat: float getWidth()>();
+
+        $f1 = virtualinvoke $r0.<androidx.core.util.SizeFCompat: float getHeight()>();
+
+        specialinvoke $r1.<android.util.SizeF: void <init>(float,float)>($f0, $f1);
+
+        return $r1;
+    }
+
+    static androidx.core.util.SizeFCompat toSizeFCompat(android.util.SizeF)
+    {
+        android.util.SizeF $r0;
+        androidx.core.util.SizeFCompat $r1;
+        float $f0, $f1;
+
+        $r0 := @parameter0: android.util.SizeF;
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r0);
+
+        $r1 = new androidx.core.util.SizeFCompat;
+
+        $f0 = virtualinvoke $r0.<android.util.SizeF: float getWidth()>();
+
+        $f1 = virtualinvoke $r0.<android.util.SizeF: float getHeight()>();
+
+        specialinvoke $r1.<androidx.core.util.SizeFCompat: void <init>(float,float)>($f0, $f1);
+
+        return $r1;
+    }
+}

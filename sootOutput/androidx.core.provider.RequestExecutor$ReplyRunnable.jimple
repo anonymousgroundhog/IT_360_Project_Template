@@ -1,0 +1,73 @@
+class androidx.core.provider.RequestExecutor$ReplyRunnable extends java.lang.Object implements java.lang.Runnable
+{
+    private java.util.concurrent.Callable mCallable;
+    private androidx.core.util.Consumer mConsumer;
+    private android.os.Handler mHandler;
+
+    void <init>(android.os.Handler, java.util.concurrent.Callable, androidx.core.util.Consumer)
+    {
+        androidx.core.provider.RequestExecutor$ReplyRunnable r0;
+        androidx.core.util.Consumer r3;
+        android.os.Handler $r1;
+        java.util.concurrent.Callable r2;
+
+        r0 := @this: androidx.core.provider.RequestExecutor$ReplyRunnable;
+
+        $r1 := @parameter0: android.os.Handler;
+
+        r2 := @parameter1: java.util.concurrent.Callable;
+
+        r3 := @parameter2: androidx.core.util.Consumer;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.provider.RequestExecutor$ReplyRunnable: java.util.concurrent.Callable mCallable> = r2;
+
+        r0.<androidx.core.provider.RequestExecutor$ReplyRunnable: androidx.core.util.Consumer mConsumer> = r3;
+
+        r0.<androidx.core.provider.RequestExecutor$ReplyRunnable: android.os.Handler mHandler> = $r1;
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.core.provider.RequestExecutor$ReplyRunnable r0;
+        androidx.core.util.Consumer r1;
+        android.os.Handler $r2;
+        java.lang.Object $r4;
+        java.util.concurrent.Callable r5;
+        androidx.core.provider.RequestExecutor$ReplyRunnable$1 $r3;
+        java.lang.Exception r6;
+
+        r0 := @this: androidx.core.provider.RequestExecutor$ReplyRunnable;
+
+     label1:
+        r5 = r0.<androidx.core.provider.RequestExecutor$ReplyRunnable: java.util.concurrent.Callable mCallable>;
+
+        $r4 = interfaceinvoke r5.<java.util.concurrent.Callable: java.lang.Object call()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        r6 := @caughtexception;
+
+        $r4 = null;
+
+     label4:
+        r1 = r0.<androidx.core.provider.RequestExecutor$ReplyRunnable: androidx.core.util.Consumer mConsumer>;
+
+        $r2 = r0.<androidx.core.provider.RequestExecutor$ReplyRunnable: android.os.Handler mHandler>;
+
+        $r3 = new androidx.core.provider.RequestExecutor$ReplyRunnable$1;
+
+        specialinvoke $r3.<androidx.core.provider.RequestExecutor$ReplyRunnable$1: void <init>(androidx.core.provider.RequestExecutor$ReplyRunnable,androidx.core.util.Consumer,java.lang.Object)>(r0, r1, $r4);
+
+        virtualinvoke $r2.<android.os.Handler: boolean post(java.lang.Runnable)>($r3);
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+}

@@ -1,0 +1,95 @@
+class androidx.work.impl.model.DependencyDao_Impl$1 extends androidx.room.EntityInsertionAdapter
+{
+    final androidx.work.impl.model.DependencyDao_Impl this$0;
+
+    void <init>(androidx.work.impl.model.DependencyDao_Impl, androidx.room.RoomDatabase)
+    {
+        androidx.work.impl.model.DependencyDao_Impl$1 r0;
+        androidx.work.impl.model.DependencyDao_Impl $r1;
+        androidx.room.RoomDatabase $r2;
+
+        r0 := @this: androidx.work.impl.model.DependencyDao_Impl$1;
+
+        $r1 := @parameter0: androidx.work.impl.model.DependencyDao_Impl;
+
+        $r2 := @parameter1: androidx.room.RoomDatabase;
+
+        r0.<androidx.work.impl.model.DependencyDao_Impl$1: androidx.work.impl.model.DependencyDao_Impl this$0> = $r1;
+
+        specialinvoke r0.<androidx.room.EntityInsertionAdapter: void <init>(androidx.room.RoomDatabase)>($r2);
+
+        return;
+    }
+
+    public void bind(androidx.sqlite.db.SupportSQLiteStatement, androidx.work.impl.model.Dependency)
+    {
+        androidx.work.impl.model.Dependency $r2;
+        androidx.work.impl.model.DependencyDao_Impl$1 r0;
+        java.lang.String $r3;
+        androidx.sqlite.db.SupportSQLiteStatement $r1;
+
+        r0 := @this: androidx.work.impl.model.DependencyDao_Impl$1;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteStatement;
+
+        $r2 := @parameter1: androidx.work.impl.model.Dependency;
+
+        $r3 = $r2.<androidx.work.impl.model.Dependency: java.lang.String workSpecId>;
+
+        if $r3 != null goto label1;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindNull(int)>(1);
+
+        goto label2;
+
+     label1:
+        $r3 = $r2.<androidx.work.impl.model.Dependency: java.lang.String workSpecId>;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindString(int,java.lang.String)>(1, $r3);
+
+     label2:
+        $r3 = $r2.<androidx.work.impl.model.Dependency: java.lang.String prerequisiteId>;
+
+        if $r3 != null goto label3;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindNull(int)>(2);
+
+        return;
+
+     label3:
+        $r3 = $r2.<androidx.work.impl.model.Dependency: java.lang.String prerequisiteId>;
+
+        interfaceinvoke $r1.<androidx.sqlite.db.SupportSQLiteStatement: void bindString(int,java.lang.String)>(2, $r3);
+
+        return;
+    }
+
+    public volatile void bind(androidx.sqlite.db.SupportSQLiteStatement, java.lang.Object)
+    {
+        androidx.work.impl.model.Dependency $r3;
+        androidx.work.impl.model.DependencyDao_Impl$1 r0;
+        java.lang.Object $r2;
+        androidx.sqlite.db.SupportSQLiteStatement $r1;
+
+        r0 := @this: androidx.work.impl.model.DependencyDao_Impl$1;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteStatement;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = (androidx.work.impl.model.Dependency) $r2;
+
+        virtualinvoke r0.<androidx.work.impl.model.DependencyDao_Impl$1: void bind(androidx.sqlite.db.SupportSQLiteStatement,androidx.work.impl.model.Dependency)>($r1, $r3);
+
+        return;
+    }
+
+    public java.lang.String createQuery()
+    {
+        androidx.work.impl.model.DependencyDao_Impl$1 r0;
+
+        r0 := @this: androidx.work.impl.model.DependencyDao_Impl$1;
+
+        return "INSERT OR IGNORE INTO `Dependency` (`work_spec_id`,`prerequisite_id`) VALUES (?,?)";
+    }
+}

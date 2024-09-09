@@ -1,0 +1,265 @@
+final class com.google.android.gms.internal.ads.zzuh extends java.lang.Object implements com.google.android.gms.internal.ads.zzgw
+{
+    private final com.google.android.gms.internal.ads.zzgw zza;
+    private final int zzb;
+    private final com.google.android.gms.internal.ads.zzug zzc;
+    private final byte[] zzd;
+    private int zze;
+
+    public void <init>(com.google.android.gms.internal.ads.zzgw, int, com.google.android.gms.internal.ads.zzug)
+    {
+        com.google.android.gms.internal.ads.zzgw $r2;
+        byte[] $r3;
+        int $i0;
+        com.google.android.gms.internal.ads.zzuh r0;
+        com.google.android.gms.internal.ads.zzug $r1;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzuh;
+
+        $r2 := @parameter0: com.google.android.gms.internal.ads.zzgw;
+
+        $i0 := @parameter1: int;
+
+        $r1 := @parameter2: com.google.android.gms.internal.ads.zzug;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        if $i0 <= 0 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        staticinvoke <com.google.android.gms.internal.ads.zzek: void zzd(boolean)>($z0);
+
+        r0.<com.google.android.gms.internal.ads.zzuh: com.google.android.gms.internal.ads.zzgw zza> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzuh: int zzb> = $i0;
+
+        r0.<com.google.android.gms.internal.ads.zzuh: com.google.android.gms.internal.ads.zzug zzc> = $r1;
+
+        $r3 = newarray (byte)[1];
+
+        r0.<com.google.android.gms.internal.ads.zzuh: byte[] zzd> = $r3;
+
+        r0.<com.google.android.gms.internal.ads.zzuh: int zze> = $i0;
+
+        return;
+    }
+
+    public final int zza(byte[], int, int) throws java.io.IOException
+    {
+        byte[] $r1, $r3;
+        com.google.android.gms.internal.ads.zzgw $r2;
+        short $s5;
+        byte $b4;
+        com.google.android.gms.internal.ads.zzfp $r5;
+        int $i0, $i1, $i2, $i3, $i6, $i7;
+        com.google.android.gms.internal.ads.zzuh r0;
+        com.google.android.gms.internal.ads.zzug $r4;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzuh;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 = r0.<com.google.android.gms.internal.ads.zzuh: int zze>;
+
+        if $i2 != 0 goto label8;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzuh: com.google.android.gms.internal.ads.zzgw zza>;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzuh: byte[] zzd>;
+
+        $i2 = 0;
+
+        $i3 = interfaceinvoke $r2.<com.google.android.gms.internal.ads.zzgw: int zza(byte[],int,int)>($r3, 0, 1);
+
+        if $i3 != -1 goto label1;
+
+        return -1;
+
+     label1:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzuh: byte[] zzd>;
+
+        $b4 = $r3[0];
+
+        $s5 = (short) $b4;
+
+        $s5 = $s5 & 255;
+
+        $i3 = (int) $s5;
+
+        $i3 = $i3 << 4;
+
+        if $i3 != 0 goto label2;
+
+        goto label7;
+
+     label2:
+        $r3 = newarray (byte)[$i3];
+
+        $i6 = $i3;
+
+     label3:
+        if $i6 <= 0 goto label5;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzuh: com.google.android.gms.internal.ads.zzgw zza>;
+
+        $i7 = interfaceinvoke $r2.<com.google.android.gms.internal.ads.zzgw: int zza(byte[],int,int)>($r3, $i2, $i6);
+
+        if $i7 == -1 goto label4;
+
+        $i2 = $i2 + $i7;
+
+        $i6 = $i6 - $i7;
+
+        goto label3;
+
+     label4:
+        return -1;
+
+     label5:
+        if $i3 <= 0 goto label6;
+
+        $i2 = $i3 + -1;
+
+        $b4 = $r3[$i2];
+
+        if $b4 != 0 goto label6;
+
+        $i3 = $i2;
+
+        goto label5;
+
+     label6:
+        if $i3 <= 0 goto label7;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzuh: com.google.android.gms.internal.ads.zzug zzc>;
+
+        $r5 = new com.google.android.gms.internal.ads.zzfp;
+
+        specialinvoke $r5.<com.google.android.gms.internal.ads.zzfp: void <init>(byte[],int)>($r3, $i3);
+
+        interfaceinvoke $r4.<com.google.android.gms.internal.ads.zzug: void zza(com.google.android.gms.internal.ads.zzfp)>($r5);
+
+     label7:
+        $i2 = r0.<com.google.android.gms.internal.ads.zzuh: int zzb>;
+
+        r0.<com.google.android.gms.internal.ads.zzuh: int zze> = $i2;
+
+     label8:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzuh: com.google.android.gms.internal.ads.zzgw zza>;
+
+        $i1 = staticinvoke <java.lang.Math: int min(int,int)>($i2, $i1);
+
+        $i0 = interfaceinvoke $r2.<com.google.android.gms.internal.ads.zzgw: int zza(byte[],int,int)>($r1, $i0, $i1);
+
+        if $i0 == -1 goto label9;
+
+        $i1 = r0.<com.google.android.gms.internal.ads.zzuh: int zze>;
+
+        $i1 = $i1 - $i0;
+
+        r0.<com.google.android.gms.internal.ads.zzuh: int zze> = $i1;
+
+     label9:
+        return $i0;
+    }
+
+    public final long zzb(com.google.android.gms.internal.ads.zzhb)
+    {
+        java.lang.UnsupportedOperationException $r2;
+        com.google.android.gms.internal.ads.zzuh r0;
+        com.google.android.gms.internal.ads.zzhb $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzuh;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzhb;
+
+        $r2 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r2.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $r2;
+    }
+
+    public final android.net.Uri zzc()
+    {
+        android.net.Uri $r1;
+        com.google.android.gms.internal.ads.zzgw $r2;
+        com.google.android.gms.internal.ads.zzuh r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzuh;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzuh: com.google.android.gms.internal.ads.zzgw zza>;
+
+        $r1 = interfaceinvoke $r2.<com.google.android.gms.internal.ads.zzgw: android.net.Uri zzc()>();
+
+        return $r1;
+    }
+
+    public final void zzd()
+    {
+        java.lang.UnsupportedOperationException $r1;
+        com.google.android.gms.internal.ads.zzuh r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzuh;
+
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $r1;
+    }
+
+    public final java.util.Map zze()
+    {
+        com.google.android.gms.internal.ads.zzgw $r2;
+        com.google.android.gms.internal.ads.zzuh r0;
+        java.util.Map $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzuh;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzuh: com.google.android.gms.internal.ads.zzgw zza>;
+
+        $r1 = interfaceinvoke $r2.<com.google.android.gms.internal.ads.zzgw: java.util.Map zze()>();
+
+        return $r1;
+    }
+
+    public final void zzf(com.google.android.gms.internal.ads.zzhy)
+    {
+        com.google.android.gms.internal.ads.zzgw $r1;
+        com.google.android.gms.internal.ads.zzuh r0;
+        com.google.android.gms.internal.ads.zzhy $r2;
+        java.lang.NullPointerException r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzuh;
+
+        $r2 := @parameter0: com.google.android.gms.internal.ads.zzhy;
+
+        if $r2 == null goto label1;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzuh: com.google.android.gms.internal.ads.zzgw zza>;
+
+        interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzgw: void zzf(com.google.android.gms.internal.ads.zzhy)>($r2);
+
+        return;
+
+     label1:
+        r3 = new java.lang.NullPointerException;
+
+        specialinvoke r3.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+        throw r3;
+    }
+}

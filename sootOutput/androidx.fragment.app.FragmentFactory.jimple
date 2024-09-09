@@ -1,0 +1,299 @@
+public class androidx.fragment.app.FragmentFactory extends java.lang.Object
+{
+    private static final androidx.collection.SimpleArrayMap sClassMap;
+
+    static void <clinit>()
+    {
+        androidx.collection.SimpleArrayMap $r0;
+
+        $r0 = new androidx.collection.SimpleArrayMap;
+
+        specialinvoke $r0.<androidx.collection.SimpleArrayMap: void <init>()>();
+
+        <androidx.fragment.app.FragmentFactory: androidx.collection.SimpleArrayMap sClassMap> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        androidx.fragment.app.FragmentFactory r0;
+
+        r0 := @this: androidx.fragment.app.FragmentFactory;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static boolean isFragmentClass(java.lang.ClassLoader, java.lang.String)
+    {
+        java.lang.Class $r2, $r3;
+        java.lang.ClassNotFoundException r4;
+        java.lang.ClassLoader $r0;
+        java.lang.String $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: java.lang.ClassLoader;
+
+        $r1 := @parameter1: java.lang.String;
+
+     label1:
+        $r2 = staticinvoke <androidx.fragment.app.FragmentFactory: java.lang.Class loadClass(java.lang.ClassLoader,java.lang.String)>($r0, $r1);
+
+     label2:
+        $r3 = class "Landroidx/fragment/app/Fragment;";
+
+     label3:
+        $z0 = virtualinvoke $r3.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r2);
+
+     label4:
+        return $z0;
+
+     label5:
+        r4 := @caughtexception;
+
+        return 0;
+
+        catch java.lang.ClassNotFoundException from label1 to label2 with label5;
+        catch java.lang.ClassNotFoundException from label3 to label4 with label5;
+    }
+
+    private static java.lang.Class loadClass(java.lang.ClassLoader, java.lang.String) throws java.lang.ClassNotFoundException
+    {
+        java.lang.Object $r3;
+        java.lang.Class r4;
+        java.lang.ClassLoader $r0;
+        java.lang.String $r1;
+        androidx.collection.SimpleArrayMap r2;
+
+        $r0 := @parameter0: java.lang.ClassLoader;
+
+        $r1 := @parameter1: java.lang.String;
+
+        r2 = <androidx.fragment.app.FragmentFactory: androidx.collection.SimpleArrayMap sClassMap>;
+
+        $r3 = virtualinvoke r2.<androidx.collection.SimpleArrayMap: java.lang.Object get(java.lang.Object)>($r1);
+
+        r4 = (java.lang.Class) $r3;
+
+        if r4 != null goto label1;
+
+        r4 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String,boolean,java.lang.ClassLoader)>($r1, 0, $r0);
+
+        r2 = <androidx.fragment.app.FragmentFactory: androidx.collection.SimpleArrayMap sClassMap>;
+
+        virtualinvoke r2.<androidx.collection.SimpleArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, r4);
+
+     label1:
+        return r4;
+    }
+
+    public static java.lang.Class loadFragmentClass(java.lang.ClassLoader, java.lang.String)
+    {
+        androidx.fragment.app.Fragment$InstantiationException $r4;
+        java.lang.Class $r2;
+        java.lang.StringBuilder $r5;
+        java.lang.ClassNotFoundException r6;
+        java.lang.ClassLoader $r0;
+        java.lang.String $r1;
+        java.lang.ClassCastException r3;
+
+        $r0 := @parameter0: java.lang.ClassLoader;
+
+        $r1 := @parameter1: java.lang.String;
+
+     label1:
+        $r2 = staticinvoke <androidx.fragment.app.FragmentFactory: java.lang.Class loadClass(java.lang.ClassLoader,java.lang.String)>($r0, $r1);
+
+     label2:
+        return $r2;
+
+     label3:
+        r3 := @caughtexception;
+
+        $r4 = new androidx.fragment.app.Fragment$InstantiationException;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to instantiate fragment ");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": make sure class is a valid subclass of Fragment");
+
+        $r1 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<androidx.fragment.app.Fragment$InstantiationException: void <init>(java.lang.String,java.lang.Exception)>($r1, r3);
+
+        throw $r4;
+
+     label4:
+        r6 := @caughtexception;
+
+        $r4 = new androidx.fragment.app.Fragment$InstantiationException;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to instantiate fragment ");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": make sure class name exists");
+
+        $r1 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<androidx.fragment.app.Fragment$InstantiationException: void <init>(java.lang.String,java.lang.Exception)>($r1, r6);
+
+        throw $r4;
+
+        catch java.lang.ClassNotFoundException from label1 to label2 with label4;
+        catch java.lang.ClassCastException from label1 to label2 with label3;
+    }
+
+    public androidx.fragment.app.Fragment instantiate(java.lang.ClassLoader, java.lang.String)
+    {
+        java.lang.IllegalAccessException r13;
+        androidx.fragment.app.FragmentFactory r0;
+        java.lang.Object[] $r6;
+        androidx.fragment.app.Fragment$InstantiationException r10;
+        java.lang.NoSuchMethodException r12;
+        java.lang.Class[] $r4;
+        java.lang.reflect.Constructor $r5;
+        java.lang.reflect.InvocationTargetException r9;
+        androidx.fragment.app.Fragment $r8;
+        java.lang.InstantiationException r14;
+        java.lang.Class $r3;
+        java.lang.Object $r7;
+        java.lang.StringBuilder $r11;
+        java.lang.ClassLoader $r1;
+        java.lang.String $r2;
+
+        r0 := @this: androidx.fragment.app.FragmentFactory;
+
+        $r1 := @parameter0: java.lang.ClassLoader;
+
+        $r2 := @parameter1: java.lang.String;
+
+     label01:
+        $r3 = staticinvoke <androidx.fragment.app.FragmentFactory: java.lang.Class loadFragmentClass(java.lang.ClassLoader,java.lang.String)>($r1, $r2);
+
+     label02:
+        $r4 = newarray (java.lang.Class)[0];
+
+     label03:
+        $r5 = virtualinvoke $r3.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>($r4);
+
+     label04:
+        $r6 = newarray (java.lang.Object)[0];
+
+     label05:
+        $r7 = virtualinvoke $r5.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r6);
+
+     label06:
+        $r8 = (androidx.fragment.app.Fragment) $r7;
+
+        return $r8;
+
+     label07:
+        r9 := @caughtexception;
+
+        r10 = new androidx.fragment.app.Fragment$InstantiationException;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to instantiate fragment ");
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": calling Fragment constructor caused an exception");
+
+        $r2 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r10.<androidx.fragment.app.Fragment$InstantiationException: void <init>(java.lang.String,java.lang.Exception)>($r2, r9);
+
+        throw r10;
+
+     label08:
+        r12 := @caughtexception;
+
+        r10 = new androidx.fragment.app.Fragment$InstantiationException;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to instantiate fragment ");
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": could not find Fragment constructor");
+
+        $r2 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r10.<androidx.fragment.app.Fragment$InstantiationException: void <init>(java.lang.String,java.lang.Exception)>($r2, r12);
+
+        throw r10;
+
+     label09:
+        r13 := @caughtexception;
+
+        r10 = new androidx.fragment.app.Fragment$InstantiationException;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to instantiate fragment ");
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": make sure class name exists, is public, and has an empty constructor that is public");
+
+        $r2 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r10.<androidx.fragment.app.Fragment$InstantiationException: void <init>(java.lang.String,java.lang.Exception)>($r2, r13);
+
+        throw r10;
+
+     label10:
+        r14 := @caughtexception;
+
+        r10 = new androidx.fragment.app.Fragment$InstantiationException;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to instantiate fragment ");
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": make sure class name exists, is public, and has an empty constructor that is public");
+
+        $r2 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r10.<androidx.fragment.app.Fragment$InstantiationException: void <init>(java.lang.String,java.lang.Exception)>($r2, r14);
+
+        throw r10;
+
+        catch java.lang.InstantiationException from label01 to label02 with label10;
+        catch java.lang.InstantiationException from label03 to label04 with label10;
+        catch java.lang.InstantiationException from label05 to label06 with label10;
+        catch java.lang.IllegalAccessException from label01 to label02 with label09;
+        catch java.lang.IllegalAccessException from label03 to label04 with label09;
+        catch java.lang.IllegalAccessException from label05 to label06 with label09;
+        catch java.lang.NoSuchMethodException from label01 to label02 with label08;
+        catch java.lang.NoSuchMethodException from label03 to label04 with label08;
+        catch java.lang.NoSuchMethodException from label05 to label06 with label08;
+        catch java.lang.reflect.InvocationTargetException from label01 to label02 with label07;
+        catch java.lang.reflect.InvocationTargetException from label03 to label04 with label07;
+        catch java.lang.reflect.InvocationTargetException from label05 to label06 with label07;
+    }
+}

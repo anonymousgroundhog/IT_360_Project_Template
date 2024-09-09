@@ -1,0 +1,97 @@
+public abstract class androidx.work.WorkRequest extends java.lang.Object
+{
+    public static final long DEFAULT_BACKOFF_DELAY_MILLIS;
+    public static final long MAX_BACKOFF_MILLIS;
+    public static final long MIN_BACKOFF_MILLIS;
+    private java.util.UUID mId;
+    private java.util.Set mTags;
+    private androidx.work.impl.model.WorkSpec mWorkSpec;
+
+    protected void <init>(java.util.UUID, androidx.work.impl.model.WorkSpec, java.util.Set)
+    {
+        androidx.work.WorkRequest r0;
+        java.util.Set r3;
+        java.util.UUID $r1;
+        androidx.work.impl.model.WorkSpec $r2;
+
+        r0 := @this: androidx.work.WorkRequest;
+
+        $r1 := @parameter0: java.util.UUID;
+
+        $r2 := @parameter1: androidx.work.impl.model.WorkSpec;
+
+        r3 := @parameter2: java.util.Set;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.work.WorkRequest: java.util.UUID mId> = $r1;
+
+        r0.<androidx.work.WorkRequest: androidx.work.impl.model.WorkSpec mWorkSpec> = $r2;
+
+        r0.<androidx.work.WorkRequest: java.util.Set mTags> = r3;
+
+        return;
+    }
+
+    public java.util.UUID getId()
+    {
+        java.util.UUID r1;
+        androidx.work.WorkRequest r0;
+
+        r0 := @this: androidx.work.WorkRequest;
+
+        r1 = r0.<androidx.work.WorkRequest: java.util.UUID mId>;
+
+        return r1;
+    }
+
+    public java.lang.String getStringId()
+    {
+        java.lang.String $r1;
+        java.util.UUID $r2;
+        androidx.work.WorkRequest r0;
+
+        r0 := @this: androidx.work.WorkRequest;
+
+        $r2 = r0.<androidx.work.WorkRequest: java.util.UUID mId>;
+
+        $r1 = virtualinvoke $r2.<java.util.UUID: java.lang.String toString()>();
+
+        return $r1;
+    }
+
+    public java.util.Set getTags()
+    {
+        java.util.Set r1;
+        androidx.work.WorkRequest r0;
+
+        r0 := @this: androidx.work.WorkRequest;
+
+        r1 = r0.<androidx.work.WorkRequest: java.util.Set mTags>;
+
+        return r1;
+    }
+
+    public androidx.work.impl.model.WorkSpec getWorkSpec()
+    {
+        androidx.work.WorkRequest r0;
+        androidx.work.impl.model.WorkSpec r1;
+
+        r0 := @this: androidx.work.WorkRequest;
+
+        r1 = r0.<androidx.work.WorkRequest: androidx.work.impl.model.WorkSpec mWorkSpec>;
+
+        return r1;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.work.WorkRequest: long MIN_BACKOFF_MILLIS> = 10000L;
+
+        <androidx.work.WorkRequest: long MAX_BACKOFF_MILLIS> = 18000000L;
+
+        <androidx.work.WorkRequest: long DEFAULT_BACKOFF_DELAY_MILLIS> = 30000L;
+
+        return;
+    }
+}

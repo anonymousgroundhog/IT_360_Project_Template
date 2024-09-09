@@ -1,0 +1,272 @@
+class androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper extends java.lang.Object implements androidx.sqlite.db.SupportSQLiteOpenHelper
+{
+    private final androidx.sqlite.db.SupportSQLiteOpenHelper$Callback mCallback;
+    private final android.content.Context mContext;
+    private androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper mDelegate;
+    private final java.lang.Object mLock;
+    private final java.lang.String mName;
+    private final boolean mUseNoBackupDirectory;
+    private boolean mWriteAheadLoggingEnabled;
+
+    void <init>(android.content.Context, java.lang.String, androidx.sqlite.db.SupportSQLiteOpenHelper$Callback)
+    {
+        android.content.Context $r1;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper r0;
+        java.lang.String $r2;
+        androidx.sqlite.db.SupportSQLiteOpenHelper$Callback $r3;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: androidx.sqlite.db.SupportSQLiteOpenHelper$Callback;
+
+        specialinvoke r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: void <init>(android.content.Context,java.lang.String,androidx.sqlite.db.SupportSQLiteOpenHelper$Callback,boolean)>($r1, $r2, $r3, 0);
+
+        return;
+    }
+
+    void <init>(android.content.Context, java.lang.String, androidx.sqlite.db.SupportSQLiteOpenHelper$Callback, boolean)
+    {
+        android.content.Context $r1;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper r0;
+        java.lang.Object $r4;
+        java.lang.String $r2;
+        androidx.sqlite.db.SupportSQLiteOpenHelper$Callback $r3;
+        boolean $z0;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: androidx.sqlite.db.SupportSQLiteOpenHelper$Callback;
+
+        $z0 := @parameter3: boolean;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: android.content.Context mContext> = $r1;
+
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: java.lang.String mName> = $r2;
+
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: androidx.sqlite.db.SupportSQLiteOpenHelper$Callback mCallback> = $r3;
+
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: boolean mUseNoBackupDirectory> = $z0;
+
+        $r4 = new java.lang.Object;
+
+        specialinvoke $r4.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: java.lang.Object mLock> = $r4;
+
+        return;
+    }
+
+    private androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper getDelegate()
+    {
+        java.lang.Throwable r9;
+        android.content.Context $r7;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper r0;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper r3;
+        java.io.File r6, $r8;
+        androidx.sqlite.db.framework.FrameworkSQLiteDatabase[] r4;
+        int i0;
+        java.lang.Object $r1;
+        java.lang.String r5;
+        androidx.sqlite.db.SupportSQLiteOpenHelper$Callback $r2;
+        boolean z0;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper;
+
+        $r1 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: java.lang.Object mLock>;
+
+        entermonitor $r1;
+
+     label1:
+        r3 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper mDelegate>;
+
+        if r3 != null goto label4;
+
+        r4 = newarray (androidx.sqlite.db.framework.FrameworkSQLiteDatabase)[1];
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 23 goto label2;
+
+        r5 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: java.lang.String mName>;
+
+        if r5 == null goto label2;
+
+        z0 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: boolean mUseNoBackupDirectory>;
+
+        if z0 == 0 goto label2;
+
+        r6 = new java.io.File;
+
+        $r7 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: android.content.Context mContext>;
+
+        $r8 = virtualinvoke $r7.<android.content.Context: java.io.File getNoBackupFilesDir()>();
+
+        r5 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: java.lang.String mName>;
+
+        specialinvoke r6.<java.io.File: void <init>(java.io.File,java.lang.String)>($r8, r5);
+
+        r3 = new androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper;
+
+        $r7 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: android.content.Context mContext>;
+
+        r5 = virtualinvoke r6.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        $r2 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: androidx.sqlite.db.SupportSQLiteOpenHelper$Callback mCallback>;
+
+        specialinvoke r3.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: void <init>(android.content.Context,java.lang.String,androidx.sqlite.db.framework.FrameworkSQLiteDatabase[],androidx.sqlite.db.SupportSQLiteOpenHelper$Callback)>($r7, r5, r4, $r2);
+
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper mDelegate> = r3;
+
+        goto label3;
+
+     label2:
+        r3 = new androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper;
+
+        $r7 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: android.content.Context mContext>;
+
+        r5 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: java.lang.String mName>;
+
+        $r2 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: androidx.sqlite.db.SupportSQLiteOpenHelper$Callback mCallback>;
+
+        specialinvoke r3.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: void <init>(android.content.Context,java.lang.String,androidx.sqlite.db.framework.FrameworkSQLiteDatabase[],androidx.sqlite.db.SupportSQLiteOpenHelper$Callback)>($r7, r5, r4, $r2);
+
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper mDelegate> = r3;
+
+     label3:
+        r3 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper mDelegate>;
+
+        z0 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: boolean mWriteAheadLoggingEnabled>;
+
+        virtualinvoke r3.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: void setWriteAheadLoggingEnabled(boolean)>(z0);
+
+     label4:
+        r3 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper mDelegate>;
+
+        exitmonitor $r1;
+
+     label5:
+        return r3;
+
+     label6:
+        r9 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label7:
+        throw r9;
+
+        catch java.lang.Throwable from label1 to label5 with label6;
+        catch java.lang.Throwable from label6 to label7 with label6;
+    }
+
+    public void close()
+    {
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper r0;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper $r1;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper;
+
+        $r1 = specialinvoke r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper getDelegate()>();
+
+        virtualinvoke $r1.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: void close()>();
+
+        return;
+    }
+
+    public java.lang.String getDatabaseName()
+    {
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper r0;
+        java.lang.String r1;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper;
+
+        r1 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: java.lang.String mName>;
+
+        return r1;
+    }
+
+    public androidx.sqlite.db.SupportSQLiteDatabase getReadableDatabase()
+    {
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteDatabase $r2;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper $r1;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper;
+
+        $r1 = specialinvoke r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper getDelegate()>();
+
+        $r2 = virtualinvoke $r1.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.SupportSQLiteDatabase getReadableSupportDatabase()>();
+
+        return $r2;
+    }
+
+    public androidx.sqlite.db.SupportSQLiteDatabase getWritableDatabase()
+    {
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper r0;
+        androidx.sqlite.db.SupportSQLiteDatabase $r2;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper $r1;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper;
+
+        $r1 = specialinvoke r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper getDelegate()>();
+
+        $r2 = virtualinvoke $r1.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: androidx.sqlite.db.SupportSQLiteDatabase getWritableSupportDatabase()>();
+
+        return $r2;
+    }
+
+    public void setWriteAheadLoggingEnabled(boolean)
+    {
+        java.lang.Throwable $r3;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper r0;
+        java.lang.Object $r1;
+        androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: java.lang.Object mLock>;
+
+        entermonitor $r1;
+
+     label1:
+        $r2 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper mDelegate>;
+
+        if $r2 == null goto label2;
+
+        $r2 = r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper mDelegate>;
+
+        virtualinvoke $r2.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper: void setWriteAheadLoggingEnabled(boolean)>($z0);
+
+     label2:
+        r0.<androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper: boolean mWriteAheadLoggingEnabled> = $z0;
+
+        exitmonitor $r1;
+
+     label3:
+        return;
+
+     label4:
+        $r3 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label5:
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+        catch java.lang.Throwable from label4 to label5 with label4;
+    }
+}

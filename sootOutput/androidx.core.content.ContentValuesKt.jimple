@@ -1,0 +1,188 @@
+public final class androidx.core.content.ContentValuesKt extends java.lang.Object
+{
+
+    public static final transient android.content.ContentValues contentValuesOf(kotlin.Pair[])
+    {
+        java.lang.Float $r9;
+        byte[] $r11;
+        java.lang.Double $r10;
+        kotlin.Pair r2;
+        java.lang.Integer $r6;
+        java.lang.Long $r7;
+        java.lang.Short $r13;
+        int $i0, $i1;
+        java.lang.Boolean $r8;
+        java.lang.String r4, $r5;
+        java.lang.Byte $r12;
+        boolean $z0;
+        kotlin.Pair[] $r0;
+        java.lang.IllegalArgumentException $r15;
+        java.lang.Object $r3;
+        java.lang.Class $r14;
+        java.lang.StringBuilder $r16;
+        android.content.ContentValues r1;
+
+        $r0 := @parameter0: kotlin.Pair[];
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "pairs");
+
+        r1 = new android.content.ContentValues;
+
+        $i0 = lengthof $r0;
+
+        specialinvoke r1.<android.content.ContentValues: void <init>(int)>($i0);
+
+        $i0 = lengthof $r0;
+
+        $i1 = 0;
+
+     label01:
+        if $i1 >= $i0 goto label13;
+
+        r2 = $r0[$i1];
+
+        $r3 = virtualinvoke r2.<kotlin.Pair: java.lang.Object component1()>();
+
+        r4 = (java.lang.String) $r3;
+
+        $r3 = virtualinvoke r2.<kotlin.Pair: java.lang.Object component2()>();
+
+        if $r3 != null goto label02;
+
+        virtualinvoke r1.<android.content.ContentValues: void putNull(java.lang.String)>(r4);
+
+        goto label11;
+
+     label02:
+        $z0 = $r3 instanceof java.lang.String;
+
+        if $z0 == 0 goto label03;
+
+        $r5 = (java.lang.String) $r3;
+
+        virtualinvoke r1.<android.content.ContentValues: void put(java.lang.String,java.lang.String)>(r4, $r5);
+
+        goto label11;
+
+     label03:
+        $z0 = $r3 instanceof java.lang.Integer;
+
+        if $z0 == 0 goto label04;
+
+        $r6 = (java.lang.Integer) $r3;
+
+        virtualinvoke r1.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>(r4, $r6);
+
+        goto label11;
+
+     label04:
+        $z0 = $r3 instanceof java.lang.Long;
+
+        if $z0 == 0 goto label05;
+
+        $r7 = (java.lang.Long) $r3;
+
+        virtualinvoke r1.<android.content.ContentValues: void put(java.lang.String,java.lang.Long)>(r4, $r7);
+
+        goto label11;
+
+     label05:
+        $z0 = $r3 instanceof java.lang.Boolean;
+
+        if $z0 == 0 goto label06;
+
+        $r8 = (java.lang.Boolean) $r3;
+
+        virtualinvoke r1.<android.content.ContentValues: void put(java.lang.String,java.lang.Boolean)>(r4, $r8);
+
+        goto label11;
+
+     label06:
+        $z0 = $r3 instanceof java.lang.Float;
+
+        if $z0 == 0 goto label07;
+
+        $r9 = (java.lang.Float) $r3;
+
+        virtualinvoke r1.<android.content.ContentValues: void put(java.lang.String,java.lang.Float)>(r4, $r9);
+
+        goto label11;
+
+     label07:
+        $z0 = $r3 instanceof java.lang.Double;
+
+        if $z0 == 0 goto label08;
+
+        $r10 = (java.lang.Double) $r3;
+
+        virtualinvoke r1.<android.content.ContentValues: void put(java.lang.String,java.lang.Double)>(r4, $r10);
+
+        goto label11;
+
+     label08:
+        $z0 = $r3 instanceof byte[];
+
+        if $z0 == 0 goto label09;
+
+        $r11 = (byte[]) $r3;
+
+        virtualinvoke r1.<android.content.ContentValues: void put(java.lang.String,byte[])>(r4, $r11);
+
+        goto label11;
+
+     label09:
+        $z0 = $r3 instanceof java.lang.Byte;
+
+        if $z0 == 0 goto label10;
+
+        $r12 = (java.lang.Byte) $r3;
+
+        virtualinvoke r1.<android.content.ContentValues: void put(java.lang.String,java.lang.Byte)>(r4, $r12);
+
+        goto label11;
+
+     label10:
+        $z0 = $r3 instanceof java.lang.Short;
+
+        if $z0 == 0 goto label12;
+
+        $r13 = (java.lang.Short) $r3;
+
+        virtualinvoke r1.<android.content.ContentValues: void put(java.lang.String,java.lang.Short)>(r4, $r13);
+
+     label11:
+        $i1 = $i1 + 1;
+
+        goto label01;
+
+     label12:
+        $r14 = virtualinvoke $r3.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r5 = virtualinvoke $r14.<java.lang.Class: java.lang.String getCanonicalName()>();
+
+        $r15 = new java.lang.IllegalArgumentException;
+
+        $r16 = new java.lang.StringBuilder;
+
+        specialinvoke $r16.<java.lang.StringBuilder: void <init>()>();
+
+        $r16 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal value type ");
+
+        $r16 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r16 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" for key \"");
+
+        $r16 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r4);
+
+        $r16 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(34);
+
+        r4 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r15.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>(r4);
+
+        throw $r15;
+
+     label13:
+        return r1;
+    }
+}

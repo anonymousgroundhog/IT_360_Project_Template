@@ -1,0 +1,130 @@
+abstract class androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager extends java.lang.Object
+{
+    private android.content.BroadcastReceiver mReceiver;
+    final androidx.appcompat.app.AppCompatDelegateImpl this$0;
+
+    void <init>(androidx.appcompat.app.AppCompatDelegateImpl)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager r0;
+        androidx.appcompat.app.AppCompatDelegateImpl $r1;
+
+        r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager;
+
+        $r1 := @parameter0: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        r0.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: androidx.appcompat.app.AppCompatDelegateImpl this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    void cleanup()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager r0;
+        android.content.Context $r3;
+        androidx.appcompat.app.AppCompatDelegateImpl $r2;
+        java.lang.IllegalArgumentException $r4;
+        android.content.BroadcastReceiver $r1;
+
+        r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager;
+
+        $r1 = r0.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: android.content.BroadcastReceiver mReceiver>;
+
+        if $r1 == null goto label5;
+
+        $r2 = r0.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r3 = $r2.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r1 = r0.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: android.content.BroadcastReceiver mReceiver>;
+
+     label1:
+        virtualinvoke $r3.<android.content.Context: void unregisterReceiver(android.content.BroadcastReceiver)>($r1);
+
+     label2:
+        goto label4;
+
+     label3:
+        $r4 := @caughtexception;
+
+     label4:
+        r0.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: android.content.BroadcastReceiver mReceiver> = null;
+
+     label5:
+        return;
+
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+    }
+
+    abstract android.content.IntentFilter createIntentFilterForBroadcastReceiver();
+
+    abstract int getApplyableNightMode();
+
+    boolean isListening()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager r0;
+        android.content.BroadcastReceiver $r1;
+
+        r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager;
+
+        $r1 = r0.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: android.content.BroadcastReceiver mReceiver>;
+
+        if $r1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    abstract void onChange();
+
+    void setup()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager r0;
+        android.content.Context $r5;
+        androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager$1 $r3;
+        androidx.appcompat.app.AppCompatDelegateImpl $r4;
+        android.content.IntentFilter $r2;
+        int $i0;
+        android.content.BroadcastReceiver $r1;
+
+        r0 := @this: androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager;
+
+        virtualinvoke r0.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: void cleanup()>();
+
+        $r2 = virtualinvoke r0.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: android.content.IntentFilter createIntentFilterForBroadcastReceiver()>();
+
+        if $r2 == null goto label3;
+
+        $i0 = virtualinvoke $r2.<android.content.IntentFilter: int countActions()>();
+
+        if $i0 != 0 goto label1;
+
+        return;
+
+     label1:
+        $r1 = r0.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: android.content.BroadcastReceiver mReceiver>;
+
+        if $r1 != null goto label2;
+
+        $r3 = new androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager$1;
+
+        specialinvoke $r3.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager$1: void <init>(androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager)>(r0);
+
+        r0.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: android.content.BroadcastReceiver mReceiver> = $r3;
+
+     label2:
+        $r4 = r0.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $r5 = $r4.<androidx.appcompat.app.AppCompatDelegateImpl: android.content.Context mContext>;
+
+        $r1 = r0.<androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager: android.content.BroadcastReceiver mReceiver>;
+
+        virtualinvoke $r5.<android.content.Context: android.content.Intent registerReceiver(android.content.BroadcastReceiver,android.content.IntentFilter)>($r1, $r2);
+
+     label3:
+        return;
+    }
+}

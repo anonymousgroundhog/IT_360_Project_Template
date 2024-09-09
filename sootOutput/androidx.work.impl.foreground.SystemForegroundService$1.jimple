@@ -1,0 +1,74 @@
+class androidx.work.impl.foreground.SystemForegroundService$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.work.impl.foreground.SystemForegroundService this$0;
+    final android.app.Notification val$notification;
+    final int val$notificationId;
+    final int val$notificationType;
+
+    void <init>(androidx.work.impl.foreground.SystemForegroundService, int, android.app.Notification, int)
+    {
+        androidx.work.impl.foreground.SystemForegroundService$1 r0;
+        androidx.work.impl.foreground.SystemForegroundService $r1;
+        int $i0, $i1;
+        android.app.Notification $r2;
+
+        r0 := @this: androidx.work.impl.foreground.SystemForegroundService$1;
+
+        $r1 := @parameter0: androidx.work.impl.foreground.SystemForegroundService;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: android.app.Notification;
+
+        $i1 := @parameter3: int;
+
+        r0.<androidx.work.impl.foreground.SystemForegroundService$1: androidx.work.impl.foreground.SystemForegroundService this$0> = $r1;
+
+        r0.<androidx.work.impl.foreground.SystemForegroundService$1: int val$notificationId> = $i0;
+
+        r0.<androidx.work.impl.foreground.SystemForegroundService$1: android.app.Notification val$notification> = $r2;
+
+        r0.<androidx.work.impl.foreground.SystemForegroundService$1: int val$notificationType> = $i1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.work.impl.foreground.SystemForegroundService$1 r0;
+        int $i0, $i1;
+        androidx.work.impl.foreground.SystemForegroundService $r1;
+        android.app.Notification $r2;
+
+        r0 := @this: androidx.work.impl.foreground.SystemForegroundService$1;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 29 goto label1;
+
+        $r1 = r0.<androidx.work.impl.foreground.SystemForegroundService$1: androidx.work.impl.foreground.SystemForegroundService this$0>;
+
+        $i1 = r0.<androidx.work.impl.foreground.SystemForegroundService$1: int val$notificationId>;
+
+        $r2 = r0.<androidx.work.impl.foreground.SystemForegroundService$1: android.app.Notification val$notification>;
+
+        $i0 = r0.<androidx.work.impl.foreground.SystemForegroundService$1: int val$notificationType>;
+
+        virtualinvoke $r1.<androidx.work.impl.foreground.SystemForegroundService: void startForeground(int,android.app.Notification,int)>($i1, $r2, $i0);
+
+        return;
+
+     label1:
+        $r1 = r0.<androidx.work.impl.foreground.SystemForegroundService$1: androidx.work.impl.foreground.SystemForegroundService this$0>;
+
+        $i0 = r0.<androidx.work.impl.foreground.SystemForegroundService$1: int val$notificationId>;
+
+        $r2 = r0.<androidx.work.impl.foreground.SystemForegroundService$1: android.app.Notification val$notification>;
+
+        virtualinvoke $r1.<androidx.work.impl.foreground.SystemForegroundService: void startForeground(int,android.app.Notification)>($i0, $r2);
+
+        return;
+    }
+}

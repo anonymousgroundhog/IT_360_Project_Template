@@ -1,0 +1,60 @@
+public final class com.google.android.gms.internal.ads.zzdgj extends java.lang.Object implements java.lang.Runnable
+{
+    public final com.google.android.gms.internal.ads.zzdgk zza;
+    public final java.lang.Object zzb;
+
+    public void <init>(com.google.android.gms.internal.ads.zzdgk, java.lang.Object)
+    {
+        com.google.android.gms.internal.ads.zzdgk $r1;
+        java.lang.Object $r2;
+        com.google.android.gms.internal.ads.zzdgj r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdgj;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzdgk;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzdgj: com.google.android.gms.internal.ads.zzdgk zza> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzdgj: java.lang.Object zzb> = $r2;
+
+        return;
+    }
+
+    public final void run()
+    {
+        java.lang.Throwable $r4;
+        com.google.android.gms.internal.ads.zzdgk $r2;
+        java.lang.Object $r3;
+        com.google.android.gms.internal.ads.zzdgj r0;
+        com.google.android.gms.internal.ads.zzcdl $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdgj;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzdgj: com.google.android.gms.internal.ads.zzdgk zza>;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzdgj: java.lang.Object zzb>;
+
+     label1:
+        interfaceinvoke $r2.<com.google.android.gms.internal.ads.zzdgk: void zza(java.lang.Object)>($r3);
+
+     label2:
+        return;
+
+     label3:
+        $r4 := @caughtexception;
+
+        $r1 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzcdl zzo()>();
+
+        virtualinvoke $r1.<com.google.android.gms.internal.ads.zzcdl: void zzv(java.lang.Throwable,java.lang.String)>($r4, "EventEmitter.notify");
+
+        staticinvoke <com.google.android.gms.ads.internal.util.zze: void zzb(java.lang.String,java.lang.Throwable)>("Event emitter exception.", $r4);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+}

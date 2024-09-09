@@ -1,0 +1,121 @@
+public class androidx.work.impl.WorkerWrapper$Builder extends java.lang.Object
+{
+    android.content.Context mAppContext;
+    androidx.work.Configuration mConfiguration;
+    androidx.work.impl.foreground.ForegroundProcessor mForegroundProcessor;
+    androidx.work.WorkerParameters$RuntimeExtras mRuntimeExtras;
+    java.util.List mSchedulers;
+    androidx.work.impl.WorkDatabase mWorkDatabase;
+    java.lang.String mWorkSpecId;
+    androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor;
+    androidx.work.ListenableWorker mWorker;
+
+    public void <init>(android.content.Context, androidx.work.Configuration, androidx.work.impl.utils.taskexecutor.TaskExecutor, androidx.work.impl.foreground.ForegroundProcessor, androidx.work.impl.WorkDatabase, java.lang.String)
+    {
+        android.content.Context $r1;
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r3;
+        androidx.work.WorkerParameters$RuntimeExtras $r7;
+        androidx.work.Configuration $r2;
+        androidx.work.impl.foreground.ForegroundProcessor $r4;
+        androidx.work.impl.WorkDatabase $r5;
+        java.lang.String $r6;
+        androidx.work.impl.WorkerWrapper$Builder r0;
+
+        r0 := @this: androidx.work.impl.WorkerWrapper$Builder;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.work.Configuration;
+
+        $r3 := @parameter2: androidx.work.impl.utils.taskexecutor.TaskExecutor;
+
+        $r4 := @parameter3: androidx.work.impl.foreground.ForegroundProcessor;
+
+        $r5 := @parameter4: androidx.work.impl.WorkDatabase;
+
+        $r6 := @parameter5: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r7 = new androidx.work.WorkerParameters$RuntimeExtras;
+
+        specialinvoke $r7.<androidx.work.WorkerParameters$RuntimeExtras: void <init>()>();
+
+        r0.<androidx.work.impl.WorkerWrapper$Builder: androidx.work.WorkerParameters$RuntimeExtras mRuntimeExtras> = $r7;
+
+        $r1 = virtualinvoke $r1.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        r0.<androidx.work.impl.WorkerWrapper$Builder: android.content.Context mAppContext> = $r1;
+
+        r0.<androidx.work.impl.WorkerWrapper$Builder: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor> = $r3;
+
+        r0.<androidx.work.impl.WorkerWrapper$Builder: androidx.work.impl.foreground.ForegroundProcessor mForegroundProcessor> = $r4;
+
+        r0.<androidx.work.impl.WorkerWrapper$Builder: androidx.work.Configuration mConfiguration> = $r2;
+
+        r0.<androidx.work.impl.WorkerWrapper$Builder: androidx.work.impl.WorkDatabase mWorkDatabase> = $r5;
+
+        r0.<androidx.work.impl.WorkerWrapper$Builder: java.lang.String mWorkSpecId> = $r6;
+
+        return;
+    }
+
+    public androidx.work.impl.WorkerWrapper build()
+    {
+        androidx.work.impl.WorkerWrapper $r1;
+        androidx.work.impl.WorkerWrapper$Builder r0;
+
+        r0 := @this: androidx.work.impl.WorkerWrapper$Builder;
+
+        $r1 = new androidx.work.impl.WorkerWrapper;
+
+        specialinvoke $r1.<androidx.work.impl.WorkerWrapper: void <init>(androidx.work.impl.WorkerWrapper$Builder)>(r0);
+
+        return $r1;
+    }
+
+    public androidx.work.impl.WorkerWrapper$Builder withRuntimeExtras(androidx.work.WorkerParameters$RuntimeExtras)
+    {
+        androidx.work.WorkerParameters$RuntimeExtras $r1;
+        androidx.work.impl.WorkerWrapper$Builder r0;
+
+        r0 := @this: androidx.work.impl.WorkerWrapper$Builder;
+
+        $r1 := @parameter0: androidx.work.WorkerParameters$RuntimeExtras;
+
+        if $r1 == null goto label1;
+
+        r0.<androidx.work.impl.WorkerWrapper$Builder: androidx.work.WorkerParameters$RuntimeExtras mRuntimeExtras> = $r1;
+
+     label1:
+        return r0;
+    }
+
+    public androidx.work.impl.WorkerWrapper$Builder withSchedulers(java.util.List)
+    {
+        java.util.List r1;
+        androidx.work.impl.WorkerWrapper$Builder r0;
+
+        r0 := @this: androidx.work.impl.WorkerWrapper$Builder;
+
+        r1 := @parameter0: java.util.List;
+
+        r0.<androidx.work.impl.WorkerWrapper$Builder: java.util.List mSchedulers> = r1;
+
+        return r0;
+    }
+
+    public androidx.work.impl.WorkerWrapper$Builder withWorker(androidx.work.ListenableWorker)
+    {
+        androidx.work.ListenableWorker $r1;
+        androidx.work.impl.WorkerWrapper$Builder r0;
+
+        r0 := @this: androidx.work.impl.WorkerWrapper$Builder;
+
+        $r1 := @parameter0: androidx.work.ListenableWorker;
+
+        r0.<androidx.work.impl.WorkerWrapper$Builder: androidx.work.ListenableWorker mWorker> = $r1;
+
+        return r0;
+    }
+}

@@ -1,0 +1,71 @@
+public final class com.google.android.gms.internal.ads.zzfpn extends java.lang.Object
+{
+    private static android.app.UiModeManager zza;
+
+    static void <clinit>()
+    {
+        <com.google.android.gms.internal.ads.zzfpn: android.app.UiModeManager zza> = null;
+
+        return;
+    }
+
+    public static com.google.android.gms.internal.ads.zzfoj zza()
+    {
+        int $i0;
+        com.google.android.gms.internal.ads.zzfoj r1;
+        android.app.UiModeManager $r0;
+
+        $r0 = <com.google.android.gms.internal.ads.zzfpn: android.app.UiModeManager zza>;
+
+        if $r0 == null goto label4;
+
+        $i0 = virtualinvoke $r0.<android.app.UiModeManager: int getCurrentModeType()>();
+
+        lookupswitch($i0)
+        {
+            case 1: goto label3;
+            case 4: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        r1 = <com.google.android.gms.internal.ads.zzfoj: com.google.android.gms.internal.ads.zzfoj zzc>;
+
+        return r1;
+
+     label2:
+        r1 = <com.google.android.gms.internal.ads.zzfoj: com.google.android.gms.internal.ads.zzfoj zza>;
+
+        return r1;
+
+     label3:
+        r1 = <com.google.android.gms.internal.ads.zzfoj: com.google.android.gms.internal.ads.zzfoj zzb>;
+
+        return r1;
+
+     label4:
+        r1 = <com.google.android.gms.internal.ads.zzfoj: com.google.android.gms.internal.ads.zzfoj zzc>;
+
+        return r1;
+    }
+
+    public static void zzb(android.content.Context)
+    {
+        android.content.Context $r1;
+        java.lang.Object $r0;
+        android.app.UiModeManager $r2;
+
+        $r1 := @parameter0: android.content.Context;
+
+        if $r1 == null goto label1;
+
+        $r0 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("uimode");
+
+        $r2 = (android.app.UiModeManager) $r0;
+
+        <com.google.android.gms.internal.ads.zzfpn: android.app.UiModeManager zza> = $r2;
+
+     label1:
+        return;
+    }
+}

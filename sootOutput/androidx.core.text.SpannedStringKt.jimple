@@ -1,0 +1,87 @@
+public final class androidx.core.text.SpannedStringKt extends java.lang.Object
+{
+
+    public static final java.lang.Object[] getSpans(android.text.Spanned, int, int)
+    {
+        android.text.Spanned $r0;
+        java.lang.Object[] $r1;
+        int $i0, $i1;
+
+        $r0 := @parameter0: android.text.Spanned;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void reifiedOperationMarker(int,java.lang.String)>(4, "T");
+
+        $r1 = interfaceinvoke $r0.<android.text.Spanned: java.lang.Object[] getSpans(int,int,java.lang.Class)>($i0, $i1, class "Ljava/lang/Object;");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r1, "getSpans(start, end, T::class.java)");
+
+        return $r1;
+    }
+
+    public static java.lang.Object[] getSpans$default(android.text.Spanned, int, int, int, java.lang.Object)
+    {
+        android.text.Spanned $r0;
+        java.lang.Object[] $r2;
+        int $i0, $i1, $i2, $i3;
+        java.lang.Object $r1;
+
+        $r0 := @parameter0: android.text.Spanned;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $r1 := @parameter4: java.lang.Object;
+
+        $i3 = $i2 & 1;
+
+        if $i3 == 0 goto label1;
+
+        $i0 = 0;
+
+     label1:
+        $i2 = $i2 & 2;
+
+        if $i2 == 0 goto label2;
+
+        $i1 = interfaceinvoke $r0.<android.text.Spanned: int length()>();
+
+     label2:
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void reifiedOperationMarker(int,java.lang.String)>(4, "T");
+
+        $r2 = interfaceinvoke $r0.<android.text.Spanned: java.lang.Object[] getSpans(int,int,java.lang.Class)>($i0, $i1, class "Ljava/lang/Object;");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r2, "getSpans(start, end, T::class.java)");
+
+        return $r2;
+    }
+
+    public static final android.text.Spanned toSpanned(java.lang.CharSequence)
+    {
+        android.text.SpannedString $r1;
+        android.text.Spanned $r2;
+        java.lang.CharSequence $r0;
+
+        $r0 := @parameter0: java.lang.CharSequence;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = staticinvoke <android.text.SpannedString: android.text.SpannedString valueOf(java.lang.CharSequence)>($r0);
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r1, "valueOf(this)");
+
+        $r2 = (android.text.Spanned) $r1;
+
+        return $r2;
+    }
+}

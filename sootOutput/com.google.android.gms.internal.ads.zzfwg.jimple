@@ -1,0 +1,32 @@
+public final class com.google.android.gms.internal.ads.zzfwg extends java.lang.Object
+{
+
+    public static java.lang.String zza(byte[])
+    {
+        byte[] $r0;
+        java.security.MessageDigest $r1;
+        java.security.NoSuchAlgorithmException $r3;
+        java.lang.String $r2;
+
+        $r0 := @parameter0: byte[];
+
+     label1:
+        $r1 = staticinvoke <java.security.MessageDigest: java.security.MessageDigest getInstance(java.lang.String)>("SHA-256");
+
+     label2:
+        virtualinvoke $r1.<java.security.MessageDigest: void update(byte[])>($r0);
+
+        $r0 = virtualinvoke $r1.<java.security.MessageDigest: byte[] digest()>();
+
+        $r2 = staticinvoke <android.util.Base64: java.lang.String encodeToString(byte[],int)>($r0, 11);
+
+        return $r2;
+
+     label3:
+        $r3 := @caughtexception;
+
+        return "";
+
+        catch java.security.NoSuchAlgorithmException from label1 to label2 with label3;
+    }
+}

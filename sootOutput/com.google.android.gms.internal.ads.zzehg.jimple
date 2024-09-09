@@ -1,0 +1,87 @@
+final class com.google.android.gms.internal.ads.zzehg extends java.lang.Object implements com.google.android.gms.internal.ads.zzgej
+{
+    final com.google.android.gms.internal.ads.zzfkp zza;
+
+    void <init>(com.google.android.gms.internal.ads.zzehh, com.google.android.gms.internal.ads.zzfkp)
+    {
+        com.google.android.gms.internal.ads.zzehh $r1;
+        com.google.android.gms.internal.ads.zzehg r0;
+        com.google.android.gms.internal.ads.zzfkp $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzehg;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzehh;
+
+        $r2 := @parameter1: com.google.android.gms.internal.ads.zzfkp;
+
+        r0.<com.google.android.gms.internal.ads.zzehg: com.google.android.gms.internal.ads.zzfkp zza> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public final void zza(java.lang.Throwable)
+    {
+        java.lang.Throwable $r2;
+        com.google.android.gms.internal.ads.zzehg r0;
+        java.lang.String $r1, $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzehg;
+
+        $r2 := @parameter0: java.lang.Throwable;
+
+        $r1 = virtualinvoke $r2.<java.lang.Throwable: java.lang.String getMessage()>();
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r1);
+
+        $r1 = "Failed to get offline buffered ping database: ";
+
+        $r1 = virtualinvoke $r1.<java.lang.String: java.lang.String concat(java.lang.String)>($r3);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzg(java.lang.String)>($r1);
+
+        return;
+    }
+
+    public final volatile void zzb(java.lang.Object)
+    {
+        android.database.sqlite.SQLiteDatabase $r2;
+        com.google.android.gms.internal.ads.zzehg r0;
+        java.lang.Object $r1;
+        java.lang.String $r5, $r6;
+        java.lang.Exception $r4;
+        com.google.android.gms.internal.ads.zzfkp $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzehg;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (android.database.sqlite.SQLiteDatabase) $r1;
+
+     label1:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzehg: com.google.android.gms.internal.ads.zzfkp zza>;
+
+        interfaceinvoke $r3.<com.google.android.gms.internal.ads.zzfkp: java.lang.Object zza(java.lang.Object)>($r2);
+
+     label2:
+        return;
+
+     label3:
+        $r4 := @caughtexception;
+
+        $r5 = virtualinvoke $r4.<java.lang.Exception: java.lang.String getMessage()>();
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r5);
+
+        $r6 = "Error executing function on offline buffered ping database: ";
+
+        $r5 = virtualinvoke $r6.<java.lang.String: java.lang.String concat(java.lang.String)>($r5);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzg(java.lang.String)>($r5);
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+}

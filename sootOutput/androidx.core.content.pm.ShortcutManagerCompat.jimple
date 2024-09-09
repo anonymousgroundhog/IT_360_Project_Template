@@ -1,0 +1,1940 @@
+public class androidx.core.content.pm.ShortcutManagerCompat extends java.lang.Object
+{
+    static final java.lang.String ACTION_INSTALL_SHORTCUT;
+    private static final int DEFAULT_MAX_ICON_DIMENSION_DP;
+    private static final int DEFAULT_MAX_ICON_DIMENSION_LOWRAM_DP;
+    public static final java.lang.String EXTRA_SHORTCUT_ID;
+    public static final int FLAG_MATCH_CACHED;
+    public static final int FLAG_MATCH_DYNAMIC;
+    public static final int FLAG_MATCH_MANIFEST;
+    public static final int FLAG_MATCH_PINNED;
+    static final java.lang.String INSTALL_SHORTCUT_PERMISSION;
+    private static final java.lang.String SHORTCUT_LISTENER_INTENT_FILTER_ACTION;
+    private static final java.lang.String SHORTCUT_LISTENER_META_DATA_KEY;
+    private static volatile java.util.List sShortcutInfoChangeListeners;
+    private static volatile androidx.core.content.pm.ShortcutInfoCompatSaver sShortcutInfoCompatSaver;
+
+    static void <clinit>()
+    {
+        <androidx.core.content.pm.ShortcutManagerCompat: java.lang.String SHORTCUT_LISTENER_META_DATA_KEY> = "androidx.core.content.pm.shortcut_listener_impl";
+
+        <androidx.core.content.pm.ShortcutManagerCompat: java.lang.String SHORTCUT_LISTENER_INTENT_FILTER_ACTION> = "androidx.core.content.pm.SHORTCUT_LISTENER";
+
+        <androidx.core.content.pm.ShortcutManagerCompat: java.lang.String INSTALL_SHORTCUT_PERMISSION> = "com.android.launcher.permission.INSTALL_SHORTCUT";
+
+        <androidx.core.content.pm.ShortcutManagerCompat: int FLAG_MATCH_PINNED> = 4;
+
+        <androidx.core.content.pm.ShortcutManagerCompat: int FLAG_MATCH_MANIFEST> = 1;
+
+        <androidx.core.content.pm.ShortcutManagerCompat: int FLAG_MATCH_DYNAMIC> = 2;
+
+        <androidx.core.content.pm.ShortcutManagerCompat: int FLAG_MATCH_CACHED> = 8;
+
+        <androidx.core.content.pm.ShortcutManagerCompat: java.lang.String EXTRA_SHORTCUT_ID> = "android.intent.extra.shortcut.ID";
+
+        <androidx.core.content.pm.ShortcutManagerCompat: int DEFAULT_MAX_ICON_DIMENSION_LOWRAM_DP> = 48;
+
+        <androidx.core.content.pm.ShortcutManagerCompat: int DEFAULT_MAX_ICON_DIMENSION_DP> = 96;
+
+        <androidx.core.content.pm.ShortcutManagerCompat: java.lang.String ACTION_INSTALL_SHORTCUT> = "com.android.launcher.action.INSTALL_SHORTCUT";
+
+        <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver sShortcutInfoCompatSaver> = null;
+
+        <androidx.core.content.pm.ShortcutManagerCompat: java.util.List sShortcutInfoChangeListeners> = null;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.core.content.pm.ShortcutManagerCompat r0;
+
+        r0 := @this: androidx.core.content.pm.ShortcutManagerCompat;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static boolean addDynamicShortcuts(android.content.Context, java.util.List)
+    {
+        android.content.Context $r0;
+        androidx.core.content.pm.ShortcutInfoCompatSaver $r9;
+        java.util.Iterator $r4;
+        android.content.pm.ShortcutInfo $r7;
+        androidx.core.content.pm.ShortcutInfoChangeListener r10;
+        android.content.pm.ShortcutManager r8;
+        java.util.ArrayList r3;
+        java.util.List r1, $r2;
+        int i0;
+        java.lang.Object $r5;
+        androidx.core.content.pm.ShortcutInfoCompat r6;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        r1 := @parameter1: java.util.List;
+
+        $r2 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List removeShortcutsExcludedFromSurface(java.util.List,int)>(r1, 1);
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 > 29 goto label1;
+
+        staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: void convertUriIconsToBitmapIcons(android.content.Context,java.util.List)>($r0, $r2);
+
+     label1:
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 25 goto label4;
+
+        r3 = new java.util.ArrayList;
+
+        specialinvoke r3.<java.util.ArrayList: void <init>()>();
+
+        $r4 = interfaceinvoke $r2.<java.util.List: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (androidx.core.content.pm.ShortcutInfoCompat) $r5;
+
+        $r7 = virtualinvoke r6.<androidx.core.content.pm.ShortcutInfoCompat: android.content.pm.ShortcutInfo toShortcutInfo()>();
+
+        virtualinvoke r3.<java.util.ArrayList: boolean add(java.lang.Object)>($r7);
+
+        goto label2;
+
+     label3:
+        $r5 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        r8 = (android.content.pm.ShortcutManager) $r5;
+
+        $z0 = virtualinvoke r8.<android.content.pm.ShortcutManager: boolean addDynamicShortcuts(java.util.List)>(r3);
+
+        if $z0 != 0 goto label4;
+
+        return 0;
+
+     label4:
+        $r9 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver getShortcutInfoSaverInstance(android.content.Context)>($r0);
+
+        virtualinvoke $r9.<androidx.core.content.pm.ShortcutInfoCompatSaver: java.lang.Object addShortcuts(java.util.List)>($r2);
+
+        $r2 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List getShortcutInfoListeners(android.content.Context)>($r0);
+
+        $r4 = interfaceinvoke $r2.<java.util.List: java.util.Iterator iterator()>();
+
+     label5:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label6;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r10 = (androidx.core.content.pm.ShortcutInfoChangeListener) $r5;
+
+        virtualinvoke r10.<androidx.core.content.pm.ShortcutInfoChangeListener: void onShortcutAdded(java.util.List)>(r1);
+
+        goto label5;
+
+     label6:
+        return 1;
+    }
+
+    static boolean convertUriIconToBitmapIcon(android.content.Context, androidx.core.content.pm.ShortcutInfoCompat)
+    {
+        android.content.Context $r0;
+        androidx.core.graphics.drawable.IconCompat r2;
+        android.graphics.Bitmap $r4;
+        int i0;
+        androidx.core.content.pm.ShortcutInfoCompat $r1;
+        java.io.InputStream $r3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: androidx.core.content.pm.ShortcutInfoCompat;
+
+        r2 = $r1.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        if r2 != null goto label1;
+
+        return 0;
+
+     label1:
+        r2 = $r1.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        i0 = r2.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        if i0 == 6 goto label2;
+
+        if i0 == 4 goto label2;
+
+        return 1;
+
+     label2:
+        r2 = $r1.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        $r3 = virtualinvoke r2.<androidx.core.graphics.drawable.IconCompat: java.io.InputStream getUriInputStream(android.content.Context)>($r0);
+
+        if $r3 != null goto label3;
+
+        return 0;
+
+     label3:
+        $r4 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeStream(java.io.InputStream)>($r3);
+
+        if $r4 != null goto label4;
+
+        return 0;
+
+     label4:
+        if i0 != 6 goto label5;
+
+        r2 = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createWithAdaptiveBitmap(android.graphics.Bitmap)>($r4);
+
+        goto label6;
+
+     label5:
+        r2 = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createWithBitmap(android.graphics.Bitmap)>($r4);
+
+     label6:
+        $r1.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.graphics.drawable.IconCompat mIcon> = r2;
+
+        return 1;
+    }
+
+    static void convertUriIconsToBitmapIcons(android.content.Context, java.util.List)
+    {
+        android.content.Context $r0;
+        java.util.List r1;
+        java.util.Iterator $r3;
+        java.lang.Object $r4;
+        androidx.core.content.pm.ShortcutInfoCompat r5;
+        java.util.ArrayList r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        r1 := @parameter1: java.util.List;
+
+        r2 = new java.util.ArrayList;
+
+        specialinvoke r2.<java.util.ArrayList: void <init>(java.util.Collection)>(r1);
+
+        $r3 = interfaceinvoke r2.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (androidx.core.content.pm.ShortcutInfoCompat) $r4;
+
+        $z0 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: boolean convertUriIconToBitmapIcon(android.content.Context,androidx.core.content.pm.ShortcutInfoCompat)>($r0, r5);
+
+        if $z0 != 0 goto label1;
+
+        interfaceinvoke r1.<java.util.List: boolean remove(java.lang.Object)>(r5);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public static android.content.Intent createShortcutResultIntent(android.content.Context, androidx.core.content.pm.ShortcutInfoCompat)
+    {
+        android.content.Context $r0;
+        android.content.pm.ShortcutInfo $r5;
+        int $i0;
+        android.content.Intent r2;
+        java.lang.Object $r3;
+        android.content.pm.ShortcutManager $r4;
+        androidx.core.content.pm.ShortcutInfoCompat $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: androidx.core.content.pm.ShortcutInfoCompat;
+
+        r2 = null;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 26 goto label1;
+
+        $r3 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        $r4 = (android.content.pm.ShortcutManager) $r3;
+
+        $r5 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: android.content.pm.ShortcutInfo toShortcutInfo()>();
+
+        r2 = virtualinvoke $r4.<android.content.pm.ShortcutManager: android.content.Intent createShortcutResultIntent(android.content.pm.ShortcutInfo)>($r5);
+
+     label1:
+        if r2 != null goto label2;
+
+        r2 = new android.content.Intent;
+
+        specialinvoke r2.<android.content.Intent: void <init>()>();
+
+     label2:
+        r2 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Intent addToIntent(android.content.Intent)>(r2);
+
+        return r2;
+    }
+
+    public static void disableShortcuts(android.content.Context, java.util.List, java.lang.CharSequence)
+    {
+        android.content.Context $r0;
+        androidx.core.content.pm.ShortcutInfoCompatSaver $r5;
+        java.lang.CharSequence $r2;
+        java.util.Iterator $r7;
+        androidx.core.content.pm.ShortcutInfoChangeListener r8;
+        android.content.pm.ShortcutManager $r4;
+        java.util.List r1, $r6;
+        int $i0;
+        java.lang.Object $r3;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        r1 := @parameter1: java.util.List;
+
+        $r2 := @parameter2: java.lang.CharSequence;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 25 goto label1;
+
+        $r3 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        $r4 = (android.content.pm.ShortcutManager) $r3;
+
+        virtualinvoke $r4.<android.content.pm.ShortcutManager: void disableShortcuts(java.util.List,java.lang.CharSequence)>(r1, $r2);
+
+     label1:
+        $r5 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver getShortcutInfoSaverInstance(android.content.Context)>($r0);
+
+        virtualinvoke $r5.<androidx.core.content.pm.ShortcutInfoCompatSaver: java.lang.Object removeShortcuts(java.util.List)>(r1);
+
+        $r6 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List getShortcutInfoListeners(android.content.Context)>($r0);
+
+        $r7 = interfaceinvoke $r6.<java.util.List: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r7.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r3 = interfaceinvoke $r7.<java.util.Iterator: java.lang.Object next()>();
+
+        r8 = (androidx.core.content.pm.ShortcutInfoChangeListener) $r3;
+
+        virtualinvoke r8.<androidx.core.content.pm.ShortcutInfoChangeListener: void onShortcutRemoved(java.util.List)>(r1);
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    public static void enableShortcuts(android.content.Context, java.util.List)
+    {
+        android.content.Context $r0;
+        androidx.core.content.pm.ShortcutInfoCompatSaver $r9;
+        java.util.Iterator $r5;
+        androidx.core.content.pm.ShortcutInfoChangeListener r10;
+        android.content.pm.ShortcutManager r8;
+        java.util.ArrayList r4;
+        java.util.List r1, $r3;
+        int i0;
+        java.lang.Object $r6;
+        java.lang.String $r2;
+        androidx.core.content.pm.ShortcutInfoCompat r7;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        r1 := @parameter1: java.util.List;
+
+        $r3 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List removeShortcutsExcludedFromSurface(java.util.List,int)>(r1, 1);
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 25 goto label3;
+
+        r4 = new java.util.ArrayList;
+
+        i0 = interfaceinvoke r1.<java.util.List: int size()>();
+
+        specialinvoke r4.<java.util.ArrayList: void <init>(int)>(i0);
+
+        $r5 = interfaceinvoke $r3.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        r7 = (androidx.core.content.pm.ShortcutInfoCompat) $r6;
+
+        $r2 = r7.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.String mId>;
+
+        virtualinvoke r4.<java.util.ArrayList: boolean add(java.lang.Object)>($r2);
+
+        goto label1;
+
+     label2:
+        $r6 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        r8 = (android.content.pm.ShortcutManager) $r6;
+
+        virtualinvoke r8.<android.content.pm.ShortcutManager: void enableShortcuts(java.util.List)>(r4);
+
+     label3:
+        $r9 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver getShortcutInfoSaverInstance(android.content.Context)>($r0);
+
+        virtualinvoke $r9.<androidx.core.content.pm.ShortcutInfoCompatSaver: java.lang.Object addShortcuts(java.util.List)>($r3);
+
+        $r3 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List getShortcutInfoListeners(android.content.Context)>($r0);
+
+        $r5 = interfaceinvoke $r3.<java.util.List: java.util.Iterator iterator()>();
+
+     label4:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label5;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        r10 = (androidx.core.content.pm.ShortcutInfoChangeListener) $r6;
+
+        virtualinvoke r10.<androidx.core.content.pm.ShortcutInfoChangeListener: void onShortcutAdded(java.util.List)>(r1);
+
+        goto label4;
+
+     label5:
+        return;
+    }
+
+    public static java.util.List getDynamicShortcuts(android.content.Context)
+    {
+        android.content.Context $r0;
+        androidx.core.content.pm.ShortcutInfoCompatSaver $r9;
+        java.util.Iterator $r5;
+        android.content.pm.ShortcutInfo r6;
+        androidx.core.content.pm.ShortcutInfoCompat$Builder $r7;
+        android.content.pm.ShortcutManager r2;
+        java.lang.Exception r10;
+        java.util.ArrayList r4;
+        java.util.List $r3;
+        int i0;
+        java.lang.Object $r1;
+        androidx.core.content.pm.ShortcutInfoCompat $r8;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 25 goto label3;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        r2 = (android.content.pm.ShortcutManager) $r1;
+
+        $r3 = virtualinvoke r2.<android.content.pm.ShortcutManager: java.util.List getDynamicShortcuts()>();
+
+        r4 = new java.util.ArrayList;
+
+        i0 = interfaceinvoke $r3.<java.util.List: int size()>();
+
+        specialinvoke r4.<java.util.ArrayList: void <init>(int)>(i0);
+
+        $r5 = interfaceinvoke $r3.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r1 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (android.content.pm.ShortcutInfo) $r1;
+
+        $r7 = new androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        specialinvoke $r7.<androidx.core.content.pm.ShortcutInfoCompat$Builder: void <init>(android.content.Context,android.content.pm.ShortcutInfo)>($r0, r6);
+
+        $r8 = virtualinvoke $r7.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat build()>();
+
+        interfaceinvoke r4.<java.util.List: boolean add(java.lang.Object)>($r8);
+
+        goto label1;
+
+     label2:
+        return r4;
+
+     label3:
+        $r9 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver getShortcutInfoSaverInstance(android.content.Context)>($r0);
+
+        $r3 = virtualinvoke $r9.<androidx.core.content.pm.ShortcutInfoCompatSaver: java.util.List getShortcuts()>();
+
+     label4:
+        return $r3;
+
+     label5:
+        r10 := @caughtexception;
+
+        r4 = new java.util.ArrayList;
+
+        specialinvoke r4.<java.util.ArrayList: void <init>()>();
+
+        return r4;
+
+        catch java.lang.Exception from label3 to label4 with label5;
+    }
+
+    private static int getIconDimensionInternal(android.content.Context, boolean)
+    {
+        android.content.Context $r0;
+        android.app.ActivityManager r2;
+        android.util.DisplayMetrics $r4;
+        byte b0;
+        int $i1;
+        float f0, $f1;
+        java.lang.Object $r1;
+        boolean $z0, $z1;
+        android.content.res.Resources $r3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $z0 := @parameter1: boolean;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("activity");
+
+        r2 = (android.app.ActivityManager) $r1;
+
+        if r2 == null goto label2;
+
+        $z1 = virtualinvoke r2.<android.app.ActivityManager: boolean isLowRamDevice()>();
+
+        if $z1 == 0 goto label1;
+
+        goto label2;
+
+     label1:
+        $z1 = 0;
+
+        goto label3;
+
+     label2:
+        $z1 = 1;
+
+     label3:
+        if $z1 == 0 goto label4;
+
+        b0 = 48;
+
+        goto label5;
+
+     label4:
+        b0 = 96;
+
+     label5:
+        $i1 = staticinvoke <java.lang.Math: int max(int,int)>(1, b0);
+
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r4 = virtualinvoke $r3.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        if $z0 == 0 goto label6;
+
+        f0 = $r4.<android.util.DisplayMetrics: float xdpi>;
+
+        goto label7;
+
+     label6:
+        f0 = $r4.<android.util.DisplayMetrics: float ydpi>;
+
+     label7:
+        f0 = f0 / 160.0F;
+
+        $f1 = (float) $i1;
+
+        f0 = $f1 * f0;
+
+        $i1 = (int) f0;
+
+        return $i1;
+    }
+
+    public static int getIconMaxHeight(android.content.Context)
+    {
+        android.content.Context $r0;
+        int $i0;
+        java.lang.Object $r1;
+        android.content.pm.ShortcutManager $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r0);
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 25 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        $r2 = (android.content.pm.ShortcutManager) $r1;
+
+        $i0 = virtualinvoke $r2.<android.content.pm.ShortcutManager: int getIconMaxHeight()>();
+
+        return $i0;
+
+     label1:
+        $i0 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: int getIconDimensionInternal(android.content.Context,boolean)>($r0, 0);
+
+        return $i0;
+    }
+
+    public static int getIconMaxWidth(android.content.Context)
+    {
+        android.content.Context $r0;
+        int $i0;
+        java.lang.Object $r1;
+        android.content.pm.ShortcutManager $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r0);
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 25 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        $r2 = (android.content.pm.ShortcutManager) $r1;
+
+        $i0 = virtualinvoke $r2.<android.content.pm.ShortcutManager: int getIconMaxWidth()>();
+
+        return $i0;
+
+     label1:
+        $i0 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: int getIconDimensionInternal(android.content.Context,boolean)>($r0, 1);
+
+        return $i0;
+    }
+
+    public static int getMaxShortcutCountPerActivity(android.content.Context)
+    {
+        android.content.Context $r0;
+        int $i0;
+        java.lang.Object $r1;
+        android.content.pm.ShortcutManager $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r0);
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 25 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        $r2 = (android.content.pm.ShortcutManager) $r1;
+
+        $i0 = virtualinvoke $r2.<android.content.pm.ShortcutManager: int getMaxShortcutCountPerActivity()>();
+
+        return $i0;
+
+     label1:
+        return 5;
+    }
+
+    static java.util.List getShortcutInfoChangeListeners()
+    {
+        java.util.List r0;
+
+        r0 = <androidx.core.content.pm.ShortcutManagerCompat: java.util.List sShortcutInfoChangeListeners>;
+
+        return r0;
+    }
+
+    private static java.lang.String getShortcutInfoCompatWithLowestRank(java.util.List)
+    {
+        java.util.Iterator $r2;
+        java.util.List r0;
+        int i0, $i1;
+        java.lang.Object $r3;
+        java.lang.String r1;
+        androidx.core.content.pm.ShortcutInfoCompat r4;
+        boolean $z0;
+
+        r0 := @parameter0: java.util.List;
+
+        i0 = -1;
+
+        r1 = null;
+
+        $r2 = interfaceinvoke r0.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r3 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r4 = (androidx.core.content.pm.ShortcutInfoCompat) $r3;
+
+        $i1 = virtualinvoke r4.<androidx.core.content.pm.ShortcutInfoCompat: int getRank()>();
+
+        if $i1 <= i0 goto label1;
+
+        r1 = virtualinvoke r4.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.String getId()>();
+
+        i0 = virtualinvoke r4.<androidx.core.content.pm.ShortcutInfoCompat: int getRank()>();
+
+        goto label1;
+
+     label2:
+        return r1;
+    }
+
+    private static java.util.List getShortcutInfoListeners(android.content.Context)
+    {
+        android.content.Context $r0;
+        android.os.Bundle r2;
+        java.lang.Object[] $r15;
+        android.content.pm.PackageManager $r6;
+        android.content.Intent r7;
+        java.util.ArrayList r5;
+        android.content.pm.ActivityInfo r1;
+        java.lang.String $r8;
+        java.lang.reflect.Method $r14;
+        boolean $z0;
+        java.util.Iterator $r9;
+        androidx.core.content.pm.ShortcutInfoChangeListener $r16;
+        java.lang.Class[] $r3;
+        java.lang.Exception r17;
+        android.content.pm.ResolveInfo r11;
+        java.util.List r4;
+        java.lang.Object $r10;
+        java.lang.Class r12;
+        java.lang.ClassLoader $r13;
+
+        $r0 := @parameter0: android.content.Context;
+
+        r4 = <androidx.core.content.pm.ShortcutManagerCompat: java.util.List sShortcutInfoChangeListeners>;
+
+        if r4 != null goto label13;
+
+        r5 = new java.util.ArrayList;
+
+        specialinvoke r5.<java.util.ArrayList: void <init>()>();
+
+        $r6 = virtualinvoke $r0.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        r7 = new android.content.Intent;
+
+        specialinvoke r7.<android.content.Intent: void <init>(java.lang.String)>("androidx.core.content.pm.SHORTCUT_LISTENER");
+
+        $r8 = virtualinvoke $r0.<android.content.Context: java.lang.String getPackageName()>();
+
+        virtualinvoke r7.<android.content.Intent: android.content.Intent setPackage(java.lang.String)>($r8);
+
+        r4 = virtualinvoke $r6.<android.content.pm.PackageManager: java.util.List queryIntentActivities(android.content.Intent,int)>(r7, 128);
+
+        $r9 = interfaceinvoke r4.<java.util.List: java.util.Iterator iterator()>();
+
+     label01:
+        $z0 = interfaceinvoke $r9.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label12;
+
+        $r10 = interfaceinvoke $r9.<java.util.Iterator: java.lang.Object next()>();
+
+        r11 = (android.content.pm.ResolveInfo) $r10;
+
+        r1 = r11.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+
+        if r1 != null goto label02;
+
+        goto label01;
+
+     label02:
+        r2 = r1.<android.content.pm.ActivityInfo: android.os.Bundle metaData>;
+
+        if r2 != null goto label03;
+
+        goto label01;
+
+     label03:
+        $r8 = virtualinvoke r2.<android.os.Bundle: java.lang.String getString(java.lang.String)>("androidx.core.content.pm.shortcut_listener_impl");
+
+        if $r8 != null goto label04;
+
+        goto label01;
+
+     label04:
+        r12 = class "Landroidx/core/content/pm/ShortcutManagerCompat;";
+
+     label05:
+        $r13 = virtualinvoke r12.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        r12 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String,boolean,java.lang.ClassLoader)>($r8, 0, $r13);
+
+     label06:
+        $r3 = newarray (java.lang.Class)[1];
+
+     label07:
+        $r3[0] = class "Landroid/content/Context;";
+
+        $r14 = virtualinvoke r12.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getInstance", $r3);
+
+     label08:
+        $r15 = newarray (java.lang.Object)[1];
+
+     label09:
+        $r15[0] = $r0;
+
+        $r10 = virtualinvoke $r14.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r15);
+
+        $r16 = (androidx.core.content.pm.ShortcutInfoChangeListener) $r10;
+
+        interfaceinvoke r5.<java.util.List: boolean add(java.lang.Object)>($r16);
+
+     label10:
+        goto label01;
+
+     label11:
+        r17 := @caughtexception;
+
+        goto label01;
+
+     label12:
+        r4 = <androidx.core.content.pm.ShortcutManagerCompat: java.util.List sShortcutInfoChangeListeners>;
+
+        if r4 != null goto label13;
+
+        <androidx.core.content.pm.ShortcutManagerCompat: java.util.List sShortcutInfoChangeListeners> = r5;
+
+     label13:
+        r4 = <androidx.core.content.pm.ShortcutManagerCompat: java.util.List sShortcutInfoChangeListeners>;
+
+        return r4;
+
+        catch java.lang.Exception from label05 to label06 with label11;
+        catch java.lang.Exception from label07 to label08 with label11;
+        catch java.lang.Exception from label09 to label10 with label11;
+    }
+
+    private static androidx.core.content.pm.ShortcutInfoCompatSaver getShortcutInfoSaverInstance(android.content.Context)
+    {
+        android.content.Context $r0;
+        androidx.core.content.pm.ShortcutInfoCompatSaver r2;
+        java.lang.Object[] $r6;
+        androidx.core.content.pm.ShortcutInfoCompatSaver$NoopImpl r9;
+        java.lang.Class[] $r1;
+        java.lang.Exception r8;
+        int i0;
+        java.lang.Class r3;
+        java.lang.Object $r7;
+        java.lang.ClassLoader $r4;
+        java.lang.reflect.Method $r5;
+
+        $r0 := @parameter0: android.content.Context;
+
+        r2 = <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver sShortcutInfoCompatSaver>;
+
+        if r2 != null goto label9;
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 23 goto label8;
+
+        r3 = class "Landroidx/core/content/pm/ShortcutManagerCompat;";
+
+     label1:
+        $r4 = virtualinvoke r3.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        r3 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String,boolean,java.lang.ClassLoader)>("androidx.sharetarget.ShortcutInfoCompatSaverImpl", 0, $r4);
+
+     label2:
+        $r1 = newarray (java.lang.Class)[1];
+
+     label3:
+        $r1[0] = class "Landroid/content/Context;";
+
+        $r5 = virtualinvoke r3.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getInstance", $r1);
+
+     label4:
+        $r6 = newarray (java.lang.Object)[1];
+
+     label5:
+        $r6[0] = $r0;
+
+        $r7 = virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r6);
+
+        r2 = (androidx.core.content.pm.ShortcutInfoCompatSaver) $r7;
+
+     label6:
+        <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver sShortcutInfoCompatSaver> = r2;
+
+        goto label8;
+
+     label7:
+        r8 := @caughtexception;
+
+     label8:
+        r2 = <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver sShortcutInfoCompatSaver>;
+
+        if r2 != null goto label9;
+
+        r9 = new androidx.core.content.pm.ShortcutInfoCompatSaver$NoopImpl;
+
+        specialinvoke r9.<androidx.core.content.pm.ShortcutInfoCompatSaver$NoopImpl: void <init>()>();
+
+        <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver sShortcutInfoCompatSaver> = r9;
+
+     label9:
+        r2 = <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver sShortcutInfoCompatSaver>;
+
+        return r2;
+
+        catch java.lang.Exception from label1 to label2 with label7;
+        catch java.lang.Exception from label3 to label4 with label7;
+        catch java.lang.Exception from label5 to label6 with label7;
+    }
+
+    public static java.util.List getShortcuts(android.content.Context, int)
+    {
+        android.content.Context $r0;
+        androidx.core.content.pm.ShortcutInfoCompatSaver $r5;
+        android.content.pm.ShortcutManager r2;
+        java.lang.Exception r6;
+        java.util.ArrayList r4;
+        java.util.List $r3;
+        int $i0, i1;
+        java.lang.Object $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i1 < 30 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        r2 = (android.content.pm.ShortcutManager) $r1;
+
+        $r3 = virtualinvoke r2.<android.content.pm.ShortcutManager: java.util.List getShortcuts(int)>($i0);
+
+        $r3 = staticinvoke <androidx.core.content.pm.ShortcutInfoCompat: java.util.List fromShortcuts(android.content.Context,java.util.List)>($r0, $r3);
+
+        return $r3;
+
+     label1:
+        i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i1 < 25 goto label5;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        r2 = (android.content.pm.ShortcutManager) $r1;
+
+        r4 = new java.util.ArrayList;
+
+        specialinvoke r4.<java.util.ArrayList: void <init>()>();
+
+        i1 = $i0 & 1;
+
+        if i1 == 0 goto label2;
+
+        $r3 = virtualinvoke r2.<android.content.pm.ShortcutManager: java.util.List getManifestShortcuts()>();
+
+        interfaceinvoke r4.<java.util.List: boolean addAll(java.util.Collection)>($r3);
+
+     label2:
+        i1 = $i0 & 2;
+
+        if i1 == 0 goto label3;
+
+        $r3 = virtualinvoke r2.<android.content.pm.ShortcutManager: java.util.List getDynamicShortcuts()>();
+
+        interfaceinvoke r4.<java.util.List: boolean addAll(java.util.Collection)>($r3);
+
+     label3:
+        $i0 = $i0 & 4;
+
+        if $i0 == 0 goto label4;
+
+        $r3 = virtualinvoke r2.<android.content.pm.ShortcutManager: java.util.List getPinnedShortcuts()>();
+
+        interfaceinvoke r4.<java.util.List: boolean addAll(java.util.Collection)>($r3);
+
+     label4:
+        $r3 = staticinvoke <androidx.core.content.pm.ShortcutInfoCompat: java.util.List fromShortcuts(android.content.Context,java.util.List)>($r0, r4);
+
+        return $r3;
+
+     label5:
+        $i0 = $i0 & 2;
+
+        if $i0 == 0 goto label9;
+
+     label6:
+        $r5 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver getShortcutInfoSaverInstance(android.content.Context)>($r0);
+
+        $r3 = virtualinvoke $r5.<androidx.core.content.pm.ShortcutInfoCompatSaver: java.util.List getShortcuts()>();
+
+     label7:
+        return $r3;
+
+     label8:
+        r6 := @caughtexception;
+
+     label9:
+        $r3 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        return $r3;
+
+        catch java.lang.Exception from label6 to label7 with label8;
+    }
+
+    public static boolean isRateLimitingActive(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.util.List $r3;
+        int $i0, $i1;
+        java.lang.Object $r1;
+        android.content.pm.ShortcutManager $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r0);
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 25 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        $r2 = (android.content.pm.ShortcutManager) $r1;
+
+        $z0 = virtualinvoke $r2.<android.content.pm.ShortcutManager: boolean isRateLimitingActive()>();
+
+        return $z0;
+
+     label1:
+        $r3 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List getShortcuts(android.content.Context,int)>($r0, 3);
+
+        $i0 = interfaceinvoke $r3.<java.util.List: int size()>();
+
+        $i1 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: int getMaxShortcutCountPerActivity(android.content.Context)>($r0);
+
+        if $i0 != $i1 goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public static boolean isRequestPinShortcutSupported(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.util.Iterator $r7;
+        android.content.pm.PackageManager $r4;
+        android.content.Intent r5;
+        android.content.pm.ShortcutManager $r2;
+        android.content.pm.ResolveInfo r8;
+        java.util.List $r6;
+        int $i0;
+        android.content.pm.ActivityInfo r9;
+        java.lang.Object $r1;
+        java.lang.String $r3, r10;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 26 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        $r2 = (android.content.pm.ShortcutManager) $r1;
+
+        $z0 = virtualinvoke $r2.<android.content.pm.ShortcutManager: boolean isRequestPinShortcutSupported()>();
+
+        return $z0;
+
+     label1:
+        $r3 = "com.android.launcher.permission.INSTALL_SHORTCUT";
+
+        $i0 = staticinvoke <androidx.core.content.ContextCompat: int checkSelfPermission(android.content.Context,java.lang.String)>($r0, "com.android.launcher.permission.INSTALL_SHORTCUT");
+
+        if $i0 == 0 goto label2;
+
+        return 0;
+
+     label2:
+        $r4 = virtualinvoke $r0.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        r5 = new android.content.Intent;
+
+        specialinvoke r5.<android.content.Intent: void <init>(java.lang.String)>("com.android.launcher.action.INSTALL_SHORTCUT");
+
+        $r6 = virtualinvoke $r4.<android.content.pm.PackageManager: java.util.List queryBroadcastReceivers(android.content.Intent,int)>(r5, 0);
+
+        $r7 = interfaceinvoke $r6.<java.util.List: java.util.Iterator iterator()>();
+
+     label3:
+        $z0 = interfaceinvoke $r7.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label5;
+
+        $r1 = interfaceinvoke $r7.<java.util.Iterator: java.lang.Object next()>();
+
+        r8 = (android.content.pm.ResolveInfo) $r1;
+
+        r9 = r8.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+
+        r10 = r9.<android.content.pm.ActivityInfo: java.lang.String permission>;
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>(r10);
+
+        if $z0 != 0 goto label4;
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>(r10);
+
+        if $z0 == 0 goto label3;
+
+        goto label4;
+
+     label4:
+        return 1;
+
+     label5:
+        return 0;
+    }
+
+    public static boolean pushDynamicShortcut(android.content.Context, androidx.core.content.pm.ShortcutInfoCompat)
+    {
+        java.lang.Throwable r13;
+        android.content.Context $r0;
+        androidx.core.content.pm.ShortcutInfoCompatSaver $r11;
+        java.lang.String[] $r9;
+        androidx.core.content.pm.ShortcutInfoCompat[] r12;
+        int i0, i1;
+        java.lang.String $r8;
+        androidx.core.content.pm.ShortcutInfoCompat $r1;
+        boolean $z0;
+        java.util.Iterator $r3;
+        androidx.core.content.pm.ShortcutInfoChangeListener r5;
+        android.content.pm.ShortcutInfo $r7;
+        android.content.pm.ShortcutManager r6;
+        java.lang.Exception $r14;
+        java.util.List $r2;
+        android.content.pm.ShortcutInfo[] $r10;
+        java.lang.Object $r4;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: androidx.core.content.pm.ShortcutInfoCompat;
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r0);
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r1);
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 > 31 goto label03;
+
+        $z0 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: boolean isExcludedFromSurfaces(int)>(1);
+
+        if $z0 == 0 goto label03;
+
+        $r2 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List getShortcutInfoListeners(android.content.Context)>($r0);
+
+        $r3 = interfaceinvoke $r2.<java.util.List: java.util.Iterator iterator()>();
+
+     label01:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label02;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (androidx.core.content.pm.ShortcutInfoChangeListener) $r4;
+
+        $r2 = staticinvoke <java.util.Collections: java.util.List singletonList(java.lang.Object)>($r1);
+
+        virtualinvoke r5.<androidx.core.content.pm.ShortcutInfoChangeListener: void onShortcutAdded(java.util.List)>($r2);
+
+        goto label01;
+
+     label02:
+        return 1;
+
+     label03:
+        i0 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: int getMaxShortcutCountPerActivity(android.content.Context)>($r0);
+
+        if i0 != 0 goto label04;
+
+        return 0;
+
+     label04:
+        i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i1 > 29 goto label05;
+
+        staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: boolean convertUriIconToBitmapIcon(android.content.Context,androidx.core.content.pm.ShortcutInfoCompat)>($r0, $r1);
+
+     label05:
+        i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i1 < 30 goto label06;
+
+        $r4 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        r6 = (android.content.pm.ShortcutManager) $r4;
+
+        $r7 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: android.content.pm.ShortcutInfo toShortcutInfo()>();
+
+        virtualinvoke r6.<android.content.pm.ShortcutManager: void pushDynamicShortcut(android.content.pm.ShortcutInfo)>($r7);
+
+        goto label09;
+
+     label06:
+        i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i1 < 25 goto label09;
+
+        $r4 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        r6 = (android.content.pm.ShortcutManager) $r4;
+
+        $z0 = virtualinvoke r6.<android.content.pm.ShortcutManager: boolean isRateLimitingActive()>();
+
+        if $z0 == 0 goto label07;
+
+        return 0;
+
+     label07:
+        $r2 = virtualinvoke r6.<android.content.pm.ShortcutManager: java.util.List getDynamicShortcuts()>();
+
+        i1 = interfaceinvoke $r2.<java.util.List: int size()>();
+
+        if i1 < i0 goto label08;
+
+        $r8 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat$Api25Impl: java.lang.String getShortcutInfoWithLowestRank(java.util.List)>($r2);
+
+        $r9 = newarray (java.lang.String)[1];
+
+        $r9[0] = $r8;
+
+        $r2 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r9);
+
+        virtualinvoke r6.<android.content.pm.ShortcutManager: void removeDynamicShortcuts(java.util.List)>($r2);
+
+     label08:
+        $r7 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: android.content.pm.ShortcutInfo toShortcutInfo()>();
+
+        $r10 = newarray (android.content.pm.ShortcutInfo)[1];
+
+        $r10[0] = $r7;
+
+        $r2 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r10);
+
+        virtualinvoke r6.<android.content.pm.ShortcutManager: boolean addDynamicShortcuts(java.util.List)>($r2);
+
+     label09:
+        $r11 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver getShortcutInfoSaverInstance(android.content.Context)>($r0);
+
+     label10:
+        $r2 = virtualinvoke $r11.<androidx.core.content.pm.ShortcutInfoCompatSaver: java.util.List getShortcuts()>();
+
+        i1 = interfaceinvoke $r2.<java.util.List: int size()>();
+
+     label11:
+        if i1 < i0 goto label16;
+
+     label12:
+        $r9 = newarray (java.lang.String)[1];
+
+     label13:
+        $r8 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.lang.String getShortcutInfoCompatWithLowestRank(java.util.List)>($r2);
+
+     label14:
+        $r9[0] = $r8;
+
+     label15:
+        $r2 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r9);
+
+        virtualinvoke $r11.<androidx.core.content.pm.ShortcutInfoCompatSaver: java.lang.Object removeShortcuts(java.util.List)>($r2);
+
+     label16:
+        r12 = newarray (androidx.core.content.pm.ShortcutInfoCompat)[1];
+
+     label17:
+        r12[0] = $r1;
+
+     label18:
+        $r2 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>(r12);
+
+        virtualinvoke $r11.<androidx.core.content.pm.ShortcutInfoCompatSaver: java.lang.Object addShortcuts(java.util.List)>($r2);
+
+     label19:
+        $r2 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List getShortcutInfoListeners(android.content.Context)>($r0);
+
+        $r3 = interfaceinvoke $r2.<java.util.List: java.util.Iterator iterator()>();
+
+     label20:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label21;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (androidx.core.content.pm.ShortcutInfoChangeListener) $r4;
+
+        $r2 = staticinvoke <java.util.Collections: java.util.List singletonList(java.lang.Object)>($r1);
+
+        virtualinvoke r5.<androidx.core.content.pm.ShortcutInfoChangeListener: void onShortcutAdded(java.util.List)>($r2);
+
+        goto label20;
+
+     label21:
+        $r8 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.String getId()>();
+
+        staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: void reportShortcutUsed(android.content.Context,java.lang.String)>($r0, $r8);
+
+        return 1;
+
+     label22:
+        r13 := @caughtexception;
+
+        $r2 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List getShortcutInfoListeners(android.content.Context)>($r0);
+
+        $r3 = interfaceinvoke $r2.<java.util.List: java.util.Iterator iterator()>();
+
+     label23:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label24;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (androidx.core.content.pm.ShortcutInfoChangeListener) $r4;
+
+        $r2 = staticinvoke <java.util.Collections: java.util.List singletonList(java.lang.Object)>($r1);
+
+        virtualinvoke r5.<androidx.core.content.pm.ShortcutInfoChangeListener: void onShortcutAdded(java.util.List)>($r2);
+
+        goto label23;
+
+     label24:
+        $r8 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.String getId()>();
+
+        staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: void reportShortcutUsed(android.content.Context,java.lang.String)>($r0, $r8);
+
+        throw r13;
+
+     label25:
+        $r14 := @caughtexception;
+
+        $r2 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List getShortcutInfoListeners(android.content.Context)>($r0);
+
+        $r3 = interfaceinvoke $r2.<java.util.List: java.util.Iterator iterator()>();
+
+     label26:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label27;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (androidx.core.content.pm.ShortcutInfoChangeListener) $r4;
+
+        $r2 = staticinvoke <java.util.Collections: java.util.List singletonList(java.lang.Object)>($r1);
+
+        virtualinvoke r5.<androidx.core.content.pm.ShortcutInfoChangeListener: void onShortcutAdded(java.util.List)>($r2);
+
+        goto label26;
+
+     label27:
+        $r8 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.String getId()>();
+
+        staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: void reportShortcutUsed(android.content.Context,java.lang.String)>($r0, $r8);
+
+        return 0;
+
+        catch java.lang.Exception from label10 to label11 with label25;
+        catch java.lang.Exception from label13 to label16 with label25;
+        catch java.lang.Exception from label17 to label19 with label25;
+        catch java.lang.Throwable from label10 to label11 with label22;
+        catch java.lang.Throwable from label12 to label14 with label22;
+        catch java.lang.Throwable from label15 to label17 with label22;
+        catch java.lang.Throwable from label18 to label19 with label22;
+    }
+
+    public static void removeAllDynamicShortcuts(android.content.Context)
+    {
+        android.content.Context $r0;
+        androidx.core.content.pm.ShortcutInfoCompatSaver $r3;
+        java.util.Iterator $r5;
+        androidx.core.content.pm.ShortcutInfoChangeListener r6;
+        android.content.pm.ShortcutManager $r2;
+        java.util.List $r4;
+        int $i0;
+        java.lang.Object $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 25 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        $r2 = (android.content.pm.ShortcutManager) $r1;
+
+        virtualinvoke $r2.<android.content.pm.ShortcutManager: void removeAllDynamicShortcuts()>();
+
+     label1:
+        $r3 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver getShortcutInfoSaverInstance(android.content.Context)>($r0);
+
+        virtualinvoke $r3.<androidx.core.content.pm.ShortcutInfoCompatSaver: java.lang.Object removeAllShortcuts()>();
+
+        $r4 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List getShortcutInfoListeners(android.content.Context)>($r0);
+
+        $r5 = interfaceinvoke $r4.<java.util.List: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r1 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (androidx.core.content.pm.ShortcutInfoChangeListener) $r1;
+
+        virtualinvoke r6.<androidx.core.content.pm.ShortcutInfoChangeListener: void onAllShortcutsRemoved()>();
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    public static void removeDynamicShortcuts(android.content.Context, java.util.List)
+    {
+        android.content.Context $r0;
+        androidx.core.content.pm.ShortcutInfoCompatSaver $r4;
+        java.util.Iterator $r6;
+        androidx.core.content.pm.ShortcutInfoChangeListener r7;
+        android.content.pm.ShortcutManager $r3;
+        java.util.List r1, $r5;
+        int $i0;
+        java.lang.Object $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        r1 := @parameter1: java.util.List;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 25 goto label1;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        $r3 = (android.content.pm.ShortcutManager) $r2;
+
+        virtualinvoke $r3.<android.content.pm.ShortcutManager: void removeDynamicShortcuts(java.util.List)>(r1);
+
+     label1:
+        $r4 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver getShortcutInfoSaverInstance(android.content.Context)>($r0);
+
+        virtualinvoke $r4.<androidx.core.content.pm.ShortcutInfoCompatSaver: java.lang.Object removeShortcuts(java.util.List)>(r1);
+
+        $r5 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List getShortcutInfoListeners(android.content.Context)>($r0);
+
+        $r6 = interfaceinvoke $r5.<java.util.List: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r6.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r2 = interfaceinvoke $r6.<java.util.Iterator: java.lang.Object next()>();
+
+        r7 = (androidx.core.content.pm.ShortcutInfoChangeListener) $r2;
+
+        virtualinvoke r7.<androidx.core.content.pm.ShortcutInfoChangeListener: void onShortcutRemoved(java.util.List)>(r1);
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    public static void removeLongLivedShortcuts(android.content.Context, java.util.List)
+    {
+        android.content.Context $r0;
+        androidx.core.content.pm.ShortcutInfoCompatSaver $r4;
+        java.util.Iterator $r6;
+        androidx.core.content.pm.ShortcutInfoChangeListener r7;
+        android.content.pm.ShortcutManager $r3;
+        java.util.List r1, $r5;
+        int $i0;
+        java.lang.Object $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        r1 := @parameter1: java.util.List;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 >= 30 goto label1;
+
+        staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: void removeDynamicShortcuts(android.content.Context,java.util.List)>($r0, r1);
+
+        return;
+
+     label1:
+        $r2 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        $r3 = (android.content.pm.ShortcutManager) $r2;
+
+        virtualinvoke $r3.<android.content.pm.ShortcutManager: void removeLongLivedShortcuts(java.util.List)>(r1);
+
+        $r4 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver getShortcutInfoSaverInstance(android.content.Context)>($r0);
+
+        virtualinvoke $r4.<androidx.core.content.pm.ShortcutInfoCompatSaver: java.lang.Object removeShortcuts(java.util.List)>(r1);
+
+        $r5 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List getShortcutInfoListeners(android.content.Context)>($r0);
+
+        $r6 = interfaceinvoke $r5.<java.util.List: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r6.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r2 = interfaceinvoke $r6.<java.util.Iterator: java.lang.Object next()>();
+
+        r7 = (androidx.core.content.pm.ShortcutInfoChangeListener) $r2;
+
+        virtualinvoke r7.<androidx.core.content.pm.ShortcutInfoChangeListener: void onShortcutRemoved(java.util.List)>(r1);
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    private static java.util.List removeShortcutsExcludedFromSurface(java.util.List, int)
+    {
+        java.util.Iterator $r2;
+        java.util.ArrayList r1;
+        java.util.List r0;
+        int $i0, i1;
+        java.lang.Object $r3;
+        androidx.core.content.pm.ShortcutInfoCompat r4;
+        boolean $z0;
+
+        r0 := @parameter0: java.util.List;
+
+        $i0 := @parameter1: int;
+
+        staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(r0);
+
+        i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i1 <= 31 goto label1;
+
+        return r0;
+
+     label1:
+        r1 = new java.util.ArrayList;
+
+        specialinvoke r1.<java.util.ArrayList: void <init>(java.util.Collection)>(r0);
+
+        $r2 = interfaceinvoke r0.<java.util.List: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r3 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r4 = (androidx.core.content.pm.ShortcutInfoCompat) $r3;
+
+        $z0 = virtualinvoke r4.<androidx.core.content.pm.ShortcutInfoCompat: boolean isExcludedFromSurfaces(int)>($i0);
+
+        if $z0 == 0 goto label2;
+
+        interfaceinvoke r1.<java.util.List: boolean remove(java.lang.Object)>(r4);
+
+        goto label2;
+
+     label3:
+        return r1;
+    }
+
+    public static void reportShortcutUsed(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.util.Iterator $r5;
+        androidx.core.content.pm.ShortcutInfoChangeListener r6;
+        android.content.pm.ShortcutManager $r3;
+        java.util.List $r4;
+        int $i0;
+        java.lang.Object $r2;
+        java.lang.String $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r0);
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r1);
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 25 goto label1;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        $r3 = (android.content.pm.ShortcutManager) $r2;
+
+        virtualinvoke $r3.<android.content.pm.ShortcutManager: void reportShortcutUsed(java.lang.String)>($r1);
+
+     label1:
+        $r4 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List getShortcutInfoListeners(android.content.Context)>($r0);
+
+        $r5 = interfaceinvoke $r4.<java.util.List: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r2 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (androidx.core.content.pm.ShortcutInfoChangeListener) $r2;
+
+        $r4 = staticinvoke <java.util.Collections: java.util.List singletonList(java.lang.Object)>($r1);
+
+        virtualinvoke r6.<androidx.core.content.pm.ShortcutInfoChangeListener: void onShortcutUsageReported(java.util.List)>($r4);
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    public static boolean requestPinShortcut(android.content.Context, androidx.core.content.pm.ShortcutInfoCompat, android.content.IntentSender)
+    {
+        androidx.core.content.pm.ShortcutManagerCompat$1 $r8;
+        android.content.Context $r0;
+        android.content.pm.ShortcutInfo $r5;
+        android.content.Intent r6, $r7;
+        android.content.pm.ShortcutManager r4;
+        android.content.IntentSender $r2;
+        int i0;
+        java.lang.Object $r3;
+        androidx.core.content.pm.ShortcutInfoCompat $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: androidx.core.content.pm.ShortcutInfoCompat;
+
+        $r2 := @parameter2: android.content.IntentSender;
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 > 31 goto label1;
+
+        $z0 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: boolean isExcludedFromSurfaces(int)>(1);
+
+        if $z0 == 0 goto label1;
+
+        return 0;
+
+     label1:
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 26 goto label2;
+
+        $r3 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        r4 = (android.content.pm.ShortcutManager) $r3;
+
+        $r5 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: android.content.pm.ShortcutInfo toShortcutInfo()>();
+
+        $z0 = virtualinvoke r4.<android.content.pm.ShortcutManager: boolean requestPinShortcut(android.content.pm.ShortcutInfo,android.content.IntentSender)>($r5, $r2);
+
+        return $z0;
+
+     label2:
+        $z0 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: boolean isRequestPinShortcutSupported(android.content.Context)>($r0);
+
+        if $z0 != 0 goto label3;
+
+        return 0;
+
+     label3:
+        $r7 = new android.content.Intent;
+
+        specialinvoke $r7.<android.content.Intent: void <init>(java.lang.String)>("com.android.launcher.action.INSTALL_SHORTCUT");
+
+        r6 = virtualinvoke $r1.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Intent addToIntent(android.content.Intent)>($r7);
+
+        if $r2 != null goto label4;
+
+        virtualinvoke $r0.<android.content.Context: void sendBroadcast(android.content.Intent)>(r6);
+
+        return 1;
+
+     label4:
+        $r8 = new androidx.core.content.pm.ShortcutManagerCompat$1;
+
+        specialinvoke $r8.<androidx.core.content.pm.ShortcutManagerCompat$1: void <init>(android.content.IntentSender)>($r2);
+
+        virtualinvoke $r0.<android.content.Context: void sendOrderedBroadcast(android.content.Intent,java.lang.String,android.content.BroadcastReceiver,android.os.Handler,int,java.lang.String,android.os.Bundle)>(r6, null, $r8, null, -1, null, null);
+
+        return 1;
+    }
+
+    public static boolean setDynamicShortcuts(android.content.Context, java.util.List)
+    {
+        android.content.Context $r0;
+        androidx.core.content.pm.ShortcutInfoCompatSaver $r9;
+        java.util.Iterator $r4;
+        android.content.pm.ShortcutInfo $r7;
+        androidx.core.content.pm.ShortcutInfoChangeListener r10;
+        android.content.pm.ShortcutManager r8;
+        java.util.ArrayList r3;
+        java.util.List r1, $r2;
+        int i0;
+        java.lang.Object $r5;
+        androidx.core.content.pm.ShortcutInfoCompat r6;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        r1 := @parameter1: java.util.List;
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r0);
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>(r1);
+
+        $r2 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List removeShortcutsExcludedFromSurface(java.util.List,int)>(r1, 1);
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 25 goto label3;
+
+        r3 = new java.util.ArrayList;
+
+        i0 = interfaceinvoke $r2.<java.util.List: int size()>();
+
+        specialinvoke r3.<java.util.ArrayList: void <init>(int)>(i0);
+
+        $r4 = interfaceinvoke $r2.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (androidx.core.content.pm.ShortcutInfoCompat) $r5;
+
+        $r7 = virtualinvoke r6.<androidx.core.content.pm.ShortcutInfoCompat: android.content.pm.ShortcutInfo toShortcutInfo()>();
+
+        interfaceinvoke r3.<java.util.List: boolean add(java.lang.Object)>($r7);
+
+        goto label1;
+
+     label2:
+        $r5 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        r8 = (android.content.pm.ShortcutManager) $r5;
+
+        $z0 = virtualinvoke r8.<android.content.pm.ShortcutManager: boolean setDynamicShortcuts(java.util.List)>(r3);
+
+        if $z0 != 0 goto label3;
+
+        return 0;
+
+     label3:
+        $r9 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver getShortcutInfoSaverInstance(android.content.Context)>($r0);
+
+        virtualinvoke $r9.<androidx.core.content.pm.ShortcutInfoCompatSaver: java.lang.Object removeAllShortcuts()>();
+
+        $r9 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver getShortcutInfoSaverInstance(android.content.Context)>($r0);
+
+        virtualinvoke $r9.<androidx.core.content.pm.ShortcutInfoCompatSaver: java.lang.Object addShortcuts(java.util.List)>($r2);
+
+        $r2 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List getShortcutInfoListeners(android.content.Context)>($r0);
+
+        $r4 = interfaceinvoke $r2.<java.util.List: java.util.Iterator iterator()>();
+
+     label4:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label5;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r10 = (androidx.core.content.pm.ShortcutInfoChangeListener) $r5;
+
+        virtualinvoke r10.<androidx.core.content.pm.ShortcutInfoChangeListener: void onAllShortcutsRemoved()>();
+
+        virtualinvoke r10.<androidx.core.content.pm.ShortcutInfoChangeListener: void onShortcutAdded(java.util.List)>(r1);
+
+        goto label4;
+
+     label5:
+        return 1;
+    }
+
+    static void setShortcutInfoChangeListeners(java.util.List)
+    {
+        java.util.List r0;
+
+        r0 := @parameter0: java.util.List;
+
+        <androidx.core.content.pm.ShortcutManagerCompat: java.util.List sShortcutInfoChangeListeners> = r0;
+
+        return;
+    }
+
+    static void setShortcutInfoCompatSaver(androidx.core.content.pm.ShortcutInfoCompatSaver)
+    {
+        androidx.core.content.pm.ShortcutInfoCompatSaver r0;
+
+        r0 := @parameter0: androidx.core.content.pm.ShortcutInfoCompatSaver;
+
+        <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver sShortcutInfoCompatSaver> = r0;
+
+        return;
+    }
+
+    public static boolean updateShortcuts(android.content.Context, java.util.List)
+    {
+        android.content.Context $r0;
+        androidx.core.content.pm.ShortcutInfoCompatSaver $r9;
+        java.util.Iterator $r4;
+        android.content.pm.ShortcutInfo $r7;
+        androidx.core.content.pm.ShortcutInfoChangeListener r10;
+        android.content.pm.ShortcutManager r8;
+        java.util.ArrayList r3;
+        java.util.List r1, $r2;
+        int i0;
+        java.lang.Object $r5;
+        androidx.core.content.pm.ShortcutInfoCompat r6;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        r1 := @parameter1: java.util.List;
+
+        $r2 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List removeShortcutsExcludedFromSurface(java.util.List,int)>(r1, 1);
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 > 29 goto label1;
+
+        staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: void convertUriIconsToBitmapIcons(android.content.Context,java.util.List)>($r0, $r2);
+
+     label1:
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 25 goto label4;
+
+        r3 = new java.util.ArrayList;
+
+        specialinvoke r3.<java.util.ArrayList: void <init>()>();
+
+        $r4 = interfaceinvoke $r2.<java.util.List: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (androidx.core.content.pm.ShortcutInfoCompat) $r5;
+
+        $r7 = virtualinvoke r6.<androidx.core.content.pm.ShortcutInfoCompat: android.content.pm.ShortcutInfo toShortcutInfo()>();
+
+        virtualinvoke r3.<java.util.ArrayList: boolean add(java.lang.Object)>($r7);
+
+        goto label2;
+
+     label3:
+        $r5 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/content/pm/ShortcutManager;");
+
+        r8 = (android.content.pm.ShortcutManager) $r5;
+
+        $z0 = virtualinvoke r8.<android.content.pm.ShortcutManager: boolean updateShortcuts(java.util.List)>(r3);
+
+        if $z0 != 0 goto label4;
+
+        return 0;
+
+     label4:
+        $r9 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: androidx.core.content.pm.ShortcutInfoCompatSaver getShortcutInfoSaverInstance(android.content.Context)>($r0);
+
+        virtualinvoke $r9.<androidx.core.content.pm.ShortcutInfoCompatSaver: java.lang.Object addShortcuts(java.util.List)>($r2);
+
+        $r2 = staticinvoke <androidx.core.content.pm.ShortcutManagerCompat: java.util.List getShortcutInfoListeners(android.content.Context)>($r0);
+
+        $r4 = interfaceinvoke $r2.<java.util.List: java.util.Iterator iterator()>();
+
+     label5:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label6;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r10 = (androidx.core.content.pm.ShortcutInfoChangeListener) $r5;
+
+        virtualinvoke r10.<androidx.core.content.pm.ShortcutInfoChangeListener: void onShortcutUpdated(java.util.List)>(r1);
+
+        goto label5;
+
+     label6:
+        return 1;
+    }
+}

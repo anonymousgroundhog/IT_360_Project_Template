@@ -1,0 +1,381 @@
+public final class androidx.core.text.SpannableStringBuilderKt extends java.lang.Object
+{
+
+    public static final android.text.SpannableStringBuilder backgroundColor(android.text.SpannableStringBuilder, int, kotlin.jvm.functions.Function1)
+    {
+        android.text.SpannableStringBuilder $r0;
+        int $i0, $i1;
+        kotlin.jvm.functions.Function1 $r1;
+        android.text.style.BackgroundColorSpan r2;
+
+        $r0 := @parameter0: android.text.SpannableStringBuilder;
+
+        $i0 := @parameter1: int;
+
+        $r1 := @parameter2: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "builderAction");
+
+        r2 = new android.text.style.BackgroundColorSpan;
+
+        specialinvoke r2.<android.text.style.BackgroundColorSpan: void <init>(int)>($i0);
+
+        $i0 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+        $i1 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        virtualinvoke $r0.<android.text.SpannableStringBuilder: void setSpan(java.lang.Object,int,int,int)>(r2, $i0, $i1, 17);
+
+        return $r0;
+    }
+
+    public static final android.text.SpannableStringBuilder bold(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1)
+    {
+        android.text.SpannableStringBuilder $r0;
+        android.text.style.StyleSpan r2;
+        int $i0, $i1;
+        kotlin.jvm.functions.Function1 $r1;
+
+        $r0 := @parameter0: android.text.SpannableStringBuilder;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "builderAction");
+
+        r2 = new android.text.style.StyleSpan;
+
+        specialinvoke r2.<android.text.style.StyleSpan: void <init>(int)>(1);
+
+        $i0 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+        $i1 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        virtualinvoke $r0.<android.text.SpannableStringBuilder: void setSpan(java.lang.Object,int,int,int)>(r2, $i0, $i1, 17);
+
+        return $r0;
+    }
+
+    public static final android.text.SpannedString buildSpannedString(kotlin.jvm.functions.Function1)
+    {
+        android.text.SpannableStringBuilder r1;
+        android.text.SpannedString $r2;
+        java.lang.CharSequence $r3;
+        kotlin.jvm.functions.Function1 $r0;
+
+        $r0 := @parameter0: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "builderAction");
+
+        r1 = new android.text.SpannableStringBuilder;
+
+        specialinvoke r1.<android.text.SpannableStringBuilder: void <init>()>();
+
+        interfaceinvoke $r0.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>(r1);
+
+        $r2 = new android.text.SpannedString;
+
+        $r3 = (java.lang.CharSequence) r1;
+
+        specialinvoke $r2.<android.text.SpannedString: void <init>(java.lang.CharSequence)>($r3);
+
+        return $r2;
+    }
+
+    public static final android.text.SpannableStringBuilder color(android.text.SpannableStringBuilder, int, kotlin.jvm.functions.Function1)
+    {
+        android.text.SpannableStringBuilder $r0;
+        int $i0, $i1;
+        kotlin.jvm.functions.Function1 $r1;
+        android.text.style.ForegroundColorSpan r2;
+
+        $r0 := @parameter0: android.text.SpannableStringBuilder;
+
+        $i0 := @parameter1: int;
+
+        $r1 := @parameter2: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "builderAction");
+
+        r2 = new android.text.style.ForegroundColorSpan;
+
+        specialinvoke r2.<android.text.style.ForegroundColorSpan: void <init>(int)>($i0);
+
+        $i0 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+        $i1 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        virtualinvoke $r0.<android.text.SpannableStringBuilder: void setSpan(java.lang.Object,int,int,int)>(r2, $i0, $i1, 17);
+
+        return $r0;
+    }
+
+    public static final android.text.SpannableStringBuilder inSpans(android.text.SpannableStringBuilder, java.lang.Object, kotlin.jvm.functions.Function1)
+    {
+        android.text.SpannableStringBuilder $r0;
+        int $i0, $i1;
+        java.lang.Object $r1;
+        kotlin.jvm.functions.Function1 $r2;
+
+        $r0 := @parameter0: android.text.SpannableStringBuilder;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        $r2 := @parameter2: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "span");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r2, "builderAction");
+
+        $i0 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        interfaceinvoke $r2.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+        $i1 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        virtualinvoke $r0.<android.text.SpannableStringBuilder: void setSpan(java.lang.Object,int,int,int)>($r1, $i0, $i1, 17);
+
+        return $r0;
+    }
+
+    public static final android.text.SpannableStringBuilder inSpans(android.text.SpannableStringBuilder, java.lang.Object[], kotlin.jvm.functions.Function1)
+    {
+        java.lang.Object[] $r1;
+        kotlin.jvm.functions.Function1 $r2;
+        android.text.SpannableStringBuilder $r0;
+        int $i0, $i1, $i2, $i3;
+        java.lang.Object r3;
+
+        $r0 := @parameter0: android.text.SpannableStringBuilder;
+
+        $r1 := @parameter1: java.lang.Object[];
+
+        $r2 := @parameter2: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "spans");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r2, "builderAction");
+
+        $i1 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        interfaceinvoke $r2.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+        $i0 = lengthof $r1;
+
+        $i2 = 0;
+
+     label1:
+        if $i2 >= $i0 goto label2;
+
+        r3 = $r1[$i2];
+
+        $i3 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        virtualinvoke $r0.<android.text.SpannableStringBuilder: void setSpan(java.lang.Object,int,int,int)>(r3, $i1, $i3, 17);
+
+        $i2 = $i2 + 1;
+
+        goto label1;
+
+     label2:
+        return $r0;
+    }
+
+    public static final android.text.SpannableStringBuilder italic(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1)
+    {
+        android.text.SpannableStringBuilder $r0;
+        android.text.style.StyleSpan r2;
+        int $i0, $i1;
+        kotlin.jvm.functions.Function1 $r1;
+
+        $r0 := @parameter0: android.text.SpannableStringBuilder;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "builderAction");
+
+        r2 = new android.text.style.StyleSpan;
+
+        specialinvoke r2.<android.text.style.StyleSpan: void <init>(int)>(2);
+
+        $i0 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+        $i1 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        virtualinvoke $r0.<android.text.SpannableStringBuilder: void setSpan(java.lang.Object,int,int,int)>(r2, $i0, $i1, 17);
+
+        return $r0;
+    }
+
+    public static final android.text.SpannableStringBuilder scale(android.text.SpannableStringBuilder, float, kotlin.jvm.functions.Function1)
+    {
+        android.text.SpannableStringBuilder $r0;
+        int $i0, $i1;
+        float $f0;
+        kotlin.jvm.functions.Function1 $r1;
+        android.text.style.RelativeSizeSpan r2;
+
+        $r0 := @parameter0: android.text.SpannableStringBuilder;
+
+        $f0 := @parameter1: float;
+
+        $r1 := @parameter2: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "builderAction");
+
+        r2 = new android.text.style.RelativeSizeSpan;
+
+        specialinvoke r2.<android.text.style.RelativeSizeSpan: void <init>(float)>($f0);
+
+        $i0 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+        $i1 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        virtualinvoke $r0.<android.text.SpannableStringBuilder: void setSpan(java.lang.Object,int,int,int)>(r2, $i0, $i1, 17);
+
+        return $r0;
+    }
+
+    public static final android.text.SpannableStringBuilder strikeThrough(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1)
+    {
+        android.text.SpannableStringBuilder $r0;
+        android.text.style.StrikethroughSpan r2;
+        int $i0, $i1;
+        kotlin.jvm.functions.Function1 $r1;
+
+        $r0 := @parameter0: android.text.SpannableStringBuilder;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "builderAction");
+
+        r2 = new android.text.style.StrikethroughSpan;
+
+        specialinvoke r2.<android.text.style.StrikethroughSpan: void <init>()>();
+
+        $i0 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+        $i1 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        virtualinvoke $r0.<android.text.SpannableStringBuilder: void setSpan(java.lang.Object,int,int,int)>(r2, $i0, $i1, 17);
+
+        return $r0;
+    }
+
+    public static final android.text.SpannableStringBuilder subscript(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1)
+    {
+        android.text.SpannableStringBuilder $r0;
+        int $i0, $i1;
+        android.text.style.SubscriptSpan r2;
+        kotlin.jvm.functions.Function1 $r1;
+
+        $r0 := @parameter0: android.text.SpannableStringBuilder;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "builderAction");
+
+        r2 = new android.text.style.SubscriptSpan;
+
+        specialinvoke r2.<android.text.style.SubscriptSpan: void <init>()>();
+
+        $i0 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+        $i1 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        virtualinvoke $r0.<android.text.SpannableStringBuilder: void setSpan(java.lang.Object,int,int,int)>(r2, $i0, $i1, 17);
+
+        return $r0;
+    }
+
+    public static final android.text.SpannableStringBuilder superscript(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1)
+    {
+        android.text.SpannableStringBuilder $r0;
+        android.text.style.SuperscriptSpan r2;
+        int $i0, $i1;
+        kotlin.jvm.functions.Function1 $r1;
+
+        $r0 := @parameter0: android.text.SpannableStringBuilder;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "builderAction");
+
+        r2 = new android.text.style.SuperscriptSpan;
+
+        specialinvoke r2.<android.text.style.SuperscriptSpan: void <init>()>();
+
+        $i0 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+        $i1 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        virtualinvoke $r0.<android.text.SpannableStringBuilder: void setSpan(java.lang.Object,int,int,int)>(r2, $i0, $i1, 17);
+
+        return $r0;
+    }
+
+    public static final android.text.SpannableStringBuilder underline(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1)
+    {
+        android.text.SpannableStringBuilder $r0;
+        int $i0, $i1;
+        android.text.style.UnderlineSpan r2;
+        kotlin.jvm.functions.Function1 $r1;
+
+        $r0 := @parameter0: android.text.SpannableStringBuilder;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "builderAction");
+
+        r2 = new android.text.style.UnderlineSpan;
+
+        specialinvoke r2.<android.text.style.UnderlineSpan: void <init>()>();
+
+        $i0 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+        $i1 = virtualinvoke $r0.<android.text.SpannableStringBuilder: int length()>();
+
+        virtualinvoke $r0.<android.text.SpannableStringBuilder: void setSpan(java.lang.Object,int,int,int)>(r2, $i0, $i1, 17);
+
+        return $r0;
+    }
+}

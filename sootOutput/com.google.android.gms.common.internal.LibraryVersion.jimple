@@ -1,0 +1,267 @@
+public class com.google.android.gms.common.internal.LibraryVersion extends java.lang.Object
+{
+    private static final com.google.android.gms.common.internal.GmsLogger zza;
+    private static final com.google.android.gms.common.internal.LibraryVersion zzb;
+    private final java.util.concurrent.ConcurrentHashMap zzc;
+
+    static void <clinit>()
+    {
+        com.google.android.gms.common.internal.GmsLogger $r0;
+        com.google.android.gms.common.internal.LibraryVersion $r1;
+
+        $r0 = new com.google.android.gms.common.internal.GmsLogger;
+
+        specialinvoke $r0.<com.google.android.gms.common.internal.GmsLogger: void <init>(java.lang.String,java.lang.String)>("LibraryVersion", "");
+
+        <com.google.android.gms.common.internal.LibraryVersion: com.google.android.gms.common.internal.GmsLogger zza> = $r0;
+
+        $r1 = new com.google.android.gms.common.internal.LibraryVersion;
+
+        specialinvoke $r1.<com.google.android.gms.common.internal.LibraryVersion: void <init>()>();
+
+        <com.google.android.gms.common.internal.LibraryVersion: com.google.android.gms.common.internal.LibraryVersion zzb> = $r1;
+
+        return;
+    }
+
+    protected void <init>()
+    {
+        java.util.concurrent.ConcurrentHashMap $r1;
+        com.google.android.gms.common.internal.LibraryVersion r0;
+
+        r0 := @this: com.google.android.gms.common.internal.LibraryVersion;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.concurrent.ConcurrentHashMap;
+
+        specialinvoke $r1.<java.util.concurrent.ConcurrentHashMap: void <init>()>();
+
+        r0.<com.google.android.gms.common.internal.LibraryVersion: java.util.concurrent.ConcurrentHashMap zzc> = $r1;
+
+        return;
+    }
+
+    public static com.google.android.gms.common.internal.LibraryVersion getInstance()
+    {
+        com.google.android.gms.common.internal.LibraryVersion r0;
+
+        r0 = <com.google.android.gms.common.internal.LibraryVersion: com.google.android.gms.common.internal.LibraryVersion zzb>;
+
+        return r0;
+    }
+
+    public java.lang.String getVersion(java.lang.String)
+    {
+        java.lang.Throwable $r9;
+        java.lang.Object[] $r4;
+        com.google.android.gms.common.internal.LibraryVersion r0;
+        java.lang.String $r1, $r5;
+        boolean $z0;
+        java.util.Properties $r12;
+        java.util.concurrent.ConcurrentHashMap $r2;
+        java.io.IOException $r10;
+        com.google.android.gms.common.internal.GmsLogger $r8;
+        java.io.Closeable $r14;
+        java.lang.Object $r3, $r11;
+        java.lang.Class $r6;
+        java.lang.StringBuilder $r13;
+        java.io.InputStream $r7;
+
+        r0 := @this: com.google.android.gms.common.internal.LibraryVersion;
+
+        $r1 := @parameter0: java.lang.String;
+
+        staticinvoke <com.google.android.gms.common.internal.Preconditions: java.lang.String checkNotEmpty(java.lang.String,java.lang.Object)>($r1, "Please provide a valid libraryName");
+
+        $r2 = r0.<com.google.android.gms.common.internal.LibraryVersion: java.util.concurrent.ConcurrentHashMap zzc>;
+
+        $z0 = virtualinvoke $r2.<java.util.concurrent.ConcurrentHashMap: boolean containsKey(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label01;
+
+        $r2 = r0.<com.google.android.gms.common.internal.LibraryVersion: java.util.concurrent.ConcurrentHashMap zzc>;
+
+        $r3 = virtualinvoke $r2.<java.util.concurrent.ConcurrentHashMap: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r1 = (java.lang.String) $r3;
+
+        return $r1;
+
+     label01:
+        $r12 = new java.util.Properties;
+
+        specialinvoke $r12.<java.util.Properties: void <init>()>();
+
+        $r3 = null;
+
+     label02:
+        $r4 = newarray (java.lang.Object)[1];
+
+        $r4[0] = $r1;
+
+     label03:
+        $r5 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("/%s.properties", $r4);
+
+     label04:
+        $r6 = class "Lcom/google/android/gms/common/internal/LibraryVersion;";
+
+     label05:
+        $r7 = virtualinvoke $r6.<java.lang.Class: java.io.InputStream getResourceAsStream(java.lang.String)>($r5);
+
+     label06:
+        if $r7 == null goto label12;
+
+     label07:
+        virtualinvoke $r12.<java.util.Properties: void load(java.io.InputStream)>($r7);
+
+        $r5 = virtualinvoke $r12.<java.util.Properties: java.lang.String getProperty(java.lang.String,java.lang.String)>("version", null);
+
+     label08:
+        $r3 = $r5;
+
+     label09:
+        $r8 = <com.google.android.gms.common.internal.LibraryVersion: com.google.android.gms.common.internal.GmsLogger zza>;
+
+        $r13 = new java.lang.StringBuilder;
+
+     label10:
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" version is ");
+
+        virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r5 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r8.<com.google.android.gms.common.internal.GmsLogger: void v(java.lang.String,java.lang.String)>("LibraryVersion", $r5);
+
+     label11:
+        goto label14;
+
+     label12:
+        $r8 = <com.google.android.gms.common.internal.LibraryVersion: com.google.android.gms.common.internal.GmsLogger zza>;
+
+        $r13 = new java.lang.StringBuilder;
+
+     label13:
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to get app version for libraryName: ");
+
+        virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r5 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r8.<com.google.android.gms.common.internal.GmsLogger: void w(java.lang.String,java.lang.String)>("LibraryVersion", $r5);
+
+     label14:
+        if $r7 == null goto label23;
+
+        staticinvoke <com.google.android.gms.common.util.IOUtils: void closeQuietly(java.io.Closeable)>($r7);
+
+        goto label23;
+
+     label15:
+        $r9 := @caughtexception;
+
+        $r3 = $r7;
+
+        goto label26;
+
+     label16:
+        $r10 := @caughtexception;
+
+        $r11 = $r3;
+
+        $r3 = $r7;
+
+        goto label19;
+
+     label17:
+        $r9 := @caughtexception;
+
+        goto label26;
+
+     label18:
+        $r10 := @caughtexception;
+
+        $r11 = null;
+
+     label19:
+        $r8 = <com.google.android.gms.common.internal.LibraryVersion: com.google.android.gms.common.internal.GmsLogger zza>;
+
+        $r13 = new java.lang.StringBuilder;
+
+     label20:
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to get app version for libraryName: ");
+
+        virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r5 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r8.<com.google.android.gms.common.internal.GmsLogger: void e(java.lang.String,java.lang.String,java.lang.Throwable)>("LibraryVersion", $r5, $r10);
+
+     label21:
+        if $r3 == null goto label22;
+
+        $r14 = (java.io.Closeable) $r3;
+
+        staticinvoke <com.google.android.gms.common.util.IOUtils: void closeQuietly(java.io.Closeable)>($r14);
+
+        goto label22;
+
+     label22:
+        $r3 = $r11;
+
+     label23:
+        if $r3 != null goto label24;
+
+        $r8 = <com.google.android.gms.common.internal.LibraryVersion: com.google.android.gms.common.internal.GmsLogger zza>;
+
+        virtualinvoke $r8.<com.google.android.gms.common.internal.GmsLogger: void d(java.lang.String,java.lang.String)>("LibraryVersion", ".properties file is dropped during release process. Failure to read app version is expected during Google internal testing where locally-built libraries are used");
+
+        $r3 = "UNKNOWN";
+
+     label24:
+        $r2 = r0.<com.google.android.gms.common.internal.LibraryVersion: java.util.concurrent.ConcurrentHashMap zzc>;
+
+        virtualinvoke $r2.<java.util.concurrent.ConcurrentHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r3);
+
+        $r1 = (java.lang.String) $r3;
+
+        return $r1;
+
+     label25:
+        $r9 := @caughtexception;
+
+     label26:
+        if $r3 == null goto label27;
+
+        $r14 = (java.io.Closeable) $r3;
+
+        staticinvoke <com.google.android.gms.common.util.IOUtils: void closeQuietly(java.io.Closeable)>($r14);
+
+     label27:
+        throw $r9;
+
+        catch java.io.IOException from label03 to label04 with label18;
+        catch java.io.IOException from label05 to label06 with label18;
+        catch java.lang.Throwable from label02 to label04 with label17;
+        catch java.lang.Throwable from label05 to label06 with label17;
+        catch java.io.IOException from label07 to label08 with label16;
+        catch java.io.IOException from label10 to label11 with label16;
+        catch java.io.IOException from label13 to label14 with label16;
+        catch java.lang.Throwable from label07 to label08 with label15;
+        catch java.lang.Throwable from label09 to label10 with label15;
+        catch java.lang.Throwable from label10 to label11 with label15;
+        catch java.lang.Throwable from label12 to label13 with label15;
+        catch java.lang.Throwable from label13 to label14 with label15;
+        catch java.lang.Throwable from label19 to label20 with label25;
+        catch java.lang.Throwable from label20 to label21 with label25;
+    }
+}

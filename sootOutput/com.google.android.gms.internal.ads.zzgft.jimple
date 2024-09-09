@@ -1,0 +1,75 @@
+public final class com.google.android.gms.internal.ads.zzgft extends java.lang.Object
+{
+    private final java.io.InputStream zza;
+
+    private void <init>(java.io.InputStream)
+    {
+        com.google.android.gms.internal.ads.zzgft r0;
+        java.io.InputStream $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgft;
+
+        $r1 := @parameter0: java.io.InputStream;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzgft: java.io.InputStream zza> = $r1;
+
+        return;
+    }
+
+    public static com.google.android.gms.internal.ads.zzgft zzb(byte[])
+    {
+        byte[] $r0;
+        java.io.ByteArrayInputStream $r2;
+        com.google.android.gms.internal.ads.zzgft $r1;
+
+        $r0 := @parameter0: byte[];
+
+        $r1 = new com.google.android.gms.internal.ads.zzgft;
+
+        $r2 = new java.io.ByteArrayInputStream;
+
+        specialinvoke $r2.<java.io.ByteArrayInputStream: void <init>(byte[])>($r0);
+
+        specialinvoke $r1.<com.google.android.gms.internal.ads.zzgft: void <init>(java.io.InputStream)>($r2);
+
+        return $r1;
+    }
+
+    public final com.google.android.gms.internal.ads.zzgvg zza() throws java.io.IOException
+    {
+        java.lang.Throwable $r4;
+        com.google.android.gms.internal.ads.zzgft r0;
+        com.google.android.gms.internal.ads.zzgzf $r2;
+        com.google.android.gms.internal.ads.zzgvg $r3;
+        java.io.InputStream $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgft;
+
+     label1:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgft: java.io.InputStream zza>;
+
+        $r2 = staticinvoke <com.google.android.gms.internal.ads.zzgzf: com.google.android.gms.internal.ads.zzgzf zza()>();
+
+        $r3 = staticinvoke <com.google.android.gms.internal.ads.zzgvg: com.google.android.gms.internal.ads.zzgvg zzg(java.io.InputStream,com.google.android.gms.internal.ads.zzgzf)>($r1, $r2);
+
+     label2:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgft: java.io.InputStream zza>;
+
+        virtualinvoke $r1.<java.io.InputStream: void close()>();
+
+        return $r3;
+
+     label3:
+        $r4 := @caughtexception;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgft: java.io.InputStream zza>;
+
+        virtualinvoke $r1.<java.io.InputStream: void close()>();
+
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+}

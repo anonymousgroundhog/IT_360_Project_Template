@@ -1,0 +1,39 @@
+class androidx.core.provider.CalleeHandler extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.provider.CalleeHandler r0;
+
+        r0 := @this: androidx.core.provider.CalleeHandler;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static android.os.Handler create()
+    {
+        android.os.Looper $r0;
+        android.os.Handler r1;
+
+        $r0 = staticinvoke <android.os.Looper: android.os.Looper myLooper()>();
+
+        if $r0 != null goto label1;
+
+        r1 = new android.os.Handler;
+
+        $r0 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        specialinvoke r1.<android.os.Handler: void <init>(android.os.Looper)>($r0);
+
+        return r1;
+
+     label1:
+        r1 = new android.os.Handler;
+
+        specialinvoke r1.<android.os.Handler: void <init>()>();
+
+        return r1;
+    }
+}

@@ -1,0 +1,114 @@
+class androidx.work.impl.foreground.SystemForegroundDispatcher$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.work.impl.foreground.SystemForegroundDispatcher this$0;
+    final androidx.work.impl.WorkDatabase val$database;
+    final java.lang.String val$workSpecId;
+
+    void <init>(androidx.work.impl.foreground.SystemForegroundDispatcher, androidx.work.impl.WorkDatabase, java.lang.String)
+    {
+        androidx.work.impl.WorkDatabase $r2;
+        androidx.work.impl.foreground.SystemForegroundDispatcher$1 r0;
+        java.lang.String $r3;
+        androidx.work.impl.foreground.SystemForegroundDispatcher $r1;
+
+        r0 := @this: androidx.work.impl.foreground.SystemForegroundDispatcher$1;
+
+        $r1 := @parameter0: androidx.work.impl.foreground.SystemForegroundDispatcher;
+
+        $r2 := @parameter1: androidx.work.impl.WorkDatabase;
+
+        $r3 := @parameter2: java.lang.String;
+
+        r0.<androidx.work.impl.foreground.SystemForegroundDispatcher$1: androidx.work.impl.foreground.SystemForegroundDispatcher this$0> = $r1;
+
+        r0.<androidx.work.impl.foreground.SystemForegroundDispatcher$1: androidx.work.impl.WorkDatabase val$database> = $r2;
+
+        r0.<androidx.work.impl.foreground.SystemForegroundDispatcher$1: java.lang.String val$workSpecId> = $r3;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        java.lang.Throwable $r10;
+        androidx.work.impl.model.WorkSpecDao $r2;
+        androidx.work.impl.foreground.SystemForegroundDispatcher$1 r0;
+        java.util.Set $r8;
+        androidx.work.impl.model.WorkSpec $r4;
+        androidx.work.impl.constraints.WorkConstraintsTracker $r9;
+        androidx.work.impl.WorkDatabase r1;
+        java.util.Map $r7;
+        java.lang.Object $r6;
+        java.lang.String $r3;
+        androidx.work.impl.foreground.SystemForegroundDispatcher $r5;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.foreground.SystemForegroundDispatcher$1;
+
+        r1 = r0.<androidx.work.impl.foreground.SystemForegroundDispatcher$1: androidx.work.impl.WorkDatabase val$database>;
+
+        $r2 = virtualinvoke r1.<androidx.work.impl.WorkDatabase: androidx.work.impl.model.WorkSpecDao workSpecDao()>();
+
+        $r3 = r0.<androidx.work.impl.foreground.SystemForegroundDispatcher$1: java.lang.String val$workSpecId>;
+
+        $r4 = interfaceinvoke $r2.<androidx.work.impl.model.WorkSpecDao: androidx.work.impl.model.WorkSpec getWorkSpec(java.lang.String)>($r3);
+
+        if $r4 == null goto label5;
+
+        $z0 = virtualinvoke $r4.<androidx.work.impl.model.WorkSpec: boolean hasConstraints()>();
+
+        if $z0 == 0 goto label5;
+
+        $r5 = r0.<androidx.work.impl.foreground.SystemForegroundDispatcher$1: androidx.work.impl.foreground.SystemForegroundDispatcher this$0>;
+
+        $r6 = $r5.<androidx.work.impl.foreground.SystemForegroundDispatcher: java.lang.Object mLock>;
+
+        entermonitor $r6;
+
+     label1:
+        $r5 = r0.<androidx.work.impl.foreground.SystemForegroundDispatcher$1: androidx.work.impl.foreground.SystemForegroundDispatcher this$0>;
+
+        $r7 = $r5.<androidx.work.impl.foreground.SystemForegroundDispatcher: java.util.Map mWorkSpecById>;
+
+        $r3 = r0.<androidx.work.impl.foreground.SystemForegroundDispatcher$1: java.lang.String val$workSpecId>;
+
+        interfaceinvoke $r7.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r3, $r4);
+
+        $r5 = r0.<androidx.work.impl.foreground.SystemForegroundDispatcher$1: androidx.work.impl.foreground.SystemForegroundDispatcher this$0>;
+
+        $r8 = $r5.<androidx.work.impl.foreground.SystemForegroundDispatcher: java.util.Set mTrackedWorkSpecs>;
+
+        interfaceinvoke $r8.<java.util.Set: boolean add(java.lang.Object)>($r4);
+
+        $r5 = r0.<androidx.work.impl.foreground.SystemForegroundDispatcher$1: androidx.work.impl.foreground.SystemForegroundDispatcher this$0>;
+
+        $r9 = $r5.<androidx.work.impl.foreground.SystemForegroundDispatcher: androidx.work.impl.constraints.WorkConstraintsTracker mConstraintsTracker>;
+
+        $r5 = r0.<androidx.work.impl.foreground.SystemForegroundDispatcher$1: androidx.work.impl.foreground.SystemForegroundDispatcher this$0>;
+
+        $r8 = $r5.<androidx.work.impl.foreground.SystemForegroundDispatcher: java.util.Set mTrackedWorkSpecs>;
+
+        virtualinvoke $r9.<androidx.work.impl.constraints.WorkConstraintsTracker: void replace(java.lang.Iterable)>($r8);
+
+        exitmonitor $r6;
+
+     label2:
+        return;
+
+     label3:
+        $r10 := @caughtexception;
+
+        exitmonitor $r6;
+
+     label4:
+        throw $r10;
+
+     label5:
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+}

@@ -1,0 +1,45 @@
+final class com.google.android.gms.internal.ads.zzbpb extends java.lang.Object implements com.google.android.gms.common.internal.BaseGmsClient$BaseOnConnectionFailedListener
+{
+    final com.google.android.gms.internal.ads.zzceu zza;
+
+    void <init>(com.google.android.gms.internal.ads.zzbpc, com.google.android.gms.internal.ads.zzceu)
+    {
+        com.google.android.gms.internal.ads.zzbpc $r1;
+        com.google.android.gms.internal.ads.zzbpb r0;
+        com.google.android.gms.internal.ads.zzceu $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbpb;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzbpc;
+
+        $r2 := @parameter1: com.google.android.gms.internal.ads.zzceu;
+
+        r0.<com.google.android.gms.internal.ads.zzbpb: com.google.android.gms.internal.ads.zzceu zza> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public final void onConnectionFailed(com.google.android.gms.common.ConnectionResult)
+    {
+        com.google.android.gms.common.ConnectionResult $r1;
+        com.google.android.gms.internal.ads.zzbpb r0;
+        com.google.android.gms.internal.ads.zzceu $r3;
+        java.lang.RuntimeException $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbpb;
+
+        $r1 := @parameter0: com.google.android.gms.common.ConnectionResult;
+
+        $r2 = new java.lang.RuntimeException;
+
+        specialinvoke $r2.<java.lang.RuntimeException: void <init>(java.lang.String)>("Connection failed.");
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzbpb: com.google.android.gms.internal.ads.zzceu zza>;
+
+        virtualinvoke $r3.<com.google.android.gms.internal.ads.zzceu: boolean zzd(java.lang.Throwable)>($r2);
+
+        return;
+    }
+}

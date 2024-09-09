@@ -1,0 +1,585 @@
+public final class androidx.tracing.Trace extends java.lang.Object
+{
+    static final java.lang.String TAG;
+    private static java.lang.reflect.Method sAsyncTraceBeginMethod;
+    private static java.lang.reflect.Method sAsyncTraceEndMethod;
+    private static java.lang.reflect.Method sIsTagEnabledMethod;
+    private static java.lang.reflect.Method sTraceCounterMethod;
+    private static long sTraceTagApp;
+
+    private void <init>()
+    {
+        androidx.tracing.Trace r0;
+
+        r0 := @this: androidx.tracing.Trace;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void beginAsyncSection(java.lang.String, int)
+    {
+        java.lang.NoSuchMethodError $r3;
+        int $i0;
+        java.lang.String $r0;
+        java.lang.NoClassDefFoundError $r2;
+        java.lang.reflect.Method $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+     label1:
+        $r1 = <androidx.tracing.Trace: java.lang.reflect.Method sAsyncTraceBeginMethod>;
+
+     label2:
+        if $r1 != null goto label5;
+
+     label3:
+        staticinvoke <androidx.tracing.TraceApi29Impl: void beginAsyncSection(java.lang.String,int)>($r0, $i0);
+
+     label4:
+        return;
+
+     label5:
+        goto label8;
+
+     label6:
+        $r2 := @caughtexception;
+
+        goto label8;
+
+     label7:
+        $r3 := @caughtexception;
+
+     label8:
+        staticinvoke <androidx.tracing.Trace: void beginAsyncSectionFallback(java.lang.String,int)>($r0, $i0);
+
+        return;
+
+        catch java.lang.NoSuchMethodError from label1 to label2 with label7;
+        catch java.lang.NoSuchMethodError from label3 to label4 with label7;
+        catch java.lang.NoClassDefFoundError from label1 to label2 with label6;
+        catch java.lang.NoClassDefFoundError from label3 to label4 with label6;
+    }
+
+    private static void beginAsyncSectionFallback(java.lang.String, int)
+    {
+        java.lang.Object[] $r5;
+        java.lang.Class[] $r3;
+        long $l1;
+        java.lang.Integer $r7;
+        java.lang.Exception r8;
+        java.lang.Long $r6;
+        int $i0;
+        java.lang.Class r2, $r4;
+        java.lang.String $r0;
+        java.lang.reflect.Method r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        r1 = <androidx.tracing.Trace: java.lang.reflect.Method sAsyncTraceBeginMethod>;
+
+        if r1 != null goto label5;
+
+        r2 = class "Landroid/os/Trace;";
+
+        $r3 = newarray (java.lang.Class)[3];
+
+        $r4 = <java.lang.Long: java.lang.Class TYPE>;
+
+     label1:
+        $r3[0] = $r4;
+
+        $r3[1] = class "Ljava/lang/String;";
+
+     label2:
+        $r4 = <java.lang.Integer: java.lang.Class TYPE>;
+
+     label3:
+        $r3[2] = $r4;
+
+        r1 = virtualinvoke r2.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("asyncTraceBegin", $r3);
+
+     label4:
+        <androidx.tracing.Trace: java.lang.reflect.Method sAsyncTraceBeginMethod> = r1;
+
+     label5:
+        r1 = <androidx.tracing.Trace: java.lang.reflect.Method sAsyncTraceBeginMethod>;
+
+        $r5 = newarray (java.lang.Object)[3];
+
+        $l1 = <androidx.tracing.Trace: long sTraceTagApp>;
+
+     label6:
+        $r6 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l1);
+
+        $r5[0] = $r6;
+
+        $r5[1] = $r0;
+
+        $r7 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r5[2] = $r7;
+
+        virtualinvoke r1.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r5);
+
+     label7:
+        return;
+
+     label8:
+        r8 := @caughtexception;
+
+        staticinvoke <androidx.tracing.Trace: void handleException(java.lang.String,java.lang.Exception)>("asyncTraceBegin", r8);
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label8;
+        catch java.lang.Exception from label3 to label4 with label8;
+        catch java.lang.Exception from label6 to label7 with label8;
+    }
+
+    public static void beginSection(java.lang.String)
+    {
+        java.lang.String $r0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        staticinvoke <androidx.tracing.TraceApi18Impl: void beginSection(java.lang.String)>($r0);
+
+        return;
+    }
+
+    public static void endAsyncSection(java.lang.String, int)
+    {
+        java.lang.NoSuchMethodError $r3;
+        int $i0;
+        java.lang.String $r0;
+        java.lang.NoClassDefFoundError $r2;
+        java.lang.reflect.Method $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+     label1:
+        $r1 = <androidx.tracing.Trace: java.lang.reflect.Method sAsyncTraceEndMethod>;
+
+     label2:
+        if $r1 != null goto label5;
+
+     label3:
+        staticinvoke <androidx.tracing.TraceApi29Impl: void endAsyncSection(java.lang.String,int)>($r0, $i0);
+
+     label4:
+        return;
+
+     label5:
+        goto label8;
+
+     label6:
+        $r2 := @caughtexception;
+
+        goto label8;
+
+     label7:
+        $r3 := @caughtexception;
+
+     label8:
+        staticinvoke <androidx.tracing.Trace: void endAsyncSectionFallback(java.lang.String,int)>($r0, $i0);
+
+        return;
+
+        catch java.lang.NoSuchMethodError from label1 to label2 with label7;
+        catch java.lang.NoSuchMethodError from label3 to label4 with label7;
+        catch java.lang.NoClassDefFoundError from label1 to label2 with label6;
+        catch java.lang.NoClassDefFoundError from label3 to label4 with label6;
+    }
+
+    private static void endAsyncSectionFallback(java.lang.String, int)
+    {
+        java.lang.Object[] $r5;
+        java.lang.Class[] $r3;
+        long $l1;
+        java.lang.Integer $r7;
+        java.lang.Exception r8;
+        java.lang.Long $r6;
+        int $i0;
+        java.lang.Class r2, $r4;
+        java.lang.String $r0;
+        java.lang.reflect.Method r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        r1 = <androidx.tracing.Trace: java.lang.reflect.Method sAsyncTraceEndMethod>;
+
+        if r1 != null goto label5;
+
+        r2 = class "Landroid/os/Trace;";
+
+        $r3 = newarray (java.lang.Class)[3];
+
+        $r4 = <java.lang.Long: java.lang.Class TYPE>;
+
+     label1:
+        $r3[0] = $r4;
+
+        $r3[1] = class "Ljava/lang/String;";
+
+     label2:
+        $r4 = <java.lang.Integer: java.lang.Class TYPE>;
+
+     label3:
+        $r3[2] = $r4;
+
+        r1 = virtualinvoke r2.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("asyncTraceEnd", $r3);
+
+     label4:
+        <androidx.tracing.Trace: java.lang.reflect.Method sAsyncTraceEndMethod> = r1;
+
+     label5:
+        r1 = <androidx.tracing.Trace: java.lang.reflect.Method sAsyncTraceEndMethod>;
+
+        $r5 = newarray (java.lang.Object)[3];
+
+        $l1 = <androidx.tracing.Trace: long sTraceTagApp>;
+
+     label6:
+        $r6 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l1);
+
+        $r5[0] = $r6;
+
+        $r5[1] = $r0;
+
+        $r7 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r5[2] = $r7;
+
+        virtualinvoke r1.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r5);
+
+     label7:
+        return;
+
+     label8:
+        r8 := @caughtexception;
+
+        staticinvoke <androidx.tracing.Trace: void handleException(java.lang.String,java.lang.Exception)>("asyncTraceEnd", r8);
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label8;
+        catch java.lang.Exception from label3 to label4 with label8;
+        catch java.lang.Exception from label6 to label7 with label8;
+    }
+
+    public static void endSection()
+    {
+        staticinvoke <androidx.tracing.TraceApi18Impl: void endSection()>();
+
+        return;
+    }
+
+    private static void handleException(java.lang.String, java.lang.Exception)
+    {
+        java.lang.Throwable $r2;
+        java.lang.StringBuilder r4;
+        java.lang.String $r0;
+        java.lang.RuntimeException $r3;
+        java.lang.Exception $r1;
+        boolean z0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: java.lang.Exception;
+
+        z0 = $r1 instanceof java.lang.reflect.InvocationTargetException;
+
+        if z0 == 0 goto label2;
+
+        $r2 = virtualinvoke $r1.<java.lang.Exception: java.lang.Throwable getCause()>();
+
+        z0 = $r2 instanceof java.lang.RuntimeException;
+
+        if z0 == 0 goto label1;
+
+        $r3 = (java.lang.RuntimeException) $r2;
+
+        throw $r3;
+
+     label1:
+        $r3 = new java.lang.RuntimeException;
+
+        specialinvoke $r3.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r2);
+
+        throw $r3;
+
+     label2:
+        r4 = new java.lang.StringBuilder;
+
+        specialinvoke r4.<java.lang.StringBuilder: void <init>()>();
+
+        r4 = virtualinvoke r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to call ");
+
+        r4 = virtualinvoke r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        r4 = virtualinvoke r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" via reflection");
+
+        $r0 = virtualinvoke r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String,java.lang.Throwable)>("Trace", $r0, $r1);
+
+        return;
+    }
+
+    public static boolean isEnabled()
+    {
+        java.lang.NoSuchMethodError $r2;
+        java.lang.NoClassDefFoundError $r1;
+        java.lang.reflect.Method $r0;
+        boolean $z0;
+
+     label1:
+        $r0 = <androidx.tracing.Trace: java.lang.reflect.Method sIsTagEnabledMethod>;
+
+     label2:
+        if $r0 != null goto label5;
+
+     label3:
+        $z0 = staticinvoke <android.os.Trace: boolean isEnabled()>();
+
+     label4:
+        return $z0;
+
+     label5:
+        goto label8;
+
+     label6:
+        $r1 := @caughtexception;
+
+        goto label8;
+
+     label7:
+        $r2 := @caughtexception;
+
+     label8:
+        $z0 = staticinvoke <androidx.tracing.Trace: boolean isEnabledFallback()>();
+
+        return $z0;
+
+        catch java.lang.NoSuchMethodError from label1 to label2 with label7;
+        catch java.lang.NoSuchMethodError from label3 to label4 with label7;
+        catch java.lang.NoClassDefFoundError from label1 to label2 with label6;
+        catch java.lang.NoClassDefFoundError from label3 to label4 with label6;
+    }
+
+    private static boolean isEnabledFallback()
+    {
+        java.lang.Object[] $r5;
+        java.lang.Class[] $r0;
+        long $l0;
+        java.lang.reflect.Field $r3;
+        java.lang.Exception r9;
+        java.lang.Long $r6;
+        java.lang.Boolean r8;
+        java.lang.Class $r1, $r4;
+        java.lang.Object $r7;
+        java.lang.reflect.Method r2;
+        boolean $z0;
+
+        r2 = <androidx.tracing.Trace: java.lang.reflect.Method sIsTagEnabledMethod>;
+
+        if r2 != null goto label5;
+
+        $r1 = class "Landroid/os/Trace;";
+
+     label1:
+        $r3 = virtualinvoke $r1.<java.lang.Class: java.lang.reflect.Field getField(java.lang.String)>("TRACE_TAG_APP");
+
+        $l0 = virtualinvoke $r3.<java.lang.reflect.Field: long getLong(java.lang.Object)>(null);
+
+     label2:
+        <androidx.tracing.Trace: long sTraceTagApp> = $l0;
+
+        $r4 = class "Landroid/os/Trace;";
+
+        $r0 = newarray (java.lang.Class)[1];
+
+        $r1 = <java.lang.Long: java.lang.Class TYPE>;
+
+     label3:
+        $r0[0] = $r1;
+
+        r2 = virtualinvoke $r4.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("isTagEnabled", $r0);
+
+     label4:
+        <androidx.tracing.Trace: java.lang.reflect.Method sIsTagEnabledMethod> = r2;
+
+     label5:
+        r2 = <androidx.tracing.Trace: java.lang.reflect.Method sIsTagEnabledMethod>;
+
+        $r5 = newarray (java.lang.Object)[1];
+
+        $l0 = <androidx.tracing.Trace: long sTraceTagApp>;
+
+     label6:
+        $r6 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+        $r5[0] = $r6;
+
+        $r7 = virtualinvoke r2.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r5);
+
+        r8 = (java.lang.Boolean) $r7;
+
+        $z0 = virtualinvoke r8.<java.lang.Boolean: boolean booleanValue()>();
+
+     label7:
+        return $z0;
+
+     label8:
+        r9 := @caughtexception;
+
+        staticinvoke <androidx.tracing.Trace: void handleException(java.lang.String,java.lang.Exception)>("isTagEnabled", r9);
+
+        return 0;
+
+        catch java.lang.Exception from label1 to label2 with label8;
+        catch java.lang.Exception from label3 to label4 with label8;
+        catch java.lang.Exception from label6 to label7 with label8;
+    }
+
+    public static void setCounter(java.lang.String, int)
+    {
+        java.lang.NoSuchMethodError $r3;
+        int $i0;
+        java.lang.String $r0;
+        java.lang.NoClassDefFoundError $r2;
+        java.lang.reflect.Method $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+     label1:
+        $r1 = <androidx.tracing.Trace: java.lang.reflect.Method sTraceCounterMethod>;
+
+     label2:
+        if $r1 != null goto label5;
+
+     label3:
+        staticinvoke <androidx.tracing.TraceApi29Impl: void setCounter(java.lang.String,int)>($r0, $i0);
+
+     label4:
+        return;
+
+     label5:
+        goto label8;
+
+     label6:
+        $r2 := @caughtexception;
+
+        goto label8;
+
+     label7:
+        $r3 := @caughtexception;
+
+     label8:
+        staticinvoke <androidx.tracing.Trace: void setCounterFallback(java.lang.String,int)>($r0, $i0);
+
+        return;
+
+        catch java.lang.NoSuchMethodError from label1 to label2 with label7;
+        catch java.lang.NoSuchMethodError from label3 to label4 with label7;
+        catch java.lang.NoClassDefFoundError from label1 to label2 with label6;
+        catch java.lang.NoClassDefFoundError from label3 to label4 with label6;
+    }
+
+    private static void setCounterFallback(java.lang.String, int)
+    {
+        java.lang.Object[] $r5;
+        java.lang.Class[] $r3;
+        long $l1;
+        java.lang.Integer $r7;
+        java.lang.Exception r8;
+        java.lang.Long $r6;
+        int $i0;
+        java.lang.Class r2, $r4;
+        java.lang.String $r0;
+        java.lang.reflect.Method r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        r1 = <androidx.tracing.Trace: java.lang.reflect.Method sTraceCounterMethod>;
+
+        if r1 != null goto label5;
+
+        r2 = class "Landroid/os/Trace;";
+
+        $r3 = newarray (java.lang.Class)[3];
+
+        $r4 = <java.lang.Long: java.lang.Class TYPE>;
+
+     label1:
+        $r3[0] = $r4;
+
+        $r3[1] = class "Ljava/lang/String;";
+
+     label2:
+        $r4 = <java.lang.Integer: java.lang.Class TYPE>;
+
+     label3:
+        $r3[2] = $r4;
+
+        r1 = virtualinvoke r2.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("traceCounter", $r3);
+
+     label4:
+        <androidx.tracing.Trace: java.lang.reflect.Method sTraceCounterMethod> = r1;
+
+     label5:
+        r1 = <androidx.tracing.Trace: java.lang.reflect.Method sTraceCounterMethod>;
+
+        $r5 = newarray (java.lang.Object)[3];
+
+        $l1 = <androidx.tracing.Trace: long sTraceTagApp>;
+
+     label6:
+        $r6 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l1);
+
+        $r5[0] = $r6;
+
+        $r5[1] = $r0;
+
+        $r7 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r5[2] = $r7;
+
+        virtualinvoke r1.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r5);
+
+     label7:
+        return;
+
+     label8:
+        r8 := @caughtexception;
+
+        staticinvoke <androidx.tracing.Trace: void handleException(java.lang.String,java.lang.Exception)>("traceCounter", r8);
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label8;
+        catch java.lang.Exception from label3 to label4 with label8;
+        catch java.lang.Exception from label6 to label7 with label8;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.tracing.Trace: java.lang.String TAG> = "Trace";
+
+        return;
+    }
+}

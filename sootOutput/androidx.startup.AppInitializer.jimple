@@ -1,0 +1,496 @@
+public final class androidx.startup.AppInitializer extends java.lang.Object
+{
+    private static final java.lang.String SECTION_NAME;
+    private static volatile androidx.startup.AppInitializer sInstance;
+    private static final java.lang.Object sLock;
+    final android.content.Context mContext;
+    final java.util.Set mDiscovered;
+    final java.util.Map mInitialized;
+
+    static void <clinit>()
+    {
+        java.lang.Object $r0;
+
+        <androidx.startup.AppInitializer: java.lang.String SECTION_NAME> = "Startup";
+
+        $r0 = new java.lang.Object;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        <androidx.startup.AppInitializer: java.lang.Object sLock> = $r0;
+
+        return;
+    }
+
+    void <init>(android.content.Context)
+    {
+        java.util.HashSet $r2;
+        android.content.Context $r1;
+        androidx.startup.AppInitializer r0;
+        java.util.HashMap $r3;
+
+        r0 := @this: androidx.startup.AppInitializer;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        r0.<androidx.startup.AppInitializer: android.content.Context mContext> = $r1;
+
+        $r2 = new java.util.HashSet;
+
+        specialinvoke $r2.<java.util.HashSet: void <init>()>();
+
+        r0.<androidx.startup.AppInitializer: java.util.Set mDiscovered> = $r2;
+
+        $r3 = new java.util.HashMap;
+
+        specialinvoke $r3.<java.util.HashMap: void <init>()>();
+
+        r0.<androidx.startup.AppInitializer: java.util.Map mInitialized> = $r3;
+
+        return;
+    }
+
+    public static androidx.startup.AppInitializer getInstance(android.content.Context)
+    {
+        java.lang.Throwable $r3;
+        android.content.Context $r0;
+        androidx.startup.AppInitializer $r1;
+        java.lang.Object $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = <androidx.startup.AppInitializer: androidx.startup.AppInitializer sInstance>;
+
+        if $r1 != null goto label6;
+
+        $r2 = <androidx.startup.AppInitializer: java.lang.Object sLock>;
+
+        entermonitor $r2;
+
+     label1:
+        $r1 = <androidx.startup.AppInitializer: androidx.startup.AppInitializer sInstance>;
+
+        if $r1 != null goto label2;
+
+        $r1 = new androidx.startup.AppInitializer;
+
+        specialinvoke $r1.<androidx.startup.AppInitializer: void <init>(android.content.Context)>($r0);
+
+        <androidx.startup.AppInitializer: androidx.startup.AppInitializer sInstance> = $r1;
+
+     label2:
+        exitmonitor $r2;
+
+     label3:
+        goto label6;
+
+     label4:
+        $r3 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label5:
+        throw $r3;
+
+     label6:
+        $r1 = <androidx.startup.AppInitializer: androidx.startup.AppInitializer sInstance>;
+
+        return $r1;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+        catch java.lang.Throwable from label4 to label5 with label4;
+    }
+
+    void discoverAndInitialize()
+    {
+        java.lang.Throwable r15;
+        android.content.Context r3;
+        android.os.Bundle r9;
+        android.content.pm.PackageManager $r7;
+        androidx.startup.AppInitializer r0;
+        android.content.pm.ProviderInfo $r8;
+        androidx.startup.StartupException r17;
+        java.util.HashSet r10;
+        int i0;
+        java.lang.String $r4, $r6, $r13;
+        boolean $z0;
+        java.util.Iterator $r11;
+        android.content.ComponentName r2;
+        java.util.Set $r1;
+        java.lang.Exception r16;
+        java.lang.Class r5, r14;
+        java.lang.Object $r12;
+
+        r0 := @this: androidx.startup.AppInitializer;
+
+     label01:
+        staticinvoke <androidx.tracing.Trace: void beginSection(java.lang.String)>("Startup");
+
+     label02:
+        r2 = new android.content.ComponentName;
+
+        r3 = r0.<androidx.startup.AppInitializer: android.content.Context mContext>;
+
+     label03:
+        $r4 = virtualinvoke r3.<android.content.Context: java.lang.String getPackageName()>();
+
+     label04:
+        r5 = class "Landroidx/startup/InitializationProvider;";
+
+     label05:
+        $r6 = virtualinvoke r5.<java.lang.Class: java.lang.String getName()>();
+
+        specialinvoke r2.<android.content.ComponentName: void <init>(java.lang.String,java.lang.String)>($r4, $r6);
+
+     label06:
+        r3 = r0.<androidx.startup.AppInitializer: android.content.Context mContext>;
+
+     label07:
+        $r7 = virtualinvoke r3.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $r8 = virtualinvoke $r7.<android.content.pm.PackageManager: android.content.pm.ProviderInfo getProviderInfo(android.content.ComponentName,int)>(r2, 128);
+
+     label08:
+        r9 = $r8.<android.content.pm.ProviderInfo: android.os.Bundle metaData>;
+
+        r3 = r0.<androidx.startup.AppInitializer: android.content.Context mContext>;
+
+        i0 = <androidx.startup.R$string: int androidx_startup>;
+
+     label09:
+        $r4 = virtualinvoke r3.<android.content.Context: java.lang.String getString(int)>(i0);
+
+     label10:
+        if r9 == null goto label26;
+
+     label11:
+        r10 = new java.util.HashSet;
+
+     label12:
+        specialinvoke r10.<java.util.HashSet: void <init>()>();
+
+        $r1 = virtualinvoke r9.<android.os.Bundle: java.util.Set keySet()>();
+
+        $r11 = interfaceinvoke $r1.<java.util.Set: java.util.Iterator iterator()>();
+
+     label13:
+        $z0 = interfaceinvoke $r11.<java.util.Iterator: boolean hasNext()>();
+
+     label14:
+        if $z0 == 0 goto label26;
+
+     label15:
+        $r12 = interfaceinvoke $r11.<java.util.Iterator: java.lang.Object next()>();
+
+     label16:
+        $r6 = (java.lang.String) $r12;
+
+     label17:
+        $r13 = virtualinvoke r9.<android.os.Bundle: java.lang.String getString(java.lang.String,java.lang.String)>($r6, null);
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>($r13);
+
+     label18:
+        if $z0 == 0 goto label13;
+
+     label19:
+        r5 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>($r6);
+
+     label20:
+        r14 = class "Landroidx/startup/Initializer;";
+
+     label21:
+        $z0 = virtualinvoke r14.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(r5);
+
+     label22:
+        if $z0 == 0 goto label13;
+
+     label23:
+        $r1 = r0.<androidx.startup.AppInitializer: java.util.Set mDiscovered>;
+
+     label24:
+        interfaceinvoke $r1.<java.util.Set: boolean add(java.lang.Object)>(r5);
+
+        virtualinvoke r0.<androidx.startup.AppInitializer: java.lang.Object doInitialize(java.lang.Class,java.util.Set)>(r5, r10);
+
+     label25:
+        goto label13;
+
+     label26:
+        staticinvoke <androidx.tracing.Trace: void endSection()>();
+
+        return;
+
+     label27:
+        r15 := @caughtexception;
+
+        goto label31;
+
+     label28:
+        r16 := @caughtexception;
+
+        goto label30;
+
+     label29:
+        r16 := @caughtexception;
+
+     label30:
+        r17 = new androidx.startup.StartupException;
+
+        specialinvoke r17.<androidx.startup.StartupException: void <init>(java.lang.Throwable)>(r16);
+
+        throw r17;
+
+     label31:
+        staticinvoke <androidx.tracing.Trace: void endSection()>();
+
+        throw r15;
+
+        catch android.content.pm.PackageManager$NameNotFoundException from label01 to label02 with label29;
+        catch android.content.pm.PackageManager$NameNotFoundException from label03 to label04 with label29;
+        catch android.content.pm.PackageManager$NameNotFoundException from label05 to label06 with label29;
+        catch android.content.pm.PackageManager$NameNotFoundException from label07 to label08 with label29;
+        catch android.content.pm.PackageManager$NameNotFoundException from label09 to label10 with label29;
+        catch android.content.pm.PackageManager$NameNotFoundException from label12 to label14 with label29;
+        catch android.content.pm.PackageManager$NameNotFoundException from label15 to label16 with label29;
+        catch android.content.pm.PackageManager$NameNotFoundException from label17 to label18 with label29;
+        catch android.content.pm.PackageManager$NameNotFoundException from label19 to label20 with label29;
+        catch android.content.pm.PackageManager$NameNotFoundException from label21 to label22 with label29;
+        catch android.content.pm.PackageManager$NameNotFoundException from label24 to label25 with label29;
+        catch java.lang.ClassNotFoundException from label01 to label02 with label28;
+        catch java.lang.ClassNotFoundException from label03 to label04 with label28;
+        catch java.lang.ClassNotFoundException from label05 to label06 with label28;
+        catch java.lang.ClassNotFoundException from label07 to label08 with label28;
+        catch java.lang.ClassNotFoundException from label09 to label10 with label28;
+        catch java.lang.ClassNotFoundException from label12 to label14 with label28;
+        catch java.lang.ClassNotFoundException from label15 to label16 with label28;
+        catch java.lang.ClassNotFoundException from label17 to label18 with label28;
+        catch java.lang.ClassNotFoundException from label19 to label20 with label28;
+        catch java.lang.ClassNotFoundException from label21 to label22 with label28;
+        catch java.lang.ClassNotFoundException from label24 to label25 with label28;
+        catch java.lang.Throwable from label01 to label04 with label27;
+        catch java.lang.Throwable from label05 to label10 with label27;
+        catch java.lang.Throwable from label11 to label14 with label27;
+        catch java.lang.Throwable from label15 to label18 with label27;
+        catch java.lang.Throwable from label19 to label20 with label27;
+        catch java.lang.Throwable from label21 to label22 with label27;
+        catch java.lang.Throwable from label23 to label25 with label27;
+        catch java.lang.Throwable from label30 to label31 with label27;
+    }
+
+    java.lang.Object doInitialize(java.lang.Class, java.util.Set)
+    {
+        java.lang.Throwable r16, r19, r20;
+        android.content.Context r14;
+        java.lang.IllegalStateException r18;
+        java.lang.Object[] r8;
+        androidx.startup.AppInitializer r0;
+        java.lang.reflect.Constructor $r7;
+        androidx.startup.StartupException r17;
+        java.util.Map r5;
+        java.lang.String $r4;
+        boolean $z0;
+        androidx.startup.Initializer r10;
+        java.util.Iterator $r12;
+        java.util.Set r2;
+        java.lang.Class[] r6;
+        java.util.List $r11;
+        java.lang.Class r1, r13;
+        java.lang.Object $r3, $r9, r15;
+
+        r0 := @this: androidx.startup.AppInitializer;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r2 := @parameter1: java.util.Set;
+
+        $r3 = <androidx.startup.AppInitializer: java.lang.Object sLock>;
+
+        entermonitor $r3;
+
+     label01:
+        $z0 = staticinvoke <androidx.tracing.Trace: boolean isEnabled()>();
+
+     label02:
+        if $z0 == 0 goto label04;
+
+     label03:
+        $r4 = virtualinvoke r1.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        staticinvoke <androidx.tracing.Trace: void beginSection(java.lang.String)>($r4);
+
+     label04:
+        $z0 = interfaceinvoke r2.<java.util.Set: boolean contains(java.lang.Object)>(r1);
+
+        if $z0 != 0 goto label15;
+
+        r5 = r0.<androidx.startup.AppInitializer: java.util.Map mInitialized>;
+
+        $z0 = interfaceinvoke r5.<java.util.Map: boolean containsKey(java.lang.Object)>(r1);
+
+        if $z0 != 0 goto label11;
+
+        interfaceinvoke r2.<java.util.Set: boolean add(java.lang.Object)>(r1);
+
+     label05:
+        r6 = newarray (java.lang.Class)[0];
+
+        $r7 = virtualinvoke r1.<java.lang.Class: java.lang.reflect.Constructor getDeclaredConstructor(java.lang.Class[])>(r6);
+
+        r8 = newarray (java.lang.Object)[0];
+
+        $r9 = virtualinvoke $r7.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>(r8);
+
+        r10 = (androidx.startup.Initializer) $r9;
+
+        $r11 = interfaceinvoke r10.<androidx.startup.Initializer: java.util.List dependencies()>();
+
+        $z0 = interfaceinvoke $r11.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label07;
+
+        $r12 = interfaceinvoke $r11.<java.util.List: java.util.Iterator iterator()>();
+
+     label06:
+        $z0 = interfaceinvoke $r12.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label07;
+
+        $r9 = interfaceinvoke $r12.<java.util.Iterator: java.lang.Object next()>();
+
+        r13 = (java.lang.Class) $r9;
+
+        r5 = r0.<androidx.startup.AppInitializer: java.util.Map mInitialized>;
+
+        $z0 = interfaceinvoke r5.<java.util.Map: boolean containsKey(java.lang.Object)>(r13);
+
+        if $z0 != 0 goto label06;
+
+        virtualinvoke r0.<androidx.startup.AppInitializer: java.lang.Object doInitialize(java.lang.Class,java.util.Set)>(r13, r2);
+
+        goto label06;
+
+     label07:
+        r14 = r0.<androidx.startup.AppInitializer: android.content.Context mContext>;
+
+        $r9 = interfaceinvoke r10.<androidx.startup.Initializer: java.lang.Object create(android.content.Context)>(r14);
+
+        r15 = $r9;
+
+        interfaceinvoke r2.<java.util.Set: boolean remove(java.lang.Object)>(r1);
+
+        r5 = r0.<androidx.startup.AppInitializer: java.util.Map mInitialized>;
+
+        interfaceinvoke r5.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(r1, $r9);
+
+     label08:
+        goto label13;
+
+     label09:
+        r16 := @caughtexception;
+
+     label10:
+        r17 = new androidx.startup.StartupException;
+
+        specialinvoke r17.<androidx.startup.StartupException: void <init>(java.lang.Throwable)>(r16);
+
+        throw r17;
+
+     label11:
+        r5 = r0.<androidx.startup.AppInitializer: java.util.Map mInitialized>;
+
+        $r9 = interfaceinvoke r5.<java.util.Map: java.lang.Object get(java.lang.Object)>(r1);
+
+     label12:
+        r15 = $r9;
+
+     label13:
+        staticinvoke <androidx.tracing.Trace: void endSection()>();
+
+        exitmonitor $r3;
+
+     label14:
+        return r15;
+
+     label15:
+        r8 = newarray (java.lang.Object)[1];
+
+        $r4 = virtualinvoke r1.<java.lang.Class: java.lang.String getName()>();
+
+        r8[0] = $r4;
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Cannot initialize %s. Cycle detected.", r8);
+
+        r18 = new java.lang.IllegalStateException;
+
+        specialinvoke r18.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r4);
+
+        throw r18;
+
+     label16:
+        r19 := @caughtexception;
+
+     label17:
+        staticinvoke <androidx.tracing.Trace: void endSection()>();
+
+        throw r19;
+
+     label18:
+        r20 := @caughtexception;
+
+        exitmonitor $r3;
+
+     label19:
+        throw r20;
+
+        catch java.lang.Throwable from label01 to label02 with label18;
+        catch java.lang.Throwable from label03 to label05 with label16;
+        catch java.lang.Throwable from label05 to label08 with label09;
+        catch java.lang.Throwable from label10 to label12 with label16;
+        catch java.lang.Throwable from label13 to label14 with label18;
+        catch java.lang.Throwable from label15 to label16 with label16;
+        catch java.lang.Throwable from label17 to label19 with label18;
+    }
+
+    public java.lang.Object initializeComponent(java.lang.Class)
+    {
+        java.util.HashSet $r3;
+        androidx.startup.AppInitializer r0;
+        java.lang.Class r1;
+        java.lang.Object $r2;
+
+        r0 := @this: androidx.startup.AppInitializer;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r3 = new java.util.HashSet;
+
+        specialinvoke $r3.<java.util.HashSet: void <init>()>();
+
+        $r2 = virtualinvoke r0.<androidx.startup.AppInitializer: java.lang.Object doInitialize(java.lang.Class,java.util.Set)>(r1, $r3);
+
+        return $r2;
+    }
+
+    public boolean isEagerlyInitialized(java.lang.Class)
+    {
+        java.util.Set $r2;
+        androidx.startup.AppInitializer r0;
+        java.lang.Class r1;
+        boolean $z0;
+
+        r0 := @this: androidx.startup.AppInitializer;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 = r0.<androidx.startup.AppInitializer: java.util.Set mDiscovered>;
+
+        $z0 = interfaceinvoke $r2.<java.util.Set: boolean contains(java.lang.Object)>(r1);
+
+        return $z0;
+    }
+}

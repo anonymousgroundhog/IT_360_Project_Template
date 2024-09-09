@@ -1,0 +1,151 @@
+class androidx.core.graphics.ColorUtils$Api26Impl extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.graphics.ColorUtils$Api26Impl r0;
+
+        r0 := @this: androidx.core.graphics.ColorUtils$Api26Impl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static android.graphics.Color compositeColors(android.graphics.Color, android.graphics.Color)
+    {
+        float[] $r6, $r7;
+        byte b1;
+        int $i0, i2;
+        java.lang.String $r9;
+        boolean $z0;
+        java.lang.IllegalArgumentException $r11;
+        android.graphics.Color $r0, $r1;
+        float $f0, f1, $f2, f3;
+        java.lang.StringBuilder r8, $r10;
+        android.graphics.ColorSpace $r4, $r5;
+        android.graphics.ColorSpace$Model $r2, $r3;
+
+        $r0 := @parameter0: android.graphics.Color;
+
+        $r1 := @parameter1: android.graphics.Color;
+
+        $r2 = virtualinvoke $r0.<android.graphics.Color: android.graphics.ColorSpace$Model getModel()>();
+
+        $r3 = virtualinvoke $r1.<android.graphics.Color: android.graphics.ColorSpace$Model getModel()>();
+
+        $z0 = staticinvoke <java.util.Objects: boolean equals(java.lang.Object,java.lang.Object)>($r2, $r3);
+
+        if $z0 == 0 goto label6;
+
+        $r4 = virtualinvoke $r1.<android.graphics.Color: android.graphics.ColorSpace getColorSpace()>();
+
+        $r5 = virtualinvoke $r0.<android.graphics.Color: android.graphics.ColorSpace getColorSpace()>();
+
+        $z0 = staticinvoke <java.util.Objects: boolean equals(java.lang.Object,java.lang.Object)>($r4, $r5);
+
+        if $z0 == 0 goto label1;
+
+        goto label2;
+
+     label1:
+        $r4 = virtualinvoke $r1.<android.graphics.Color: android.graphics.ColorSpace getColorSpace()>();
+
+        $r0 = virtualinvoke $r0.<android.graphics.Color: android.graphics.Color convert(android.graphics.ColorSpace)>($r4);
+
+     label2:
+        $r6 = virtualinvoke $r0.<android.graphics.Color: float[] getComponents()>();
+
+        $r7 = virtualinvoke $r1.<android.graphics.Color: float[] getComponents()>();
+
+        $f0 = virtualinvoke $r0.<android.graphics.Color: float alpha()>();
+
+        f1 = $f0;
+
+        $f2 = virtualinvoke $r1.<android.graphics.Color: float alpha()>();
+
+        f3 = 1.0F - $f0;
+
+        $f2 = $f2 * f3;
+
+        $i0 = virtualinvoke $r1.<android.graphics.Color: int getComponentCount()>();
+
+        $i0 = $i0 + -1;
+
+        f3 = $f0 + $f2;
+
+        $r7[$i0] = f3;
+
+        f3 = $r7[$i0];
+
+        b1 = f3 cmpl 0.0F;
+
+        i2 = (int) b1;
+
+        if i2 <= 0 goto label3;
+
+        f1 = $r7[$i0];
+
+        f1 = $f0 / f1;
+
+        $f0 = $r7[$i0];
+
+        $f2 = $f2 / $f0;
+
+     label3:
+        i2 = 0;
+
+     label4:
+        if i2 >= $i0 goto label5;
+
+        $f0 = $r6[i2];
+
+        $f0 = $f0 * f1;
+
+        f3 = $r7[i2];
+
+        f3 = f3 * $f2;
+
+        $f0 = $f0 + f3;
+
+        $r7[i2] = $f0;
+
+        i2 = i2 + 1;
+
+        goto label4;
+
+     label5:
+        $r4 = virtualinvoke $r1.<android.graphics.Color: android.graphics.ColorSpace getColorSpace()>();
+
+        $r0 = staticinvoke <android.graphics.Color: android.graphics.Color valueOf(float[],android.graphics.ColorSpace)>($r7, $r4);
+
+        return $r0;
+
+     label6:
+        $r11 = new java.lang.IllegalArgumentException;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+
+        r8 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Color models must match (");
+
+        $r2 = virtualinvoke $r0.<android.graphics.Color: android.graphics.ColorSpace$Model getModel()>();
+
+        r8 = virtualinvoke r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        r8 = virtualinvoke r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" vs. ");
+
+        $r2 = virtualinvoke $r1.<android.graphics.Color: android.graphics.ColorSpace$Model getModel()>();
+
+        r8 = virtualinvoke r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        r8 = virtualinvoke r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r9 = virtualinvoke r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r11.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r9);
+
+        throw $r11;
+    }
+}

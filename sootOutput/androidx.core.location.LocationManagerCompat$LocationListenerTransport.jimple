@@ -1,0 +1,396 @@
+class androidx.core.location.LocationManagerCompat$LocationListenerTransport extends java.lang.Object implements android.location.LocationListener
+{
+    final java.util.concurrent.Executor mExecutor;
+    volatile androidx.core.location.LocationManagerCompat$LocationListenerKey mKey;
+
+    void <init>(androidx.core.location.LocationManagerCompat$LocationListenerKey, java.util.concurrent.Executor)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r0;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey $r1;
+        java.util.concurrent.Executor $r2;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        $r1 := @parameter0: androidx.core.location.LocationManagerCompat$LocationListenerKey;
+
+        $r2 := @parameter1: java.util.concurrent.Executor;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey mKey> = $r1;
+
+        r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: java.util.concurrent.Executor mExecutor> = $r2;
+
+        return;
+    }
+
+    public androidx.core.location.LocationManagerCompat$LocationListenerKey getKey()
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r0;
+        java.lang.Object $r1;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey $r2;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        $r2 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey mKey>;
+
+        $r1 = staticinvoke <androidx.core.util.ObjectsCompat: java.lang.Object requireNonNull(java.lang.Object)>($r2);
+
+        $r2 = (androidx.core.location.LocationManagerCompat$LocationListenerKey) $r1;
+
+        return $r2;
+    }
+
+    void lambda$onFlushComplete$2$androidx-core-location-LocationManagerCompat$LocationListenerTransport(int)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r0;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey r1;
+        int $i0;
+        androidx.core.location.LocationListenerCompat $r2;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        $i0 := @parameter0: int;
+
+        r1 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey mKey>;
+
+        if r1 != null goto label1;
+
+        return;
+
+     label1:
+        $r2 = r1.<androidx.core.location.LocationManagerCompat$LocationListenerKey: androidx.core.location.LocationListenerCompat mListener>;
+
+        interfaceinvoke $r2.<androidx.core.location.LocationListenerCompat: void onFlushComplete(int)>($i0);
+
+        return;
+    }
+
+    void lambda$onLocationChanged$0$androidx-core-location-LocationManagerCompat$LocationListenerTransport(android.location.Location)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r0;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey r2;
+        android.location.Location $r1;
+        androidx.core.location.LocationListenerCompat $r3;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        $r1 := @parameter0: android.location.Location;
+
+        r2 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey mKey>;
+
+        if r2 != null goto label1;
+
+        return;
+
+     label1:
+        $r3 = r2.<androidx.core.location.LocationManagerCompat$LocationListenerKey: androidx.core.location.LocationListenerCompat mListener>;
+
+        interfaceinvoke $r3.<androidx.core.location.LocationListenerCompat: void onLocationChanged(android.location.Location)>($r1);
+
+        return;
+    }
+
+    void lambda$onLocationChanged$1$androidx-core-location-LocationManagerCompat$LocationListenerTransport(java.util.List)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r0;
+        java.util.List $r1;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey r2;
+        androidx.core.location.LocationListenerCompat $r3;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        $r1 := @parameter0: java.util.List;
+
+        r2 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey mKey>;
+
+        if r2 != null goto label1;
+
+        return;
+
+     label1:
+        $r3 = r2.<androidx.core.location.LocationManagerCompat$LocationListenerKey: androidx.core.location.LocationListenerCompat mListener>;
+
+        interfaceinvoke $r3.<androidx.core.location.LocationListenerCompat: void onLocationChanged(java.util.List)>($r1);
+
+        return;
+    }
+
+    void lambda$onProviderDisabled$5$androidx-core-location-LocationManagerCompat$LocationListenerTransport(java.lang.String)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r0;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey r2;
+        java.lang.String $r1;
+        androidx.core.location.LocationListenerCompat $r3;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r2 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey mKey>;
+
+        if r2 != null goto label1;
+
+        return;
+
+     label1:
+        $r3 = r2.<androidx.core.location.LocationManagerCompat$LocationListenerKey: androidx.core.location.LocationListenerCompat mListener>;
+
+        interfaceinvoke $r3.<androidx.core.location.LocationListenerCompat: void onProviderDisabled(java.lang.String)>($r1);
+
+        return;
+    }
+
+    void lambda$onProviderEnabled$4$androidx-core-location-LocationManagerCompat$LocationListenerTransport(java.lang.String)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r0;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey r2;
+        java.lang.String $r1;
+        androidx.core.location.LocationListenerCompat $r3;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r2 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey mKey>;
+
+        if r2 != null goto label1;
+
+        return;
+
+     label1:
+        $r3 = r2.<androidx.core.location.LocationManagerCompat$LocationListenerKey: androidx.core.location.LocationListenerCompat mListener>;
+
+        interfaceinvoke $r3.<androidx.core.location.LocationListenerCompat: void onProviderEnabled(java.lang.String)>($r1);
+
+        return;
+    }
+
+    void lambda$onStatusChanged$3$androidx-core-location-LocationManagerCompat$LocationListenerTransport(java.lang.String, int, android.os.Bundle)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r0;
+        android.os.Bundle $r2;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey r3;
+        int $i0;
+        java.lang.String $r1;
+        androidx.core.location.LocationListenerCompat $r4;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: android.os.Bundle;
+
+        r3 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey mKey>;
+
+        if r3 != null goto label1;
+
+        return;
+
+     label1:
+        $r4 = r3.<androidx.core.location.LocationManagerCompat$LocationListenerKey: androidx.core.location.LocationListenerCompat mListener>;
+
+        interfaceinvoke $r4.<androidx.core.location.LocationListenerCompat: void onStatusChanged(java.lang.String,int,android.os.Bundle)>($r1, $i0, $r2);
+
+        return;
+    }
+
+    public void onFlushComplete(int)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r0;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey $r2;
+        java.util.concurrent.Executor $r3;
+        int $i0;
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda4 $r1;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        $i0 := @parameter0: int;
+
+        $r2 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey mKey>;
+
+        if $r2 != null goto label1;
+
+        return;
+
+     label1:
+        $r3 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: java.util.concurrent.Executor mExecutor>;
+
+        $r1 = new androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda4;
+
+        specialinvoke $r1.<androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda4: void <init>(androidx.core.location.LocationManagerCompat$LocationListenerTransport,int)>(r0, $i0);
+
+        interfaceinvoke $r3.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r1);
+
+        return;
+    }
+
+    public void onLocationChanged(android.location.Location)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r0;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey $r3;
+        java.util.concurrent.Executor $r4;
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda3 $r2;
+        android.location.Location $r1;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        $r1 := @parameter0: android.location.Location;
+
+        $r3 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey mKey>;
+
+        if $r3 != null goto label1;
+
+        return;
+
+     label1:
+        $r4 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: java.util.concurrent.Executor mExecutor>;
+
+        $r2 = new androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda3;
+
+        specialinvoke $r2.<androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda3: void <init>(androidx.core.location.LocationManagerCompat$LocationListenerTransport,android.location.Location)>(r0, $r1);
+
+        interfaceinvoke $r4.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r2);
+
+        return;
+    }
+
+    public void onLocationChanged(java.util.List)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r0;
+        java.util.List r1;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey $r3;
+        java.util.concurrent.Executor $r4;
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda2 $r2;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        r1 := @parameter0: java.util.List;
+
+        $r3 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey mKey>;
+
+        if $r3 != null goto label1;
+
+        return;
+
+     label1:
+        $r4 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: java.util.concurrent.Executor mExecutor>;
+
+        $r2 = new androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda2;
+
+        specialinvoke $r2.<androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda2: void <init>(androidx.core.location.LocationManagerCompat$LocationListenerTransport,java.util.List)>(r0, r1);
+
+        interfaceinvoke $r4.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r2);
+
+        return;
+    }
+
+    public void onProviderDisabled(java.lang.String)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r0;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey $r3;
+        java.util.concurrent.Executor $r4;
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda1 $r2;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r3 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey mKey>;
+
+        if $r3 != null goto label1;
+
+        return;
+
+     label1:
+        $r4 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: java.util.concurrent.Executor mExecutor>;
+
+        $r2 = new androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda1;
+
+        specialinvoke $r2.<androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda1: void <init>(androidx.core.location.LocationManagerCompat$LocationListenerTransport,java.lang.String)>(r0, $r1);
+
+        interfaceinvoke $r4.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r2);
+
+        return;
+    }
+
+    public void onProviderEnabled(java.lang.String)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r0;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey $r3;
+        java.util.concurrent.Executor $r4;
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda0 $r2;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r3 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey mKey>;
+
+        if $r3 != null goto label1;
+
+        return;
+
+     label1:
+        $r4 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: java.util.concurrent.Executor mExecutor>;
+
+        $r2 = new androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda0;
+
+        specialinvoke $r2.<androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda0: void <init>(androidx.core.location.LocationManagerCompat$LocationListenerTransport,java.lang.String)>(r0, $r1);
+
+        interfaceinvoke $r4.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r2);
+
+        return;
+    }
+
+    public void onStatusChanged(java.lang.String, int, android.os.Bundle)
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r0;
+        android.os.Bundle $r2;
+        androidx.core.location.LocationManagerCompat$LocationListenerKey $r4;
+        java.util.concurrent.Executor $r5;
+        int $i0;
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda5 $r3;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: android.os.Bundle;
+
+        $r4 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey mKey>;
+
+        if $r4 != null goto label1;
+
+        return;
+
+     label1:
+        $r5 = r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: java.util.concurrent.Executor mExecutor>;
+
+        $r3 = new androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda5;
+
+        specialinvoke $r3.<androidx.core.location.LocationManagerCompat$LocationListenerTransport$$ExternalSyntheticLambda5: void <init>(androidx.core.location.LocationManagerCompat$LocationListenerTransport,java.lang.String,int,android.os.Bundle)>(r0, $r1, $i0, $r2);
+
+        interfaceinvoke $r5.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r3);
+
+        return;
+    }
+
+    public void unregister()
+    {
+        androidx.core.location.LocationManagerCompat$LocationListenerTransport r0;
+
+        r0 := @this: androidx.core.location.LocationManagerCompat$LocationListenerTransport;
+
+        r0.<androidx.core.location.LocationManagerCompat$LocationListenerTransport: androidx.core.location.LocationManagerCompat$LocationListenerKey mKey> = null;
+
+        return;
+    }
+}

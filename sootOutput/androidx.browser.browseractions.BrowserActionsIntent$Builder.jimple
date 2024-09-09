@@ -1,0 +1,324 @@
+public final class androidx.browser.browseractions.BrowserActionsIntent$Builder extends java.lang.Object
+{
+    private android.content.Context mContext;
+    private java.util.List mImageUris;
+    private final android.content.Intent mIntent;
+    private java.util.ArrayList mMenuItems;
+    private android.app.PendingIntent mOnItemSelectedPendingIntent;
+    private int mType;
+    private android.net.Uri mUri;
+
+    public void <init>(android.content.Context, android.net.Uri)
+    {
+        androidx.browser.browseractions.BrowserActionsIntent$Builder r0;
+        android.content.Context $r1;
+        android.net.Uri $r2;
+        android.content.Intent $r3;
+        java.util.ArrayList $r4;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsIntent$Builder;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.net.Uri;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = new android.content.Intent;
+
+        specialinvoke $r3.<android.content.Intent: void <init>(java.lang.String)>("androidx.browser.browseractions.browser_action_open");
+
+        r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.content.Intent mIntent> = $r3;
+
+        r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: int mType> = 0;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: java.util.ArrayList mMenuItems> = $r4;
+
+        r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.app.PendingIntent mOnItemSelectedPendingIntent> = null;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: java.util.List mImageUris> = $r4;
+
+        r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.content.Context mContext> = $r1;
+
+        r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.net.Uri mUri> = $r2;
+
+        return;
+    }
+
+    private android.os.Bundle getBundleFromItem(androidx.browser.browseractions.BrowserActionItem)
+    {
+        androidx.browser.browseractions.BrowserActionsIntent$Builder r0;
+        androidx.browser.browseractions.BrowserActionItem $r1;
+        android.os.Bundle r2;
+        int $i0;
+        android.net.Uri $r5;
+        java.lang.String $r3;
+        android.app.PendingIntent $r4;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsIntent$Builder;
+
+        $r1 := @parameter0: androidx.browser.browseractions.BrowserActionItem;
+
+        r2 = new android.os.Bundle;
+
+        specialinvoke r2.<android.os.Bundle: void <init>()>();
+
+        $r3 = virtualinvoke $r1.<androidx.browser.browseractions.BrowserActionItem: java.lang.String getTitle()>();
+
+        virtualinvoke r2.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("androidx.browser.browseractions.TITLE", $r3);
+
+        $r4 = virtualinvoke $r1.<androidx.browser.browseractions.BrowserActionItem: android.app.PendingIntent getAction()>();
+
+        virtualinvoke r2.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("androidx.browser.browseractions.ACTION", $r4);
+
+        $i0 = virtualinvoke $r1.<androidx.browser.browseractions.BrowserActionItem: int getIconId()>();
+
+        if $i0 == 0 goto label1;
+
+        $i0 = virtualinvoke $r1.<androidx.browser.browseractions.BrowserActionItem: int getIconId()>();
+
+        virtualinvoke r2.<android.os.Bundle: void putInt(java.lang.String,int)>("androidx.browser.browseractions.ICON_ID", $i0);
+
+     label1:
+        $r5 = virtualinvoke $r1.<androidx.browser.browseractions.BrowserActionItem: android.net.Uri getIconUri()>();
+
+        if $r5 == null goto label2;
+
+        $r5 = virtualinvoke $r1.<androidx.browser.browseractions.BrowserActionItem: android.net.Uri getIconUri()>();
+
+        virtualinvoke r2.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("androidx.browser.browseractions.ICON_URI", $r5);
+
+     label2:
+        return r2;
+    }
+
+    public androidx.browser.browseractions.BrowserActionsIntent build()
+    {
+        android.content.Context r5;
+        android.net.Uri $r3;
+        android.content.Intent r2;
+        android.app.PendingIntent $r1;
+        androidx.browser.browseractions.BrowserActionsIntent $r7;
+        java.util.ArrayList $r4;
+        androidx.browser.browseractions.BrowserActionsIntent$Builder r0;
+        java.util.List $r6;
+        int $i0;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsIntent$Builder;
+
+        r2 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.content.Intent mIntent>;
+
+        $r3 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.net.Uri mUri>;
+
+        virtualinvoke r2.<android.content.Intent: android.content.Intent setData(android.net.Uri)>($r3);
+
+        r2 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.content.Intent mIntent>;
+
+        $i0 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: int mType>;
+
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("androidx.browser.browseractions.extra.TYPE", $i0);
+
+        r2 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.content.Intent mIntent>;
+
+        $r4 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: java.util.ArrayList mMenuItems>;
+
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putParcelableArrayListExtra(java.lang.String,java.util.ArrayList)>("androidx.browser.browseractions.extra.MENU_ITEMS", $r4);
+
+        r5 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.content.Context mContext>;
+
+        r2 = new android.content.Intent;
+
+        specialinvoke r2.<android.content.Intent: void <init>()>();
+
+        $r1 = staticinvoke <android.app.PendingIntent: android.app.PendingIntent getActivity(android.content.Context,int,android.content.Intent,int)>(r5, 0, r2, 67108864);
+
+        r2 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.content.Intent mIntent>;
+
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("androidx.browser.browseractions.APP_ID", $r1);
+
+        $r1 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.app.PendingIntent mOnItemSelectedPendingIntent>;
+
+        if $r1 == null goto label1;
+
+        r2 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.content.Intent mIntent>;
+
+        $r1 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.app.PendingIntent mOnItemSelectedPendingIntent>;
+
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("androidx.browser.browseractions.extra.SELECTED_ACTION_PENDING_INTENT", $r1);
+
+     label1:
+        r2 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.content.Intent mIntent>;
+
+        $r6 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: java.util.List mImageUris>;
+
+        r5 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.content.Context mContext>;
+
+        staticinvoke <androidx.browser.browseractions.BrowserServiceFileProvider: void grantReadPermission(android.content.Intent,java.util.List,android.content.Context)>(r2, $r6, r5);
+
+        $r7 = new androidx.browser.browseractions.BrowserActionsIntent;
+
+        r2 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.content.Intent mIntent>;
+
+        specialinvoke $r7.<androidx.browser.browseractions.BrowserActionsIntent: void <init>(android.content.Intent)>(r2);
+
+        return $r7;
+    }
+
+    public androidx.browser.browseractions.BrowserActionsIntent$Builder setCustomItems(java.util.ArrayList)
+    {
+        java.lang.IllegalStateException r11;
+        androidx.browser.browseractions.BrowserActionItem $r3;
+        android.os.Bundle $r7;
+        android.net.Uri $r8;
+        android.app.PendingIntent $r5;
+        java.lang.IllegalArgumentException $r10;
+        java.util.ArrayList r1, $r6;
+        androidx.browser.browseractions.BrowserActionsIntent$Builder r0;
+        java.util.List $r9;
+        int $i0, $i1;
+        java.lang.Object $r2;
+        java.lang.String $r4;
+        boolean $z0;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsIntent$Builder;
+
+        r1 := @parameter0: java.util.ArrayList;
+
+        $i0 = virtualinvoke r1.<java.util.ArrayList: int size()>();
+
+        if $i0 > 5 goto label4;
+
+        $i0 = 0;
+
+     label1:
+        $i1 = virtualinvoke r1.<java.util.ArrayList: int size()>();
+
+        if $i0 >= $i1 goto label5;
+
+        $r2 = virtualinvoke r1.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r3 = (androidx.browser.browseractions.BrowserActionItem) $r2;
+
+        $r4 = virtualinvoke $r3.<androidx.browser.browseractions.BrowserActionItem: java.lang.String getTitle()>();
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r4);
+
+        if $z0 != 0 goto label3;
+
+        $r2 = virtualinvoke r1.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r3 = (androidx.browser.browseractions.BrowserActionItem) $r2;
+
+        $r5 = virtualinvoke $r3.<androidx.browser.browseractions.BrowserActionItem: android.app.PendingIntent getAction()>();
+
+        if $r5 == null goto label3;
+
+        $r6 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: java.util.ArrayList mMenuItems>;
+
+        $r2 = virtualinvoke r1.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r3 = (androidx.browser.browseractions.BrowserActionItem) $r2;
+
+        $r7 = specialinvoke r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.os.Bundle getBundleFromItem(androidx.browser.browseractions.BrowserActionItem)>($r3);
+
+        virtualinvoke $r6.<java.util.ArrayList: boolean add(java.lang.Object)>($r7);
+
+        $r2 = virtualinvoke r1.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r3 = (androidx.browser.browseractions.BrowserActionItem) $r2;
+
+        $r8 = virtualinvoke $r3.<androidx.browser.browseractions.BrowserActionItem: android.net.Uri getIconUri()>();
+
+        if $r8 == null goto label2;
+
+        $r9 = r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: java.util.List mImageUris>;
+
+        $r2 = virtualinvoke r1.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r3 = (androidx.browser.browseractions.BrowserActionItem) $r2;
+
+        $r8 = virtualinvoke $r3.<androidx.browser.browseractions.BrowserActionItem: android.net.Uri getIconUri()>();
+
+        interfaceinvoke $r9.<java.util.List: boolean add(java.lang.Object)>($r8);
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        $r10 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r10.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Custom item should contain a non-empty title and non-null intent.");
+
+        throw $r10;
+
+     label4:
+        r11 = new java.lang.IllegalStateException;
+
+        specialinvoke r11.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Exceeded maximum toolbar item count of 5");
+
+        throw r11;
+
+     label5:
+        return r0;
+    }
+
+    public transient androidx.browser.browseractions.BrowserActionsIntent$Builder setCustomItems(androidx.browser.browseractions.BrowserActionItem[])
+    {
+        androidx.browser.browseractions.BrowserActionsIntent$Builder r0;
+        java.util.List $r3;
+        androidx.browser.browseractions.BrowserActionItem[] $r1;
+        java.util.ArrayList $r2;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsIntent$Builder;
+
+        $r1 := @parameter0: androidx.browser.browseractions.BrowserActionItem[];
+
+        $r2 = new java.util.ArrayList;
+
+        $r3 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r1);
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>(java.util.Collection)>($r3);
+
+        r0 = virtualinvoke r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: androidx.browser.browseractions.BrowserActionsIntent$Builder setCustomItems(java.util.ArrayList)>($r2);
+
+        return r0;
+    }
+
+    public androidx.browser.browseractions.BrowserActionsIntent$Builder setOnItemSelectedAction(android.app.PendingIntent)
+    {
+        androidx.browser.browseractions.BrowserActionsIntent$Builder r0;
+        android.app.PendingIntent $r1;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsIntent$Builder;
+
+        $r1 := @parameter0: android.app.PendingIntent;
+
+        r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: android.app.PendingIntent mOnItemSelectedPendingIntent> = $r1;
+
+        return r0;
+    }
+
+    public androidx.browser.browseractions.BrowserActionsIntent$Builder setUrlType(int)
+    {
+        androidx.browser.browseractions.BrowserActionsIntent$Builder r0;
+        int $i0;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsIntent$Builder;
+
+        $i0 := @parameter0: int;
+
+        r0.<androidx.browser.browseractions.BrowserActionsIntent$Builder: int mType> = $i0;
+
+        return r0;
+    }
+}

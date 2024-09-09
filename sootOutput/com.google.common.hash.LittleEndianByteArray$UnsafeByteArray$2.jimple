@@ -1,0 +1,84 @@
+final enum class com.google.common.hash.LittleEndianByteArray$UnsafeByteArray$2 extends com.google.common.hash.LittleEndianByteArray$UnsafeByteArray
+{
+
+    void <init>(java.lang.String, int)
+    {
+        int $i0;
+        com.google.common.hash.LittleEndianByteArray$UnsafeByteArray$2 r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.google.common.hash.LittleEndianByteArray$UnsafeByteArray$2;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<com.google.common.hash.LittleEndianByteArray$UnsafeByteArray: void <init>(java.lang.String,int,com.google.common.hash.LittleEndianByteArray$1)>($r1, $i0, null);
+
+        return;
+    }
+
+    public long getLongLittleEndian(byte[], int)
+    {
+        sun.misc.Unsafe $r2;
+        byte[] $r1;
+        int $i0;
+        long $l1, $l2;
+        com.google.common.hash.LittleEndianByteArray$UnsafeByteArray$2 r0;
+
+        r0 := @this: com.google.common.hash.LittleEndianByteArray$UnsafeByteArray$2;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $r2 = staticinvoke <com.google.common.hash.LittleEndianByteArray$UnsafeByteArray: sun.misc.Unsafe access$200()>();
+
+        $l1 = (long) $i0;
+
+        $i0 = staticinvoke <com.google.common.hash.LittleEndianByteArray$UnsafeByteArray: int access$100()>();
+
+        $l2 = (long) $i0;
+
+        $l1 = $l1 + $l2;
+
+        $l1 = virtualinvoke $r2.<sun.misc.Unsafe: long getLong(java.lang.Object,long)>($r1, $l1);
+
+        $l1 = staticinvoke <java.lang.Long: long reverseBytes(long)>($l1);
+
+        return $l1;
+    }
+
+    public void putLongLittleEndian(byte[], int, long)
+    {
+        sun.misc.Unsafe $r2;
+        byte[] $r1;
+        int $i0;
+        long $l1, $l2, $l3;
+        com.google.common.hash.LittleEndianByteArray$UnsafeByteArray$2 r0;
+
+        r0 := @this: com.google.common.hash.LittleEndianByteArray$UnsafeByteArray$2;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $l1 := @parameter2: long;
+
+        $l1 = staticinvoke <java.lang.Long: long reverseBytes(long)>($l1);
+
+        $r2 = staticinvoke <com.google.common.hash.LittleEndianByteArray$UnsafeByteArray: sun.misc.Unsafe access$200()>();
+
+        $l2 = (long) $i0;
+
+        $i0 = staticinvoke <com.google.common.hash.LittleEndianByteArray$UnsafeByteArray: int access$100()>();
+
+        $l3 = (long) $i0;
+
+        $l2 = $l2 + $l3;
+
+        virtualinvoke $r2.<sun.misc.Unsafe: void putLong(java.lang.Object,long,long)>($r1, $l2, $l1);
+
+        return;
+    }
+}

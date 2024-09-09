@@ -1,0 +1,71 @@
+public interface  androidx.work.impl.model.WorkSpecDao extends java.lang.Object
+{
+
+    public abstract void delete(java.lang.String);
+
+    public abstract java.util.List getAllEligibleWorkSpecsForScheduling(int);
+
+    public abstract java.util.List getAllUnfinishedWork();
+
+    public abstract java.util.List getAllWorkSpecIds();
+
+    public abstract androidx.lifecycle.LiveData getAllWorkSpecIdsLiveData();
+
+    public abstract java.util.List getEligibleWorkForScheduling(int);
+
+    public abstract java.util.List getInputsFromPrerequisites(java.lang.String);
+
+    public abstract java.util.List getRecentlyCompletedWork(long);
+
+    public abstract java.util.List getRunningWork();
+
+    public abstract androidx.lifecycle.LiveData getScheduleRequestedAtLiveData(java.lang.String);
+
+    public abstract java.util.List getScheduledWork();
+
+    public abstract androidx.work.WorkInfo$State getState(java.lang.String);
+
+    public abstract java.util.List getUnfinishedWorkWithName(java.lang.String);
+
+    public abstract java.util.List getUnfinishedWorkWithTag(java.lang.String);
+
+    public abstract androidx.work.impl.model.WorkSpec getWorkSpec(java.lang.String);
+
+    public abstract java.util.List getWorkSpecIdAndStatesForName(java.lang.String);
+
+    public abstract androidx.work.impl.model.WorkSpec[] getWorkSpecs(java.util.List);
+
+    public abstract androidx.work.impl.model.WorkSpec$WorkInfoPojo getWorkStatusPojoForId(java.lang.String);
+
+    public abstract java.util.List getWorkStatusPojoForIds(java.util.List);
+
+    public abstract java.util.List getWorkStatusPojoForName(java.lang.String);
+
+    public abstract java.util.List getWorkStatusPojoForTag(java.lang.String);
+
+    public abstract androidx.lifecycle.LiveData getWorkStatusPojoLiveDataForIds(java.util.List);
+
+    public abstract androidx.lifecycle.LiveData getWorkStatusPojoLiveDataForName(java.lang.String);
+
+    public abstract androidx.lifecycle.LiveData getWorkStatusPojoLiveDataForTag(java.lang.String);
+
+    public abstract boolean hasUnfinishedWork();
+
+    public abstract int incrementWorkSpecRunAttemptCount(java.lang.String);
+
+    public abstract void insertWorkSpec(androidx.work.impl.model.WorkSpec);
+
+    public abstract int markWorkSpecScheduled(java.lang.String, long);
+
+    public abstract void pruneFinishedWorkWithZeroDependentsIgnoringKeepForAtLeast();
+
+    public abstract int resetScheduledState();
+
+    public abstract int resetWorkSpecRunAttemptCount(java.lang.String);
+
+    public abstract void setOutput(java.lang.String, androidx.work.Data);
+
+    public abstract void setPeriodStartTime(java.lang.String, long);
+
+    public abstract transient int setState(androidx.work.WorkInfo$State, java.lang.String[]);
+}

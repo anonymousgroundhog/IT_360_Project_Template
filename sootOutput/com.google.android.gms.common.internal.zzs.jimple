@@ -1,0 +1,460 @@
+final class com.google.android.gms.common.internal.zzs extends com.google.android.gms.common.internal.GmsClientSupervisor
+{
+    private final java.util.HashMap zzb;
+    private final android.content.Context zzc;
+    private volatile android.os.Handler zzd;
+    private final com.google.android.gms.common.internal.zzr zze;
+    private final com.google.android.gms.common.stats.ConnectionTracker zzf;
+    private final long zzg;
+    private final long zzh;
+    private volatile java.util.concurrent.Executor zzi;
+
+    void <init>(android.content.Context, android.os.Looper, java.util.concurrent.Executor)
+    {
+        android.content.Context $r3;
+        java.util.concurrent.Executor $r2;
+        com.google.android.gms.common.internal.zzr $r5;
+        com.google.android.gms.common.internal.zzs r0;
+        java.util.HashMap $r4;
+        com.google.android.gms.common.stats.ConnectionTracker $r7;
+        android.os.Looper $r1;
+        com.google.android.gms.internal.common.zzi $r6;
+
+        r0 := @this: com.google.android.gms.common.internal.zzs;
+
+        $r3 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: android.os.Looper;
+
+        $r2 := @parameter2: java.util.concurrent.Executor;
+
+        specialinvoke r0.<com.google.android.gms.common.internal.GmsClientSupervisor: void <init>()>();
+
+        $r4 = new java.util.HashMap;
+
+        specialinvoke $r4.<java.util.HashMap: void <init>()>();
+
+        r0.<com.google.android.gms.common.internal.zzs: java.util.HashMap zzb> = $r4;
+
+        $r5 = new com.google.android.gms.common.internal.zzr;
+
+        specialinvoke $r5.<com.google.android.gms.common.internal.zzr: void <init>(com.google.android.gms.common.internal.zzs,com.google.android.gms.common.internal.zzq)>(r0, null);
+
+        r0.<com.google.android.gms.common.internal.zzs: com.google.android.gms.common.internal.zzr zze> = $r5;
+
+        $r3 = virtualinvoke $r3.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        r0.<com.google.android.gms.common.internal.zzs: android.content.Context zzc> = $r3;
+
+        $r6 = new com.google.android.gms.internal.common.zzi;
+
+        $r5 = r0.<com.google.android.gms.common.internal.zzs: com.google.android.gms.common.internal.zzr zze>;
+
+        specialinvoke $r6.<com.google.android.gms.internal.common.zzi: void <init>(android.os.Looper,android.os.Handler$Callback)>($r1, $r5);
+
+        r0.<com.google.android.gms.common.internal.zzs: android.os.Handler zzd> = $r6;
+
+        $r7 = staticinvoke <com.google.android.gms.common.stats.ConnectionTracker: com.google.android.gms.common.stats.ConnectionTracker getInstance()>();
+
+        r0.<com.google.android.gms.common.internal.zzs: com.google.android.gms.common.stats.ConnectionTracker zzf> = $r7;
+
+        r0.<com.google.android.gms.common.internal.zzs: long zzg> = 5000L;
+
+        r0.<com.google.android.gms.common.internal.zzs: long zzh> = 300000L;
+
+        r0.<com.google.android.gms.common.internal.zzs: java.util.concurrent.Executor zzi> = $r2;
+
+        return;
+    }
+
+    static volatile long zzd(com.google.android.gms.common.internal.zzs)
+    {
+        long l0;
+        com.google.android.gms.common.internal.zzs $r0;
+
+        $r0 := @parameter0: com.google.android.gms.common.internal.zzs;
+
+        l0 = $r0.<com.google.android.gms.common.internal.zzs: long zzh>;
+
+        return l0;
+    }
+
+    static volatile android.content.Context zze(com.google.android.gms.common.internal.zzs)
+    {
+        android.content.Context r1;
+        com.google.android.gms.common.internal.zzs $r0;
+
+        $r0 := @parameter0: com.google.android.gms.common.internal.zzs;
+
+        r1 = $r0.<com.google.android.gms.common.internal.zzs: android.content.Context zzc>;
+
+        return r1;
+    }
+
+    static volatile android.os.Handler zzf(com.google.android.gms.common.internal.zzs)
+    {
+        com.google.android.gms.common.internal.zzs $r0;
+        android.os.Handler r1;
+
+        $r0 := @parameter0: com.google.android.gms.common.internal.zzs;
+
+        r1 = $r0.<com.google.android.gms.common.internal.zzs: android.os.Handler zzd>;
+
+        return r1;
+    }
+
+    static volatile com.google.android.gms.common.stats.ConnectionTracker zzg(com.google.android.gms.common.internal.zzs)
+    {
+        com.google.android.gms.common.stats.ConnectionTracker r1;
+        com.google.android.gms.common.internal.zzs $r0;
+
+        $r0 := @parameter0: com.google.android.gms.common.internal.zzs;
+
+        r1 = $r0.<com.google.android.gms.common.internal.zzs: com.google.android.gms.common.stats.ConnectionTracker zzf>;
+
+        return r1;
+    }
+
+    static volatile java.util.HashMap zzh(com.google.android.gms.common.internal.zzs)
+    {
+        java.util.HashMap r1;
+        com.google.android.gms.common.internal.zzs $r0;
+
+        $r0 := @parameter0: com.google.android.gms.common.internal.zzs;
+
+        r1 = $r0.<com.google.android.gms.common.internal.zzs: java.util.HashMap zzb>;
+
+        return r1;
+    }
+
+    protected final void zza(com.google.android.gms.common.internal.zzo, android.content.ServiceConnection, java.lang.String)
+    {
+        com.google.android.gms.common.internal.zzp $r7;
+        java.lang.Throwable $r12;
+        java.lang.IllegalStateException $r10;
+        com.google.android.gms.common.internal.zzo $r1;
+        com.google.android.gms.common.internal.zzs r0;
+        java.util.HashMap $r4, $r5;
+        long $l0;
+        android.os.Message $r9;
+        android.os.Handler $r8;
+        android.content.ServiceConnection $r2;
+        java.lang.Object $r6;
+        java.lang.StringBuilder $r11;
+        java.lang.String $r3;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.common.internal.zzs;
+
+        $r1 := @parameter0: com.google.android.gms.common.internal.zzo;
+
+        $r2 := @parameter1: android.content.ServiceConnection;
+
+        $r3 := @parameter2: java.lang.String;
+
+        staticinvoke <com.google.android.gms.common.internal.Preconditions: java.lang.Object checkNotNull(java.lang.Object,java.lang.Object)>($r2, "ServiceConnection must not be null");
+
+        $r4 = r0.<com.google.android.gms.common.internal.zzs: java.util.HashMap zzb>;
+
+        entermonitor $r4;
+
+     label1:
+        $r5 = r0.<com.google.android.gms.common.internal.zzs: java.util.HashMap zzb>;
+
+        $r6 = virtualinvoke $r5.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r7 = (com.google.android.gms.common.internal.zzp) $r6;
+
+        if $r7 == null goto label5;
+
+        $z0 = virtualinvoke $r7.<com.google.android.gms.common.internal.zzp: boolean zzh(android.content.ServiceConnection)>($r2);
+
+        if $z0 == 0 goto label4;
+
+        virtualinvoke $r7.<com.google.android.gms.common.internal.zzp: void zzf(android.content.ServiceConnection,java.lang.String)>($r2, $r3);
+
+        $z0 = virtualinvoke $r7.<com.google.android.gms.common.internal.zzp: boolean zzi()>();
+
+        if $z0 == 0 goto label2;
+
+        $r8 = r0.<com.google.android.gms.common.internal.zzs: android.os.Handler zzd>;
+
+        $r9 = virtualinvoke $r8.<android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>(0, $r1);
+
+        $r8 = r0.<com.google.android.gms.common.internal.zzs: android.os.Handler zzd>;
+
+        $l0 = r0.<com.google.android.gms.common.internal.zzs: long zzg>;
+
+        virtualinvoke $r8.<android.os.Handler: boolean sendMessageDelayed(android.os.Message,long)>($r9, $l0);
+
+     label2:
+        exitmonitor $r4;
+
+     label3:
+        return;
+
+     label4:
+        $r10 = new java.lang.IllegalStateException;
+
+        $r3 = virtualinvoke $r1.<java.lang.Object: java.lang.String toString()>();
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Trying to unbind a GmsServiceConnection  that was not bound before.  config=");
+
+        virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r10.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r3);
+
+        throw $r10;
+
+     label5:
+        $r10 = new java.lang.IllegalStateException;
+
+        $r3 = virtualinvoke $r1.<java.lang.Object: java.lang.String toString()>();
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Nonexistent connection status for service config: ");
+
+        virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r10.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r3);
+
+        throw $r10;
+
+     label6:
+        $r12 := @caughtexception;
+
+        exitmonitor $r4;
+
+     label7:
+        throw $r12;
+
+        catch java.lang.Throwable from label1 to label3 with label6;
+        catch java.lang.Throwable from label4 to label7 with label6;
+    }
+
+    protected final boolean zzc(com.google.android.gms.common.internal.zzo, android.content.ServiceConnection, java.lang.String, java.util.concurrent.Executor)
+    {
+        com.google.android.gms.common.internal.zzp $r8;
+        java.lang.Throwable $r14;
+        java.lang.IllegalStateException $r12;
+        com.google.android.gms.common.internal.zzo $r1;
+        com.google.android.gms.common.internal.zzs r0;
+        java.util.HashMap $r5, $r6;
+        android.os.IBinder $r11;
+        android.os.Handler $r9;
+        int $i0;
+        android.content.ServiceConnection $r2;
+        java.lang.String $r3;
+        boolean $z0;
+        java.util.concurrent.Executor $r4;
+        android.content.ComponentName $r10;
+        java.lang.Object $r7;
+        java.lang.StringBuilder $r13;
+
+        r0 := @this: com.google.android.gms.common.internal.zzs;
+
+        $r1 := @parameter0: com.google.android.gms.common.internal.zzo;
+
+        $r2 := @parameter1: android.content.ServiceConnection;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: java.util.concurrent.Executor;
+
+        staticinvoke <com.google.android.gms.common.internal.Preconditions: java.lang.Object checkNotNull(java.lang.Object,java.lang.Object)>($r2, "ServiceConnection must not be null");
+
+        $r5 = r0.<com.google.android.gms.common.internal.zzs: java.util.HashMap zzb>;
+
+        entermonitor $r5;
+
+     label01:
+        $r6 = r0.<com.google.android.gms.common.internal.zzs: java.util.HashMap zzb>;
+
+        $r7 = virtualinvoke $r6.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r8 = (com.google.android.gms.common.internal.zzp) $r7;
+
+        if $r4 != null goto label02;
+
+        $r4 = r0.<com.google.android.gms.common.internal.zzs: java.util.concurrent.Executor zzi>;
+
+     label02:
+        if $r8 != null goto label03;
+
+        $r8 = new com.google.android.gms.common.internal.zzp;
+
+        specialinvoke $r8.<com.google.android.gms.common.internal.zzp: void <init>(com.google.android.gms.common.internal.zzs,com.google.android.gms.common.internal.zzo)>(r0, $r1);
+
+        virtualinvoke $r8.<com.google.android.gms.common.internal.zzp: void zzd(android.content.ServiceConnection,android.content.ServiceConnection,java.lang.String)>($r2, $r2, $r3);
+
+        virtualinvoke $r8.<com.google.android.gms.common.internal.zzp: void zze(java.lang.String,java.util.concurrent.Executor)>($r3, $r4);
+
+        $r6 = r0.<com.google.android.gms.common.internal.zzs: java.util.HashMap zzb>;
+
+        virtualinvoke $r6.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r8);
+
+        goto label07;
+
+     label03:
+        $r9 = r0.<com.google.android.gms.common.internal.zzs: android.os.Handler zzd>;
+
+        virtualinvoke $r9.<android.os.Handler: void removeMessages(int,java.lang.Object)>(0, $r1);
+
+        $z0 = virtualinvoke $r8.<com.google.android.gms.common.internal.zzp: boolean zzh(android.content.ServiceConnection)>($r2);
+
+        if $z0 != 0 goto label09;
+
+        virtualinvoke $r8.<com.google.android.gms.common.internal.zzp: void zzd(android.content.ServiceConnection,android.content.ServiceConnection,java.lang.String)>($r2, $r2, $r3);
+
+        $i0 = virtualinvoke $r8.<com.google.android.gms.common.internal.zzp: int zza()>();
+
+        lookupswitch($i0)
+        {
+            case 1: goto label06;
+            case 2: goto label05;
+            default: goto label04;
+        };
+
+     label04:
+        goto label07;
+
+     label05:
+        virtualinvoke $r8.<com.google.android.gms.common.internal.zzp: void zze(java.lang.String,java.util.concurrent.Executor)>($r3, $r4);
+
+        goto label07;
+
+     label06:
+        $r10 = virtualinvoke $r8.<com.google.android.gms.common.internal.zzp: android.content.ComponentName zzb()>();
+
+        $r11 = virtualinvoke $r8.<com.google.android.gms.common.internal.zzp: android.os.IBinder zzc()>();
+
+        interfaceinvoke $r2.<android.content.ServiceConnection: void onServiceConnected(android.content.ComponentName,android.os.IBinder)>($r10, $r11);
+
+     label07:
+        $z0 = virtualinvoke $r8.<com.google.android.gms.common.internal.zzp: boolean zzj()>();
+
+        exitmonitor $r5;
+
+     label08:
+        return $z0;
+
+     label09:
+        $r12 = new java.lang.IllegalStateException;
+
+        $r3 = virtualinvoke $r1.<java.lang.Object: java.lang.String toString()>();
+
+        $r13 = new java.lang.StringBuilder;
+
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Trying to bind a GmsServiceConnection that was already connected before.  config=");
+
+        virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r12.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r3);
+
+        throw $r12;
+
+     label10:
+        $r14 := @caughtexception;
+
+        exitmonitor $r5;
+
+     label11:
+        throw $r14;
+
+        catch java.lang.Throwable from label01 to label08 with label10;
+        catch java.lang.Throwable from label09 to label11 with label10;
+    }
+
+    final void zzi(java.util.concurrent.Executor)
+    {
+        java.lang.Throwable $r3;
+        java.util.concurrent.Executor $r2;
+        com.google.android.gms.common.internal.zzs r0;
+        java.util.HashMap $r1;
+
+        r0 := @this: com.google.android.gms.common.internal.zzs;
+
+        $r2 := @parameter0: java.util.concurrent.Executor;
+
+        $r1 = r0.<com.google.android.gms.common.internal.zzs: java.util.HashMap zzb>;
+
+        entermonitor $r1;
+
+     label1:
+        r0.<com.google.android.gms.common.internal.zzs: java.util.concurrent.Executor zzi> = $r2;
+
+        exitmonitor $r1;
+
+     label2:
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label4:
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    final void zzj(android.os.Looper)
+    {
+        java.lang.Throwable $r5;
+        com.google.android.gms.common.internal.zzr $r3;
+        com.google.android.gms.common.internal.zzs r0;
+        android.os.Looper $r4;
+        java.util.HashMap $r1;
+        com.google.android.gms.internal.common.zzi $r2;
+
+        r0 := @this: com.google.android.gms.common.internal.zzs;
+
+        $r4 := @parameter0: android.os.Looper;
+
+        $r1 = r0.<com.google.android.gms.common.internal.zzs: java.util.HashMap zzb>;
+
+        entermonitor $r1;
+
+     label1:
+        $r2 = new com.google.android.gms.internal.common.zzi;
+
+        $r3 = r0.<com.google.android.gms.common.internal.zzs: com.google.android.gms.common.internal.zzr zze>;
+
+        specialinvoke $r2.<com.google.android.gms.internal.common.zzi: void <init>(android.os.Looper,android.os.Handler$Callback)>($r4, $r3);
+
+        r0.<com.google.android.gms.common.internal.zzs: android.os.Handler zzd> = $r2;
+
+        exitmonitor $r1;
+
+     label2:
+        return;
+
+     label3:
+        $r5 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label4:
+        throw $r5;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+}

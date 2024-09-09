@@ -1,0 +1,46 @@
+public class androidx.work.impl.utils.LiveDataUtils extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.work.impl.utils.LiveDataUtils r0;
+
+        r0 := @this: androidx.work.impl.utils.LiveDataUtils;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static androidx.lifecycle.LiveData dedupedMappedLiveDataFor(androidx.lifecycle.LiveData, androidx.arch.core.util.Function, androidx.work.impl.utils.taskexecutor.TaskExecutor)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r2;
+        androidx.lifecycle.LiveData r0;
+        androidx.work.impl.utils.LiveDataUtils$1 $r5;
+        java.lang.Object r3;
+        androidx.arch.core.util.Function r1;
+        androidx.lifecycle.MediatorLiveData r4;
+
+        r0 := @parameter0: androidx.lifecycle.LiveData;
+
+        r1 := @parameter1: androidx.arch.core.util.Function;
+
+        $r2 := @parameter2: androidx.work.impl.utils.taskexecutor.TaskExecutor;
+
+        r3 = new java.lang.Object;
+
+        specialinvoke r3.<java.lang.Object: void <init>()>();
+
+        r4 = new androidx.lifecycle.MediatorLiveData;
+
+        specialinvoke r4.<androidx.lifecycle.MediatorLiveData: void <init>()>();
+
+        $r5 = new androidx.work.impl.utils.LiveDataUtils$1;
+
+        specialinvoke $r5.<androidx.work.impl.utils.LiveDataUtils$1: void <init>(androidx.work.impl.utils.taskexecutor.TaskExecutor,java.lang.Object,androidx.arch.core.util.Function,androidx.lifecycle.MediatorLiveData)>($r2, r3, r1, r4);
+
+        virtualinvoke r4.<androidx.lifecycle.MediatorLiveData: void addSource(androidx.lifecycle.LiveData,androidx.lifecycle.Observer)>(r0, $r5);
+
+        return r4;
+    }
+}

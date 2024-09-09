@@ -1,0 +1,63 @@
+class androidx.core.provider.FontRequestWorker$2 extends java.lang.Object implements androidx.core.util.Consumer
+{
+    final androidx.core.provider.CallbackWithHandler val$callback;
+
+    void <init>(androidx.core.provider.CallbackWithHandler)
+    {
+        androidx.core.provider.FontRequestWorker$2 r0;
+        androidx.core.provider.CallbackWithHandler $r1;
+
+        r0 := @this: androidx.core.provider.FontRequestWorker$2;
+
+        $r1 := @parameter0: androidx.core.provider.CallbackWithHandler;
+
+        r0.<androidx.core.provider.FontRequestWorker$2: androidx.core.provider.CallbackWithHandler val$callback> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void accept(androidx.core.provider.FontRequestWorker$TypefaceResult)
+    {
+        androidx.core.provider.FontRequestWorker$TypefaceResult $r1, $r3;
+        androidx.core.provider.FontRequestWorker$2 r0;
+        androidx.core.provider.CallbackWithHandler $r2;
+
+        r0 := @this: androidx.core.provider.FontRequestWorker$2;
+
+        $r1 := @parameter0: androidx.core.provider.FontRequestWorker$TypefaceResult;
+
+        if $r1 != null goto label1;
+
+        $r3 = new androidx.core.provider.FontRequestWorker$TypefaceResult;
+
+        specialinvoke $r3.<androidx.core.provider.FontRequestWorker$TypefaceResult: void <init>(int)>(-3);
+
+        $r1 = $r3;
+
+     label1:
+        $r2 = r0.<androidx.core.provider.FontRequestWorker$2: androidx.core.provider.CallbackWithHandler val$callback>;
+
+        virtualinvoke $r2.<androidx.core.provider.CallbackWithHandler: void onTypefaceResult(androidx.core.provider.FontRequestWorker$TypefaceResult)>($r1);
+
+        return;
+    }
+
+    public volatile void accept(java.lang.Object)
+    {
+        androidx.core.provider.FontRequestWorker$TypefaceResult $r2;
+        java.lang.Object $r1;
+        androidx.core.provider.FontRequestWorker$2 r0;
+
+        r0 := @this: androidx.core.provider.FontRequestWorker$2;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (androidx.core.provider.FontRequestWorker$TypefaceResult) $r1;
+
+        virtualinvoke r0.<androidx.core.provider.FontRequestWorker$2: void accept(androidx.core.provider.FontRequestWorker$TypefaceResult)>($r2);
+
+        return;
+    }
+}

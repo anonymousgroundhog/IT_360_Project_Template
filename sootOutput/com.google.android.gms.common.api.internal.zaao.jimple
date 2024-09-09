@@ -1,0 +1,251 @@
+final class com.google.android.gms.common.api.internal.zaao extends com.google.android.gms.common.api.internal.zaav
+{
+    final com.google.android.gms.common.api.internal.zaaw zaa;
+    private final java.util.Map zac;
+
+    public void <init>(com.google.android.gms.common.api.internal.zaaw, java.util.Map)
+    {
+        com.google.android.gms.common.api.internal.zaao r0;
+        com.google.android.gms.common.api.internal.zaaw $r1;
+        java.util.Map $r2;
+
+        r0 := @this: com.google.android.gms.common.api.internal.zaao;
+
+        $r1 := @parameter0: com.google.android.gms.common.api.internal.zaaw;
+
+        $r2 := @parameter1: java.util.Map;
+
+        r0.<com.google.android.gms.common.api.internal.zaao: com.google.android.gms.common.api.internal.zaaw zaa> = $r1;
+
+        specialinvoke r0.<com.google.android.gms.common.api.internal.zaav: void <init>(com.google.android.gms.common.api.internal.zaaw,com.google.android.gms.common.api.internal.zaau)>($r1, null);
+
+        r0.<com.google.android.gms.common.api.internal.zaao: java.util.Map zac> = $r2;
+
+        return;
+    }
+
+    public final void zaa()
+    {
+        android.content.Context $r11;
+        com.google.android.gms.common.ConnectionResult $r17;
+        com.google.android.gms.common.api.Api$Client $r9;
+        java.util.ArrayList $r4, $r16;
+        com.google.android.gms.common.api.internal.zaaw $r1;
+        com.google.android.gms.common.internal.zal $r15;
+        java.util.Map $r5;
+        int $i0, $i1, $i2, $i3;
+        com.google.android.gms.common.api.internal.zaao r0;
+        com.google.android.gms.common.api.internal.zaan $r19;
+        com.google.android.gms.common.api.internal.zaam $r18;
+        boolean $z0;
+        com.google.android.gms.common.api.internal.zaal $r10;
+        com.google.android.gms.common.internal.BaseGmsClient$ConnectionProgressReportCallbacks $r14;
+        com.google.android.gms.common.GoogleApiAvailabilityLight $r2;
+        java.util.Iterator $r7;
+        java.util.Set $r6;
+        java.lang.Object $r8;
+        com.google.android.gms.common.api.internal.zabi $r12;
+        com.google.android.gms.signin.zae $r13;
+
+        r0 := @this: com.google.android.gms.common.api.internal.zaao;
+
+        $r15 = new com.google.android.gms.common.internal.zal;
+
+        $r1 = r0.<com.google.android.gms.common.api.internal.zaao: com.google.android.gms.common.api.internal.zaaw zaa>;
+
+        $r2 = staticinvoke <com.google.android.gms.common.api.internal.zaaw: com.google.android.gms.common.GoogleApiAvailabilityLight zaf(com.google.android.gms.common.api.internal.zaaw)>($r1);
+
+        specialinvoke $r15.<com.google.android.gms.common.internal.zal: void <init>(com.google.android.gms.common.GoogleApiAvailabilityLight)>($r2);
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        $r16 = new java.util.ArrayList;
+
+        specialinvoke $r16.<java.util.ArrayList: void <init>()>();
+
+        $r5 = r0.<com.google.android.gms.common.api.internal.zaao: java.util.Map zac>;
+
+        $r6 = interfaceinvoke $r5.<java.util.Map: java.util.Set keySet()>();
+
+        $r7 = interfaceinvoke $r6.<java.util.Set: java.util.Iterator iterator()>();
+
+     label01:
+        $z0 = interfaceinvoke $r7.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label03;
+
+        $r8 = interfaceinvoke $r7.<java.util.Iterator: java.lang.Object next()>();
+
+        $r9 = (com.google.android.gms.common.api.Api$Client) $r8;
+
+        $z0 = interfaceinvoke $r9.<com.google.android.gms.common.api.Api$Client: boolean requiresGooglePlayServices()>();
+
+        if $z0 == 0 goto label02;
+
+        $r5 = r0.<com.google.android.gms.common.api.internal.zaao: java.util.Map zac>;
+
+        $r8 = interfaceinvoke $r5.<java.util.Map: java.lang.Object get(java.lang.Object)>($r9);
+
+        $r10 = (com.google.android.gms.common.api.internal.zaal) $r8;
+
+        $z0 = staticinvoke <com.google.android.gms.common.api.internal.zaal: boolean zaa(com.google.android.gms.common.api.internal.zaal)>($r10);
+
+        if $z0 != 0 goto label02;
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r9);
+
+        goto label01;
+
+     label02:
+        interfaceinvoke $r16.<java.util.List: boolean add(java.lang.Object)>($r9);
+
+        goto label01;
+
+     label03:
+        $z0 = interfaceinvoke $r4.<java.util.List: boolean isEmpty()>();
+
+        $i0 = -1;
+
+        $i1 = 0;
+
+        if $z0 == 0 goto label06;
+
+        $i2 = interfaceinvoke $r16.<java.util.List: int size()>();
+
+     label04:
+        if $i1 >= $i2 goto label05;
+
+        $r8 = interfaceinvoke $r16.<java.util.List: java.lang.Object get(int)>($i1);
+
+        $r9 = (com.google.android.gms.common.api.Api$Client) $r8;
+
+        $r1 = r0.<com.google.android.gms.common.api.internal.zaao: com.google.android.gms.common.api.internal.zaaw zaa>;
+
+        $r11 = staticinvoke <com.google.android.gms.common.api.internal.zaaw: android.content.Context zac(com.google.android.gms.common.api.internal.zaaw)>($r1);
+
+        $i3 = virtualinvoke $r15.<com.google.android.gms.common.internal.zal: int zab(android.content.Context,com.google.android.gms.common.api.Api$Client)>($r11, $r9);
+
+        $i0 = $i3;
+
+        $i1 = $i1 + 1;
+
+        if $i3 != 0 goto label04;
+
+        goto label08;
+
+     label05:
+        goto label08;
+
+     label06:
+        $i2 = interfaceinvoke $r4.<java.util.List: int size()>();
+
+     label07:
+        if $i1 >= $i2 goto label08;
+
+        $r8 = interfaceinvoke $r4.<java.util.List: java.lang.Object get(int)>($i1);
+
+        $r9 = (com.google.android.gms.common.api.Api$Client) $r8;
+
+        $r1 = r0.<com.google.android.gms.common.api.internal.zaao: com.google.android.gms.common.api.internal.zaaw zaa>;
+
+        $r11 = staticinvoke <com.google.android.gms.common.api.internal.zaaw: android.content.Context zac(com.google.android.gms.common.api.internal.zaaw)>($r1);
+
+        $i3 = virtualinvoke $r15.<com.google.android.gms.common.internal.zal: int zab(android.content.Context,com.google.android.gms.common.api.Api$Client)>($r11, $r9);
+
+        $i0 = $i3;
+
+        $i1 = $i1 + 1;
+
+        if $i3 == 0 goto label07;
+
+     label08:
+        if $i0 == 0 goto label09;
+
+        $r17 = new com.google.android.gms.common.ConnectionResult;
+
+        specialinvoke $r17.<com.google.android.gms.common.ConnectionResult: void <init>(int,android.app.PendingIntent)>($i0, null);
+
+        $r1 = r0.<com.google.android.gms.common.api.internal.zaao: com.google.android.gms.common.api.internal.zaaw zaa>;
+
+        $r12 = staticinvoke <com.google.android.gms.common.api.internal.zaaw: com.google.android.gms.common.api.internal.zabi zak(com.google.android.gms.common.api.internal.zaaw)>($r1);
+
+        $r18 = new com.google.android.gms.common.api.internal.zaam;
+
+        specialinvoke $r18.<com.google.android.gms.common.api.internal.zaam: void <init>(com.google.android.gms.common.api.internal.zaao,com.google.android.gms.common.api.internal.zabf,com.google.android.gms.common.ConnectionResult)>(r0, $r1, $r17);
+
+        virtualinvoke $r12.<com.google.android.gms.common.api.internal.zabi: void zal(com.google.android.gms.common.api.internal.zabg)>($r18);
+
+        return;
+
+     label09:
+        $r1 = r0.<com.google.android.gms.common.api.internal.zaao: com.google.android.gms.common.api.internal.zaaw zaa>;
+
+        $z0 = staticinvoke <com.google.android.gms.common.api.internal.zaaw: boolean zav(com.google.android.gms.common.api.internal.zaaw)>($r1);
+
+        if $z0 == 0 goto label10;
+
+        $r13 = staticinvoke <com.google.android.gms.common.api.internal.zaaw: com.google.android.gms.signin.zae zan(com.google.android.gms.common.api.internal.zaaw)>($r1);
+
+        if $r13 == null goto label10;
+
+        $r13 = staticinvoke <com.google.android.gms.common.api.internal.zaaw: com.google.android.gms.signin.zae zan(com.google.android.gms.common.api.internal.zaaw)>($r1);
+
+        interfaceinvoke $r13.<com.google.android.gms.signin.zae: void zab()>();
+
+     label10:
+        $r5 = r0.<com.google.android.gms.common.api.internal.zaao: java.util.Map zac>;
+
+        $r6 = interfaceinvoke $r5.<java.util.Map: java.util.Set keySet()>();
+
+        $r7 = interfaceinvoke $r6.<java.util.Set: java.util.Iterator iterator()>();
+
+     label11:
+        $z0 = interfaceinvoke $r7.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label13;
+
+        $r8 = interfaceinvoke $r7.<java.util.Iterator: java.lang.Object next()>();
+
+        $r9 = (com.google.android.gms.common.api.Api$Client) $r8;
+
+        $r5 = r0.<com.google.android.gms.common.api.internal.zaao: java.util.Map zac>;
+
+        $r8 = interfaceinvoke $r5.<java.util.Map: java.lang.Object get(java.lang.Object)>($r9);
+
+        $r14 = (com.google.android.gms.common.internal.BaseGmsClient$ConnectionProgressReportCallbacks) $r8;
+
+        $z0 = interfaceinvoke $r9.<com.google.android.gms.common.api.Api$Client: boolean requiresGooglePlayServices()>();
+
+        if $z0 == 0 goto label12;
+
+        $r1 = r0.<com.google.android.gms.common.api.internal.zaao: com.google.android.gms.common.api.internal.zaaw zaa>;
+
+        $r11 = staticinvoke <com.google.android.gms.common.api.internal.zaaw: android.content.Context zac(com.google.android.gms.common.api.internal.zaaw)>($r1);
+
+        $i0 = virtualinvoke $r15.<com.google.android.gms.common.internal.zal: int zab(android.content.Context,com.google.android.gms.common.api.Api$Client)>($r11, $r9);
+
+        if $i0 == 0 goto label12;
+
+        $r1 = r0.<com.google.android.gms.common.api.internal.zaao: com.google.android.gms.common.api.internal.zaaw zaa>;
+
+        $r12 = staticinvoke <com.google.android.gms.common.api.internal.zaaw: com.google.android.gms.common.api.internal.zabi zak(com.google.android.gms.common.api.internal.zaaw)>($r1);
+
+        $r19 = new com.google.android.gms.common.api.internal.zaan;
+
+        specialinvoke $r19.<com.google.android.gms.common.api.internal.zaan: void <init>(com.google.android.gms.common.api.internal.zaao,com.google.android.gms.common.api.internal.zabf,com.google.android.gms.common.internal.BaseGmsClient$ConnectionProgressReportCallbacks)>(r0, $r1, $r14);
+
+        virtualinvoke $r12.<com.google.android.gms.common.api.internal.zabi: void zal(com.google.android.gms.common.api.internal.zabg)>($r19);
+
+        goto label11;
+
+     label12:
+        interfaceinvoke $r9.<com.google.android.gms.common.api.Api$Client: void connect(com.google.android.gms.common.internal.BaseGmsClient$ConnectionProgressReportCallbacks)>($r14);
+
+        goto label11;
+
+     label13:
+        return;
+    }
+}

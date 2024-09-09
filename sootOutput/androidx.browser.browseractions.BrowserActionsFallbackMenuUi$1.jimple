@@ -1,0 +1,72 @@
+class androidx.browser.browseractions.BrowserActionsFallbackMenuUi$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.browser.browseractions.BrowserActionsFallbackMenuUi this$0;
+
+    void <init>(androidx.browser.browseractions.BrowserActionsFallbackMenuUi)
+    {
+        androidx.browser.browseractions.BrowserActionsFallbackMenuUi $r1;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuUi$1 r0;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsFallbackMenuUi$1;
+
+        $r1 := @parameter0: androidx.browser.browseractions.BrowserActionsFallbackMenuUi;
+
+        r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi$1: androidx.browser.browseractions.BrowserActionsFallbackMenuUi this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        android.content.Context r2;
+        android.net.Uri r5;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuUi$1 r0;
+        android.content.ClipData $r7;
+        android.widget.Toast $r8;
+        int $i0;
+        android.content.ClipboardManager r4;
+        java.lang.Object $r3;
+        java.lang.String $r6;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuUi r1;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsFallbackMenuUi$1;
+
+        r1 = r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi$1: androidx.browser.browseractions.BrowserActionsFallbackMenuUi this$0>;
+
+        r2 = r1.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi: android.content.Context mContext>;
+
+        $r3 = virtualinvoke r2.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("clipboard");
+
+        r4 = (android.content.ClipboardManager) $r3;
+
+        r1 = r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi$1: androidx.browser.browseractions.BrowserActionsFallbackMenuUi this$0>;
+
+        r5 = r1.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi: android.net.Uri mUri>;
+
+        $r6 = virtualinvoke r5.<android.net.Uri: java.lang.String toString()>();
+
+        $r7 = staticinvoke <android.content.ClipData: android.content.ClipData newPlainText(java.lang.CharSequence,java.lang.CharSequence)>("url", $r6);
+
+        virtualinvoke r4.<android.content.ClipboardManager: void setPrimaryClip(android.content.ClipData)>($r7);
+
+        r1 = r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi$1: androidx.browser.browseractions.BrowserActionsFallbackMenuUi this$0>;
+
+        r2 = r1.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi: android.content.Context mContext>;
+
+        $i0 = <androidx.browser.R$string: int copy_toast_msg>;
+
+        $r6 = virtualinvoke r2.<android.content.Context: java.lang.String getString(int)>($i0);
+
+        r1 = r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi$1: androidx.browser.browseractions.BrowserActionsFallbackMenuUi this$0>;
+
+        r2 = r1.<androidx.browser.browseractions.BrowserActionsFallbackMenuUi: android.content.Context mContext>;
+
+        $r8 = staticinvoke <android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>(r2, $r6, 0);
+
+        virtualinvoke $r8.<android.widget.Toast: void show()>();
+
+        return;
+    }
+}

@@ -1,0 +1,37 @@
+public final class androidx.work.PeriodicWorkRequest extends androidx.work.WorkRequest
+{
+    public static final long MIN_PERIODIC_FLEX_MILLIS;
+    public static final long MIN_PERIODIC_INTERVAL_MILLIS;
+
+    void <init>(androidx.work.PeriodicWorkRequest$Builder)
+    {
+        androidx.work.PeriodicWorkRequest r0;
+        androidx.work.PeriodicWorkRequest$Builder $r1;
+        java.util.Set $r4;
+        java.util.UUID $r2;
+        androidx.work.impl.model.WorkSpec $r3;
+
+        r0 := @this: androidx.work.PeriodicWorkRequest;
+
+        $r1 := @parameter0: androidx.work.PeriodicWorkRequest$Builder;
+
+        $r2 = $r1.<androidx.work.PeriodicWorkRequest$Builder: java.util.UUID mId>;
+
+        $r3 = $r1.<androidx.work.PeriodicWorkRequest$Builder: androidx.work.impl.model.WorkSpec mWorkSpec>;
+
+        $r4 = $r1.<androidx.work.PeriodicWorkRequest$Builder: java.util.Set mTags>;
+
+        specialinvoke r0.<androidx.work.WorkRequest: void <init>(java.util.UUID,androidx.work.impl.model.WorkSpec,java.util.Set)>($r2, $r3, $r4);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.work.PeriodicWorkRequest: long MIN_PERIODIC_INTERVAL_MILLIS> = 900000L;
+
+        <androidx.work.PeriodicWorkRequest: long MIN_PERIODIC_FLEX_MILLIS> = 300000L;
+
+        return;
+    }
+}

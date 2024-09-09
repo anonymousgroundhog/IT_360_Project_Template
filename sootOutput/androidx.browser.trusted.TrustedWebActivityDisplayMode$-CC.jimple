@@ -1,0 +1,33 @@
+public final class androidx.browser.trusted.TrustedWebActivityDisplayMode$-CC extends java.lang.Object
+{
+
+    public static androidx.browser.trusted.TrustedWebActivityDisplayMode fromBundle(android.os.Bundle)
+    {
+        android.os.Bundle $r0;
+        int $i0;
+        androidx.browser.trusted.TrustedWebActivityDisplayMode $r2;
+        androidx.browser.trusted.TrustedWebActivityDisplayMode$DefaultMode $r1;
+
+        $r0 := @parameter0: android.os.Bundle;
+
+        $i0 = virtualinvoke $r0.<android.os.Bundle: int getInt(java.lang.String)>("androidx.browser.trusted.displaymode.KEY_ID");
+
+        lookupswitch($i0)
+        {
+            case 1: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        $r1 = new androidx.browser.trusted.TrustedWebActivityDisplayMode$DefaultMode;
+
+        specialinvoke $r1.<androidx.browser.trusted.TrustedWebActivityDisplayMode$DefaultMode: void <init>()>();
+
+        return $r1;
+
+     label2:
+        $r2 = staticinvoke <androidx.browser.trusted.TrustedWebActivityDisplayMode$ImmersiveMode: androidx.browser.trusted.TrustedWebActivityDisplayMode fromBundle(android.os.Bundle)>($r0);
+
+        return $r2;
+    }
+}

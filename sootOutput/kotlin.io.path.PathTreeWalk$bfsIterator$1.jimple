@@ -1,0 +1,392 @@
+final class kotlin.io.path.PathTreeWalk$bfsIterator$1 extends kotlin.coroutines.jvm.internal.RestrictedSuspendLambda implements kotlin.jvm.functions.Function2
+{
+    private java.lang.Object L$0;
+    java.lang.Object L$1;
+    java.lang.Object L$2;
+    java.lang.Object L$3;
+    java.lang.Object L$4;
+    java.lang.Object L$5;
+    int label;
+    final kotlin.io.path.PathTreeWalk this$0;
+
+    void <init>(kotlin.io.path.PathTreeWalk, kotlin.coroutines.Continuation)
+    {
+        kotlin.io.path.PathTreeWalk$bfsIterator$1 r0;
+        kotlin.coroutines.Continuation $r2;
+        kotlin.io.path.PathTreeWalk $r1;
+
+        r0 := @this: kotlin.io.path.PathTreeWalk$bfsIterator$1;
+
+        $r1 := @parameter0: kotlin.io.path.PathTreeWalk;
+
+        $r2 := @parameter1: kotlin.coroutines.Continuation;
+
+        r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: kotlin.io.path.PathTreeWalk this$0> = $r1;
+
+        specialinvoke r0.<kotlin.coroutines.jvm.internal.RestrictedSuspendLambda: void <init>(int,kotlin.coroutines.Continuation)>(2, $r2);
+
+        return;
+    }
+
+    public final kotlin.coroutines.Continuation create(java.lang.Object, kotlin.coroutines.Continuation)
+    {
+        kotlin.coroutines.Continuation $r2;
+        kotlin.io.path.PathTreeWalk $r3;
+        kotlin.io.path.PathTreeWalk$bfsIterator$1 r0, $r4;
+        java.lang.Object $r1;
+
+        r0 := @this: kotlin.io.path.PathTreeWalk$bfsIterator$1;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: kotlin.coroutines.Continuation;
+
+        $r4 = new kotlin.io.path.PathTreeWalk$bfsIterator$1;
+
+        $r3 = r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: kotlin.io.path.PathTreeWalk this$0>;
+
+        specialinvoke $r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: void <init>(kotlin.io.path.PathTreeWalk,kotlin.coroutines.Continuation)>($r3, $r2);
+
+        $r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$0> = $r1;
+
+        $r2 = (kotlin.coroutines.Continuation) $r4;
+
+        return $r2;
+    }
+
+    public volatile java.lang.Object invoke(java.lang.Object, java.lang.Object)
+    {
+        kotlin.coroutines.Continuation $r4;
+        kotlin.io.path.PathTreeWalk$bfsIterator$1 r0;
+        java.lang.Object $r1, $r2;
+        kotlin.sequences.SequenceScope $r3;
+
+        r0 := @this: kotlin.io.path.PathTreeWalk$bfsIterator$1;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = (kotlin.sequences.SequenceScope) $r1;
+
+        $r4 = (kotlin.coroutines.Continuation) $r2;
+
+        $r1 = virtualinvoke r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object invoke(kotlin.sequences.SequenceScope,kotlin.coroutines.Continuation)>($r3, $r4);
+
+        return $r1;
+    }
+
+    public final java.lang.Object invoke(kotlin.sequences.SequenceScope, kotlin.coroutines.Continuation)
+    {
+        kotlin.coroutines.Continuation $r2;
+        kotlin.Unit $r3;
+        kotlin.io.path.PathTreeWalk$bfsIterator$1 r0;
+        java.lang.Object $r4;
+        kotlin.sequences.SequenceScope $r1;
+
+        r0 := @this: kotlin.io.path.PathTreeWalk$bfsIterator$1;
+
+        $r1 := @parameter0: kotlin.sequences.SequenceScope;
+
+        $r2 := @parameter1: kotlin.coroutines.Continuation;
+
+        $r2 = virtualinvoke r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: kotlin.coroutines.Continuation create(java.lang.Object,kotlin.coroutines.Continuation)>($r1, $r2);
+
+        r0 = (kotlin.io.path.PathTreeWalk$bfsIterator$1) $r2;
+
+        $r3 = <kotlin.Unit: kotlin.Unit INSTANCE>;
+
+        $r4 = virtualinvoke r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object invokeSuspend(java.lang.Object)>($r3);
+
+        return $r4;
+    }
+
+    public final java.lang.Object invokeSuspend(java.lang.Object)
+    {
+        java.lang.IllegalStateException $r3;
+        kotlin.coroutines.Continuation $r16;
+        java.lang.Object[] $r15;
+        kotlin.io.path.PathNode $r11;
+        java.nio.file.LinkOption r20;
+        java.nio.file.FileSystemLoopException $r18;
+        kotlin.io.path.PathTreeWalk r10;
+        int i0;
+        java.lang.String $r19;
+        java.nio.file.Path r9, $r12;
+        kotlin.sequences.SequenceScope $r8;
+        boolean $z0;
+        java.nio.file.LinkOption[] $r13;
+        java.util.Collection $r14;
+        kotlin.collections.ArrayDeque r7;
+        java.util.List $r17;
+        kotlin.Unit r21;
+        kotlin.io.path.PathTreeWalk$bfsIterator$1 r0, r4;
+        java.lang.Object $r1, $r2, r5;
+        kotlin.io.path.DirectoryEntriesReader r6;
+
+        r0 := @this: kotlin.io.path.PathTreeWalk$bfsIterator$1;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = staticinvoke <kotlin.coroutines.intrinsics.IntrinsicsKt: java.lang.Object getCOROUTINE_SUSPENDED()>();
+
+        i0 = r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: int label>;
+
+        lookupswitch(i0)
+        {
+            case 0: goto label04;
+            case 1: goto label03;
+            case 2: goto label02;
+            default: goto label01;
+        };
+
+     label01:
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("call to \'resume\' before \'invoke\' with coroutine");
+
+        throw $r3;
+
+     label02:
+        r4 = r0;
+
+        r5 = r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$2>;
+
+        r6 = (kotlin.io.path.DirectoryEntriesReader) r5;
+
+        r5 = r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$1>;
+
+        r7 = (kotlin.collections.ArrayDeque) r5;
+
+        r5 = r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$0>;
+
+        $r8 = (kotlin.sequences.SequenceScope) r5;
+
+        staticinvoke <kotlin.ResultKt: void throwOnFailure(java.lang.Object)>($r1);
+
+        goto label05;
+
+     label03:
+        r4 = r0;
+
+        r5 = r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$5>;
+
+        r9 = (java.nio.file.Path) r5;
+
+        r5 = r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$4>;
+
+        r10 = (kotlin.io.path.PathTreeWalk) r5;
+
+        r5 = r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$3>;
+
+        $r11 = (kotlin.io.path.PathNode) r5;
+
+        r5 = r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$2>;
+
+        r6 = (kotlin.io.path.DirectoryEntriesReader) r5;
+
+        r5 = r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$1>;
+
+        r7 = (kotlin.collections.ArrayDeque) r5;
+
+        r5 = r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$0>;
+
+        $r8 = (kotlin.sequences.SequenceScope) r5;
+
+        staticinvoke <kotlin.ResultKt: void throwOnFailure(java.lang.Object)>($r1);
+
+        goto label06;
+
+     label04:
+        staticinvoke <kotlin.ResultKt: void throwOnFailure(java.lang.Object)>($r1);
+
+        r4 = r0;
+
+        $r1 = r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$0>;
+
+        $r8 = (kotlin.sequences.SequenceScope) $r1;
+
+        r7 = new kotlin.collections.ArrayDeque;
+
+        specialinvoke r7.<kotlin.collections.ArrayDeque: void <init>()>();
+
+        r6 = new kotlin.io.path.DirectoryEntriesReader;
+
+        r10 = r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: kotlin.io.path.PathTreeWalk this$0>;
+
+        $z0 = staticinvoke <kotlin.io.path.PathTreeWalk: boolean access$getFollowLinks(kotlin.io.path.PathTreeWalk)>(r10);
+
+        specialinvoke r6.<kotlin.io.path.DirectoryEntriesReader: void <init>(boolean)>($z0);
+
+        $r11 = new kotlin.io.path.PathNode;
+
+        r10 = r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: kotlin.io.path.PathTreeWalk this$0>;
+
+        r9 = staticinvoke <kotlin.io.path.PathTreeWalk: java.nio.file.Path access$getStart$p(kotlin.io.path.PathTreeWalk)>(r10);
+
+        r10 = r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: kotlin.io.path.PathTreeWalk this$0>;
+
+        $r12 = staticinvoke <kotlin.io.path.PathTreeWalk: java.nio.file.Path access$getStart$p(kotlin.io.path.PathTreeWalk)>(r10);
+
+        r10 = r0.<kotlin.io.path.PathTreeWalk$bfsIterator$1: kotlin.io.path.PathTreeWalk this$0>;
+
+        $r13 = staticinvoke <kotlin.io.path.PathTreeWalk: java.nio.file.LinkOption[] access$getLinkOptions(kotlin.io.path.PathTreeWalk)>(r10);
+
+        $r1 = staticinvoke <kotlin.io.path.PathTreeWalkKt: java.lang.Object access$keyOf(java.nio.file.Path,java.nio.file.LinkOption[])>($r12, $r13);
+
+        specialinvoke $r11.<kotlin.io.path.PathNode: void <init>(java.nio.file.Path,java.lang.Object,kotlin.io.path.PathNode)>(r9, $r1, null);
+
+        virtualinvoke r7.<kotlin.collections.ArrayDeque: void addLast(java.lang.Object)>($r11);
+
+     label05:
+        $r14 = (java.util.Collection) r7;
+
+        $z0 = interfaceinvoke $r14.<java.util.Collection: boolean isEmpty()>();
+
+        $z0 = $z0 ^ 1;
+
+        if $z0 == 0 goto label11;
+
+        $r1 = virtualinvoke r7.<kotlin.collections.ArrayDeque: java.lang.Object removeFirst()>();
+
+        $r11 = (kotlin.io.path.PathNode) $r1;
+
+        r10 = r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: kotlin.io.path.PathTreeWalk this$0>;
+
+        r9 = virtualinvoke $r11.<kotlin.io.path.PathNode: java.nio.file.Path getPath()>();
+
+        $r12 = r9;
+
+        $r13 = staticinvoke <kotlin.io.path.PathTreeWalk: java.nio.file.LinkOption[] access$getLinkOptions(kotlin.io.path.PathTreeWalk)>(r10);
+
+        i0 = lengthof $r13;
+
+        $r15 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>($r13, i0);
+
+        $r13 = (java.nio.file.LinkOption[]) $r15;
+
+        i0 = lengthof $r13;
+
+        $r15 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>($r13, i0);
+
+        $r13 = (java.nio.file.LinkOption[]) $r15;
+
+        $z0 = staticinvoke <java.nio.file.Files: boolean isDirectory(java.nio.file.Path,java.nio.file.LinkOption[])>(r9, $r13);
+
+        if $z0 == 0 goto label09;
+
+        $z0 = staticinvoke <kotlin.io.path.PathTreeWalkKt: boolean access$createsCycle(kotlin.io.path.PathNode)>($r11);
+
+        if $z0 != 0 goto label08;
+
+        $z0 = staticinvoke <kotlin.io.path.PathTreeWalk: boolean access$getIncludeDirectories(kotlin.io.path.PathTreeWalk)>(r10);
+
+        if $z0 == 0 goto label07;
+
+        $r16 = (kotlin.coroutines.Continuation) r4;
+
+        r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$0> = $r8;
+
+        r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$1> = r7;
+
+        r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$2> = r6;
+
+        r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$3> = $r11;
+
+        r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$4> = r10;
+
+        r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$5> = r9;
+
+        r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: int label> = 1;
+
+        $r1 = virtualinvoke $r8.<kotlin.sequences.SequenceScope: java.lang.Object yield(java.lang.Object,kotlin.coroutines.Continuation)>(r9, $r16);
+
+        if $r1 != $r2 goto label06;
+
+        return $r2;
+
+     label06:
+        $r12 = r9;
+
+     label07:
+        $r13 = staticinvoke <kotlin.io.path.PathTreeWalk: java.nio.file.LinkOption[] access$getLinkOptions(kotlin.io.path.PathTreeWalk)>(r10);
+
+        i0 = lengthof $r13;
+
+        $r15 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>($r13, i0);
+
+        $r13 = (java.nio.file.LinkOption[]) $r15;
+
+        i0 = lengthof $r13;
+
+        $r15 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>($r13, i0);
+
+        $r13 = (java.nio.file.LinkOption[]) $r15;
+
+        $z0 = staticinvoke <java.nio.file.Files: boolean isDirectory(java.nio.file.Path,java.nio.file.LinkOption[])>($r12, $r13);
+
+        if $z0 == 0 goto label05;
+
+        $r17 = virtualinvoke r6.<kotlin.io.path.DirectoryEntriesReader: java.util.List readEntries(kotlin.io.path.PathNode)>($r11);
+
+        $r14 = (java.util.Collection) $r17;
+
+        virtualinvoke r7.<kotlin.collections.ArrayDeque: boolean addAll(java.util.Collection)>($r14);
+
+        goto label05;
+
+     label08:
+        $r18 = new java.nio.file.FileSystemLoopException;
+
+        $r19 = virtualinvoke r9.<java.lang.Object: java.lang.String toString()>();
+
+        specialinvoke $r18.<java.nio.file.FileSystemLoopException: void <init>(java.lang.String)>($r19);
+
+        throw $r18;
+
+     label09:
+        $r13 = newarray (java.nio.file.LinkOption)[1];
+
+        r20 = <java.nio.file.LinkOption: java.nio.file.LinkOption NOFOLLOW_LINKS>;
+
+        $r13[0] = r20;
+
+        $r15 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>($r13, 1);
+
+        $r13 = (java.nio.file.LinkOption[]) $r15;
+
+        $z0 = staticinvoke <java.nio.file.Files: boolean exists(java.nio.file.Path,java.nio.file.LinkOption[])>(r9, $r13);
+
+        if $z0 == 0 goto label05;
+
+        $r16 = (kotlin.coroutines.Continuation) r4;
+
+        r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$0> = $r8;
+
+        r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$1> = r7;
+
+        r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$2> = r6;
+
+        r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$3> = null;
+
+        r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$4> = null;
+
+        r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: java.lang.Object L$5> = null;
+
+        r4.<kotlin.io.path.PathTreeWalk$bfsIterator$1: int label> = 2;
+
+        $r1 = virtualinvoke $r8.<kotlin.sequences.SequenceScope: java.lang.Object yield(java.lang.Object,kotlin.coroutines.Continuation)>(r9, $r16);
+
+        if $r1 != $r2 goto label10;
+
+        return $r2;
+
+     label10:
+        goto label05;
+
+     label11:
+        r21 = <kotlin.Unit: kotlin.Unit INSTANCE>;
+
+        return r21;
+    }
+}

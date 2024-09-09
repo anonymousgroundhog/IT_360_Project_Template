@@ -1,0 +1,70 @@
+public abstract class com.google.android.gms.internal.ads.zzfua extends java.lang.Object implements android.hardware.SensorEventListener
+{
+    final com.google.android.gms.internal.ads.zzftu zza;
+
+    protected void <init>(java.lang.String, java.lang.String)
+    {
+        com.google.android.gms.internal.ads.zzfua r0;
+        java.lang.String $r1, $r2;
+        com.google.android.gms.internal.ads.zzftu $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfua;
+
+        $r2 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        staticinvoke <com.google.android.gms.internal.ads.zzftz: com.google.android.gms.internal.ads.zzftz zza()>();
+
+        staticinvoke <com.google.android.gms.internal.ads.zzftw: com.google.android.gms.internal.ads.zzftw zza()>();
+
+        $r3 = <com.google.android.gms.internal.ads.zzftw: com.google.android.gms.internal.ads.zzftu zza>;
+
+        r0.<com.google.android.gms.internal.ads.zzfua: com.google.android.gms.internal.ads.zzftu zza> = $r3;
+
+        return;
+    }
+
+    public final void onAccuracyChanged(android.hardware.Sensor, int)
+    {
+        com.google.android.gms.internal.ads.zzfua r0;
+        int $i0;
+        android.hardware.Sensor $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfua;
+
+        $r1 := @parameter0: android.hardware.Sensor;
+
+        $i0 := @parameter1: int;
+
+        return;
+    }
+
+    public final void onSensorChanged(android.hardware.SensorEvent)
+    {
+        com.google.android.gms.internal.ads.zzfua r0;
+        java.lang.Throwable $r2;
+        android.hardware.SensorEvent $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfua;
+
+        $r1 := @parameter0: android.hardware.SensorEvent;
+
+     label1:
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzfua: void zza(android.hardware.SensorEvent)>($r1);
+
+     label2:
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public abstract void zza(android.hardware.SensorEvent);
+}

@@ -1,0 +1,408 @@
+final class com.google.android.gms.internal.ads.zzrm extends com.google.android.gms.internal.ads.zzdu
+{
+    private static final int zzd;
+
+    static void <clinit>()
+    {
+        int $i0;
+
+        $i0 = staticinvoke <java.lang.Float: int floatToIntBits(float)>(#NaNF);
+
+        <com.google.android.gms.internal.ads.zzrm: int zzd> = $i0;
+
+        return;
+    }
+
+    void <init>()
+    {
+        com.google.android.gms.internal.ads.zzrm r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzrm;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzdu: void <init>()>();
+
+        return;
+    }
+
+    private static void zzo(int, java.nio.ByteBuffer)
+    {
+        int $i0, $i1, $i2;
+        float $f0;
+        java.nio.ByteBuffer $r0;
+        double $d0;
+
+        $i0 := @parameter0: int;
+
+        $r0 := @parameter1: java.nio.ByteBuffer;
+
+        $d0 = (double) $i0;
+
+        $d0 = $d0 * 4.656612875245797E-10;
+
+        $f0 = (float) $d0;
+
+        $i0 = staticinvoke <java.lang.Float: int floatToIntBits(float)>($f0);
+
+        $i1 = $i0;
+
+        $i2 = <com.google.android.gms.internal.ads.zzrm: int zzd>;
+
+        if $i0 != $i2 goto label1;
+
+        $i1 = staticinvoke <java.lang.Float: int floatToIntBits(float)>(0.0F);
+
+     label1:
+        virtualinvoke $r0.<java.nio.ByteBuffer: java.nio.ByteBuffer putInt(int)>($i1);
+
+        return;
+    }
+
+    public final void zze(java.nio.ByteBuffer)
+    {
+        java.lang.IllegalStateException $r5;
+        com.google.android.gms.internal.ads.zzrm r0;
+        java.nio.ByteBuffer $r1, $r3, $r4;
+        short $s5, $s6;
+        com.google.android.gms.internal.ads.zzdr $r2;
+        byte $b4;
+        int $i0, $i1, $i2, $i3, $i7, $i8;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzrm;
+
+        $r1 := @parameter0: java.nio.ByteBuffer;
+
+        $i0 = virtualinvoke $r1.<java.nio.ByteBuffer: int position()>();
+
+        $i1 = $i0;
+
+        $i2 = virtualinvoke $r1.<java.nio.ByteBuffer: int limit()>();
+
+        $i0 = $i2 - $i0;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzrm: com.google.android.gms.internal.ads.zzdr zzb>;
+
+        $i3 = $r2.<com.google.android.gms.internal.ads.zzdr: int zzd>;
+
+        lookupswitch($i3)
+        {
+            case 21: goto label11;
+            case 22: goto label08;
+            case 1342177280: goto label05;
+            case 1610612736: goto label02;
+            default: goto label01;
+        };
+
+     label01:
+        $r5 = new java.lang.IllegalStateException;
+
+        specialinvoke $r5.<java.lang.IllegalStateException: void <init>()>();
+
+        throw $r5;
+
+     label02:
+        $r3 = virtualinvoke r0.<com.google.android.gms.internal.ads.zzdu: java.nio.ByteBuffer zzj(int)>($i0);
+
+        $r4 = $r3;
+
+     label03:
+        if $i1 >= $i2 goto label04;
+
+        $i0 = $i1 + 3;
+
+        $b4 = virtualinvoke $r1.<java.nio.ByteBuffer: byte get(int)>($i0);
+
+        $s5 = (short) $b4;
+
+        $s5 = $s5 & 255;
+
+        $i0 = $i1 + 2;
+
+        $b4 = virtualinvoke $r1.<java.nio.ByteBuffer: byte get(int)>($i0);
+
+        $s6 = (short) $b4;
+
+        $s6 = $s6 & 255;
+
+        $i0 = (int) $s6;
+
+        $i0 = $i0 << 8;
+
+        $i3 = $i1 + 1;
+
+        $b4 = virtualinvoke $r1.<java.nio.ByteBuffer: byte get(int)>($i3);
+
+        $s6 = (short) $b4;
+
+        $s6 = $s6 & 255;
+
+        $i3 = (int) $s6;
+
+        $i3 = $i3 << 16;
+
+        $b4 = virtualinvoke $r1.<java.nio.ByteBuffer: byte get(int)>($i1);
+
+        $s6 = (short) $b4;
+
+        $s6 = $s6 & 255;
+
+        $i7 = (int) $s6;
+
+        $i7 = $i7 << 24;
+
+        $i8 = (int) $s5;
+
+        $i0 = $i8 | $i0;
+
+        $i0 = $i0 | $i3;
+
+        $i0 = $i0 | $i7;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzrm: void zzo(int,java.nio.ByteBuffer)>($i0, $r3);
+
+        $i1 = $i1 + 4;
+
+        goto label03;
+
+     label04:
+        goto label13;
+
+     label05:
+        $i0 = $i0 / 3;
+
+        $i0 = $i0 * 4;
+
+        $r3 = virtualinvoke r0.<com.google.android.gms.internal.ads.zzdu: java.nio.ByteBuffer zzj(int)>($i0);
+
+        $r4 = $r3;
+
+     label06:
+        if $i1 >= $i2 goto label07;
+
+        $i0 = $i1 + 2;
+
+        $b4 = virtualinvoke $r1.<java.nio.ByteBuffer: byte get(int)>($i0);
+
+        $s5 = (short) $b4;
+
+        $s5 = $s5 & 255;
+
+        $i0 = (int) $s5;
+
+        $i0 = $i0 << 8;
+
+        $i3 = $i1 + 1;
+
+        $b4 = virtualinvoke $r1.<java.nio.ByteBuffer: byte get(int)>($i3);
+
+        $s5 = (short) $b4;
+
+        $s5 = $s5 & 255;
+
+        $i3 = (int) $s5;
+
+        $i3 = $i3 << 16;
+
+        $b4 = virtualinvoke $r1.<java.nio.ByteBuffer: byte get(int)>($i1);
+
+        $s5 = (short) $b4;
+
+        $s5 = $s5 & 255;
+
+        $i7 = (int) $s5;
+
+        $i7 = $i7 << 24;
+
+        $i0 = $i0 | $i3;
+
+        $i0 = $i0 | $i7;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzrm: void zzo(int,java.nio.ByteBuffer)>($i0, $r3);
+
+        $i1 = $i1 + 3;
+
+        goto label06;
+
+     label07:
+        goto label13;
+
+     label08:
+        $r3 = virtualinvoke r0.<com.google.android.gms.internal.ads.zzdu: java.nio.ByteBuffer zzj(int)>($i0);
+
+        $r4 = $r3;
+
+     label09:
+        if $i1 >= $i2 goto label10;
+
+        $b4 = virtualinvoke $r1.<java.nio.ByteBuffer: byte get(int)>($i1);
+
+        $s5 = (short) $b4;
+
+        $s5 = $s5 & 255;
+
+        $i0 = $i1 + 1;
+
+        $b4 = virtualinvoke $r1.<java.nio.ByteBuffer: byte get(int)>($i0);
+
+        $s6 = (short) $b4;
+
+        $s6 = $s6 & 255;
+
+        $i0 = (int) $s6;
+
+        $i0 = $i0 << 8;
+
+        $i3 = $i1 + 2;
+
+        $b4 = virtualinvoke $r1.<java.nio.ByteBuffer: byte get(int)>($i3);
+
+        $s6 = (short) $b4;
+
+        $s6 = $s6 & 255;
+
+        $i3 = (int) $s6;
+
+        $i3 = $i3 << 16;
+
+        $i7 = $i1 + 3;
+
+        $b4 = virtualinvoke $r1.<java.nio.ByteBuffer: byte get(int)>($i7);
+
+        $s6 = (short) $b4;
+
+        $s6 = $s6 & 255;
+
+        $i7 = (int) $s6;
+
+        $i7 = $i7 << 24;
+
+        $i8 = (int) $s5;
+
+        $i0 = $i8 | $i0;
+
+        $i0 = $i0 | $i3;
+
+        $i0 = $i0 | $i7;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzrm: void zzo(int,java.nio.ByteBuffer)>($i0, $r3);
+
+        $i1 = $i1 + 4;
+
+        goto label09;
+
+     label10:
+        goto label13;
+
+     label11:
+        $i0 = $i0 / 3;
+
+        $i0 = $i0 * 4;
+
+        $r3 = virtualinvoke r0.<com.google.android.gms.internal.ads.zzdu: java.nio.ByteBuffer zzj(int)>($i0);
+
+        $r4 = $r3;
+
+     label12:
+        if $i1 >= $i2 goto label13;
+
+        $b4 = virtualinvoke $r1.<java.nio.ByteBuffer: byte get(int)>($i1);
+
+        $s5 = (short) $b4;
+
+        $s5 = $s5 & 255;
+
+        $i0 = (int) $s5;
+
+        $i0 = $i0 << 8;
+
+        $i3 = $i1 + 1;
+
+        $b4 = virtualinvoke $r1.<java.nio.ByteBuffer: byte get(int)>($i3);
+
+        $s5 = (short) $b4;
+
+        $s5 = $s5 & 255;
+
+        $i3 = (int) $s5;
+
+        $i3 = $i3 << 16;
+
+        $i7 = $i1 + 2;
+
+        $b4 = virtualinvoke $r1.<java.nio.ByteBuffer: byte get(int)>($i7);
+
+        $s5 = (short) $b4;
+
+        $s5 = $s5 & 255;
+
+        $i7 = (int) $s5;
+
+        $i7 = $i7 << 24;
+
+        $i0 = $i0 | $i3;
+
+        $i0 = $i0 | $i7;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzrm: void zzo(int,java.nio.ByteBuffer)>($i0, $r3);
+
+        $i1 = $i1 + 3;
+
+        goto label12;
+
+     label13:
+        $i1 = virtualinvoke $r1.<java.nio.ByteBuffer: int limit()>();
+
+        virtualinvoke $r1.<java.nio.ByteBuffer: java.nio.Buffer position(int)>($i1);
+
+        virtualinvoke $r4.<java.nio.ByteBuffer: java.nio.Buffer flip()>();
+
+        return;
+    }
+
+    public final com.google.android.gms.internal.ads.zzdr zzi(com.google.android.gms.internal.ads.zzdr) throws com.google.android.gms.internal.ads.zzds
+    {
+        com.google.android.gms.internal.ads.zzds $r2;
+        com.google.android.gms.internal.ads.zzdr $r1, $r3;
+        com.google.android.gms.internal.ads.zzrm r0;
+        int $i0, $i1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzrm;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzdr;
+
+        $i0 = $r1.<com.google.android.gms.internal.ads.zzdr: int zzd>;
+
+        $i1 = <com.google.android.gms.internal.ads.zzfy: int zza>;
+
+        if $i0 == 21 goto label2;
+
+        if $i0 == 1342177280 goto label2;
+
+        if $i0 == 22 goto label2;
+
+        if $i0 == 1610612736 goto label2;
+
+        if $i0 != 4 goto label1;
+
+        $r1 = <com.google.android.gms.internal.ads.zzdr: com.google.android.gms.internal.ads.zzdr zza>;
+
+        return $r1;
+
+     label1:
+        $r2 = new com.google.android.gms.internal.ads.zzds;
+
+        specialinvoke $r2.<com.google.android.gms.internal.ads.zzds: void <init>(java.lang.String,com.google.android.gms.internal.ads.zzdr)>("Unhandled input format:", $r1);
+
+        throw $r2;
+
+     label2:
+        $r3 = new com.google.android.gms.internal.ads.zzdr;
+
+        $i0 = $r1.<com.google.android.gms.internal.ads.zzdr: int zzb>;
+
+        $i1 = $r1.<com.google.android.gms.internal.ads.zzdr: int zzc>;
+
+        specialinvoke $r3.<com.google.android.gms.internal.ads.zzdr: void <init>(int,int,int)>($i0, $i1, 4);
+
+        return $r3;
+    }
+}

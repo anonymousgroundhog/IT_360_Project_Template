@@ -1,0 +1,83 @@
+final class kotlin.io.FilesKt__UtilsKt$copyRecursively$2 extends kotlin.jvm.internal.Lambda implements kotlin.jvm.functions.Function2
+{
+    final kotlin.jvm.functions.Function2 $onError;
+
+    void <init>(kotlin.jvm.functions.Function2)
+    {
+        kotlin.io.FilesKt__UtilsKt$copyRecursively$2 r0;
+        kotlin.jvm.functions.Function2 $r1;
+
+        r0 := @this: kotlin.io.FilesKt__UtilsKt$copyRecursively$2;
+
+        $r1 := @parameter0: kotlin.jvm.functions.Function2;
+
+        r0.<kotlin.io.FilesKt__UtilsKt$copyRecursively$2: kotlin.jvm.functions.Function2 $onError> = $r1;
+
+        specialinvoke r0.<kotlin.jvm.internal.Lambda: void <init>(int)>(2);
+
+        return;
+    }
+
+    public volatile java.lang.Object invoke(java.lang.Object, java.lang.Object)
+    {
+        kotlin.io.FilesKt__UtilsKt$copyRecursively$2 r0;
+        kotlin.Unit r5;
+        java.lang.Object $r1, $r2;
+        java.io.IOException $r4;
+        java.io.File $r3;
+
+        r0 := @this: kotlin.io.FilesKt__UtilsKt$copyRecursively$2;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = (java.io.File) $r1;
+
+        $r4 = (java.io.IOException) $r2;
+
+        virtualinvoke r0.<kotlin.io.FilesKt__UtilsKt$copyRecursively$2: void invoke(java.io.File,java.io.IOException)>($r3, $r4);
+
+        r5 = <kotlin.Unit: kotlin.Unit INSTANCE>;
+
+        return r5;
+    }
+
+    public final void invoke(java.io.File, java.io.IOException)
+    {
+        kotlin.io.FilesKt__UtilsKt$copyRecursively$2 r0;
+        java.io.IOException $r2;
+        java.lang.Object $r4;
+        kotlin.jvm.functions.Function2 $r5;
+        kotlin.io.OnErrorAction $r3;
+        kotlin.io.TerminateException $r6;
+        java.io.File $r1;
+
+        r0 := @this: kotlin.io.FilesKt__UtilsKt$copyRecursively$2;
+
+        $r1 := @parameter0: java.io.File;
+
+        $r2 := @parameter1: java.io.IOException;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "f");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r2, "e");
+
+        $r5 = r0.<kotlin.io.FilesKt__UtilsKt$copyRecursively$2: kotlin.jvm.functions.Function2 $onError>;
+
+        $r4 = interfaceinvoke $r5.<kotlin.jvm.functions.Function2: java.lang.Object invoke(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        $r3 = <kotlin.io.OnErrorAction: kotlin.io.OnErrorAction TERMINATE>;
+
+        if $r4 == $r3 goto label1;
+
+        return;
+
+     label1:
+        $r6 = new kotlin.io.TerminateException;
+
+        specialinvoke $r6.<kotlin.io.TerminateException: void <init>(java.io.File)>($r1);
+
+        throw $r6;
+    }
+}

@@ -1,0 +1,71 @@
+class androidx.room.MultiInstanceInvalidationService$1 extends android.os.RemoteCallbackList
+{
+    final androidx.room.MultiInstanceInvalidationService this$0;
+
+    void <init>(androidx.room.MultiInstanceInvalidationService)
+    {
+        androidx.room.MultiInstanceInvalidationService$1 r0;
+        androidx.room.MultiInstanceInvalidationService $r1;
+
+        r0 := @this: androidx.room.MultiInstanceInvalidationService$1;
+
+        $r1 := @parameter0: androidx.room.MultiInstanceInvalidationService;
+
+        r0.<androidx.room.MultiInstanceInvalidationService$1: androidx.room.MultiInstanceInvalidationService this$0> = $r1;
+
+        specialinvoke r0.<android.os.RemoteCallbackList: void <init>()>();
+
+        return;
+    }
+
+    public volatile void onCallbackDied(android.os.IInterface, java.lang.Object)
+    {
+        android.os.IInterface $r2;
+        androidx.room.MultiInstanceInvalidationService$1 r0;
+        androidx.room.IMultiInstanceInvalidationCallback $r3;
+        java.lang.Object $r1;
+
+        r0 := @this: androidx.room.MultiInstanceInvalidationService$1;
+
+        $r2 := @parameter0: android.os.IInterface;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        $r3 = (androidx.room.IMultiInstanceInvalidationCallback) $r2;
+
+        virtualinvoke r0.<androidx.room.MultiInstanceInvalidationService$1: void onCallbackDied(androidx.room.IMultiInstanceInvalidationCallback,java.lang.Object)>($r3, $r1);
+
+        return;
+    }
+
+    public void onCallbackDied(androidx.room.IMultiInstanceInvalidationCallback, java.lang.Object)
+    {
+        androidx.room.MultiInstanceInvalidationService$1 r0;
+        androidx.room.IMultiInstanceInvalidationCallback $r1;
+        int $i0;
+        java.lang.Object $r2;
+        java.util.HashMap $r4;
+        java.lang.Integer $r5;
+        androidx.room.MultiInstanceInvalidationService $r3;
+
+        r0 := @this: androidx.room.MultiInstanceInvalidationService$1;
+
+        $r1 := @parameter0: androidx.room.IMultiInstanceInvalidationCallback;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = r0.<androidx.room.MultiInstanceInvalidationService$1: androidx.room.MultiInstanceInvalidationService this$0>;
+
+        $r4 = $r3.<androidx.room.MultiInstanceInvalidationService: java.util.HashMap mClientNames>;
+
+        $r5 = (java.lang.Integer) $r2;
+
+        $i0 = virtualinvoke $r5.<java.lang.Integer: int intValue()>();
+
+        $r5 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        virtualinvoke $r4.<java.util.HashMap: java.lang.Object remove(java.lang.Object)>($r5);
+
+        return;
+    }
+}

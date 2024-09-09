@@ -1,0 +1,340 @@
+class androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask extends android.os.AsyncTask
+{
+    private final android.content.Context mAppContext;
+    private final android.graphics.Bitmap mBitmap;
+    private final android.net.Uri mFileUri;
+    private final java.lang.String mFilename;
+    private final androidx.concurrent.futures.ResolvableFuture mResultFuture;
+
+    void <init>(android.content.Context, java.lang.String, android.graphics.Bitmap, android.net.Uri, androidx.concurrent.futures.ResolvableFuture)
+    {
+        androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask r0;
+        android.content.Context $r1;
+        android.graphics.Bitmap $r3;
+        android.net.Uri $r4;
+        androidx.concurrent.futures.ResolvableFuture r5;
+        java.lang.String $r2;
+
+        r0 := @this: androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: android.graphics.Bitmap;
+
+        $r4 := @parameter3: android.net.Uri;
+
+        r5 := @parameter4: androidx.concurrent.futures.ResolvableFuture;
+
+        specialinvoke r0.<android.os.AsyncTask: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: android.content.Context mAppContext> = $r1;
+
+        r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: java.lang.String mFilename> = $r2;
+
+        r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: android.graphics.Bitmap mBitmap> = $r3;
+
+        r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: android.net.Uri mFileUri> = $r4;
+
+        r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: androidx.concurrent.futures.ResolvableFuture mResultFuture> = r5;
+
+        return;
+    }
+
+    private void saveFileBlocking(java.io.File)
+    {
+        androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask r0;
+        androidx.concurrent.futures.ResolvableFuture r7;
+        android.net.Uri $r8;
+        java.io.FileOutputStream $r3, r4;
+        java.io.IOException r9, r10;
+        java.io.File $r1;
+        android.graphics.Bitmap r6;
+        int i0;
+        androidx.core.util.AtomicFile r5;
+        android.graphics.Bitmap$CompressFormat $r2;
+
+        r0 := @this: androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask;
+
+        $r1 := @parameter0: java.io.File;
+
+        r4 = null;
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 22 goto label09;
+
+        r5 = new androidx.core.util.AtomicFile;
+
+        specialinvoke r5.<androidx.core.util.AtomicFile: void <init>(java.io.File)>($r1);
+
+     label01:
+        $r3 = virtualinvoke r5.<androidx.core.util.AtomicFile: java.io.FileOutputStream startWrite()>();
+
+     label02:
+        r4 = $r3;
+
+        r6 = r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: android.graphics.Bitmap mBitmap>;
+
+        $r2 = <android.graphics.Bitmap$CompressFormat: android.graphics.Bitmap$CompressFormat PNG>;
+
+     label03:
+        virtualinvoke r6.<android.graphics.Bitmap: boolean compress(android.graphics.Bitmap$CompressFormat,int,java.io.OutputStream)>($r2, 100, $r3);
+
+        virtualinvoke $r3.<java.io.FileOutputStream: void close()>();
+
+        virtualinvoke r5.<androidx.core.util.AtomicFile: void finishWrite(java.io.FileOutputStream)>($r3);
+
+     label04:
+        r7 = r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: androidx.concurrent.futures.ResolvableFuture mResultFuture>;
+
+        $r8 = r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: android.net.Uri mFileUri>;
+
+     label05:
+        virtualinvoke r7.<androidx.concurrent.futures.ResolvableFuture: boolean set(java.lang.Object)>($r8);
+
+     label06:
+        goto label08;
+
+     label07:
+        r9 := @caughtexception;
+
+        virtualinvoke r5.<androidx.core.util.AtomicFile: void failWrite(java.io.FileOutputStream)>(r4);
+
+        r7 = r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: androidx.concurrent.futures.ResolvableFuture mResultFuture>;
+
+        virtualinvoke r7.<androidx.concurrent.futures.ResolvableFuture: boolean setException(java.lang.Throwable)>(r9);
+
+     label08:
+        return;
+
+     label09:
+        $r3 = new java.io.FileOutputStream;
+
+     label10:
+        specialinvoke $r3.<java.io.FileOutputStream: void <init>(java.io.File)>($r1);
+
+     label11:
+        r6 = r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: android.graphics.Bitmap mBitmap>;
+
+        $r2 = <android.graphics.Bitmap$CompressFormat: android.graphics.Bitmap$CompressFormat PNG>;
+
+     label12:
+        virtualinvoke r6.<android.graphics.Bitmap: boolean compress(android.graphics.Bitmap$CompressFormat,int,java.io.OutputStream)>($r2, 100, $r3);
+
+        virtualinvoke $r3.<java.io.FileOutputStream: void close()>();
+
+     label13:
+        r7 = r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: androidx.concurrent.futures.ResolvableFuture mResultFuture>;
+
+        $r8 = r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: android.net.Uri mFileUri>;
+
+     label14:
+        virtualinvoke r7.<androidx.concurrent.futures.ResolvableFuture: boolean set(java.lang.Object)>($r8);
+
+     label15:
+        return;
+
+     label16:
+        r10 := @caughtexception;
+
+        r7 = r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: androidx.concurrent.futures.ResolvableFuture mResultFuture>;
+
+        virtualinvoke r7.<androidx.concurrent.futures.ResolvableFuture: boolean setException(java.lang.Throwable)>(r10);
+
+        return;
+
+        catch java.io.IOException from label01 to label02 with label07;
+        catch java.io.IOException from label03 to label04 with label07;
+        catch java.io.IOException from label05 to label06 with label07;
+        catch java.io.IOException from label10 to label11 with label16;
+        catch java.io.IOException from label12 to label13 with label16;
+        catch java.io.IOException from label14 to label15 with label16;
+    }
+
+    private void saveFileIfNeededBlocking()
+    {
+        androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask r0;
+        java.lang.Throwable r10;
+        android.content.Context $r2;
+        androidx.concurrent.futures.ResolvableFuture r5;
+        android.net.Uri $r9;
+        java.io.IOException $r6;
+        long $l0;
+        java.io.File r1, $r3;
+        java.lang.Object $r4;
+        java.lang.StringBuilder $r7;
+        java.lang.String $r8;
+        boolean $z0;
+
+        r0 := @this: androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask;
+
+        r1 = new java.io.File;
+
+        $r2 = r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: android.content.Context mAppContext>;
+
+        $r3 = virtualinvoke $r2.<android.content.Context: java.io.File getFilesDir()>();
+
+        specialinvoke r1.<java.io.File: void <init>(java.io.File,java.lang.String)>($r3, "image_provider");
+
+        $r4 = <androidx.browser.browseractions.BrowserServiceFileProvider: java.lang.Object sFileCleanupLock>;
+
+        entermonitor $r4;
+
+     label1:
+        $z0 = virtualinvoke r1.<java.io.File: boolean exists()>();
+
+        if $z0 != 0 goto label3;
+
+        $z0 = virtualinvoke r1.<java.io.File: boolean mkdir()>();
+
+        if $z0 != 0 goto label3;
+
+        r5 = r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: androidx.concurrent.futures.ResolvableFuture mResultFuture>;
+
+        $r6 = new java.io.IOException;
+
+        specialinvoke $r6.<java.io.IOException: void <init>(java.lang.String)>("Could not create file directory.");
+
+        virtualinvoke r5.<androidx.concurrent.futures.ResolvableFuture: boolean setException(java.lang.Throwable)>($r6);
+
+        exitmonitor $r4;
+
+     label2:
+        return;
+
+     label3:
+        $r3 = new java.io.File;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r8 = r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: java.lang.String mFilename>;
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".png");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r3.<java.io.File: void <init>(java.io.File,java.lang.String)>(r1, $r8);
+
+        $z0 = virtualinvoke $r3.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label4;
+
+        r5 = r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: androidx.concurrent.futures.ResolvableFuture mResultFuture>;
+
+        $r9 = r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: android.net.Uri mFileUri>;
+
+        virtualinvoke r5.<androidx.concurrent.futures.ResolvableFuture: boolean set(java.lang.Object)>($r9);
+
+        goto label5;
+
+     label4:
+        specialinvoke r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: void saveFileBlocking(java.io.File)>($r3);
+
+     label5:
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        virtualinvoke $r3.<java.io.File: boolean setLastModified(long)>($l0);
+
+        exitmonitor $r4;
+
+     label6:
+        return;
+
+     label7:
+        r10 := @caughtexception;
+
+        exitmonitor $r4;
+
+     label8:
+        throw r10;
+
+        catch java.lang.Throwable from label1 to label2 with label7;
+        catch java.lang.Throwable from label3 to label6 with label7;
+        catch java.lang.Throwable from label7 to label8 with label7;
+    }
+
+    protected volatile java.lang.Object doInBackground(java.lang.Object[])
+    {
+        androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask r0;
+        java.lang.Void $r1;
+        java.lang.Object[] $r2;
+        java.lang.String[] $r3;
+
+        r0 := @this: androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask;
+
+        $r2 := @parameter0: java.lang.Object[];
+
+        $r3 = (java.lang.String[]) $r2;
+
+        $r1 = virtualinvoke r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: java.lang.Void doInBackground(java.lang.String[])>($r3);
+
+        return $r1;
+    }
+
+    protected transient java.lang.Void doInBackground(java.lang.String[])
+    {
+        androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask r0;
+        java.lang.String[] $r1;
+
+        r0 := @this: androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask;
+
+        $r1 := @parameter0: java.lang.String[];
+
+        specialinvoke r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: void saveFileIfNeededBlocking()>();
+
+        return null;
+    }
+
+    protected volatile void onPostExecute(java.lang.Object)
+    {
+        androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask r0;
+        java.lang.Void $r2;
+        java.lang.Object $r1;
+
+        r0 := @this: androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (java.lang.Void) $r1;
+
+        virtualinvoke r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: void onPostExecute(java.lang.Void)>($r2);
+
+        return;
+    }
+
+    protected void onPostExecute(java.lang.Void)
+    {
+        androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask r0;
+        java.lang.Void $r1;
+        android.content.Context $r3;
+        java.util.concurrent.Executor $r4;
+        androidx.browser.browseractions.BrowserServiceFileProvider$FileCleanupTask $r2;
+        java.lang.Void[] $r5;
+
+        r0 := @this: androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask;
+
+        $r1 := @parameter0: java.lang.Void;
+
+        $r2 = new androidx.browser.browseractions.BrowserServiceFileProvider$FileCleanupTask;
+
+        $r3 = r0.<androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask: android.content.Context mAppContext>;
+
+        specialinvoke $r2.<androidx.browser.browseractions.BrowserServiceFileProvider$FileCleanupTask: void <init>(android.content.Context)>($r3);
+
+        $r4 = <android.os.AsyncTask: java.util.concurrent.Executor SERIAL_EXECUTOR>;
+
+        $r5 = newarray (java.lang.Void)[0];
+
+        virtualinvoke $r2.<androidx.browser.browseractions.BrowserServiceFileProvider$FileCleanupTask: android.os.AsyncTask executeOnExecutor(java.util.concurrent.Executor,java.lang.Object[])>($r4, $r5);
+
+        return;
+    }
+}

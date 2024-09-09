@@ -1,0 +1,145 @@
+class androidx.work.impl.utils.WorkForegroundRunnable$2 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.work.impl.utils.WorkForegroundRunnable this$0;
+    final androidx.work.impl.utils.futures.SettableFuture val$foregroundFuture;
+
+    void <init>(androidx.work.impl.utils.WorkForegroundRunnable, androidx.work.impl.utils.futures.SettableFuture)
+    {
+        androidx.work.impl.utils.WorkForegroundRunnable $r1;
+        androidx.work.impl.utils.futures.SettableFuture $r2;
+        androidx.work.impl.utils.WorkForegroundRunnable$2 r0;
+
+        r0 := @this: androidx.work.impl.utils.WorkForegroundRunnable$2;
+
+        $r1 := @parameter0: androidx.work.impl.utils.WorkForegroundRunnable;
+
+        $r2 := @parameter1: androidx.work.impl.utils.futures.SettableFuture;
+
+        r0.<androidx.work.impl.utils.WorkForegroundRunnable$2: androidx.work.impl.utils.WorkForegroundRunnable this$0> = $r1;
+
+        r0.<androidx.work.impl.utils.WorkForegroundRunnable$2: androidx.work.impl.utils.futures.SettableFuture val$foregroundFuture> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        java.lang.Throwable r17;
+        android.content.Context $r13;
+        java.lang.IllegalStateException $r16;
+        java.lang.Object[] $r1;
+        com.google.common.util.concurrent.ListenableFuture $r15;
+        androidx.work.impl.utils.WorkForegroundRunnable $r7;
+        androidx.work.ListenableWorker r11;
+        androidx.work.impl.model.WorkSpec $r8;
+        androidx.work.Logger $r5;
+        androidx.work.ForegroundInfo r4;
+        java.lang.String $r6, $r9;
+        androidx.work.ForegroundUpdater $r12;
+        java.util.UUID $r14;
+        java.lang.Throwable[] r10;
+        java.lang.Object $r3;
+        androidx.work.impl.utils.futures.SettableFuture r2;
+        androidx.work.impl.utils.WorkForegroundRunnable$2 r0;
+
+        r0 := @this: androidx.work.impl.utils.WorkForegroundRunnable$2;
+
+     label1:
+        r2 = r0.<androidx.work.impl.utils.WorkForegroundRunnable$2: androidx.work.impl.utils.futures.SettableFuture val$foregroundFuture>;
+
+        $r3 = virtualinvoke r2.<androidx.work.impl.utils.futures.SettableFuture: java.lang.Object get()>();
+
+        r4 = (androidx.work.ForegroundInfo) $r3;
+
+     label2:
+        if r4 == null goto label5;
+
+     label3:
+        $r5 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r6 = <androidx.work.impl.utils.WorkForegroundRunnable: java.lang.String TAG>;
+
+        $r1 = newarray (java.lang.Object)[1];
+
+        $r7 = r0.<androidx.work.impl.utils.WorkForegroundRunnable$2: androidx.work.impl.utils.WorkForegroundRunnable this$0>;
+
+        $r8 = $r7.<androidx.work.impl.utils.WorkForegroundRunnable: androidx.work.impl.model.WorkSpec mWorkSpec>;
+
+        $r9 = $r8.<androidx.work.impl.model.WorkSpec: java.lang.String workerClassName>;
+
+        $r1[0] = $r9;
+
+        $r9 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Updating notification for %s", $r1);
+
+        r10 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r5.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>($r6, $r9, r10);
+
+        $r7 = r0.<androidx.work.impl.utils.WorkForegroundRunnable$2: androidx.work.impl.utils.WorkForegroundRunnable this$0>;
+
+        r11 = $r7.<androidx.work.impl.utils.WorkForegroundRunnable: androidx.work.ListenableWorker mWorker>;
+
+        virtualinvoke r11.<androidx.work.ListenableWorker: void setRunInForeground(boolean)>(1);
+
+        $r7 = r0.<androidx.work.impl.utils.WorkForegroundRunnable$2: androidx.work.impl.utils.WorkForegroundRunnable this$0>;
+
+        r2 = $r7.<androidx.work.impl.utils.WorkForegroundRunnable: androidx.work.impl.utils.futures.SettableFuture mFuture>;
+
+        $r7 = r0.<androidx.work.impl.utils.WorkForegroundRunnable$2: androidx.work.impl.utils.WorkForegroundRunnable this$0>;
+
+        $r12 = $r7.<androidx.work.impl.utils.WorkForegroundRunnable: androidx.work.ForegroundUpdater mForegroundUpdater>;
+
+        $r7 = r0.<androidx.work.impl.utils.WorkForegroundRunnable$2: androidx.work.impl.utils.WorkForegroundRunnable this$0>;
+
+        $r13 = $r7.<androidx.work.impl.utils.WorkForegroundRunnable: android.content.Context mContext>;
+
+        $r7 = r0.<androidx.work.impl.utils.WorkForegroundRunnable$2: androidx.work.impl.utils.WorkForegroundRunnable this$0>;
+
+        r11 = $r7.<androidx.work.impl.utils.WorkForegroundRunnable: androidx.work.ListenableWorker mWorker>;
+
+        $r14 = virtualinvoke r11.<androidx.work.ListenableWorker: java.util.UUID getId()>();
+
+        $r15 = interfaceinvoke $r12.<androidx.work.ForegroundUpdater: com.google.common.util.concurrent.ListenableFuture setForegroundAsync(android.content.Context,java.util.UUID,androidx.work.ForegroundInfo)>($r13, $r14, r4);
+
+        virtualinvoke r2.<androidx.work.impl.utils.futures.SettableFuture: boolean setFuture(com.google.common.util.concurrent.ListenableFuture)>($r15);
+
+     label4:
+        return;
+
+     label5:
+        $r1 = newarray (java.lang.Object)[1];
+
+        $r7 = r0.<androidx.work.impl.utils.WorkForegroundRunnable$2: androidx.work.impl.utils.WorkForegroundRunnable this$0>;
+
+        $r8 = $r7.<androidx.work.impl.utils.WorkForegroundRunnable: androidx.work.impl.model.WorkSpec mWorkSpec>;
+
+        $r6 = $r8.<androidx.work.impl.model.WorkSpec: java.lang.String workerClassName>;
+
+        $r1[0] = $r6;
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Worker was marked important (%s) but did not provide ForegroundInfo", $r1);
+
+        $r16 = new java.lang.IllegalStateException;
+
+        specialinvoke $r16.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r6);
+
+        throw $r16;
+
+     label6:
+        r17 := @caughtexception;
+
+        $r7 = r0.<androidx.work.impl.utils.WorkForegroundRunnable$2: androidx.work.impl.utils.WorkForegroundRunnable this$0>;
+
+        r2 = $r7.<androidx.work.impl.utils.WorkForegroundRunnable: androidx.work.impl.utils.futures.SettableFuture mFuture>;
+
+        virtualinvoke r2.<androidx.work.impl.utils.futures.SettableFuture: boolean setException(java.lang.Throwable)>(r17);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label6;
+        catch java.lang.Throwable from label3 to label4 with label6;
+        catch java.lang.Throwable from label5 to label6 with label6;
+    }
+}

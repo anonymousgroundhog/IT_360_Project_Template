@@ -1,0 +1,61 @@
+public abstract class androidx.privacysandbox.ads.adservices.measurement.MeasurementManager extends java.lang.Object
+{
+    public static final androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Companion Companion;
+    public static final int MEASUREMENT_API_STATE_DISABLED;
+    public static final int MEASUREMENT_API_STATE_ENABLED;
+
+    static void <clinit>()
+    {
+        androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Companion $r0;
+
+        <androidx.privacysandbox.ads.adservices.measurement.MeasurementManager: int MEASUREMENT_API_STATE_ENABLED> = 1;
+
+        <androidx.privacysandbox.ads.adservices.measurement.MeasurementManager: int MEASUREMENT_API_STATE_DISABLED> = 0;
+
+        $r0 = new androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Companion;
+
+        specialinvoke $r0.<androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Companion: void <init>(kotlin.jvm.internal.DefaultConstructorMarker)>(null);
+
+        <androidx.privacysandbox.ads.adservices.measurement.MeasurementManager: androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Companion Companion> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        androidx.privacysandbox.ads.adservices.measurement.MeasurementManager r0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.measurement.MeasurementManager;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static final androidx.privacysandbox.ads.adservices.measurement.MeasurementManager obtain(android.content.Context)
+    {
+        android.content.Context $r0;
+        androidx.privacysandbox.ads.adservices.measurement.MeasurementManager $r1;
+        androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Companion $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r2 = <androidx.privacysandbox.ads.adservices.measurement.MeasurementManager: androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Companion Companion>;
+
+        $r1 = virtualinvoke $r2.<androidx.privacysandbox.ads.adservices.measurement.MeasurementManager$Companion: androidx.privacysandbox.ads.adservices.measurement.MeasurementManager obtain(android.content.Context)>($r0);
+
+        return $r1;
+    }
+
+    public abstract java.lang.Object deleteRegistrations(androidx.privacysandbox.ads.adservices.measurement.DeletionRequest, kotlin.coroutines.Continuation);
+
+    public abstract java.lang.Object getMeasurementApiStatus(kotlin.coroutines.Continuation);
+
+    public abstract java.lang.Object registerSource(android.net.Uri, android.view.InputEvent, kotlin.coroutines.Continuation);
+
+    public abstract java.lang.Object registerTrigger(android.net.Uri, kotlin.coroutines.Continuation);
+
+    public abstract java.lang.Object registerWebSource(androidx.privacysandbox.ads.adservices.measurement.WebSourceRegistrationRequest, kotlin.coroutines.Continuation);
+
+    public abstract java.lang.Object registerWebTrigger(androidx.privacysandbox.ads.adservices.measurement.WebTriggerRegistrationRequest, kotlin.coroutines.Continuation);
+}

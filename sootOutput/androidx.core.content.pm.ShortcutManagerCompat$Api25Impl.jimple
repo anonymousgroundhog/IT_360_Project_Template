@@ -1,0 +1,55 @@
+class androidx.core.content.pm.ShortcutManagerCompat$Api25Impl extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.content.pm.ShortcutManagerCompat$Api25Impl r0;
+
+        r0 := @this: androidx.core.content.pm.ShortcutManagerCompat$Api25Impl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static java.lang.String getShortcutInfoWithLowestRank(java.util.List)
+    {
+        java.util.Iterator $r2;
+        android.content.pm.ShortcutInfo r4;
+        java.util.List r0;
+        int i0, $i1;
+        java.lang.Object $r3;
+        java.lang.String r1;
+        boolean $z0;
+
+        r0 := @parameter0: java.util.List;
+
+        i0 = -1;
+
+        r1 = null;
+
+        $r2 = interfaceinvoke r0.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r3 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r4 = (android.content.pm.ShortcutInfo) $r3;
+
+        $i1 = virtualinvoke r4.<android.content.pm.ShortcutInfo: int getRank()>();
+
+        if $i1 <= i0 goto label1;
+
+        r1 = virtualinvoke r4.<android.content.pm.ShortcutInfo: java.lang.String getId()>();
+
+        i0 = virtualinvoke r4.<android.content.pm.ShortcutInfo: int getRank()>();
+
+        goto label1;
+
+     label2:
+        return r1;
+    }
+}

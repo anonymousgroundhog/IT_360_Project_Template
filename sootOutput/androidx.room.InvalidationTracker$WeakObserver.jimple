@@ -1,0 +1,67 @@
+class androidx.room.InvalidationTracker$WeakObserver extends androidx.room.InvalidationTracker$Observer
+{
+    final java.lang.ref.WeakReference mDelegateRef;
+    final androidx.room.InvalidationTracker mTracker;
+
+    void <init>(androidx.room.InvalidationTracker, androidx.room.InvalidationTracker$Observer)
+    {
+        androidx.room.InvalidationTracker $r1;
+        androidx.room.InvalidationTracker$WeakObserver r0;
+        androidx.room.InvalidationTracker$Observer $r2;
+        java.lang.String[] $r3;
+        java.lang.ref.WeakReference $r4;
+
+        r0 := @this: androidx.room.InvalidationTracker$WeakObserver;
+
+        $r1 := @parameter0: androidx.room.InvalidationTracker;
+
+        $r2 := @parameter1: androidx.room.InvalidationTracker$Observer;
+
+        $r3 = $r2.<androidx.room.InvalidationTracker$Observer: java.lang.String[] mTables>;
+
+        specialinvoke r0.<androidx.room.InvalidationTracker$Observer: void <init>(java.lang.String[])>($r3);
+
+        r0.<androidx.room.InvalidationTracker$WeakObserver: androidx.room.InvalidationTracker mTracker> = $r1;
+
+        $r4 = new java.lang.ref.WeakReference;
+
+        specialinvoke $r4.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>($r2);
+
+        r0.<androidx.room.InvalidationTracker$WeakObserver: java.lang.ref.WeakReference mDelegateRef> = $r4;
+
+        return;
+    }
+
+    public void onInvalidated(java.util.Set)
+    {
+        androidx.room.InvalidationTracker $r2;
+        androidx.room.InvalidationTracker$WeakObserver r0;
+        androidx.room.InvalidationTracker$Observer r5;
+        java.util.Set r1;
+        java.lang.Object $r3;
+        java.lang.ref.WeakReference r4;
+
+        r0 := @this: androidx.room.InvalidationTracker$WeakObserver;
+
+        r1 := @parameter0: java.util.Set;
+
+        r4 = r0.<androidx.room.InvalidationTracker$WeakObserver: java.lang.ref.WeakReference mDelegateRef>;
+
+        $r3 = virtualinvoke r4.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        r5 = (androidx.room.InvalidationTracker$Observer) $r3;
+
+        if r5 != null goto label1;
+
+        $r2 = r0.<androidx.room.InvalidationTracker$WeakObserver: androidx.room.InvalidationTracker mTracker>;
+
+        virtualinvoke $r2.<androidx.room.InvalidationTracker: void removeObserver(androidx.room.InvalidationTracker$Observer)>(r0);
+
+        return;
+
+     label1:
+        virtualinvoke r5.<androidx.room.InvalidationTracker$Observer: void onInvalidated(java.util.Set)>(r1);
+
+        return;
+    }
+}

@@ -1,0 +1,202 @@
+class androidx.work.impl.background.systemalarm.ConstraintsCommandHandler extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+    private final android.content.Context mContext;
+    private final androidx.work.impl.background.systemalarm.SystemAlarmDispatcher mDispatcher;
+    private final int mStartId;
+    private final androidx.work.impl.constraints.WorkConstraintsTracker mWorkConstraintsTracker;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+
+        $r0 = staticinvoke <androidx.work.Logger: java.lang.String tagWithPrefix(java.lang.String)>("ConstraintsCmdHandler");
+
+        <androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: java.lang.String TAG> = $r0;
+
+        return;
+    }
+
+    void <init>(android.content.Context, int, androidx.work.impl.background.systemalarm.SystemAlarmDispatcher)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r4;
+        android.content.Context $r1;
+        androidx.work.impl.constraints.WorkConstraintsTracker $r3;
+        int $i0;
+        androidx.work.impl.background.systemalarm.ConstraintsCommandHandler r0;
+        androidx.work.impl.background.systemalarm.SystemAlarmDispatcher $r2;
+
+        r0 := @this: androidx.work.impl.background.systemalarm.ConstraintsCommandHandler;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: android.content.Context mContext> = $r1;
+
+        r0.<androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: int mStartId> = $i0;
+
+        r0.<androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher mDispatcher> = $r2;
+
+        $r2 = r0.<androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher mDispatcher>;
+
+        $r4 = virtualinvoke $r2.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: androidx.work.impl.utils.taskexecutor.TaskExecutor getTaskExecutor()>();
+
+        $r3 = new androidx.work.impl.constraints.WorkConstraintsTracker;
+
+        $r1 = r0.<androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: android.content.Context mContext>;
+
+        specialinvoke $r3.<androidx.work.impl.constraints.WorkConstraintsTracker: void <init>(android.content.Context,androidx.work.impl.utils.taskexecutor.TaskExecutor,androidx.work.impl.constraints.WorkConstraintsCallback)>($r1, $r4, null);
+
+        r0.<androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: androidx.work.impl.constraints.WorkConstraintsTracker mWorkConstraintsTracker> = $r3;
+
+        return;
+    }
+
+    void handleConstraintsChanged()
+    {
+        android.content.Context r6;
+        java.lang.Object[] $r15;
+        long $l1, $l2;
+        android.content.Intent $r13;
+        androidx.work.impl.background.systemalarm.SystemAlarmDispatcher r1, $r17;
+        androidx.work.impl.model.WorkSpec r10;
+        java.util.ArrayList $r18;
+        androidx.work.Logger $r14;
+        androidx.work.impl.constraints.WorkConstraintsTracker r7;
+        byte $b3;
+        androidx.work.impl.WorkDatabase $r3;
+        androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$AddRunnable $r19;
+        int $i0;
+        androidx.work.impl.background.systemalarm.ConstraintsCommandHandler r0;
+        java.lang.String r11, r12;
+        boolean $z0;
+        java.util.Iterator $r8;
+        androidx.work.impl.model.WorkSpecDao $r4;
+        java.util.List $r5;
+        java.lang.Throwable[] $r16;
+        androidx.work.impl.WorkManagerImpl $r2;
+        java.lang.Object $r9;
+
+        r0 := @this: androidx.work.impl.background.systemalarm.ConstraintsCommandHandler;
+
+        r1 = r0.<androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher mDispatcher>;
+
+        $r2 = virtualinvoke r1.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: androidx.work.impl.WorkManagerImpl getWorkManager()>();
+
+        $r3 = virtualinvoke $r2.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkDatabase getWorkDatabase()>();
+
+        $r4 = virtualinvoke $r3.<androidx.work.impl.WorkDatabase: androidx.work.impl.model.WorkSpecDao workSpecDao()>();
+
+        $r5 = interfaceinvoke $r4.<androidx.work.impl.model.WorkSpecDao: java.util.List getScheduledWork()>();
+
+        r6 = r0.<androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: android.content.Context mContext>;
+
+        staticinvoke <androidx.work.impl.background.systemalarm.ConstraintProxy: void updateAll(android.content.Context,java.util.List)>(r6, $r5);
+
+        r7 = r0.<androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: androidx.work.impl.constraints.WorkConstraintsTracker mWorkConstraintsTracker>;
+
+        virtualinvoke r7.<androidx.work.impl.constraints.WorkConstraintsTracker: void replace(java.lang.Iterable)>($r5);
+
+        $r18 = new java.util.ArrayList;
+
+        $i0 = interfaceinvoke $r5.<java.util.List: int size()>();
+
+        specialinvoke $r18.<java.util.ArrayList: void <init>(int)>($i0);
+
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $r8 = interfaceinvoke $r5.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r8.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r9 = interfaceinvoke $r8.<java.util.Iterator: java.lang.Object next()>();
+
+        r10 = (androidx.work.impl.model.WorkSpec) $r9;
+
+        r11 = r10.<androidx.work.impl.model.WorkSpec: java.lang.String id>;
+
+        $l2 = virtualinvoke r10.<androidx.work.impl.model.WorkSpec: long calculateNextRunTime()>();
+
+        $b3 = $l1 cmp $l2;
+
+        $i0 = (int) $b3;
+
+        if $i0 < 0 goto label1;
+
+        $z0 = virtualinvoke r10.<androidx.work.impl.model.WorkSpec: boolean hasConstraints()>();
+
+        if $z0 == 0 goto label2;
+
+        r7 = r0.<androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: androidx.work.impl.constraints.WorkConstraintsTracker mWorkConstraintsTracker>;
+
+        $z0 = virtualinvoke r7.<androidx.work.impl.constraints.WorkConstraintsTracker: boolean areAllConstraintsMet(java.lang.String)>(r11);
+
+        if $z0 == 0 goto label1;
+
+     label2:
+        interfaceinvoke $r18.<java.util.List: boolean add(java.lang.Object)>(r10);
+
+        goto label1;
+
+     label3:
+        $r8 = interfaceinvoke $r18.<java.util.List: java.util.Iterator iterator()>();
+
+     label4:
+        $z0 = interfaceinvoke $r8.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label5;
+
+        $r9 = interfaceinvoke $r8.<java.util.Iterator: java.lang.Object next()>();
+
+        r10 = (androidx.work.impl.model.WorkSpec) $r9;
+
+        r12 = r10.<androidx.work.impl.model.WorkSpec: java.lang.String id>;
+
+        r6 = r0.<androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: android.content.Context mContext>;
+
+        $r13 = staticinvoke <androidx.work.impl.background.systemalarm.CommandHandler: android.content.Intent createDelayMetIntent(android.content.Context,java.lang.String)>(r6, r12);
+
+        $r14 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r11 = <androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: java.lang.String TAG>;
+
+        $r15 = newarray (java.lang.Object)[1];
+
+        $r15[0] = r12;
+
+        r12 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Creating a delay_met command for workSpec with id (%s)", $r15);
+
+        $r16 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r14.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>(r11, r12, $r16);
+
+        r1 = r0.<androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher mDispatcher>;
+
+        $r19 = new androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$AddRunnable;
+
+        $r17 = r0.<androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher mDispatcher>;
+
+        $i0 = r0.<androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: int mStartId>;
+
+        specialinvoke $r19.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$AddRunnable: void <init>(androidx.work.impl.background.systemalarm.SystemAlarmDispatcher,android.content.Intent,int)>($r17, $r13, $i0);
+
+        virtualinvoke r1.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: void postOnMainThread(java.lang.Runnable)>($r19);
+
+        goto label4;
+
+     label5:
+        r7 = r0.<androidx.work.impl.background.systemalarm.ConstraintsCommandHandler: androidx.work.impl.constraints.WorkConstraintsTracker mWorkConstraintsTracker>;
+
+        virtualinvoke r7.<androidx.work.impl.constraints.WorkConstraintsTracker: void reset()>();
+
+        return;
+    }
+}

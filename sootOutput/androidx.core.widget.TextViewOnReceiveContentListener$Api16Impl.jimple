@@ -1,0 +1,52 @@
+final class androidx.core.widget.TextViewOnReceiveContentListener$Api16Impl extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.widget.TextViewOnReceiveContentListener$Api16Impl r0;
+
+        r0 := @this: androidx.core.widget.TextViewOnReceiveContentListener$Api16Impl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static java.lang.CharSequence coerce(android.content.Context, android.content.ClipData$Item, int)
+    {
+        android.content.Context $r0;
+        java.lang.CharSequence $r2;
+        int $i0;
+        android.content.ClipData$Item $r1;
+        java.lang.String $r3;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: android.content.ClipData$Item;
+
+        $i0 := @parameter2: int;
+
+        $i0 = $i0 & 1;
+
+        if $i0 == 0 goto label2;
+
+        $r2 = virtualinvoke $r1.<android.content.ClipData$Item: java.lang.CharSequence coerceToText(android.content.Context)>($r0);
+
+        $z0 = $r2 instanceof android.text.Spanned;
+
+        if $z0 == 0 goto label1;
+
+        $r3 = interfaceinvoke $r2.<java.lang.CharSequence: java.lang.String toString()>();
+
+        return $r3;
+
+     label1:
+        return $r2;
+
+     label2:
+        $r2 = virtualinvoke $r1.<android.content.ClipData$Item: java.lang.CharSequence coerceToStyledText(android.content.Context)>($r0);
+
+        return $r2;
+    }
+}

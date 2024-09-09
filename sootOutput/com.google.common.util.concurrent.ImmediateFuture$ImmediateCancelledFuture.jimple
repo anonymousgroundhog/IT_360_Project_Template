@@ -1,0 +1,41 @@
+final class com.google.common.util.concurrent.ImmediateFuture$ImmediateCancelledFuture extends com.google.common.util.concurrent.AbstractFuture$TrustedFuture
+{
+    static final com.google.common.util.concurrent.ImmediateFuture$ImmediateCancelledFuture INSTANCE;
+
+    static void <clinit>()
+    {
+        com.google.common.util.concurrent.ImmediateFuture$ImmediateCancelledFuture $r0;
+        boolean $z0;
+
+        $z0 = <com.google.common.util.concurrent.AbstractFuture: boolean GENERATE_CANCELLATION_CAUSES>;
+
+        if $z0 == 0 goto label1;
+
+        $r0 = null;
+
+        goto label2;
+
+     label1:
+        $r0 = new com.google.common.util.concurrent.ImmediateFuture$ImmediateCancelledFuture;
+
+        specialinvoke $r0.<com.google.common.util.concurrent.ImmediateFuture$ImmediateCancelledFuture: void <init>()>();
+
+     label2:
+        <com.google.common.util.concurrent.ImmediateFuture$ImmediateCancelledFuture: com.google.common.util.concurrent.ImmediateFuture$ImmediateCancelledFuture INSTANCE> = $r0;
+
+        return;
+    }
+
+    void <init>()
+    {
+        com.google.common.util.concurrent.ImmediateFuture$ImmediateCancelledFuture r0;
+
+        r0 := @this: com.google.common.util.concurrent.ImmediateFuture$ImmediateCancelledFuture;
+
+        specialinvoke r0.<com.google.common.util.concurrent.AbstractFuture$TrustedFuture: void <init>()>();
+
+        virtualinvoke r0.<com.google.common.util.concurrent.ImmediateFuture$ImmediateCancelledFuture: boolean cancel(boolean)>(0);
+
+        return;
+    }
+}

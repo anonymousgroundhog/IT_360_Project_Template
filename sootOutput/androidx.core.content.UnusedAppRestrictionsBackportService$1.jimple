@@ -1,0 +1,47 @@
+class androidx.core.content.UnusedAppRestrictionsBackportService$1 extends androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportService$Stub
+{
+    final androidx.core.content.UnusedAppRestrictionsBackportService this$0;
+
+    void <init>(androidx.core.content.UnusedAppRestrictionsBackportService)
+    {
+        androidx.core.content.UnusedAppRestrictionsBackportService$1 r0;
+        androidx.core.content.UnusedAppRestrictionsBackportService $r1;
+
+        r0 := @this: androidx.core.content.UnusedAppRestrictionsBackportService$1;
+
+        $r1 := @parameter0: androidx.core.content.UnusedAppRestrictionsBackportService;
+
+        r0.<androidx.core.content.UnusedAppRestrictionsBackportService$1: androidx.core.content.UnusedAppRestrictionsBackportService this$0> = $r1;
+
+        specialinvoke r0.<androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportService$Stub: void <init>()>();
+
+        return;
+    }
+
+    public void isPermissionRevocationEnabledForApp(androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportCallback) throws android.os.RemoteException
+    {
+        androidx.core.content.UnusedAppRestrictionsBackportService$1 r0;
+        androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportCallback $r1;
+        androidx.core.content.UnusedAppRestrictionsBackportService $r3;
+        androidx.core.content.UnusedAppRestrictionsBackportCallback r2;
+
+        r0 := @this: androidx.core.content.UnusedAppRestrictionsBackportService$1;
+
+        $r1 := @parameter0: androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportCallback;
+
+        if $r1 != null goto label1;
+
+        return;
+
+     label1:
+        r2 = new androidx.core.content.UnusedAppRestrictionsBackportCallback;
+
+        specialinvoke r2.<androidx.core.content.UnusedAppRestrictionsBackportCallback: void <init>(androidx.core.app.unusedapprestrictions.IUnusedAppRestrictionsBackportCallback)>($r1);
+
+        $r3 = r0.<androidx.core.content.UnusedAppRestrictionsBackportService$1: androidx.core.content.UnusedAppRestrictionsBackportService this$0>;
+
+        virtualinvoke $r3.<androidx.core.content.UnusedAppRestrictionsBackportService: void isPermissionRevocationEnabled(androidx.core.content.UnusedAppRestrictionsBackportCallback)>(r2);
+
+        return;
+    }
+}

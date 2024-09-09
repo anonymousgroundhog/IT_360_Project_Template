@@ -1,0 +1,46 @@
+class androidx.room.RoomTrackingLiveData$3 extends androidx.room.InvalidationTracker$Observer
+{
+    final androidx.room.RoomTrackingLiveData this$0;
+
+    void <init>(androidx.room.RoomTrackingLiveData, java.lang.String[])
+    {
+        androidx.room.RoomTrackingLiveData$3 r0;
+        androidx.room.RoomTrackingLiveData $r1;
+        java.lang.String[] $r2;
+
+        r0 := @this: androidx.room.RoomTrackingLiveData$3;
+
+        $r1 := @parameter0: androidx.room.RoomTrackingLiveData;
+
+        $r2 := @parameter1: java.lang.String[];
+
+        r0.<androidx.room.RoomTrackingLiveData$3: androidx.room.RoomTrackingLiveData this$0> = $r1;
+
+        specialinvoke r0.<androidx.room.InvalidationTracker$Observer: void <init>(java.lang.String[])>($r2);
+
+        return;
+    }
+
+    public void onInvalidated(java.util.Set)
+    {
+        androidx.room.RoomTrackingLiveData$3 r0;
+        androidx.arch.core.executor.ArchTaskExecutor $r2;
+        java.util.Set r1;
+        androidx.room.RoomTrackingLiveData $r3;
+        java.lang.Runnable $r4;
+
+        r0 := @this: androidx.room.RoomTrackingLiveData$3;
+
+        r1 := @parameter0: java.util.Set;
+
+        $r2 = staticinvoke <androidx.arch.core.executor.ArchTaskExecutor: androidx.arch.core.executor.ArchTaskExecutor getInstance()>();
+
+        $r3 = r0.<androidx.room.RoomTrackingLiveData$3: androidx.room.RoomTrackingLiveData this$0>;
+
+        $r4 = $r3.<androidx.room.RoomTrackingLiveData: java.lang.Runnable mInvalidationRunnable>;
+
+        virtualinvoke $r2.<androidx.arch.core.executor.ArchTaskExecutor: void executeOnMainThread(java.lang.Runnable)>($r4);
+
+        return;
+    }
+}

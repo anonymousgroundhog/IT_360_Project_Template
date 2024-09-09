@@ -1,0 +1,74 @@
+public final class kotlin.io.ExceptionsKt extends java.lang.Object
+{
+
+    public static final java.lang.String access$constructMessage(java.io.File, java.io.File, java.lang.String)
+    {
+        java.lang.String $r2;
+        java.io.File $r0, $r1;
+
+        $r0 := @parameter0: java.io.File;
+
+        $r1 := @parameter1: java.io.File;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r2 = staticinvoke <kotlin.io.ExceptionsKt: java.lang.String constructMessage(java.io.File,java.io.File,java.lang.String)>($r0, $r1, $r2);
+
+        return $r2;
+    }
+
+    private static final java.lang.String constructMessage(java.io.File, java.io.File, java.lang.String)
+    {
+        java.lang.StringBuilder r3, $r5;
+        java.lang.String $r2, $r4;
+        java.io.File $r0, $r1;
+
+        $r0 := @parameter0: java.io.File;
+
+        $r1 := @parameter1: java.io.File;
+
+        $r2 := @parameter2: java.lang.String;
+
+        r3 = new java.lang.StringBuilder;
+
+        $r4 = virtualinvoke $r0.<java.io.File: java.lang.String toString()>();
+
+        specialinvoke r3.<java.lang.StringBuilder: void <init>(java.lang.String)>($r4);
+
+        if $r1 == null goto label1;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" -> ");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r4 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+     label1:
+        if $r2 == null goto label2;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": ");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+     label2:
+        $r2 = virtualinvoke r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r2, "sb.toString()");
+
+        return $r2;
+    }
+}

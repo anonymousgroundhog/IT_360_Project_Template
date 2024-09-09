@@ -1,0 +1,37 @@
+class androidx.browser.trusted.ConnectionHolder$WrapperFactory extends java.lang.Object
+{
+
+    void <init>()
+    {
+        androidx.browser.trusted.ConnectionHolder$WrapperFactory r0;
+
+        r0 := @this: androidx.browser.trusted.ConnectionHolder$WrapperFactory;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    androidx.browser.trusted.TrustedWebActivityServiceConnection create(android.content.ComponentName, android.os.IBinder)
+    {
+        android.content.ComponentName $r1;
+        androidx.browser.trusted.ConnectionHolder$WrapperFactory r0;
+        android.os.IBinder $r2;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection $r3;
+        android.support.customtabs.trusted.ITrustedWebActivityService $r4;
+
+        r0 := @this: androidx.browser.trusted.ConnectionHolder$WrapperFactory;
+
+        $r1 := @parameter0: android.content.ComponentName;
+
+        $r2 := @parameter1: android.os.IBinder;
+
+        $r3 = new androidx.browser.trusted.TrustedWebActivityServiceConnection;
+
+        $r4 = staticinvoke <android.support.customtabs.trusted.ITrustedWebActivityService$Stub: android.support.customtabs.trusted.ITrustedWebActivityService asInterface(android.os.IBinder)>($r2);
+
+        specialinvoke $r3.<androidx.browser.trusted.TrustedWebActivityServiceConnection: void <init>(android.support.customtabs.trusted.ITrustedWebActivityService,android.content.ComponentName)>($r4, $r1);
+
+        return $r3;
+    }
+}

@@ -1,0 +1,151 @@
+final class com.google.android.gms.internal.ads.zzaik extends java.lang.Object
+{
+    public final com.google.android.gms.internal.ads.zzado zza;
+    public final long zzb;
+    public final long zzc;
+    public final int zzd;
+    public final int zze;
+    public final long[] zzf;
+
+    private void <init>(com.google.android.gms.internal.ads.zzado, long, long, long[], int, int)
+    {
+        long[] $r2;
+        com.google.android.gms.internal.ads.zzaik r0;
+        int $i2, $i3;
+        long $l0, $l1;
+        com.google.android.gms.internal.ads.zzado $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzaik;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzado;
+
+        $l0 := @parameter1: long;
+
+        $l1 := @parameter2: long;
+
+        $r2 := @parameter3: long[];
+
+        $i2 := @parameter4: int;
+
+        $i3 := @parameter5: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzaik: com.google.android.gms.internal.ads.zzado zza> = $r1;
+
+        r0.<com.google.android.gms.internal.ads.zzaik: long zzb> = $l0;
+
+        r0.<com.google.android.gms.internal.ads.zzaik: long zzc> = $l1;
+
+        r0.<com.google.android.gms.internal.ads.zzaik: long[] zzf> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzaik: int zzd> = $i2;
+
+        r0.<com.google.android.gms.internal.ads.zzaik: int zze> = $i3;
+
+        return;
+    }
+
+    public static com.google.android.gms.internal.ads.zzaik zza(com.google.android.gms.internal.ads.zzado, com.google.android.gms.internal.ads.zzfp)
+    {
+        com.google.android.gms.internal.ads.zzaik $r3;
+        long $l3, $l5;
+        long[] $r2;
+        com.google.android.gms.internal.ads.zzfp $r1;
+        int $i0, $i1, $i2, $i4;
+        com.google.android.gms.internal.ads.zzado $r0;
+
+        $r0 := @parameter0: com.google.android.gms.internal.ads.zzado;
+
+        $r1 := @parameter1: com.google.android.gms.internal.ads.zzfp;
+
+        $i0 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzfp: int zzg()>();
+
+        $i1 = $i0 & 1;
+
+        if $i1 == 0 goto label01;
+
+        $i1 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzfp: int zzp()>();
+
+        goto label02;
+
+     label01:
+        $i1 = -1;
+
+     label02:
+        $i2 = $i0 & 2;
+
+        if $i2 == 0 goto label03;
+
+        $l3 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzfp: long zzu()>();
+
+        goto label04;
+
+     label03:
+        $l3 = -1L;
+
+     label04:
+        $i2 = $i0 & 4;
+
+        if $i2 != 4 goto label07;
+
+        $r2 = newarray (long)[100];
+
+        $i2 = 0;
+
+     label05:
+        if $i2 >= 100 goto label06;
+
+        $i4 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzfp: int zzm()>();
+
+        $l5 = (long) $i4;
+
+        $r2[$i2] = $l5;
+
+        $i2 = $i2 + 1;
+
+        goto label05;
+
+     label06:
+        goto label08;
+
+     label07:
+        $r2 = null;
+
+     label08:
+        $i0 = $i0 & 8;
+
+        if $i0 == 0 goto label09;
+
+        virtualinvoke $r1.<com.google.android.gms.internal.ads.zzfp: void zzL(int)>(4);
+
+     label09:
+        $i0 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzfp: int zzb()>();
+
+        if $i0 < 24 goto label10;
+
+        virtualinvoke $r1.<com.google.android.gms.internal.ads.zzfp: void zzL(int)>(21);
+
+        $i2 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzfp: int zzo()>();
+
+        $i0 = $i2 >> 12;
+
+        $i2 = $i2 & 4095;
+
+        goto label11;
+
+     label10:
+        $i0 = -1;
+
+        $i2 = -1;
+
+     label11:
+        $l5 = (long) $i1;
+
+        $r3 = new com.google.android.gms.internal.ads.zzaik;
+
+        specialinvoke $r3.<com.google.android.gms.internal.ads.zzaik: void <init>(com.google.android.gms.internal.ads.zzado,long,long,long[],int,int)>($r0, $l5, $l3, $r2, $i0, $i2);
+
+        return $r3;
+    }
+}

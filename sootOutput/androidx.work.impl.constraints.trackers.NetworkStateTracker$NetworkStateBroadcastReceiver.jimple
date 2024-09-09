@@ -1,0 +1,73 @@
+class androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver extends android.content.BroadcastReceiver
+{
+    final androidx.work.impl.constraints.trackers.NetworkStateTracker this$0;
+
+    void <init>(androidx.work.impl.constraints.trackers.NetworkStateTracker)
+    {
+        androidx.work.impl.constraints.trackers.NetworkStateTracker $r1;
+        androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver r0;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver;
+
+        $r1 := @parameter0: androidx.work.impl.constraints.trackers.NetworkStateTracker;
+
+        r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver: androidx.work.impl.constraints.trackers.NetworkStateTracker this$0> = $r1;
+
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        android.content.Context $r1;
+        androidx.work.impl.constraints.trackers.NetworkStateTracker $r6, $r7;
+        android.content.Intent $r2;
+        androidx.work.Logger $r4;
+        androidx.work.impl.constraints.NetworkState $r8;
+        java.lang.Throwable[] $r5;
+        androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver r0;
+        java.lang.String $r3;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        if $r2 == null goto label2;
+
+        $r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getAction()>();
+
+        if $r3 != null goto label1;
+
+        return;
+
+     label1:
+        $r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getAction()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("android.net.conn.CONNECTIVITY_CHANGE");
+
+        if $z0 == 0 goto label2;
+
+        $r4 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r3 = <androidx.work.impl.constraints.trackers.NetworkStateTracker: java.lang.String TAG>;
+
+        $r5 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r4.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>($r3, "Network broadcast received", $r5);
+
+        $r6 = r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver: androidx.work.impl.constraints.trackers.NetworkStateTracker this$0>;
+
+        $r7 = r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver: androidx.work.impl.constraints.trackers.NetworkStateTracker this$0>;
+
+        $r8 = virtualinvoke $r7.<androidx.work.impl.constraints.trackers.NetworkStateTracker: androidx.work.impl.constraints.NetworkState getActiveNetworkState()>();
+
+        virtualinvoke $r6.<androidx.work.impl.constraints.trackers.NetworkStateTracker: void setState(java.lang.Object)>($r8);
+
+     label2:
+        return;
+    }
+}

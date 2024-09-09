@@ -1,0 +1,853 @@
+public final class androidx.browser.customtabs.CustomTabsIntent$Builder extends java.lang.Object
+{
+    private java.util.ArrayList mActionButtons;
+    private android.util.SparseArray mColorSchemeParamBundles;
+    private final androidx.browser.customtabs.CustomTabColorSchemeParams$Builder mDefaultColorSchemeBuilder;
+    private android.os.Bundle mDefaultColorSchemeBundle;
+    private boolean mInstantAppsEnabled;
+    private final android.content.Intent mIntent;
+    private java.util.ArrayList mMenuItems;
+    private int mShareState;
+    private android.os.Bundle mStartAnimationBundle;
+
+    public void <init>()
+    {
+        android.content.Intent $r1;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        androidx.browser.customtabs.CustomTabColorSchemeParams$Builder $r2;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new android.content.Intent;
+
+        specialinvoke $r1.<android.content.Intent: void <init>(java.lang.String)>("android.intent.action.VIEW");
+
+        r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent> = $r1;
+
+        $r2 = new androidx.browser.customtabs.CustomTabColorSchemeParams$Builder;
+
+        specialinvoke $r2.<androidx.browser.customtabs.CustomTabColorSchemeParams$Builder: void <init>()>();
+
+        r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: androidx.browser.customtabs.CustomTabColorSchemeParams$Builder mDefaultColorSchemeBuilder> = $r2;
+
+        r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: int mShareState> = 0;
+
+        r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: boolean mInstantAppsEnabled> = 1;
+
+        return;
+    }
+
+    public void <init>(androidx.browser.customtabs.CustomTabsSession)
+    {
+        androidx.browser.customtabs.CustomTabColorSchemeParams$Builder $r3;
+        android.content.Intent $r2;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        androidx.browser.customtabs.CustomTabsSession $r1;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $r1 := @parameter0: androidx.browser.customtabs.CustomTabsSession;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new android.content.Intent;
+
+        specialinvoke $r2.<android.content.Intent: void <init>(java.lang.String)>("android.intent.action.VIEW");
+
+        r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent> = $r2;
+
+        $r3 = new androidx.browser.customtabs.CustomTabColorSchemeParams$Builder;
+
+        specialinvoke $r3.<androidx.browser.customtabs.CustomTabColorSchemeParams$Builder: void <init>()>();
+
+        r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: androidx.browser.customtabs.CustomTabColorSchemeParams$Builder mDefaultColorSchemeBuilder> = $r3;
+
+        r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: int mShareState> = 0;
+
+        r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: boolean mInstantAppsEnabled> = 1;
+
+        if $r1 == null goto label1;
+
+        virtualinvoke r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: androidx.browser.customtabs.CustomTabsIntent$Builder setSession(androidx.browser.customtabs.CustomTabsSession)>($r1);
+
+     label1:
+        return;
+    }
+
+    private void setSessionParameters(android.os.IBinder, android.app.PendingIntent)
+    {
+        android.os.Bundle r3;
+        android.content.Intent $r4;
+        android.app.PendingIntent $r2;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        android.os.IBinder $r1;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $r1 := @parameter0: android.os.IBinder;
+
+        $r2 := @parameter1: android.app.PendingIntent;
+
+        r3 = new android.os.Bundle;
+
+        specialinvoke r3.<android.os.Bundle: void <init>()>();
+
+        staticinvoke <androidx.core.app.BundleCompat: void putBinder(android.os.Bundle,java.lang.String,android.os.IBinder)>(r3, "android.support.customtabs.extra.SESSION", $r1);
+
+        if $r2 == null goto label1;
+
+        virtualinvoke r3.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("android.support.customtabs.extra.SESSION_ID", $r2);
+
+     label1:
+        $r4 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent putExtras(android.os.Bundle)>(r3);
+
+        return;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder addDefaultShareMenuItem()
+    {
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        virtualinvoke r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: androidx.browser.customtabs.CustomTabsIntent$Builder setShareState(int)>(1);
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder addMenuItem(java.lang.String, android.app.PendingIntent)
+    {
+        android.os.Bundle r4;
+        java.lang.String $r1;
+        android.app.PendingIntent $r2;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        java.util.ArrayList r3;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: android.app.PendingIntent;
+
+        r3 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: java.util.ArrayList mMenuItems>;
+
+        if r3 != null goto label1;
+
+        r3 = new java.util.ArrayList;
+
+        specialinvoke r3.<java.util.ArrayList: void <init>()>();
+
+        r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: java.util.ArrayList mMenuItems> = r3;
+
+     label1:
+        r4 = new android.os.Bundle;
+
+        specialinvoke r4.<android.os.Bundle: void <init>()>();
+
+        virtualinvoke r4.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("android.support.customtabs.customaction.MENU_ITEM_TITLE", $r1);
+
+        virtualinvoke r4.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("android.support.customtabs.customaction.PENDING_INTENT", $r2);
+
+        r3 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: java.util.ArrayList mMenuItems>;
+
+        virtualinvoke r3.<java.util.ArrayList: boolean add(java.lang.Object)>(r4);
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder addToolbarItem(int, android.graphics.Bitmap, java.lang.String, android.app.PendingIntent) throws java.lang.IllegalStateException
+    {
+        java.lang.IllegalStateException r6;
+        android.os.Bundle r5;
+        android.app.PendingIntent $r3;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        java.util.ArrayList r4;
+        android.graphics.Bitmap $r1;
+        int $i0, $i1;
+        java.lang.String $r2;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.graphics.Bitmap;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r3 := @parameter3: android.app.PendingIntent;
+
+        r4 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: java.util.ArrayList mActionButtons>;
+
+        if r4 != null goto label1;
+
+        r4 = new java.util.ArrayList;
+
+        specialinvoke r4.<java.util.ArrayList: void <init>()>();
+
+        r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: java.util.ArrayList mActionButtons> = r4;
+
+     label1:
+        r4 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: java.util.ArrayList mActionButtons>;
+
+        $i1 = virtualinvoke r4.<java.util.ArrayList: int size()>();
+
+        if $i1 >= 5 goto label2;
+
+        r5 = new android.os.Bundle;
+
+        specialinvoke r5.<android.os.Bundle: void <init>()>();
+
+        virtualinvoke r5.<android.os.Bundle: void putInt(java.lang.String,int)>("android.support.customtabs.customaction.ID", $i0);
+
+        virtualinvoke r5.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("android.support.customtabs.customaction.ICON", $r1);
+
+        virtualinvoke r5.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("android.support.customtabs.customaction.DESCRIPTION", $r2);
+
+        virtualinvoke r5.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("android.support.customtabs.customaction.PENDING_INTENT", $r3);
+
+        r4 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: java.util.ArrayList mActionButtons>;
+
+        virtualinvoke r4.<java.util.ArrayList: boolean add(java.lang.Object)>(r5);
+
+        return r0;
+
+     label2:
+        r6 = new java.lang.IllegalStateException;
+
+        specialinvoke r6.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Exceeded maximum toolbar item count of 5");
+
+        throw r6;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent build()
+    {
+        android.os.Bundle $r5;
+        androidx.browser.customtabs.CustomTabColorSchemeParams$Builder $r3;
+        android.content.Intent r1;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        java.util.ArrayList r2;
+        android.util.SparseArray r6;
+        androidx.browser.customtabs.CustomTabsIntent r7;
+        int $i0;
+        boolean $z0;
+        androidx.browser.customtabs.CustomTabColorSchemeParams $r4;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        $z0 = virtualinvoke r1.<android.content.Intent: boolean hasExtra(java.lang.String)>("android.support.customtabs.extra.SESSION");
+
+        if $z0 != 0 goto label1;
+
+        specialinvoke r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: void setSessionParameters(android.os.IBinder,android.app.PendingIntent)>(null, null);
+
+     label1:
+        r2 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: java.util.ArrayList mMenuItems>;
+
+        if r2 == null goto label2;
+
+        r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        r2 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: java.util.ArrayList mMenuItems>;
+
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putParcelableArrayListExtra(java.lang.String,java.util.ArrayList)>("android.support.customtabs.extra.MENU_ITEMS", r2);
+
+     label2:
+        r2 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: java.util.ArrayList mActionButtons>;
+
+        if r2 == null goto label3;
+
+        r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        r2 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: java.util.ArrayList mActionButtons>;
+
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putParcelableArrayListExtra(java.lang.String,java.util.ArrayList)>("android.support.customtabs.extra.TOOLBAR_ITEMS", r2);
+
+     label3:
+        r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        $z0 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: boolean mInstantAppsEnabled>;
+
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("android.support.customtabs.extra.EXTRA_ENABLE_INSTANT_APPS", $z0);
+
+        r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        $r3 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: androidx.browser.customtabs.CustomTabColorSchemeParams$Builder mDefaultColorSchemeBuilder>;
+
+        $r4 = virtualinvoke $r3.<androidx.browser.customtabs.CustomTabColorSchemeParams$Builder: androidx.browser.customtabs.CustomTabColorSchemeParams build()>();
+
+        $r5 = virtualinvoke $r4.<androidx.browser.customtabs.CustomTabColorSchemeParams: android.os.Bundle toBundle()>();
+
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtras(android.os.Bundle)>($r5);
+
+        $r5 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.os.Bundle mDefaultColorSchemeBundle>;
+
+        if $r5 == null goto label4;
+
+        r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        $r5 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.os.Bundle mDefaultColorSchemeBundle>;
+
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtras(android.os.Bundle)>($r5);
+
+     label4:
+        r6 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.util.SparseArray mColorSchemeParamBundles>;
+
+        if r6 == null goto label5;
+
+        $r5 = new android.os.Bundle;
+
+        specialinvoke $r5.<android.os.Bundle: void <init>()>();
+
+        r6 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.util.SparseArray mColorSchemeParamBundles>;
+
+        virtualinvoke $r5.<android.os.Bundle: void putSparseParcelableArray(java.lang.String,android.util.SparseArray)>("androidx.browser.customtabs.extra.COLOR_SCHEME_PARAMS", r6);
+
+        r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtras(android.os.Bundle)>($r5);
+
+     label5:
+        r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        $i0 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: int mShareState>;
+
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("androidx.browser.customtabs.extra.SHARE_STATE", $i0);
+
+        r7 = new androidx.browser.customtabs.CustomTabsIntent;
+
+        r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        $r5 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.os.Bundle mStartAnimationBundle>;
+
+        specialinvoke r7.<androidx.browser.customtabs.CustomTabsIntent: void <init>(android.content.Intent,android.os.Bundle)>(r1, $r5);
+
+        return r7;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder enableUrlBarHiding()
+    {
+        android.content.Intent $r1;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        virtualinvoke $r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("android.support.customtabs.extra.ENABLE_URLBAR_HIDING", 1);
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setActionButton(android.graphics.Bitmap, java.lang.String, android.app.PendingIntent)
+    {
+        android.graphics.Bitmap $r1;
+        java.lang.String $r2;
+        android.app.PendingIntent $r3;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $r1 := @parameter0: android.graphics.Bitmap;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: android.app.PendingIntent;
+
+        r0 = virtualinvoke r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: androidx.browser.customtabs.CustomTabsIntent$Builder setActionButton(android.graphics.Bitmap,java.lang.String,android.app.PendingIntent,boolean)>($r1, $r2, $r3, 0);
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setActionButton(android.graphics.Bitmap, java.lang.String, android.app.PendingIntent, boolean)
+    {
+        android.os.Bundle r4;
+        android.graphics.Bitmap $r1;
+        android.content.Intent $r5;
+        java.lang.String $r2;
+        android.app.PendingIntent $r3;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $r1 := @parameter0: android.graphics.Bitmap;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: android.app.PendingIntent;
+
+        $z0 := @parameter3: boolean;
+
+        r4 = new android.os.Bundle;
+
+        specialinvoke r4.<android.os.Bundle: void <init>()>();
+
+        virtualinvoke r4.<android.os.Bundle: void putInt(java.lang.String,int)>("android.support.customtabs.customaction.ID", 0);
+
+        virtualinvoke r4.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("android.support.customtabs.customaction.ICON", $r1);
+
+        virtualinvoke r4.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("android.support.customtabs.customaction.DESCRIPTION", $r2);
+
+        virtualinvoke r4.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("android.support.customtabs.customaction.PENDING_INTENT", $r3);
+
+        $r5 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        virtualinvoke $r5.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Bundle)>("android.support.customtabs.extra.ACTION_BUTTON_BUNDLE", r4);
+
+        $r5 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        virtualinvoke $r5.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("android.support.customtabs.extra.TINT_ACTION_BUTTON", $z0);
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setCloseButtonIcon(android.graphics.Bitmap)
+    {
+        android.content.Intent $r2;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        android.graphics.Bitmap $r1;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $r1 := @parameter0: android.graphics.Bitmap;
+
+        $r2 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.support.customtabs.extra.CLOSE_BUTTON_ICON", $r1);
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setColorScheme(int)
+    {
+        int $i0;
+        android.content.Intent $r1;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        java.lang.IllegalArgumentException $r2;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $i0 := @parameter0: int;
+
+        if $i0 < 0 goto label1;
+
+        if $i0 > 2 goto label1;
+
+        $r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        virtualinvoke $r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("androidx.browser.customtabs.extra.COLOR_SCHEME", $i0);
+
+        return r0;
+
+     label1:
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Invalid value for the colorScheme argument");
+
+        throw $r2;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setColorSchemeParams(int, androidx.browser.customtabs.CustomTabColorSchemeParams)
+    {
+        android.os.Bundle $r3;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        java.lang.IllegalArgumentException $r4;
+        android.util.SparseArray $r2;
+        int $i0;
+        java.lang.StringBuilder $r5;
+        java.lang.String $r6;
+        androidx.browser.customtabs.CustomTabColorSchemeParams $r1;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: androidx.browser.customtabs.CustomTabColorSchemeParams;
+
+        if $i0 < 0 goto label2;
+
+        if $i0 > 2 goto label2;
+
+        if $i0 == 0 goto label2;
+
+        $r2 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.util.SparseArray mColorSchemeParamBundles>;
+
+        if $r2 != null goto label1;
+
+        $r2 = new android.util.SparseArray;
+
+        specialinvoke $r2.<android.util.SparseArray: void <init>()>();
+
+        r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.util.SparseArray mColorSchemeParamBundles> = $r2;
+
+     label1:
+        $r2 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.util.SparseArray mColorSchemeParamBundles>;
+
+        $r3 = virtualinvoke $r1.<androidx.browser.customtabs.CustomTabColorSchemeParams: android.os.Bundle toBundle()>();
+
+        virtualinvoke $r2.<android.util.SparseArray: void put(int,java.lang.Object)>($i0, $r3);
+
+        return r0;
+
+     label2:
+        $r4 = new java.lang.IllegalArgumentException;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Invalid colorScheme: ");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r6);
+
+        throw $r4;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setDefaultColorSchemeParams(androidx.browser.customtabs.CustomTabColorSchemeParams)
+    {
+        android.os.Bundle $r2;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        androidx.browser.customtabs.CustomTabColorSchemeParams $r1;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $r1 := @parameter0: androidx.browser.customtabs.CustomTabColorSchemeParams;
+
+        $r2 = virtualinvoke $r1.<androidx.browser.customtabs.CustomTabColorSchemeParams: android.os.Bundle toBundle()>();
+
+        r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.os.Bundle mDefaultColorSchemeBundle> = $r2;
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setDefaultShareMenuItemEnabled(boolean)
+    {
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: androidx.browser.customtabs.CustomTabsIntent$Builder setShareState(int)>(1);
+
+        return r0;
+
+     label1:
+        virtualinvoke r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: androidx.browser.customtabs.CustomTabsIntent$Builder setShareState(int)>(2);
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setExitAnimations(android.content.Context, int, int)
+    {
+        android.content.Context $r1;
+        androidx.core.app.ActivityOptionsCompat $r3;
+        android.os.Bundle $r4;
+        int $i0, $i1;
+        android.content.Intent $r2;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r3 = staticinvoke <androidx.core.app.ActivityOptionsCompat: androidx.core.app.ActivityOptionsCompat makeCustomAnimation(android.content.Context,int,int)>($r1, $i0, $i1);
+
+        $r4 = virtualinvoke $r3.<androidx.core.app.ActivityOptionsCompat: android.os.Bundle toBundle()>();
+
+        $r2 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Bundle)>("android.support.customtabs.extra.EXIT_ANIMATION_BUNDLE", $r4);
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setInstantAppsEnabled(boolean)
+    {
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: boolean mInstantAppsEnabled> = $z0;
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setNavigationBarColor(int)
+    {
+        int $i0;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        androidx.browser.customtabs.CustomTabColorSchemeParams$Builder $r1;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: androidx.browser.customtabs.CustomTabColorSchemeParams$Builder mDefaultColorSchemeBuilder>;
+
+        virtualinvoke $r1.<androidx.browser.customtabs.CustomTabColorSchemeParams$Builder: androidx.browser.customtabs.CustomTabColorSchemeParams$Builder setNavigationBarColor(int)>($i0);
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setNavigationBarDividerColor(int)
+    {
+        int $i0;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        androidx.browser.customtabs.CustomTabColorSchemeParams$Builder $r1;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: androidx.browser.customtabs.CustomTabColorSchemeParams$Builder mDefaultColorSchemeBuilder>;
+
+        virtualinvoke $r1.<androidx.browser.customtabs.CustomTabColorSchemeParams$Builder: androidx.browser.customtabs.CustomTabColorSchemeParams$Builder setNavigationBarDividerColor(int)>($i0);
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setPendingSession(androidx.browser.customtabs.CustomTabsSession$PendingSession)
+    {
+        androidx.browser.customtabs.CustomTabsSession$PendingSession $r1;
+        android.app.PendingIntent $r2;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $r1 := @parameter0: androidx.browser.customtabs.CustomTabsSession$PendingSession;
+
+        $r2 = virtualinvoke $r1.<androidx.browser.customtabs.CustomTabsSession$PendingSession: android.app.PendingIntent getId()>();
+
+        specialinvoke r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: void setSessionParameters(android.os.IBinder,android.app.PendingIntent)>(null, $r2);
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setSecondaryToolbarColor(int)
+    {
+        int $i0;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        androidx.browser.customtabs.CustomTabColorSchemeParams$Builder $r1;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: androidx.browser.customtabs.CustomTabColorSchemeParams$Builder mDefaultColorSchemeBuilder>;
+
+        virtualinvoke $r1.<androidx.browser.customtabs.CustomTabColorSchemeParams$Builder: androidx.browser.customtabs.CustomTabColorSchemeParams$Builder setSecondaryToolbarColor(int)>($i0);
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setSecondaryToolbarViews(android.widget.RemoteViews, int[], android.app.PendingIntent)
+    {
+        android.widget.RemoteViews $r1;
+        int[] $r2;
+        android.content.Intent $r4;
+        android.app.PendingIntent $r3;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $r1 := @parameter0: android.widget.RemoteViews;
+
+        $r2 := @parameter1: int[];
+
+        $r3 := @parameter2: android.app.PendingIntent;
+
+        $r4 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.support.customtabs.extra.EXTRA_REMOTEVIEWS", $r1);
+
+        $r4 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int[])>("android.support.customtabs.extra.EXTRA_REMOTEVIEWS_VIEW_IDS", $r2);
+
+        $r4 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.support.customtabs.extra.EXTRA_REMOTEVIEWS_PENDINGINTENT", $r3);
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setSession(androidx.browser.customtabs.CustomTabsSession)
+    {
+        android.content.ComponentName $r3;
+        android.content.Intent $r2;
+        java.lang.String $r4;
+        android.app.PendingIntent $r6;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        androidx.browser.customtabs.CustomTabsSession $r1;
+        android.os.IBinder $r5;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $r1 := @parameter0: androidx.browser.customtabs.CustomTabsSession;
+
+        $r2 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        $r3 = virtualinvoke $r1.<androidx.browser.customtabs.CustomTabsSession: android.content.ComponentName getComponentName()>();
+
+        $r4 = virtualinvoke $r3.<android.content.ComponentName: java.lang.String getPackageName()>();
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent setPackage(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r1.<androidx.browser.customtabs.CustomTabsSession: android.os.IBinder getBinder()>();
+
+        $r6 = virtualinvoke $r1.<androidx.browser.customtabs.CustomTabsSession: android.app.PendingIntent getId()>();
+
+        specialinvoke r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: void setSessionParameters(android.os.IBinder,android.app.PendingIntent)>($r5, $r6);
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setShareState(int)
+    {
+        int $i0;
+        android.content.Intent $r1;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        java.lang.IllegalArgumentException $r2;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $i0 := @parameter0: int;
+
+        if $i0 < 0 goto label3;
+
+        if $i0 > 2 goto label3;
+
+        r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: int mShareState> = $i0;
+
+        if $i0 != 1 goto label1;
+
+        $r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        virtualinvoke $r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("android.support.customtabs.extra.SHARE_MENU_ITEM", 1);
+
+        return r0;
+
+     label1:
+        if $i0 != 2 goto label2;
+
+        $r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        virtualinvoke $r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("android.support.customtabs.extra.SHARE_MENU_ITEM", 0);
+
+        return r0;
+
+     label2:
+        $r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        virtualinvoke $r1.<android.content.Intent: void removeExtra(java.lang.String)>("android.support.customtabs.extra.SHARE_MENU_ITEM");
+
+        return r0;
+
+     label3:
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Invalid value for the shareState argument");
+
+        throw $r2;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setShowTitle(boolean)
+    {
+        int $i0;
+        android.content.Intent $r1;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        $i0 = (int) $z0;
+
+        virtualinvoke $r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("android.support.customtabs.extra.TITLE_VISIBILITY", $i0);
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setStartAnimations(android.content.Context, int, int)
+    {
+        android.content.Context $r1;
+        androidx.core.app.ActivityOptionsCompat $r2;
+        android.os.Bundle $r3;
+        int $i0, $i1;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r2 = staticinvoke <androidx.core.app.ActivityOptionsCompat: androidx.core.app.ActivityOptionsCompat makeCustomAnimation(android.content.Context,int,int)>($r1, $i0, $i1);
+
+        $r3 = virtualinvoke $r2.<androidx.core.app.ActivityOptionsCompat: android.os.Bundle toBundle()>();
+
+        r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.os.Bundle mStartAnimationBundle> = $r3;
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setToolbarColor(int)
+    {
+        int $i0;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        androidx.browser.customtabs.CustomTabColorSchemeParams$Builder $r1;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: androidx.browser.customtabs.CustomTabColorSchemeParams$Builder mDefaultColorSchemeBuilder>;
+
+        virtualinvoke $r1.<androidx.browser.customtabs.CustomTabColorSchemeParams$Builder: androidx.browser.customtabs.CustomTabColorSchemeParams$Builder setToolbarColor(int)>($i0);
+
+        return r0;
+    }
+
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setUrlBarHidingEnabled(boolean)
+    {
+        android.content.Intent $r1;
+        androidx.browser.customtabs.CustomTabsIntent$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.browser.customtabs.CustomTabsIntent$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = r0.<androidx.browser.customtabs.CustomTabsIntent$Builder: android.content.Intent mIntent>;
+
+        virtualinvoke $r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("android.support.customtabs.extra.ENABLE_URLBAR_HIDING", $z0);
+
+        return r0;
+    }
+}

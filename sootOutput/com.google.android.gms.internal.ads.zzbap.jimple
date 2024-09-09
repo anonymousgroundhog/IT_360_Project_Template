@@ -1,0 +1,83 @@
+public abstract class com.google.android.gms.internal.ads.zzbap extends com.google.android.gms.internal.ads.zzayh implements com.google.android.gms.internal.ads.zzbaq
+{
+
+    public void <init>()
+    {
+        com.google.android.gms.internal.ads.zzbap r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbap;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzayh: void <init>(java.lang.String)>("com.google.android.gms.ads.internal.appopen.client.IAppOpenFullScreenContentCallback");
+
+        return;
+    }
+
+    protected final boolean zzbO(int, android.os.Parcel, android.os.Parcel, int) throws android.os.RemoteException
+    {
+        android.os.Parcelable $r3;
+        android.os.Parcelable$Creator $r4;
+        android.os.Parcel $r1, $r2;
+        com.google.android.gms.internal.ads.zzbap r0;
+        com.google.android.gms.ads.internal.client.zze $r5;
+        int $i0, $i1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbap;
+
+        $i1 := @parameter0: int;
+
+        $r1 := @parameter1: android.os.Parcel;
+
+        $r2 := @parameter2: android.os.Parcel;
+
+        $i0 := @parameter3: int;
+
+        lookupswitch($i1)
+        {
+            case 1: goto label6;
+            case 2: goto label5;
+            case 3: goto label4;
+            case 4: goto label3;
+            case 5: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return 0;
+
+     label2:
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzbap: void zzb()>();
+
+        goto label7;
+
+     label3:
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzbap: void zze()>();
+
+        goto label7;
+
+     label4:
+        $r4 = <com.google.android.gms.ads.internal.client.zze: android.os.Parcelable$Creator CREATOR>;
+
+        $r3 = staticinvoke <com.google.android.gms.internal.ads.zzayi: android.os.Parcelable zza(android.os.Parcel,android.os.Parcelable$Creator)>($r1, $r4);
+
+        $r5 = (com.google.android.gms.ads.internal.client.zze) $r3;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzayi: void zzc(android.os.Parcel)>($r1);
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzbap: void zzd(com.google.android.gms.ads.internal.client.zze)>($r5);
+
+        goto label7;
+
+     label5:
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzbap: void zzc()>();
+
+        goto label7;
+
+     label6:
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzbap: void zzf()>();
+
+     label7:
+        virtualinvoke $r2.<android.os.Parcel: void writeNoException()>();
+
+        return 1;
+    }
+}

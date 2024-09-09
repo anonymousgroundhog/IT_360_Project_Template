@@ -1,0 +1,80 @@
+public final class com.google.android.gms.internal.ads.zzhhw extends androidx.browser.customtabs.CustomTabsServiceConnection
+{
+    private final java.lang.ref.WeakReference zza;
+
+    public void <init>(com.google.android.gms.internal.ads.zzbhd)
+    {
+        com.google.android.gms.internal.ads.zzhhw r0;
+        com.google.android.gms.internal.ads.zzbhd $r1;
+        java.lang.ref.WeakReference $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzhhw;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzbhd;
+
+        specialinvoke r0.<androidx.browser.customtabs.CustomTabsServiceConnection: void <init>()>();
+
+        $r2 = new java.lang.ref.WeakReference;
+
+        specialinvoke $r2.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>($r1);
+
+        r0.<com.google.android.gms.internal.ads.zzhhw: java.lang.ref.WeakReference zza> = $r2;
+
+        return;
+    }
+
+    public final void onCustomTabsServiceConnected(android.content.ComponentName, androidx.browser.customtabs.CustomTabsClient)
+    {
+        android.content.ComponentName $r3;
+        java.lang.Object $r2;
+        com.google.android.gms.internal.ads.zzhhw r0;
+        java.lang.ref.WeakReference $r4;
+        com.google.android.gms.internal.ads.zzbhd $r5;
+        androidx.browser.customtabs.CustomTabsClient $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzhhw;
+
+        $r3 := @parameter0: android.content.ComponentName;
+
+        $r1 := @parameter1: androidx.browser.customtabs.CustomTabsClient;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzhhw: java.lang.ref.WeakReference zza>;
+
+        $r2 = virtualinvoke $r4.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $r5 = (com.google.android.gms.internal.ads.zzbhd) $r2;
+
+        if $r5 == null goto label1;
+
+        virtualinvoke $r5.<com.google.android.gms.internal.ads.zzbhd: void zzc(androidx.browser.customtabs.CustomTabsClient)>($r1);
+
+     label1:
+        return;
+    }
+
+    public final void onServiceDisconnected(android.content.ComponentName)
+    {
+        android.content.ComponentName $r2;
+        java.lang.Object $r1;
+        com.google.android.gms.internal.ads.zzhhw r0;
+        java.lang.ref.WeakReference $r3;
+        com.google.android.gms.internal.ads.zzbhd $r4;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzhhw;
+
+        $r2 := @parameter0: android.content.ComponentName;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzhhw: java.lang.ref.WeakReference zza>;
+
+        $r1 = virtualinvoke $r3.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $r4 = (com.google.android.gms.internal.ads.zzbhd) $r1;
+
+        if $r4 == null goto label1;
+
+        virtualinvoke $r4.<com.google.android.gms.internal.ads.zzbhd: void zzd()>();
+
+     label1:
+        return;
+    }
+}

@@ -1,0 +1,453 @@
+final class com.google.android.gms.internal.ads.zzaai extends android.os.HandlerThread implements android.os.Handler$Callback
+{
+    private com.google.android.gms.internal.ads.zzer zza;
+    private android.os.Handler zzb;
+    private java.lang.Error zzc;
+    private java.lang.RuntimeException zzd;
+    private com.google.android.gms.internal.ads.zzaak zze;
+
+    public void <init>()
+    {
+        com.google.android.gms.internal.ads.zzaai r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzaai;
+
+        specialinvoke r0.<android.os.HandlerThread: void <init>(java.lang.String)>("ExoPlayer:PlaceholderSurface");
+
+        return;
+    }
+
+    public final boolean handleMessage(android.os.Message)
+    {
+        java.lang.Throwable $r4, $r5, $r7, $r8, $r10, $r13, $r15, $r16;
+        java.lang.IllegalStateException $r12;
+        java.lang.Error $r9;
+        java.lang.NullPointerException r17;
+        com.google.android.gms.internal.ads.zzet $r11;
+        com.google.android.gms.internal.ads.zzer $r3;
+        int $i0;
+        boolean $z0;
+        android.graphics.SurfaceTexture $r1;
+        java.lang.RuntimeException $r14;
+        android.os.Message $r2;
+        com.google.android.gms.internal.ads.zzaai r0;
+        com.google.android.gms.internal.ads.zzaak $r6;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzaai;
+
+        $r2 := @parameter0: android.os.Message;
+
+        $i0 = $r2.<android.os.Message: int what>;
+
+        lookupswitch($i0)
+        {
+            case 1: goto label11;
+            case 2: goto label02;
+            default: goto label01;
+        };
+
+     label01:
+        return 1;
+
+     label02:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzaai: com.google.android.gms.internal.ads.zzer zza>;
+
+     label03:
+        if $r3 == null goto label06;
+
+     label04:
+        virtualinvoke $r3.<com.google.android.gms.internal.ads.zzer: void zzc()>();
+
+     label05:
+        goto label09;
+
+     label06:
+        r17 = new java.lang.NullPointerException;
+
+        specialinvoke r17.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+        throw r17;
+
+     label07:
+        $r4 := @caughtexception;
+
+     label08:
+        staticinvoke <com.google.android.gms.internal.ads.zzff: void zzd(java.lang.String,java.lang.String,java.lang.Throwable)>("PlaceholderSurface", "Failed to release placeholder surface", $r4);
+
+     label09:
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzaai: boolean quit()>();
+
+        return 1;
+
+     label10:
+        $r5 := @caughtexception;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzaai: boolean quit()>();
+
+        throw $r5;
+
+     label11:
+        $i0 = $r2.<android.os.Message: int arg1>;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzaai: com.google.android.gms.internal.ads.zzer zza>;
+
+     label12:
+        if $r3 == null goto label26;
+
+     label13:
+        virtualinvoke $r3.<com.google.android.gms.internal.ads.zzer: void zzb(int)>($i0);
+
+     label14:
+        $r6 = new com.google.android.gms.internal.ads.zzaak;
+
+     label15:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzaai: com.google.android.gms.internal.ads.zzer zza>;
+
+     label16:
+        $r1 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzer: android.graphics.SurfaceTexture zza()>();
+
+     label17:
+        if $i0 == 0 goto label18;
+
+        $z0 = 1;
+
+        goto label19;
+
+     label18:
+        $z0 = 0;
+
+     label19:
+        specialinvoke $r6.<com.google.android.gms.internal.ads.zzaak: void <init>(com.google.android.gms.internal.ads.zzaai,android.graphics.SurfaceTexture,boolean,com.google.android.gms.internal.ads.zzaaj)>(r0, $r1, $z0, null);
+
+     label20:
+        r0.<com.google.android.gms.internal.ads.zzaai: com.google.android.gms.internal.ads.zzaak zze> = $r6;
+
+     label21:
+        entermonitor r0;
+
+     label22:
+        virtualinvoke r0.<java.lang.Object: void notify()>();
+
+        exitmonitor r0;
+
+     label23:
+        return 1;
+
+     label24:
+        $r7 := @caughtexception;
+
+        exitmonitor r0;
+
+     label25:
+        throw $r7;
+
+     label26:
+        r17 = new java.lang.NullPointerException;
+
+     label27:
+        specialinvoke r17.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+     label28:
+        throw r17;
+
+     label29:
+        $r8 := @caughtexception;
+
+        goto label51;
+
+     label30:
+        $r9 := @caughtexception;
+
+     label31:
+        staticinvoke <com.google.android.gms.internal.ads.zzff: void zzd(java.lang.String,java.lang.String,java.lang.Throwable)>("PlaceholderSurface", "Failed to initialize placeholder surface", $r9);
+
+        r0.<com.google.android.gms.internal.ads.zzaai: java.lang.Error zzc> = $r9;
+
+     label32:
+        entermonitor r0;
+
+     label33:
+        virtualinvoke r0.<java.lang.Object: void notify()>();
+
+        exitmonitor r0;
+
+     label34:
+        return 1;
+
+     label35:
+        $r10 := @caughtexception;
+
+        exitmonitor r0;
+
+     label36:
+        throw $r10;
+
+     label37:
+        $r11 := @caughtexception;
+
+     label38:
+        staticinvoke <com.google.android.gms.internal.ads.zzff: void zzd(java.lang.String,java.lang.String,java.lang.Throwable)>("PlaceholderSurface", "Failed to initialize placeholder surface", $r11);
+
+        $r12 = new java.lang.IllegalStateException;
+
+        specialinvoke $r12.<java.lang.IllegalStateException: void <init>(java.lang.Throwable)>($r11);
+
+        r0.<com.google.android.gms.internal.ads.zzaai: java.lang.RuntimeException zzd> = $r12;
+
+     label39:
+        entermonitor r0;
+
+     label40:
+        virtualinvoke r0.<java.lang.Object: void notify()>();
+
+        exitmonitor r0;
+
+     label41:
+        return 1;
+
+     label42:
+        $r13 := @caughtexception;
+
+        exitmonitor r0;
+
+     label43:
+        throw $r13;
+
+     label44:
+        $r14 := @caughtexception;
+
+     label45:
+        staticinvoke <com.google.android.gms.internal.ads.zzff: void zzd(java.lang.String,java.lang.String,java.lang.Throwable)>("PlaceholderSurface", "Failed to initialize placeholder surface", $r14);
+
+        r0.<com.google.android.gms.internal.ads.zzaai: java.lang.RuntimeException zzd> = $r14;
+
+     label46:
+        entermonitor r0;
+
+     label47:
+        virtualinvoke r0.<java.lang.Object: void notify()>();
+
+        exitmonitor r0;
+
+     label48:
+        return 1;
+
+     label49:
+        $r15 := @caughtexception;
+
+        exitmonitor r0;
+
+     label50:
+        throw $r15;
+
+     label51:
+        entermonitor r0;
+
+     label52:
+        virtualinvoke r0.<java.lang.Object: void notify()>();
+
+        exitmonitor r0;
+
+     label53:
+        throw $r8;
+
+     label54:
+        $r16 := @caughtexception;
+
+     label55:
+        exitmonitor r0;
+
+     label56:
+        throw $r16;
+
+        catch java.lang.Throwable from label02 to label03 with label07;
+        catch java.lang.Throwable from label04 to label05 with label07;
+        catch java.lang.Throwable from label06 to label07 with label07;
+        catch java.lang.Throwable from label08 to label09 with label10;
+        catch java.lang.RuntimeException from label11 to label12 with label44;
+        catch java.lang.RuntimeException from label13 to label14 with label44;
+        catch java.lang.RuntimeException from label15 to label17 with label44;
+        catch java.lang.RuntimeException from label19 to label21 with label44;
+        catch com.google.android.gms.internal.ads.zzet from label13 to label14 with label37;
+        catch com.google.android.gms.internal.ads.zzet from label16 to label17 with label37;
+        catch com.google.android.gms.internal.ads.zzet from label19 to label20 with label37;
+        catch java.lang.Error from label11 to label12 with label30;
+        catch java.lang.Error from label13 to label17 with label30;
+        catch java.lang.Error from label19 to label21 with label30;
+        catch java.lang.Throwable from label13 to label14 with label29;
+        catch java.lang.Throwable from label16 to label17 with label29;
+        catch java.lang.Throwable from label19 to label20 with label29;
+        catch java.lang.Throwable from label22 to label23 with label24;
+        catch java.lang.Throwable from label24 to label25 with label24;
+        catch java.lang.RuntimeException from label27 to label29 with label44;
+        catch com.google.android.gms.internal.ads.zzet from label27 to label28 with label37;
+        catch java.lang.Error from label26 to label29 with label30;
+        catch java.lang.Throwable from label27 to label28 with label29;
+        catch java.lang.Throwable from label31 to label32 with label29;
+        catch java.lang.Throwable from label33 to label34 with label35;
+        catch java.lang.Throwable from label35 to label36 with label35;
+        catch java.lang.Throwable from label38 to label39 with label29;
+        catch java.lang.Throwable from label40 to label41 with label42;
+        catch java.lang.Throwable from label42 to label43 with label42;
+        catch java.lang.Throwable from label45 to label46 with label29;
+        catch java.lang.Throwable from label47 to label48 with label49;
+        catch java.lang.Throwable from label49 to label50 with label49;
+        catch java.lang.Throwable from label52 to label53 with label54;
+        catch java.lang.Throwable from label55 to label56 with label54;
+    }
+
+    public final com.google.android.gms.internal.ads.zzaak zza(int)
+    {
+        java.lang.Throwable $r10;
+        java.lang.Error $r7;
+        java.lang.RuntimeException $r6;
+        java.lang.NullPointerException r11;
+        com.google.android.gms.internal.ads.zzer $r3;
+        android.os.Message $r4;
+        java.lang.InterruptedException $r8;
+        android.os.Handler $r1;
+        android.os.Looper $r2;
+        java.lang.Thread $r9;
+        int $i0;
+        com.google.android.gms.internal.ads.zzaai r0;
+        boolean $z0;
+        com.google.android.gms.internal.ads.zzaak $r5;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzaai;
+
+        $i0 := @parameter0: int;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzaai: void start()>();
+
+        $r1 = new android.os.Handler;
+
+        $r2 = virtualinvoke r0.<com.google.android.gms.internal.ads.zzaai: android.os.Looper getLooper()>();
+
+        specialinvoke $r1.<android.os.Handler: void <init>(android.os.Looper,android.os.Handler$Callback)>($r2, r0);
+
+        r0.<com.google.android.gms.internal.ads.zzaai: android.os.Handler zzb> = $r1;
+
+        $r3 = new com.google.android.gms.internal.ads.zzer;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzaai: android.os.Handler zzb>;
+
+        specialinvoke $r3.<com.google.android.gms.internal.ads.zzer: void <init>(android.os.Handler,com.google.android.gms.internal.ads.zzeq)>($r1, null);
+
+        r0.<com.google.android.gms.internal.ads.zzaai: com.google.android.gms.internal.ads.zzer zza> = $r3;
+
+        entermonitor r0;
+
+     label01:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzaai: android.os.Handler zzb>;
+
+        $z0 = 0;
+
+        $r4 = virtualinvoke $r1.<android.os.Handler: android.os.Message obtainMessage(int,int,int)>(1, $i0, 0);
+
+        virtualinvoke $r4.<android.os.Message: void sendToTarget()>();
+
+     label02:
+        $r5 = r0.<com.google.android.gms.internal.ads.zzaai: com.google.android.gms.internal.ads.zzaak zze>;
+
+        if $r5 != null goto label07;
+
+        $r6 = r0.<com.google.android.gms.internal.ads.zzaai: java.lang.RuntimeException zzd>;
+
+        if $r6 != null goto label07;
+
+        $r7 = r0.<com.google.android.gms.internal.ads.zzaai: java.lang.Error zzc>;
+
+     label03:
+        if $r7 != null goto label07;
+
+     label04:
+        virtualinvoke r0.<java.lang.Object: void wait()>();
+
+     label05:
+        goto label02;
+
+     label06:
+        $r8 := @caughtexception;
+
+        $z0 = 1;
+
+        goto label02;
+
+     label07:
+        exitmonitor r0;
+
+     label08:
+        if $z0 == 0 goto label09;
+
+        $r9 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r9.<java.lang.Thread: void interrupt()>();
+
+     label09:
+        $r6 = r0.<com.google.android.gms.internal.ads.zzaai: java.lang.RuntimeException zzd>;
+
+        if $r6 != null goto label12;
+
+        $r7 = r0.<com.google.android.gms.internal.ads.zzaai: java.lang.Error zzc>;
+
+        if $r7 != null goto label11;
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzaai: com.google.android.gms.internal.ads.zzaak zze>;
+
+        if $r5 == null goto label10;
+
+        return $r5;
+
+     label10:
+        r11 = new java.lang.NullPointerException;
+
+        specialinvoke r11.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+        throw r11;
+
+     label11:
+        throw $r7;
+
+     label12:
+        throw $r6;
+
+     label13:
+        $r10 := @caughtexception;
+
+     label14:
+        exitmonitor r0;
+
+     label15:
+        throw $r10;
+
+        catch java.lang.Throwable from label01 to label03 with label13;
+        catch java.lang.InterruptedException from label04 to label05 with label06;
+        catch java.lang.Throwable from label04 to label05 with label13;
+        catch java.lang.Throwable from label07 to label08 with label13;
+        catch java.lang.Throwable from label14 to label15 with label13;
+    }
+
+    public final void zzb()
+    {
+        com.google.android.gms.internal.ads.zzaai r0;
+        java.lang.NullPointerException r2;
+        android.os.Handler $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzaai;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzaai: android.os.Handler zzb>;
+
+        if $r1 == null goto label1;
+
+        virtualinvoke $r1.<android.os.Handler: boolean sendEmptyMessage(int)>(2);
+
+        return;
+
+     label1:
+        r2 = new java.lang.NullPointerException;
+
+        specialinvoke r2.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+        throw r2;
+    }
+}

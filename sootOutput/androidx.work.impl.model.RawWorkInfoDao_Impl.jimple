@@ -1,0 +1,764 @@
+public final class androidx.work.impl.model.RawWorkInfoDao_Impl extends java.lang.Object implements androidx.work.impl.model.RawWorkInfoDao
+{
+    private final androidx.room.RoomDatabase __db;
+
+    public void <init>(androidx.room.RoomDatabase)
+    {
+        androidx.work.impl.model.RawWorkInfoDao_Impl r0;
+        androidx.room.RoomDatabase $r1;
+
+        r0 := @this: androidx.work.impl.model.RawWorkInfoDao_Impl;
+
+        $r1 := @parameter0: androidx.room.RoomDatabase;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.work.impl.model.RawWorkInfoDao_Impl: androidx.room.RoomDatabase __db> = $r1;
+
+        return;
+    }
+
+    private void __fetchRelationshipWorkProgressAsandroidxWorkData(androidx.collection.ArrayMap)
+    {
+        java.lang.Throwable r14;
+        androidx.room.RoomSQLiteQuery $r8;
+        byte[] $r12;
+        androidx.work.impl.model.RawWorkInfoDao_Impl r0;
+        java.util.ArrayList r6;
+        int $i0, i1, $i2;
+        java.lang.String r5;
+        androidx.work.Data $r13;
+        androidx.collection.ArrayMap r1, r3, $r15;
+        boolean $z0;
+        android.database.Cursor $r11;
+        java.util.Iterator $r9;
+        androidx.room.RoomDatabase r10;
+        java.util.Set $r2;
+        java.lang.Object $r4;
+        java.lang.StringBuilder $r7;
+
+        r0 := @this: androidx.work.impl.model.RawWorkInfoDao_Impl;
+
+        r1 := @parameter0: androidx.collection.ArrayMap;
+
+        $r2 = virtualinvoke r1.<androidx.collection.ArrayMap: java.util.Set keySet()>();
+
+        $z0 = interfaceinvoke $r2.<java.util.Set: boolean isEmpty()>();
+
+        if $z0 == 0 goto label01;
+
+        return;
+
+     label01:
+        $i0 = virtualinvoke r1.<androidx.collection.ArrayMap: int size()>();
+
+        if $i0 <= 999 goto label04;
+
+        $r15 = new androidx.collection.ArrayMap;
+
+        r3 = $r15;
+
+        specialinvoke $r15.<androidx.collection.ArrayMap: void <init>(int)>(999);
+
+        $i0 = 0;
+
+        i1 = 0;
+
+        $i2 = virtualinvoke r1.<androidx.collection.ArrayMap: int size()>();
+
+     label02:
+        if i1 >= $i2 goto label03;
+
+        $r4 = virtualinvoke r1.<androidx.collection.ArrayMap: java.lang.Object keyAt(int)>(i1);
+
+        r5 = (java.lang.String) $r4;
+
+        $r4 = virtualinvoke r1.<androidx.collection.ArrayMap: java.lang.Object valueAt(int)>(i1);
+
+        r6 = (java.util.ArrayList) $r4;
+
+        virtualinvoke r3.<androidx.collection.ArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(r5, r6);
+
+        i1 = i1 + 1;
+
+        $i0 = $i0 + 1;
+
+        if $i0 != 999 goto label02;
+
+        specialinvoke r0.<androidx.work.impl.model.RawWorkInfoDao_Impl: void __fetchRelationshipWorkProgressAsandroidxWorkData(androidx.collection.ArrayMap)>(r3);
+
+        $r15 = new androidx.collection.ArrayMap;
+
+        specialinvoke $r15.<androidx.collection.ArrayMap: void <init>(int)>(999);
+
+        r3 = $r15;
+
+        $i0 = 0;
+
+        goto label02;
+
+     label03:
+        if $i0 <= 0 goto label21;
+
+        specialinvoke r0.<androidx.work.impl.model.RawWorkInfoDao_Impl: void __fetchRelationshipWorkProgressAsandroidxWorkData(androidx.collection.ArrayMap)>(r3);
+
+        return;
+
+     label04:
+        $r7 = staticinvoke <androidx.room.util.StringUtil: java.lang.StringBuilder newStringBuilder()>();
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("SELECT `progress`,`work_spec_id` FROM `WorkProgress` WHERE `work_spec_id` IN (");
+
+        $i0 = interfaceinvoke $r2.<java.util.Set: int size()>();
+
+        staticinvoke <androidx.room.util.StringUtil: void appendPlaceholders(java.lang.StringBuilder,int)>($r7, $i0);
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        r5 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r8 = staticinvoke <androidx.room.RoomSQLiteQuery: androidx.room.RoomSQLiteQuery acquire(java.lang.String,int)>(r5, $i0);
+
+        $i0 = 1;
+
+        $r9 = interfaceinvoke $r2.<java.util.Set: java.util.Iterator iterator()>();
+
+     label05:
+        $z0 = interfaceinvoke $r9.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label08;
+
+        $r4 = interfaceinvoke $r9.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (java.lang.String) $r4;
+
+        if r5 != null goto label06;
+
+        virtualinvoke $r8.<androidx.room.RoomSQLiteQuery: void bindNull(int)>($i0);
+
+        goto label07;
+
+     label06:
+        virtualinvoke $r8.<androidx.room.RoomSQLiteQuery: void bindString(int,java.lang.String)>($i0, r5);
+
+     label07:
+        $i0 = $i0 + 1;
+
+        goto label05;
+
+     label08:
+        r10 = r0.<androidx.work.impl.model.RawWorkInfoDao_Impl: androidx.room.RoomDatabase __db>;
+
+        $r11 = staticinvoke <androidx.room.util.DBUtil: android.database.Cursor query(androidx.room.RoomDatabase,androidx.sqlite.db.SupportSQLiteQuery,boolean,android.os.CancellationSignal)>(r10, $r8, 0, null);
+
+     label09:
+        $i0 = staticinvoke <androidx.room.util.CursorUtil: int getColumnIndex(android.database.Cursor,java.lang.String)>($r11, "work_spec_id");
+
+     label10:
+        if $i0 != -1 goto label11;
+
+        interfaceinvoke $r11.<android.database.Cursor: void close()>();
+
+        return;
+
+     label11:
+        $z0 = interfaceinvoke $r11.<android.database.Cursor: boolean moveToNext()>();
+
+     label12:
+        if $z0 == 0 goto label19;
+
+     label13:
+        $z0 = interfaceinvoke $r11.<android.database.Cursor: boolean isNull(int)>($i0);
+
+     label14:
+        if $z0 != 0 goto label11;
+
+     label15:
+        r5 = interfaceinvoke $r11.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+        $r4 = virtualinvoke r1.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>(r5);
+
+        r6 = (java.util.ArrayList) $r4;
+
+     label16:
+        if r6 == null goto label11;
+
+     label17:
+        $r12 = interfaceinvoke $r11.<android.database.Cursor: byte[] getBlob(int)>(0);
+
+        $r13 = staticinvoke <androidx.work.Data: androidx.work.Data fromByteArray(byte[])>($r12);
+
+        virtualinvoke r6.<java.util.ArrayList: boolean add(java.lang.Object)>($r13);
+
+     label18:
+        goto label11;
+
+     label19:
+        interfaceinvoke $r11.<android.database.Cursor: void close()>();
+
+        return;
+
+     label20:
+        r14 := @caughtexception;
+
+        interfaceinvoke $r11.<android.database.Cursor: void close()>();
+
+        throw r14;
+
+     label21:
+        return;
+
+        catch java.lang.Throwable from label09 to label10 with label20;
+        catch java.lang.Throwable from label11 to label12 with label20;
+        catch java.lang.Throwable from label13 to label14 with label20;
+        catch java.lang.Throwable from label15 to label16 with label20;
+        catch java.lang.Throwable from label17 to label18 with label20;
+    }
+
+    private void __fetchRelationshipWorkTagAsjavaLangString(androidx.collection.ArrayMap)
+    {
+        java.lang.Throwable r12;
+        androidx.room.RoomSQLiteQuery $r8;
+        androidx.work.impl.model.RawWorkInfoDao_Impl r0;
+        java.util.ArrayList r6;
+        int $i0, i1, $i2;
+        java.lang.String r5;
+        androidx.collection.ArrayMap r1, r3, $r13;
+        boolean $z0;
+        android.database.Cursor $r11;
+        java.util.Iterator $r9;
+        androidx.room.RoomDatabase r10;
+        java.util.Set $r2;
+        java.lang.Object $r4;
+        java.lang.StringBuilder $r7;
+
+        r0 := @this: androidx.work.impl.model.RawWorkInfoDao_Impl;
+
+        r1 := @parameter0: androidx.collection.ArrayMap;
+
+        $r2 = virtualinvoke r1.<androidx.collection.ArrayMap: java.util.Set keySet()>();
+
+        $z0 = interfaceinvoke $r2.<java.util.Set: boolean isEmpty()>();
+
+        if $z0 == 0 goto label01;
+
+        return;
+
+     label01:
+        $i0 = virtualinvoke r1.<androidx.collection.ArrayMap: int size()>();
+
+        if $i0 <= 999 goto label04;
+
+        $r13 = new androidx.collection.ArrayMap;
+
+        r3 = $r13;
+
+        specialinvoke $r13.<androidx.collection.ArrayMap: void <init>(int)>(999);
+
+        $i0 = 0;
+
+        i1 = 0;
+
+        $i2 = virtualinvoke r1.<androidx.collection.ArrayMap: int size()>();
+
+     label02:
+        if i1 >= $i2 goto label03;
+
+        $r4 = virtualinvoke r1.<androidx.collection.ArrayMap: java.lang.Object keyAt(int)>(i1);
+
+        r5 = (java.lang.String) $r4;
+
+        $r4 = virtualinvoke r1.<androidx.collection.ArrayMap: java.lang.Object valueAt(int)>(i1);
+
+        r6 = (java.util.ArrayList) $r4;
+
+        virtualinvoke r3.<androidx.collection.ArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(r5, r6);
+
+        i1 = i1 + 1;
+
+        $i0 = $i0 + 1;
+
+        if $i0 != 999 goto label02;
+
+        specialinvoke r0.<androidx.work.impl.model.RawWorkInfoDao_Impl: void __fetchRelationshipWorkTagAsjavaLangString(androidx.collection.ArrayMap)>(r3);
+
+        $r13 = new androidx.collection.ArrayMap;
+
+        specialinvoke $r13.<androidx.collection.ArrayMap: void <init>(int)>(999);
+
+        r3 = $r13;
+
+        $i0 = 0;
+
+        goto label02;
+
+     label03:
+        if $i0 <= 0 goto label21;
+
+        specialinvoke r0.<androidx.work.impl.model.RawWorkInfoDao_Impl: void __fetchRelationshipWorkTagAsjavaLangString(androidx.collection.ArrayMap)>(r3);
+
+        return;
+
+     label04:
+        $r7 = staticinvoke <androidx.room.util.StringUtil: java.lang.StringBuilder newStringBuilder()>();
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("SELECT `tag`,`work_spec_id` FROM `WorkTag` WHERE `work_spec_id` IN (");
+
+        $i0 = interfaceinvoke $r2.<java.util.Set: int size()>();
+
+        staticinvoke <androidx.room.util.StringUtil: void appendPlaceholders(java.lang.StringBuilder,int)>($r7, $i0);
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        r5 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r8 = staticinvoke <androidx.room.RoomSQLiteQuery: androidx.room.RoomSQLiteQuery acquire(java.lang.String,int)>(r5, $i0);
+
+        $i0 = 1;
+
+        $r9 = interfaceinvoke $r2.<java.util.Set: java.util.Iterator iterator()>();
+
+     label05:
+        $z0 = interfaceinvoke $r9.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label08;
+
+        $r4 = interfaceinvoke $r9.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (java.lang.String) $r4;
+
+        if r5 != null goto label06;
+
+        virtualinvoke $r8.<androidx.room.RoomSQLiteQuery: void bindNull(int)>($i0);
+
+        goto label07;
+
+     label06:
+        virtualinvoke $r8.<androidx.room.RoomSQLiteQuery: void bindString(int,java.lang.String)>($i0, r5);
+
+     label07:
+        $i0 = $i0 + 1;
+
+        goto label05;
+
+     label08:
+        r10 = r0.<androidx.work.impl.model.RawWorkInfoDao_Impl: androidx.room.RoomDatabase __db>;
+
+        $r11 = staticinvoke <androidx.room.util.DBUtil: android.database.Cursor query(androidx.room.RoomDatabase,androidx.sqlite.db.SupportSQLiteQuery,boolean,android.os.CancellationSignal)>(r10, $r8, 0, null);
+
+     label09:
+        $i0 = staticinvoke <androidx.room.util.CursorUtil: int getColumnIndex(android.database.Cursor,java.lang.String)>($r11, "work_spec_id");
+
+     label10:
+        if $i0 != -1 goto label11;
+
+        interfaceinvoke $r11.<android.database.Cursor: void close()>();
+
+        return;
+
+     label11:
+        $z0 = interfaceinvoke $r11.<android.database.Cursor: boolean moveToNext()>();
+
+     label12:
+        if $z0 == 0 goto label19;
+
+     label13:
+        $z0 = interfaceinvoke $r11.<android.database.Cursor: boolean isNull(int)>($i0);
+
+     label14:
+        if $z0 != 0 goto label11;
+
+     label15:
+        r5 = interfaceinvoke $r11.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+        $r4 = virtualinvoke r1.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>(r5);
+
+        r6 = (java.util.ArrayList) $r4;
+
+     label16:
+        if r6 == null goto label11;
+
+     label17:
+        r5 = interfaceinvoke $r11.<android.database.Cursor: java.lang.String getString(int)>(0);
+
+        virtualinvoke r6.<java.util.ArrayList: boolean add(java.lang.Object)>(r5);
+
+     label18:
+        goto label11;
+
+     label19:
+        interfaceinvoke $r11.<android.database.Cursor: void close()>();
+
+        return;
+
+     label20:
+        r12 := @caughtexception;
+
+        interfaceinvoke $r11.<android.database.Cursor: void close()>();
+
+        throw r12;
+
+     label21:
+        return;
+
+        catch java.lang.Throwable from label09 to label10 with label20;
+        catch java.lang.Throwable from label11 to label12 with label20;
+        catch java.lang.Throwable from label13 to label14 with label20;
+        catch java.lang.Throwable from label15 to label16 with label20;
+        catch java.lang.Throwable from label17 to label18 with label20;
+    }
+
+    static androidx.room.RoomDatabase access$000(androidx.work.impl.model.RawWorkInfoDao_Impl)
+    {
+        androidx.work.impl.model.RawWorkInfoDao_Impl $r0;
+        androidx.room.RoomDatabase r1;
+
+        $r0 := @parameter0: androidx.work.impl.model.RawWorkInfoDao_Impl;
+
+        r1 = $r0.<androidx.work.impl.model.RawWorkInfoDao_Impl: androidx.room.RoomDatabase __db>;
+
+        return r1;
+    }
+
+    static void access$100(androidx.work.impl.model.RawWorkInfoDao_Impl, androidx.collection.ArrayMap)
+    {
+        androidx.work.impl.model.RawWorkInfoDao_Impl $r0;
+        androidx.collection.ArrayMap $r1;
+
+        $r0 := @parameter0: androidx.work.impl.model.RawWorkInfoDao_Impl;
+
+        $r1 := @parameter1: androidx.collection.ArrayMap;
+
+        specialinvoke $r0.<androidx.work.impl.model.RawWorkInfoDao_Impl: void __fetchRelationshipWorkTagAsjavaLangString(androidx.collection.ArrayMap)>($r1);
+
+        return;
+    }
+
+    static void access$200(androidx.work.impl.model.RawWorkInfoDao_Impl, androidx.collection.ArrayMap)
+    {
+        androidx.work.impl.model.RawWorkInfoDao_Impl $r0;
+        androidx.collection.ArrayMap $r1;
+
+        $r0 := @parameter0: androidx.work.impl.model.RawWorkInfoDao_Impl;
+
+        $r1 := @parameter1: androidx.collection.ArrayMap;
+
+        specialinvoke $r0.<androidx.work.impl.model.RawWorkInfoDao_Impl: void __fetchRelationshipWorkProgressAsandroidxWorkData(androidx.collection.ArrayMap)>($r1);
+
+        return;
+    }
+
+    public java.util.List getWorkInfoPojos(androidx.sqlite.db.SupportSQLiteQuery)
+    {
+        java.lang.Throwable r14;
+        byte[] $r12;
+        androidx.work.impl.model.RawWorkInfoDao_Impl r0;
+        java.util.ArrayList r8, r9, r10, $r16;
+        int $i0, $i1, $i2, $i3, $i4;
+        java.lang.String $r6;
+        androidx.work.Data $r13;
+        androidx.collection.ArrayMap r2, r3, $r15;
+        android.database.Cursor $r5;
+        boolean $z0;
+        androidx.work.impl.model.WorkSpec$WorkInfoPojo $r17;
+        androidx.room.RoomDatabase r4;
+        androidx.sqlite.db.SupportSQLiteQuery $r1;
+        androidx.work.WorkInfo$State $r11;
+        java.lang.Object $r7;
+
+        r0 := @this: androidx.work.impl.model.RawWorkInfoDao_Impl;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteQuery;
+
+        r4 = r0.<androidx.work.impl.model.RawWorkInfoDao_Impl: androidx.room.RoomDatabase __db>;
+
+        virtualinvoke r4.<androidx.room.RoomDatabase: void assertNotSuspendingTransaction()>();
+
+        r4 = r0.<androidx.work.impl.model.RawWorkInfoDao_Impl: androidx.room.RoomDatabase __db>;
+
+        $r5 = staticinvoke <androidx.room.util.DBUtil: android.database.Cursor query(androidx.room.RoomDatabase,androidx.sqlite.db.SupportSQLiteQuery,boolean,android.os.CancellationSignal)>(r4, $r1, 1, null);
+
+     label01:
+        $i0 = staticinvoke <androidx.room.util.CursorUtil: int getColumnIndex(android.database.Cursor,java.lang.String)>($r5, "id");
+
+        $i1 = staticinvoke <androidx.room.util.CursorUtil: int getColumnIndex(android.database.Cursor,java.lang.String)>($r5, "state");
+
+        $i2 = staticinvoke <androidx.room.util.CursorUtil: int getColumnIndex(android.database.Cursor,java.lang.String)>($r5, "output");
+
+        $i3 = staticinvoke <androidx.room.util.CursorUtil: int getColumnIndex(android.database.Cursor,java.lang.String)>($r5, "run_attempt_count");
+
+        r3 = new androidx.collection.ArrayMap;
+
+     label02:
+        r2 = r3;
+
+     label03:
+        specialinvoke r3.<androidx.collection.ArrayMap: void <init>()>();
+
+        $r15 = new androidx.collection.ArrayMap;
+
+     label04:
+        specialinvoke $r15.<androidx.collection.ArrayMap: void <init>()>();
+
+     label05:
+        $z0 = interfaceinvoke $r5.<android.database.Cursor: boolean moveToNext()>();
+
+     label06:
+        if $z0 == 0 goto label20;
+
+     label07:
+        $z0 = interfaceinvoke $r5.<android.database.Cursor: boolean isNull(int)>($i0);
+
+     label08:
+        if $z0 != 0 goto label13;
+
+     label09:
+        $r6 = interfaceinvoke $r5.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+        $r7 = virtualinvoke r2.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>($r6);
+
+        r8 = (java.util.ArrayList) $r7;
+
+     label10:
+        if r8 != null goto label13;
+
+     label11:
+        r9 = new java.util.ArrayList;
+
+     label12:
+        specialinvoke r9.<java.util.ArrayList: void <init>()>();
+
+        virtualinvoke r2.<androidx.collection.ArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r6, r9);
+
+     label13:
+        $z0 = interfaceinvoke $r5.<android.database.Cursor: boolean isNull(int)>($i0);
+
+     label14:
+        if $z0 != 0 goto label05;
+
+     label15:
+        $r6 = interfaceinvoke $r5.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+        $r7 = virtualinvoke $r15.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>($r6);
+
+        r8 = (java.util.ArrayList) $r7;
+
+     label16:
+        if r8 != null goto label05;
+
+     label17:
+        r9 = new java.util.ArrayList;
+
+     label18:
+        specialinvoke r9.<java.util.ArrayList: void <init>()>();
+
+        virtualinvoke $r15.<androidx.collection.ArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r6, r9);
+
+     label19:
+        goto label05;
+
+     label20:
+        interfaceinvoke $r5.<android.database.Cursor: boolean moveToPosition(int)>(-1);
+
+        specialinvoke r0.<androidx.work.impl.model.RawWorkInfoDao_Impl: void __fetchRelationshipWorkTagAsjavaLangString(androidx.collection.ArrayMap)>(r2);
+
+        specialinvoke r0.<androidx.work.impl.model.RawWorkInfoDao_Impl: void __fetchRelationshipWorkProgressAsandroidxWorkData(androidx.collection.ArrayMap)>($r15);
+
+        r9 = new java.util.ArrayList;
+
+     label21:
+        r8 = r9;
+
+     label22:
+        $i4 = interfaceinvoke $r5.<android.database.Cursor: int getCount()>();
+
+        specialinvoke r9.<java.util.ArrayList: void <init>(int)>($i4);
+
+     label23:
+        $z0 = interfaceinvoke $r5.<android.database.Cursor: boolean moveToNext()>();
+
+     label24:
+        if $z0 == 0 goto label52;
+
+        r9 = null;
+
+     label25:
+        $z0 = interfaceinvoke $r5.<android.database.Cursor: boolean isNull(int)>($i0);
+
+     label26:
+        if $z0 != 0 goto label28;
+
+     label27:
+        $r6 = interfaceinvoke $r5.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+        $r7 = virtualinvoke r2.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>($r6);
+
+        r9 = (java.util.ArrayList) $r7;
+
+     label28:
+        if r9 != null goto label32;
+
+     label29:
+        r10 = new java.util.ArrayList;
+
+     label30:
+        specialinvoke r10.<java.util.ArrayList: void <init>()>();
+
+     label31:
+        r9 = r10;
+
+     label32:
+        r10 = null;
+
+     label33:
+        $z0 = interfaceinvoke $r5.<android.database.Cursor: boolean isNull(int)>($i0);
+
+     label34:
+        if $z0 != 0 goto label36;
+
+     label35:
+        $r6 = interfaceinvoke $r5.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+        $r7 = virtualinvoke $r15.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>($r6);
+
+        r10 = (java.util.ArrayList) $r7;
+
+     label36:
+        if r10 != null goto label40;
+
+     label37:
+        $r16 = new java.util.ArrayList;
+
+     label38:
+        specialinvoke $r16.<java.util.ArrayList: void <init>()>();
+
+     label39:
+        r10 = $r16;
+
+     label40:
+        $r17 = new androidx.work.impl.model.WorkSpec$WorkInfoPojo;
+
+     label41:
+        specialinvoke $r17.<androidx.work.impl.model.WorkSpec$WorkInfoPojo: void <init>()>();
+
+     label42:
+        if $i0 == -1 goto label44;
+
+     label43:
+        $r6 = interfaceinvoke $r5.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+        $r17.<androidx.work.impl.model.WorkSpec$WorkInfoPojo: java.lang.String id> = $r6;
+
+     label44:
+        if $i1 == -1 goto label46;
+
+     label45:
+        $i4 = interfaceinvoke $r5.<android.database.Cursor: int getInt(int)>($i1);
+
+        $r11 = staticinvoke <androidx.work.impl.model.WorkTypeConverters: androidx.work.WorkInfo$State intToState(int)>($i4);
+
+        $r17.<androidx.work.impl.model.WorkSpec$WorkInfoPojo: androidx.work.WorkInfo$State state> = $r11;
+
+     label46:
+        if $i2 == -1 goto label48;
+
+     label47:
+        $r12 = interfaceinvoke $r5.<android.database.Cursor: byte[] getBlob(int)>($i2);
+
+        $r13 = staticinvoke <androidx.work.Data: androidx.work.Data fromByteArray(byte[])>($r12);
+
+        $r17.<androidx.work.impl.model.WorkSpec$WorkInfoPojo: androidx.work.Data output> = $r13;
+
+     label48:
+        if $i3 == -1 goto label50;
+
+     label49:
+        $i4 = interfaceinvoke $r5.<android.database.Cursor: int getInt(int)>($i3);
+
+        $r17.<androidx.work.impl.model.WorkSpec$WorkInfoPojo: int runAttemptCount> = $i4;
+
+     label50:
+        $r17.<androidx.work.impl.model.WorkSpec$WorkInfoPojo: java.util.List tags> = r9;
+
+        $r17.<androidx.work.impl.model.WorkSpec$WorkInfoPojo: java.util.List progress> = r10;
+
+        interfaceinvoke r8.<java.util.List: boolean add(java.lang.Object)>($r17);
+
+     label51:
+        goto label23;
+
+     label52:
+        interfaceinvoke $r5.<android.database.Cursor: void close()>();
+
+        return r8;
+
+     label53:
+        r14 := @caughtexception;
+
+        interfaceinvoke $r5.<android.database.Cursor: void close()>();
+
+        throw r14;
+
+        catch java.lang.Throwable from label01 to label02 with label53;
+        catch java.lang.Throwable from label03 to label04 with label53;
+        catch java.lang.Throwable from label04 to label06 with label53;
+        catch java.lang.Throwable from label07 to label08 with label53;
+        catch java.lang.Throwable from label09 to label10 with label53;
+        catch java.lang.Throwable from label11 to label12 with label53;
+        catch java.lang.Throwable from label12 to label14 with label53;
+        catch java.lang.Throwable from label15 to label16 with label53;
+        catch java.lang.Throwable from label17 to label18 with label53;
+        catch java.lang.Throwable from label18 to label19 with label53;
+        catch java.lang.Throwable from label20 to label21 with label53;
+        catch java.lang.Throwable from label22 to label24 with label53;
+        catch java.lang.Throwable from label25 to label26 with label53;
+        catch java.lang.Throwable from label27 to label28 with label53;
+        catch java.lang.Throwable from label29 to label30 with label53;
+        catch java.lang.Throwable from label30 to label31 with label53;
+        catch java.lang.Throwable from label33 to label34 with label53;
+        catch java.lang.Throwable from label35 to label36 with label53;
+        catch java.lang.Throwable from label37 to label38 with label53;
+        catch java.lang.Throwable from label38 to label39 with label53;
+        catch java.lang.Throwable from label40 to label41 with label53;
+        catch java.lang.Throwable from label41 to label42 with label53;
+        catch java.lang.Throwable from label43 to label44 with label53;
+        catch java.lang.Throwable from label45 to label46 with label53;
+        catch java.lang.Throwable from label47 to label48 with label53;
+        catch java.lang.Throwable from label49 to label51 with label53;
+    }
+
+    public androidx.lifecycle.LiveData getWorkInfoPojosLiveData(androidx.sqlite.db.SupportSQLiteQuery)
+    {
+        androidx.room.InvalidationTracker $r3;
+        androidx.lifecycle.LiveData $r6;
+        androidx.sqlite.db.SupportSQLiteQuery $r1;
+        androidx.room.RoomDatabase $r2;
+        androidx.work.impl.model.RawWorkInfoDao_Impl$1 $r5;
+        java.lang.String[] $r4;
+        androidx.work.impl.model.RawWorkInfoDao_Impl r0;
+
+        r0 := @this: androidx.work.impl.model.RawWorkInfoDao_Impl;
+
+        $r1 := @parameter0: androidx.sqlite.db.SupportSQLiteQuery;
+
+        $r2 = r0.<androidx.work.impl.model.RawWorkInfoDao_Impl: androidx.room.RoomDatabase __db>;
+
+        $r3 = virtualinvoke $r2.<androidx.room.RoomDatabase: androidx.room.InvalidationTracker getInvalidationTracker()>();
+
+        $r4 = newarray (java.lang.String)[3];
+
+        $r4[0] = "WorkTag";
+
+        $r4[1] = "WorkProgress";
+
+        $r4[2] = "WorkSpec";
+
+        $r5 = new androidx.work.impl.model.RawWorkInfoDao_Impl$1;
+
+        specialinvoke $r5.<androidx.work.impl.model.RawWorkInfoDao_Impl$1: void <init>(androidx.work.impl.model.RawWorkInfoDao_Impl,androidx.sqlite.db.SupportSQLiteQuery)>(r0, $r1);
+
+        $r6 = virtualinvoke $r3.<androidx.room.InvalidationTracker: androidx.lifecycle.LiveData createLiveData(java.lang.String[],boolean,java.util.concurrent.Callable)>($r4, 0, $r5);
+
+        return $r6;
+    }
+}

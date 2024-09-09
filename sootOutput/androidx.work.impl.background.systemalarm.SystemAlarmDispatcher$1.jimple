@@ -1,0 +1,276 @@
+class androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0;
+
+    void <init>(androidx.work.impl.background.systemalarm.SystemAlarmDispatcher)
+    {
+        androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1 r0;
+        androidx.work.impl.background.systemalarm.SystemAlarmDispatcher $r1;
+
+        r0 := @this: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1;
+
+        $r1 := @parameter0: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher;
+
+        r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        java.lang.Throwable r18, r19, r20;
+        android.content.Context r14;
+        java.lang.Object[] $r12;
+        androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$DequeueAndCheckForCompletion r17;
+        android.content.Intent r7;
+        androidx.work.impl.background.systemalarm.SystemAlarmDispatcher r2, r4;
+        java.lang.Integer $r11;
+        androidx.work.Logger $r9;
+        int $i0;
+        java.lang.String $r8, r10, $r13;
+        androidx.work.impl.background.systemalarm.CommandHandler r16;
+        android.os.PowerManager$WakeLock $r15;
+        androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1 r0;
+        java.util.List r3, r5;
+        java.lang.Throwable[] $r1;
+        java.lang.Object $r6;
+
+        r0 := @this: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1;
+
+        r2 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        r3 = r2.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: java.util.List mIntents>;
+
+        entermonitor r3;
+
+     label01:
+        r2 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        r4 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        r5 = r4.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: java.util.List mIntents>;
+
+        $r6 = interfaceinvoke r5.<java.util.List: java.lang.Object get(int)>(0);
+
+        r7 = (android.content.Intent) $r6;
+
+        r2.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: android.content.Intent mCurrentIntent> = r7;
+
+        exitmonitor r3;
+
+     label02:
+        r2 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        r7 = r2.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: android.content.Intent mCurrentIntent>;
+
+        if r7 == null goto label13;
+
+        r2 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        r7 = r2.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: android.content.Intent mCurrentIntent>;
+
+        $r8 = virtualinvoke r7.<android.content.Intent: java.lang.String getAction()>();
+
+        r2 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        r7 = r2.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: android.content.Intent mCurrentIntent>;
+
+        $i0 = virtualinvoke r7.<android.content.Intent: int getIntExtra(java.lang.String,int)>("KEY_START_ID", 0);
+
+        $r9 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r10 = <androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: java.lang.String TAG>;
+
+        r2 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        r7 = r2.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: android.content.Intent mCurrentIntent>;
+
+        $r11 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r12 = newarray (java.lang.Object)[2];
+
+        $r12[0] = r7;
+
+        $r12[1] = $r11;
+
+        $r13 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Processing command %s, %s", $r12);
+
+        $r1 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r9.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>(r10, $r13, $r1);
+
+        r2 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        r14 = r2.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: android.content.Context mContext>;
+
+        $r11 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r12 = newarray (java.lang.Object)[2];
+
+        $r12[0] = $r8;
+
+        $r12[1] = $r11;
+
+        r10 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("%s (%s)", $r12);
+
+        $r15 = staticinvoke <androidx.work.impl.utils.WakeLocks: android.os.PowerManager$WakeLock newWakeLock(android.content.Context,java.lang.String)>(r14, r10);
+
+     label03:
+        $r9 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r10 = <androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: java.lang.String TAG>;
+
+        $r12 = newarray (java.lang.Object)[2];
+
+        $r12[0] = $r8;
+
+        $r12[1] = $r15;
+
+        $r13 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Acquiring operation wake lock (%s) %s", $r12);
+
+        $r1 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r9.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>(r10, $r13, $r1);
+
+        virtualinvoke $r15.<android.os.PowerManager$WakeLock: void acquire()>();
+
+        r2 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        r16 = r2.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: androidx.work.impl.background.systemalarm.CommandHandler mCommandHandler>;
+
+        r2 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        r7 = r2.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: android.content.Intent mCurrentIntent>;
+
+        r2 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        virtualinvoke r16.<androidx.work.impl.background.systemalarm.CommandHandler: void onHandleIntent(android.content.Intent,int,androidx.work.impl.background.systemalarm.SystemAlarmDispatcher)>(r7, $i0, r2);
+
+     label04:
+        $r9 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r10 = <androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: java.lang.String TAG>;
+
+        $r12 = newarray (java.lang.Object)[2];
+
+        $r12[0] = $r8;
+
+        $r12[1] = $r15;
+
+        $r8 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Releasing operation wake lock (%s) %s", $r12);
+
+        $r1 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r9.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>(r10, $r8, $r1);
+
+        virtualinvoke $r15.<android.os.PowerManager$WakeLock: void release()>();
+
+        r2 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        r17 = new androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$DequeueAndCheckForCompletion;
+
+        r4 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        specialinvoke r17.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$DequeueAndCheckForCompletion: void <init>(androidx.work.impl.background.systemalarm.SystemAlarmDispatcher)>(r4);
+
+        goto label08;
+
+     label05:
+        r18 := @caughtexception;
+
+     label06:
+        $r9 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r10 = <androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: java.lang.String TAG>;
+
+        $r1 = newarray (java.lang.Throwable)[1];
+
+        $r1[0] = r18;
+
+        virtualinvoke $r9.<androidx.work.Logger: void error(java.lang.String,java.lang.String,java.lang.Throwable[])>(r10, "Unexpected error in onHandleIntent", $r1);
+
+     label07:
+        $r9 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r10 = <androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: java.lang.String TAG>;
+
+        $r12 = newarray (java.lang.Object)[2];
+
+        $r12[0] = $r8;
+
+        $r12[1] = $r15;
+
+        $r8 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Releasing operation wake lock (%s) %s", $r12);
+
+        $r1 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r9.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>(r10, $r8, $r1);
+
+        virtualinvoke $r15.<android.os.PowerManager$WakeLock: void release()>();
+
+        r2 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        r17 = new androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$DequeueAndCheckForCompletion;
+
+        r4 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        specialinvoke r17.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$DequeueAndCheckForCompletion: void <init>(androidx.work.impl.background.systemalarm.SystemAlarmDispatcher)>(r4);
+
+     label08:
+        virtualinvoke r2.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: void postOnMainThread(java.lang.Runnable)>(r17);
+
+        return;
+
+     label09:
+        r19 := @caughtexception;
+
+        $r9 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r10 = <androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: java.lang.String TAG>;
+
+        $r12 = newarray (java.lang.Object)[2];
+
+        $r12[0] = $r8;
+
+        $r12[1] = $r15;
+
+        $r8 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Releasing operation wake lock (%s) %s", $r12);
+
+        $r1 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r9.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>(r10, $r8, $r1);
+
+        virtualinvoke $r15.<android.os.PowerManager$WakeLock: void release()>();
+
+        r2 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        r17 = new androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$DequeueAndCheckForCompletion;
+
+        r4 = r0.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$1: androidx.work.impl.background.systemalarm.SystemAlarmDispatcher this$0>;
+
+        specialinvoke r17.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher$DequeueAndCheckForCompletion: void <init>(androidx.work.impl.background.systemalarm.SystemAlarmDispatcher)>(r4);
+
+        virtualinvoke r2.<androidx.work.impl.background.systemalarm.SystemAlarmDispatcher: void postOnMainThread(java.lang.Runnable)>(r17);
+
+        throw r19;
+
+     label10:
+        r20 := @caughtexception;
+
+     label11:
+        exitmonitor r3;
+
+     label12:
+        throw r20;
+
+     label13:
+        return;
+
+        catch java.lang.Throwable from label01 to label02 with label10;
+        catch java.lang.Throwable from label03 to label04 with label05;
+        catch java.lang.Throwable from label06 to label07 with label09;
+        catch java.lang.Throwable from label11 to label12 with label10;
+    }
+}

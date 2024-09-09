@@ -1,0 +1,148 @@
+public class androidx.work.impl.WorkDatabaseMigrations extends java.lang.Object
+{
+    private static final java.lang.String CREATE_INDEX_PERIOD_START_TIME;
+    private static final java.lang.String CREATE_OUT_OF_QUOTA_POLICY;
+    private static final java.lang.String CREATE_PREFERENCE;
+    private static final java.lang.String CREATE_RUN_IN_FOREGROUND;
+    private static final java.lang.String CREATE_SYSTEM_ID_INFO;
+    private static final java.lang.String CREATE_WORK_PROGRESS;
+    public static final java.lang.String INSERT_PREFERENCE;
+    private static final java.lang.String MIGRATE_ALARM_INFO_TO_SYSTEM_ID_INFO;
+    public static androidx.room.migration.Migration MIGRATION_11_12;
+    public static androidx.room.migration.Migration MIGRATION_1_2;
+    public static androidx.room.migration.Migration MIGRATION_3_4;
+    public static androidx.room.migration.Migration MIGRATION_4_5;
+    public static androidx.room.migration.Migration MIGRATION_6_7;
+    public static androidx.room.migration.Migration MIGRATION_7_8;
+    public static androidx.room.migration.Migration MIGRATION_8_9;
+    private static final java.lang.String PERIODIC_WORK_SET_SCHEDULE_REQUESTED_AT;
+    private static final java.lang.String REMOVE_ALARM_INFO;
+    public static final int VERSION_1;
+    public static final int VERSION_10;
+    public static final int VERSION_11;
+    public static final int VERSION_12;
+    public static final int VERSION_2;
+    public static final int VERSION_3;
+    public static final int VERSION_4;
+    public static final int VERSION_5;
+    public static final int VERSION_6;
+    public static final int VERSION_7;
+    public static final int VERSION_8;
+    public static final int VERSION_9;
+    private static final java.lang.String WORKSPEC_ADD_TRIGGER_MAX_CONTENT_DELAY;
+    private static final java.lang.String WORKSPEC_ADD_TRIGGER_UPDATE_DELAY;
+
+    static void <clinit>()
+    {
+        androidx.work.impl.WorkDatabaseMigrations$7 $r6;
+        androidx.work.impl.WorkDatabaseMigrations$5 $r4;
+        androidx.work.impl.WorkDatabaseMigrations$6 $r5;
+        androidx.work.impl.WorkDatabaseMigrations$3 $r2;
+        androidx.work.impl.WorkDatabaseMigrations$4 $r3;
+        androidx.work.impl.WorkDatabaseMigrations$1 $r0;
+        androidx.work.impl.WorkDatabaseMigrations$2 $r1;
+
+        <androidx.work.impl.WorkDatabaseMigrations: java.lang.String WORKSPEC_ADD_TRIGGER_UPDATE_DELAY> = "ALTER TABLE workspec ADD COLUMN `trigger_content_update_delay` INTEGER NOT NULL DEFAULT -1";
+
+        <androidx.work.impl.WorkDatabaseMigrations: java.lang.String WORKSPEC_ADD_TRIGGER_MAX_CONTENT_DELAY> = "ALTER TABLE workspec ADD COLUMN `trigger_max_content_delay` INTEGER NOT NULL DEFAULT -1";
+
+        <androidx.work.impl.WorkDatabaseMigrations: int VERSION_9> = 9;
+
+        <androidx.work.impl.WorkDatabaseMigrations: int VERSION_8> = 8;
+
+        <androidx.work.impl.WorkDatabaseMigrations: int VERSION_7> = 7;
+
+        <androidx.work.impl.WorkDatabaseMigrations: int VERSION_6> = 6;
+
+        <androidx.work.impl.WorkDatabaseMigrations: int VERSION_5> = 5;
+
+        <androidx.work.impl.WorkDatabaseMigrations: int VERSION_4> = 4;
+
+        <androidx.work.impl.WorkDatabaseMigrations: int VERSION_3> = 3;
+
+        <androidx.work.impl.WorkDatabaseMigrations: int VERSION_2> = 2;
+
+        <androidx.work.impl.WorkDatabaseMigrations: int VERSION_12> = 12;
+
+        <androidx.work.impl.WorkDatabaseMigrations: int VERSION_11> = 11;
+
+        <androidx.work.impl.WorkDatabaseMigrations: int VERSION_10> = 10;
+
+        <androidx.work.impl.WorkDatabaseMigrations: int VERSION_1> = 1;
+
+        <androidx.work.impl.WorkDatabaseMigrations: java.lang.String REMOVE_ALARM_INFO> = "DROP TABLE IF EXISTS alarmInfo";
+
+        <androidx.work.impl.WorkDatabaseMigrations: java.lang.String PERIODIC_WORK_SET_SCHEDULE_REQUESTED_AT> = "UPDATE workspec SET schedule_requested_at=0 WHERE state NOT IN (2, 3, 5) AND schedule_requested_at=-1 AND interval_duration<>0";
+
+        <androidx.work.impl.WorkDatabaseMigrations: java.lang.String MIGRATE_ALARM_INFO_TO_SYSTEM_ID_INFO> = "INSERT INTO SystemIdInfo(work_spec_id, system_id) SELECT work_spec_id, alarm_id AS system_id FROM alarmInfo";
+
+        <androidx.work.impl.WorkDatabaseMigrations: java.lang.String INSERT_PREFERENCE> = "INSERT OR REPLACE INTO `Preference` (`key`, `long_value`) VALUES (@key, @long_value)";
+
+        <androidx.work.impl.WorkDatabaseMigrations: java.lang.String CREATE_WORK_PROGRESS> = "CREATE TABLE IF NOT EXISTS `WorkProgress` (`work_spec_id` TEXT NOT NULL, `progress` BLOB NOT NULL, PRIMARY KEY(`work_spec_id`), FOREIGN KEY(`work_spec_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )";
+
+        <androidx.work.impl.WorkDatabaseMigrations: java.lang.String CREATE_SYSTEM_ID_INFO> = "CREATE TABLE IF NOT EXISTS `SystemIdInfo` (`work_spec_id` TEXT NOT NULL, `system_id` INTEGER NOT NULL, PRIMARY KEY(`work_spec_id`), FOREIGN KEY(`work_spec_id`) REFERENCES `WorkSpec`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )";
+
+        <androidx.work.impl.WorkDatabaseMigrations: java.lang.String CREATE_RUN_IN_FOREGROUND> = "ALTER TABLE workspec ADD COLUMN `run_in_foreground` INTEGER NOT NULL DEFAULT 0";
+
+        <androidx.work.impl.WorkDatabaseMigrations: java.lang.String CREATE_PREFERENCE> = "CREATE TABLE IF NOT EXISTS `Preference` (`key` TEXT NOT NULL, `long_value` INTEGER, PRIMARY KEY(`key`))";
+
+        <androidx.work.impl.WorkDatabaseMigrations: java.lang.String CREATE_OUT_OF_QUOTA_POLICY> = "ALTER TABLE workspec ADD COLUMN `out_of_quota_policy` INTEGER NOT NULL DEFAULT 0";
+
+        <androidx.work.impl.WorkDatabaseMigrations: java.lang.String CREATE_INDEX_PERIOD_START_TIME> = "CREATE INDEX IF NOT EXISTS `index_WorkSpec_period_start_time` ON `workspec` (`period_start_time`)";
+
+        $r0 = new androidx.work.impl.WorkDatabaseMigrations$1;
+
+        specialinvoke $r0.<androidx.work.impl.WorkDatabaseMigrations$1: void <init>(int,int)>(1, 2);
+
+        <androidx.work.impl.WorkDatabaseMigrations: androidx.room.migration.Migration MIGRATION_1_2> = $r0;
+
+        $r1 = new androidx.work.impl.WorkDatabaseMigrations$2;
+
+        specialinvoke $r1.<androidx.work.impl.WorkDatabaseMigrations$2: void <init>(int,int)>(3, 4);
+
+        <androidx.work.impl.WorkDatabaseMigrations: androidx.room.migration.Migration MIGRATION_3_4> = $r1;
+
+        $r2 = new androidx.work.impl.WorkDatabaseMigrations$3;
+
+        specialinvoke $r2.<androidx.work.impl.WorkDatabaseMigrations$3: void <init>(int,int)>(4, 5);
+
+        <androidx.work.impl.WorkDatabaseMigrations: androidx.room.migration.Migration MIGRATION_4_5> = $r2;
+
+        $r3 = new androidx.work.impl.WorkDatabaseMigrations$4;
+
+        specialinvoke $r3.<androidx.work.impl.WorkDatabaseMigrations$4: void <init>(int,int)>(6, 7);
+
+        <androidx.work.impl.WorkDatabaseMigrations: androidx.room.migration.Migration MIGRATION_6_7> = $r3;
+
+        $r4 = new androidx.work.impl.WorkDatabaseMigrations$5;
+
+        specialinvoke $r4.<androidx.work.impl.WorkDatabaseMigrations$5: void <init>(int,int)>(7, 8);
+
+        <androidx.work.impl.WorkDatabaseMigrations: androidx.room.migration.Migration MIGRATION_7_8> = $r4;
+
+        $r5 = new androidx.work.impl.WorkDatabaseMigrations$6;
+
+        specialinvoke $r5.<androidx.work.impl.WorkDatabaseMigrations$6: void <init>(int,int)>(8, 9);
+
+        <androidx.work.impl.WorkDatabaseMigrations: androidx.room.migration.Migration MIGRATION_8_9> = $r5;
+
+        $r6 = new androidx.work.impl.WorkDatabaseMigrations$7;
+
+        specialinvoke $r6.<androidx.work.impl.WorkDatabaseMigrations$7: void <init>(int,int)>(11, 12);
+
+        <androidx.work.impl.WorkDatabaseMigrations: androidx.room.migration.Migration MIGRATION_11_12> = $r6;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.work.impl.WorkDatabaseMigrations r0;
+
+        r0 := @this: androidx.work.impl.WorkDatabaseMigrations;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

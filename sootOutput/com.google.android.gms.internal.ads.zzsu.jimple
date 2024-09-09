@@ -1,0 +1,106 @@
+final class com.google.android.gms.internal.ads.zzsu extends java.lang.Object
+{
+
+    public static int zza(android.media.MediaCodecInfo$VideoCapabilities, java.lang.String, int, int, double)
+    {
+        android.media.MediaCodecInfo$VideoCapabilities $r0;
+        java.util.List $r2;
+        android.media.MediaCodecInfo$VideoCapabilities$PerformancePoint $r3;
+        int $i0, $i1, $i2;
+        java.lang.String $r1;
+        double $d0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.media.MediaCodecInfo$VideoCapabilities;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $i0 := @parameter2: int;
+
+        $i1 := @parameter3: int;
+
+        $d0 := @parameter4: double;
+
+        $r2 = virtualinvoke $r0.<android.media.MediaCodecInfo$VideoCapabilities: java.util.List getSupportedPerformancePoints()>();
+
+        if $r2 == null goto label3;
+
+        $z0 = interfaceinvoke $r2.<java.util.List: boolean isEmpty()>();
+
+        if $z0 == 0 goto label1;
+
+        return 0;
+
+     label1:
+        $i2 = (int) $d0;
+
+        $r3 = new android.media.MediaCodecInfo$VideoCapabilities$PerformancePoint;
+
+        specialinvoke $r3.<android.media.MediaCodecInfo$VideoCapabilities$PerformancePoint: void <init>(int,int,int)>($i0, $i1, $i2);
+
+        $i0 = staticinvoke <com.google.android.gms.internal.ads.zzsu: int zzb(java.util.List,android.media.MediaCodecInfo$VideoCapabilities$PerformancePoint)>($r2, $r3);
+
+        if $i0 != 1 goto label2;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("video/avc");
+
+        if $z0 == 0 goto label4;
+
+        $r3 = new android.media.MediaCodecInfo$VideoCapabilities$PerformancePoint;
+
+        specialinvoke $r3.<android.media.MediaCodecInfo$VideoCapabilities$PerformancePoint: void <init>(int,int,int)>(1280, 720, 60);
+
+        $i1 = staticinvoke <com.google.android.gms.internal.ads.zzsu: int zzb(java.util.List,android.media.MediaCodecInfo$VideoCapabilities$PerformancePoint)>($r2, $r3);
+
+        if $i1 == 2 goto label4;
+
+        return 0;
+
+     label2:
+        return $i0;
+
+     label3:
+        return 0;
+
+     label4:
+        return $i0;
+    }
+
+    private static int zzb(java.util.List, android.media.MediaCodecInfo$VideoCapabilities$PerformancePoint)
+    {
+        java.util.List $r1;
+        android.media.MediaCodecInfo$VideoCapabilities$PerformancePoint $r0, $r3;
+        int $i0, $i1;
+        java.lang.Object $r2;
+        boolean $z0;
+
+        $r1 := @parameter0: java.util.List;
+
+        $r0 := @parameter1: android.media.MediaCodecInfo$VideoCapabilities$PerformancePoint;
+
+        $i0 = 0;
+
+     label1:
+        $i1 = interfaceinvoke $r1.<java.util.List: int size()>();
+
+        if $i0 >= $i1 goto label3;
+
+        $r2 = interfaceinvoke $r1.<java.util.List: java.lang.Object get(int)>($i0);
+
+        $r3 = (android.media.MediaCodecInfo$VideoCapabilities$PerformancePoint) $r2;
+
+        $z0 = virtualinvoke $r3.<android.media.MediaCodecInfo$VideoCapabilities$PerformancePoint: boolean covers(android.media.MediaCodecInfo$VideoCapabilities$PerformancePoint)>($r0);
+
+        if $z0 == 0 goto label2;
+
+        return 2;
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        return 1;
+    }
+}

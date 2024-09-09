@@ -1,0 +1,618 @@
+public final class com.google.android.gms.internal.ads.zzgt extends com.google.android.gms.internal.ads.zzgq
+{
+    private final android.content.ContentResolver zza;
+    private android.net.Uri zzb;
+    private android.content.res.AssetFileDescriptor zzc;
+    private java.io.FileInputStream zzd;
+    private long zze;
+    private boolean zzf;
+
+    public void <init>(android.content.Context)
+    {
+        android.content.Context $r2;
+        com.google.android.gms.internal.ads.zzgt r0;
+        android.content.ContentResolver $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgt;
+
+        $r2 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzgq: void <init>(boolean)>(0);
+
+        $r1 = virtualinvoke $r2.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        r0.<com.google.android.gms.internal.ads.zzgt: android.content.ContentResolver zza> = $r1;
+
+        return;
+    }
+
+    public final int zza(byte[], int, int) throws com.google.android.gms.internal.ads.zzgs
+    {
+        byte[] $r1;
+        long $l3, $l5;
+        java.io.IOException $r3;
+        java.io.FileInputStream $r2;
+        com.google.android.gms.internal.ads.zzgt r0;
+        byte $b4;
+        com.google.android.gms.internal.ads.zzgs $r4;
+        int $i0, $i1, $i2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgt;
+
+        $r1 := @parameter0: byte[];
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        if $i2 != 0 goto label01;
+
+        return 0;
+
+     label01:
+        $l3 = r0.<com.google.android.gms.internal.ads.zzgt: long zze>;
+
+        $b4 = $l3 cmp 0L;
+
+        if $b4 == 0 goto label10;
+
+        $b4 = $l3 cmp -1L;
+
+        if $b4 == 0 goto label04;
+
+        $l5 = (long) $i2;
+
+     label02:
+        $l3 = staticinvoke <java.lang.Math: long min(long,long)>($l3, $l5);
+
+     label03:
+        $i2 = (int) $l3;
+
+     label04:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzgt: java.io.FileInputStream zzd>;
+
+        $i0 = <com.google.android.gms.internal.ads.zzfy: int zza>;
+
+     label05:
+        $i1 = virtualinvoke $r2.<java.io.FileInputStream: int read(byte[],int,int)>($r1, $i1, $i2);
+
+     label06:
+        if $i1 != -1 goto label07;
+
+        return -1;
+
+     label07:
+        $l3 = r0.<com.google.android.gms.internal.ads.zzgt: long zze>;
+
+        $b4 = $l3 cmp -1L;
+
+        if $b4 == 0 goto label08;
+
+        $l5 = (long) $i1;
+
+        $l3 = $l3 - $l5;
+
+        r0.<com.google.android.gms.internal.ads.zzgt: long zze> = $l3;
+
+     label08:
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzgq: void zzg(int)>($i1);
+
+        return $i1;
+
+     label09:
+        $r3 := @caughtexception;
+
+        $r4 = new com.google.android.gms.internal.ads.zzgs;
+
+        specialinvoke $r4.<com.google.android.gms.internal.ads.zzgs: void <init>(java.io.IOException,int)>($r3, 2000);
+
+        throw $r4;
+
+     label10:
+        return -1;
+
+        catch java.io.IOException from label02 to label03 with label09;
+        catch java.io.IOException from label05 to label06 with label09;
+    }
+
+    public final long zzb(com.google.android.gms.internal.ads.zzhb) throws com.google.android.gms.internal.ads.zzgs
+    {
+        android.content.res.AssetFileDescriptor $r6;
+        android.os.Bundle $r11;
+        android.net.Uri $r2;
+        long $l2, $l3, $l4;
+        com.google.android.gms.internal.ads.zzgt r0;
+        short $s5;
+        byte $b0, $b1;
+        android.content.ContentResolver $r5;
+        com.google.android.gms.internal.ads.zzgs $r8, $r13;
+        int $i6;
+        java.lang.String $r3, $r4;
+        boolean $z0;
+        com.google.android.gms.internal.ads.zzhb $r1;
+        java.io.IOException $r10;
+        java.io.FileInputStream $r12;
+        java.io.FileDescriptor $r7;
+        java.lang.StringBuilder $r14;
+        java.nio.channels.FileChannel $r9;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgt;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzhb;
+
+        $r2 = $r1.<com.google.android.gms.internal.ads.zzhb: android.net.Uri zza>;
+
+     label01:
+        $r2 = virtualinvoke $r2.<android.net.Uri: android.net.Uri normalizeScheme()>();
+
+     label02:
+        r0.<com.google.android.gms.internal.ads.zzgt: android.net.Uri zzb> = $r2;
+
+     label03:
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzgq: void zzi(com.google.android.gms.internal.ads.zzhb)>($r1);
+
+     label04:
+        $r3 = "content";
+
+     label05:
+        $r4 = virtualinvoke $r2.<android.net.Uri: java.lang.String getScheme()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>($r4);
+
+     label06:
+        if $z0 == 0 goto label11;
+
+        $r11 = new android.os.Bundle;
+
+     label07:
+        specialinvoke $r11.<android.os.Bundle: void <init>()>();
+
+        virtualinvoke $r11.<android.os.Bundle: void putBoolean(java.lang.String,boolean)>("android.provider.extra.ACCEPT_ORIGINAL_MEDIA_FORMAT", 1);
+
+     label08:
+        $r5 = r0.<com.google.android.gms.internal.ads.zzgt: android.content.ContentResolver zza>;
+
+     label09:
+        $r6 = virtualinvoke $r5.<android.content.ContentResolver: android.content.res.AssetFileDescriptor openTypedAssetFileDescriptor(android.net.Uri,java.lang.String,android.os.Bundle)>($r2, "*/*", $r11);
+
+     label10:
+        goto label13;
+
+     label11:
+        $r5 = r0.<com.google.android.gms.internal.ads.zzgt: android.content.ContentResolver zza>;
+
+     label12:
+        $r6 = virtualinvoke $r5.<android.content.ContentResolver: android.content.res.AssetFileDescriptor openAssetFileDescriptor(android.net.Uri,java.lang.String)>($r2, "r");
+
+     label13:
+        r0.<com.google.android.gms.internal.ads.zzgt: android.content.res.AssetFileDescriptor zzc> = $r6;
+
+        if $r6 == null goto label44;
+
+     label14:
+        $l2 = virtualinvoke $r6.<android.content.res.AssetFileDescriptor: long getLength()>();
+
+     label15:
+        $r12 = new java.io.FileInputStream;
+
+     label16:
+        $r7 = virtualinvoke $r6.<android.content.res.AssetFileDescriptor: java.io.FileDescriptor getFileDescriptor()>();
+
+        specialinvoke $r12.<java.io.FileInputStream: void <init>(java.io.FileDescriptor)>($r7);
+
+     label17:
+        r0.<com.google.android.gms.internal.ads.zzgt: java.io.FileInputStream zzd> = $r12;
+
+        $b0 = $l2 cmp -1L;
+
+        if $b0 == 0 goto label21;
+
+        $l3 = $r1.<com.google.android.gms.internal.ads.zzhb: long zzf>;
+
+        $b1 = $l3 cmp $l2;
+
+        $i6 = (int) $b1;
+
+        if $i6 > 0 goto label18;
+
+        goto label21;
+
+     label18:
+        $r13 = new com.google.android.gms.internal.ads.zzgs;
+
+     label19:
+        specialinvoke $r13.<com.google.android.gms.internal.ads.zzgs: void <init>(java.io.IOException,int)>(null, 2008);
+
+     label20:
+        throw $r13;
+
+     label21:
+        $l3 = virtualinvoke $r6.<android.content.res.AssetFileDescriptor: long getStartOffset()>();
+
+     label22:
+        $l4 = $r1.<com.google.android.gms.internal.ads.zzhb: long zzf>;
+
+        $l4 = $l4 + $l3;
+
+     label23:
+        $l4 = virtualinvoke $r12.<java.io.FileInputStream: long skip(long)>($l4);
+
+     label24:
+        $l3 = $l4 - $l3;
+
+        $l4 = $r1.<com.google.android.gms.internal.ads.zzhb: long zzf>;
+
+        $b1 = $l3 cmp $l4;
+
+        if $b1 != 0 goto label41;
+
+        if $b0 != 0 goto label32;
+
+     label25:
+        $r9 = virtualinvoke $r12.<java.io.FileInputStream: java.nio.channels.FileChannel getChannel()>();
+
+        $l2 = virtualinvoke $r9.<java.nio.channels.FileChannel: long size()>();
+
+     label26:
+        $b0 = $l2 cmp 0L;
+
+        if $b0 != 0 goto label27;
+
+        r0.<com.google.android.gms.internal.ads.zzgt: long zze> = -1L;
+
+        $l2 = -1L;
+
+        goto label33;
+
+     label27:
+        $l3 = virtualinvoke $r9.<java.nio.channels.FileChannel: long position()>();
+
+     label28:
+        $l2 = $l2 - $l3;
+
+        r0.<com.google.android.gms.internal.ads.zzgt: long zze> = $l2;
+
+        $b0 = $l2 cmp 0L;
+
+        $i6 = (int) $b0;
+
+        if $i6 < 0 goto label29;
+
+        goto label33;
+
+     label29:
+        $r13 = new com.google.android.gms.internal.ads.zzgs;
+
+     label30:
+        specialinvoke $r13.<com.google.android.gms.internal.ads.zzgs: void <init>(java.io.IOException,int)>(null, 2008);
+
+     label31:
+        throw $r13;
+
+     label32:
+        $l2 = $l2 - $l3;
+
+        r0.<com.google.android.gms.internal.ads.zzgt: long zze> = $l2;
+
+        $b0 = $l2 cmp 0L;
+
+        $i6 = (int) $b0;
+
+        if $i6 < 0 goto label38;
+
+     label33:
+        $l3 = $r1.<com.google.android.gms.internal.ads.zzhb: long zzg>;
+
+        $b0 = $l3 cmp -1L;
+
+        if $b0 == 0 goto label36;
+
+        $b0 = $l2 cmp -1L;
+
+        if $b0 != 0 goto label34;
+
+        goto label35;
+
+     label34:
+        $l3 = staticinvoke <java.lang.Math: long min(long,long)>($l2, $l3);
+
+     label35:
+        r0.<com.google.android.gms.internal.ads.zzgt: long zze> = $l3;
+
+     label36:
+        r0.<com.google.android.gms.internal.ads.zzgt: boolean zzf> = 1;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzgq: void zzj(com.google.android.gms.internal.ads.zzhb)>($r1);
+
+        $l2 = $r1.<com.google.android.gms.internal.ads.zzhb: long zzg>;
+
+        $b0 = $l2 cmp -1L;
+
+        if $b0 == 0 goto label37;
+
+        return $l2;
+
+     label37:
+        $l2 = r0.<com.google.android.gms.internal.ads.zzgt: long zze>;
+
+        return $l2;
+
+     label38:
+        $r13 = new com.google.android.gms.internal.ads.zzgs;
+
+     label39:
+        specialinvoke $r13.<com.google.android.gms.internal.ads.zzgs: void <init>(java.io.IOException,int)>(null, 2008);
+
+     label40:
+        throw $r13;
+
+     label41:
+        $r13 = new com.google.android.gms.internal.ads.zzgs;
+
+     label42:
+        specialinvoke $r13.<com.google.android.gms.internal.ads.zzgs: void <init>(java.io.IOException,int)>(null, 2008);
+
+     label43:
+        throw $r13;
+
+     label44:
+        $r13 = new com.google.android.gms.internal.ads.zzgs;
+
+        $r10 = new java.io.IOException;
+
+     label45:
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r2);
+
+     label46:
+        $r14 = new java.lang.StringBuilder;
+
+     label47:
+        specialinvoke $r14.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Could not open file descriptor for: ");
+
+        virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r10.<java.io.IOException: void <init>(java.lang.String)>($r3);
+
+     label48:
+        $s5 = 2000;
+
+     label49:
+        specialinvoke $r13.<com.google.android.gms.internal.ads.zzgs: void <init>(java.io.IOException,int)>($r10, 2000);
+
+     label50:
+        throw $r13;
+
+     label51:
+        $r10 := @caughtexception;
+
+        goto label53;
+
+     label52:
+        $r10 := @caughtexception;
+
+        $s5 = 2000;
+
+     label53:
+        $r13 = new com.google.android.gms.internal.ads.zzgs;
+
+        $r8 = $r13;
+
+        $z0 = $r10 instanceof java.io.FileNotFoundException;
+
+        if 1 == $z0 goto label54;
+
+        goto label55;
+
+     label54:
+        $s5 = 2005;
+
+     label55:
+        specialinvoke $r13.<com.google.android.gms.internal.ads.zzgs: void <init>(java.io.IOException,int)>($r10, $s5);
+
+        throw $r8;
+
+     label56:
+        $r8 := @caughtexception;
+
+        throw $r8;
+
+        catch com.google.android.gms.internal.ads.zzgs from label01 to label02 with label56;
+        catch com.google.android.gms.internal.ads.zzgs from label03 to label04 with label56;
+        catch com.google.android.gms.internal.ads.zzgs from label05 to label06 with label56;
+        catch com.google.android.gms.internal.ads.zzgs from label07 to label08 with label56;
+        catch com.google.android.gms.internal.ads.zzgs from label09 to label10 with label56;
+        catch com.google.android.gms.internal.ads.zzgs from label12 to label13 with label56;
+        catch com.google.android.gms.internal.ads.zzgs from label14 to label15 with label56;
+        catch com.google.android.gms.internal.ads.zzgs from label16 to label17 with label56;
+        catch com.google.android.gms.internal.ads.zzgs from label19 to label22 with label56;
+        catch com.google.android.gms.internal.ads.zzgs from label23 to label24 with label56;
+        catch com.google.android.gms.internal.ads.zzgs from label25 to label26 with label56;
+        catch com.google.android.gms.internal.ads.zzgs from label27 to label28 with label56;
+        catch com.google.android.gms.internal.ads.zzgs from label30 to label32 with label56;
+        catch java.io.IOException from label01 to label02 with label52;
+        catch java.io.IOException from label03 to label04 with label52;
+        catch java.io.IOException from label05 to label06 with label52;
+        catch java.io.IOException from label07 to label08 with label52;
+        catch java.io.IOException from label09 to label10 with label52;
+        catch java.io.IOException from label12 to label13 with label52;
+        catch java.io.IOException from label14 to label15 with label52;
+        catch java.io.IOException from label16 to label17 with label52;
+        catch java.io.IOException from label19 to label20 with label52;
+        catch java.io.IOException from label21 to label22 with label52;
+        catch java.io.IOException from label23 to label24 with label52;
+        catch java.io.IOException from label25 to label26 with label52;
+        catch java.io.IOException from label27 to label28 with label52;
+        catch java.io.IOException from label30 to label31 with label52;
+        catch com.google.android.gms.internal.ads.zzgs from label39 to label41 with label56;
+        catch com.google.android.gms.internal.ads.zzgs from label42 to label44 with label56;
+        catch com.google.android.gms.internal.ads.zzgs from label45 to label46 with label56;
+        catch com.google.android.gms.internal.ads.zzgs from label47 to label48 with label56;
+        catch java.io.IOException from label39 to label40 with label52;
+        catch java.io.IOException from label42 to label43 with label52;
+        catch java.io.IOException from label45 to label46 with label52;
+        catch java.io.IOException from label47 to label48 with label52;
+        catch com.google.android.gms.internal.ads.zzgs from label49 to label51 with label56;
+        catch java.io.IOException from label49 to label50 with label51;
+    }
+
+    public final android.net.Uri zzc()
+    {
+        android.net.Uri r1;
+        com.google.android.gms.internal.ads.zzgt r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgt;
+
+        r1 = r0.<com.google.android.gms.internal.ads.zzgt: android.net.Uri zzb>;
+
+        return r1;
+    }
+
+    public final void zzd() throws com.google.android.gms.internal.ads.zzgs
+    {
+        android.content.res.AssetFileDescriptor $r2;
+        java.lang.Throwable $r5, $r7;
+        java.io.IOException $r3, $r6, $r8;
+        java.io.FileInputStream $r1;
+        com.google.android.gms.internal.ads.zzgt r0;
+        com.google.android.gms.internal.ads.zzgs $r4;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgt;
+
+        r0.<com.google.android.gms.internal.ads.zzgt: android.net.Uri zzb> = null;
+
+     label01:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgt: java.io.FileInputStream zzd>;
+
+     label02:
+        if $r1 == null goto label04;
+
+     label03:
+        virtualinvoke $r1.<java.io.FileInputStream: void close()>();
+
+     label04:
+        r0.<com.google.android.gms.internal.ads.zzgt: java.io.FileInputStream zzd> = null;
+
+     label05:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzgt: android.content.res.AssetFileDescriptor zzc>;
+
+     label06:
+        if $r2 == null goto label08;
+
+     label07:
+        virtualinvoke $r2.<android.content.res.AssetFileDescriptor: void close()>();
+
+     label08:
+        r0.<com.google.android.gms.internal.ads.zzgt: android.content.res.AssetFileDescriptor zzc> = null;
+
+        $z0 = r0.<com.google.android.gms.internal.ads.zzgt: boolean zzf>;
+
+        if $z0 == 0 goto label25;
+
+        r0.<com.google.android.gms.internal.ads.zzgt: boolean zzf> = 0;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzgq: void zzh()>();
+
+        return;
+
+     label09:
+        $r3 := @caughtexception;
+
+     label10:
+        $r4 = new com.google.android.gms.internal.ads.zzgs;
+
+        specialinvoke $r4.<com.google.android.gms.internal.ads.zzgs: void <init>(java.io.IOException,int)>($r3, 2000);
+
+        throw $r4;
+
+     label11:
+        $r5 := @caughtexception;
+
+        goto label14;
+
+     label12:
+        $r6 := @caughtexception;
+
+     label13:
+        $r4 = new com.google.android.gms.internal.ads.zzgs;
+
+        specialinvoke $r4.<com.google.android.gms.internal.ads.zzgs: void <init>(java.io.IOException,int)>($r6, 2000);
+
+        throw $r4;
+
+     label14:
+        r0.<com.google.android.gms.internal.ads.zzgt: java.io.FileInputStream zzd> = null;
+
+     label15:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzgt: android.content.res.AssetFileDescriptor zzc>;
+
+     label16:
+        if $r2 == null goto label18;
+
+     label17:
+        virtualinvoke $r2.<android.content.res.AssetFileDescriptor: void close()>();
+
+     label18:
+        r0.<com.google.android.gms.internal.ads.zzgt: android.content.res.AssetFileDescriptor zzc> = null;
+
+        $z0 = r0.<com.google.android.gms.internal.ads.zzgt: boolean zzf>;
+
+        if $z0 == 0 goto label19;
+
+        r0.<com.google.android.gms.internal.ads.zzgt: boolean zzf> = 0;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzgq: void zzh()>();
+
+     label19:
+        throw $r5;
+
+     label20:
+        $r7 := @caughtexception;
+
+        goto label23;
+
+     label21:
+        $r8 := @caughtexception;
+
+     label22:
+        $r4 = new com.google.android.gms.internal.ads.zzgs;
+
+        specialinvoke $r4.<com.google.android.gms.internal.ads.zzgs: void <init>(java.io.IOException,int)>($r8, 2000);
+
+        throw $r4;
+
+     label23:
+        r0.<com.google.android.gms.internal.ads.zzgt: android.content.res.AssetFileDescriptor zzc> = null;
+
+        $z0 = r0.<com.google.android.gms.internal.ads.zzgt: boolean zzf>;
+
+        if $z0 == 0 goto label24;
+
+        r0.<com.google.android.gms.internal.ads.zzgt: boolean zzf> = 0;
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzgq: void zzh()>();
+
+     label24:
+        throw $r7;
+
+     label25:
+        return;
+
+        catch java.io.IOException from label03 to label04 with label12;
+        catch java.lang.Throwable from label01 to label02 with label11;
+        catch java.lang.Throwable from label03 to label04 with label11;
+        catch java.io.IOException from label07 to label08 with label09;
+        catch java.lang.Throwable from label05 to label06 with label20;
+        catch java.lang.Throwable from label07 to label08 with label20;
+        catch java.lang.Throwable from label10 to label11 with label20;
+        catch java.lang.Throwable from label13 to label14 with label11;
+        catch java.io.IOException from label17 to label18 with label21;
+        catch java.lang.Throwable from label15 to label16 with label20;
+        catch java.lang.Throwable from label17 to label18 with label20;
+        catch java.lang.Throwable from label22 to label23 with label20;
+    }
+}

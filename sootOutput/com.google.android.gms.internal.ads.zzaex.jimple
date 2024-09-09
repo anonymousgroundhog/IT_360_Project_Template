@@ -1,0 +1,274 @@
+final class com.google.android.gms.internal.ads.zzaex extends java.lang.Object implements com.google.android.gms.internal.ads.zzacf
+{
+    private final com.google.android.gms.internal.ads.zzadh zza;
+    private final int zzb;
+    private final com.google.android.gms.internal.ads.zzadc zzc;
+
+    void <init>(com.google.android.gms.internal.ads.zzadh, int, com.google.android.gms.internal.ads.zzaew)
+    {
+        com.google.android.gms.internal.ads.zzadc $r3;
+        com.google.android.gms.internal.ads.zzadh $r2;
+        com.google.android.gms.internal.ads.zzaex r0;
+        com.google.android.gms.internal.ads.zzaew $r1;
+        int $i0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzaex;
+
+        $r2 := @parameter0: com.google.android.gms.internal.ads.zzadh;
+
+        $i0 := @parameter1: int;
+
+        $r1 := @parameter2: com.google.android.gms.internal.ads.zzaew;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzaex: com.google.android.gms.internal.ads.zzadh zza> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzaex: int zzb> = $i0;
+
+        $r3 = new com.google.android.gms.internal.ads.zzadc;
+
+        specialinvoke $r3.<com.google.android.gms.internal.ads.zzadc: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzaex: com.google.android.gms.internal.ads.zzadc zzc> = $r3;
+
+        return;
+    }
+
+    private final long zzc(com.google.android.gms.internal.ads.zzacv) throws java.io.IOException
+    {
+        byte[] $r4, $r6;
+        long $l0, $l1;
+        short $s4, $s5;
+        byte $b2;
+        int $i3, $i6, $i7;
+        boolean $z0;
+        com.google.android.gms.internal.ads.zzadc $r3;
+        com.google.android.gms.internal.ads.zzadh $r2;
+        com.google.android.gms.internal.ads.zzaex r0;
+        com.google.android.gms.internal.ads.zzacv $r1;
+        com.google.android.gms.internal.ads.zzfp $r7;
+        com.google.android.gms.internal.ads.zzack $r5;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzaex;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzacv;
+
+     label1:
+        $l0 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzacv: long zze()>();
+
+        $l1 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzacv: long zzd()>();
+
+        $l1 = $l1 + -6L;
+
+        $b2 = $l0 cmp $l1;
+
+        $i3 = (int) $b2;
+
+        if $i3 >= 0 goto label4;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzaex: com.google.android.gms.internal.ads.zzadh zza>;
+
+        $i3 = r0.<com.google.android.gms.internal.ads.zzaex: int zzb>;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzaex: com.google.android.gms.internal.ads.zzadc zzc>;
+
+        $l0 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzacv: long zze()>();
+
+        $r4 = newarray (byte)[2];
+
+        $r5 = (com.google.android.gms.internal.ads.zzack) $r1;
+
+        virtualinvoke $r5.<com.google.android.gms.internal.ads.zzack: boolean zzm(byte[],int,int,boolean)>($r4, 0, 2, 0);
+
+        $b2 = $r4[0];
+
+        $s4 = (short) $b2;
+
+        $s4 = $s4 & 255;
+
+        $b2 = $r4[1];
+
+        $s5 = (short) $b2;
+
+        $s5 = $s5 & 255;
+
+        $i6 = (int) $s4;
+
+        $i6 = $i6 << 8;
+
+        $i7 = (int) $s5;
+
+        $i6 = $i6 | $i7;
+
+        if $i6 == $i3 goto label2;
+
+        interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzacv: void zzj()>();
+
+        $l1 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzacv: long zzf()>();
+
+        $l0 = $l0 - $l1;
+
+        $i3 = (int) $l0;
+
+        virtualinvoke $r5.<com.google.android.gms.internal.ads.zzack: boolean zzl(int,boolean)>($i3, 0);
+
+        goto label3;
+
+     label2:
+        $r7 = new com.google.android.gms.internal.ads.zzfp;
+
+        specialinvoke $r7.<com.google.android.gms.internal.ads.zzfp: void <init>(int)>(16);
+
+        $r6 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzfp: byte[] zzM()>();
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r4, 0, $r6, 0, 2);
+
+        $r4 = virtualinvoke $r7.<com.google.android.gms.internal.ads.zzfp: byte[] zzM()>();
+
+        $i6 = staticinvoke <com.google.android.gms.internal.ads.zzacy: int zza(com.google.android.gms.internal.ads.zzacv,byte[],int,int)>($r1, $r4, 2, 14);
+
+        virtualinvoke $r7.<com.google.android.gms.internal.ads.zzfp: void zzJ(int)>($i6);
+
+        interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzacv: void zzj()>();
+
+        $l1 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzacv: long zzf()>();
+
+        $l0 = $l0 - $l1;
+
+        $i6 = (int) $l0;
+
+        virtualinvoke $r5.<com.google.android.gms.internal.ads.zzack: boolean zzl(int,boolean)>($i6, 0);
+
+        $z0 = staticinvoke <com.google.android.gms.internal.ads.zzadd: boolean zzc(com.google.android.gms.internal.ads.zzfp,com.google.android.gms.internal.ads.zzadh,int,com.google.android.gms.internal.ads.zzadc)>($r7, $r2, $i3, $r3);
+
+        if $z0 == 0 goto label3;
+
+        goto label4;
+
+     label3:
+        virtualinvoke $r5.<com.google.android.gms.internal.ads.zzack: boolean zzl(int,boolean)>(1, 0);
+
+        goto label1;
+
+     label4:
+        $l0 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzacv: long zze()>();
+
+        $l1 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzacv: long zzd()>();
+
+        $l1 = $l1 + -6L;
+
+        $b2 = $l0 cmp $l1;
+
+        $i3 = (int) $b2;
+
+        if $i3 < 0 goto label5;
+
+        $l0 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzacv: long zzd()>();
+
+        $l1 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzacv: long zze()>();
+
+        $l0 = $l0 - $l1;
+
+        $r5 = (com.google.android.gms.internal.ads.zzack) $r1;
+
+        $i3 = (int) $l0;
+
+        virtualinvoke $r5.<com.google.android.gms.internal.ads.zzack: boolean zzl(int,boolean)>($i3, 0);
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzaex: com.google.android.gms.internal.ads.zzadh zza>;
+
+        $l0 = $r2.<com.google.android.gms.internal.ads.zzadh: long zzj>;
+
+        return $l0;
+
+     label5:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzaex: com.google.android.gms.internal.ads.zzadc zzc>;
+
+        $l0 = $r3.<com.google.android.gms.internal.ads.zzadc: long zza>;
+
+        return $l0;
+    }
+
+    public final com.google.android.gms.internal.ads.zzace zza(com.google.android.gms.internal.ads.zzacv, long) throws java.io.IOException
+    {
+        com.google.android.gms.internal.ads.zzadh $r2;
+        com.google.android.gms.internal.ads.zzace $r4;
+        long $l0, $l2, $l3, $l4, $l6, $l7;
+        byte $b5;
+        com.google.android.gms.internal.ads.zzaex r0;
+        com.google.android.gms.internal.ads.zzacv $r1;
+        int $i1;
+        com.google.android.gms.internal.ads.zzack $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzaex;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzacv;
+
+        $l0 := @parameter1: long;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzaex: com.google.android.gms.internal.ads.zzadh zza>;
+
+        $i1 = $r2.<com.google.android.gms.internal.ads.zzadh: int zzc>;
+
+        $l2 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzacv: long zzf()>();
+
+        $l3 = specialinvoke r0.<com.google.android.gms.internal.ads.zzaex: long zzc(com.google.android.gms.internal.ads.zzacv)>($r1);
+
+        $l4 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzacv: long zze()>();
+
+        $i1 = staticinvoke <java.lang.Math: int max(int,int)>(6, $i1);
+
+        $r3 = (com.google.android.gms.internal.ads.zzack) $r1;
+
+        virtualinvoke $r3.<com.google.android.gms.internal.ads.zzack: boolean zzl(int,boolean)>($i1, 0);
+
+        $b5 = $l3 cmp $l0;
+
+        $l6 = specialinvoke r0.<com.google.android.gms.internal.ads.zzaex: long zzc(com.google.android.gms.internal.ads.zzacv)>($r1);
+
+        $l7 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzacv: long zze()>();
+
+        $i1 = (int) $b5;
+
+        if $i1 > 0 goto label2;
+
+        $b5 = $l6 cmp $l0;
+
+        $i1 = (int) $b5;
+
+        if $i1 > 0 goto label1;
+
+        goto label2;
+
+     label1:
+        $r4 = staticinvoke <com.google.android.gms.internal.ads.zzace: com.google.android.gms.internal.ads.zzace zze(long)>($l4);
+
+        return $r4;
+
+     label2:
+        $b5 = $l6 cmp $l0;
+
+        $i1 = (int) $b5;
+
+        if $i1 > 0 goto label3;
+
+        $r4 = staticinvoke <com.google.android.gms.internal.ads.zzace: com.google.android.gms.internal.ads.zzace zzf(long,long)>($l6, $l7);
+
+        return $r4;
+
+     label3:
+        $r4 = staticinvoke <com.google.android.gms.internal.ads.zzace: com.google.android.gms.internal.ads.zzace zzd(long,long)>($l3, $l2);
+
+        return $r4;
+    }
+
+    public final void zzb()
+    {
+        com.google.android.gms.internal.ads.zzaex r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzaex;
+
+        return;
+    }
+}

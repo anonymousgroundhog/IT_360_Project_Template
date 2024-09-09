@@ -1,0 +1,222 @@
+public final class androidx.work.WorkQuery$Builder extends java.lang.Object
+{
+    java.util.List mIds;
+    java.util.List mStates;
+    java.util.List mTags;
+    java.util.List mUniqueWorkNames;
+
+    private void <init>()
+    {
+        androidx.work.WorkQuery$Builder r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: androidx.work.WorkQuery$Builder;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        r0.<androidx.work.WorkQuery$Builder: java.util.List mIds> = $r1;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        r0.<androidx.work.WorkQuery$Builder: java.util.List mUniqueWorkNames> = $r1;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        r0.<androidx.work.WorkQuery$Builder: java.util.List mTags> = $r1;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        r0.<androidx.work.WorkQuery$Builder: java.util.List mStates> = $r1;
+
+        return;
+    }
+
+    public static androidx.work.WorkQuery$Builder fromIds(java.util.List)
+    {
+        java.util.List r0;
+        androidx.work.WorkQuery$Builder r1;
+
+        r0 := @parameter0: java.util.List;
+
+        r1 = new androidx.work.WorkQuery$Builder;
+
+        specialinvoke r1.<androidx.work.WorkQuery$Builder: void <init>()>();
+
+        virtualinvoke r1.<androidx.work.WorkQuery$Builder: androidx.work.WorkQuery$Builder addIds(java.util.List)>(r0);
+
+        return r1;
+    }
+
+    public static androidx.work.WorkQuery$Builder fromStates(java.util.List)
+    {
+        java.util.List r0;
+        androidx.work.WorkQuery$Builder r1;
+
+        r0 := @parameter0: java.util.List;
+
+        r1 = new androidx.work.WorkQuery$Builder;
+
+        specialinvoke r1.<androidx.work.WorkQuery$Builder: void <init>()>();
+
+        virtualinvoke r1.<androidx.work.WorkQuery$Builder: androidx.work.WorkQuery$Builder addStates(java.util.List)>(r0);
+
+        return r1;
+    }
+
+    public static androidx.work.WorkQuery$Builder fromTags(java.util.List)
+    {
+        java.util.List r0;
+        androidx.work.WorkQuery$Builder r1;
+
+        r0 := @parameter0: java.util.List;
+
+        r1 = new androidx.work.WorkQuery$Builder;
+
+        specialinvoke r1.<androidx.work.WorkQuery$Builder: void <init>()>();
+
+        virtualinvoke r1.<androidx.work.WorkQuery$Builder: androidx.work.WorkQuery$Builder addTags(java.util.List)>(r0);
+
+        return r1;
+    }
+
+    public static androidx.work.WorkQuery$Builder fromUniqueWorkNames(java.util.List)
+    {
+        java.util.List r0;
+        androidx.work.WorkQuery$Builder r1;
+
+        r0 := @parameter0: java.util.List;
+
+        r1 = new androidx.work.WorkQuery$Builder;
+
+        specialinvoke r1.<androidx.work.WorkQuery$Builder: void <init>()>();
+
+        virtualinvoke r1.<androidx.work.WorkQuery$Builder: androidx.work.WorkQuery$Builder addUniqueWorkNames(java.util.List)>(r0);
+
+        return r1;
+    }
+
+    public androidx.work.WorkQuery$Builder addIds(java.util.List)
+    {
+        java.util.List r1, $r2;
+        androidx.work.WorkQuery$Builder r0;
+
+        r0 := @this: androidx.work.WorkQuery$Builder;
+
+        r1 := @parameter0: java.util.List;
+
+        $r2 = r0.<androidx.work.WorkQuery$Builder: java.util.List mIds>;
+
+        interfaceinvoke $r2.<java.util.List: boolean addAll(java.util.Collection)>(r1);
+
+        return r0;
+    }
+
+    public androidx.work.WorkQuery$Builder addStates(java.util.List)
+    {
+        java.util.List r1, $r2;
+        androidx.work.WorkQuery$Builder r0;
+
+        r0 := @this: androidx.work.WorkQuery$Builder;
+
+        r1 := @parameter0: java.util.List;
+
+        $r2 = r0.<androidx.work.WorkQuery$Builder: java.util.List mStates>;
+
+        interfaceinvoke $r2.<java.util.List: boolean addAll(java.util.Collection)>(r1);
+
+        return r0;
+    }
+
+    public androidx.work.WorkQuery$Builder addTags(java.util.List)
+    {
+        java.util.List r1, $r2;
+        androidx.work.WorkQuery$Builder r0;
+
+        r0 := @this: androidx.work.WorkQuery$Builder;
+
+        r1 := @parameter0: java.util.List;
+
+        $r2 = r0.<androidx.work.WorkQuery$Builder: java.util.List mTags>;
+
+        interfaceinvoke $r2.<java.util.List: boolean addAll(java.util.Collection)>(r1);
+
+        return r0;
+    }
+
+    public androidx.work.WorkQuery$Builder addUniqueWorkNames(java.util.List)
+    {
+        java.util.List r1, $r2;
+        androidx.work.WorkQuery$Builder r0;
+
+        r0 := @this: androidx.work.WorkQuery$Builder;
+
+        r1 := @parameter0: java.util.List;
+
+        $r2 = r0.<androidx.work.WorkQuery$Builder: java.util.List mUniqueWorkNames>;
+
+        interfaceinvoke $r2.<java.util.List: boolean addAll(java.util.Collection)>(r1);
+
+        return r0;
+    }
+
+    public androidx.work.WorkQuery build()
+    {
+        java.util.List r2;
+        androidx.work.WorkQuery r3;
+        androidx.work.WorkQuery$Builder r0;
+        java.lang.IllegalArgumentException $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.work.WorkQuery$Builder;
+
+        r2 = r0.<androidx.work.WorkQuery$Builder: java.util.List mIds>;
+
+        $z0 = interfaceinvoke r2.<java.util.List: boolean isEmpty()>();
+
+        if $z0 == 0 goto label2;
+
+        r2 = r0.<androidx.work.WorkQuery$Builder: java.util.List mUniqueWorkNames>;
+
+        $z0 = interfaceinvoke r2.<java.util.List: boolean isEmpty()>();
+
+        if $z0 == 0 goto label2;
+
+        r2 = r0.<androidx.work.WorkQuery$Builder: java.util.List mTags>;
+
+        $z0 = interfaceinvoke r2.<java.util.List: boolean isEmpty()>();
+
+        if $z0 == 0 goto label2;
+
+        r2 = r0.<androidx.work.WorkQuery$Builder: java.util.List mStates>;
+
+        $z0 = interfaceinvoke r2.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label1;
+
+        goto label2;
+
+     label1:
+        $r1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Must specify ids, uniqueNames, tags or states when building a WorkQuery");
+
+        throw $r1;
+
+     label2:
+        r3 = new androidx.work.WorkQuery;
+
+        specialinvoke r3.<androidx.work.WorkQuery: void <init>(androidx.work.WorkQuery$Builder)>(r0);
+
+        return r3;
+    }
+}

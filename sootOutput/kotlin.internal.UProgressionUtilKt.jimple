@@ -1,0 +1,206 @@
+public final class kotlin.internal.UProgressionUtilKt extends java.lang.Object
+{
+
+    private static final int differenceModulo-WZ9TVnA(int, int, int)
+    {
+        int $i0, $i1, $i2, $i3;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $i0 = staticinvoke <kotlin.UByte$$ExternalSyntheticBackport1: int m(int,int)>($i0, $i2);
+
+        $i1 = staticinvoke <kotlin.UByte$$ExternalSyntheticBackport1: int m(int,int)>($i1, $i2);
+
+        $i3 = staticinvoke <kotlin.UByte$$ExternalSyntheticBackport5: int m(int,int)>($i0, $i1);
+
+        if $i3 < 0 goto label1;
+
+        $i0 = $i0 - $i1;
+
+        goto label2;
+
+     label1:
+        $i0 = $i0 - $i1;
+
+        $i0 = staticinvoke <kotlin.UInt: int constructor-impl(int)>($i0);
+
+        $i0 = $i0 + $i2;
+
+     label2:
+        $i0 = staticinvoke <kotlin.UInt: int constructor-impl(int)>($i0);
+
+        return $i0;
+    }
+
+    private static final long differenceModulo-sambcqE(long, long, long)
+    {
+        int $i3;
+        long $l0, $l1, $l2;
+
+        $l0 := @parameter0: long;
+
+        $l1 := @parameter1: long;
+
+        $l2 := @parameter2: long;
+
+        $l0 = staticinvoke <kotlin.UByte$$ExternalSyntheticBackport2: long m(long,long)>($l0, $l2);
+
+        $l1 = staticinvoke <kotlin.UByte$$ExternalSyntheticBackport2: long m(long,long)>($l1, $l2);
+
+        $i3 = staticinvoke <kotlin.UByte$$ExternalSyntheticBackport4: int m(long,long)>($l0, $l1);
+
+        if $i3 < 0 goto label1;
+
+        $l0 = $l0 - $l1;
+
+        goto label2;
+
+     label1:
+        $l0 = $l0 - $l1;
+
+        $l0 = staticinvoke <kotlin.ULong: long constructor-impl(long)>($l0);
+
+        $l0 = $l0 + $l2;
+
+     label2:
+        $l0 = staticinvoke <kotlin.ULong: long constructor-impl(long)>($l0);
+
+        return $l0;
+    }
+
+    public static final long getProgressionLastElement-7ftBX0g(long, long, long)
+    {
+        byte $b3;
+        int $i4;
+        long $l0, $l1, $l2;
+        java.lang.IllegalArgumentException $r0;
+
+        $l0 := @parameter0: long;
+
+        $l1 := @parameter1: long;
+
+        $l2 := @parameter2: long;
+
+        $b3 = $l2 cmp 0L;
+
+        $i4 = (int) $b3;
+
+        if $i4 <= 0 goto label2;
+
+        $i4 = staticinvoke <kotlin.UByte$$ExternalSyntheticBackport4: int m(long,long)>($l0, $l1);
+
+        if $i4 < 0 goto label1;
+
+        goto label3;
+
+     label1:
+        $l2 = staticinvoke <kotlin.ULong: long constructor-impl(long)>($l2);
+
+        $l0 = staticinvoke <kotlin.internal.UProgressionUtilKt: long differenceModulo-sambcqE(long,long,long)>($l1, $l0, $l2);
+
+        $l0 = $l1 - $l0;
+
+        $l0 = staticinvoke <kotlin.ULong: long constructor-impl(long)>($l0);
+
+        return $l0;
+
+     label2:
+        $b3 = $l2 cmp 0L;
+
+        $i4 = (int) $b3;
+
+        if $i4 >= 0 goto label5;
+
+        $i4 = staticinvoke <kotlin.UByte$$ExternalSyntheticBackport4: int m(long,long)>($l0, $l1);
+
+        if $i4 > 0 goto label4;
+
+     label3:
+        return $l1;
+
+     label4:
+        $l2 = neg $l2;
+
+        $l2 = staticinvoke <kotlin.ULong: long constructor-impl(long)>($l2);
+
+        $l0 = staticinvoke <kotlin.internal.UProgressionUtilKt: long differenceModulo-sambcqE(long,long,long)>($l0, $l1, $l2);
+
+        $l0 = $l0 + $l1;
+
+        $l0 = staticinvoke <kotlin.ULong: long constructor-impl(long)>($l0);
+
+        return $l0;
+
+     label5:
+        $r0 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Step is zero.");
+
+        throw $r0;
+    }
+
+    public static final int getProgressionLastElement-Nkh28Cs(int, int, int)
+    {
+        int $i0, $i1, $i2, $i3;
+        java.lang.IllegalArgumentException $r0;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        if $i2 <= 0 goto label2;
+
+        $i3 = staticinvoke <kotlin.UByte$$ExternalSyntheticBackport5: int m(int,int)>($i0, $i1);
+
+        if $i3 < 0 goto label1;
+
+        goto label3;
+
+     label1:
+        $i2 = staticinvoke <kotlin.UInt: int constructor-impl(int)>($i2);
+
+        $i0 = staticinvoke <kotlin.internal.UProgressionUtilKt: int differenceModulo-WZ9TVnA(int,int,int)>($i1, $i0, $i2);
+
+        $i0 = $i1 - $i0;
+
+        $i0 = staticinvoke <kotlin.UInt: int constructor-impl(int)>($i0);
+
+        return $i0;
+
+     label2:
+        if $i2 >= 0 goto label5;
+
+        $i3 = staticinvoke <kotlin.UByte$$ExternalSyntheticBackport5: int m(int,int)>($i0, $i1);
+
+        if $i3 > 0 goto label4;
+
+     label3:
+        return $i1;
+
+     label4:
+        $i2 = neg $i2;
+
+        $i2 = staticinvoke <kotlin.UInt: int constructor-impl(int)>($i2);
+
+        $i0 = staticinvoke <kotlin.internal.UProgressionUtilKt: int differenceModulo-WZ9TVnA(int,int,int)>($i0, $i1, $i2);
+
+        $i0 = $i0 + $i1;
+
+        $i0 = staticinvoke <kotlin.UInt: int constructor-impl(int)>($i0);
+
+        return $i0;
+
+     label5:
+        $r0 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Step is zero.");
+
+        throw $r0;
+    }
+}

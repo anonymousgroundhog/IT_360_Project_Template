@@ -1,0 +1,110 @@
+final class com.google.common.collect.ImmutableMap$Builder$DuplicateKey extends java.lang.Object
+{
+    private final java.lang.Object key;
+    private final java.lang.Object value1;
+    private final java.lang.Object value2;
+
+    void <init>(java.lang.Object, java.lang.Object, java.lang.Object)
+    {
+        java.lang.Object $r1, $r2, $r3;
+        com.google.common.collect.ImmutableMap$Builder$DuplicateKey r0;
+
+        r0 := @this: com.google.common.collect.ImmutableMap$Builder$DuplicateKey;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 := @parameter2: java.lang.Object;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.common.collect.ImmutableMap$Builder$DuplicateKey: java.lang.Object key> = $r1;
+
+        r0.<com.google.common.collect.ImmutableMap$Builder$DuplicateKey: java.lang.Object value1> = $r2;
+
+        r0.<com.google.common.collect.ImmutableMap$Builder$DuplicateKey: java.lang.Object value2> = $r3;
+
+        return;
+    }
+
+    java.lang.IllegalArgumentException exception()
+    {
+        com.google.common.collect.ImmutableMap$Builder$DuplicateKey r0;
+        java.lang.IllegalArgumentException $r1;
+        int $i0, $i1;
+        java.lang.Object $r2;
+        java.lang.StringBuilder $r8;
+        java.lang.String $r3, $r4, $r5, $r6, $r7;
+
+        r0 := @this: com.google.common.collect.ImmutableMap$Builder$DuplicateKey;
+
+        $r1 = new java.lang.IllegalArgumentException;
+
+        $r2 = r0.<com.google.common.collect.ImmutableMap$Builder$DuplicateKey: java.lang.Object key>;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r2);
+
+        $r2 = r0.<com.google.common.collect.ImmutableMap$Builder$DuplicateKey: java.lang.Object value1>;
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r2);
+
+        $r2 = r0.<com.google.common.collect.ImmutableMap$Builder$DuplicateKey: java.lang.Object key>;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r2);
+
+        $r2 = r0.<com.google.common.collect.ImmutableMap$Builder$DuplicateKey: java.lang.Object value2>;
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r2);
+
+        $r7 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r3);
+
+        $i0 = virtualinvoke $r7.<java.lang.String: int length()>();
+
+        $i0 = $i0 + 39;
+
+        $r7 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r4);
+
+        $i1 = virtualinvoke $r7.<java.lang.String: int length()>();
+
+        $i0 = $i0 + $i1;
+
+        $r7 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r5);
+
+        $i1 = virtualinvoke $r7.<java.lang.String: int length()>();
+
+        $i0 = $i0 + $i1;
+
+        $r7 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r6);
+
+        $i1 = virtualinvoke $r7.<java.lang.String: int length()>();
+
+        $i0 = $i0 + $i1;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(int)>($i0);
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Multiple entries with same key: ");
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("=");
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" and ");
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("=");
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r3 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r3);
+
+        return $r1;
+    }
+}

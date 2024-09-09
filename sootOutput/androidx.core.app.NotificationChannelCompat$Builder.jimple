@@ -1,0 +1,266 @@
+public class androidx.core.app.NotificationChannelCompat$Builder extends java.lang.Object
+{
+    private final androidx.core.app.NotificationChannelCompat mChannel;
+
+    public void <init>(java.lang.String, int)
+    {
+        int $i0;
+        androidx.core.app.NotificationChannelCompat $r2;
+        java.lang.String $r1;
+        androidx.core.app.NotificationChannelCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new androidx.core.app.NotificationChannelCompat;
+
+        specialinvoke $r2.<androidx.core.app.NotificationChannelCompat: void <init>(java.lang.String,int)>($r1, $i0);
+
+        r0.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat mChannel> = $r2;
+
+        return;
+    }
+
+    public androidx.core.app.NotificationChannelCompat build()
+    {
+        androidx.core.app.NotificationChannelCompat r1;
+        androidx.core.app.NotificationChannelCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat$Builder;
+
+        r1 = r0.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat mChannel>;
+
+        return r1;
+    }
+
+    public androidx.core.app.NotificationChannelCompat$Builder setConversationId(java.lang.String, java.lang.String)
+    {
+        int $i0;
+        androidx.core.app.NotificationChannelCompat $r3;
+        java.lang.String $r1, $r2;
+        androidx.core.app.NotificationChannelCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 30 goto label1;
+
+        $r3 = r0.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat mChannel>;
+
+        $r3.<androidx.core.app.NotificationChannelCompat: java.lang.String mParentId> = $r1;
+
+        $r3 = r0.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat mChannel>;
+
+        $r3.<androidx.core.app.NotificationChannelCompat: java.lang.String mConversationId> = $r2;
+
+     label1:
+        return r0;
+    }
+
+    public androidx.core.app.NotificationChannelCompat$Builder setDescription(java.lang.String)
+    {
+        androidx.core.app.NotificationChannelCompat $r2;
+        java.lang.String $r1;
+        androidx.core.app.NotificationChannelCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat mChannel>;
+
+        $r2.<androidx.core.app.NotificationChannelCompat: java.lang.String mDescription> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationChannelCompat$Builder setGroup(java.lang.String)
+    {
+        androidx.core.app.NotificationChannelCompat $r2;
+        java.lang.String $r1;
+        androidx.core.app.NotificationChannelCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat mChannel>;
+
+        $r2.<androidx.core.app.NotificationChannelCompat: java.lang.String mGroupId> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationChannelCompat$Builder setImportance(int)
+    {
+        int $i0;
+        androidx.core.app.NotificationChannelCompat $r1;
+        androidx.core.app.NotificationChannelCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat mChannel>;
+
+        $r1.<androidx.core.app.NotificationChannelCompat: int mImportance> = $i0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationChannelCompat$Builder setLightColor(int)
+    {
+        int $i0;
+        androidx.core.app.NotificationChannelCompat $r1;
+        androidx.core.app.NotificationChannelCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat$Builder;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat mChannel>;
+
+        $r1.<androidx.core.app.NotificationChannelCompat: int mLightColor> = $i0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationChannelCompat$Builder setLightsEnabled(boolean)
+    {
+        androidx.core.app.NotificationChannelCompat $r1;
+        androidx.core.app.NotificationChannelCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = r0.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat mChannel>;
+
+        $r1.<androidx.core.app.NotificationChannelCompat: boolean mLights> = $z0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationChannelCompat$Builder setName(java.lang.CharSequence)
+    {
+        androidx.core.app.NotificationChannelCompat $r2;
+        java.lang.CharSequence $r1;
+        androidx.core.app.NotificationChannelCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat$Builder;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r2 = r0.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat mChannel>;
+
+        $r2.<androidx.core.app.NotificationChannelCompat: java.lang.CharSequence mName> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationChannelCompat$Builder setShowBadge(boolean)
+    {
+        androidx.core.app.NotificationChannelCompat $r1;
+        androidx.core.app.NotificationChannelCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = r0.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat mChannel>;
+
+        $r1.<androidx.core.app.NotificationChannelCompat: boolean mShowBadge> = $z0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationChannelCompat$Builder setSound(android.net.Uri, android.media.AudioAttributes)
+    {
+        android.net.Uri $r1;
+        android.media.AudioAttributes $r2;
+        androidx.core.app.NotificationChannelCompat $r3;
+        androidx.core.app.NotificationChannelCompat$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat$Builder;
+
+        $r1 := @parameter0: android.net.Uri;
+
+        $r2 := @parameter1: android.media.AudioAttributes;
+
+        $r3 = r0.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat mChannel>;
+
+        $r3.<androidx.core.app.NotificationChannelCompat: android.net.Uri mSound> = $r1;
+
+        $r3 = r0.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat mChannel>;
+
+        $r3.<androidx.core.app.NotificationChannelCompat: android.media.AudioAttributes mAudioAttributes> = $r2;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationChannelCompat$Builder setVibrationEnabled(boolean)
+    {
+        androidx.core.app.NotificationChannelCompat $r1;
+        androidx.core.app.NotificationChannelCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = r0.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat mChannel>;
+
+        $r1.<androidx.core.app.NotificationChannelCompat: boolean mVibrationEnabled> = $z0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationChannelCompat$Builder setVibrationPattern(long[])
+    {
+        long[] $r1;
+        int $i0;
+        androidx.core.app.NotificationChannelCompat $r2;
+        androidx.core.app.NotificationChannelCompat$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationChannelCompat$Builder;
+
+        $r1 := @parameter0: long[];
+
+        $r2 = r0.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat mChannel>;
+
+        if $r1 == null goto label1;
+
+        $i0 = lengthof $r1;
+
+        if $i0 <= 0 goto label1;
+
+        $z0 = 1;
+
+        goto label2;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        $r2.<androidx.core.app.NotificationChannelCompat: boolean mVibrationEnabled> = $z0;
+
+        $r2 = r0.<androidx.core.app.NotificationChannelCompat$Builder: androidx.core.app.NotificationChannelCompat mChannel>;
+
+        $r2.<androidx.core.app.NotificationChannelCompat: long[] mVibrationPattern> = $r1;
+
+        return r0;
+    }
+}

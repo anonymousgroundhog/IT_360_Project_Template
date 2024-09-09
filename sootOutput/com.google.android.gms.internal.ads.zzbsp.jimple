@@ -1,0 +1,211 @@
+public final class com.google.android.gms.internal.ads.zzbsp extends java.lang.Object
+{
+    public final java.util.List zza;
+    public final java.util.List zzb;
+    public final java.util.List zzc;
+    public final java.util.List zzd;
+    public final java.util.List zze;
+    public final java.util.List zzf;
+    public final java.lang.String zzg;
+    public final java.lang.String zzh;
+
+    public void <init>(org.json.JSONObject) throws org.json.JSONException
+    {
+        com.google.android.gms.internal.ads.zzbsp r0;
+        com.google.android.gms.internal.ads.zzbso $r12;
+        java.util.ArrayList $r11;
+        org.json.JSONException $r9;
+        org.json.JSONObject $r1, $r5;
+        int $i0, $i1, $i2;
+        java.lang.String $r2, $r3;
+        boolean $z0;
+        java.util.Iterator $r7;
+        java.util.List $r6;
+        com.google.android.gms.internal.ads.zzcag $r10;
+        java.lang.Object $r8;
+        org.json.JSONArray $r4;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbsp;
+
+        $r1 := @parameter0: org.json.JSONObject;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $z0 = staticinvoke <com.google.android.gms.ads.internal.util.zze: boolean zzm(int)>(2);
+
+        if $z0 == 0 goto label01;
+
+        $r2 = virtualinvoke $r1.<org.json.JSONObject: java.lang.String toString(int)>(2);
+
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r2);
+
+        $r3 = "Mediation Response JSON: ";
+
+        $r2 = virtualinvoke $r3.<java.lang.String: java.lang.String concat(java.lang.String)>($r2);
+
+        staticinvoke <com.google.android.gms.ads.internal.util.zze: void zza(java.lang.String)>($r2);
+
+     label01:
+        $r4 = virtualinvoke $r1.<org.json.JSONObject: org.json.JSONArray getJSONArray(java.lang.String)>("ad_networks");
+
+        $r11 = new java.util.ArrayList;
+
+        $i0 = virtualinvoke $r4.<org.json.JSONArray: int length()>();
+
+        specialinvoke $r11.<java.util.ArrayList: void <init>(int)>($i0);
+
+        $i0 = 0;
+
+        $i1 = -1;
+
+     label02:
+        $i2 = virtualinvoke $r4.<org.json.JSONArray: int length()>();
+
+        if $i0 >= $i2 goto label08;
+
+        $r12 = new com.google.android.gms.internal.ads.zzbso;
+
+     label03:
+        $r5 = virtualinvoke $r4.<org.json.JSONArray: org.json.JSONObject getJSONObject(int)>($i0);
+
+        specialinvoke $r12.<com.google.android.gms.internal.ads.zzbso: void <init>(org.json.JSONObject)>($r5);
+
+     label04:
+        $r2 = $r12.<com.google.android.gms.internal.ads.zzbso: java.lang.String zzv>;
+
+        $r3 = "banner";
+
+        virtualinvoke $r3.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>($r2);
+
+        interfaceinvoke $r11.<java.util.List: boolean add(java.lang.Object)>($r12);
+
+        if $i1 >= 0 goto label07;
+
+        $r6 = $r12.<com.google.android.gms.internal.ads.zzbso: java.util.List zzc>;
+
+        $r7 = interfaceinvoke $r6.<java.util.List: java.util.Iterator iterator()>();
+
+     label05:
+        $z0 = interfaceinvoke $r7.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label07;
+
+        $r8 = interfaceinvoke $r7.<java.util.Iterator: java.lang.Object next()>();
+
+        $r2 = (java.lang.String) $r8;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("com.google.ads.mediation.admob.AdMobAdapter");
+
+        if $z0 == 0 goto label05;
+
+        $i1 = $i0;
+
+        goto label07;
+
+     label06:
+        $r9 := @caughtexception;
+
+     label07:
+        $i0 = $i0 + 1;
+
+        goto label02;
+
+     label08:
+        virtualinvoke $r4.<org.json.JSONArray: int length()>();
+
+        $r6 = staticinvoke <java.util.Collections: java.util.List unmodifiableList(java.util.List)>($r11);
+
+        r0.<com.google.android.gms.internal.ads.zzbsp: java.util.List zza> = $r6;
+
+        $r2 = virtualinvoke $r1.<org.json.JSONObject: java.lang.String optString(java.lang.String)>("qdata");
+
+        r0.<com.google.android.gms.internal.ads.zzbsp: java.lang.String zzg> = $r2;
+
+        virtualinvoke $r1.<org.json.JSONObject: int optInt(java.lang.String,int)>("fs_model_type", -1);
+
+        virtualinvoke $r1.<org.json.JSONObject: long optLong(java.lang.String,long)>("timeout_ms", -1L);
+
+        $r1 = virtualinvoke $r1.<org.json.JSONObject: org.json.JSONObject optJSONObject(java.lang.String)>("settings");
+
+        if $r1 == null goto label11;
+
+        virtualinvoke $r1.<org.json.JSONObject: long optLong(java.lang.String,long)>("ad_network_timeout_millis", -1L);
+
+        staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzbsq zzg()>();
+
+        $r6 = staticinvoke <com.google.android.gms.internal.ads.zzbsq: java.util.List zza(org.json.JSONObject,java.lang.String)>($r1, "click_urls");
+
+        r0.<com.google.android.gms.internal.ads.zzbsp: java.util.List zzb> = $r6;
+
+        staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzbsq zzg()>();
+
+        $r6 = staticinvoke <com.google.android.gms.internal.ads.zzbsq: java.util.List zza(org.json.JSONObject,java.lang.String)>($r1, "imp_urls");
+
+        r0.<com.google.android.gms.internal.ads.zzbsp: java.util.List zzc> = $r6;
+
+        staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzbsq zzg()>();
+
+        $r6 = staticinvoke <com.google.android.gms.internal.ads.zzbsq: java.util.List zza(org.json.JSONObject,java.lang.String)>($r1, "downloaded_imp_urls");
+
+        r0.<com.google.android.gms.internal.ads.zzbsp: java.util.List zzd> = $r6;
+
+        staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzbsq zzg()>();
+
+        $r6 = staticinvoke <com.google.android.gms.internal.ads.zzbsq: java.util.List zza(org.json.JSONObject,java.lang.String)>($r1, "nofill_urls");
+
+        r0.<com.google.android.gms.internal.ads.zzbsp: java.util.List zze> = $r6;
+
+        staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzbsq zzg()>();
+
+        $r6 = staticinvoke <com.google.android.gms.internal.ads.zzbsq: java.util.List zza(org.json.JSONObject,java.lang.String)>($r1, "remote_ping_urls");
+
+        r0.<com.google.android.gms.internal.ads.zzbsp: java.util.List zzf> = $r6;
+
+        virtualinvoke $r1.<org.json.JSONObject: boolean optBoolean(java.lang.String,boolean)>("render_in_browser", 0);
+
+        virtualinvoke $r1.<org.json.JSONObject: long optLong(java.lang.String,long)>("refresh", -1L);
+
+        $r4 = virtualinvoke $r1.<org.json.JSONObject: org.json.JSONArray optJSONArray(java.lang.String)>("rewards");
+
+        $r10 = staticinvoke <com.google.android.gms.internal.ads.zzcag: com.google.android.gms.internal.ads.zzcag zza(org.json.JSONArray)>($r4);
+
+        if $r10 != null goto label09;
+
+        r0.<com.google.android.gms.internal.ads.zzbsp: java.lang.String zzh> = null;
+
+        goto label10;
+
+     label09:
+        $r2 = $r10.<com.google.android.gms.internal.ads.zzcag: java.lang.String zza>;
+
+        r0.<com.google.android.gms.internal.ads.zzbsp: java.lang.String zzh> = $r2;
+
+     label10:
+        virtualinvoke $r1.<org.json.JSONObject: boolean optBoolean(java.lang.String,boolean)>("use_displayed_impression", 0);
+
+        virtualinvoke $r1.<org.json.JSONObject: boolean optBoolean(java.lang.String,boolean)>("allow_pub_rendered_attribution", 0);
+
+        virtualinvoke $r1.<org.json.JSONObject: boolean optBoolean(java.lang.String,boolean)>("allow_pub_owned_ad_view", 0);
+
+        virtualinvoke $r1.<org.json.JSONObject: boolean optBoolean(java.lang.String,boolean)>("allow_custom_click_gesture", 0);
+
+        return;
+
+     label11:
+        r0.<com.google.android.gms.internal.ads.zzbsp: java.util.List zzb> = null;
+
+        r0.<com.google.android.gms.internal.ads.zzbsp: java.util.List zzc> = null;
+
+        r0.<com.google.android.gms.internal.ads.zzbsp: java.util.List zzd> = null;
+
+        r0.<com.google.android.gms.internal.ads.zzbsp: java.util.List zze> = null;
+
+        r0.<com.google.android.gms.internal.ads.zzbsp: java.util.List zzf> = null;
+
+        r0.<com.google.android.gms.internal.ads.zzbsp: java.lang.String zzh> = null;
+
+        return;
+
+        catch org.json.JSONException from label03 to label04 with label06;
+    }
+}

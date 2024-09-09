@@ -1,0 +1,280 @@
+public final class androidx.work.Configuration$Builder extends java.lang.Object
+{
+    java.lang.String mDefaultProcessName;
+    androidx.work.InitializationExceptionHandler mExceptionHandler;
+    java.util.concurrent.Executor mExecutor;
+    androidx.work.InputMergerFactory mInputMergerFactory;
+    int mLoggingLevel;
+    int mMaxJobSchedulerId;
+    int mMaxSchedulerLimit;
+    int mMinJobSchedulerId;
+    androidx.work.RunnableScheduler mRunnableScheduler;
+    java.util.concurrent.Executor mTaskExecutor;
+    androidx.work.WorkerFactory mWorkerFactory;
+
+    public void <init>()
+    {
+        androidx.work.Configuration$Builder r0;
+
+        r0 := @this: androidx.work.Configuration$Builder;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.work.Configuration$Builder: int mLoggingLevel> = 4;
+
+        r0.<androidx.work.Configuration$Builder: int mMinJobSchedulerId> = 0;
+
+        r0.<androidx.work.Configuration$Builder: int mMaxJobSchedulerId> = 2147483647;
+
+        r0.<androidx.work.Configuration$Builder: int mMaxSchedulerLimit> = 20;
+
+        return;
+    }
+
+    public void <init>(androidx.work.Configuration)
+    {
+        java.util.concurrent.Executor $r2;
+        androidx.work.WorkerFactory $r3;
+        androidx.work.InitializationExceptionHandler $r6;
+        androidx.work.Configuration $r1;
+        androidx.work.InputMergerFactory $r4;
+        androidx.work.Configuration$Builder r0;
+        int $i0;
+        java.lang.String $r7;
+        androidx.work.RunnableScheduler $r5;
+
+        r0 := @this: androidx.work.Configuration$Builder;
+
+        $r1 := @parameter0: androidx.work.Configuration;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = $r1.<androidx.work.Configuration: java.util.concurrent.Executor mExecutor>;
+
+        r0.<androidx.work.Configuration$Builder: java.util.concurrent.Executor mExecutor> = $r2;
+
+        $r3 = $r1.<androidx.work.Configuration: androidx.work.WorkerFactory mWorkerFactory>;
+
+        r0.<androidx.work.Configuration$Builder: androidx.work.WorkerFactory mWorkerFactory> = $r3;
+
+        $r4 = $r1.<androidx.work.Configuration: androidx.work.InputMergerFactory mInputMergerFactory>;
+
+        r0.<androidx.work.Configuration$Builder: androidx.work.InputMergerFactory mInputMergerFactory> = $r4;
+
+        $r2 = $r1.<androidx.work.Configuration: java.util.concurrent.Executor mTaskExecutor>;
+
+        r0.<androidx.work.Configuration$Builder: java.util.concurrent.Executor mTaskExecutor> = $r2;
+
+        $i0 = $r1.<androidx.work.Configuration: int mLoggingLevel>;
+
+        r0.<androidx.work.Configuration$Builder: int mLoggingLevel> = $i0;
+
+        $i0 = $r1.<androidx.work.Configuration: int mMinJobSchedulerId>;
+
+        r0.<androidx.work.Configuration$Builder: int mMinJobSchedulerId> = $i0;
+
+        $i0 = $r1.<androidx.work.Configuration: int mMaxJobSchedulerId>;
+
+        r0.<androidx.work.Configuration$Builder: int mMaxJobSchedulerId> = $i0;
+
+        $i0 = $r1.<androidx.work.Configuration: int mMaxSchedulerLimit>;
+
+        r0.<androidx.work.Configuration$Builder: int mMaxSchedulerLimit> = $i0;
+
+        $r5 = $r1.<androidx.work.Configuration: androidx.work.RunnableScheduler mRunnableScheduler>;
+
+        r0.<androidx.work.Configuration$Builder: androidx.work.RunnableScheduler mRunnableScheduler> = $r5;
+
+        $r6 = $r1.<androidx.work.Configuration: androidx.work.InitializationExceptionHandler mExceptionHandler>;
+
+        r0.<androidx.work.Configuration$Builder: androidx.work.InitializationExceptionHandler mExceptionHandler> = $r6;
+
+        $r7 = $r1.<androidx.work.Configuration: java.lang.String mDefaultProcessName>;
+
+        r0.<androidx.work.Configuration$Builder: java.lang.String mDefaultProcessName> = $r7;
+
+        return;
+    }
+
+    public androidx.work.Configuration build()
+    {
+        androidx.work.Configuration $r1;
+        androidx.work.Configuration$Builder r0;
+
+        r0 := @this: androidx.work.Configuration$Builder;
+
+        $r1 = new androidx.work.Configuration;
+
+        specialinvoke $r1.<androidx.work.Configuration: void <init>(androidx.work.Configuration$Builder)>(r0);
+
+        return $r1;
+    }
+
+    public androidx.work.Configuration$Builder setDefaultProcessName(java.lang.String)
+    {
+        java.lang.String $r1;
+        androidx.work.Configuration$Builder r0;
+
+        r0 := @this: androidx.work.Configuration$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<androidx.work.Configuration$Builder: java.lang.String mDefaultProcessName> = $r1;
+
+        return r0;
+    }
+
+    public androidx.work.Configuration$Builder setExecutor(java.util.concurrent.Executor)
+    {
+        androidx.work.Configuration$Builder r0;
+        java.util.concurrent.Executor $r1;
+
+        r0 := @this: androidx.work.Configuration$Builder;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        r0.<androidx.work.Configuration$Builder: java.util.concurrent.Executor mExecutor> = $r1;
+
+        return r0;
+    }
+
+    public androidx.work.Configuration$Builder setInitializationExceptionHandler(androidx.work.InitializationExceptionHandler)
+    {
+        androidx.work.Configuration$Builder r0;
+        androidx.work.InitializationExceptionHandler $r1;
+
+        r0 := @this: androidx.work.Configuration$Builder;
+
+        $r1 := @parameter0: androidx.work.InitializationExceptionHandler;
+
+        r0.<androidx.work.Configuration$Builder: androidx.work.InitializationExceptionHandler mExceptionHandler> = $r1;
+
+        return r0;
+    }
+
+    public androidx.work.Configuration$Builder setInputMergerFactory(androidx.work.InputMergerFactory)
+    {
+        androidx.work.InputMergerFactory $r1;
+        androidx.work.Configuration$Builder r0;
+
+        r0 := @this: androidx.work.Configuration$Builder;
+
+        $r1 := @parameter0: androidx.work.InputMergerFactory;
+
+        r0.<androidx.work.Configuration$Builder: androidx.work.InputMergerFactory mInputMergerFactory> = $r1;
+
+        return r0;
+    }
+
+    public androidx.work.Configuration$Builder setJobSchedulerJobIdRange(int, int)
+    {
+        androidx.work.Configuration$Builder r0;
+        int $i0, $i1, $i2;
+        java.lang.IllegalArgumentException $r1;
+
+        r0 := @this: androidx.work.Configuration$Builder;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 = $i1 - $i0;
+
+        if $i2 < 1000 goto label1;
+
+        r0.<androidx.work.Configuration$Builder: int mMinJobSchedulerId> = $i0;
+
+        r0.<androidx.work.Configuration$Builder: int mMaxJobSchedulerId> = $i1;
+
+        return r0;
+
+     label1:
+        $r1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("WorkManager needs a range of at least 1000 job ids.");
+
+        throw $r1;
+    }
+
+    public androidx.work.Configuration$Builder setMaxSchedulerLimit(int)
+    {
+        int $i0;
+        androidx.work.Configuration$Builder r0;
+        java.lang.IllegalArgumentException $r1;
+
+        r0 := @this: androidx.work.Configuration$Builder;
+
+        $i0 := @parameter0: int;
+
+        if $i0 < 20 goto label1;
+
+        $i0 = staticinvoke <java.lang.Math: int min(int,int)>($i0, 50);
+
+        r0.<androidx.work.Configuration$Builder: int mMaxSchedulerLimit> = $i0;
+
+        return r0;
+
+     label1:
+        $r1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("WorkManager needs to be able to schedule at least 20 jobs in JobScheduler.");
+
+        throw $r1;
+    }
+
+    public androidx.work.Configuration$Builder setMinimumLoggingLevel(int)
+    {
+        int $i0;
+        androidx.work.Configuration$Builder r0;
+
+        r0 := @this: androidx.work.Configuration$Builder;
+
+        $i0 := @parameter0: int;
+
+        r0.<androidx.work.Configuration$Builder: int mLoggingLevel> = $i0;
+
+        return r0;
+    }
+
+    public androidx.work.Configuration$Builder setRunnableScheduler(androidx.work.RunnableScheduler)
+    {
+        androidx.work.Configuration$Builder r0;
+        androidx.work.RunnableScheduler $r1;
+
+        r0 := @this: androidx.work.Configuration$Builder;
+
+        $r1 := @parameter0: androidx.work.RunnableScheduler;
+
+        r0.<androidx.work.Configuration$Builder: androidx.work.RunnableScheduler mRunnableScheduler> = $r1;
+
+        return r0;
+    }
+
+    public androidx.work.Configuration$Builder setTaskExecutor(java.util.concurrent.Executor)
+    {
+        androidx.work.Configuration$Builder r0;
+        java.util.concurrent.Executor $r1;
+
+        r0 := @this: androidx.work.Configuration$Builder;
+
+        $r1 := @parameter0: java.util.concurrent.Executor;
+
+        r0.<androidx.work.Configuration$Builder: java.util.concurrent.Executor mTaskExecutor> = $r1;
+
+        return r0;
+    }
+
+    public androidx.work.Configuration$Builder setWorkerFactory(androidx.work.WorkerFactory)
+    {
+        androidx.work.Configuration$Builder r0;
+        androidx.work.WorkerFactory $r1;
+
+        r0 := @this: androidx.work.Configuration$Builder;
+
+        $r1 := @parameter0: androidx.work.WorkerFactory;
+
+        r0.<androidx.work.Configuration$Builder: androidx.work.WorkerFactory mWorkerFactory> = $r1;
+
+        return r0;
+    }
+}

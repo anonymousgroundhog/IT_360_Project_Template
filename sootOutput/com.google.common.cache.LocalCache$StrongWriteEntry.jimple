@@ -1,0 +1,114 @@
+final class com.google.common.cache.LocalCache$StrongWriteEntry extends com.google.common.cache.LocalCache$StrongEntry
+{
+    com.google.common.cache.ReferenceEntry nextWrite;
+    com.google.common.cache.ReferenceEntry previousWrite;
+    volatile long writeTime;
+
+    void <init>(java.lang.Object, int, com.google.common.cache.ReferenceEntry)
+    {
+        com.google.common.cache.ReferenceEntry r2;
+        int $i0;
+        java.lang.Object r1;
+        com.google.common.cache.LocalCache$StrongWriteEntry r0;
+
+        r0 := @this: com.google.common.cache.LocalCache$StrongWriteEntry;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $i0 := @parameter1: int;
+
+        r2 := @parameter2: com.google.common.cache.ReferenceEntry;
+
+        specialinvoke r0.<com.google.common.cache.LocalCache$StrongEntry: void <init>(java.lang.Object,int,com.google.common.cache.ReferenceEntry)>(r1, $i0, r2);
+
+        r0.<com.google.common.cache.LocalCache$StrongWriteEntry: long writeTime> = 9223372036854775807L;
+
+        r2 = staticinvoke <com.google.common.cache.LocalCache: com.google.common.cache.ReferenceEntry nullEntry()>();
+
+        r0.<com.google.common.cache.LocalCache$StrongWriteEntry: com.google.common.cache.ReferenceEntry nextWrite> = r2;
+
+        r2 = staticinvoke <com.google.common.cache.LocalCache: com.google.common.cache.ReferenceEntry nullEntry()>();
+
+        r0.<com.google.common.cache.LocalCache$StrongWriteEntry: com.google.common.cache.ReferenceEntry previousWrite> = r2;
+
+        return;
+    }
+
+    public com.google.common.cache.ReferenceEntry getNextInWriteQueue()
+    {
+        com.google.common.cache.ReferenceEntry r1;
+        com.google.common.cache.LocalCache$StrongWriteEntry r0;
+
+        r0 := @this: com.google.common.cache.LocalCache$StrongWriteEntry;
+
+        r1 = r0.<com.google.common.cache.LocalCache$StrongWriteEntry: com.google.common.cache.ReferenceEntry nextWrite>;
+
+        return r1;
+    }
+
+    public com.google.common.cache.ReferenceEntry getPreviousInWriteQueue()
+    {
+        com.google.common.cache.ReferenceEntry r1;
+        com.google.common.cache.LocalCache$StrongWriteEntry r0;
+
+        r0 := @this: com.google.common.cache.LocalCache$StrongWriteEntry;
+
+        r1 = r0.<com.google.common.cache.LocalCache$StrongWriteEntry: com.google.common.cache.ReferenceEntry previousWrite>;
+
+        return r1;
+    }
+
+    public long getWriteTime()
+    {
+        long l0;
+        com.google.common.cache.LocalCache$StrongWriteEntry r0;
+
+        r0 := @this: com.google.common.cache.LocalCache$StrongWriteEntry;
+
+        l0 = r0.<com.google.common.cache.LocalCache$StrongWriteEntry: long writeTime>;
+
+        return l0;
+    }
+
+    public void setNextInWriteQueue(com.google.common.cache.ReferenceEntry)
+    {
+        com.google.common.cache.ReferenceEntry r1;
+        com.google.common.cache.LocalCache$StrongWriteEntry r0;
+
+        r0 := @this: com.google.common.cache.LocalCache$StrongWriteEntry;
+
+        r1 := @parameter0: com.google.common.cache.ReferenceEntry;
+
+        r0.<com.google.common.cache.LocalCache$StrongWriteEntry: com.google.common.cache.ReferenceEntry nextWrite> = r1;
+
+        return;
+    }
+
+    public void setPreviousInWriteQueue(com.google.common.cache.ReferenceEntry)
+    {
+        com.google.common.cache.ReferenceEntry r1;
+        com.google.common.cache.LocalCache$StrongWriteEntry r0;
+
+        r0 := @this: com.google.common.cache.LocalCache$StrongWriteEntry;
+
+        r1 := @parameter0: com.google.common.cache.ReferenceEntry;
+
+        r0.<com.google.common.cache.LocalCache$StrongWriteEntry: com.google.common.cache.ReferenceEntry previousWrite> = r1;
+
+        return;
+    }
+
+    public void setWriteTime(long)
+    {
+        long $l0;
+        com.google.common.cache.LocalCache$StrongWriteEntry r0;
+
+        r0 := @this: com.google.common.cache.LocalCache$StrongWriteEntry;
+
+        $l0 := @parameter0: long;
+
+        r0.<com.google.common.cache.LocalCache$StrongWriteEntry: long writeTime> = $l0;
+
+        return;
+    }
+}

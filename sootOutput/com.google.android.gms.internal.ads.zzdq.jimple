@@ -1,0 +1,687 @@
+public final class com.google.android.gms.internal.ads.zzdq extends java.lang.Object
+{
+    private final com.google.android.gms.internal.ads.zzgaa zza;
+    private final java.util.List zzb;
+    private java.nio.ByteBuffer[] zzc;
+    private com.google.android.gms.internal.ads.zzdr zzd;
+    private com.google.android.gms.internal.ads.zzdr zze;
+    private boolean zzf;
+
+    public void <init>(com.google.android.gms.internal.ads.zzgaa)
+    {
+        java.nio.ByteBuffer[] $r3;
+        com.google.android.gms.internal.ads.zzdq r0;
+        com.google.android.gms.internal.ads.zzdr $r4;
+        com.google.android.gms.internal.ads.zzgaa $r1;
+        java.util.ArrayList $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdq;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzgaa;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzgaa zza> = $r1;
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzdq: java.util.List zzb> = $r2;
+
+        $r3 = newarray (java.nio.ByteBuffer)[0];
+
+        r0.<com.google.android.gms.internal.ads.zzdq: java.nio.ByteBuffer[] zzc> = $r3;
+
+        $r4 = <com.google.android.gms.internal.ads.zzdr: com.google.android.gms.internal.ads.zzdr zza>;
+
+        r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzdr zzd> = $r4;
+
+        $r4 = <com.google.android.gms.internal.ads.zzdr: com.google.android.gms.internal.ads.zzdr zza>;
+
+        r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzdr zze> = $r4;
+
+        r0.<com.google.android.gms.internal.ads.zzdq: boolean zzf> = 0;
+
+        return;
+    }
+
+    private final int zzi()
+    {
+        int $i0;
+        java.nio.ByteBuffer[] $r1;
+        com.google.android.gms.internal.ads.zzdq r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdq;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzdq: java.nio.ByteBuffer[] zzc>;
+
+        $i0 = lengthof $r1;
+
+        $i0 = $i0 + -1;
+
+        return $i0;
+    }
+
+    private final void zzj(java.nio.ByteBuffer)
+    {
+        long $l4, $l5;
+        java.nio.ByteBuffer $r1, $r3, $r7;
+        byte $b0;
+        int $i1, $i2, $i3;
+        boolean $z0, $z1, $z2;
+        java.nio.ByteBuffer[] $r2;
+        com.google.android.gms.internal.ads.zzdt $r6;
+        com.google.android.gms.internal.ads.zzdq r0;
+        java.util.List $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdq;
+
+        $r1 := @parameter0: java.nio.ByteBuffer;
+
+        $i1 = 0;
+
+        $z0 = 0;
+
+     label01:
+        $i2 = specialinvoke r0.<com.google.android.gms.internal.ads.zzdq: int zzi()>();
+
+        if $i1 > $i2 goto label09;
+
+        $i2 = $i1 + 1;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzdq: java.nio.ByteBuffer[] zzc>;
+
+        $r3 = $r2[$i1];
+
+        $z1 = virtualinvoke $r3.<java.nio.ByteBuffer: boolean hasRemaining()>();
+
+        if $z1 != 0 goto label08;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzdq: java.util.List zzb>;
+
+        $r5 = interfaceinvoke $r4.<java.util.List: java.lang.Object get(int)>($i1);
+
+        $r6 = (com.google.android.gms.internal.ads.zzdt) $r5;
+
+        $z1 = interfaceinvoke $r6.<com.google.android.gms.internal.ads.zzdt: boolean zzh()>();
+
+        if $z1 == 0 goto label02;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzdq: java.nio.ByteBuffer[] zzc>;
+
+        $r3 = $r2[$i1];
+
+        $z1 = virtualinvoke $r3.<java.nio.ByteBuffer: boolean hasRemaining()>();
+
+        if $z1 != 0 goto label08;
+
+        $i3 = specialinvoke r0.<com.google.android.gms.internal.ads.zzdq: int zzi()>();
+
+        if $i1 >= $i3 goto label08;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzdq: java.util.List zzb>;
+
+        $r5 = interfaceinvoke $r4.<java.util.List: java.lang.Object get(int)>($i2);
+
+        $r6 = (com.google.android.gms.internal.ads.zzdt) $r5;
+
+        interfaceinvoke $r6.<com.google.android.gms.internal.ads.zzdt: void zzd()>();
+
+        goto label08;
+
+     label02:
+        if $i1 <= 0 goto label03;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzdq: java.nio.ByteBuffer[] zzc>;
+
+        $i3 = $i1 + -1;
+
+        $r3 = $r2[$i3];
+
+        goto label05;
+
+     label03:
+        $z1 = virtualinvoke $r1.<java.nio.ByteBuffer: boolean hasRemaining()>();
+
+        if $z1 == 0 goto label04;
+
+        $r3 = $r1;
+
+        goto label05;
+
+     label04:
+        $r3 = <com.google.android.gms.internal.ads.zzdt: java.nio.ByteBuffer zza>;
+
+     label05:
+        $i3 = virtualinvoke $r3.<java.nio.ByteBuffer: int remaining()>();
+
+        $l4 = (long) $i3;
+
+        interfaceinvoke $r6.<com.google.android.gms.internal.ads.zzdt: void zze(java.nio.ByteBuffer)>($r3);
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzdq: java.nio.ByteBuffer[] zzc>;
+
+        $r7 = interfaceinvoke $r6.<com.google.android.gms.internal.ads.zzdt: java.nio.ByteBuffer zzb()>();
+
+        $r2[$i1] = $r7;
+
+        $i3 = virtualinvoke $r3.<java.nio.ByteBuffer: int remaining()>();
+
+        $l5 = (long) $i3;
+
+        $l4 = $l4 - $l5;
+
+        $z1 = 1;
+
+        $b0 = $l4 cmp 0L;
+
+        $i3 = (int) $b0;
+
+        if $i3 > 0 goto label07;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzdq: java.nio.ByteBuffer[] zzc>;
+
+        $r3 = $r2[$i1];
+
+        $z2 = virtualinvoke $r3.<java.nio.ByteBuffer: boolean hasRemaining()>();
+
+        if $z2 == 0 goto label06;
+
+        goto label07;
+
+     label06:
+        $z1 = 0;
+
+     label07:
+        $z0 = $z0 | $z1;
+
+     label08:
+        $i1 = $i2;
+
+        goto label01;
+
+     label09:
+        if $z0 == 0 goto label10;
+
+        $i1 = 0;
+
+        $z0 = 0;
+
+        goto label01;
+
+     label10:
+        return;
+    }
+
+    public final boolean equals(java.lang.Object)
+    {
+        com.google.android.gms.internal.ads.zzdq r0, $r2;
+        int $i0, $i1;
+        java.lang.Object $r1, $r4;
+        com.google.android.gms.internal.ads.zzgaa $r3;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdq;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if r0 != $r1 goto label1;
+
+        return 1;
+
+     label1:
+        $z0 = $r1 instanceof com.google.android.gms.internal.ads.zzdq;
+
+        if $z0 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        $r2 = (com.google.android.gms.internal.ads.zzdq) $r1;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzgaa zza>;
+
+        $i0 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgaa: int size()>();
+
+        $r3 = $r2.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzgaa zza>;
+
+        $i1 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgaa: int size()>();
+
+        if $i0 != $i1 goto label6;
+
+        $i0 = 0;
+
+     label3:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzgaa zza>;
+
+        $i1 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgaa: int size()>();
+
+        if $i0 >= $i1 goto label5;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzgaa zza>;
+
+        $r1 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgaa: java.lang.Object get(int)>($i0);
+
+        $r3 = $r2.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzgaa zza>;
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgaa: java.lang.Object get(int)>($i0);
+
+        if $r1 == $r4 goto label4;
+
+        return 0;
+
+     label4:
+        $i0 = $i0 + 1;
+
+        goto label3;
+
+     label5:
+        return 1;
+
+     label6:
+        return 0;
+    }
+
+    public final int hashCode()
+    {
+        int $i0;
+        com.google.android.gms.internal.ads.zzdq r0;
+        com.google.android.gms.internal.ads.zzgaa $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdq;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzgaa zza>;
+
+        $i0 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzgaa: int hashCode()>();
+
+        return $i0;
+    }
+
+    public final com.google.android.gms.internal.ads.zzdr zza(com.google.android.gms.internal.ads.zzdr) throws com.google.android.gms.internal.ads.zzds
+    {
+        com.google.android.gms.internal.ads.zzds $r6;
+        com.google.android.gms.internal.ads.zzdt $r5;
+        com.google.android.gms.internal.ads.zzdq r0;
+        com.google.android.gms.internal.ads.zzdr $r1, $r2;
+        int $i0, $i1;
+        java.lang.Object $r4;
+        com.google.android.gms.internal.ads.zzgaa $r3;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdq;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzdr;
+
+        $r2 = <com.google.android.gms.internal.ads.zzdr: com.google.android.gms.internal.ads.zzdr zza>;
+
+        $z0 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzdr: boolean equals(java.lang.Object)>($r2);
+
+        if $z0 != 0 goto label4;
+
+        $i0 = 0;
+
+     label1:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzgaa zza>;
+
+        $i1 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgaa: int size()>();
+
+        if $i0 >= $i1 goto label3;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzgaa zza>;
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgaa: java.lang.Object get(int)>($i0);
+
+        $r5 = (com.google.android.gms.internal.ads.zzdt) $r4;
+
+        $r2 = interfaceinvoke $r5.<com.google.android.gms.internal.ads.zzdt: com.google.android.gms.internal.ads.zzdr zza(com.google.android.gms.internal.ads.zzdr)>($r1);
+
+        $z0 = interfaceinvoke $r5.<com.google.android.gms.internal.ads.zzdt: boolean zzg()>();
+
+        if $z0 == 0 goto label2;
+
+        $r1 = <com.google.android.gms.internal.ads.zzdr: com.google.android.gms.internal.ads.zzdr zza>;
+
+        $z0 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzdr: boolean equals(java.lang.Object)>($r1);
+
+        $z0 = $z0 ^ 1;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzek: void zzf(boolean)>($z0);
+
+        $r1 = $r2;
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzdr zze> = $r1;
+
+        return $r1;
+
+     label4:
+        $r6 = new com.google.android.gms.internal.ads.zzds;
+
+        specialinvoke $r6.<com.google.android.gms.internal.ads.zzds: void <init>(java.lang.String,com.google.android.gms.internal.ads.zzdr)>("Unhandled input format:", $r1);
+
+        throw $r6;
+    }
+
+    public final java.nio.ByteBuffer zzb()
+    {
+        java.nio.ByteBuffer[] $r1;
+        com.google.android.gms.internal.ads.zzdq r0;
+        int $i0;
+        java.nio.ByteBuffer $r2;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdq;
+
+        $z0 = virtualinvoke r0.<com.google.android.gms.internal.ads.zzdq: boolean zzh()>();
+
+        if $z0 != 0 goto label1;
+
+        $r2 = <com.google.android.gms.internal.ads.zzdt: java.nio.ByteBuffer zza>;
+
+        return $r2;
+
+     label1:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzdq: java.nio.ByteBuffer[] zzc>;
+
+        $i0 = specialinvoke r0.<com.google.android.gms.internal.ads.zzdq: int zzi()>();
+
+        $r2 = $r1[$i0];
+
+        $z0 = virtualinvoke $r2.<java.nio.ByteBuffer: boolean hasRemaining()>();
+
+        if $z0 == 0 goto label2;
+
+        return $r2;
+
+     label2:
+        $r2 = <com.google.android.gms.internal.ads.zzdt: java.nio.ByteBuffer zza>;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzdq: void zzj(java.nio.ByteBuffer)>($r2);
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzdq: java.nio.ByteBuffer[] zzc>;
+
+        $i0 = specialinvoke r0.<com.google.android.gms.internal.ads.zzdq: int zzi()>();
+
+        $r2 = $r1[$i0];
+
+        return $r2;
+    }
+
+    public final void zzc()
+    {
+        java.nio.ByteBuffer[] $r6;
+        java.nio.ByteBuffer $r7;
+        com.google.android.gms.internal.ads.zzdt $r5;
+        com.google.android.gms.internal.ads.zzdq r0;
+        java.util.List $r1;
+        com.google.android.gms.internal.ads.zzdr $r2;
+        int $i0, $i1, $i2;
+        java.lang.Object $r4;
+        com.google.android.gms.internal.ads.zzgaa $r3;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdq;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzdq: java.util.List zzb>;
+
+        interfaceinvoke $r1.<java.util.List: void clear()>();
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzdr zze>;
+
+        r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzdr zzd> = $r2;
+
+        $i0 = 0;
+
+        r0.<com.google.android.gms.internal.ads.zzdq: boolean zzf> = 0;
+
+        $i1 = 0;
+
+     label1:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzgaa zza>;
+
+        $i2 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgaa: int size()>();
+
+        if $i1 >= $i2 goto label3;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzgaa zza>;
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzgaa: java.lang.Object get(int)>($i1);
+
+        $r5 = (com.google.android.gms.internal.ads.zzdt) $r4;
+
+        interfaceinvoke $r5.<com.google.android.gms.internal.ads.zzdt: void zzc()>();
+
+        $z0 = interfaceinvoke $r5.<com.google.android.gms.internal.ads.zzdt: boolean zzg()>();
+
+        if $z0 == 0 goto label2;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzdq: java.util.List zzb>;
+
+        interfaceinvoke $r1.<java.util.List: boolean add(java.lang.Object)>($r5);
+
+     label2:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzdq: java.util.List zzb>;
+
+        $i1 = interfaceinvoke $r1.<java.util.List: int size()>();
+
+        $r6 = newarray (java.nio.ByteBuffer)[$i1];
+
+        r0.<com.google.android.gms.internal.ads.zzdq: java.nio.ByteBuffer[] zzc> = $r6;
+
+     label4:
+        $i1 = specialinvoke r0.<com.google.android.gms.internal.ads.zzdq: int zzi()>();
+
+        if $i0 > $i1 goto label5;
+
+        $r6 = r0.<com.google.android.gms.internal.ads.zzdq: java.nio.ByteBuffer[] zzc>;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzdq: java.util.List zzb>;
+
+        $r4 = interfaceinvoke $r1.<java.util.List: java.lang.Object get(int)>($i0);
+
+        $r5 = (com.google.android.gms.internal.ads.zzdt) $r4;
+
+        $r7 = interfaceinvoke $r5.<com.google.android.gms.internal.ads.zzdt: java.nio.ByteBuffer zzb()>();
+
+        $r6[$i0] = $r7;
+
+        $i0 = $i0 + 1;
+
+        goto label4;
+
+     label5:
+        return;
+    }
+
+    public final void zzd()
+    {
+        com.google.android.gms.internal.ads.zzdt $r3;
+        com.google.android.gms.internal.ads.zzdq r0;
+        java.util.List $r1;
+        java.lang.Object $r2;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdq;
+
+        $z0 = virtualinvoke r0.<com.google.android.gms.internal.ads.zzdq: boolean zzh()>();
+
+        if $z0 == 0 goto label2;
+
+        $z0 = r0.<com.google.android.gms.internal.ads.zzdq: boolean zzf>;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        r0.<com.google.android.gms.internal.ads.zzdq: boolean zzf> = 1;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzdq: java.util.List zzb>;
+
+        $r2 = interfaceinvoke $r1.<java.util.List: java.lang.Object get(int)>(0);
+
+        $r3 = (com.google.android.gms.internal.ads.zzdt) $r2;
+
+        interfaceinvoke $r3.<com.google.android.gms.internal.ads.zzdt: void zzd()>();
+
+     label2:
+        return;
+    }
+
+    public final void zze(java.nio.ByteBuffer)
+    {
+        com.google.android.gms.internal.ads.zzdq r0;
+        java.nio.ByteBuffer $r1;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdq;
+
+        $r1 := @parameter0: java.nio.ByteBuffer;
+
+        $z0 = virtualinvoke r0.<com.google.android.gms.internal.ads.zzdq: boolean zzh()>();
+
+        if $z0 == 0 goto label2;
+
+        $z0 = r0.<com.google.android.gms.internal.ads.zzdq: boolean zzf>;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzdq: void zzj(java.nio.ByteBuffer)>($r1);
+
+     label2:
+        return;
+    }
+
+    public final void zzf()
+    {
+        java.nio.ByteBuffer[] $r4;
+        com.google.android.gms.internal.ads.zzdt $r3;
+        com.google.android.gms.internal.ads.zzdq r0;
+        com.google.android.gms.internal.ads.zzdr $r5;
+        int $i0, $i1;
+        java.lang.Object $r2;
+        com.google.android.gms.internal.ads.zzgaa $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdq;
+
+        $i0 = 0;
+
+     label1:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzgaa zza>;
+
+        $i1 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzgaa: int size()>();
+
+        if $i0 >= $i1 goto label2;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzgaa zza>;
+
+        $r2 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzgaa: java.lang.Object get(int)>($i0);
+
+        $r3 = (com.google.android.gms.internal.ads.zzdt) $r2;
+
+        interfaceinvoke $r3.<com.google.android.gms.internal.ads.zzdt: void zzc()>();
+
+        interfaceinvoke $r3.<com.google.android.gms.internal.ads.zzdt: void zzf()>();
+
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label2:
+        $r4 = newarray (java.nio.ByteBuffer)[0];
+
+        r0.<com.google.android.gms.internal.ads.zzdq: java.nio.ByteBuffer[] zzc> = $r4;
+
+        $r5 = <com.google.android.gms.internal.ads.zzdr: com.google.android.gms.internal.ads.zzdr zza>;
+
+        r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzdr zzd> = $r5;
+
+        $r5 = <com.google.android.gms.internal.ads.zzdr: com.google.android.gms.internal.ads.zzdr zza>;
+
+        r0.<com.google.android.gms.internal.ads.zzdq: com.google.android.gms.internal.ads.zzdr zze> = $r5;
+
+        r0.<com.google.android.gms.internal.ads.zzdq: boolean zzf> = 0;
+
+        return;
+    }
+
+    public final boolean zzg()
+    {
+        java.nio.ByteBuffer[] $r4;
+        java.nio.ByteBuffer $r5;
+        com.google.android.gms.internal.ads.zzdt $r3;
+        com.google.android.gms.internal.ads.zzdq r0;
+        java.util.List $r1;
+        int $i0;
+        java.lang.Object $r2;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdq;
+
+        $z0 = r0.<com.google.android.gms.internal.ads.zzdq: boolean zzf>;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzdq: java.util.List zzb>;
+
+        $i0 = specialinvoke r0.<com.google.android.gms.internal.ads.zzdq: int zzi()>();
+
+        $r2 = interfaceinvoke $r1.<java.util.List: java.lang.Object get(int)>($i0);
+
+        $r3 = (com.google.android.gms.internal.ads.zzdt) $r2;
+
+        $z0 = interfaceinvoke $r3.<com.google.android.gms.internal.ads.zzdt: boolean zzh()>();
+
+        if $z0 == 0 goto label1;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzdq: java.nio.ByteBuffer[] zzc>;
+
+        $i0 = specialinvoke r0.<com.google.android.gms.internal.ads.zzdq: int zzi()>();
+
+        $r5 = $r4[$i0];
+
+        $z0 = virtualinvoke $r5.<java.nio.ByteBuffer: boolean hasRemaining()>();
+
+        if $z0 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public final boolean zzh()
+    {
+        com.google.android.gms.internal.ads.zzdq r0;
+        java.util.List $r1;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdq;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzdq: java.util.List zzb>;
+
+        $z0 = interfaceinvoke $r1.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+}

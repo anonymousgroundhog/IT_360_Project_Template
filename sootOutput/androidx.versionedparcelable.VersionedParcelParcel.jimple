@@ -1,0 +1,768 @@
+class androidx.versionedparcelable.VersionedParcelParcel extends androidx.versionedparcelable.VersionedParcel
+{
+    private static final boolean DEBUG;
+    private static final java.lang.String TAG;
+    private int mCurrentField;
+    private final int mEnd;
+    private int mFieldId;
+    private int mNextRead;
+    private final int mOffset;
+    private final android.os.Parcel mParcel;
+    private final android.util.SparseIntArray mPositionLookup;
+    private final java.lang.String mPrefix;
+
+    void <init>(android.os.Parcel)
+    {
+        int $i0, $i1;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r1;
+        androidx.collection.ArrayMap $r2, $r3, $r4;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 := @parameter0: android.os.Parcel;
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int dataPosition()>();
+
+        $i1 = virtualinvoke $r1.<android.os.Parcel: int dataSize()>();
+
+        $r2 = new androidx.collection.ArrayMap;
+
+        specialinvoke $r2.<androidx.collection.ArrayMap: void <init>()>();
+
+        $r3 = new androidx.collection.ArrayMap;
+
+        specialinvoke $r3.<androidx.collection.ArrayMap: void <init>()>();
+
+        $r4 = new androidx.collection.ArrayMap;
+
+        specialinvoke $r4.<androidx.collection.ArrayMap: void <init>()>();
+
+        specialinvoke r0.<androidx.versionedparcelable.VersionedParcelParcel: void <init>(android.os.Parcel,int,int,java.lang.String,androidx.collection.ArrayMap,androidx.collection.ArrayMap,androidx.collection.ArrayMap)>($r1, $i0, $i1, "", $r2, $r3, $r4);
+
+        return;
+    }
+
+    private void <init>(android.os.Parcel, int, int, java.lang.String, androidx.collection.ArrayMap, androidx.collection.ArrayMap, androidx.collection.ArrayMap)
+    {
+        android.util.SparseIntArray $r6;
+        android.os.Parcel $r1;
+        int $i0, $i1;
+        java.lang.String $r2;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        androidx.collection.ArrayMap r3, r4, r5;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 := @parameter0: android.os.Parcel;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r2 := @parameter3: java.lang.String;
+
+        r3 := @parameter4: androidx.collection.ArrayMap;
+
+        r4 := @parameter5: androidx.collection.ArrayMap;
+
+        r5 := @parameter6: androidx.collection.ArrayMap;
+
+        specialinvoke r0.<androidx.versionedparcelable.VersionedParcel: void <init>(androidx.collection.ArrayMap,androidx.collection.ArrayMap,androidx.collection.ArrayMap)>(r3, r4, r5);
+
+        $r6 = new android.util.SparseIntArray;
+
+        specialinvoke $r6.<android.util.SparseIntArray: void <init>()>();
+
+        r0.<androidx.versionedparcelable.VersionedParcelParcel: android.util.SparseIntArray mPositionLookup> = $r6;
+
+        r0.<androidx.versionedparcelable.VersionedParcelParcel: int mCurrentField> = -1;
+
+        r0.<androidx.versionedparcelable.VersionedParcelParcel: int mNextRead> = 0;
+
+        r0.<androidx.versionedparcelable.VersionedParcelParcel: int mFieldId> = -1;
+
+        r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel> = $r1;
+
+        r0.<androidx.versionedparcelable.VersionedParcelParcel: int mOffset> = $i0;
+
+        r0.<androidx.versionedparcelable.VersionedParcelParcel: int mEnd> = $i1;
+
+        $i0 = r0.<androidx.versionedparcelable.VersionedParcelParcel: int mOffset>;
+
+        r0.<androidx.versionedparcelable.VersionedParcelParcel: int mNextRead> = $i0;
+
+        r0.<androidx.versionedparcelable.VersionedParcelParcel: java.lang.String mPrefix> = $r2;
+
+        return;
+    }
+
+    public void closeField()
+    {
+        android.util.SparseIntArray r1;
+        int i0, $i1, $i2;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel r2;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        i0 = r0.<androidx.versionedparcelable.VersionedParcelParcel: int mCurrentField>;
+
+        if i0 < 0 goto label1;
+
+        r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.util.SparseIntArray mPositionLookup>;
+
+        i0 = r0.<androidx.versionedparcelable.VersionedParcelParcel: int mCurrentField>;
+
+        $i1 = virtualinvoke r1.<android.util.SparseIntArray: int get(int)>(i0);
+
+        r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $i2 = virtualinvoke r2.<android.os.Parcel: int dataPosition()>();
+
+        i0 = $i2 - $i1;
+
+        r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke r2.<android.os.Parcel: void setDataPosition(int)>($i1);
+
+        r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke r2.<android.os.Parcel: void writeInt(int)>(i0);
+
+        r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke r2.<android.os.Parcel: void setDataPosition(int)>($i2);
+
+     label1:
+        return;
+    }
+
+    protected androidx.versionedparcelable.VersionedParcel createSubParcel()
+    {
+        android.os.Parcel $r1, $r6;
+        int $i0, $i1, $i2;
+        java.lang.StringBuilder $r7;
+        java.lang.String $r8;
+        androidx.versionedparcelable.VersionedParcelParcel r0, $r5;
+        androidx.collection.ArrayMap $r2, $r3, $r4;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r5 = new androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $r6 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $i0 = virtualinvoke $r6.<android.os.Parcel: int dataPosition()>();
+
+        $i1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: int mNextRead>;
+
+        $i2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: int mOffset>;
+
+        if $i1 != $i2 goto label1;
+
+        $i1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: int mEnd>;
+
+        goto label2;
+
+     label1:
+        $i1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: int mNextRead>;
+
+     label2:
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r8 = r0.<androidx.versionedparcelable.VersionedParcelParcel: java.lang.String mPrefix>;
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("  ");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: androidx.collection.ArrayMap mReadCache>;
+
+        $r3 = r0.<androidx.versionedparcelable.VersionedParcelParcel: androidx.collection.ArrayMap mWriteCache>;
+
+        $r4 = r0.<androidx.versionedparcelable.VersionedParcelParcel: androidx.collection.ArrayMap mParcelizerCache>;
+
+        specialinvoke $r5.<androidx.versionedparcelable.VersionedParcelParcel: void <init>(android.os.Parcel,int,int,java.lang.String,androidx.collection.ArrayMap,androidx.collection.ArrayMap,androidx.collection.ArrayMap)>($r1, $i0, $i1, $r8, $r2, $r3, $r4);
+
+        return $r5;
+    }
+
+    public boolean readBoolean()
+    {
+        int $i0;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r1;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        if $i0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public android.os.Bundle readBundle()
+    {
+        android.os.Bundle $r4;
+        java.lang.Class $r2;
+        java.lang.ClassLoader $r3;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r1;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $r2 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        $r4 = virtualinvoke $r1.<android.os.Parcel: android.os.Bundle readBundle(java.lang.ClassLoader)>($r3);
+
+        return $r4;
+    }
+
+    public byte[] readByteArray()
+    {
+        byte[] r2;
+        int $i0;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r1;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        if $i0 >= 0 goto label1;
+
+        return null;
+
+     label1:
+        r2 = newarray (byte)[$i0];
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke $r1.<android.os.Parcel: void readByteArray(byte[])>(r2);
+
+        return r2;
+    }
+
+    protected java.lang.CharSequence readCharSequence()
+    {
+        java.lang.CharSequence $r4;
+        java.lang.Object $r2;
+        android.os.Parcelable$Creator $r3;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r1;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r3 = <android.text.TextUtils: android.os.Parcelable$Creator CHAR_SEQUENCE_CREATOR>;
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $r2 = interfaceinvoke $r3.<android.os.Parcelable$Creator: java.lang.Object createFromParcel(android.os.Parcel)>($r1);
+
+        $r4 = (java.lang.CharSequence) $r2;
+
+        return $r4;
+    }
+
+    public double readDouble()
+    {
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r1;
+        double $d0;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $d0 = virtualinvoke $r1.<android.os.Parcel: double readDouble()>();
+
+        return $d0;
+    }
+
+    public boolean readField(int)
+    {
+        int $i0, i1, $i2;
+        java.lang.String $r1, $r2;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel r3;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $i0 := @parameter0: int;
+
+     label1:
+        i1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: int mNextRead>;
+
+        $i2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: int mEnd>;
+
+        if i1 >= $i2 goto label4;
+
+        i1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: int mFieldId>;
+
+        if i1 != $i0 goto label2;
+
+        return 1;
+
+     label2:
+        i1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: int mFieldId>;
+
+        $r1 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>(i1);
+
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        i1 = virtualinvoke $r1.<java.lang.String: int compareTo(java.lang.String)>($r2);
+
+        if i1 <= 0 goto label3;
+
+        return 0;
+
+     label3:
+        r3 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        i1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: int mNextRead>;
+
+        virtualinvoke r3.<android.os.Parcel: void setDataPosition(int)>(i1);
+
+        r3 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        i1 = virtualinvoke r3.<android.os.Parcel: int readInt()>();
+
+        r3 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $i2 = virtualinvoke r3.<android.os.Parcel: int readInt()>();
+
+        r0.<androidx.versionedparcelable.VersionedParcelParcel: int mFieldId> = $i2;
+
+        $i2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: int mNextRead>;
+
+        i1 = $i2 + i1;
+
+        r0.<androidx.versionedparcelable.VersionedParcelParcel: int mNextRead> = i1;
+
+        goto label1;
+
+     label4:
+        i1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: int mFieldId>;
+
+        if i1 != $i0 goto label5;
+
+        return 1;
+
+     label5:
+        return 0;
+    }
+
+    public float readFloat()
+    {
+        float $f0;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r1;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $f0 = virtualinvoke $r1.<android.os.Parcel: float readFloat()>();
+
+        return $f0;
+    }
+
+    public int readInt()
+    {
+        int $i0;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r1;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        return $i0;
+    }
+
+    public long readLong()
+    {
+        long $l0;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r1;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $l0 = virtualinvoke $r1.<android.os.Parcel: long readLong()>();
+
+        return $l0;
+    }
+
+    public android.os.Parcelable readParcelable()
+    {
+        android.os.Parcelable $r4;
+        java.lang.Class $r2;
+        java.lang.ClassLoader $r3;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r1;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $r2 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        $r4 = virtualinvoke $r1.<android.os.Parcel: android.os.Parcelable readParcelable(java.lang.ClassLoader)>($r3);
+
+        return $r4;
+    }
+
+    public java.lang.String readString()
+    {
+        java.lang.String $r1;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r2;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $r1 = virtualinvoke $r2.<android.os.Parcel: java.lang.String readString()>();
+
+        return $r1;
+    }
+
+    public android.os.IBinder readStrongBinder()
+    {
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.IBinder $r1;
+        android.os.Parcel $r2;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $r1 = virtualinvoke $r2.<android.os.Parcel: android.os.IBinder readStrongBinder()>();
+
+        return $r1;
+    }
+
+    public void setOutputField(int)
+    {
+        android.util.SparseIntArray $r1;
+        int $i0, $i1;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r2;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $i0 := @parameter0: int;
+
+        virtualinvoke r0.<androidx.versionedparcelable.VersionedParcelParcel: void closeField()>();
+
+        r0.<androidx.versionedparcelable.VersionedParcelParcel: int mCurrentField> = $i0;
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.util.SparseIntArray mPositionLookup>;
+
+        $r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $i1 = virtualinvoke $r2.<android.os.Parcel: int dataPosition()>();
+
+        virtualinvoke $r1.<android.util.SparseIntArray: void put(int,int)>($i0, $i1);
+
+        virtualinvoke r0.<androidx.versionedparcelable.VersionedParcelParcel: void writeInt(int)>(0);
+
+        virtualinvoke r0.<androidx.versionedparcelable.VersionedParcelParcel: void writeInt(int)>($i0);
+
+        return;
+    }
+
+    public void writeBoolean(boolean)
+    {
+        int $i0;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r1;
+        boolean $z0;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $i0 = (int) $z0;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeInt(int)>($i0);
+
+        return;
+    }
+
+    public void writeBundle(android.os.Bundle)
+    {
+        android.os.Bundle $r1;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r2;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        $r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke $r2.<android.os.Parcel: void writeBundle(android.os.Bundle)>($r1);
+
+        return;
+    }
+
+    public void writeByteArray(byte[])
+    {
+        byte[] $r1;
+        int $i0;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r2;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 := @parameter0: byte[];
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $i0 = lengthof $r1;
+
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>($i0);
+
+        $r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke $r2.<android.os.Parcel: void writeByteArray(byte[])>($r1);
+
+        return;
+
+     label1:
+        $r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>(-1);
+
+        return;
+    }
+
+    public void writeByteArray(byte[], int, int)
+    {
+        byte[] $r1;
+        int $i0, $i1, $i2;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r2;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        $i2 = lengthof $r1;
+
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>($i2);
+
+        $r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke $r2.<android.os.Parcel: void writeByteArray(byte[],int,int)>($r1, $i0, $i1);
+
+        return;
+
+     label1:
+        $r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke $r2.<android.os.Parcel: void writeInt(int)>(-1);
+
+        return;
+    }
+
+    protected void writeCharSequence(java.lang.CharSequence)
+    {
+        java.lang.CharSequence $r1;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r2;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        staticinvoke <android.text.TextUtils: void writeToParcel(java.lang.CharSequence,android.os.Parcel,int)>($r1, $r2, 0);
+
+        return;
+    }
+
+    public void writeDouble(double)
+    {
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r1;
+        double $d0;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $d0 := @parameter0: double;
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeDouble(double)>($d0);
+
+        return;
+    }
+
+    public void writeFloat(float)
+    {
+        float $f0;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r1;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $f0 := @parameter0: float;
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeFloat(float)>($f0);
+
+        return;
+    }
+
+    public void writeInt(int)
+    {
+        int $i0;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r1;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeInt(int)>($i0);
+
+        return;
+    }
+
+    public void writeLong(long)
+    {
+        long $l0;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r1;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $l0 := @parameter0: long;
+
+        $r1 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeLong(long)>($l0);
+
+        return;
+    }
+
+    public void writeParcelable(android.os.Parcelable)
+    {
+        android.os.Parcelable $r1;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r2;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 := @parameter0: android.os.Parcelable;
+
+        $r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke $r2.<android.os.Parcel: void writeParcelable(android.os.Parcelable,int)>($r1, 0);
+
+        return;
+    }
+
+    public void writeString(java.lang.String)
+    {
+        java.lang.String $r1;
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.Parcel $r2;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke $r2.<android.os.Parcel: void writeString(java.lang.String)>($r1);
+
+        return;
+    }
+
+    public void writeStrongBinder(android.os.IBinder)
+    {
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.IBinder $r1;
+        android.os.Parcel $r2;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 := @parameter0: android.os.IBinder;
+
+        $r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke $r2.<android.os.Parcel: void writeStrongBinder(android.os.IBinder)>($r1);
+
+        return;
+    }
+
+    public void writeStrongInterface(android.os.IInterface)
+    {
+        androidx.versionedparcelable.VersionedParcelParcel r0;
+        android.os.IInterface $r1;
+        android.os.Parcel $r2;
+
+        r0 := @this: androidx.versionedparcelable.VersionedParcelParcel;
+
+        $r1 := @parameter0: android.os.IInterface;
+
+        $r2 = r0.<androidx.versionedparcelable.VersionedParcelParcel: android.os.Parcel mParcel>;
+
+        virtualinvoke $r2.<android.os.Parcel: void writeStrongInterface(android.os.IInterface)>($r1);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.versionedparcelable.VersionedParcelParcel: java.lang.String TAG> = "VersionedParcelParcel";
+
+        <androidx.versionedparcelable.VersionedParcelParcel: boolean DEBUG> = 0;
+
+        return;
+    }
+}

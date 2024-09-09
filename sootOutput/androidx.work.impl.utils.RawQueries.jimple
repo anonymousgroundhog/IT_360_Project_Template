@@ -1,0 +1,221 @@
+public final class androidx.work.impl.utils.RawQueries extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.work.impl.utils.RawQueries r0;
+
+        r0 := @this: androidx.work.impl.utils.RawQueries;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private static void bindings(java.lang.StringBuilder, int)
+    {
+        int $i0, i1;
+        java.lang.StringBuilder $r0;
+
+        $r0 := @parameter0: java.lang.StringBuilder;
+
+        $i0 := @parameter1: int;
+
+        if $i0 > 0 goto label1;
+
+        return;
+
+     label1:
+        virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("?");
+
+        i1 = 1;
+
+     label2:
+        if i1 >= $i0 goto label3;
+
+        virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(",");
+
+        virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("?");
+
+        i1 = i1 + 1;
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    public static androidx.sqlite.db.SupportSQLiteQuery workQueryToRawQuery(androidx.work.WorkQuery)
+    {
+        java.lang.Object[] $r14;
+        java.lang.Integer $r9;
+        java.util.ArrayList r1, r5;
+        int $i0;
+        java.lang.String r3, $r12;
+        boolean $z0;
+        androidx.sqlite.db.SimpleSQLiteQuery r13;
+        java.util.Iterator $r6;
+        java.util.UUID r11;
+        java.util.List $r4;
+        androidx.work.WorkQuery $r0;
+        androidx.work.WorkInfo$State r8;
+        java.lang.StringBuilder r2, $r10;
+        java.lang.Object $r7;
+
+        $r0 := @parameter0: androidx.work.WorkQuery;
+
+        r1 = new java.util.ArrayList;
+
+        specialinvoke r1.<java.util.ArrayList: void <init>()>();
+
+        r2 = new java.lang.StringBuilder;
+
+        specialinvoke r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("SELECT * FROM workspec");
+
+        r3 = " WHERE";
+
+        $r4 = virtualinvoke $r0.<androidx.work.WorkQuery: java.util.List getStates()>();
+
+        $z0 = interfaceinvoke $r4.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label3;
+
+        r5 = new java.util.ArrayList;
+
+        $i0 = interfaceinvoke $r4.<java.util.List: int size()>();
+
+        specialinvoke r5.<java.util.ArrayList: void <init>(int)>($i0);
+
+        $r6 = interfaceinvoke $r4.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r6.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r7 = interfaceinvoke $r6.<java.util.Iterator: java.lang.Object next()>();
+
+        r8 = (androidx.work.WorkInfo$State) $r7;
+
+        $i0 = staticinvoke <androidx.work.impl.model.WorkTypeConverters: int stateToInt(androidx.work.WorkInfo$State)>(r8);
+
+        $r9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        interfaceinvoke r5.<java.util.List: boolean add(java.lang.Object)>($r9);
+
+        goto label1;
+
+     label2:
+        $r10 = virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" WHERE");
+
+        virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" state IN (");
+
+        $i0 = interfaceinvoke r5.<java.util.List: int size()>();
+
+        staticinvoke <androidx.work.impl.utils.RawQueries: void bindings(java.lang.StringBuilder,int)>(r2, $i0);
+
+        virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        interfaceinvoke r1.<java.util.List: boolean addAll(java.util.Collection)>(r5);
+
+        r3 = " AND";
+
+     label3:
+        $r4 = virtualinvoke $r0.<androidx.work.WorkQuery: java.util.List getIds()>();
+
+        $z0 = interfaceinvoke $r4.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label6;
+
+        r5 = new java.util.ArrayList;
+
+        $i0 = interfaceinvoke $r4.<java.util.List: int size()>();
+
+        specialinvoke r5.<java.util.ArrayList: void <init>(int)>($i0);
+
+        $r6 = interfaceinvoke $r4.<java.util.List: java.util.Iterator iterator()>();
+
+     label4:
+        $z0 = interfaceinvoke $r6.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label5;
+
+        $r7 = interfaceinvoke $r6.<java.util.Iterator: java.lang.Object next()>();
+
+        r11 = (java.util.UUID) $r7;
+
+        $r12 = virtualinvoke r11.<java.util.UUID: java.lang.String toString()>();
+
+        interfaceinvoke r5.<java.util.List: boolean add(java.lang.Object)>($r12);
+
+        goto label4;
+
+     label5:
+        $r10 = virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" id IN (");
+
+        $i0 = interfaceinvoke $r4.<java.util.List: int size()>();
+
+        staticinvoke <androidx.work.impl.utils.RawQueries: void bindings(java.lang.StringBuilder,int)>(r2, $i0);
+
+        virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        interfaceinvoke r1.<java.util.List: boolean addAll(java.util.Collection)>(r5);
+
+        r3 = " AND";
+
+     label6:
+        $r4 = virtualinvoke $r0.<androidx.work.WorkQuery: java.util.List getTags()>();
+
+        $z0 = interfaceinvoke $r4.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label7;
+
+        $r10 = virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" id IN (SELECT work_spec_id FROM worktag WHERE tag IN (");
+
+        $i0 = interfaceinvoke $r4.<java.util.List: int size()>();
+
+        staticinvoke <androidx.work.impl.utils.RawQueries: void bindings(java.lang.StringBuilder,int)>(r2, $i0);
+
+        virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("))");
+
+        interfaceinvoke r1.<java.util.List: boolean addAll(java.util.Collection)>($r4);
+
+        r3 = " AND";
+
+     label7:
+        $r4 = virtualinvoke $r0.<androidx.work.WorkQuery: java.util.List getUniqueWorkNames()>();
+
+        $z0 = interfaceinvoke $r4.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label8;
+
+        $r10 = virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" id IN (SELECT work_spec_id FROM workname WHERE name IN (");
+
+        $i0 = interfaceinvoke $r4.<java.util.List: int size()>();
+
+        staticinvoke <androidx.work.impl.utils.RawQueries: void bindings(java.lang.StringBuilder,int)>(r2, $i0);
+
+        virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("))");
+
+        interfaceinvoke r1.<java.util.List: boolean addAll(java.util.Collection)>($r4);
+
+     label8:
+        virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(";");
+
+        r13 = new androidx.sqlite.db.SimpleSQLiteQuery;
+
+        r3 = virtualinvoke r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r14 = interfaceinvoke r1.<java.util.List: java.lang.Object[] toArray()>();
+
+        specialinvoke r13.<androidx.sqlite.db.SimpleSQLiteQuery: void <init>(java.lang.String,java.lang.Object[])>(r3, $r14);
+
+        return r13;
+    }
+}

@@ -1,0 +1,205 @@
+public final class com.google.common.collect.Comparators extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        com.google.common.collect.Comparators r0;
+
+        r0 := @this: com.google.common.collect.Comparators;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static boolean isInOrder(java.lang.Iterable, java.util.Comparator)
+    {
+        java.util.Iterator $r2;
+        int $i0;
+        java.lang.Object $r3, $r4;
+        java.util.Comparator r1;
+        java.lang.Iterable r0;
+        boolean $z0;
+
+        r0 := @parameter0: java.lang.Iterable;
+
+        r1 := @parameter1: java.util.Comparator;
+
+        staticinvoke <com.google.common.base.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>(r1);
+
+        $r2 = interfaceinvoke r0.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+        $z0 = interfaceinvoke $r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r3 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+     label1:
+        $z0 = interfaceinvoke $r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r4 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+        $i0 = interfaceinvoke r1.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r3, $r4);
+
+        if $i0 <= 0 goto label2;
+
+        return 0;
+
+     label2:
+        $r3 = $r4;
+
+        goto label1;
+
+     label3:
+        return 1;
+    }
+
+    public static boolean isInStrictOrder(java.lang.Iterable, java.util.Comparator)
+    {
+        java.util.Iterator $r2;
+        int $i0;
+        java.lang.Object $r3, $r4;
+        java.util.Comparator r1;
+        java.lang.Iterable r0;
+        boolean $z0;
+
+        r0 := @parameter0: java.lang.Iterable;
+
+        r1 := @parameter1: java.util.Comparator;
+
+        staticinvoke <com.google.common.base.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>(r1);
+
+        $r2 = interfaceinvoke r0.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+        $z0 = interfaceinvoke $r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r3 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+     label1:
+        $z0 = interfaceinvoke $r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r4 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+        $i0 = interfaceinvoke r1.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>($r3, $r4);
+
+        if $i0 < 0 goto label2;
+
+        return 0;
+
+     label2:
+        $r3 = $r4;
+
+        goto label1;
+
+     label3:
+        return 1;
+    }
+
+    public static java.util.Comparator lexicographical(java.util.Comparator)
+    {
+        java.lang.Object $r2;
+        java.util.Comparator r0;
+        com.google.common.collect.LexicographicalOrdering $r1;
+
+        r0 := @parameter0: java.util.Comparator;
+
+        $r1 = new com.google.common.collect.LexicographicalOrdering;
+
+        $r2 = staticinvoke <com.google.common.base.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>(r0);
+
+        r0 = (java.util.Comparator) $r2;
+
+        specialinvoke $r1.<com.google.common.collect.LexicographicalOrdering: void <init>(java.util.Comparator)>(r0);
+
+        return $r1;
+    }
+
+    public static java.lang.Comparable max(java.lang.Comparable, java.lang.Comparable)
+    {
+        int $i0;
+        java.lang.Comparable r0, r1;
+
+        r0 := @parameter0: java.lang.Comparable;
+
+        r1 := @parameter1: java.lang.Comparable;
+
+        $i0 = interfaceinvoke r0.<java.lang.Comparable: int compareTo(java.lang.Object)>(r1);
+
+        if $i0 < 0 goto label1;
+
+        return r0;
+
+     label1:
+        return r1;
+    }
+
+    public static java.lang.Object max(java.lang.Object, java.lang.Object, java.util.Comparator)
+    {
+        int $i0;
+        java.lang.Object r0, r1;
+        java.util.Comparator r2;
+
+        r0 := @parameter0: java.lang.Object;
+
+        r1 := @parameter1: java.lang.Object;
+
+        r2 := @parameter2: java.util.Comparator;
+
+        $i0 = interfaceinvoke r2.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>(r0, r1);
+
+        if $i0 < 0 goto label1;
+
+        return r0;
+
+     label1:
+        return r1;
+    }
+
+    public static java.lang.Comparable min(java.lang.Comparable, java.lang.Comparable)
+    {
+        int $i0;
+        java.lang.Comparable r0, r1;
+
+        r0 := @parameter0: java.lang.Comparable;
+
+        r1 := @parameter1: java.lang.Comparable;
+
+        $i0 = interfaceinvoke r0.<java.lang.Comparable: int compareTo(java.lang.Object)>(r1);
+
+        if $i0 > 0 goto label1;
+
+        return r0;
+
+     label1:
+        return r1;
+    }
+
+    public static java.lang.Object min(java.lang.Object, java.lang.Object, java.util.Comparator)
+    {
+        int $i0;
+        java.lang.Object r0, r1;
+        java.util.Comparator r2;
+
+        r0 := @parameter0: java.lang.Object;
+
+        r1 := @parameter1: java.lang.Object;
+
+        r2 := @parameter2: java.util.Comparator;
+
+        $i0 = interfaceinvoke r2.<java.util.Comparator: int compare(java.lang.Object,java.lang.Object)>(r0, r1);
+
+        if $i0 > 0 goto label1;
+
+        return r0;
+
+     label1:
+        return r1;
+    }
+}

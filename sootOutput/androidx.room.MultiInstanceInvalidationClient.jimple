@@ -1,0 +1,152 @@
+class androidx.room.MultiInstanceInvalidationClient extends java.lang.Object
+{
+    final android.content.Context mAppContext;
+    final androidx.room.IMultiInstanceInvalidationCallback mCallback;
+    int mClientId;
+    final java.util.concurrent.Executor mExecutor;
+    final androidx.room.InvalidationTracker mInvalidationTracker;
+    final java.lang.String mName;
+    final androidx.room.InvalidationTracker$Observer mObserver;
+    final java.lang.Runnable mRemoveObserverRunnable;
+    androidx.room.IMultiInstanceInvalidationService mService;
+    final android.content.ServiceConnection mServiceConnection;
+    final java.lang.Runnable mSetUpRunnable;
+    final java.util.concurrent.atomic.AtomicBoolean mStopped;
+    private final java.lang.Runnable mTearDownRunnable;
+
+    void <init>(android.content.Context, java.lang.String, androidx.room.InvalidationTracker, java.util.concurrent.Executor)
+    {
+        androidx.room.InvalidationTracker $r3;
+        android.content.Context $r1;
+        java.lang.Object[] $r15;
+        java.util.concurrent.atomic.AtomicBoolean r6;
+        java.util.HashMap r11;
+        java.lang.String[] r14;
+        android.content.Intent r16;
+        android.content.ServiceConnection $r17;
+        java.lang.String $r2;
+        androidx.room.MultiInstanceInvalidationClient$5 r10;
+        java.util.concurrent.Executor $r4;
+        androidx.room.MultiInstanceInvalidationClient$6 $r13;
+        androidx.room.MultiInstanceInvalidationClient$3 r8;
+        androidx.room.MultiInstanceInvalidationClient$4 r9;
+        androidx.room.MultiInstanceInvalidationClient$1 r5;
+        androidx.room.MultiInstanceInvalidationClient$2 r7;
+        java.util.Set $r12;
+        androidx.room.MultiInstanceInvalidationClient r0;
+
+        r0 := @this: androidx.room.MultiInstanceInvalidationClient;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: androidx.room.InvalidationTracker;
+
+        $r4 := @parameter3: java.util.concurrent.Executor;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r5 = new androidx.room.MultiInstanceInvalidationClient$1;
+
+        specialinvoke r5.<androidx.room.MultiInstanceInvalidationClient$1: void <init>(androidx.room.MultiInstanceInvalidationClient)>(r0);
+
+        r0.<androidx.room.MultiInstanceInvalidationClient: androidx.room.IMultiInstanceInvalidationCallback mCallback> = r5;
+
+        r6 = new java.util.concurrent.atomic.AtomicBoolean;
+
+        specialinvoke r6.<java.util.concurrent.atomic.AtomicBoolean: void <init>(boolean)>(0);
+
+        r0.<androidx.room.MultiInstanceInvalidationClient: java.util.concurrent.atomic.AtomicBoolean mStopped> = r6;
+
+        r7 = new androidx.room.MultiInstanceInvalidationClient$2;
+
+        specialinvoke r7.<androidx.room.MultiInstanceInvalidationClient$2: void <init>(androidx.room.MultiInstanceInvalidationClient)>(r0);
+
+        r0.<androidx.room.MultiInstanceInvalidationClient: android.content.ServiceConnection mServiceConnection> = r7;
+
+        r8 = new androidx.room.MultiInstanceInvalidationClient$3;
+
+        specialinvoke r8.<androidx.room.MultiInstanceInvalidationClient$3: void <init>(androidx.room.MultiInstanceInvalidationClient)>(r0);
+
+        r0.<androidx.room.MultiInstanceInvalidationClient: java.lang.Runnable mSetUpRunnable> = r8;
+
+        r9 = new androidx.room.MultiInstanceInvalidationClient$4;
+
+        specialinvoke r9.<androidx.room.MultiInstanceInvalidationClient$4: void <init>(androidx.room.MultiInstanceInvalidationClient)>(r0);
+
+        r0.<androidx.room.MultiInstanceInvalidationClient: java.lang.Runnable mRemoveObserverRunnable> = r9;
+
+        r10 = new androidx.room.MultiInstanceInvalidationClient$5;
+
+        specialinvoke r10.<androidx.room.MultiInstanceInvalidationClient$5: void <init>(androidx.room.MultiInstanceInvalidationClient)>(r0);
+
+        r0.<androidx.room.MultiInstanceInvalidationClient: java.lang.Runnable mTearDownRunnable> = r10;
+
+        $r1 = virtualinvoke $r1.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        r0.<androidx.room.MultiInstanceInvalidationClient: android.content.Context mAppContext> = $r1;
+
+        r0.<androidx.room.MultiInstanceInvalidationClient: java.lang.String mName> = $r2;
+
+        r0.<androidx.room.MultiInstanceInvalidationClient: androidx.room.InvalidationTracker mInvalidationTracker> = $r3;
+
+        r0.<androidx.room.MultiInstanceInvalidationClient: java.util.concurrent.Executor mExecutor> = $r4;
+
+        r11 = $r3.<androidx.room.InvalidationTracker: java.util.HashMap mTableIdLookup>;
+
+        $r12 = virtualinvoke r11.<java.util.HashMap: java.util.Set keySet()>();
+
+        $r13 = new androidx.room.MultiInstanceInvalidationClient$6;
+
+        r14 = newarray (java.lang.String)[0];
+
+        $r15 = interfaceinvoke $r12.<java.util.Set: java.lang.Object[] toArray(java.lang.Object[])>(r14);
+
+        r14 = (java.lang.String[]) $r15;
+
+        specialinvoke $r13.<androidx.room.MultiInstanceInvalidationClient$6: void <init>(androidx.room.MultiInstanceInvalidationClient,java.lang.String[])>(r0, r14);
+
+        r0.<androidx.room.MultiInstanceInvalidationClient: androidx.room.InvalidationTracker$Observer mObserver> = $r13;
+
+        r16 = new android.content.Intent;
+
+        $r1 = r0.<androidx.room.MultiInstanceInvalidationClient: android.content.Context mAppContext>;
+
+        specialinvoke r16.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r1, class "Landroidx/room/MultiInstanceInvalidationService;");
+
+        $r1 = r0.<androidx.room.MultiInstanceInvalidationClient: android.content.Context mAppContext>;
+
+        $r17 = r0.<androidx.room.MultiInstanceInvalidationClient: android.content.ServiceConnection mServiceConnection>;
+
+        virtualinvoke $r1.<android.content.Context: boolean bindService(android.content.Intent,android.content.ServiceConnection,int)>(r16, $r17, 1);
+
+        return;
+    }
+
+    void stop()
+    {
+        java.util.concurrent.Executor $r2;
+        androidx.room.MultiInstanceInvalidationClient r0;
+        java.util.concurrent.atomic.AtomicBoolean $r1;
+        java.lang.Runnable $r3;
+        boolean $z0;
+
+        r0 := @this: androidx.room.MultiInstanceInvalidationClient;
+
+        $r1 = r0.<androidx.room.MultiInstanceInvalidationClient: java.util.concurrent.atomic.AtomicBoolean mStopped>;
+
+        $z0 = virtualinvoke $r1.<java.util.concurrent.atomic.AtomicBoolean: boolean compareAndSet(boolean,boolean)>(0, 1);
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<androidx.room.MultiInstanceInvalidationClient: java.util.concurrent.Executor mExecutor>;
+
+        $r3 = r0.<androidx.room.MultiInstanceInvalidationClient: java.lang.Runnable mTearDownRunnable>;
+
+        interfaceinvoke $r2.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r3);
+
+     label1:
+        return;
+    }
+}

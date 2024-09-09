@@ -1,0 +1,357 @@
+public final class androidx.work.Configuration extends java.lang.Object
+{
+    public static final int MIN_SCHEDULER_LIMIT;
+    final java.lang.String mDefaultProcessName;
+    final androidx.work.InitializationExceptionHandler mExceptionHandler;
+    final java.util.concurrent.Executor mExecutor;
+    final androidx.work.InputMergerFactory mInputMergerFactory;
+    private final boolean mIsUsingDefaultTaskExecutor;
+    final int mLoggingLevel;
+    final int mMaxJobSchedulerId;
+    final int mMaxSchedulerLimit;
+    final int mMinJobSchedulerId;
+    final androidx.work.RunnableScheduler mRunnableScheduler;
+    final java.util.concurrent.Executor mTaskExecutor;
+    final androidx.work.WorkerFactory mWorkerFactory;
+
+    void <init>(androidx.work.Configuration$Builder)
+    {
+        java.util.concurrent.Executor $r2;
+        androidx.work.WorkerFactory $r3;
+        androidx.work.InitializationExceptionHandler $r7;
+        androidx.work.impl.DefaultRunnableScheduler $r6;
+        androidx.work.Configuration r0;
+        androidx.work.InputMergerFactory $r4;
+        androidx.work.Configuration$Builder $r1;
+        int $i0;
+        java.lang.String $r8;
+        androidx.work.RunnableScheduler $r5;
+
+        r0 := @this: androidx.work.Configuration;
+
+        $r1 := @parameter0: androidx.work.Configuration$Builder;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = $r1.<androidx.work.Configuration$Builder: java.util.concurrent.Executor mExecutor>;
+
+        if $r2 != null goto label01;
+
+        $r2 = specialinvoke r0.<androidx.work.Configuration: java.util.concurrent.Executor createDefaultExecutor(boolean)>(0);
+
+        r0.<androidx.work.Configuration: java.util.concurrent.Executor mExecutor> = $r2;
+
+        goto label02;
+
+     label01:
+        $r2 = $r1.<androidx.work.Configuration$Builder: java.util.concurrent.Executor mExecutor>;
+
+        r0.<androidx.work.Configuration: java.util.concurrent.Executor mExecutor> = $r2;
+
+     label02:
+        $r2 = $r1.<androidx.work.Configuration$Builder: java.util.concurrent.Executor mTaskExecutor>;
+
+        if $r2 != null goto label03;
+
+        r0.<androidx.work.Configuration: boolean mIsUsingDefaultTaskExecutor> = 1;
+
+        $r2 = specialinvoke r0.<androidx.work.Configuration: java.util.concurrent.Executor createDefaultExecutor(boolean)>(1);
+
+        r0.<androidx.work.Configuration: java.util.concurrent.Executor mTaskExecutor> = $r2;
+
+        goto label04;
+
+     label03:
+        r0.<androidx.work.Configuration: boolean mIsUsingDefaultTaskExecutor> = 0;
+
+        $r2 = $r1.<androidx.work.Configuration$Builder: java.util.concurrent.Executor mTaskExecutor>;
+
+        r0.<androidx.work.Configuration: java.util.concurrent.Executor mTaskExecutor> = $r2;
+
+     label04:
+        $r3 = $r1.<androidx.work.Configuration$Builder: androidx.work.WorkerFactory mWorkerFactory>;
+
+        if $r3 != null goto label05;
+
+        $r3 = staticinvoke <androidx.work.WorkerFactory: androidx.work.WorkerFactory getDefaultWorkerFactory()>();
+
+        r0.<androidx.work.Configuration: androidx.work.WorkerFactory mWorkerFactory> = $r3;
+
+        goto label06;
+
+     label05:
+        $r3 = $r1.<androidx.work.Configuration$Builder: androidx.work.WorkerFactory mWorkerFactory>;
+
+        r0.<androidx.work.Configuration: androidx.work.WorkerFactory mWorkerFactory> = $r3;
+
+     label06:
+        $r4 = $r1.<androidx.work.Configuration$Builder: androidx.work.InputMergerFactory mInputMergerFactory>;
+
+        if $r4 != null goto label07;
+
+        $r4 = staticinvoke <androidx.work.InputMergerFactory: androidx.work.InputMergerFactory getDefaultInputMergerFactory()>();
+
+        r0.<androidx.work.Configuration: androidx.work.InputMergerFactory mInputMergerFactory> = $r4;
+
+        goto label08;
+
+     label07:
+        $r4 = $r1.<androidx.work.Configuration$Builder: androidx.work.InputMergerFactory mInputMergerFactory>;
+
+        r0.<androidx.work.Configuration: androidx.work.InputMergerFactory mInputMergerFactory> = $r4;
+
+     label08:
+        $r5 = $r1.<androidx.work.Configuration$Builder: androidx.work.RunnableScheduler mRunnableScheduler>;
+
+        if $r5 != null goto label09;
+
+        $r6 = new androidx.work.impl.DefaultRunnableScheduler;
+
+        specialinvoke $r6.<androidx.work.impl.DefaultRunnableScheduler: void <init>()>();
+
+        r0.<androidx.work.Configuration: androidx.work.RunnableScheduler mRunnableScheduler> = $r6;
+
+        goto label10;
+
+     label09:
+        $r5 = $r1.<androidx.work.Configuration$Builder: androidx.work.RunnableScheduler mRunnableScheduler>;
+
+        r0.<androidx.work.Configuration: androidx.work.RunnableScheduler mRunnableScheduler> = $r5;
+
+     label10:
+        $i0 = $r1.<androidx.work.Configuration$Builder: int mLoggingLevel>;
+
+        r0.<androidx.work.Configuration: int mLoggingLevel> = $i0;
+
+        $i0 = $r1.<androidx.work.Configuration$Builder: int mMinJobSchedulerId>;
+
+        r0.<androidx.work.Configuration: int mMinJobSchedulerId> = $i0;
+
+        $i0 = $r1.<androidx.work.Configuration$Builder: int mMaxJobSchedulerId>;
+
+        r0.<androidx.work.Configuration: int mMaxJobSchedulerId> = $i0;
+
+        $i0 = $r1.<androidx.work.Configuration$Builder: int mMaxSchedulerLimit>;
+
+        r0.<androidx.work.Configuration: int mMaxSchedulerLimit> = $i0;
+
+        $r7 = $r1.<androidx.work.Configuration$Builder: androidx.work.InitializationExceptionHandler mExceptionHandler>;
+
+        r0.<androidx.work.Configuration: androidx.work.InitializationExceptionHandler mExceptionHandler> = $r7;
+
+        $r8 = $r1.<androidx.work.Configuration$Builder: java.lang.String mDefaultProcessName>;
+
+        r0.<androidx.work.Configuration: java.lang.String mDefaultProcessName> = $r8;
+
+        return;
+    }
+
+    private java.util.concurrent.Executor createDefaultExecutor(boolean)
+    {
+        androidx.work.Configuration r0;
+        java.lang.Runtime $r1;
+        int $i0;
+        java.util.concurrent.ThreadFactory $r2;
+        java.util.concurrent.ExecutorService $r3;
+        boolean $z0;
+
+        r0 := @this: androidx.work.Configuration;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = staticinvoke <java.lang.Runtime: java.lang.Runtime getRuntime()>();
+
+        $i0 = virtualinvoke $r1.<java.lang.Runtime: int availableProcessors()>();
+
+        $i0 = $i0 + -1;
+
+        $i0 = staticinvoke <java.lang.Math: int min(int,int)>($i0, 4);
+
+        $i0 = staticinvoke <java.lang.Math: int max(int,int)>(2, $i0);
+
+        $r2 = specialinvoke r0.<androidx.work.Configuration: java.util.concurrent.ThreadFactory createDefaultThreadFactory(boolean)>($z0);
+
+        $r3 = staticinvoke <java.util.concurrent.Executors: java.util.concurrent.ExecutorService newFixedThreadPool(int,java.util.concurrent.ThreadFactory)>($i0, $r2);
+
+        return $r3;
+    }
+
+    private java.util.concurrent.ThreadFactory createDefaultThreadFactory(boolean)
+    {
+        androidx.work.Configuration r0;
+        boolean $z0;
+        androidx.work.Configuration$1 $r1;
+
+        r0 := @this: androidx.work.Configuration;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = new androidx.work.Configuration$1;
+
+        specialinvoke $r1.<androidx.work.Configuration$1: void <init>(androidx.work.Configuration,boolean)>(r0, $z0);
+
+        return $r1;
+    }
+
+    public java.lang.String getDefaultProcessName()
+    {
+        androidx.work.Configuration r0;
+        java.lang.String r1;
+
+        r0 := @this: androidx.work.Configuration;
+
+        r1 = r0.<androidx.work.Configuration: java.lang.String mDefaultProcessName>;
+
+        return r1;
+    }
+
+    public androidx.work.InitializationExceptionHandler getExceptionHandler()
+    {
+        androidx.work.Configuration r0;
+        androidx.work.InitializationExceptionHandler r1;
+
+        r0 := @this: androidx.work.Configuration;
+
+        r1 = r0.<androidx.work.Configuration: androidx.work.InitializationExceptionHandler mExceptionHandler>;
+
+        return r1;
+    }
+
+    public java.util.concurrent.Executor getExecutor()
+    {
+        androidx.work.Configuration r0;
+        java.util.concurrent.Executor r1;
+
+        r0 := @this: androidx.work.Configuration;
+
+        r1 = r0.<androidx.work.Configuration: java.util.concurrent.Executor mExecutor>;
+
+        return r1;
+    }
+
+    public androidx.work.InputMergerFactory getInputMergerFactory()
+    {
+        androidx.work.Configuration r0;
+        androidx.work.InputMergerFactory r1;
+
+        r0 := @this: androidx.work.Configuration;
+
+        r1 = r0.<androidx.work.Configuration: androidx.work.InputMergerFactory mInputMergerFactory>;
+
+        return r1;
+    }
+
+    public int getMaxJobSchedulerId()
+    {
+        int i0;
+        androidx.work.Configuration r0;
+
+        r0 := @this: androidx.work.Configuration;
+
+        i0 = r0.<androidx.work.Configuration: int mMaxJobSchedulerId>;
+
+        return i0;
+    }
+
+    public int getMaxSchedulerLimit()
+    {
+        int $i0;
+        androidx.work.Configuration r0;
+
+        r0 := @this: androidx.work.Configuration;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 != 23 goto label1;
+
+        $i0 = r0.<androidx.work.Configuration: int mMaxSchedulerLimit>;
+
+        $i0 = $i0 / 2;
+
+        return $i0;
+
+     label1:
+        $i0 = r0.<androidx.work.Configuration: int mMaxSchedulerLimit>;
+
+        return $i0;
+    }
+
+    public int getMinJobSchedulerId()
+    {
+        int i0;
+        androidx.work.Configuration r0;
+
+        r0 := @this: androidx.work.Configuration;
+
+        i0 = r0.<androidx.work.Configuration: int mMinJobSchedulerId>;
+
+        return i0;
+    }
+
+    public int getMinimumLoggingLevel()
+    {
+        int i0;
+        androidx.work.Configuration r0;
+
+        r0 := @this: androidx.work.Configuration;
+
+        i0 = r0.<androidx.work.Configuration: int mLoggingLevel>;
+
+        return i0;
+    }
+
+    public androidx.work.RunnableScheduler getRunnableScheduler()
+    {
+        androidx.work.Configuration r0;
+        androidx.work.RunnableScheduler r1;
+
+        r0 := @this: androidx.work.Configuration;
+
+        r1 = r0.<androidx.work.Configuration: androidx.work.RunnableScheduler mRunnableScheduler>;
+
+        return r1;
+    }
+
+    public java.util.concurrent.Executor getTaskExecutor()
+    {
+        androidx.work.Configuration r0;
+        java.util.concurrent.Executor r1;
+
+        r0 := @this: androidx.work.Configuration;
+
+        r1 = r0.<androidx.work.Configuration: java.util.concurrent.Executor mTaskExecutor>;
+
+        return r1;
+    }
+
+    public androidx.work.WorkerFactory getWorkerFactory()
+    {
+        androidx.work.Configuration r0;
+        androidx.work.WorkerFactory r1;
+
+        r0 := @this: androidx.work.Configuration;
+
+        r1 = r0.<androidx.work.Configuration: androidx.work.WorkerFactory mWorkerFactory>;
+
+        return r1;
+    }
+
+    public boolean isUsingDefaultTaskExecutor()
+    {
+        androidx.work.Configuration r0;
+        boolean z0;
+
+        r0 := @this: androidx.work.Configuration;
+
+        z0 = r0.<androidx.work.Configuration: boolean mIsUsingDefaultTaskExecutor>;
+
+        return z0;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.work.Configuration: int MIN_SCHEDULER_LIMIT> = 20;
+
+        return;
+    }
+}

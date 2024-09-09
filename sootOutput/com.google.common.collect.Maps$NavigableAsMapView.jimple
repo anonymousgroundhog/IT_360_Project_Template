@@ -1,0 +1,259 @@
+final class com.google.common.collect.Maps$NavigableAsMapView extends com.google.common.collect.AbstractNavigableMap
+{
+    private final com.google.common.base.Function function;
+    private final java.util.NavigableSet set;
+
+    void <init>(java.util.NavigableSet, com.google.common.base.Function)
+    {
+        com.google.common.base.Function r2;
+        java.util.NavigableSet r1;
+        java.lang.Object $r3;
+        com.google.common.collect.Maps$NavigableAsMapView r0;
+
+        r0 := @this: com.google.common.collect.Maps$NavigableAsMapView;
+
+        r1 := @parameter0: java.util.NavigableSet;
+
+        r2 := @parameter1: com.google.common.base.Function;
+
+        specialinvoke r0.<com.google.common.collect.AbstractNavigableMap: void <init>()>();
+
+        $r3 = staticinvoke <com.google.common.base.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>(r1);
+
+        r1 = (java.util.NavigableSet) $r3;
+
+        r0.<com.google.common.collect.Maps$NavigableAsMapView: java.util.NavigableSet set> = r1;
+
+        $r3 = staticinvoke <com.google.common.base.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>(r2);
+
+        r2 = (com.google.common.base.Function) $r3;
+
+        r0.<com.google.common.collect.Maps$NavigableAsMapView: com.google.common.base.Function function> = r2;
+
+        return;
+    }
+
+    public void clear()
+    {
+        java.util.NavigableSet $r1;
+        com.google.common.collect.Maps$NavigableAsMapView r0;
+
+        r0 := @this: com.google.common.collect.Maps$NavigableAsMapView;
+
+        $r1 = r0.<com.google.common.collect.Maps$NavigableAsMapView: java.util.NavigableSet set>;
+
+        interfaceinvoke $r1.<java.util.NavigableSet: void clear()>();
+
+        return;
+    }
+
+    public java.util.Comparator comparator()
+    {
+        java.util.NavigableSet $r2;
+        java.util.Comparator $r1;
+        com.google.common.collect.Maps$NavigableAsMapView r0;
+
+        r0 := @this: com.google.common.collect.Maps$NavigableAsMapView;
+
+        $r2 = r0.<com.google.common.collect.Maps$NavigableAsMapView: java.util.NavigableSet set>;
+
+        $r1 = interfaceinvoke $r2.<java.util.NavigableSet: java.util.Comparator comparator()>();
+
+        return $r1;
+    }
+
+    java.util.Iterator descendingEntryIterator()
+    {
+        java.util.Iterator $r3;
+        java.util.Set $r2;
+        java.util.NavigableMap $r1;
+        com.google.common.collect.Maps$NavigableAsMapView r0;
+
+        r0 := @this: com.google.common.collect.Maps$NavigableAsMapView;
+
+        $r1 = virtualinvoke r0.<com.google.common.collect.Maps$NavigableAsMapView: java.util.NavigableMap descendingMap()>();
+
+        $r2 = interfaceinvoke $r1.<java.util.NavigableMap: java.util.Set entrySet()>();
+
+        $r3 = interfaceinvoke $r2.<java.util.Set: java.util.Iterator iterator()>();
+
+        return $r3;
+    }
+
+    public java.util.NavigableMap descendingMap()
+    {
+        com.google.common.base.Function $r1;
+        java.util.NavigableSet $r2;
+        java.util.NavigableMap $r3;
+        com.google.common.collect.Maps$NavigableAsMapView r0;
+
+        r0 := @this: com.google.common.collect.Maps$NavigableAsMapView;
+
+        $r2 = r0.<com.google.common.collect.Maps$NavigableAsMapView: java.util.NavigableSet set>;
+
+        $r2 = interfaceinvoke $r2.<java.util.NavigableSet: java.util.NavigableSet descendingSet()>();
+
+        $r1 = r0.<com.google.common.collect.Maps$NavigableAsMapView: com.google.common.base.Function function>;
+
+        $r3 = staticinvoke <com.google.common.collect.Maps: java.util.NavigableMap asMap(java.util.NavigableSet,com.google.common.base.Function)>($r2, $r1);
+
+        return $r3;
+    }
+
+    java.util.Iterator entryIterator()
+    {
+        com.google.common.base.Function $r1;
+        java.util.Iterator $r2;
+        java.util.NavigableSet $r3;
+        com.google.common.collect.Maps$NavigableAsMapView r0;
+
+        r0 := @this: com.google.common.collect.Maps$NavigableAsMapView;
+
+        $r3 = r0.<com.google.common.collect.Maps$NavigableAsMapView: java.util.NavigableSet set>;
+
+        $r1 = r0.<com.google.common.collect.Maps$NavigableAsMapView: com.google.common.base.Function function>;
+
+        $r2 = staticinvoke <com.google.common.collect.Maps: java.util.Iterator asMapEntryIterator(java.util.Set,com.google.common.base.Function)>($r3, $r1);
+
+        return $r2;
+    }
+
+    public java.lang.Object get(java.lang.Object)
+    {
+        com.google.common.base.Function $r3;
+        java.lang.Object $r1;
+        java.util.NavigableSet r2;
+        com.google.common.collect.Maps$NavigableAsMapView r0;
+        boolean $z0;
+
+        r0 := @this: com.google.common.collect.Maps$NavigableAsMapView;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        r2 = r0.<com.google.common.collect.Maps$NavigableAsMapView: java.util.NavigableSet set>;
+
+        $z0 = staticinvoke <com.google.common.collect.Collections2: boolean safeContains(java.util.Collection,java.lang.Object)>(r2, $r1);
+
+        if $z0 == 0 goto label1;
+
+        $r3 = r0.<com.google.common.collect.Maps$NavigableAsMapView: com.google.common.base.Function function>;
+
+        $r1 = interfaceinvoke $r3.<com.google.common.base.Function: java.lang.Object apply(java.lang.Object)>($r1);
+
+        return $r1;
+
+     label1:
+        return null;
+    }
+
+    public java.util.NavigableMap headMap(java.lang.Object, boolean)
+    {
+        com.google.common.base.Function $r2;
+        java.lang.Object r1;
+        java.util.NavigableSet $r3;
+        java.util.NavigableMap $r4;
+        com.google.common.collect.Maps$NavigableAsMapView r0;
+        boolean $z0;
+
+        r0 := @this: com.google.common.collect.Maps$NavigableAsMapView;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $z0 := @parameter1: boolean;
+
+        $r3 = r0.<com.google.common.collect.Maps$NavigableAsMapView: java.util.NavigableSet set>;
+
+        $r3 = interfaceinvoke $r3.<java.util.NavigableSet: java.util.NavigableSet headSet(java.lang.Object,boolean)>(r1, $z0);
+
+        $r2 = r0.<com.google.common.collect.Maps$NavigableAsMapView: com.google.common.base.Function function>;
+
+        $r4 = staticinvoke <com.google.common.collect.Maps: java.util.NavigableMap asMap(java.util.NavigableSet,com.google.common.base.Function)>($r3, $r2);
+
+        return $r4;
+    }
+
+    public java.util.NavigableSet navigableKeySet()
+    {
+        java.util.NavigableSet $r1;
+        com.google.common.collect.Maps$NavigableAsMapView r0;
+
+        r0 := @this: com.google.common.collect.Maps$NavigableAsMapView;
+
+        $r1 = r0.<com.google.common.collect.Maps$NavigableAsMapView: java.util.NavigableSet set>;
+
+        $r1 = staticinvoke <com.google.common.collect.Maps: java.util.NavigableSet access$400(java.util.NavigableSet)>($r1);
+
+        return $r1;
+    }
+
+    public int size()
+    {
+        int $i0;
+        java.util.NavigableSet $r1;
+        com.google.common.collect.Maps$NavigableAsMapView r0;
+
+        r0 := @this: com.google.common.collect.Maps$NavigableAsMapView;
+
+        $r1 = r0.<com.google.common.collect.Maps$NavigableAsMapView: java.util.NavigableSet set>;
+
+        $i0 = interfaceinvoke $r1.<java.util.NavigableSet: int size()>();
+
+        return $i0;
+    }
+
+    public java.util.NavigableMap subMap(java.lang.Object, boolean, java.lang.Object, boolean)
+    {
+        com.google.common.base.Function $r3;
+        java.util.NavigableSet $r4;
+        java.util.NavigableMap $r5;
+        java.lang.Object r1, r2;
+        com.google.common.collect.Maps$NavigableAsMapView r0;
+        boolean $z0, $z1;
+
+        r0 := @this: com.google.common.collect.Maps$NavigableAsMapView;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $z0 := @parameter1: boolean;
+
+        r2 := @parameter2: java.lang.Object;
+
+        $z1 := @parameter3: boolean;
+
+        $r4 = r0.<com.google.common.collect.Maps$NavigableAsMapView: java.util.NavigableSet set>;
+
+        $r4 = interfaceinvoke $r4.<java.util.NavigableSet: java.util.NavigableSet subSet(java.lang.Object,boolean,java.lang.Object,boolean)>(r1, $z0, r2, $z1);
+
+        $r3 = r0.<com.google.common.collect.Maps$NavigableAsMapView: com.google.common.base.Function function>;
+
+        $r5 = staticinvoke <com.google.common.collect.Maps: java.util.NavigableMap asMap(java.util.NavigableSet,com.google.common.base.Function)>($r4, $r3);
+
+        return $r5;
+    }
+
+    public java.util.NavigableMap tailMap(java.lang.Object, boolean)
+    {
+        com.google.common.base.Function $r2;
+        java.lang.Object r1;
+        java.util.NavigableSet $r3;
+        java.util.NavigableMap $r4;
+        com.google.common.collect.Maps$NavigableAsMapView r0;
+        boolean $z0;
+
+        r0 := @this: com.google.common.collect.Maps$NavigableAsMapView;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $z0 := @parameter1: boolean;
+
+        $r3 = r0.<com.google.common.collect.Maps$NavigableAsMapView: java.util.NavigableSet set>;
+
+        $r3 = interfaceinvoke $r3.<java.util.NavigableSet: java.util.NavigableSet tailSet(java.lang.Object,boolean)>(r1, $z0);
+
+        $r2 = r0.<com.google.common.collect.Maps$NavigableAsMapView: com.google.common.base.Function function>;
+
+        $r4 = staticinvoke <com.google.common.collect.Maps: java.util.NavigableMap asMap(java.util.NavigableSet,com.google.common.base.Function)>($r3, $r2);
+
+        return $r4;
+    }
+}

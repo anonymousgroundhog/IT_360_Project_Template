@@ -1,0 +1,121 @@
+public final class com.google.android.ump.UserMessagingPlatform extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        com.google.android.ump.UserMessagingPlatform r0;
+
+        r0 := @this: com.google.android.ump.UserMessagingPlatform;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static com.google.android.ump.ConsentInformation getConsentInformation(android.content.Context)
+    {
+        android.content.Context $r0;
+        com.google.android.gms.internal.consent_sdk.zza $r1;
+        com.google.android.gms.internal.consent_sdk.zzj $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = staticinvoke <com.google.android.gms.internal.consent_sdk.zza: com.google.android.gms.internal.consent_sdk.zza zza(android.content.Context)>($r0);
+
+        $r2 = virtualinvoke $r1.<com.google.android.gms.internal.consent_sdk.zza: com.google.android.gms.internal.consent_sdk.zzj zzb()>();
+
+        return $r2;
+    }
+
+    public static void loadAndShowConsentFormIfRequired(android.app.Activity, com.google.android.ump.ConsentForm$OnConsentFormDismissedListener)
+    {
+        com.google.android.gms.internal.consent_sdk.zzbn $r5;
+        com.google.android.gms.internal.consent_sdk.zzbl $r1;
+        com.google.android.gms.internal.consent_sdk.zzbm $r6;
+        com.google.android.ump.ConsentForm$OnConsentFormDismissedListener $r0;
+        com.google.android.gms.internal.consent_sdk.zzj $r4;
+        com.google.android.gms.internal.consent_sdk.zza $r3;
+        android.app.Activity $r2;
+        boolean $z0;
+
+        $r2 := @parameter0: android.app.Activity;
+
+        $r0 := @parameter1: com.google.android.ump.ConsentForm$OnConsentFormDismissedListener;
+
+        $r3 = staticinvoke <com.google.android.gms.internal.consent_sdk.zza: com.google.android.gms.internal.consent_sdk.zza zza(android.content.Context)>($r2);
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.internal.consent_sdk.zza: com.google.android.gms.internal.consent_sdk.zzj zzb()>();
+
+        $z0 = virtualinvoke $r4.<com.google.android.gms.internal.consent_sdk.zzj: boolean canRequestAds()>();
+
+        if $z0 == 0 goto label1;
+
+        interfaceinvoke $r0.<com.google.android.ump.ConsentForm$OnConsentFormDismissedListener: void onConsentFormDismissed(com.google.android.ump.FormError)>(null);
+
+        return;
+
+     label1:
+        $r3 = staticinvoke <com.google.android.gms.internal.consent_sdk.zza: com.google.android.gms.internal.consent_sdk.zza zza(android.content.Context)>($r2);
+
+        $r5 = virtualinvoke $r3.<com.google.android.gms.internal.consent_sdk.zza: com.google.android.gms.internal.consent_sdk.zzbn zzc()>();
+
+        staticinvoke <com.google.android.gms.internal.consent_sdk.zzcr: void zza()>();
+
+        $r1 = new com.google.android.gms.internal.consent_sdk.zzbl;
+
+        specialinvoke $r1.<com.google.android.gms.internal.consent_sdk.zzbl: void <init>(android.app.Activity,com.google.android.ump.ConsentForm$OnConsentFormDismissedListener)>($r2, $r0);
+
+        staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>($r0);
+
+        $r6 = new com.google.android.gms.internal.consent_sdk.zzbm;
+
+        specialinvoke $r6.<com.google.android.gms.internal.consent_sdk.zzbm: void <init>(com.google.android.ump.ConsentForm$OnConsentFormDismissedListener)>($r0);
+
+        virtualinvoke $r5.<com.google.android.gms.internal.consent_sdk.zzbn: void zzb(com.google.android.ump.UserMessagingPlatform$OnConsentFormLoadSuccessListener,com.google.android.ump.UserMessagingPlatform$OnConsentFormLoadFailureListener)>($r1, $r6);
+
+        return;
+    }
+
+    public static void loadConsentForm(android.content.Context, com.google.android.ump.UserMessagingPlatform$OnConsentFormLoadSuccessListener, com.google.android.ump.UserMessagingPlatform$OnConsentFormLoadFailureListener)
+    {
+        android.content.Context $r2;
+        com.google.android.gms.internal.consent_sdk.zzbn $r4;
+        com.google.android.gms.internal.consent_sdk.zza $r3;
+        com.google.android.ump.UserMessagingPlatform$OnConsentFormLoadFailureListener $r1;
+        com.google.android.ump.UserMessagingPlatform$OnConsentFormLoadSuccessListener $r0;
+
+        $r2 := @parameter0: android.content.Context;
+
+        $r0 := @parameter1: com.google.android.ump.UserMessagingPlatform$OnConsentFormLoadSuccessListener;
+
+        $r1 := @parameter2: com.google.android.ump.UserMessagingPlatform$OnConsentFormLoadFailureListener;
+
+        $r3 = staticinvoke <com.google.android.gms.internal.consent_sdk.zza: com.google.android.gms.internal.consent_sdk.zza zza(android.content.Context)>($r2);
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.internal.consent_sdk.zza: com.google.android.gms.internal.consent_sdk.zzbn zzc()>();
+
+        virtualinvoke $r4.<com.google.android.gms.internal.consent_sdk.zzbn: void zzb(com.google.android.ump.UserMessagingPlatform$OnConsentFormLoadSuccessListener,com.google.android.ump.UserMessagingPlatform$OnConsentFormLoadFailureListener)>($r0, $r1);
+
+        return;
+    }
+
+    public static void showPrivacyOptionsForm(android.app.Activity, com.google.android.ump.ConsentForm$OnConsentFormDismissedListener)
+    {
+        com.google.android.gms.internal.consent_sdk.zzbn $r3;
+        com.google.android.gms.internal.consent_sdk.zza $r2;
+        com.google.android.ump.ConsentForm$OnConsentFormDismissedListener $r1;
+        android.app.Activity $r0;
+
+        $r0 := @parameter0: android.app.Activity;
+
+        $r1 := @parameter1: com.google.android.ump.ConsentForm$OnConsentFormDismissedListener;
+
+        $r2 = staticinvoke <com.google.android.gms.internal.consent_sdk.zza: com.google.android.gms.internal.consent_sdk.zza zza(android.content.Context)>($r0);
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.consent_sdk.zza: com.google.android.gms.internal.consent_sdk.zzbn zzc()>();
+
+        virtualinvoke $r3.<com.google.android.gms.internal.consent_sdk.zzbn: void zze(android.app.Activity,com.google.android.ump.ConsentForm$OnConsentFormDismissedListener)>($r0, $r1);
+
+        return;
+    }
+}

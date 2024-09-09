@@ -1,0 +1,57 @@
+public final class com.google.android.gms.internal.ads.zzfaz extends java.lang.Object implements com.google.android.gms.internal.ads.zzexp
+{
+    public static final com.google.android.gms.internal.ads.zzfaz zza;
+
+    static void <clinit>()
+    {
+        com.google.android.gms.internal.ads.zzfaz $r0;
+
+        $r0 = new com.google.android.gms.internal.ads.zzfaz;
+
+        specialinvoke $r0.<com.google.android.gms.internal.ads.zzfaz: void <init>()>();
+
+        <com.google.android.gms.internal.ads.zzfaz: com.google.android.gms.internal.ads.zzfaz zza> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        com.google.android.gms.internal.ads.zzfaz r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfaz;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public final void zzj(java.lang.Object)
+    {
+        org.json.JSONException $r3;
+        com.google.android.gms.internal.ads.zzfaz r0;
+        org.json.JSONObject $r1;
+        java.lang.Object $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfaz;
+
+        $r2 := @parameter0: java.lang.Object;
+
+        $r1 = (org.json.JSONObject) $r2;
+
+     label1:
+        $r1 = virtualinvoke $r1.<org.json.JSONObject: org.json.JSONObject getJSONObject(java.lang.String)>("sdk_env");
+
+        virtualinvoke $r1.<org.json.JSONObject: org.json.JSONObject put(java.lang.String,int)>("container_version", 12451000);
+
+     label2:
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        return;
+
+        catch org.json.JSONException from label1 to label2 with label3;
+    }
+}

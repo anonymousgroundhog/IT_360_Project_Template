@@ -1,0 +1,71 @@
+public final class com.google.android.gms.internal.ads.zzevc extends java.lang.Object implements java.util.concurrent.Callable
+{
+    public static final com.google.android.gms.internal.ads.zzevc zza;
+
+    static void <clinit>()
+    {
+        com.google.android.gms.internal.ads.zzevc $r0;
+
+        $r0 = new com.google.android.gms.internal.ads.zzevc;
+
+        specialinvoke $r0.<com.google.android.gms.internal.ads.zzevc: void <init>()>();
+
+        <com.google.android.gms.internal.ads.zzevc: com.google.android.gms.internal.ads.zzevc zza> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        com.google.android.gms.internal.ads.zzevc r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzevc;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public final java.lang.Object call()
+    {
+        com.google.android.gms.internal.ads.zzevc r0;
+        android.os.Bundle $r1;
+        com.google.android.gms.internal.ads.zzeve $r4;
+        java.lang.Runtime $r2;
+        int $i1;
+        long $l0;
+        com.google.android.gms.internal.ads.zzcdl $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzevc;
+
+        $r1 = new android.os.Bundle;
+
+        specialinvoke $r1.<android.os.Bundle: void <init>()>();
+
+        $r2 = staticinvoke <java.lang.Runtime: java.lang.Runtime getRuntime()>();
+
+        $l0 = virtualinvoke $r2.<java.lang.Runtime: long freeMemory()>();
+
+        virtualinvoke $r1.<android.os.Bundle: void putLong(java.lang.String,long)>("runtime_free", $l0);
+
+        $l0 = virtualinvoke $r2.<java.lang.Runtime: long maxMemory()>();
+
+        virtualinvoke $r1.<android.os.Bundle: void putLong(java.lang.String,long)>("runtime_max", $l0);
+
+        $l0 = virtualinvoke $r2.<java.lang.Runtime: long totalMemory()>();
+
+        virtualinvoke $r1.<android.os.Bundle: void putLong(java.lang.String,long)>("runtime_total", $l0);
+
+        $r3 = staticinvoke <com.google.android.gms.ads.internal.zzt: com.google.android.gms.internal.ads.zzcdl zzo()>();
+
+        $i1 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzcdl: int zzb()>();
+
+        virtualinvoke $r1.<android.os.Bundle: void putInt(java.lang.String,int)>("web_view_count", $i1);
+
+        $r4 = new com.google.android.gms.internal.ads.zzeve;
+
+        specialinvoke $r4.<com.google.android.gms.internal.ads.zzeve: void <init>(android.os.Bundle)>($r1);
+
+        return $r4;
+    }
+}

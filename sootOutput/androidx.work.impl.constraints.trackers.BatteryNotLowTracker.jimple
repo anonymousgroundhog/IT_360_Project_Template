@@ -1,0 +1,238 @@
+public class androidx.work.impl.constraints.trackers.BatteryNotLowTracker extends androidx.work.impl.constraints.trackers.BroadcastReceiverConstraintTracker
+{
+    static final float BATTERY_LOW_THRESHOLD;
+    private static final java.lang.String TAG;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+
+        <androidx.work.impl.constraints.trackers.BatteryNotLowTracker: float BATTERY_LOW_THRESHOLD> = 0.15F;
+
+        $r0 = staticinvoke <androidx.work.Logger: java.lang.String tagWithPrefix(java.lang.String)>("BatteryNotLowTracker");
+
+        <androidx.work.impl.constraints.trackers.BatteryNotLowTracker: java.lang.String TAG> = $r0;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, androidx.work.impl.utils.taskexecutor.TaskExecutor)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r2;
+        android.content.Context $r1;
+        androidx.work.impl.constraints.trackers.BatteryNotLowTracker r0;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.BatteryNotLowTracker;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.work.impl.utils.taskexecutor.TaskExecutor;
+
+        specialinvoke r0.<androidx.work.impl.constraints.trackers.BroadcastReceiverConstraintTracker: void <init>(android.content.Context,androidx.work.impl.utils.taskexecutor.TaskExecutor)>($r1, $r2);
+
+        return;
+    }
+
+    public java.lang.Boolean getInitialState()
+    {
+        android.content.Context r1;
+        android.content.IntentFilter $r7;
+        android.content.Intent $r2;
+        androidx.work.Logger $r3;
+        byte $b3;
+        androidx.work.impl.constraints.trackers.BatteryNotLowTracker r0;
+        java.lang.Throwable[] $r5;
+        int $i0, $i1, $i2;
+        float f0, $f1;
+        java.lang.Boolean $r6;
+        java.lang.String r4;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.BatteryNotLowTracker;
+
+        $r7 = new android.content.IntentFilter;
+
+        specialinvoke $r7.<android.content.IntentFilter: void <init>(java.lang.String)>("android.intent.action.BATTERY_CHANGED");
+
+        r1 = r0.<androidx.work.impl.constraints.trackers.BatteryNotLowTracker: android.content.Context mAppContext>;
+
+        $r2 = virtualinvoke r1.<android.content.Context: android.content.Intent registerReceiver(android.content.BroadcastReceiver,android.content.IntentFilter)>(null, $r7);
+
+        $z0 = 0;
+
+        if $r2 != null goto label1;
+
+        $r3 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r4 = <androidx.work.impl.constraints.trackers.BatteryNotLowTracker: java.lang.String TAG>;
+
+        $r5 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r3.<androidx.work.Logger: void error(java.lang.String,java.lang.String,java.lang.Throwable[])>(r4, "getInitialState - null intent received", $r5);
+
+        return null;
+
+     label1:
+        $i0 = virtualinvoke $r2.<android.content.Intent: int getIntExtra(java.lang.String,int)>("status", -1);
+
+        $i1 = virtualinvoke $r2.<android.content.Intent: int getIntExtra(java.lang.String,int)>("level", -1);
+
+        $i2 = virtualinvoke $r2.<android.content.Intent: int getIntExtra(java.lang.String,int)>("scale", -1);
+
+        f0 = (float) $i1;
+
+        $f1 = (float) $i2;
+
+        f0 = f0 / $f1;
+
+        if $i0 == 1 goto label2;
+
+        $b3 = f0 cmpl 0.15F;
+
+        $i0 = (int) $b3;
+
+        if $i0 <= 0 goto label3;
+
+     label2:
+        $z0 = 1;
+
+     label3:
+        $r6 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        return $r6;
+    }
+
+    public volatile java.lang.Object getInitialState()
+    {
+        java.lang.Boolean $r1;
+        androidx.work.impl.constraints.trackers.BatteryNotLowTracker r0;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.BatteryNotLowTracker;
+
+        $r1 = virtualinvoke r0.<androidx.work.impl.constraints.trackers.BatteryNotLowTracker: java.lang.Boolean getInitialState()>();
+
+        return $r1;
+    }
+
+    public android.content.IntentFilter getIntentFilter()
+    {
+        android.content.IntentFilter r1;
+        androidx.work.impl.constraints.trackers.BatteryNotLowTracker r0;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.BatteryNotLowTracker;
+
+        r1 = new android.content.IntentFilter;
+
+        specialinvoke r1.<android.content.IntentFilter: void <init>()>();
+
+        virtualinvoke r1.<android.content.IntentFilter: void addAction(java.lang.String)>("android.intent.action.BATTERY_OKAY");
+
+        virtualinvoke r1.<android.content.IntentFilter: void addAction(java.lang.String)>("android.intent.action.BATTERY_LOW");
+
+        return r1;
+    }
+
+    public void onBroadcastReceive(android.content.Context, android.content.Intent)
+    {
+        android.content.Context $r1;
+        java.lang.Object[] $r6;
+        android.content.Intent $r2;
+        androidx.work.Logger $r4;
+        byte $b1;
+        androidx.work.impl.constraints.trackers.BatteryNotLowTracker r0;
+        java.lang.Throwable[] $r7;
+        int $i0;
+        java.lang.Boolean $r8;
+        java.lang.String $r3, $r5;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.BatteryNotLowTracker;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        $r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getAction()>();
+
+        if $r3 != null goto label1;
+
+        return;
+
+     label1:
+        $r4 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r3 = <androidx.work.impl.constraints.trackers.BatteryNotLowTracker: java.lang.String TAG>;
+
+        $r5 = virtualinvoke $r2.<android.content.Intent: java.lang.String getAction()>();
+
+        $r6 = newarray (java.lang.Object)[1];
+
+        $r6[0] = $r5;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Received %s", $r6);
+
+        $r7 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r4.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>($r3, $r5, $r7);
+
+        $r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getAction()>();
+
+        $i0 = virtualinvoke $r3.<java.lang.String: int hashCode()>();
+
+        lookupswitch($i0)
+        {
+            case -1980154005: goto label4;
+            case 490310653: goto label3;
+            default: goto label2;
+        };
+
+     label2:
+        goto label5;
+
+     label3:
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("android.intent.action.BATTERY_LOW");
+
+        if $z0 == 0 goto label2;
+
+        $b1 = 1;
+
+        goto label6;
+
+     label4:
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("android.intent.action.BATTERY_OKAY");
+
+        if $z0 == 0 goto label2;
+
+        $b1 = 0;
+
+        goto label6;
+
+     label5:
+        $b1 = -1;
+
+     label6:
+        lookupswitch($b1)
+        {
+            case 0: goto label9;
+            case 1: goto label8;
+            default: goto label7;
+        };
+
+     label7:
+        return;
+
+     label8:
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        virtualinvoke r0.<androidx.work.impl.constraints.trackers.BatteryNotLowTracker: void setState(java.lang.Object)>($r8);
+
+        return;
+
+     label9:
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        virtualinvoke r0.<androidx.work.impl.constraints.trackers.BatteryNotLowTracker: void setState(java.lang.Object)>($r8);
+
+        return;
+    }
+}

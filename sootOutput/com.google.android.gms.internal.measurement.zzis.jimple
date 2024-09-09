@@ -1,0 +1,84 @@
+final class com.google.android.gms.internal.measurement.zzis extends com.google.android.gms.internal.measurement.zziu
+{
+    final com.google.android.gms.internal.measurement.zzjb zza;
+    private int zzb;
+    private final int zzc;
+
+    void <init>(com.google.android.gms.internal.measurement.zzjb)
+    {
+        int $i0;
+        com.google.android.gms.internal.measurement.zzis r0;
+        com.google.android.gms.internal.measurement.zzjb $r1;
+
+        r0 := @this: com.google.android.gms.internal.measurement.zzis;
+
+        $r1 := @parameter0: com.google.android.gms.internal.measurement.zzjb;
+
+        r0.<com.google.android.gms.internal.measurement.zzis: com.google.android.gms.internal.measurement.zzjb zza> = $r1;
+
+        specialinvoke r0.<com.google.android.gms.internal.measurement.zziu: void <init>()>();
+
+        r0.<com.google.android.gms.internal.measurement.zzis: int zzb> = 0;
+
+        $r1 = r0.<com.google.android.gms.internal.measurement.zzis: com.google.android.gms.internal.measurement.zzjb zza>;
+
+        $i0 = virtualinvoke $r1.<com.google.android.gms.internal.measurement.zzjb: int zzd()>();
+
+        r0.<com.google.android.gms.internal.measurement.zzis: int zzc> = $i0;
+
+        return;
+    }
+
+    public final boolean hasNext()
+    {
+        int $i0, $i1;
+        com.google.android.gms.internal.measurement.zzis r0;
+
+        r0 := @this: com.google.android.gms.internal.measurement.zzis;
+
+        $i1 = r0.<com.google.android.gms.internal.measurement.zzis: int zzb>;
+
+        $i0 = r0.<com.google.android.gms.internal.measurement.zzis: int zzc>;
+
+        if $i1 >= $i0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public final byte zza()
+    {
+        byte $b0;
+        int $i1, $i2;
+        com.google.android.gms.internal.measurement.zzis r0;
+        java.util.NoSuchElementException $r2;
+        com.google.android.gms.internal.measurement.zzjb $r1;
+
+        r0 := @this: com.google.android.gms.internal.measurement.zzis;
+
+        $i1 = r0.<com.google.android.gms.internal.measurement.zzis: int zzb>;
+
+        $i2 = r0.<com.google.android.gms.internal.measurement.zzis: int zzc>;
+
+        if $i1 >= $i2 goto label1;
+
+        $i2 = $i1 + 1;
+
+        r0.<com.google.android.gms.internal.measurement.zzis: int zzb> = $i2;
+
+        $r1 = r0.<com.google.android.gms.internal.measurement.zzis: com.google.android.gms.internal.measurement.zzjb zza>;
+
+        $b0 = virtualinvoke $r1.<com.google.android.gms.internal.measurement.zzjb: byte zzb(int)>($i1);
+
+        return $b0;
+
+     label1:
+        $r2 = new java.util.NoSuchElementException;
+
+        specialinvoke $r2.<java.util.NoSuchElementException: void <init>()>();
+
+        throw $r2;
+    }
+}

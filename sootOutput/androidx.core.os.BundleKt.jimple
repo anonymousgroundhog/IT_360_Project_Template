@@ -1,0 +1,502 @@
+public final class androidx.core.os.BundleKt extends java.lang.Object
+{
+
+    public static final android.os.Bundle bundleOf()
+    {
+        android.os.Bundle $r0;
+
+        $r0 = new android.os.Bundle;
+
+        specialinvoke $r0.<android.os.Bundle: void <init>(int)>(0);
+
+        return $r0;
+    }
+
+    public static final transient android.os.Bundle bundleOf(kotlin.Pair[])
+    {
+        byte[] r12;
+        android.os.Bundle r1, r8;
+        kotlin.Pair r2;
+        java.lang.NullPointerException r22;
+        android.os.IBinder r29;
+        java.lang.CharSequence[] $r24;
+        android.util.SizeF r31;
+        byte $b2;
+        java.lang.Character r7;
+        int[] r16;
+        boolean z0;
+        java.lang.CharSequence r9;
+        java.io.Serializable $r25;
+        float $f0;
+        java.lang.StringBuilder $r28;
+        short[] r18;
+        android.util.Size r30;
+        double[] r14;
+        long $l5;
+        float[] r15;
+        java.lang.String[] $r23;
+        short $s6;
+        long[] r17;
+        android.os.Parcelable[] $r21;
+        int $i0, $i1, $i4;
+        java.lang.Boolean r5;
+        java.lang.String r4, $r26;
+        java.lang.Number r6;
+        double $d0;
+        android.os.Parcelable r10;
+        kotlin.Pair[] $r0;
+        boolean[] r11;
+        char $c3;
+        java.lang.IllegalArgumentException $r27;
+        char[] r13;
+        java.lang.Object $r3;
+        java.lang.Class $r19, $r20;
+
+        $r0 := @parameter0: kotlin.Pair[];
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "pairs");
+
+        r1 = new android.os.Bundle;
+
+        $i0 = lengthof $r0;
+
+        specialinvoke r1.<android.os.Bundle: void <init>(int)>($i0);
+
+        $i0 = lengthof $r0;
+
+        $i1 = 0;
+
+     label01:
+        if $i1 >= $i0 goto label35;
+
+        r2 = $r0[$i1];
+
+        $r3 = virtualinvoke r2.<kotlin.Pair: java.lang.Object component1()>();
+
+        r4 = (java.lang.String) $r3;
+
+        $r3 = virtualinvoke r2.<kotlin.Pair: java.lang.Object component2()>();
+
+        if $r3 != null goto label02;
+
+        virtualinvoke r1.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>(r4, null);
+
+        goto label33;
+
+     label02:
+        z0 = $r3 instanceof java.lang.Boolean;
+
+        if z0 == 0 goto label03;
+
+        r5 = (java.lang.Boolean) $r3;
+
+        z0 = virtualinvoke r5.<java.lang.Boolean: boolean booleanValue()>();
+
+        virtualinvoke r1.<android.os.Bundle: void putBoolean(java.lang.String,boolean)>(r4, z0);
+
+        goto label33;
+
+     label03:
+        z0 = $r3 instanceof java.lang.Byte;
+
+        if z0 == 0 goto label04;
+
+        r6 = (java.lang.Number) $r3;
+
+        $b2 = virtualinvoke r6.<java.lang.Number: byte byteValue()>();
+
+        virtualinvoke r1.<android.os.Bundle: void putByte(java.lang.String,byte)>(r4, $b2);
+
+        goto label33;
+
+     label04:
+        z0 = $r3 instanceof java.lang.Character;
+
+        if z0 == 0 goto label05;
+
+        r7 = (java.lang.Character) $r3;
+
+        $c3 = virtualinvoke r7.<java.lang.Character: char charValue()>();
+
+        virtualinvoke r1.<android.os.Bundle: void putChar(java.lang.String,char)>(r4, $c3);
+
+        goto label33;
+
+     label05:
+        z0 = $r3 instanceof java.lang.Double;
+
+        if z0 == 0 goto label06;
+
+        r6 = (java.lang.Number) $r3;
+
+        $d0 = virtualinvoke r6.<java.lang.Number: double doubleValue()>();
+
+        virtualinvoke r1.<android.os.Bundle: void putDouble(java.lang.String,double)>(r4, $d0);
+
+        goto label33;
+
+     label06:
+        z0 = $r3 instanceof java.lang.Float;
+
+        if z0 == 0 goto label07;
+
+        r6 = (java.lang.Number) $r3;
+
+        $f0 = virtualinvoke r6.<java.lang.Number: float floatValue()>();
+
+        virtualinvoke r1.<android.os.Bundle: void putFloat(java.lang.String,float)>(r4, $f0);
+
+        goto label33;
+
+     label07:
+        z0 = $r3 instanceof java.lang.Integer;
+
+        if z0 == 0 goto label08;
+
+        r6 = (java.lang.Number) $r3;
+
+        $i4 = virtualinvoke r6.<java.lang.Number: int intValue()>();
+
+        virtualinvoke r1.<android.os.Bundle: void putInt(java.lang.String,int)>(r4, $i4);
+
+        goto label33;
+
+     label08:
+        z0 = $r3 instanceof java.lang.Long;
+
+        if z0 == 0 goto label09;
+
+        r6 = (java.lang.Number) $r3;
+
+        $l5 = virtualinvoke r6.<java.lang.Number: long longValue()>();
+
+        virtualinvoke r1.<android.os.Bundle: void putLong(java.lang.String,long)>(r4, $l5);
+
+        goto label33;
+
+     label09:
+        z0 = $r3 instanceof java.lang.Short;
+
+        if z0 == 0 goto label10;
+
+        r6 = (java.lang.Number) $r3;
+
+        $s6 = virtualinvoke r6.<java.lang.Number: short shortValue()>();
+
+        virtualinvoke r1.<android.os.Bundle: void putShort(java.lang.String,short)>(r4, $s6);
+
+        goto label33;
+
+     label10:
+        z0 = $r3 instanceof android.os.Bundle;
+
+        if z0 == 0 goto label11;
+
+        r8 = (android.os.Bundle) $r3;
+
+        virtualinvoke r1.<android.os.Bundle: void putBundle(java.lang.String,android.os.Bundle)>(r4, r8);
+
+        goto label33;
+
+     label11:
+        z0 = $r3 instanceof java.lang.CharSequence;
+
+        if z0 == 0 goto label12;
+
+        r9 = (java.lang.CharSequence) $r3;
+
+        virtualinvoke r1.<android.os.Bundle: void putCharSequence(java.lang.String,java.lang.CharSequence)>(r4, r9);
+
+        goto label33;
+
+     label12:
+        z0 = $r3 instanceof android.os.Parcelable;
+
+        if z0 == 0 goto label13;
+
+        r10 = (android.os.Parcelable) $r3;
+
+        virtualinvoke r1.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>(r4, r10);
+
+        goto label33;
+
+     label13:
+        z0 = $r3 instanceof boolean[];
+
+        if z0 == 0 goto label14;
+
+        r11 = (boolean[]) $r3;
+
+        virtualinvoke r1.<android.os.Bundle: void putBooleanArray(java.lang.String,boolean[])>(r4, r11);
+
+        goto label33;
+
+     label14:
+        z0 = $r3 instanceof byte[];
+
+        if z0 == 0 goto label15;
+
+        r12 = (byte[]) $r3;
+
+        virtualinvoke r1.<android.os.Bundle: void putByteArray(java.lang.String,byte[])>(r4, r12);
+
+        goto label33;
+
+     label15:
+        z0 = $r3 instanceof char[];
+
+        if z0 == 0 goto label16;
+
+        r13 = (char[]) $r3;
+
+        virtualinvoke r1.<android.os.Bundle: void putCharArray(java.lang.String,char[])>(r4, r13);
+
+        goto label33;
+
+     label16:
+        z0 = $r3 instanceof double[];
+
+        if z0 == 0 goto label17;
+
+        r14 = (double[]) $r3;
+
+        virtualinvoke r1.<android.os.Bundle: void putDoubleArray(java.lang.String,double[])>(r4, r14);
+
+        goto label33;
+
+     label17:
+        z0 = $r3 instanceof float[];
+
+        if z0 == 0 goto label18;
+
+        r15 = (float[]) $r3;
+
+        virtualinvoke r1.<android.os.Bundle: void putFloatArray(java.lang.String,float[])>(r4, r15);
+
+        goto label33;
+
+     label18:
+        z0 = $r3 instanceof int[];
+
+        if z0 == 0 goto label19;
+
+        r16 = (int[]) $r3;
+
+        virtualinvoke r1.<android.os.Bundle: void putIntArray(java.lang.String,int[])>(r4, r16);
+
+        goto label33;
+
+     label19:
+        z0 = $r3 instanceof long[];
+
+        if z0 == 0 goto label20;
+
+        r17 = (long[]) $r3;
+
+        virtualinvoke r1.<android.os.Bundle: void putLongArray(java.lang.String,long[])>(r4, r17);
+
+        goto label33;
+
+     label20:
+        z0 = $r3 instanceof short[];
+
+        if z0 == 0 goto label21;
+
+        r18 = (short[]) $r3;
+
+        virtualinvoke r1.<android.os.Bundle: void putShortArray(java.lang.String,short[])>(r4, r18);
+
+        goto label33;
+
+     label21:
+        z0 = $r3 instanceof java.lang.Object[];
+
+        if z0 == 0 goto label29;
+
+        $r19 = virtualinvoke $r3.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r19 = virtualinvoke $r19.<java.lang.Class: java.lang.Class getComponentType()>();
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNull(java.lang.Object)>($r19);
+
+        $r20 = class "Landroid/os/Parcelable;";
+
+        z0 = virtualinvoke $r20.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r19);
+
+        if z0 == 0 goto label23;
+
+        if $r3 == null goto label22;
+
+        $r21 = (android.os.Parcelable[]) $r3;
+
+        virtualinvoke r1.<android.os.Bundle: void putParcelableArray(java.lang.String,android.os.Parcelable[])>(r4, $r21);
+
+        goto label33;
+
+     label22:
+        r22 = new java.lang.NullPointerException;
+
+        specialinvoke r22.<java.lang.NullPointerException: void <init>(java.lang.String)>("null cannot be cast to non-null type kotlin.Array<android.os.Parcelable>");
+
+        throw r22;
+
+     label23:
+        $r20 = class "Ljava/lang/String;";
+
+        z0 = virtualinvoke $r20.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r19);
+
+        if z0 == 0 goto label25;
+
+        if $r3 == null goto label24;
+
+        $r23 = (java.lang.String[]) $r3;
+
+        virtualinvoke r1.<android.os.Bundle: void putStringArray(java.lang.String,java.lang.String[])>(r4, $r23);
+
+        goto label33;
+
+     label24:
+        r22 = new java.lang.NullPointerException;
+
+        specialinvoke r22.<java.lang.NullPointerException: void <init>(java.lang.String)>("null cannot be cast to non-null type kotlin.Array<kotlin.String>");
+
+        throw r22;
+
+     label25:
+        $r20 = class "Ljava/lang/CharSequence;";
+
+        z0 = virtualinvoke $r20.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r19);
+
+        if z0 == 0 goto label27;
+
+        if $r3 == null goto label26;
+
+        $r24 = (java.lang.CharSequence[]) $r3;
+
+        virtualinvoke r1.<android.os.Bundle: void putCharSequenceArray(java.lang.String,java.lang.CharSequence[])>(r4, $r24);
+
+        goto label33;
+
+     label26:
+        r22 = new java.lang.NullPointerException;
+
+        specialinvoke r22.<java.lang.NullPointerException: void <init>(java.lang.String)>("null cannot be cast to non-null type kotlin.Array<kotlin.CharSequence>");
+
+        throw r22;
+
+     label27:
+        $r20 = class "Ljava/io/Serializable;";
+
+        z0 = virtualinvoke $r20.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r19);
+
+        if z0 == 0 goto label28;
+
+        $r25 = (java.io.Serializable) $r3;
+
+        virtualinvoke r1.<android.os.Bundle: void putSerializable(java.lang.String,java.io.Serializable)>(r4, $r25);
+
+        goto label33;
+
+     label28:
+        $r26 = virtualinvoke $r19.<java.lang.Class: java.lang.String getCanonicalName()>();
+
+        $r27 = new java.lang.IllegalArgumentException;
+
+        $r28 = new java.lang.StringBuilder;
+
+        specialinvoke $r28.<java.lang.StringBuilder: void <init>()>();
+
+        $r28 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal value array type ");
+
+        $r28 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r26);
+
+        $r28 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" for key \"");
+
+        $r28 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r4);
+
+        $r28 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(34);
+
+        r4 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r27.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>(r4);
+
+        throw $r27;
+
+     label29:
+        z0 = $r3 instanceof java.io.Serializable;
+
+        if z0 == 0 goto label30;
+
+        $r25 = (java.io.Serializable) $r3;
+
+        virtualinvoke r1.<android.os.Bundle: void putSerializable(java.lang.String,java.io.Serializable)>(r4, $r25);
+
+        goto label33;
+
+     label30:
+        z0 = $r3 instanceof android.os.IBinder;
+
+        if z0 == 0 goto label31;
+
+        r29 = (android.os.IBinder) $r3;
+
+        staticinvoke <androidx.core.os.BundleApi18ImplKt: void putBinder(android.os.Bundle,java.lang.String,android.os.IBinder)>(r1, r4, r29);
+
+        goto label33;
+
+     label31:
+        z0 = $r3 instanceof android.util.Size;
+
+        if z0 == 0 goto label32;
+
+        r30 = (android.util.Size) $r3;
+
+        staticinvoke <androidx.core.os.BundleApi21ImplKt: void putSize(android.os.Bundle,java.lang.String,android.util.Size)>(r1, r4, r30);
+
+        goto label33;
+
+     label32:
+        z0 = $r3 instanceof android.util.SizeF;
+
+        if z0 == 0 goto label34;
+
+        r31 = (android.util.SizeF) $r3;
+
+        staticinvoke <androidx.core.os.BundleApi21ImplKt: void putSizeF(android.os.Bundle,java.lang.String,android.util.SizeF)>(r1, r4, r31);
+
+     label33:
+        $i1 = $i1 + 1;
+
+        goto label01;
+
+     label34:
+        $r19 = virtualinvoke $r3.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r26 = virtualinvoke $r19.<java.lang.Class: java.lang.String getCanonicalName()>();
+
+        $r27 = new java.lang.IllegalArgumentException;
+
+        $r28 = new java.lang.StringBuilder;
+
+        specialinvoke $r28.<java.lang.StringBuilder: void <init>()>();
+
+        $r28 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal value type ");
+
+        $r28 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r26);
+
+        $r28 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" for key \"");
+
+        $r28 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r4);
+
+        $r28 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(34);
+
+        r4 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r27.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>(r4);
+
+        throw $r27;
+
+     label35:
+        return r1;
+    }
+}

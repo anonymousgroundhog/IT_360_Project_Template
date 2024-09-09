@@ -1,0 +1,643 @@
+public class androidx.room.util.FtsTableInfo extends java.lang.Object
+{
+    private static final java.lang.String[] FTS_OPTIONS;
+    public final java.util.Set columns;
+    public final java.lang.String name;
+    public final java.util.Set options;
+
+    static void <clinit>()
+    {
+        java.lang.String[] $r0;
+
+        $r0 = newarray (java.lang.String)[9];
+
+        $r0[0] = "tokenize=";
+
+        $r0[1] = "compress=";
+
+        $r0[2] = "content=";
+
+        $r0[3] = "languageid=";
+
+        $r0[4] = "matchinfo=";
+
+        $r0[5] = "notindexed=";
+
+        $r0[6] = "order=";
+
+        $r0[7] = "prefix=";
+
+        $r0[8] = "uncompress=";
+
+        <androidx.room.util.FtsTableInfo: java.lang.String[] FTS_OPTIONS> = $r0;
+
+        return;
+    }
+
+    public void <init>(java.lang.String, java.util.Set, java.lang.String)
+    {
+        java.util.Set r2;
+        java.lang.String $r1, $r3;
+        androidx.room.util.FtsTableInfo r0;
+
+        r0 := @this: androidx.room.util.FtsTableInfo;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.util.Set;
+
+        $r3 := @parameter2: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.room.util.FtsTableInfo: java.lang.String name> = $r1;
+
+        r0.<androidx.room.util.FtsTableInfo: java.util.Set columns> = r2;
+
+        r2 = staticinvoke <androidx.room.util.FtsTableInfo: java.util.Set parseOptions(java.lang.String)>($r3);
+
+        r0.<androidx.room.util.FtsTableInfo: java.util.Set options> = r2;
+
+        return;
+    }
+
+    public void <init>(java.lang.String, java.util.Set, java.util.Set)
+    {
+        java.util.Set r2, r3;
+        java.lang.String $r1;
+        androidx.room.util.FtsTableInfo r0;
+
+        r0 := @this: androidx.room.util.FtsTableInfo;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.util.Set;
+
+        r3 := @parameter2: java.util.Set;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.room.util.FtsTableInfo: java.lang.String name> = $r1;
+
+        r0.<androidx.room.util.FtsTableInfo: java.util.Set columns> = r2;
+
+        r0.<androidx.room.util.FtsTableInfo: java.util.Set options> = r3;
+
+        return;
+    }
+
+    static java.util.Set parseOptions(java.lang.String)
+    {
+        java.lang.String[] $r6;
+        java.util.ArrayList $r8;
+        java.util.HashSet r1, $r7;
+        java.lang.Character r3;
+        int $i0, $i1, $i2, $i5;
+        java.lang.String $r0, $r4;
+        boolean $z0;
+        java.util.Iterator $r5;
+        char $c3, $c4;
+        java.lang.Object $r2;
+        java.util.ArrayDeque $r9;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $z0 = virtualinvoke $r0.<java.lang.String: boolean isEmpty()>();
+
+        if $z0 == 0 goto label01;
+
+        $r7 = new java.util.HashSet;
+
+        specialinvoke $r7.<java.util.HashSet: void <init>()>();
+
+        return $r7;
+
+     label01:
+        $i0 = virtualinvoke $r0.<java.lang.String: int indexOf(int)>(40);
+
+        $i0 = $i0 + 1;
+
+        $i1 = virtualinvoke $r0.<java.lang.String: int lastIndexOf(int)>(41);
+
+        $r0 = virtualinvoke $r0.<java.lang.String: java.lang.String substring(int,int)>($i0, $i1);
+
+        $r8 = new java.util.ArrayList;
+
+        specialinvoke $r8.<java.util.ArrayList: void <init>()>();
+
+        $r9 = new java.util.ArrayDeque;
+
+        specialinvoke $r9.<java.util.ArrayDeque: void <init>()>();
+
+        $i1 = -1;
+
+        $i0 = 0;
+
+     label02:
+        $i2 = virtualinvoke $r0.<java.lang.String: int length()>();
+
+        if $i0 >= $i2 goto label10;
+
+        $c3 = virtualinvoke $r0.<java.lang.String: char charAt(int)>($i0);
+
+        $i2 = (int) $c3;
+
+        lookupswitch($i2)
+        {
+            case 34: goto label07;
+            case 39: goto label07;
+            case 44: goto label06;
+            case 91: goto label05;
+            case 93: goto label04;
+            case 96: goto label07;
+            default: goto label03;
+        };
+
+     label03:
+        goto label09;
+
+     label04:
+        $z0 = virtualinvoke $r9.<java.util.ArrayDeque: boolean isEmpty()>();
+
+        if $z0 != 0 goto label09;
+
+        $r2 = virtualinvoke $r9.<java.util.ArrayDeque: java.lang.Object peek()>();
+
+        r3 = (java.lang.Character) $r2;
+
+        $c3 = virtualinvoke r3.<java.lang.Character: char charValue()>();
+
+        $i2 = (int) $c3;
+
+        if $i2 != 91 goto label09;
+
+        virtualinvoke $r9.<java.util.ArrayDeque: java.lang.Object pop()>();
+
+        goto label09;
+
+     label05:
+        $z0 = virtualinvoke $r9.<java.util.ArrayDeque: boolean isEmpty()>();
+
+        if $z0 == 0 goto label09;
+
+        r3 = staticinvoke <java.lang.Character: java.lang.Character valueOf(char)>($c3);
+
+        virtualinvoke $r9.<java.util.ArrayDeque: void push(java.lang.Object)>(r3);
+
+        goto label09;
+
+     label06:
+        $z0 = virtualinvoke $r9.<java.util.ArrayDeque: boolean isEmpty()>();
+
+        if $z0 == 0 goto label09;
+
+        $i1 = $i1 + 1;
+
+        $r4 = virtualinvoke $r0.<java.lang.String: java.lang.String substring(int,int)>($i1, $i0);
+
+        $r4 = virtualinvoke $r4.<java.lang.String: java.lang.String trim()>();
+
+        interfaceinvoke $r8.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+        $i1 = $i0;
+
+        goto label09;
+
+     label07:
+        $z0 = virtualinvoke $r9.<java.util.ArrayDeque: boolean isEmpty()>();
+
+        if $z0 == 0 goto label08;
+
+        r3 = staticinvoke <java.lang.Character: java.lang.Character valueOf(char)>($c3);
+
+        virtualinvoke $r9.<java.util.ArrayDeque: void push(java.lang.Object)>(r3);
+
+        goto label09;
+
+     label08:
+        $r2 = virtualinvoke $r9.<java.util.ArrayDeque: java.lang.Object peek()>();
+
+        r3 = (java.lang.Character) $r2;
+
+        $c4 = virtualinvoke r3.<java.lang.Character: char charValue()>();
+
+        $i2 = (int) $c4;
+
+        $i5 = (int) $c3;
+
+        if $i2 != $i5 goto label09;
+
+        virtualinvoke $r9.<java.util.ArrayDeque: java.lang.Object pop()>();
+
+     label09:
+        $i0 = $i0 + 1;
+
+        goto label02;
+
+     label10:
+        $i0 = $i1 + 1;
+
+        $r0 = virtualinvoke $r0.<java.lang.String: java.lang.String substring(int)>($i0);
+
+        $r0 = virtualinvoke $r0.<java.lang.String: java.lang.String trim()>();
+
+        interfaceinvoke $r8.<java.util.List: boolean add(java.lang.Object)>($r0);
+
+        $r7 = new java.util.HashSet;
+
+        r1 = $r7;
+
+        specialinvoke $r7.<java.util.HashSet: void <init>()>();
+
+        $r5 = interfaceinvoke $r8.<java.util.List: java.util.Iterator iterator()>();
+
+     label11:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label14;
+
+        $r2 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        $r4 = (java.lang.String) $r2;
+
+        $r6 = <androidx.room.util.FtsTableInfo: java.lang.String[] FTS_OPTIONS>;
+
+        $i0 = lengthof $r6;
+
+        $i1 = 0;
+
+     label12:
+        if $i1 >= $i0 goto label11;
+
+        $r0 = $r6[$i1];
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean startsWith(java.lang.String)>($r0);
+
+        if $z0 == 0 goto label13;
+
+        virtualinvoke r1.<java.util.HashSet: boolean add(java.lang.Object)>($r4);
+
+     label13:
+        $i1 = $i1 + 1;
+
+        goto label12;
+
+     label14:
+        return r1;
+    }
+
+    public static androidx.room.util.FtsTableInfo read(androidx.sqlite.db.SupportSQLiteDatabase, java.lang.String)
+    {
+        androidx.sqlite.db.SupportSQLiteDatabase $r0;
+        java.util.Set $r3, $r4;
+        java.lang.String $r1;
+        androidx.room.util.FtsTableInfo $r2;
+
+        $r0 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r3 = staticinvoke <androidx.room.util.FtsTableInfo: java.util.Set readColumns(androidx.sqlite.db.SupportSQLiteDatabase,java.lang.String)>($r0, $r1);
+
+        $r4 = staticinvoke <androidx.room.util.FtsTableInfo: java.util.Set readOptions(androidx.sqlite.db.SupportSQLiteDatabase,java.lang.String)>($r0, $r1);
+
+        $r2 = new androidx.room.util.FtsTableInfo;
+
+        specialinvoke $r2.<androidx.room.util.FtsTableInfo: void <init>(java.lang.String,java.util.Set,java.util.Set)>($r1, $r3, $r4);
+
+        return $r2;
+    }
+
+    private static java.util.Set readColumns(androidx.sqlite.db.SupportSQLiteDatabase, java.lang.String)
+    {
+        java.lang.Throwable r5;
+        java.util.HashSet r4;
+        androidx.sqlite.db.SupportSQLiteDatabase $r0;
+        int $i0;
+        java.lang.StringBuilder r2;
+        java.lang.String $r1;
+        android.database.Cursor $r3;
+        boolean $z0;
+
+        $r0 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        $r1 := @parameter1: java.lang.String;
+
+        r2 = new java.lang.StringBuilder;
+
+        specialinvoke r2.<java.lang.StringBuilder: void <init>()>();
+
+        r2 = virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("PRAGMA table_info(`");
+
+        r2 = virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        r2 = virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("`)");
+
+        $r1 = virtualinvoke r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r3 = interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteDatabase: android.database.Cursor query(java.lang.String)>($r1);
+
+        r4 = new java.util.HashSet;
+
+        specialinvoke r4.<java.util.HashSet: void <init>()>();
+
+     label1:
+        $i0 = interfaceinvoke $r3.<android.database.Cursor: int getColumnCount()>();
+
+     label2:
+        if $i0 <= 0 goto label8;
+
+     label3:
+        $i0 = interfaceinvoke $r3.<android.database.Cursor: int getColumnIndex(java.lang.String)>("name");
+
+     label4:
+        $z0 = interfaceinvoke $r3.<android.database.Cursor: boolean moveToNext()>();
+
+     label5:
+        if $z0 == 0 goto label8;
+
+     label6:
+        $r1 = interfaceinvoke $r3.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+        interfaceinvoke r4.<java.util.Set: boolean add(java.lang.Object)>($r1);
+
+     label7:
+        goto label4;
+
+     label8:
+        interfaceinvoke $r3.<android.database.Cursor: void close()>();
+
+        return r4;
+
+     label9:
+        r5 := @caughtexception;
+
+        interfaceinvoke $r3.<android.database.Cursor: void close()>();
+
+        throw r5;
+
+        catch java.lang.Throwable from label1 to label2 with label9;
+        catch java.lang.Throwable from label3 to label5 with label9;
+        catch java.lang.Throwable from label6 to label7 with label9;
+    }
+
+    private static java.util.Set readOptions(androidx.sqlite.db.SupportSQLiteDatabase, java.lang.String)
+    {
+        java.lang.Throwable $r6;
+        java.util.Set $r5;
+        androidx.sqlite.db.SupportSQLiteDatabase $r0;
+        int $i0;
+        java.lang.StringBuilder r3;
+        java.lang.String $r1, r2;
+        android.database.Cursor $r4;
+        boolean $z0;
+
+        $r0 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        $r1 := @parameter1: java.lang.String;
+
+        r2 = "";
+
+        r3 = new java.lang.StringBuilder;
+
+        specialinvoke r3.<java.lang.StringBuilder: void <init>()>();
+
+        r3 = virtualinvoke r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("SELECT * FROM sqlite_master WHERE `name` = \'");
+
+        r3 = virtualinvoke r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        r3 = virtualinvoke r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\'");
+
+        $r1 = virtualinvoke r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r4 = interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteDatabase: android.database.Cursor query(java.lang.String)>($r1);
+
+     label1:
+        $z0 = interfaceinvoke $r4.<android.database.Cursor: boolean moveToFirst()>();
+
+     label2:
+        if $z0 == 0 goto label5;
+
+     label3:
+        $i0 = interfaceinvoke $r4.<android.database.Cursor: int getColumnIndexOrThrow(java.lang.String)>("sql");
+
+        $r1 = interfaceinvoke $r4.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+     label4:
+        r2 = $r1;
+
+     label5:
+        interfaceinvoke $r4.<android.database.Cursor: void close()>();
+
+        $r5 = staticinvoke <androidx.room.util.FtsTableInfo: java.util.Set parseOptions(java.lang.String)>(r2);
+
+        return $r5;
+
+     label6:
+        $r6 := @caughtexception;
+
+        interfaceinvoke $r4.<android.database.Cursor: void close()>();
+
+        throw $r6;
+
+        catch java.lang.Throwable from label1 to label2 with label6;
+        catch java.lang.Throwable from label3 to label4 with label6;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        java.util.Set $r7, $r8;
+        androidx.room.util.FtsTableInfo r0, r4;
+        java.lang.Object $r1;
+        java.lang.Class $r2, $r3;
+        java.lang.String $r5, $r6;
+        boolean $z0;
+
+        r0 := @this: androidx.room.util.FtsTableInfo;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if r0 != $r1 goto label1;
+
+        return 1;
+
+     label1:
+        if $r1 == null goto label8;
+
+        $r2 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r2 == $r3 goto label2;
+
+        return 0;
+
+     label2:
+        r4 = (androidx.room.util.FtsTableInfo) $r1;
+
+        $r5 = r0.<androidx.room.util.FtsTableInfo: java.lang.String name>;
+
+        if $r5 == null goto label3;
+
+        $r5 = r0.<androidx.room.util.FtsTableInfo: java.lang.String name>;
+
+        $r6 = r4.<androidx.room.util.FtsTableInfo: java.lang.String name>;
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 != 0 goto label4;
+
+        return 0;
+
+     label3:
+        $r5 = r4.<androidx.room.util.FtsTableInfo: java.lang.String name>;
+
+        if $r5 == null goto label4;
+
+        return 0;
+
+     label4:
+        $r7 = r0.<androidx.room.util.FtsTableInfo: java.util.Set columns>;
+
+        if $r7 == null goto label5;
+
+        $r7 = r0.<androidx.room.util.FtsTableInfo: java.util.Set columns>;
+
+        $r8 = r4.<androidx.room.util.FtsTableInfo: java.util.Set columns>;
+
+        $z0 = interfaceinvoke $r7.<java.util.Set: boolean equals(java.lang.Object)>($r8);
+
+        if $z0 != 0 goto label6;
+
+        return 0;
+
+     label5:
+        $r7 = r4.<androidx.room.util.FtsTableInfo: java.util.Set columns>;
+
+        if $r7 == null goto label6;
+
+        return 0;
+
+     label6:
+        $r7 = r0.<androidx.room.util.FtsTableInfo: java.util.Set options>;
+
+        if $r7 == null goto label7;
+
+        $r7 = r0.<androidx.room.util.FtsTableInfo: java.util.Set options>;
+
+        $r8 = r4.<androidx.room.util.FtsTableInfo: java.util.Set options>;
+
+        $z0 = interfaceinvoke $r7.<java.util.Set: boolean equals(java.lang.Object)>($r8);
+
+        return $z0;
+
+     label7:
+        $r7 = r4.<androidx.room.util.FtsTableInfo: java.util.Set options>;
+
+        if $r7 != null goto label8;
+
+        return 1;
+
+     label8:
+        return 0;
+    }
+
+    public int hashCode()
+    {
+        int $i0, $i1, $i2;
+        java.util.Set $r2;
+        java.lang.String r1;
+        androidx.room.util.FtsTableInfo r0;
+
+        r0 := @this: androidx.room.util.FtsTableInfo;
+
+        r1 = r0.<androidx.room.util.FtsTableInfo: java.lang.String name>;
+
+        $i0 = 0;
+
+        if r1 == null goto label1;
+
+        r1 = r0.<androidx.room.util.FtsTableInfo: java.lang.String name>;
+
+        $i1 = virtualinvoke r1.<java.lang.String: int hashCode()>();
+
+        goto label2;
+
+     label1:
+        $i1 = 0;
+
+     label2:
+        $i1 = $i1 * 31;
+
+        $r2 = r0.<androidx.room.util.FtsTableInfo: java.util.Set columns>;
+
+        if $r2 == null goto label3;
+
+        $r2 = r0.<androidx.room.util.FtsTableInfo: java.util.Set columns>;
+
+        $i2 = interfaceinvoke $r2.<java.util.Set: int hashCode()>();
+
+        goto label4;
+
+     label3:
+        $i2 = 0;
+
+     label4:
+        $i1 = $i1 + $i2;
+
+        $i1 = $i1 * 31;
+
+        $r2 = r0.<androidx.room.util.FtsTableInfo: java.util.Set options>;
+
+        if $r2 == null goto label5;
+
+        $r2 = r0.<androidx.room.util.FtsTableInfo: java.util.Set options>;
+
+        $i0 = interfaceinvoke $r2.<java.util.Set: int hashCode()>();
+
+     label5:
+        $i0 = $i1 + $i0;
+
+        return $i0;
+    }
+
+    public java.lang.String toString()
+    {
+        java.util.Set $r3;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+        androidx.room.util.FtsTableInfo r0;
+
+        r0 := @this: androidx.room.util.FtsTableInfo;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("FtsTableInfo{name=\'");
+
+        $r2 = r0.<androidx.room.util.FtsTableInfo: java.lang.String name>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", columns=");
+
+        $r3 = r0.<androidx.room.util.FtsTableInfo: java.util.Set columns>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", options=");
+
+        $r3 = r0.<androidx.room.util.FtsTableInfo: java.util.Set options>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(125);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+}

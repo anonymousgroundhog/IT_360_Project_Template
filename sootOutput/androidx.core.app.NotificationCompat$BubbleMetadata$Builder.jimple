@@ -1,0 +1,347 @@
+public final class androidx.core.app.NotificationCompat$BubbleMetadata$Builder extends java.lang.Object
+{
+    private android.app.PendingIntent mDeleteIntent;
+    private int mDesiredHeight;
+    private int mDesiredHeightResId;
+    private int mFlags;
+    private androidx.core.graphics.drawable.IconCompat mIcon;
+    private android.app.PendingIntent mPendingIntent;
+    private java.lang.String mShortcutId;
+
+    public void <init>()
+    {
+        androidx.core.app.NotificationCompat$BubbleMetadata$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata$Builder;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void <init>(android.app.PendingIntent, androidx.core.graphics.drawable.IconCompat)
+    {
+        androidx.core.graphics.drawable.IconCompat $r2;
+        androidx.core.app.NotificationCompat$BubbleMetadata$Builder r0;
+        android.app.PendingIntent $r1;
+        java.lang.NullPointerException $r3;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata$Builder;
+
+        $r1 := @parameter0: android.app.PendingIntent;
+
+        $r2 := @parameter1: androidx.core.graphics.drawable.IconCompat;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        if $r1 == null goto label2;
+
+        if $r2 == null goto label1;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: android.app.PendingIntent mPendingIntent> = $r1;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: androidx.core.graphics.drawable.IconCompat mIcon> = $r2;
+
+        return;
+
+     label1:
+        $r3 = new java.lang.NullPointerException;
+
+        specialinvoke $r3.<java.lang.NullPointerException: void <init>(java.lang.String)>("Bubbles require non-null icon");
+
+        throw $r3;
+
+     label2:
+        $r3 = new java.lang.NullPointerException;
+
+        specialinvoke $r3.<java.lang.NullPointerException: void <init>(java.lang.String)>("Bubble requires non-null pending intent");
+
+        throw $r3;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        androidx.core.app.NotificationCompat$BubbleMetadata$Builder r0;
+        java.lang.String $r1;
+        java.lang.NullPointerException $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r1);
+
+        if $z0 != 0 goto label1;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: java.lang.String mShortcutId> = $r1;
+
+        return;
+
+     label1:
+        $r2 = new java.lang.NullPointerException;
+
+        specialinvoke $r2.<java.lang.NullPointerException: void <init>(java.lang.String)>("Bubble requires a non-null shortcut id");
+
+        throw $r2;
+    }
+
+    private androidx.core.app.NotificationCompat$BubbleMetadata$Builder setFlag(int, boolean)
+    {
+        androidx.core.app.NotificationCompat$BubbleMetadata$Builder r0;
+        int $i0, $i1;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata$Builder;
+
+        $i0 := @parameter0: int;
+
+        $z0 := @parameter1: boolean;
+
+        if $z0 == 0 goto label1;
+
+        $i1 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: int mFlags>;
+
+        $i0 = $i1 | $i0;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: int mFlags> = $i0;
+
+        return r0;
+
+     label1:
+        $i1 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: int mFlags>;
+
+        $i0 = $i0 ^ -1;
+
+        $i0 = $i1 & $i0;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: int mFlags> = $i0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$BubbleMetadata build()
+    {
+        androidx.core.app.NotificationCompat$BubbleMetadata r6;
+        androidx.core.app.NotificationCompat$BubbleMetadata$Builder r0;
+        android.app.PendingIntent $r1, $r2;
+        java.lang.NullPointerException r5;
+        androidx.core.graphics.drawable.IconCompat $r3;
+        int $i0, $i1, $i2;
+        java.lang.String $r4;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata$Builder;
+
+        $r4 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: java.lang.String mShortcutId>;
+
+        if $r4 != null goto label2;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: android.app.PendingIntent mPendingIntent>;
+
+        if $r1 == null goto label1;
+
+        goto label2;
+
+     label1:
+        r5 = new java.lang.NullPointerException;
+
+        specialinvoke r5.<java.lang.NullPointerException: void <init>(java.lang.String)>("Must supply pending intent or shortcut to bubble");
+
+        throw r5;
+
+     label2:
+        $r4 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: java.lang.String mShortcutId>;
+
+        if $r4 != null goto label4;
+
+        $r3 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        if $r3 == null goto label3;
+
+        goto label4;
+
+     label3:
+        r5 = new java.lang.NullPointerException;
+
+        specialinvoke r5.<java.lang.NullPointerException: void <init>(java.lang.String)>("Must supply an icon or shortcut for the bubble");
+
+        throw r5;
+
+     label4:
+        r6 = new androidx.core.app.NotificationCompat$BubbleMetadata;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: android.app.PendingIntent mPendingIntent>;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: android.app.PendingIntent mDeleteIntent>;
+
+        $r3 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        $i0 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: int mDesiredHeight>;
+
+        $i1 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: int mDesiredHeightResId>;
+
+        $i2 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: int mFlags>;
+
+        $r4 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: java.lang.String mShortcutId>;
+
+        specialinvoke r6.<androidx.core.app.NotificationCompat$BubbleMetadata: void <init>(android.app.PendingIntent,android.app.PendingIntent,androidx.core.graphics.drawable.IconCompat,int,int,int,java.lang.String,androidx.core.app.NotificationCompat$1)>($r1, $r2, $r3, $i0, $i1, $i2, $r4, null);
+
+        $i0 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: int mFlags>;
+
+        virtualinvoke r6.<androidx.core.app.NotificationCompat$BubbleMetadata: void setFlags(int)>($i0);
+
+        return r6;
+    }
+
+    public androidx.core.app.NotificationCompat$BubbleMetadata$Builder setAutoExpandBubble(boolean)
+    {
+        androidx.core.app.NotificationCompat$BubbleMetadata$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        specialinvoke r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: androidx.core.app.NotificationCompat$BubbleMetadata$Builder setFlag(int,boolean)>(1, $z0);
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$BubbleMetadata$Builder setDeleteIntent(android.app.PendingIntent)
+    {
+        android.app.PendingIntent $r1;
+        androidx.core.app.NotificationCompat$BubbleMetadata$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata$Builder;
+
+        $r1 := @parameter0: android.app.PendingIntent;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: android.app.PendingIntent mDeleteIntent> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$BubbleMetadata$Builder setDesiredHeight(int)
+    {
+        int $i0;
+        androidx.core.app.NotificationCompat$BubbleMetadata$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata$Builder;
+
+        $i0 := @parameter0: int;
+
+        $i0 = staticinvoke <java.lang.Math: int max(int,int)>($i0, 0);
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: int mDesiredHeight> = $i0;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: int mDesiredHeightResId> = 0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$BubbleMetadata$Builder setDesiredHeightResId(int)
+    {
+        int $i0;
+        androidx.core.app.NotificationCompat$BubbleMetadata$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata$Builder;
+
+        $i0 := @parameter0: int;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: int mDesiredHeightResId> = $i0;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: int mDesiredHeight> = 0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$BubbleMetadata$Builder setIcon(androidx.core.graphics.drawable.IconCompat)
+    {
+        java.lang.IllegalStateException $r4;
+        androidx.core.graphics.drawable.IconCompat $r1;
+        androidx.core.app.NotificationCompat$BubbleMetadata$Builder r0;
+        java.lang.String $r2;
+        java.lang.NullPointerException $r3;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata$Builder;
+
+        $r1 := @parameter0: androidx.core.graphics.drawable.IconCompat;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: java.lang.String mShortcutId>;
+
+        if $r2 != null goto label2;
+
+        if $r1 == null goto label1;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: androidx.core.graphics.drawable.IconCompat mIcon> = $r1;
+
+        return r0;
+
+     label1:
+        $r3 = new java.lang.NullPointerException;
+
+        specialinvoke $r3.<java.lang.NullPointerException: void <init>(java.lang.String)>("Bubbles require non-null icon");
+
+        throw $r3;
+
+     label2:
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Created as a shortcut bubble, cannot set an Icon. Consider using BubbleMetadata.Builder(PendingIntent,Icon) instead.");
+
+        throw $r4;
+    }
+
+    public androidx.core.app.NotificationCompat$BubbleMetadata$Builder setIntent(android.app.PendingIntent)
+    {
+        java.lang.IllegalStateException $r4;
+        androidx.core.app.NotificationCompat$BubbleMetadata$Builder r0;
+        android.app.PendingIntent $r1;
+        java.lang.String $r2;
+        java.lang.NullPointerException $r3;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata$Builder;
+
+        $r1 := @parameter0: android.app.PendingIntent;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: java.lang.String mShortcutId>;
+
+        if $r2 != null goto label2;
+
+        if $r1 == null goto label1;
+
+        r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: android.app.PendingIntent mPendingIntent> = $r1;
+
+        return r0;
+
+     label1:
+        $r3 = new java.lang.NullPointerException;
+
+        specialinvoke $r3.<java.lang.NullPointerException: void <init>(java.lang.String)>("Bubble requires non-null pending intent");
+
+        throw $r3;
+
+     label2:
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Created as a shortcut bubble, cannot set a PendingIntent. Consider using BubbleMetadata.Builder(PendingIntent,Icon) instead.");
+
+        throw $r4;
+    }
+
+    public androidx.core.app.NotificationCompat$BubbleMetadata$Builder setSuppressNotification(boolean)
+    {
+        androidx.core.app.NotificationCompat$BubbleMetadata$Builder r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$BubbleMetadata$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        specialinvoke r0.<androidx.core.app.NotificationCompat$BubbleMetadata$Builder: androidx.core.app.NotificationCompat$BubbleMetadata$Builder setFlag(int,boolean)>(2, $z0);
+
+        return r0;
+    }
+}

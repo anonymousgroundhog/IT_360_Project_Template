@@ -1,0 +1,132 @@
+class androidx.core.view.ViewCompat$3 extends androidx.core.view.ViewCompat$AccessibilityViewProperty
+{
+
+    void <init>(int, java.lang.Class, int, int)
+    {
+        int $i0, $i1, $i2;
+        java.lang.Class r1;
+        androidx.core.view.ViewCompat$3 r0;
+
+        r0 := @this: androidx.core.view.ViewCompat$3;
+
+        $i0 := @parameter0: int;
+
+        r1 := @parameter1: java.lang.Class;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        specialinvoke r0.<androidx.core.view.ViewCompat$AccessibilityViewProperty: void <init>(int,java.lang.Class,int,int)>($i0, r1, $i1, $i2);
+
+        return;
+    }
+
+    java.lang.CharSequence frameworkGet(android.view.View)
+    {
+        android.view.View $r1;
+        java.lang.CharSequence $r2;
+        androidx.core.view.ViewCompat$3 r0;
+
+        r0 := @this: androidx.core.view.ViewCompat$3;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 = staticinvoke <androidx.core.view.ViewCompat$Api30Impl: java.lang.CharSequence getStateDescription(android.view.View)>($r1);
+
+        return $r2;
+    }
+
+    volatile java.lang.Object frameworkGet(android.view.View)
+    {
+        android.view.View $r2;
+        java.lang.CharSequence $r1;
+        androidx.core.view.ViewCompat$3 r0;
+
+        r0 := @this: androidx.core.view.ViewCompat$3;
+
+        $r2 := @parameter0: android.view.View;
+
+        $r1 = virtualinvoke r0.<androidx.core.view.ViewCompat$3: java.lang.CharSequence frameworkGet(android.view.View)>($r2);
+
+        return $r1;
+    }
+
+    void frameworkSet(android.view.View, java.lang.CharSequence)
+    {
+        android.view.View $r1;
+        java.lang.CharSequence $r2;
+        androidx.core.view.ViewCompat$3 r0;
+
+        r0 := @this: androidx.core.view.ViewCompat$3;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: java.lang.CharSequence;
+
+        staticinvoke <androidx.core.view.ViewCompat$Api30Impl: void setStateDescription(android.view.View,java.lang.CharSequence)>($r1, $r2);
+
+        return;
+    }
+
+    volatile void frameworkSet(android.view.View, java.lang.Object)
+    {
+        java.lang.CharSequence $r3;
+        android.view.View $r1;
+        java.lang.Object $r2;
+        androidx.core.view.ViewCompat$3 r0;
+
+        r0 := @this: androidx.core.view.ViewCompat$3;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = (java.lang.CharSequence) $r2;
+
+        virtualinvoke r0.<androidx.core.view.ViewCompat$3: void frameworkSet(android.view.View,java.lang.CharSequence)>($r1, $r3);
+
+        return;
+    }
+
+    boolean shouldUpdate(java.lang.CharSequence, java.lang.CharSequence)
+    {
+        java.lang.CharSequence $r1, $r2;
+        androidx.core.view.ViewCompat$3 r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.view.ViewCompat$3;
+
+        $r1 := @parameter0: java.lang.CharSequence;
+
+        $r2 := @parameter1: java.lang.CharSequence;
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean equals(java.lang.CharSequence,java.lang.CharSequence)>($r1, $r2);
+
+        $z0 = $z0 ^ 1;
+
+        return $z0;
+    }
+
+    volatile boolean shouldUpdate(java.lang.Object, java.lang.Object)
+    {
+        java.lang.CharSequence $r3, $r4;
+        java.lang.Object $r1, $r2;
+        androidx.core.view.ViewCompat$3 r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.view.ViewCompat$3;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = (java.lang.CharSequence) $r1;
+
+        $r4 = (java.lang.CharSequence) $r2;
+
+        $z0 = virtualinvoke r0.<androidx.core.view.ViewCompat$3: boolean shouldUpdate(java.lang.CharSequence,java.lang.CharSequence)>($r3, $r4);
+
+        return $z0;
+    }
+}

@@ -1,0 +1,628 @@
+class androidx.core.provider.FontProvider extends java.lang.Object
+{
+    private static final java.util.Comparator sByteArrayComparator;
+
+    static void <clinit>()
+    {
+        androidx.core.provider.FontProvider$$ExternalSyntheticLambda0 $r0;
+
+        $r0 = new androidx.core.provider.FontProvider$$ExternalSyntheticLambda0;
+
+        specialinvoke $r0.<androidx.core.provider.FontProvider$$ExternalSyntheticLambda0: void <init>()>();
+
+        <androidx.core.provider.FontProvider: java.util.Comparator sByteArrayComparator> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.core.provider.FontProvider r0;
+
+        r0 := @this: androidx.core.provider.FontProvider;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private static java.util.List convertToByteArrayList(android.content.pm.Signature[])
+    {
+        byte[] $r3;
+        int $i0, $i1;
+        android.content.pm.Signature[] $r0;
+        java.util.ArrayList r1;
+        android.content.pm.Signature r2;
+
+        $r0 := @parameter0: android.content.pm.Signature[];
+
+        r1 = new java.util.ArrayList;
+
+        specialinvoke r1.<java.util.ArrayList: void <init>()>();
+
+        $i0 = lengthof $r0;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        r2 = $r0[$i1];
+
+        $r3 = virtualinvoke r2.<android.content.pm.Signature: byte[] toByteArray()>();
+
+        interfaceinvoke r1.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        return r1;
+    }
+
+    private static boolean equalsByteArrayList(java.util.List, java.util.List)
+    {
+        byte[] $r3, $r4;
+        java.util.List r0, r1;
+        int $i0, $i1;
+        java.lang.Object $r2;
+        boolean $z0;
+
+        r0 := @parameter0: java.util.List;
+
+        r1 := @parameter1: java.util.List;
+
+        $i0 = interfaceinvoke r0.<java.util.List: int size()>();
+
+        $i1 = interfaceinvoke r1.<java.util.List: int size()>();
+
+        if $i0 == $i1 goto label1;
+
+        return 0;
+
+     label1:
+        $i0 = 0;
+
+     label2:
+        $i1 = interfaceinvoke r0.<java.util.List: int size()>();
+
+        if $i0 >= $i1 goto label4;
+
+        $r2 = interfaceinvoke r0.<java.util.List: java.lang.Object get(int)>($i0);
+
+        $r3 = (byte[]) $r2;
+
+        $r2 = interfaceinvoke r1.<java.util.List: java.lang.Object get(int)>($i0);
+
+        $r4 = (byte[]) $r2;
+
+        $z0 = staticinvoke <java.util.Arrays: boolean equals(byte[],byte[])>($r3, $r4);
+
+        if $z0 != 0 goto label3;
+
+        return 0;
+
+     label3:
+        $i0 = $i0 + 1;
+
+        goto label2;
+
+     label4:
+        return 1;
+    }
+
+    private static java.util.List getCertificates(androidx.core.provider.FontRequest, android.content.res.Resources)
+    {
+        java.util.List $r2;
+        int $i0;
+        androidx.core.provider.FontRequest $r0;
+        android.content.res.Resources $r1;
+
+        $r0 := @parameter0: androidx.core.provider.FontRequest;
+
+        $r1 := @parameter1: android.content.res.Resources;
+
+        $r2 = virtualinvoke $r0.<androidx.core.provider.FontRequest: java.util.List getCertificates()>();
+
+        if $r2 == null goto label1;
+
+        $r2 = virtualinvoke $r0.<androidx.core.provider.FontRequest: java.util.List getCertificates()>();
+
+        return $r2;
+
+     label1:
+        $i0 = virtualinvoke $r0.<androidx.core.provider.FontRequest: int getCertificatesArrayResId()>();
+
+        $r2 = staticinvoke <androidx.core.content.res.FontResourcesParserCompat: java.util.List readCerts(android.content.res.Resources,int)>($r1, $i0);
+
+        return $r2;
+    }
+
+    static androidx.core.provider.FontsContractCompat$FontFamilyResult getFontFamilyResult(android.content.Context, androidx.core.provider.FontRequest, android.os.CancellationSignal) throws android.content.pm.PackageManager$NameNotFoundException
+    {
+        android.content.Context $r0;
+        android.content.pm.PackageManager $r3;
+        android.os.CancellationSignal $r2;
+        androidx.core.provider.FontRequest $r1;
+        android.content.pm.ProviderInfo $r5;
+        androidx.core.provider.FontsContractCompat$FontInfo[] $r8;
+        androidx.core.provider.FontsContractCompat$FontFamilyResult $r6;
+        java.lang.String r7;
+        android.content.res.Resources $r4;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: androidx.core.provider.FontRequest;
+
+        $r2 := @parameter2: android.os.CancellationSignal;
+
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $r4 = virtualinvoke $r0.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r5 = staticinvoke <androidx.core.provider.FontProvider: android.content.pm.ProviderInfo getProvider(android.content.pm.PackageManager,androidx.core.provider.FontRequest,android.content.res.Resources)>($r3, $r1, $r4);
+
+        if $r5 != null goto label1;
+
+        $r6 = staticinvoke <androidx.core.provider.FontsContractCompat$FontFamilyResult: androidx.core.provider.FontsContractCompat$FontFamilyResult create(int,androidx.core.provider.FontsContractCompat$FontInfo[])>(1, null);
+
+        return $r6;
+
+     label1:
+        r7 = $r5.<android.content.pm.ProviderInfo: java.lang.String authority>;
+
+        $r8 = staticinvoke <androidx.core.provider.FontProvider: androidx.core.provider.FontsContractCompat$FontInfo[] query(android.content.Context,androidx.core.provider.FontRequest,java.lang.String,android.os.CancellationSignal)>($r0, $r1, r7, $r2);
+
+        $r6 = staticinvoke <androidx.core.provider.FontsContractCompat$FontFamilyResult: androidx.core.provider.FontsContractCompat$FontFamilyResult create(int,androidx.core.provider.FontsContractCompat$FontInfo[])>(0, $r8);
+
+        return $r6;
+    }
+
+    static android.content.pm.ProviderInfo getProvider(android.content.pm.PackageManager, androidx.core.provider.FontRequest, android.content.res.Resources) throws android.content.pm.PackageManager$NameNotFoundException
+    {
+        android.content.pm.PackageManager $r0;
+        android.content.pm.PackageManager$NameNotFoundException r15;
+        android.content.pm.PackageInfo $r7;
+        android.content.pm.ProviderInfo $r4;
+        android.content.pm.Signature[] r8;
+        java.util.ArrayList r12;
+        int i0, $i1;
+        java.lang.String $r3, r5, $r6;
+        boolean $z0;
+        java.util.Collection $r14;
+        androidx.core.provider.FontRequest $r1;
+        java.util.List $r9, $r11;
+        java.lang.Object $r13;
+        java.lang.StringBuilder r16;
+        java.util.Comparator r10;
+        android.content.res.Resources $r2;
+
+        $r0 := @parameter0: android.content.pm.PackageManager;
+
+        $r1 := @parameter1: androidx.core.provider.FontRequest;
+
+        $r2 := @parameter2: android.content.res.Resources;
+
+        $r3 = virtualinvoke $r1.<androidx.core.provider.FontRequest: java.lang.String getProviderAuthority()>();
+
+        $r4 = virtualinvoke $r0.<android.content.pm.PackageManager: android.content.pm.ProviderInfo resolveContentProvider(java.lang.String,int)>($r3, 0);
+
+        if $r4 == null goto label5;
+
+        r5 = $r4.<android.content.pm.ProviderInfo: java.lang.String packageName>;
+
+        $r6 = virtualinvoke $r1.<androidx.core.provider.FontRequest: java.lang.String getProviderPackage()>();
+
+        $z0 = virtualinvoke r5.<java.lang.String: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 == 0 goto label4;
+
+        $r3 = $r4.<android.content.pm.ProviderInfo: java.lang.String packageName>;
+
+        $r7 = virtualinvoke $r0.<android.content.pm.PackageManager: android.content.pm.PackageInfo getPackageInfo(java.lang.String,int)>($r3, 64);
+
+        r8 = $r7.<android.content.pm.PackageInfo: android.content.pm.Signature[] signatures>;
+
+        $r9 = staticinvoke <androidx.core.provider.FontProvider: java.util.List convertToByteArrayList(android.content.pm.Signature[])>(r8);
+
+        r10 = <androidx.core.provider.FontProvider: java.util.Comparator sByteArrayComparator>;
+
+        staticinvoke <java.util.Collections: void sort(java.util.List,java.util.Comparator)>($r9, r10);
+
+        $r11 = staticinvoke <androidx.core.provider.FontProvider: java.util.List getCertificates(androidx.core.provider.FontRequest,android.content.res.Resources)>($r1, $r2);
+
+        i0 = 0;
+
+     label1:
+        $i1 = interfaceinvoke $r11.<java.util.List: int size()>();
+
+        if i0 >= $i1 goto label3;
+
+        r12 = new java.util.ArrayList;
+
+        $r13 = interfaceinvoke $r11.<java.util.List: java.lang.Object get(int)>(i0);
+
+        $r14 = (java.util.Collection) $r13;
+
+        specialinvoke r12.<java.util.ArrayList: void <init>(java.util.Collection)>($r14);
+
+        r10 = <androidx.core.provider.FontProvider: java.util.Comparator sByteArrayComparator>;
+
+        staticinvoke <java.util.Collections: void sort(java.util.List,java.util.Comparator)>(r12, r10);
+
+        $z0 = staticinvoke <androidx.core.provider.FontProvider: boolean equalsByteArrayList(java.util.List,java.util.List)>($r9, r12);
+
+        if $z0 == 0 goto label2;
+
+        return $r4;
+
+     label2:
+        i0 = i0 + 1;
+
+        goto label1;
+
+     label3:
+        return null;
+
+     label4:
+        r15 = new android.content.pm.PackageManager$NameNotFoundException;
+
+        r16 = new java.lang.StringBuilder;
+
+        specialinvoke r16.<java.lang.StringBuilder: void <init>()>();
+
+        r16 = virtualinvoke r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Found content provider ");
+
+        r16 = virtualinvoke r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        r16 = virtualinvoke r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", but package was not ");
+
+        $r3 = virtualinvoke $r1.<androidx.core.provider.FontRequest: java.lang.String getProviderPackage()>();
+
+        r16 = virtualinvoke r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r15.<android.content.pm.PackageManager$NameNotFoundException: void <init>(java.lang.String)>($r3);
+
+        throw r15;
+
+     label5:
+        r15 = new android.content.pm.PackageManager$NameNotFoundException;
+
+        r16 = new java.lang.StringBuilder;
+
+        specialinvoke r16.<java.lang.StringBuilder: void <init>()>();
+
+        r16 = virtualinvoke r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("No package found for authority: ");
+
+        r16 = virtualinvoke r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r15.<android.content.pm.PackageManager$NameNotFoundException: void <init>(java.lang.String)>($r3);
+
+        throw r15;
+    }
+
+    static int lambda$static$0(byte[], byte[])
+    {
+        byte[] $r0, $r1;
+        byte $b2, $b3;
+        int i0, $i1, $i4;
+
+        $r0 := @parameter0: byte[];
+
+        $r1 := @parameter1: byte[];
+
+        i0 = lengthof $r0;
+
+        $i1 = lengthof $r1;
+
+        if i0 == $i1 goto label1;
+
+        i0 = lengthof $r0;
+
+        $i1 = lengthof $r1;
+
+        i0 = i0 - $i1;
+
+        return i0;
+
+     label1:
+        i0 = 0;
+
+     label2:
+        $i1 = lengthof $r0;
+
+        if i0 >= $i1 goto label4;
+
+        $b2 = $r0[i0];
+
+        $b3 = $r1[i0];
+
+        $i1 = (int) $b2;
+
+        $i4 = (int) $b3;
+
+        if $i1 == $i4 goto label3;
+
+        $b2 = $r0[i0];
+
+        $b3 = $r1[i0];
+
+        i0 = (int) $b2;
+
+        $i1 = (int) $b3;
+
+        i0 = i0 - $i1;
+
+        return i0;
+
+     label3:
+        i0 = i0 + 1;
+
+        goto label2;
+
+     label4:
+        return 0;
+    }
+
+    static androidx.core.provider.FontsContractCompat$FontInfo[] query(android.content.Context, androidx.core.provider.FontRequest, java.lang.String, android.os.CancellationSignal)
+    {
+        android.net.Uri $r7, $r8, $r14;
+        android.content.ContentResolver $r10;
+        android.net.Uri$Builder r6, $r19;
+        boolean $z0;
+        androidx.core.provider.FontsContractCompat$FontInfo $r15;
+        android.os.CancellationSignal $r3;
+        androidx.core.provider.FontsContractCompat$FontInfo[] r17;
+        java.lang.Throwable r16;
+        android.content.Context $r0;
+        java.lang.Object[] $r18;
+        java.lang.String[] r4, r11;
+        long $l8;
+        java.util.ArrayList r5, r13;
+        int $i0, i1, $i2, $i3, $i4, $i5, i6, $i7, $i9, $i10;
+        java.lang.String $r2;
+        android.database.Cursor r9, $r12;
+        androidx.core.provider.FontRequest $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: androidx.core.provider.FontRequest;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r3 := @parameter3: android.os.CancellationSignal;
+
+        r13 = new java.util.ArrayList;
+
+        r5 = r13;
+
+        specialinvoke r13.<java.util.ArrayList: void <init>()>();
+
+        $r19 = new android.net.Uri$Builder;
+
+        specialinvoke $r19.<android.net.Uri$Builder: void <init>()>();
+
+        r6 = virtualinvoke $r19.<android.net.Uri$Builder: android.net.Uri$Builder scheme(java.lang.String)>("content");
+
+        r6 = virtualinvoke r6.<android.net.Uri$Builder: android.net.Uri$Builder authority(java.lang.String)>($r2);
+
+        $r7 = virtualinvoke r6.<android.net.Uri$Builder: android.net.Uri build()>();
+
+        $r19 = new android.net.Uri$Builder;
+
+        specialinvoke $r19.<android.net.Uri$Builder: void <init>()>();
+
+        r6 = virtualinvoke $r19.<android.net.Uri$Builder: android.net.Uri$Builder scheme(java.lang.String)>("content");
+
+        r6 = virtualinvoke r6.<android.net.Uri$Builder: android.net.Uri$Builder authority(java.lang.String)>($r2);
+
+        r6 = virtualinvoke r6.<android.net.Uri$Builder: android.net.Uri$Builder appendPath(java.lang.String)>("file");
+
+        $r8 = virtualinvoke r6.<android.net.Uri$Builder: android.net.Uri build()>();
+
+        r9 = null;
+
+     label01:
+        r4 = newarray (java.lang.String)[7];
+
+        r4[0] = "_id";
+
+        r4[1] = "file_id";
+
+        r4[2] = "font_ttc_index";
+
+        r4[3] = "font_variation_settings";
+
+        r4[4] = "font_weight";
+
+        r4[5] = "font_italic";
+
+        r4[6] = "result_code";
+
+        $r10 = virtualinvoke $r0.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        r11 = newarray (java.lang.String)[1];
+
+        $r2 = virtualinvoke $r1.<androidx.core.provider.FontRequest: java.lang.String getQuery()>();
+
+        r11[0] = $r2;
+
+        $r12 = staticinvoke <androidx.core.provider.FontProvider$Api16Impl: android.database.Cursor query(android.content.ContentResolver,android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String,java.lang.Object)>($r10, $r7, r4, "query = ?", r11, null, $r3);
+
+     label02:
+        if $r12 == null goto label38;
+
+     label03:
+        $i0 = interfaceinvoke $r12.<android.database.Cursor: int getCount()>();
+
+     label04:
+        if $i0 <= 0 goto label38;
+
+     label05:
+        $i0 = interfaceinvoke $r12.<android.database.Cursor: int getColumnIndex(java.lang.String)>("result_code");
+
+     label06:
+        i1 = $i0;
+
+     label07:
+        r5 = new java.util.ArrayList;
+
+     label08:
+        r13 = r5;
+
+     label09:
+        specialinvoke r5.<java.util.ArrayList: void <init>()>();
+
+     label10:
+        $i0 = interfaceinvoke $r12.<android.database.Cursor: int getColumnIndex(java.lang.String)>("_id");
+
+        $i2 = interfaceinvoke $r12.<android.database.Cursor: int getColumnIndex(java.lang.String)>("file_id");
+
+        $i3 = interfaceinvoke $r12.<android.database.Cursor: int getColumnIndex(java.lang.String)>("font_ttc_index");
+
+        $i4 = interfaceinvoke $r12.<android.database.Cursor: int getColumnIndex(java.lang.String)>("font_weight");
+
+        $i5 = interfaceinvoke $r12.<android.database.Cursor: int getColumnIndex(java.lang.String)>("font_italic");
+
+     label11:
+        i6 = $i5;
+
+     label12:
+        $z0 = interfaceinvoke $r12.<android.database.Cursor: boolean moveToNext()>();
+
+     label13:
+        if $z0 == 0 goto label36;
+
+        if i1 == -1 goto label16;
+
+     label14:
+        $i5 = interfaceinvoke $r12.<android.database.Cursor: int getInt(int)>(i1);
+
+     label15:
+        goto label17;
+
+     label16:
+        $i5 = 0;
+
+     label17:
+        if $i3 == -1 goto label20;
+
+     label18:
+        $i7 = interfaceinvoke $r12.<android.database.Cursor: int getInt(int)>($i3);
+
+     label19:
+        goto label21;
+
+     label20:
+        $i7 = 0;
+
+     label21:
+        if $i2 != -1 goto label25;
+
+     label22:
+        $l8 = interfaceinvoke $r12.<android.database.Cursor: long getLong(int)>($i0);
+
+     label23:
+        $r14 = staticinvoke <android.content.ContentUris: android.net.Uri withAppendedId(android.net.Uri,long)>($r7, $l8);
+
+     label24:
+        goto label26;
+
+     label25:
+        $l8 = interfaceinvoke $r12.<android.database.Cursor: long getLong(int)>($i2);
+
+        $r14 = staticinvoke <android.content.ContentUris: android.net.Uri withAppendedId(android.net.Uri,long)>($r8, $l8);
+
+     label26:
+        if $i4 == -1 goto label29;
+
+     label27:
+        $i9 = interfaceinvoke $r12.<android.database.Cursor: int getInt(int)>($i4);
+
+     label28:
+        goto label30;
+
+     label29:
+        $i9 = 400;
+
+     label30:
+        if i6 == -1 goto label33;
+
+     label31:
+        $i10 = interfaceinvoke $r12.<android.database.Cursor: int getInt(int)>(i6);
+
+     label32:
+        if $i10 != 1 goto label33;
+
+        $z0 = 1;
+
+        goto label34;
+
+     label33:
+        $z0 = 0;
+
+     label34:
+        $r15 = staticinvoke <androidx.core.provider.FontsContractCompat$FontInfo: androidx.core.provider.FontsContractCompat$FontInfo create(android.net.Uri,int,int,boolean,int)>($r14, $i7, $i9, $z0, $i5);
+
+        virtualinvoke r13.<java.util.ArrayList: boolean add(java.lang.Object)>($r15);
+
+     label35:
+        goto label12;
+
+     label36:
+        goto label38;
+
+     label37:
+        r16 := @caughtexception;
+
+        r9 = $r12;
+
+        goto label41;
+
+     label38:
+        if $r12 == null goto label39;
+
+        interfaceinvoke $r12.<android.database.Cursor: void close()>();
+
+     label39:
+        r17 = newarray (androidx.core.provider.FontsContractCompat$FontInfo)[0];
+
+        $r18 = virtualinvoke r5.<java.util.ArrayList: java.lang.Object[] toArray(java.lang.Object[])>(r17);
+
+        r17 = (androidx.core.provider.FontsContractCompat$FontInfo[]) $r18;
+
+        return r17;
+
+     label40:
+        r16 := @caughtexception;
+
+     label41:
+        if r9 == null goto label42;
+
+        interfaceinvoke r9.<android.database.Cursor: void close()>();
+
+     label42:
+        throw r16;
+
+        catch java.lang.Throwable from label01 to label02 with label40;
+        catch java.lang.Throwable from label03 to label04 with label37;
+        catch java.lang.Throwable from label05 to label06 with label37;
+        catch java.lang.Throwable from label07 to label08 with label37;
+        catch java.lang.Throwable from label09 to label10 with label37;
+        catch java.lang.Throwable from label10 to label11 with label37;
+        catch java.lang.Throwable from label12 to label13 with label37;
+        catch java.lang.Throwable from label14 to label15 with label37;
+        catch java.lang.Throwable from label18 to label19 with label37;
+        catch java.lang.Throwable from label22 to label23 with label37;
+        catch java.lang.Throwable from label23 to label24 with label37;
+        catch java.lang.Throwable from label25 to label26 with label37;
+        catch java.lang.Throwable from label27 to label28 with label37;
+        catch java.lang.Throwable from label31 to label32 with label37;
+        catch java.lang.Throwable from label34 to label35 with label37;
+    }
+}

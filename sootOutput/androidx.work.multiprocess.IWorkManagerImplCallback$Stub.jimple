@@ -1,0 +1,167 @@
+public abstract class androidx.work.multiprocess.IWorkManagerImplCallback$Stub extends android.os.Binder implements androidx.work.multiprocess.IWorkManagerImplCallback
+{
+    private static final java.lang.String DESCRIPTOR;
+    static final int TRANSACTION_onFailure;
+    static final int TRANSACTION_onSuccess;
+
+    public void <init>()
+    {
+        androidx.work.multiprocess.IWorkManagerImplCallback$Stub r0;
+
+        r0 := @this: androidx.work.multiprocess.IWorkManagerImplCallback$Stub;
+
+        specialinvoke r0.<android.os.Binder: void <init>()>();
+
+        virtualinvoke r0.<androidx.work.multiprocess.IWorkManagerImplCallback$Stub: void attachInterface(android.os.IInterface,java.lang.String)>(r0, "androidx.work.multiprocess.IWorkManagerImplCallback");
+
+        return;
+    }
+
+    public static androidx.work.multiprocess.IWorkManagerImplCallback asInterface(android.os.IBinder)
+    {
+        android.os.IInterface $r1;
+        androidx.work.multiprocess.IWorkManagerImplCallback$Stub$Proxy $r3;
+        androidx.work.multiprocess.IWorkManagerImplCallback $r2;
+        android.os.IBinder $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.os.IBinder;
+
+        if $r0 != null goto label1;
+
+        return null;
+
+     label1:
+        $r1 = interfaceinvoke $r0.<android.os.IBinder: android.os.IInterface queryLocalInterface(java.lang.String)>("androidx.work.multiprocess.IWorkManagerImplCallback");
+
+        if $r1 == null goto label2;
+
+        $z0 = $r1 instanceof androidx.work.multiprocess.IWorkManagerImplCallback;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (androidx.work.multiprocess.IWorkManagerImplCallback) $r1;
+
+        return $r2;
+
+     label2:
+        $r3 = new androidx.work.multiprocess.IWorkManagerImplCallback$Stub$Proxy;
+
+        specialinvoke $r3.<androidx.work.multiprocess.IWorkManagerImplCallback$Stub$Proxy: void <init>(android.os.IBinder)>($r0);
+
+        return $r3;
+    }
+
+    public static androidx.work.multiprocess.IWorkManagerImplCallback getDefaultImpl()
+    {
+        androidx.work.multiprocess.IWorkManagerImplCallback r0;
+
+        r0 = <androidx.work.multiprocess.IWorkManagerImplCallback$Stub$Proxy: androidx.work.multiprocess.IWorkManagerImplCallback sDefaultImpl>;
+
+        return r0;
+    }
+
+    public static boolean setDefaultImpl(androidx.work.multiprocess.IWorkManagerImplCallback)
+    {
+        java.lang.IllegalStateException $r2;
+        androidx.work.multiprocess.IWorkManagerImplCallback $r0, $r1;
+
+        $r0 := @parameter0: androidx.work.multiprocess.IWorkManagerImplCallback;
+
+        $r1 = <androidx.work.multiprocess.IWorkManagerImplCallback$Stub$Proxy: androidx.work.multiprocess.IWorkManagerImplCallback sDefaultImpl>;
+
+        if $r1 != null goto label2;
+
+        if $r0 == null goto label1;
+
+        <androidx.work.multiprocess.IWorkManagerImplCallback$Stub$Proxy: androidx.work.multiprocess.IWorkManagerImplCallback sDefaultImpl> = $r0;
+
+        return 1;
+
+     label1:
+        return 0;
+
+     label2:
+        $r2 = new java.lang.IllegalStateException;
+
+        specialinvoke $r2.<java.lang.IllegalStateException: void <init>(java.lang.String)>("setDefaultImpl() called twice");
+
+        throw $r2;
+    }
+
+    public android.os.IBinder asBinder()
+    {
+        androidx.work.multiprocess.IWorkManagerImplCallback$Stub r0;
+
+        r0 := @this: androidx.work.multiprocess.IWorkManagerImplCallback$Stub;
+
+        return r0;
+    }
+
+    public boolean onTransact(int, android.os.Parcel, android.os.Parcel, int) throws android.os.RemoteException
+    {
+        byte[] $r4;
+        androidx.work.multiprocess.IWorkManagerImplCallback$Stub r0;
+        android.os.Parcel $r1, $r2;
+        int $i0, $i1;
+        java.lang.String $r3;
+        boolean $z0;
+
+        r0 := @this: androidx.work.multiprocess.IWorkManagerImplCallback$Stub;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.os.Parcel;
+
+        $r2 := @parameter2: android.os.Parcel;
+
+        $i1 := @parameter3: int;
+
+        lookupswitch($i0)
+        {
+            case 1: goto label4;
+            case 2: goto label3;
+            case 1598968902: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        $z0 = specialinvoke r0.<android.os.Binder: boolean onTransact(int,android.os.Parcel,android.os.Parcel,int)>($i0, $r1, $r2, $i1);
+
+        return $z0;
+
+     label2:
+        virtualinvoke $r2.<android.os.Parcel: void writeString(java.lang.String)>("androidx.work.multiprocess.IWorkManagerImplCallback");
+
+        return 1;
+
+     label3:
+        virtualinvoke $r1.<android.os.Parcel: void enforceInterface(java.lang.String)>("androidx.work.multiprocess.IWorkManagerImplCallback");
+
+        $r3 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        virtualinvoke r0.<androidx.work.multiprocess.IWorkManagerImplCallback$Stub: void onFailure(java.lang.String)>($r3);
+
+        return 1;
+
+     label4:
+        virtualinvoke $r1.<android.os.Parcel: void enforceInterface(java.lang.String)>("androidx.work.multiprocess.IWorkManagerImplCallback");
+
+        $r4 = virtualinvoke $r1.<android.os.Parcel: byte[] createByteArray()>();
+
+        virtualinvoke r0.<androidx.work.multiprocess.IWorkManagerImplCallback$Stub: void onSuccess(byte[])>($r4);
+
+        return 1;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.work.multiprocess.IWorkManagerImplCallback$Stub: int TRANSACTION_onSuccess> = 1;
+
+        <androidx.work.multiprocess.IWorkManagerImplCallback$Stub: int TRANSACTION_onFailure> = 2;
+
+        <androidx.work.multiprocess.IWorkManagerImplCallback$Stub: java.lang.String DESCRIPTOR> = "androidx.work.multiprocess.IWorkManagerImplCallback";
+
+        return;
+    }
+}

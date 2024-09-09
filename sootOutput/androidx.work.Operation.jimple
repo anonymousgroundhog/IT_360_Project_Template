@@ -1,0 +1,29 @@
+public interface  androidx.work.Operation extends java.lang.Object
+{
+    public static final androidx.work.Operation$State$IN_PROGRESS IN_PROGRESS;
+    public static final androidx.work.Operation$State$SUCCESS SUCCESS;
+
+    static void <clinit>()
+    {
+        androidx.work.Operation$State$SUCCESS $r0;
+        androidx.work.Operation$State$IN_PROGRESS $r1;
+
+        $r0 = new androidx.work.Operation$State$SUCCESS;
+
+        specialinvoke $r0.<androidx.work.Operation$State$SUCCESS: void <init>(androidx.work.Operation$1)>(null);
+
+        <androidx.work.Operation: androidx.work.Operation$State$SUCCESS SUCCESS> = $r0;
+
+        $r1 = new androidx.work.Operation$State$IN_PROGRESS;
+
+        specialinvoke $r1.<androidx.work.Operation$State$IN_PROGRESS: void <init>(androidx.work.Operation$1)>(null);
+
+        <androidx.work.Operation: androidx.work.Operation$State$IN_PROGRESS IN_PROGRESS> = $r1;
+
+        return;
+    }
+
+    public abstract com.google.common.util.concurrent.ListenableFuture getResult();
+
+    public abstract androidx.lifecycle.LiveData getState();
+}

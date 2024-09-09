@@ -1,0 +1,368 @@
+final class com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue extends java.lang.Object implements java.lang.Runnable
+{
+    final java.util.concurrent.Executor executor;
+    boolean isThreadScheduled;
+    final java.util.Queue labelQueue;
+    final java.lang.Object listener;
+    final java.util.Queue waitQueue;
+
+    void <init>(java.lang.Object, java.util.concurrent.Executor)
+    {
+        java.util.concurrent.Executor $r2;
+        com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue r0;
+        java.lang.Object r1;
+        java.util.ArrayDeque $r3;
+
+        r0 := @this: com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.util.concurrent.Executor;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = staticinvoke <com.google.common.collect.Queues: java.util.ArrayDeque newArrayDeque()>();
+
+        r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: java.util.Queue waitQueue> = $r3;
+
+        $r3 = staticinvoke <com.google.common.collect.Queues: java.util.ArrayDeque newArrayDeque()>();
+
+        r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: java.util.Queue labelQueue> = $r3;
+
+        r1 = staticinvoke <com.google.common.base.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>(r1);
+
+        r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: java.lang.Object listener> = r1;
+
+        r1 = staticinvoke <com.google.common.base.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r2);
+
+        $r2 = (java.util.concurrent.Executor) r1;
+
+        r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: java.util.concurrent.Executor executor> = $r2;
+
+        return;
+    }
+
+    void add(com.google.common.util.concurrent.ListenerCallQueue$Event, java.lang.Object)
+    {
+        java.lang.Throwable r4;
+        com.google.common.util.concurrent.ListenerCallQueue$Event r2;
+        com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue r0;
+        java.lang.Object $r1;
+        java.util.Queue $r3;
+
+        r0 := @this: com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue;
+
+        r2 := @parameter0: com.google.common.util.concurrent.ListenerCallQueue$Event;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        entermonitor r0;
+
+     label1:
+        $r3 = r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: java.util.Queue waitQueue>;
+
+        interfaceinvoke $r3.<java.util.Queue: boolean add(java.lang.Object)>(r2);
+
+        $r3 = r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: java.util.Queue labelQueue>;
+
+        interfaceinvoke $r3.<java.util.Queue: boolean add(java.lang.Object)>($r1);
+
+     label2:
+        exitmonitor r0;
+
+        return;
+
+     label3:
+        r4 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    void dispatch()
+    {
+        java.lang.Throwable $r10, r11;
+        com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue r0;
+        java.util.logging.Level $r1;
+        int $i0, $i1;
+        java.lang.String $r6, $r7, $r8;
+        boolean z0, z1;
+        java.util.concurrent.Executor r2;
+        java.lang.RuntimeException r3;
+        java.util.logging.Logger $r4;
+        java.lang.Object $r5;
+        java.lang.StringBuilder $r9;
+
+        r0 := @this: com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue;
+
+        z0 = 0;
+
+        entermonitor r0;
+
+     label01:
+        z1 = r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: boolean isThreadScheduled>;
+
+        if z1 != 0 goto label02;
+
+        r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: boolean isThreadScheduled> = 1;
+
+        z0 = 1;
+
+     label02:
+        exitmonitor r0;
+
+     label03:
+        if z0 == 0 goto label15;
+
+     label04:
+        r2 = r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: java.util.concurrent.Executor executor>;
+
+        interfaceinvoke r2.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>(r0);
+
+     label05:
+        return;
+
+     label06:
+        r3 := @caughtexception;
+
+        entermonitor r0;
+
+     label07:
+        r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: boolean isThreadScheduled> = 0;
+
+        exitmonitor r0;
+
+     label08:
+        $r4 = staticinvoke <com.google.common.util.concurrent.ListenerCallQueue: java.util.logging.Logger access$000()>();
+
+        $r1 = <java.util.logging.Level: java.util.logging.Level SEVERE>;
+
+        $r5 = r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: java.lang.Object listener>;
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r5);
+
+        r2 = r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: java.util.concurrent.Executor executor>;
+
+        $r7 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r2);
+
+        $r8 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r6);
+
+        $i0 = virtualinvoke $r8.<java.lang.String: int length()>();
+
+        $i0 = $i0 + 42;
+
+        $r8 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r7);
+
+        $i1 = virtualinvoke $r8.<java.lang.String: int length()>();
+
+        $i0 = $i0 + $i1;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(int)>($i0);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Exception while running callbacks for ");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" on ");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r6 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r4.<java.util.logging.Logger: void log(java.util.logging.Level,java.lang.String,java.lang.Throwable)>($r1, $r6, r3);
+
+        throw r3;
+
+     label09:
+        $r10 := @caughtexception;
+
+     label10:
+        exitmonitor r0;
+
+     label11:
+        throw $r10;
+
+     label12:
+        r11 := @caughtexception;
+
+     label13:
+        exitmonitor r0;
+
+     label14:
+        throw r11;
+
+     label15:
+        return;
+
+        catch java.lang.Throwable from label01 to label03 with label12;
+        catch java.lang.RuntimeException from label04 to label05 with label06;
+        catch java.lang.Throwable from label07 to label08 with label09;
+        catch java.lang.Throwable from label10 to label11 with label09;
+        catch java.lang.Throwable from label13 to label14 with label12;
+    }
+
+    public void run()
+    {
+        java.lang.Throwable r12, r13, $r14;
+        com.google.common.util.concurrent.ListenerCallQueue$Event r4;
+        com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue r0;
+        java.util.logging.Level $r1;
+        int $i0, $i1;
+        java.lang.String $r8, $r9, $r10;
+        boolean z0, z1;
+        java.lang.RuntimeException r6;
+        java.util.logging.Logger $r7;
+        java.lang.Object $r3, r5;
+        java.lang.StringBuilder $r11;
+        java.util.Queue r2;
+
+        r0 := @this: com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue;
+
+        z0 = 1;
+
+     label01:
+        entermonitor r0;
+
+     label02:
+        z1 = r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: boolean isThreadScheduled>;
+
+        staticinvoke <com.google.common.base.Preconditions: void checkState(boolean)>(z1);
+
+        r2 = r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: java.util.Queue waitQueue>;
+
+        $r3 = interfaceinvoke r2.<java.util.Queue: java.lang.Object poll()>();
+
+        r4 = (com.google.common.util.concurrent.ListenerCallQueue$Event) $r3;
+
+        r2 = r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: java.util.Queue labelQueue>;
+
+        $r3 = interfaceinvoke r2.<java.util.Queue: java.lang.Object poll()>();
+
+        if r4 != null goto label04;
+
+        r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: boolean isThreadScheduled> = 0;
+
+        z0 = 0;
+
+        exitmonitor r0;
+
+     label03:
+        goto label23;
+
+     label04:
+        exitmonitor r0;
+
+     label05:
+        r5 = r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: java.lang.Object listener>;
+
+        interfaceinvoke r4.<com.google.common.util.concurrent.ListenerCallQueue$Event: void call(java.lang.Object)>(r5);
+
+     label06:
+        goto label01;
+
+     label07:
+        r6 := @caughtexception;
+
+     label08:
+        $r7 = staticinvoke <com.google.common.util.concurrent.ListenerCallQueue: java.util.logging.Logger access$000()>();
+
+        $r1 = <java.util.logging.Level: java.util.logging.Level SEVERE>;
+
+        r5 = r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: java.lang.Object listener>;
+
+        $r8 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r5);
+
+        $r9 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r3);
+
+        $r10 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r8);
+
+        $i0 = virtualinvoke $r10.<java.lang.String: int length()>();
+
+     label09:
+        $i0 = $i0 + 37;
+
+     label10:
+        $r10 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r9);
+
+        $i1 = virtualinvoke $r10.<java.lang.String: int length()>();
+
+     label11:
+        $i0 = $i0 + $i1;
+
+     label12:
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(int)>($i0);
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Exception while executing callback: ");
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r9);
+
+        $r8 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r7.<java.util.logging.Logger: void log(java.util.logging.Level,java.lang.String,java.lang.Throwable)>($r1, $r8, r6);
+
+     label13:
+        goto label01;
+
+     label14:
+        r12 := @caughtexception;
+
+     label15:
+        exitmonitor r0;
+
+     label16:
+        throw r12;
+
+     label17:
+        r13 := @caughtexception;
+
+        if z0 == 0 goto label22;
+
+        entermonitor r0;
+
+     label18:
+        r0.<com.google.common.util.concurrent.ListenerCallQueue$PerListenerQueue: boolean isThreadScheduled> = 0;
+
+        exitmonitor r0;
+
+     label19:
+        goto label22;
+
+     label20:
+        $r14 := @caughtexception;
+
+        exitmonitor r0;
+
+     label21:
+        throw $r14;
+
+     label22:
+        throw r13;
+
+     label23:
+        return;
+
+        catch java.lang.Throwable from label01 to label02 with label17;
+        catch java.lang.Throwable from label02 to label03 with label14;
+        catch java.lang.Throwable from label04 to label05 with label14;
+        catch java.lang.RuntimeException from label05 to label06 with label07;
+        catch java.lang.Throwable from label05 to label06 with label17;
+        catch java.lang.Throwable from label08 to label09 with label17;
+        catch java.lang.Throwable from label10 to label11 with label17;
+        catch java.lang.Throwable from label12 to label13 with label17;
+        catch java.lang.Throwable from label15 to label16 with label14;
+        catch java.lang.Throwable from label16 to label17 with label17;
+        catch java.lang.Throwable from label18 to label19 with label20;
+        catch java.lang.Throwable from label20 to label21 with label20;
+    }
+}

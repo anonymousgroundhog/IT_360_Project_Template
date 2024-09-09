@@ -1,0 +1,254 @@
+final class androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl extends androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager
+{
+    private final android.adservices.appsetid.AppSetIdManager mAppSetIdManager;
+
+    public void <init>(android.adservices.appsetid.AppSetIdManager)
+    {
+        android.adservices.appsetid.AppSetIdManager $r1;
+        androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl r0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl;
+
+        $r1 := @parameter0: android.adservices.appsetid.AppSetIdManager;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "mAppSetIdManager");
+
+        specialinvoke r0.<androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager: void <init>()>();
+
+        r0.<androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl: android.adservices.appsetid.AppSetIdManager mAppSetIdManager> = $r1;
+
+        return;
+    }
+
+    public void <init>(android.content.Context)
+    {
+        android.content.Context $r1;
+        java.lang.Object $r2;
+        android.adservices.appsetid.AppSetIdManager $r3;
+        androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl r0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl;
+
+        $r1 := @parameter0: android.content.Context;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "context");
+
+        $r2 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.Class)>(class "Landroid/adservices/appsetid/AppSetIdManager;");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r2, "context.getSystemService\u2026:class.java\n            )");
+
+        $r3 = (android.adservices.appsetid.AppSetIdManager) $r2;
+
+        specialinvoke r0.<androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl: void <init>(android.adservices.appsetid.AppSetIdManager)>($r3);
+
+        return;
+    }
+
+    public static final java.lang.Object access$getAppSetIdAsyncInternal(androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl, kotlin.coroutines.Continuation)
+    {
+        kotlin.coroutines.Continuation $r1;
+        java.lang.Object $r2;
+        androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl $r0;
+
+        $r0 := @parameter0: androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl;
+
+        $r1 := @parameter1: kotlin.coroutines.Continuation;
+
+        $r2 = specialinvoke $r0.<androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl: java.lang.Object getAppSetIdAsyncInternal(kotlin.coroutines.Continuation)>($r1);
+
+        return $r2;
+    }
+
+    public static final android.adservices.appsetid.AppSetIdManager access$getMAppSetIdManager$p(androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl)
+    {
+        android.adservices.appsetid.AppSetIdManager r1;
+        androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl $r0;
+
+        $r0 := @parameter0: androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl;
+
+        r1 = $r0.<androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl: android.adservices.appsetid.AppSetIdManager mAppSetIdManager>;
+
+        return r1;
+    }
+
+    private final androidx.privacysandbox.ads.adservices.appsetid.AppSetId convertResponse(android.adservices.appsetid.AppSetId)
+    {
+        int $i0;
+        android.adservices.appsetid.AppSetId $r1;
+        androidx.privacysandbox.ads.adservices.appsetid.AppSetId $r2;
+        java.lang.String $r3;
+        androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl r0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl;
+
+        $r1 := @parameter0: android.adservices.appsetid.AppSetId;
+
+        $i0 = virtualinvoke $r1.<android.adservices.appsetid.AppSetId: int getScope()>();
+
+        if $i0 != 1 goto label1;
+
+        $r2 = new androidx.privacysandbox.ads.adservices.appsetid.AppSetId;
+
+        $r3 = virtualinvoke $r1.<android.adservices.appsetid.AppSetId: java.lang.String getId()>();
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r3, "response.id");
+
+        specialinvoke $r2.<androidx.privacysandbox.ads.adservices.appsetid.AppSetId: void <init>(java.lang.String,int)>($r3, 1);
+
+        return $r2;
+
+     label1:
+        $r2 = new androidx.privacysandbox.ads.adservices.appsetid.AppSetId;
+
+        $r3 = virtualinvoke $r1.<android.adservices.appsetid.AppSetId: java.lang.String getId()>();
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r3, "response.id");
+
+        specialinvoke $r2.<androidx.privacysandbox.ads.adservices.appsetid.AppSetId: void <init>(java.lang.String,int)>($r3, 2);
+
+        return $r2;
+    }
+
+    private final java.lang.Object getAppSetIdAsyncInternal(kotlin.coroutines.Continuation)
+    {
+        kotlin.coroutines.Continuation $r1, $r4;
+        kotlinx.coroutines.CancellableContinuationImpl r2;
+        android.adservices.appsetid.AppSetIdManager $r6;
+        android.os.OutcomeReceiver $r7;
+        androidx.privacysandbox.ads.adservices.adid.AdIdManager$Api33Ext4Impl$$ExternalSyntheticLambda0 $r3;
+        kotlinx.coroutines.CancellableContinuation r5;
+        java.lang.Object $r8, $r9;
+        androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl r0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl;
+
+        $r1 := @parameter0: kotlin.coroutines.Continuation;
+
+        r2 = new kotlinx.coroutines.CancellableContinuationImpl;
+
+        $r4 = staticinvoke <kotlin.coroutines.intrinsics.IntrinsicsKt: kotlin.coroutines.Continuation intercepted(kotlin.coroutines.Continuation)>($r1);
+
+        specialinvoke r2.<kotlinx.coroutines.CancellableContinuationImpl: void <init>(kotlin.coroutines.Continuation,int)>($r4, 1);
+
+        virtualinvoke r2.<kotlinx.coroutines.CancellableContinuationImpl: void initCancellability()>();
+
+        r5 = (kotlinx.coroutines.CancellableContinuation) r2;
+
+        $r6 = staticinvoke <androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl: android.adservices.appsetid.AppSetIdManager access$getMAppSetIdManager$p(androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl)>(r0);
+
+        $r3 = new androidx.privacysandbox.ads.adservices.adid.AdIdManager$Api33Ext4Impl$$ExternalSyntheticLambda0;
+
+        specialinvoke $r3.<androidx.privacysandbox.ads.adservices.adid.AdIdManager$Api33Ext4Impl$$ExternalSyntheticLambda0: void <init>()>();
+
+        $r4 = (kotlin.coroutines.Continuation) r5;
+
+        $r7 = staticinvoke <androidx.core.os.OutcomeReceiverKt: android.os.OutcomeReceiver asOutcomeReceiver(kotlin.coroutines.Continuation)>($r4);
+
+        virtualinvoke $r6.<android.adservices.appsetid.AppSetIdManager: void getAppSetId(java.util.concurrent.Executor,android.os.OutcomeReceiver)>($r3, $r7);
+
+        $r8 = virtualinvoke r2.<kotlinx.coroutines.CancellableContinuationImpl: java.lang.Object getResult()>();
+
+        $r9 = staticinvoke <kotlin.coroutines.intrinsics.IntrinsicsKt: java.lang.Object getCOROUTINE_SUSPENDED()>();
+
+        if $r8 != $r9 goto label1;
+
+        staticinvoke <kotlin.coroutines.jvm.internal.DebugProbesKt: void probeCoroutineSuspended(kotlin.coroutines.Continuation)>($r1);
+
+     label1:
+        return $r8;
+    }
+
+    public java.lang.Object getAppSetId(kotlin.coroutines.Continuation)
+    {
+        java.lang.IllegalStateException $r5;
+        kotlin.coroutines.Continuation $r1;
+        android.adservices.appsetid.AppSetId $r7;
+        androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl$getAppSetId$1 $r2;
+        int $i0;
+        androidx.privacysandbox.ads.adservices.appsetid.AppSetId $r8;
+        java.lang.Object $r3, $r4, $r6;
+        androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl r0;
+        boolean $z0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl;
+
+        $r1 := @parameter0: kotlin.coroutines.Continuation;
+
+        $z0 = $r1 instanceof androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl$getAppSetId$1;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = (androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl$getAppSetId$1) $r1;
+
+        $i0 = $r2.<androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl$getAppSetId$1: int label>;
+
+        $i0 = $i0 & -2147483648;
+
+        if $i0 == 0 goto label1;
+
+        $i0 = $r2.<androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl$getAppSetId$1: int label>;
+
+        $i0 = $i0 - -2147483648;
+
+        $r2.<androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl$getAppSetId$1: int label> = $i0;
+
+        goto label2;
+
+     label1:
+        $r2 = new androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl$getAppSetId$1;
+
+        specialinvoke $r2.<androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl$getAppSetId$1: void <init>(androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl,kotlin.coroutines.Continuation)>(r0, $r1);
+
+     label2:
+        $r3 = $r2.<androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl$getAppSetId$1: java.lang.Object result>;
+
+        $r4 = staticinvoke <kotlin.coroutines.intrinsics.IntrinsicsKt: java.lang.Object getCOROUTINE_SUSPENDED()>();
+
+        $i0 = $r2.<androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl$getAppSetId$1: int label>;
+
+        lookupswitch($i0)
+        {
+            case 0: goto label5;
+            case 1: goto label4;
+            default: goto label3;
+        };
+
+     label3:
+        $r5 = new java.lang.IllegalStateException;
+
+        specialinvoke $r5.<java.lang.IllegalStateException: void <init>(java.lang.String)>("call to \'resume\' before \'invoke\' with coroutine");
+
+        throw $r5;
+
+     label4:
+        $r4 = $r2.<androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl$getAppSetId$1: java.lang.Object L$0>;
+
+        r0 = (androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl) $r4;
+
+        staticinvoke <kotlin.ResultKt: void throwOnFailure(java.lang.Object)>($r3);
+
+        goto label6;
+
+     label5:
+        staticinvoke <kotlin.ResultKt: void throwOnFailure(java.lang.Object)>($r3);
+
+        $r2.<androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl$getAppSetId$1: java.lang.Object L$0> = r0;
+
+        $r2.<androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl$getAppSetId$1: int label> = 1;
+
+        $r6 = specialinvoke r0.<androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl: java.lang.Object getAppSetIdAsyncInternal(kotlin.coroutines.Continuation)>($r2);
+
+        $r3 = $r6;
+
+        if $r6 != $r4 goto label6;
+
+        return $r4;
+
+     label6:
+        $r7 = (android.adservices.appsetid.AppSetId) $r3;
+
+        $r8 = specialinvoke r0.<androidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl: androidx.privacysandbox.ads.adservices.appsetid.AppSetId convertResponse(android.adservices.appsetid.AppSetId)>($r7);
+
+        return $r8;
+    }
+}

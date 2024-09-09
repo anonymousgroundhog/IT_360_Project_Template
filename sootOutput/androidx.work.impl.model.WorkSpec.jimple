@@ -1,0 +1,1123 @@
+public final class androidx.work.impl.model.WorkSpec extends java.lang.Object
+{
+    public static final long SCHEDULE_NOT_REQUESTED_YET;
+    private static final java.lang.String TAG;
+    public static final androidx.arch.core.util.Function WORK_INFO_MAPPER;
+    public long backoffDelayDuration;
+    public androidx.work.BackoffPolicy backoffPolicy;
+    public androidx.work.Constraints constraints;
+    public boolean expedited;
+    public long flexDuration;
+    public java.lang.String id;
+    public long initialDelay;
+    public androidx.work.Data input;
+    public java.lang.String inputMergerClassName;
+    public long intervalDuration;
+    public long minimumRetentionDuration;
+    public androidx.work.OutOfQuotaPolicy outOfQuotaPolicy;
+    public androidx.work.Data output;
+    public long periodStartTime;
+    public int runAttemptCount;
+    public long scheduleRequestedAt;
+    public androidx.work.WorkInfo$State state;
+    public java.lang.String workerClassName;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+        androidx.work.impl.model.WorkSpec$1 $r1;
+
+        <androidx.work.impl.model.WorkSpec: long SCHEDULE_NOT_REQUESTED_YET> = -1L;
+
+        $r0 = staticinvoke <androidx.work.Logger: java.lang.String tagWithPrefix(java.lang.String)>("WorkSpec");
+
+        <androidx.work.impl.model.WorkSpec: java.lang.String TAG> = $r0;
+
+        $r1 = new androidx.work.impl.model.WorkSpec$1;
+
+        specialinvoke $r1.<androidx.work.impl.model.WorkSpec$1: void <init>()>();
+
+        <androidx.work.impl.model.WorkSpec: androidx.arch.core.util.Function WORK_INFO_MAPPER> = $r1;
+
+        return;
+    }
+
+    public void <init>(androidx.work.impl.model.WorkSpec)
+    {
+        androidx.work.BackoffPolicy $r5;
+        androidx.work.Constraints $r4, $r9;
+        long $l0;
+        androidx.work.impl.model.WorkSpec r0, $r1;
+        androidx.work.WorkInfo$State $r2;
+        int $i1;
+        androidx.work.OutOfQuotaPolicy $r6;
+        java.lang.String $r7;
+        androidx.work.Data $r3, $r8;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.model.WorkSpec;
+
+        $r1 := @parameter0: androidx.work.impl.model.WorkSpec;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State ENQUEUED>;
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.WorkInfo$State state> = $r2;
+
+        $r3 = <androidx.work.Data: androidx.work.Data EMPTY>;
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.Data input> = $r3;
+
+        $r3 = <androidx.work.Data: androidx.work.Data EMPTY>;
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.Data output> = $r3;
+
+        $r4 = <androidx.work.Constraints: androidx.work.Constraints NONE>;
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.Constraints constraints> = $r4;
+
+        $r5 = <androidx.work.BackoffPolicy: androidx.work.BackoffPolicy EXPONENTIAL>;
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.BackoffPolicy backoffPolicy> = $r5;
+
+        r0.<androidx.work.impl.model.WorkSpec: long backoffDelayDuration> = 30000L;
+
+        r0.<androidx.work.impl.model.WorkSpec: long scheduleRequestedAt> = -1L;
+
+        $r6 = <androidx.work.OutOfQuotaPolicy: androidx.work.OutOfQuotaPolicy RUN_AS_NON_EXPEDITED_WORK_REQUEST>;
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.OutOfQuotaPolicy outOfQuotaPolicy> = $r6;
+
+        $r7 = $r1.<androidx.work.impl.model.WorkSpec: java.lang.String id>;
+
+        r0.<androidx.work.impl.model.WorkSpec: java.lang.String id> = $r7;
+
+        $r7 = $r1.<androidx.work.impl.model.WorkSpec: java.lang.String workerClassName>;
+
+        r0.<androidx.work.impl.model.WorkSpec: java.lang.String workerClassName> = $r7;
+
+        $r2 = $r1.<androidx.work.impl.model.WorkSpec: androidx.work.WorkInfo$State state>;
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.WorkInfo$State state> = $r2;
+
+        $r7 = $r1.<androidx.work.impl.model.WorkSpec: java.lang.String inputMergerClassName>;
+
+        r0.<androidx.work.impl.model.WorkSpec: java.lang.String inputMergerClassName> = $r7;
+
+        $r3 = new androidx.work.Data;
+
+        $r8 = $r1.<androidx.work.impl.model.WorkSpec: androidx.work.Data input>;
+
+        specialinvoke $r3.<androidx.work.Data: void <init>(androidx.work.Data)>($r8);
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.Data input> = $r3;
+
+        $r3 = new androidx.work.Data;
+
+        $r8 = $r1.<androidx.work.impl.model.WorkSpec: androidx.work.Data output>;
+
+        specialinvoke $r3.<androidx.work.Data: void <init>(androidx.work.Data)>($r8);
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.Data output> = $r3;
+
+        $l0 = $r1.<androidx.work.impl.model.WorkSpec: long initialDelay>;
+
+        r0.<androidx.work.impl.model.WorkSpec: long initialDelay> = $l0;
+
+        $l0 = $r1.<androidx.work.impl.model.WorkSpec: long intervalDuration>;
+
+        r0.<androidx.work.impl.model.WorkSpec: long intervalDuration> = $l0;
+
+        $l0 = $r1.<androidx.work.impl.model.WorkSpec: long flexDuration>;
+
+        r0.<androidx.work.impl.model.WorkSpec: long flexDuration> = $l0;
+
+        $r4 = new androidx.work.Constraints;
+
+        $r9 = $r1.<androidx.work.impl.model.WorkSpec: androidx.work.Constraints constraints>;
+
+        specialinvoke $r4.<androidx.work.Constraints: void <init>(androidx.work.Constraints)>($r9);
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.Constraints constraints> = $r4;
+
+        $i1 = $r1.<androidx.work.impl.model.WorkSpec: int runAttemptCount>;
+
+        r0.<androidx.work.impl.model.WorkSpec: int runAttemptCount> = $i1;
+
+        $r5 = $r1.<androidx.work.impl.model.WorkSpec: androidx.work.BackoffPolicy backoffPolicy>;
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.BackoffPolicy backoffPolicy> = $r5;
+
+        $l0 = $r1.<androidx.work.impl.model.WorkSpec: long backoffDelayDuration>;
+
+        r0.<androidx.work.impl.model.WorkSpec: long backoffDelayDuration> = $l0;
+
+        $l0 = $r1.<androidx.work.impl.model.WorkSpec: long periodStartTime>;
+
+        r0.<androidx.work.impl.model.WorkSpec: long periodStartTime> = $l0;
+
+        $l0 = $r1.<androidx.work.impl.model.WorkSpec: long minimumRetentionDuration>;
+
+        r0.<androidx.work.impl.model.WorkSpec: long minimumRetentionDuration> = $l0;
+
+        $l0 = $r1.<androidx.work.impl.model.WorkSpec: long scheduleRequestedAt>;
+
+        r0.<androidx.work.impl.model.WorkSpec: long scheduleRequestedAt> = $l0;
+
+        $z0 = $r1.<androidx.work.impl.model.WorkSpec: boolean expedited>;
+
+        r0.<androidx.work.impl.model.WorkSpec: boolean expedited> = $z0;
+
+        $r6 = $r1.<androidx.work.impl.model.WorkSpec: androidx.work.OutOfQuotaPolicy outOfQuotaPolicy>;
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.OutOfQuotaPolicy outOfQuotaPolicy> = $r6;
+
+        return;
+    }
+
+    public void <init>(java.lang.String, java.lang.String)
+    {
+        androidx.work.BackoffPolicy $r6;
+        androidx.work.Constraints $r5;
+        androidx.work.impl.model.WorkSpec r0;
+        androidx.work.WorkInfo$State $r3;
+        java.lang.String $r1, $r2;
+        androidx.work.OutOfQuotaPolicy $r7;
+        androidx.work.Data $r4;
+
+        r0 := @this: androidx.work.impl.model.WorkSpec;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State ENQUEUED>;
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.WorkInfo$State state> = $r3;
+
+        $r4 = <androidx.work.Data: androidx.work.Data EMPTY>;
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.Data input> = $r4;
+
+        $r4 = <androidx.work.Data: androidx.work.Data EMPTY>;
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.Data output> = $r4;
+
+        $r5 = <androidx.work.Constraints: androidx.work.Constraints NONE>;
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.Constraints constraints> = $r5;
+
+        $r6 = <androidx.work.BackoffPolicy: androidx.work.BackoffPolicy EXPONENTIAL>;
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.BackoffPolicy backoffPolicy> = $r6;
+
+        r0.<androidx.work.impl.model.WorkSpec: long backoffDelayDuration> = 30000L;
+
+        r0.<androidx.work.impl.model.WorkSpec: long scheduleRequestedAt> = -1L;
+
+        $r7 = <androidx.work.OutOfQuotaPolicy: androidx.work.OutOfQuotaPolicy RUN_AS_NON_EXPEDITED_WORK_REQUEST>;
+
+        r0.<androidx.work.impl.model.WorkSpec: androidx.work.OutOfQuotaPolicy outOfQuotaPolicy> = $r7;
+
+        r0.<androidx.work.impl.model.WorkSpec: java.lang.String id> = $r1;
+
+        r0.<androidx.work.impl.model.WorkSpec: java.lang.String workerClassName> = $r2;
+
+        return;
+    }
+
+    public long calculateNextRunTime()
+    {
+        androidx.work.BackoffPolicy r1, $r2;
+        long $l0, l1, $l3, $l5;
+        androidx.work.impl.model.WorkSpec r0;
+        byte b4;
+        int $i2;
+        float f0;
+        boolean $z0, z1;
+
+        r0 := @this: androidx.work.impl.model.WorkSpec;
+
+        $z0 = virtualinvoke r0.<androidx.work.impl.model.WorkSpec: boolean isBackedOff()>();
+
+        z1 = 0;
+
+        if $z0 == 0 goto label04;
+
+        r1 = r0.<androidx.work.impl.model.WorkSpec: androidx.work.BackoffPolicy backoffPolicy>;
+
+        $r2 = <androidx.work.BackoffPolicy: androidx.work.BackoffPolicy LINEAR>;
+
+        if r1 != $r2 goto label01;
+
+        z1 = 1;
+
+     label01:
+        if z1 == 0 goto label02;
+
+        l1 = r0.<androidx.work.impl.model.WorkSpec: long backoffDelayDuration>;
+
+        $i2 = r0.<androidx.work.impl.model.WorkSpec: int runAttemptCount>;
+
+        $l3 = (long) $i2;
+
+        $l3 = l1 * $l3;
+
+        goto label03;
+
+     label02:
+        l1 = r0.<androidx.work.impl.model.WorkSpec: long backoffDelayDuration>;
+
+        f0 = (float) l1;
+
+        $i2 = r0.<androidx.work.impl.model.WorkSpec: int runAttemptCount>;
+
+        $i2 = $i2 - 1;
+
+        f0 = staticinvoke <java.lang.Math: float scalb(float,int)>(f0, $i2);
+
+        $l3 = (long) f0;
+
+     label03:
+        l1 = r0.<androidx.work.impl.model.WorkSpec: long periodStartTime>;
+
+        $l3 = staticinvoke <java.lang.Math: long min(long,long)>(18000000L, $l3);
+
+        l1 = l1 + $l3;
+
+        return l1;
+
+     label04:
+        $z0 = virtualinvoke r0.<androidx.work.impl.model.WorkSpec: boolean isPeriodic()>();
+
+        l1 = 0L;
+
+        if $z0 == 0 goto label12;
+
+        $l3 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l0 = r0.<androidx.work.impl.model.WorkSpec: long periodStartTime>;
+
+        b4 = $l0 cmp 0L;
+
+        if b4 != 0 goto label05;
+
+        $l0 = r0.<androidx.work.impl.model.WorkSpec: long initialDelay>;
+
+        $l3 = $l0 + $l3;
+
+        goto label06;
+
+     label05:
+        $l3 = r0.<androidx.work.impl.model.WorkSpec: long periodStartTime>;
+
+     label06:
+        $l5 = r0.<androidx.work.impl.model.WorkSpec: long flexDuration>;
+
+        $l0 = r0.<androidx.work.impl.model.WorkSpec: long intervalDuration>;
+
+        b4 = $l5 cmp $l0;
+
+        if b4 == 0 goto label07;
+
+        z1 = 1;
+
+     label07:
+        if z1 == 0 goto label09;
+
+        $l0 = r0.<androidx.work.impl.model.WorkSpec: long periodStartTime>;
+
+        b4 = $l0 cmp 0L;
+
+        if b4 != 0 goto label08;
+
+        l1 = r0.<androidx.work.impl.model.WorkSpec: long flexDuration>;
+
+        l1 = l1 * -1L;
+
+     label08:
+        $l0 = r0.<androidx.work.impl.model.WorkSpec: long intervalDuration>;
+
+        $l3 = $l0 + $l3;
+
+        l1 = $l3 + l1;
+
+        return l1;
+
+     label09:
+        $l0 = r0.<androidx.work.impl.model.WorkSpec: long periodStartTime>;
+
+        b4 = $l0 cmp 0L;
+
+        if b4 != 0 goto label10;
+
+        goto label11;
+
+     label10:
+        l1 = r0.<androidx.work.impl.model.WorkSpec: long intervalDuration>;
+
+     label11:
+        l1 = $l3 + l1;
+
+        return l1;
+
+     label12:
+        l1 = r0.<androidx.work.impl.model.WorkSpec: long periodStartTime>;
+
+        b4 = l1 cmp 0L;
+
+        if b4 != 0 goto label13;
+
+        l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        goto label14;
+
+     label13:
+        l1 = r0.<androidx.work.impl.model.WorkSpec: long periodStartTime>;
+
+     label14:
+        $l3 = r0.<androidx.work.impl.model.WorkSpec: long initialDelay>;
+
+        l1 = $l3 + l1;
+
+        return l1;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.work.BackoffPolicy $r13, $r14;
+        androidx.work.Constraints $r11, $r12;
+        long $l0, $l1;
+        androidx.work.impl.model.WorkSpec r0, r4;
+        byte $b2;
+        int $i3, $i4;
+        java.lang.String $r5, $r6;
+        androidx.work.OutOfQuotaPolicy $r15, $r16;
+        androidx.work.Data $r9, $r10;
+        boolean $z0, $z1;
+        androidx.work.WorkInfo$State $r7, $r8;
+        java.lang.Object $r1;
+        java.lang.Class $r2, $r3;
+
+        r0 := @this: androidx.work.impl.model.WorkSpec;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if r0 != $r1 goto label01;
+
+        return 1;
+
+     label01:
+        if $r1 == null goto label21;
+
+        $r2 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r2 == $r3 goto label02;
+
+        return 0;
+
+     label02:
+        r4 = (androidx.work.impl.model.WorkSpec) $r1;
+
+        $l0 = r0.<androidx.work.impl.model.WorkSpec: long initialDelay>;
+
+        $l1 = r4.<androidx.work.impl.model.WorkSpec: long initialDelay>;
+
+        $b2 = $l0 cmp $l1;
+
+        if $b2 == 0 goto label03;
+
+        return 0;
+
+     label03:
+        $l0 = r0.<androidx.work.impl.model.WorkSpec: long intervalDuration>;
+
+        $l1 = r4.<androidx.work.impl.model.WorkSpec: long intervalDuration>;
+
+        $b2 = $l0 cmp $l1;
+
+        if $b2 == 0 goto label04;
+
+        return 0;
+
+     label04:
+        $l0 = r0.<androidx.work.impl.model.WorkSpec: long flexDuration>;
+
+        $l1 = r4.<androidx.work.impl.model.WorkSpec: long flexDuration>;
+
+        $b2 = $l0 cmp $l1;
+
+        if $b2 == 0 goto label05;
+
+        return 0;
+
+     label05:
+        $i3 = r0.<androidx.work.impl.model.WorkSpec: int runAttemptCount>;
+
+        $i4 = r4.<androidx.work.impl.model.WorkSpec: int runAttemptCount>;
+
+        if $i3 == $i4 goto label06;
+
+        return 0;
+
+     label06:
+        $l0 = r0.<androidx.work.impl.model.WorkSpec: long backoffDelayDuration>;
+
+        $l1 = r4.<androidx.work.impl.model.WorkSpec: long backoffDelayDuration>;
+
+        $b2 = $l0 cmp $l1;
+
+        if $b2 == 0 goto label07;
+
+        return 0;
+
+     label07:
+        $l0 = r0.<androidx.work.impl.model.WorkSpec: long periodStartTime>;
+
+        $l1 = r4.<androidx.work.impl.model.WorkSpec: long periodStartTime>;
+
+        $b2 = $l0 cmp $l1;
+
+        if $b2 == 0 goto label08;
+
+        return 0;
+
+     label08:
+        $l0 = r0.<androidx.work.impl.model.WorkSpec: long minimumRetentionDuration>;
+
+        $l1 = r4.<androidx.work.impl.model.WorkSpec: long minimumRetentionDuration>;
+
+        $b2 = $l0 cmp $l1;
+
+        if $b2 == 0 goto label09;
+
+        return 0;
+
+     label09:
+        $l0 = r0.<androidx.work.impl.model.WorkSpec: long scheduleRequestedAt>;
+
+        $l1 = r4.<androidx.work.impl.model.WorkSpec: long scheduleRequestedAt>;
+
+        $b2 = $l0 cmp $l1;
+
+        if $b2 == 0 goto label10;
+
+        return 0;
+
+     label10:
+        $z0 = r0.<androidx.work.impl.model.WorkSpec: boolean expedited>;
+
+        $z1 = r4.<androidx.work.impl.model.WorkSpec: boolean expedited>;
+
+        if $z0 == $z1 goto label11;
+
+        return 0;
+
+     label11:
+        $r5 = r0.<androidx.work.impl.model.WorkSpec: java.lang.String id>;
+
+        $r6 = r4.<androidx.work.impl.model.WorkSpec: java.lang.String id>;
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 != 0 goto label12;
+
+        return 0;
+
+     label12:
+        $r7 = r0.<androidx.work.impl.model.WorkSpec: androidx.work.WorkInfo$State state>;
+
+        $r8 = r4.<androidx.work.impl.model.WorkSpec: androidx.work.WorkInfo$State state>;
+
+        if $r7 == $r8 goto label13;
+
+        return 0;
+
+     label13:
+        $r5 = r0.<androidx.work.impl.model.WorkSpec: java.lang.String workerClassName>;
+
+        $r6 = r4.<androidx.work.impl.model.WorkSpec: java.lang.String workerClassName>;
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 != 0 goto label14;
+
+        return 0;
+
+     label14:
+        $r5 = r0.<androidx.work.impl.model.WorkSpec: java.lang.String inputMergerClassName>;
+
+        if $r5 == null goto label15;
+
+        $r5 = r0.<androidx.work.impl.model.WorkSpec: java.lang.String inputMergerClassName>;
+
+        $r6 = r4.<androidx.work.impl.model.WorkSpec: java.lang.String inputMergerClassName>;
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 != 0 goto label16;
+
+        return 0;
+
+     label15:
+        $r5 = r4.<androidx.work.impl.model.WorkSpec: java.lang.String inputMergerClassName>;
+
+        if $r5 == null goto label16;
+
+        return 0;
+
+     label16:
+        $r9 = r0.<androidx.work.impl.model.WorkSpec: androidx.work.Data input>;
+
+        $r10 = r4.<androidx.work.impl.model.WorkSpec: androidx.work.Data input>;
+
+        $z0 = virtualinvoke $r9.<androidx.work.Data: boolean equals(java.lang.Object)>($r10);
+
+        if $z0 != 0 goto label17;
+
+        return 0;
+
+     label17:
+        $r9 = r0.<androidx.work.impl.model.WorkSpec: androidx.work.Data output>;
+
+        $r10 = r4.<androidx.work.impl.model.WorkSpec: androidx.work.Data output>;
+
+        $z0 = virtualinvoke $r9.<androidx.work.Data: boolean equals(java.lang.Object)>($r10);
+
+        if $z0 != 0 goto label18;
+
+        return 0;
+
+     label18:
+        $r11 = r0.<androidx.work.impl.model.WorkSpec: androidx.work.Constraints constraints>;
+
+        $r12 = r4.<androidx.work.impl.model.WorkSpec: androidx.work.Constraints constraints>;
+
+        $z0 = virtualinvoke $r11.<androidx.work.Constraints: boolean equals(java.lang.Object)>($r12);
+
+        if $z0 != 0 goto label19;
+
+        return 0;
+
+     label19:
+        $r13 = r0.<androidx.work.impl.model.WorkSpec: androidx.work.BackoffPolicy backoffPolicy>;
+
+        $r14 = r4.<androidx.work.impl.model.WorkSpec: androidx.work.BackoffPolicy backoffPolicy>;
+
+        if $r13 == $r14 goto label20;
+
+        return 0;
+
+     label20:
+        $r15 = r0.<androidx.work.impl.model.WorkSpec: androidx.work.OutOfQuotaPolicy outOfQuotaPolicy>;
+
+        $r16 = r4.<androidx.work.impl.model.WorkSpec: androidx.work.OutOfQuotaPolicy outOfQuotaPolicy>;
+
+        if $r15 != $r16 goto label21;
+
+        return 1;
+
+     label21:
+        return 0;
+    }
+
+    public boolean hasConstraints()
+    {
+        androidx.work.Constraints $r1, $r2;
+        androidx.work.impl.model.WorkSpec r0;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.model.WorkSpec;
+
+        $r2 = <androidx.work.Constraints: androidx.work.Constraints NONE>;
+
+        $r1 = r0.<androidx.work.impl.model.WorkSpec: androidx.work.Constraints constraints>;
+
+        $z0 = virtualinvoke $r2.<androidx.work.Constraints: boolean equals(java.lang.Object)>($r1);
+
+        $z0 = $z0 ^ 1;
+
+        return $z0;
+    }
+
+    public int hashCode()
+    {
+        androidx.work.BackoffPolicy $r5;
+        androidx.work.Constraints $r4;
+        long $l2, $l3;
+        androidx.work.impl.model.WorkSpec r0;
+        androidx.work.WorkInfo$State $r2;
+        int $i0, $i1;
+        java.lang.String r1;
+        androidx.work.OutOfQuotaPolicy $r6;
+        androidx.work.Data $r3;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.model.WorkSpec;
+
+        r1 = r0.<androidx.work.impl.model.WorkSpec: java.lang.String id>;
+
+        $i0 = virtualinvoke r1.<java.lang.String: int hashCode()>();
+
+        $i0 = $i0 * 31;
+
+        $r2 = r0.<androidx.work.impl.model.WorkSpec: androidx.work.WorkInfo$State state>;
+
+        $i1 = virtualinvoke $r2.<androidx.work.WorkInfo$State: int hashCode()>();
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        r1 = r0.<androidx.work.impl.model.WorkSpec: java.lang.String workerClassName>;
+
+        $i1 = virtualinvoke r1.<java.lang.String: int hashCode()>();
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        r1 = r0.<androidx.work.impl.model.WorkSpec: java.lang.String inputMergerClassName>;
+
+        if r1 == null goto label1;
+
+        r1 = r0.<androidx.work.impl.model.WorkSpec: java.lang.String inputMergerClassName>;
+
+        $i1 = virtualinvoke r1.<java.lang.String: int hashCode()>();
+
+        goto label2;
+
+     label1:
+        $i1 = 0;
+
+     label2:
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        $r3 = r0.<androidx.work.impl.model.WorkSpec: androidx.work.Data input>;
+
+        $i1 = virtualinvoke $r3.<androidx.work.Data: int hashCode()>();
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        $r3 = r0.<androidx.work.impl.model.WorkSpec: androidx.work.Data output>;
+
+        $i1 = virtualinvoke $r3.<androidx.work.Data: int hashCode()>();
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        $l2 = r0.<androidx.work.impl.model.WorkSpec: long initialDelay>;
+
+        $l3 = r0.<androidx.work.impl.model.WorkSpec: long initialDelay>;
+
+        $l3 = $l3 >>> 32;
+
+        $l2 = $l2 ^ $l3;
+
+        $i1 = (int) $l2;
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        $l2 = r0.<androidx.work.impl.model.WorkSpec: long intervalDuration>;
+
+        $l3 = r0.<androidx.work.impl.model.WorkSpec: long intervalDuration>;
+
+        $l3 = $l3 >>> 32;
+
+        $l2 = $l2 ^ $l3;
+
+        $i1 = (int) $l2;
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        $l2 = r0.<androidx.work.impl.model.WorkSpec: long flexDuration>;
+
+        $l3 = r0.<androidx.work.impl.model.WorkSpec: long flexDuration>;
+
+        $l3 = $l3 >>> 32;
+
+        $l2 = $l2 ^ $l3;
+
+        $i1 = (int) $l2;
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        $r4 = r0.<androidx.work.impl.model.WorkSpec: androidx.work.Constraints constraints>;
+
+        $i1 = virtualinvoke $r4.<androidx.work.Constraints: int hashCode()>();
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        $i1 = r0.<androidx.work.impl.model.WorkSpec: int runAttemptCount>;
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        $r5 = r0.<androidx.work.impl.model.WorkSpec: androidx.work.BackoffPolicy backoffPolicy>;
+
+        $i1 = virtualinvoke $r5.<androidx.work.BackoffPolicy: int hashCode()>();
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        $l2 = r0.<androidx.work.impl.model.WorkSpec: long backoffDelayDuration>;
+
+        $l3 = r0.<androidx.work.impl.model.WorkSpec: long backoffDelayDuration>;
+
+        $l3 = $l3 >>> 32;
+
+        $l2 = $l2 ^ $l3;
+
+        $i1 = (int) $l2;
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        $l2 = r0.<androidx.work.impl.model.WorkSpec: long periodStartTime>;
+
+        $l3 = r0.<androidx.work.impl.model.WorkSpec: long periodStartTime>;
+
+        $l3 = $l3 >>> 32;
+
+        $l2 = $l2 ^ $l3;
+
+        $i1 = (int) $l2;
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        $l2 = r0.<androidx.work.impl.model.WorkSpec: long minimumRetentionDuration>;
+
+        $l3 = r0.<androidx.work.impl.model.WorkSpec: long minimumRetentionDuration>;
+
+        $l3 = $l3 >>> 32;
+
+        $l2 = $l2 ^ $l3;
+
+        $i1 = (int) $l2;
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        $l2 = r0.<androidx.work.impl.model.WorkSpec: long scheduleRequestedAt>;
+
+        $l3 = r0.<androidx.work.impl.model.WorkSpec: long scheduleRequestedAt>;
+
+        $l3 = $l3 >>> 32;
+
+        $l2 = $l2 ^ $l3;
+
+        $i1 = (int) $l2;
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        $z0 = r0.<androidx.work.impl.model.WorkSpec: boolean expedited>;
+
+        $i1 = (int) $z0;
+
+        $i0 = $i0 + $i1;
+
+        $i0 = $i0 * 31;
+
+        $r6 = r0.<androidx.work.impl.model.WorkSpec: androidx.work.OutOfQuotaPolicy outOfQuotaPolicy>;
+
+        $i1 = virtualinvoke $r6.<androidx.work.OutOfQuotaPolicy: int hashCode()>();
+
+        $i0 = $i0 + $i1;
+
+        return $i0;
+    }
+
+    public boolean isBackedOff()
+    {
+        androidx.work.WorkInfo$State $r1, $r2;
+        int $i0;
+        androidx.work.impl.model.WorkSpec r0;
+
+        r0 := @this: androidx.work.impl.model.WorkSpec;
+
+        $r2 = r0.<androidx.work.impl.model.WorkSpec: androidx.work.WorkInfo$State state>;
+
+        $r1 = <androidx.work.WorkInfo$State: androidx.work.WorkInfo$State ENQUEUED>;
+
+        if $r2 != $r1 goto label1;
+
+        $i0 = r0.<androidx.work.impl.model.WorkSpec: int runAttemptCount>;
+
+        if $i0 <= 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isPeriodic()
+    {
+        long $l1;
+        byte $b0;
+        androidx.work.impl.model.WorkSpec r0;
+
+        r0 := @this: androidx.work.impl.model.WorkSpec;
+
+        $l1 = r0.<androidx.work.impl.model.WorkSpec: long intervalDuration>;
+
+        $b0 = $l1 cmp 0L;
+
+        if $b0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void setBackoffDelayDuration(long)
+    {
+        androidx.work.Logger $r2;
+        byte $b1;
+        java.lang.Throwable[] $r1;
+        int $i2;
+        long $l0;
+        java.lang.String $r3;
+        androidx.work.impl.model.WorkSpec r0;
+
+        r0 := @this: androidx.work.impl.model.WorkSpec;
+
+        $l0 := @parameter0: long;
+
+        $b1 = $l0 cmp 18000000L;
+
+        $i2 = (int) $b1;
+
+        if $i2 <= 0 goto label1;
+
+        $r2 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r3 = <androidx.work.impl.model.WorkSpec: java.lang.String TAG>;
+
+        $r1 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r2.<androidx.work.Logger: void warning(java.lang.String,java.lang.String,java.lang.Throwable[])>($r3, "Backoff delay duration exceeds maximum value", $r1);
+
+        $l0 = 18000000L;
+
+     label1:
+        $b1 = $l0 cmp 10000L;
+
+        $i2 = (int) $b1;
+
+        if $i2 >= 0 goto label2;
+
+        $r2 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r3 = <androidx.work.impl.model.WorkSpec: java.lang.String TAG>;
+
+        $r1 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r2.<androidx.work.Logger: void warning(java.lang.String,java.lang.String,java.lang.Throwable[])>($r3, "Backoff delay duration less than minimum value", $r1);
+
+        $l0 = 10000L;
+
+     label2:
+        r0.<androidx.work.impl.model.WorkSpec: long backoffDelayDuration> = $l0;
+
+        return;
+    }
+
+    public void setPeriodic(long)
+    {
+        java.lang.Object[] $r4;
+        long $l0;
+        androidx.work.impl.model.WorkSpec r0;
+        androidx.work.Logger $r2;
+        byte $b1;
+        java.lang.Long $r3;
+        java.lang.Throwable[] $r6;
+        int $i2;
+        java.lang.String $r1, $r5;
+
+        r0 := @this: androidx.work.impl.model.WorkSpec;
+
+        $l0 := @parameter0: long;
+
+        $b1 = $l0 cmp 900000L;
+
+        $i2 = (int) $b1;
+
+        if $i2 >= 0 goto label1;
+
+        $r2 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r1 = <androidx.work.impl.model.WorkSpec: java.lang.String TAG>;
+
+        $r3 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>(900000L);
+
+        $r4 = newarray (java.lang.Object)[1];
+
+        $r4[0] = $r3;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Interval duration lesser than minimum allowed value; Changed to %s", $r4);
+
+        $r6 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r2.<androidx.work.Logger: void warning(java.lang.String,java.lang.String,java.lang.Throwable[])>($r1, $r5, $r6);
+
+        $l0 = 900000L;
+
+     label1:
+        virtualinvoke r0.<androidx.work.impl.model.WorkSpec: void setPeriodic(long,long)>($l0, $l0);
+
+        return;
+    }
+
+    public void setPeriodic(long, long)
+    {
+        java.lang.Object[] $r4;
+        long $l0, $l1;
+        androidx.work.impl.model.WorkSpec r0;
+        androidx.work.Logger $r1;
+        byte $b2;
+        java.lang.Long $r3;
+        java.lang.Throwable[] $r6;
+        int $i3;
+        java.lang.String $r2, $r5;
+
+        r0 := @this: androidx.work.impl.model.WorkSpec;
+
+        $l0 := @parameter0: long;
+
+        $l1 := @parameter1: long;
+
+        $b2 = $l0 cmp 900000L;
+
+        $i3 = (int) $b2;
+
+        if $i3 >= 0 goto label1;
+
+        $r1 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r2 = <androidx.work.impl.model.WorkSpec: java.lang.String TAG>;
+
+        $r3 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>(900000L);
+
+        $r4 = newarray (java.lang.Object)[1];
+
+        $r4[0] = $r3;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Interval duration lesser than minimum allowed value; Changed to %s", $r4);
+
+        $r6 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r1.<androidx.work.Logger: void warning(java.lang.String,java.lang.String,java.lang.Throwable[])>($r2, $r5, $r6);
+
+        $l0 = 900000L;
+
+     label1:
+        $b2 = $l1 cmp 300000L;
+
+        $i3 = (int) $b2;
+
+        if $i3 >= 0 goto label2;
+
+        $r1 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r2 = <androidx.work.impl.model.WorkSpec: java.lang.String TAG>;
+
+        $r3 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>(300000L);
+
+        $r4 = newarray (java.lang.Object)[1];
+
+        $r4[0] = $r3;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Flex duration lesser than minimum allowed value; Changed to %s", $r4);
+
+        $r6 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r1.<androidx.work.Logger: void warning(java.lang.String,java.lang.String,java.lang.Throwable[])>($r2, $r5, $r6);
+
+        $l1 = 300000L;
+
+     label2:
+        $b2 = $l1 cmp $l0;
+
+        $i3 = (int) $b2;
+
+        if $i3 <= 0 goto label3;
+
+        $r1 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r2 = <androidx.work.impl.model.WorkSpec: java.lang.String TAG>;
+
+        $r3 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+        $r4 = newarray (java.lang.Object)[1];
+
+        $r4[0] = $r3;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Flex duration greater than interval duration; Changed to %s", $r4);
+
+        $r6 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r1.<androidx.work.Logger: void warning(java.lang.String,java.lang.String,java.lang.Throwable[])>($r2, $r5, $r6);
+
+        $l1 = $l0;
+
+     label3:
+        r0.<androidx.work.impl.model.WorkSpec: long intervalDuration> = $l0;
+
+        r0.<androidx.work.impl.model.WorkSpec: long flexDuration> = $l1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+        androidx.work.impl.model.WorkSpec r0;
+
+        r0 := @this: androidx.work.impl.model.WorkSpec;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("{WorkSpec: ");
+
+        $r2 = r0.<androidx.work.impl.model.WorkSpec: java.lang.String id>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("}");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+}

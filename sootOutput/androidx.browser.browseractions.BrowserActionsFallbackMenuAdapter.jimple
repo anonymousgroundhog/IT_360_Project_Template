@@ -1,0 +1,222 @@
+class androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter extends android.widget.BaseAdapter
+{
+    private final android.content.Context mContext;
+    private final java.util.List mMenuItems;
+
+    void <init>(java.util.List, android.content.Context)
+    {
+        android.content.Context $r2;
+        java.util.List r1;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter r0;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter;
+
+        r1 := @parameter0: java.util.List;
+
+        $r2 := @parameter1: android.content.Context;
+
+        specialinvoke r0.<android.widget.BaseAdapter: void <init>()>();
+
+        r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter: java.util.List mMenuItems> = r1;
+
+        r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter: android.content.Context mContext> = $r2;
+
+        return;
+    }
+
+    public int getCount()
+    {
+        int $i0;
+        java.util.List $r1;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter r0;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter;
+
+        $r1 = r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter: java.util.List mMenuItems>;
+
+        $i0 = interfaceinvoke $r1.<java.util.List: int size()>();
+
+        return $i0;
+    }
+
+    public java.lang.Object getItem(int)
+    {
+        java.util.List $r2;
+        int $i0;
+        java.lang.Object $r1;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter r0;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter;
+
+        $i0 := @parameter0: int;
+
+        $r2 = r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter: java.util.List mMenuItems>;
+
+        $r1 = interfaceinvoke $r2.<java.util.List: java.lang.Object get(int)>($i0);
+
+        return $r1;
+    }
+
+    public long getItemId(int)
+    {
+        int $i0;
+        long $l1;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter r0;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter;
+
+        $i0 := @parameter0: int;
+
+        $l1 = (long) $i0;
+
+        return $l1;
+    }
+
+    public android.view.View getView(int, android.view.View, android.view.ViewGroup)
+    {
+        android.content.Context r6;
+        java.lang.IllegalStateException r13;
+        com.google.common.util.concurrent.ListenableFuture $r19;
+        android.widget.ImageView r10;
+        android.net.Uri $r17;
+        android.graphics.drawable.Drawable $r16;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$ViewHolderItem r12;
+        android.content.ContentResolver $r18;
+        int $i0;
+        android.view.View $r2, $r8, $r9;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$1 r20;
+        java.lang.String $r14;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$2 $r21;
+        androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter r0;
+        androidx.browser.browseractions.BrowserActionItem r5;
+        android.view.LayoutInflater $r7;
+        android.view.ViewGroup $r1;
+        java.util.List r3;
+        android.widget.TextView r11;
+        java.lang.Object $r4;
+        android.content.res.Resources $r15;
+
+        r0 := @this: androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter;
+
+        $i0 := @parameter0: int;
+
+        $r2 := @parameter1: android.view.View;
+
+        $r1 := @parameter2: android.view.ViewGroup;
+
+        r3 = r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter: java.util.List mMenuItems>;
+
+        $r4 = interfaceinvoke r3.<java.util.List: java.lang.Object get(int)>($i0);
+
+        r5 = (androidx.browser.browseractions.BrowserActionItem) $r4;
+
+        if $r2 != null goto label2;
+
+        r6 = r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter: android.content.Context mContext>;
+
+        $r7 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>(r6);
+
+        $i0 = <androidx.browser.R$layout: int browser_actions_context_menu_row>;
+
+        $r8 = virtualinvoke $r7.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup)>($i0, null);
+
+        $r2 = $r8;
+
+        $i0 = <androidx.browser.R$id: int browser_actions_menu_item_icon>;
+
+        $r9 = virtualinvoke $r8.<android.view.View: android.view.View findViewById(int)>($i0);
+
+        r10 = (android.widget.ImageView) $r9;
+
+        $i0 = <androidx.browser.R$id: int browser_actions_menu_item_text>;
+
+        $r9 = virtualinvoke $r8.<android.view.View: android.view.View findViewById(int)>($i0);
+
+        r11 = (android.widget.TextView) $r9;
+
+        if r10 == null goto label1;
+
+        if r11 == null goto label1;
+
+        r12 = new androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$ViewHolderItem;
+
+        specialinvoke r12.<androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$ViewHolderItem: void <init>(android.widget.ImageView,android.widget.TextView)>(r10, r11);
+
+        virtualinvoke $r8.<android.view.View: void setTag(java.lang.Object)>(r12);
+
+        goto label3;
+
+     label1:
+        r13 = new java.lang.IllegalStateException;
+
+        specialinvoke r13.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Browser Actions fallback UI does not contain necessary Views.");
+
+        throw r13;
+
+     label2:
+        $r4 = virtualinvoke $r2.<android.view.View: java.lang.Object getTag()>();
+
+        r12 = (androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$ViewHolderItem) $r4;
+
+     label3:
+        $r14 = virtualinvoke r5.<androidx.browser.browseractions.BrowserActionItem: java.lang.String getTitle()>();
+
+        r11 = r12.<androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$ViewHolderItem: android.widget.TextView mText>;
+
+        virtualinvoke r11.<android.widget.TextView: void setText(java.lang.CharSequence)>($r14);
+
+        $i0 = virtualinvoke r5.<androidx.browser.browseractions.BrowserActionItem: int getIconId()>();
+
+        if $i0 == 0 goto label4;
+
+        r6 = r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter: android.content.Context mContext>;
+
+        $r15 = virtualinvoke r6.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $i0 = virtualinvoke r5.<androidx.browser.browseractions.BrowserActionItem: int getIconId()>();
+
+        $r16 = staticinvoke <androidx.core.content.res.ResourcesCompat: android.graphics.drawable.Drawable getDrawable(android.content.res.Resources,int,android.content.res.Resources$Theme)>($r15, $i0, null);
+
+        r10 = r12.<androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$ViewHolderItem: android.widget.ImageView mIcon>;
+
+        virtualinvoke r10.<android.widget.ImageView: void setImageDrawable(android.graphics.drawable.Drawable)>($r16);
+
+        return $r2;
+
+     label4:
+        $r17 = virtualinvoke r5.<androidx.browser.browseractions.BrowserActionItem: android.net.Uri getIconUri()>();
+
+        if $r17 == null goto label5;
+
+        r6 = r0.<androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter: android.content.Context mContext>;
+
+        $r18 = virtualinvoke r6.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        $r17 = virtualinvoke r5.<androidx.browser.browseractions.BrowserActionItem: android.net.Uri getIconUri()>();
+
+        $r19 = staticinvoke <androidx.browser.browseractions.BrowserServiceFileProvider: com.google.common.util.concurrent.ListenableFuture loadBitmap(android.content.ContentResolver,android.net.Uri)>($r18, $r17);
+
+        r20 = new androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$1;
+
+        specialinvoke r20.<androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$1: void <init>(androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter,java.lang.String,androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$ViewHolderItem,com.google.common.util.concurrent.ListenableFuture)>(r0, $r14, r12, $r19);
+
+        $r21 = new androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$2;
+
+        specialinvoke $r21.<androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$2: void <init>(androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter)>(r0);
+
+        interfaceinvoke $r19.<com.google.common.util.concurrent.ListenableFuture: void addListener(java.lang.Runnable,java.util.concurrent.Executor)>(r20, $r21);
+
+        return $r2;
+
+     label5:
+        r10 = r12.<androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$ViewHolderItem: android.widget.ImageView mIcon>;
+
+        virtualinvoke r10.<android.widget.ImageView: void setImageBitmap(android.graphics.Bitmap)>(null);
+
+        r10 = r12.<androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$ViewHolderItem: android.widget.ImageView mIcon>;
+
+        virtualinvoke r10.<android.widget.ImageView: void setVisibility(int)>(4);
+
+        return $r2;
+    }
+}

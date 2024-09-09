@@ -1,0 +1,173 @@
+public final class com.google.android.gms.common.internal.zzf extends com.google.android.gms.common.internal.zza
+{
+    public final android.os.IBinder zze;
+    final com.google.android.gms.common.internal.BaseGmsClient zzf;
+
+    public void <init>(com.google.android.gms.common.internal.BaseGmsClient, int, android.os.IBinder, android.os.Bundle)
+    {
+        com.google.android.gms.common.internal.BaseGmsClient $r1;
+        android.os.Bundle $r3;
+        int $i0;
+        com.google.android.gms.common.internal.zzf r0;
+        android.os.IBinder $r2;
+
+        r0 := @this: com.google.android.gms.common.internal.zzf;
+
+        $r1 := @parameter0: com.google.android.gms.common.internal.BaseGmsClient;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: android.os.IBinder;
+
+        $r3 := @parameter3: android.os.Bundle;
+
+        r0.<com.google.android.gms.common.internal.zzf: com.google.android.gms.common.internal.BaseGmsClient zzf> = $r1;
+
+        specialinvoke r0.<com.google.android.gms.common.internal.zza: void <init>(com.google.android.gms.common.internal.BaseGmsClient,int,android.os.Bundle)>($r1, $i0, $r3);
+
+        r0.<com.google.android.gms.common.internal.zzf: android.os.IBinder zze> = $r2;
+
+        return;
+    }
+
+    protected final void zzb(com.google.android.gms.common.ConnectionResult)
+    {
+        com.google.android.gms.common.internal.BaseGmsClient $r2;
+        com.google.android.gms.common.ConnectionResult $r1;
+        com.google.android.gms.common.internal.zzf r0;
+        com.google.android.gms.common.internal.BaseGmsClient$BaseOnConnectionFailedListener $r3;
+
+        r0 := @this: com.google.android.gms.common.internal.zzf;
+
+        $r1 := @parameter0: com.google.android.gms.common.ConnectionResult;
+
+        $r2 = r0.<com.google.android.gms.common.internal.zzf: com.google.android.gms.common.internal.BaseGmsClient zzf>;
+
+        $r3 = staticinvoke <com.google.android.gms.common.internal.BaseGmsClient: com.google.android.gms.common.internal.BaseGmsClient$BaseOnConnectionFailedListener zzc(com.google.android.gms.common.internal.BaseGmsClient)>($r2);
+
+        if $r3 == null goto label1;
+
+        $r2 = r0.<com.google.android.gms.common.internal.zzf: com.google.android.gms.common.internal.BaseGmsClient zzf>;
+
+        $r3 = staticinvoke <com.google.android.gms.common.internal.BaseGmsClient: com.google.android.gms.common.internal.BaseGmsClient$BaseOnConnectionFailedListener zzc(com.google.android.gms.common.internal.BaseGmsClient)>($r2);
+
+        interfaceinvoke $r3.<com.google.android.gms.common.internal.BaseGmsClient$BaseOnConnectionFailedListener: void onConnectionFailed(com.google.android.gms.common.ConnectionResult)>($r1);
+
+     label1:
+        $r2 = r0.<com.google.android.gms.common.internal.zzf: com.google.android.gms.common.internal.BaseGmsClient zzf>;
+
+        virtualinvoke $r2.<com.google.android.gms.common.internal.BaseGmsClient: void onConnectionFailed(com.google.android.gms.common.ConnectionResult)>($r1);
+
+        return;
+    }
+
+    protected final boolean zzd()
+    {
+        com.google.android.gms.common.internal.BaseGmsClient $r3;
+        android.os.Bundle $r7;
+        android.os.IInterface $r6;
+        com.google.android.gms.common.internal.BaseGmsClient$BaseConnectionCallbacks $r8;
+        com.google.android.gms.common.internal.zzf r0;
+        android.os.RemoteException $r9;
+        android.os.IBinder $r1;
+        java.lang.StringBuilder $r5;
+        java.lang.String $r2, $r4;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.common.internal.zzf;
+
+        $r1 = r0.<com.google.android.gms.common.internal.zzf: android.os.IBinder zze>;
+
+     label1:
+        staticinvoke <com.google.android.gms.common.internal.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($r1);
+
+        $r2 = interfaceinvoke $r1.<android.os.IBinder: java.lang.String getInterfaceDescriptor()>();
+
+     label2:
+        $r3 = r0.<com.google.android.gms.common.internal.zzf: com.google.android.gms.common.internal.BaseGmsClient zzf>;
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.common.internal.BaseGmsClient: java.lang.String getServiceDescriptor()>();
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>($r2);
+
+        if $z0 != 0 goto label3;
+
+        $r3 = r0.<com.google.android.gms.common.internal.zzf: com.google.android.gms.common.internal.BaseGmsClient zzf>;
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.common.internal.BaseGmsClient: java.lang.String getServiceDescriptor()>();
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("service descriptor mismatch: ");
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" vs. ");
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("GmsClient", $r2);
+
+        return 0;
+
+     label3:
+        $r3 = r0.<com.google.android.gms.common.internal.zzf: com.google.android.gms.common.internal.BaseGmsClient zzf>;
+
+        $r1 = r0.<com.google.android.gms.common.internal.zzf: android.os.IBinder zze>;
+
+        $r6 = virtualinvoke $r3.<com.google.android.gms.common.internal.BaseGmsClient: android.os.IInterface createServiceInterface(android.os.IBinder)>($r1);
+
+        if $r6 == null goto label6;
+
+        $r3 = r0.<com.google.android.gms.common.internal.zzf: com.google.android.gms.common.internal.BaseGmsClient zzf>;
+
+        $z0 = staticinvoke <com.google.android.gms.common.internal.BaseGmsClient: boolean zzn(com.google.android.gms.common.internal.BaseGmsClient,int,int,android.os.IInterface)>($r3, 2, 4, $r6);
+
+        if $z0 != 0 goto label4;
+
+        $r3 = r0.<com.google.android.gms.common.internal.zzf: com.google.android.gms.common.internal.BaseGmsClient zzf>;
+
+        $z0 = staticinvoke <com.google.android.gms.common.internal.BaseGmsClient: boolean zzn(com.google.android.gms.common.internal.BaseGmsClient,int,int,android.os.IInterface)>($r3, 3, 4, $r6);
+
+        if $z0 == 0 goto label8;
+
+     label4:
+        $r3 = r0.<com.google.android.gms.common.internal.zzf: com.google.android.gms.common.internal.BaseGmsClient zzf>;
+
+        staticinvoke <com.google.android.gms.common.internal.BaseGmsClient: void zzg(com.google.android.gms.common.internal.BaseGmsClient,com.google.android.gms.common.ConnectionResult)>($r3, null);
+
+        $r3 = r0.<com.google.android.gms.common.internal.zzf: com.google.android.gms.common.internal.BaseGmsClient zzf>;
+
+        $r7 = virtualinvoke $r3.<com.google.android.gms.common.internal.BaseGmsClient: android.os.Bundle getConnectionHint()>();
+
+        $r3 = r0.<com.google.android.gms.common.internal.zzf: com.google.android.gms.common.internal.BaseGmsClient zzf>;
+
+        $r8 = staticinvoke <com.google.android.gms.common.internal.BaseGmsClient: com.google.android.gms.common.internal.BaseGmsClient$BaseConnectionCallbacks zzb(com.google.android.gms.common.internal.BaseGmsClient)>($r3);
+
+        if $r8 == null goto label5;
+
+        $r8 = staticinvoke <com.google.android.gms.common.internal.BaseGmsClient: com.google.android.gms.common.internal.BaseGmsClient$BaseConnectionCallbacks zzb(com.google.android.gms.common.internal.BaseGmsClient)>($r3);
+
+        interfaceinvoke $r8.<com.google.android.gms.common.internal.BaseGmsClient$BaseConnectionCallbacks: void onConnected(android.os.Bundle)>($r7);
+
+     label5:
+        return 1;
+
+     label6:
+        return 0;
+
+     label7:
+        $r9 := @caughtexception;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("GmsClient", "service probably died");
+
+     label8:
+        return 0;
+
+        catch android.os.RemoteException from label1 to label2 with label7;
+    }
+}

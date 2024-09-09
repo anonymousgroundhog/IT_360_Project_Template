@@ -1,0 +1,47 @@
+final class com.google.android.gms.internal.ads.zzkf extends java.lang.Object
+{
+
+    public static com.google.android.gms.internal.ads.zzpb zza(android.content.Context, com.google.android.gms.internal.ads.zzko, boolean)
+    {
+        android.content.Context $r0;
+        android.media.metrics.LogSessionId $r4;
+        com.google.android.gms.internal.ads.zzox $r2;
+        com.google.android.gms.internal.ads.zzko $r1;
+        boolean $z0;
+        com.google.android.gms.internal.ads.zzpb $r3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: com.google.android.gms.internal.ads.zzko;
+
+        $z0 := @parameter2: boolean;
+
+        $r2 = staticinvoke <com.google.android.gms.internal.ads.zzox: com.google.android.gms.internal.ads.zzox zzb(android.content.Context)>($r0);
+
+        if $r2 != null goto label1;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzff: void zzf(java.lang.String,java.lang.String)>("ExoPlayerImpl", "MediaMetricsService unavailable.");
+
+        $r3 = new com.google.android.gms.internal.ads.zzpb;
+
+        $r4 = <android.media.metrics.LogSessionId: android.media.metrics.LogSessionId LOG_SESSION_ID_NONE>;
+
+        specialinvoke $r3.<com.google.android.gms.internal.ads.zzpb: void <init>(android.media.metrics.LogSessionId)>($r4);
+
+        return $r3;
+
+     label1:
+        if $z0 == 0 goto label2;
+
+        virtualinvoke $r1.<com.google.android.gms.internal.ads.zzko: void zzz(com.google.android.gms.internal.ads.zzms)>($r2);
+
+     label2:
+        $r3 = new com.google.android.gms.internal.ads.zzpb;
+
+        $r4 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzox: android.media.metrics.LogSessionId zza()>();
+
+        specialinvoke $r3.<com.google.android.gms.internal.ads.zzpb: void <init>(android.media.metrics.LogSessionId)>($r4);
+
+        return $r3;
+    }
+}

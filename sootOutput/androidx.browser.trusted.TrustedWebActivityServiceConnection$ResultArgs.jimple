@@ -1,0 +1,58 @@
+class androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs extends java.lang.Object
+{
+    public final boolean success;
+
+    void <init>(boolean)
+    {
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs r0;
+        boolean $z0;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs;
+
+        $z0 := @parameter0: boolean;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs: boolean success> = $z0;
+
+        return;
+    }
+
+    public static androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs fromBundle(android.os.Bundle)
+    {
+        android.os.Bundle $r0;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.os.Bundle;
+
+        staticinvoke <androidx.browser.trusted.TrustedWebActivityServiceConnection: void ensureBundleContains(android.os.Bundle,java.lang.String)>($r0, "android.support.customtabs.trusted.NOTIFICATION_SUCCESS");
+
+        $r1 = new androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs;
+
+        $z0 = virtualinvoke $r0.<android.os.Bundle: boolean getBoolean(java.lang.String)>("android.support.customtabs.trusted.NOTIFICATION_SUCCESS");
+
+        specialinvoke $r1.<androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs: void <init>(boolean)>($z0);
+
+        return $r1;
+    }
+
+    public android.os.Bundle toBundle()
+    {
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs r0;
+        android.os.Bundle r1;
+        boolean $z0;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs;
+
+        r1 = new android.os.Bundle;
+
+        specialinvoke r1.<android.os.Bundle: void <init>()>();
+
+        $z0 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs: boolean success>;
+
+        virtualinvoke r1.<android.os.Bundle: void putBoolean(java.lang.String,boolean)>("android.support.customtabs.trusted.NOTIFICATION_SUCCESS", $z0);
+
+        return r1;
+    }
+}

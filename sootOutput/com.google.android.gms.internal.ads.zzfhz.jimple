@@ -1,0 +1,83 @@
+public final class com.google.android.gms.internal.ads.zzfhz extends java.lang.Object
+{
+    private final java.util.regex.Pattern zza;
+
+    public void <init>()
+    {
+        com.google.android.gms.internal.ads.zzbfu $r1;
+        java.util.regex.PatternSyntaxException $r6;
+        com.google.android.gms.internal.ads.zzfhz r0;
+        java.lang.Object $r3;
+        java.lang.String $r4;
+        java.util.regex.Pattern $r5;
+        com.google.android.gms.internal.ads.zzbga $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfhz;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzgT>;
+
+     label1:
+        $r2 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r1);
+
+     label2:
+        $r4 = (java.lang.String) $r3;
+
+     label3:
+        $r5 = staticinvoke <java.util.regex.Pattern: java.util.regex.Pattern compile(java.lang.String)>($r4);
+
+     label4:
+        goto label6;
+
+     label5:
+        $r6 := @caughtexception;
+
+        $r5 = null;
+
+     label6:
+        r0.<com.google.android.gms.internal.ads.zzfhz: java.util.regex.Pattern zza> = $r5;
+
+        return;
+
+        catch java.util.regex.PatternSyntaxException from label1 to label2 with label5;
+        catch java.util.regex.PatternSyntaxException from label3 to label4 with label5;
+    }
+
+    public final java.lang.String zza(java.lang.String)
+    {
+        java.util.regex.Matcher $r3;
+        com.google.android.gms.internal.ads.zzfhz r0;
+        java.lang.String $r1;
+        java.util.regex.Pattern $r2;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfhz;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzfhz: java.util.regex.Pattern zza>;
+
+        if $r2 == null goto label2;
+
+        if $r1 != null goto label1;
+
+        goto label2;
+
+     label1:
+        $r3 = virtualinvoke $r2.<java.util.regex.Pattern: java.util.regex.Matcher matcher(java.lang.CharSequence)>($r1);
+
+        $z0 = virtualinvoke $r3.<java.util.regex.Matcher: boolean find()>();
+
+        if $z0 == 0 goto label2;
+
+        $r1 = virtualinvoke $r3.<java.util.regex.Matcher: java.lang.String group()>();
+
+        return $r1;
+
+     label2:
+        return null;
+    }
+}

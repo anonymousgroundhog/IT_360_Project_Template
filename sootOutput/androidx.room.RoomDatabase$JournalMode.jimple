@@ -1,0 +1,146 @@
+public final enum class androidx.room.RoomDatabase$JournalMode extends java.lang.Enum
+{
+    private static final androidx.room.RoomDatabase$JournalMode[] $VALUES;
+    public static final enum androidx.room.RoomDatabase$JournalMode AUTOMATIC;
+    public static final enum androidx.room.RoomDatabase$JournalMode TRUNCATE;
+    public static final enum androidx.room.RoomDatabase$JournalMode WRITE_AHEAD_LOGGING;
+
+    static void <clinit>()
+    {
+        androidx.room.RoomDatabase$JournalMode $r0;
+        androidx.room.RoomDatabase$JournalMode[] $r1;
+
+        $r0 = new androidx.room.RoomDatabase$JournalMode;
+
+        specialinvoke $r0.<androidx.room.RoomDatabase$JournalMode: void <init>(java.lang.String,int)>("AUTOMATIC", 0);
+
+        <androidx.room.RoomDatabase$JournalMode: androidx.room.RoomDatabase$JournalMode AUTOMATIC> = $r0;
+
+        $r0 = new androidx.room.RoomDatabase$JournalMode;
+
+        specialinvoke $r0.<androidx.room.RoomDatabase$JournalMode: void <init>(java.lang.String,int)>("TRUNCATE", 1);
+
+        <androidx.room.RoomDatabase$JournalMode: androidx.room.RoomDatabase$JournalMode TRUNCATE> = $r0;
+
+        $r0 = new androidx.room.RoomDatabase$JournalMode;
+
+        specialinvoke $r0.<androidx.room.RoomDatabase$JournalMode: void <init>(java.lang.String,int)>("WRITE_AHEAD_LOGGING", 2);
+
+        <androidx.room.RoomDatabase$JournalMode: androidx.room.RoomDatabase$JournalMode WRITE_AHEAD_LOGGING> = $r0;
+
+        $r1 = newarray (androidx.room.RoomDatabase$JournalMode)[3];
+
+        $r0 = <androidx.room.RoomDatabase$JournalMode: androidx.room.RoomDatabase$JournalMode AUTOMATIC>;
+
+        $r1[0] = $r0;
+
+        $r0 = <androidx.room.RoomDatabase$JournalMode: androidx.room.RoomDatabase$JournalMode TRUNCATE>;
+
+        $r1[1] = $r0;
+
+        $r0 = <androidx.room.RoomDatabase$JournalMode: androidx.room.RoomDatabase$JournalMode WRITE_AHEAD_LOGGING>;
+
+        $r1[2] = $r0;
+
+        <androidx.room.RoomDatabase$JournalMode: androidx.room.RoomDatabase$JournalMode[] $VALUES> = $r1;
+
+        return;
+    }
+
+    private void <init>(java.lang.String, int)
+    {
+        int $i0;
+        androidx.room.RoomDatabase$JournalMode r0;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.room.RoomDatabase$JournalMode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<java.lang.Enum: void <init>(java.lang.String,int)>($r1, $i0);
+
+        return;
+    }
+
+    private static boolean isLowRamDevice(android.app.ActivityManager)
+    {
+        android.app.ActivityManager $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.app.ActivityManager;
+
+        $z0 = virtualinvoke $r0.<android.app.ActivityManager: boolean isLowRamDevice()>();
+
+        return $z0;
+    }
+
+    public static androidx.room.RoomDatabase$JournalMode valueOf(java.lang.String)
+    {
+        androidx.room.RoomDatabase$JournalMode $r2;
+        java.lang.String $r0;
+        java.lang.Enum $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "Landroidx/room/RoomDatabase$JournalMode;", $r0);
+
+        $r2 = (androidx.room.RoomDatabase$JournalMode) $r1;
+
+        return $r2;
+    }
+
+    public static androidx.room.RoomDatabase$JournalMode[] values()
+    {
+        java.lang.Object $r0;
+        androidx.room.RoomDatabase$JournalMode[] $r1;
+
+        $r1 = <androidx.room.RoomDatabase$JournalMode: androidx.room.RoomDatabase$JournalMode[] $VALUES>;
+
+        $r0 = virtualinvoke $r1.<java.lang.Object: java.lang.Object clone()>();
+
+        $r1 = (androidx.room.RoomDatabase$JournalMode[]) $r0;
+
+        return $r1;
+    }
+
+    androidx.room.RoomDatabase$JournalMode resolve(android.content.Context)
+    {
+        android.content.Context $r1;
+        android.app.ActivityManager r4;
+        androidx.room.RoomDatabase$JournalMode r0, r2;
+        java.lang.Object $r3;
+        boolean $z0;
+
+        r0 := @this: androidx.room.RoomDatabase$JournalMode;
+
+        $r1 := @parameter0: android.content.Context;
+
+        r2 = <androidx.room.RoomDatabase$JournalMode: androidx.room.RoomDatabase$JournalMode AUTOMATIC>;
+
+        if r0 == r2 goto label1;
+
+        return r0;
+
+     label1:
+        $r3 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("activity");
+
+        r4 = (android.app.ActivityManager) $r3;
+
+        if r4 == null goto label2;
+
+        $z0 = staticinvoke <androidx.room.RoomDatabase$JournalMode: boolean isLowRamDevice(android.app.ActivityManager)>(r4);
+
+        if $z0 != 0 goto label2;
+
+        r0 = <androidx.room.RoomDatabase$JournalMode: androidx.room.RoomDatabase$JournalMode WRITE_AHEAD_LOGGING>;
+
+        return r0;
+
+     label2:
+        r0 = <androidx.room.RoomDatabase$JournalMode: androidx.room.RoomDatabase$JournalMode TRUNCATE>;
+
+        return r0;
+    }
+}

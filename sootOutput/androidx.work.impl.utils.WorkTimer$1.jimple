@@ -1,0 +1,64 @@
+class androidx.work.impl.utils.WorkTimer$1 extends java.lang.Object implements java.util.concurrent.ThreadFactory
+{
+    private int mThreadsCreated;
+    final androidx.work.impl.utils.WorkTimer this$0;
+
+    void <init>(androidx.work.impl.utils.WorkTimer)
+    {
+        androidx.work.impl.utils.WorkTimer $r1;
+        androidx.work.impl.utils.WorkTimer$1 r0;
+
+        r0 := @this: androidx.work.impl.utils.WorkTimer$1;
+
+        $r1 := @parameter0: androidx.work.impl.utils.WorkTimer;
+
+        r0.<androidx.work.impl.utils.WorkTimer$1: androidx.work.impl.utils.WorkTimer this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.work.impl.utils.WorkTimer$1: int mThreadsCreated> = 0;
+
+        return;
+    }
+
+    public java.lang.Thread newThread(java.lang.Runnable)
+    {
+        androidx.work.impl.utils.WorkTimer$1 r0;
+        java.lang.Thread $r3;
+        int $i0;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+        java.util.concurrent.ThreadFactory $r2;
+        java.lang.Runnable $r1;
+
+        r0 := @this: androidx.work.impl.utils.WorkTimer$1;
+
+        $r1 := @parameter0: java.lang.Runnable;
+
+        $r2 = staticinvoke <java.util.concurrent.Executors: java.util.concurrent.ThreadFactory defaultThreadFactory()>();
+
+        $r3 = interfaceinvoke $r2.<java.util.concurrent.ThreadFactory: java.lang.Thread newThread(java.lang.Runnable)>($r1);
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("WorkManager-WorkTimer-thread-");
+
+        $i0 = r0.<androidx.work.impl.utils.WorkTimer$1: int mThreadsCreated>;
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r3.<java.lang.Thread: void setName(java.lang.String)>($r5);
+
+        $i0 = r0.<androidx.work.impl.utils.WorkTimer$1: int mThreadsCreated>;
+
+        $i0 = $i0 + 1;
+
+        r0.<androidx.work.impl.utils.WorkTimer$1: int mThreadsCreated> = $i0;
+
+        return $r3;
+    }
+}

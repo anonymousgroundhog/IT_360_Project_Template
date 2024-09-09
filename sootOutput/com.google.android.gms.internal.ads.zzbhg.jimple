@@ -1,0 +1,121 @@
+final class com.google.android.gms.internal.ads.zzbhg extends com.google.android.gms.ads.query.QueryInfoGenerationCallback
+{
+    final java.lang.String zza;
+    final com.google.android.gms.internal.ads.zzbhh zzb;
+
+    void <init>(com.google.android.gms.internal.ads.zzbhh, java.lang.String)
+    {
+        com.google.android.gms.internal.ads.zzbhh $r1;
+        com.google.android.gms.internal.ads.zzbhg r0;
+        java.lang.String $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbhg;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzbhh;
+
+        $r2 := @parameter1: java.lang.String;
+
+        r0.<com.google.android.gms.internal.ads.zzbhg: java.lang.String zza> = $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzbhg: com.google.android.gms.internal.ads.zzbhh zzb> = $r1;
+
+        specialinvoke r0.<com.google.android.gms.ads.query.QueryInfoGenerationCallback: void <init>()>();
+
+        return;
+    }
+
+    public final void onFailure(java.lang.String)
+    {
+        com.google.android.gms.internal.ads.zzbhh $r4;
+        com.google.android.gms.internal.ads.zzbhg r0;
+        androidx.browser.customtabs.CustomTabsSession $r5;
+        org.json.JSONException $r7;
+        org.json.JSONObject $r6;
+        java.lang.String $r1, $r2, $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbhg;
+
+        $r2 := @parameter0: java.lang.String;
+
+        $r1 = "Failed to generate query info for Custom Tab error: ";
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.String: java.lang.String concat(java.lang.String)>($r3);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzj(java.lang.String)>($r1);
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzbhg: com.google.android.gms.internal.ads.zzbhh zzb>;
+
+     label1:
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzbhh: androidx.browser.customtabs.CustomTabsSession zza(com.google.android.gms.internal.ads.zzbhh)>($r4);
+
+     label2:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzbhg: java.lang.String zza>;
+
+     label3:
+        $r6 = virtualinvoke $r4.<com.google.android.gms.internal.ads.zzbhh: org.json.JSONObject zzc(java.lang.String,java.lang.String)>($r1, $r2);
+
+        $r2 = virtualinvoke $r6.<org.json.JSONObject: java.lang.String toString()>();
+
+        virtualinvoke $r5.<androidx.browser.customtabs.CustomTabsSession: int postMessage(java.lang.String,android.os.Bundle)>($r2, null);
+
+     label4:
+        return;
+
+     label5:
+        $r7 := @caughtexception;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzh(java.lang.String,java.lang.Throwable)>("Error creating PACT Error Response JSON: ", $r7);
+
+        return;
+
+        catch org.json.JSONException from label1 to label2 with label5;
+        catch org.json.JSONException from label3 to label4 with label5;
+    }
+
+    public final void onSuccess(com.google.android.gms.ads.query.QueryInfo)
+    {
+        com.google.android.gms.internal.ads.zzbhh $r4;
+        com.google.android.gms.internal.ads.zzbhg r0;
+        androidx.browser.customtabs.CustomTabsSession $r5;
+        com.google.android.gms.ads.query.QueryInfo $r2;
+        org.json.JSONException $r7;
+        org.json.JSONObject $r6;
+        java.lang.String $r1, $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzbhg;
+
+        $r2 := @parameter0: com.google.android.gms.ads.query.QueryInfo;
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.ads.query.QueryInfo: java.lang.String getQuery()>();
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzbhg: com.google.android.gms.internal.ads.zzbhh zzb>;
+
+     label1:
+        $r5 = staticinvoke <com.google.android.gms.internal.ads.zzbhh: androidx.browser.customtabs.CustomTabsSession zza(com.google.android.gms.internal.ads.zzbhh)>($r4);
+
+     label2:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzbhg: java.lang.String zza>;
+
+     label3:
+        $r6 = virtualinvoke $r4.<com.google.android.gms.internal.ads.zzbhh: org.json.JSONObject zzd(java.lang.String,java.lang.String)>($r1, $r3);
+
+        $r1 = virtualinvoke $r6.<org.json.JSONObject: java.lang.String toString()>();
+
+        virtualinvoke $r5.<androidx.browser.customtabs.CustomTabsSession: int postMessage(java.lang.String,android.os.Bundle)>($r1, null);
+
+     label4:
+        return;
+
+     label5:
+        $r7 := @caughtexception;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzh(java.lang.String,java.lang.Throwable)>("Error creating PACT Signal Response JSON: ", $r7);
+
+        return;
+
+        catch org.json.JSONException from label1 to label2 with label5;
+        catch org.json.JSONException from label3 to label4 with label5;
+    }
+}

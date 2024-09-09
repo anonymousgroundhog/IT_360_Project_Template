@@ -1,0 +1,172 @@
+class com.google.common.collect.RegularImmutableMultiset extends com.google.common.collect.ImmutableMultiset
+{
+    static final com.google.common.collect.RegularImmutableMultiset EMPTY;
+    final transient com.google.common.collect.ObjectCountHashMap contents;
+    private transient com.google.common.collect.ImmutableSet elementSet;
+    private final transient int size;
+
+    static void <clinit>()
+    {
+        com.google.common.collect.RegularImmutableMultiset $r0;
+        com.google.common.collect.ObjectCountHashMap $r1;
+
+        $r0 = new com.google.common.collect.RegularImmutableMultiset;
+
+        $r1 = staticinvoke <com.google.common.collect.ObjectCountHashMap: com.google.common.collect.ObjectCountHashMap create()>();
+
+        specialinvoke $r0.<com.google.common.collect.RegularImmutableMultiset: void <init>(com.google.common.collect.ObjectCountHashMap)>($r1);
+
+        <com.google.common.collect.RegularImmutableMultiset: com.google.common.collect.RegularImmutableMultiset EMPTY> = $r0;
+
+        return;
+    }
+
+    void <init>(com.google.common.collect.ObjectCountHashMap)
+    {
+        com.google.common.collect.RegularImmutableMultiset r0;
+        com.google.common.collect.ObjectCountHashMap r1;
+        int i1, $i2;
+        long l0, $l3;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMultiset;
+
+        r1 := @parameter0: com.google.common.collect.ObjectCountHashMap;
+
+        specialinvoke r0.<com.google.common.collect.ImmutableMultiset: void <init>()>();
+
+        r0.<com.google.common.collect.RegularImmutableMultiset: com.google.common.collect.ObjectCountHashMap contents> = r1;
+
+        l0 = 0L;
+
+        i1 = 0;
+
+     label1:
+        $i2 = virtualinvoke r1.<com.google.common.collect.ObjectCountHashMap: int size()>();
+
+        if i1 >= $i2 goto label2;
+
+        $i2 = virtualinvoke r1.<com.google.common.collect.ObjectCountHashMap: int getValue(int)>(i1);
+
+        $l3 = (long) $i2;
+
+        l0 = l0 + $l3;
+
+        i1 = i1 + 1;
+
+        goto label1;
+
+     label2:
+        i1 = staticinvoke <com.google.common.primitives.Ints: int saturatedCast(long)>(l0);
+
+        r0.<com.google.common.collect.RegularImmutableMultiset: int size> = i1;
+
+        return;
+    }
+
+    public int count(java.lang.Object)
+    {
+        com.google.common.collect.RegularImmutableMultiset r0;
+        com.google.common.collect.ObjectCountHashMap $r2;
+        int $i0;
+        java.lang.Object $r1;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMultiset;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = r0.<com.google.common.collect.RegularImmutableMultiset: com.google.common.collect.ObjectCountHashMap contents>;
+
+        $i0 = virtualinvoke $r2.<com.google.common.collect.ObjectCountHashMap: int get(java.lang.Object)>($r1);
+
+        return $i0;
+    }
+
+    public com.google.common.collect.ImmutableSet elementSet()
+    {
+        com.google.common.collect.RegularImmutableMultiset$ElementSet $r2;
+        com.google.common.collect.RegularImmutableMultiset r0;
+        com.google.common.collect.ImmutableSet r1;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMultiset;
+
+        r1 = r0.<com.google.common.collect.RegularImmutableMultiset: com.google.common.collect.ImmutableSet elementSet>;
+
+        if r1 != null goto label1;
+
+        $r2 = new com.google.common.collect.RegularImmutableMultiset$ElementSet;
+
+        specialinvoke $r2.<com.google.common.collect.RegularImmutableMultiset$ElementSet: void <init>(com.google.common.collect.RegularImmutableMultiset,com.google.common.collect.RegularImmutableMultiset$1)>(r0, null);
+
+        r0.<com.google.common.collect.RegularImmutableMultiset: com.google.common.collect.ImmutableSet elementSet> = $r2;
+
+        return $r2;
+
+     label1:
+        return r1;
+    }
+
+    public volatile java.util.Set elementSet()
+    {
+        com.google.common.collect.RegularImmutableMultiset r0;
+        com.google.common.collect.ImmutableSet $r1;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMultiset;
+
+        $r1 = virtualinvoke r0.<com.google.common.collect.RegularImmutableMultiset: com.google.common.collect.ImmutableSet elementSet()>();
+
+        return $r1;
+    }
+
+    com.google.common.collect.Multiset$Entry getEntry(int)
+    {
+        com.google.common.collect.RegularImmutableMultiset r0;
+        com.google.common.collect.ObjectCountHashMap $r2;
+        int $i0;
+        com.google.common.collect.Multiset$Entry $r1;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMultiset;
+
+        $i0 := @parameter0: int;
+
+        $r2 = r0.<com.google.common.collect.RegularImmutableMultiset: com.google.common.collect.ObjectCountHashMap contents>;
+
+        $r1 = virtualinvoke $r2.<com.google.common.collect.ObjectCountHashMap: com.google.common.collect.Multiset$Entry getEntry(int)>($i0);
+
+        return $r1;
+    }
+
+    boolean isPartialView()
+    {
+        com.google.common.collect.RegularImmutableMultiset r0;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMultiset;
+
+        return 0;
+    }
+
+    public int size()
+    {
+        int i0;
+        com.google.common.collect.RegularImmutableMultiset r0;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMultiset;
+
+        i0 = r0.<com.google.common.collect.RegularImmutableMultiset: int size>;
+
+        return i0;
+    }
+
+    java.lang.Object writeReplace()
+    {
+        com.google.common.collect.RegularImmutableMultiset r0;
+        com.google.common.collect.RegularImmutableMultiset$SerializedForm $r1;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMultiset;
+
+        $r1 = new com.google.common.collect.RegularImmutableMultiset$SerializedForm;
+
+        specialinvoke $r1.<com.google.common.collect.RegularImmutableMultiset$SerializedForm: void <init>(com.google.common.collect.Multiset)>(r0);
+
+        return $r1;
+    }
+}

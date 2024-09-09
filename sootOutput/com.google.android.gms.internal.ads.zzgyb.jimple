@@ -1,0 +1,84 @@
+final class com.google.android.gms.internal.ads.zzgyb extends com.google.android.gms.internal.ads.zzgyd
+{
+    final com.google.android.gms.internal.ads.zzgyl zza;
+    private int zzb;
+    private final int zzc;
+
+    void <init>(com.google.android.gms.internal.ads.zzgyl)
+    {
+        int $i0;
+        com.google.android.gms.internal.ads.zzgyl $r1;
+        com.google.android.gms.internal.ads.zzgyb r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgyb;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzgyl;
+
+        r0.<com.google.android.gms.internal.ads.zzgyb: com.google.android.gms.internal.ads.zzgyl zza> = $r1;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzgyd: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzgyb: int zzb> = 0;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgyb: com.google.android.gms.internal.ads.zzgyl zza>;
+
+        $i0 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzgyl: int zzd()>();
+
+        r0.<com.google.android.gms.internal.ads.zzgyb: int zzc> = $i0;
+
+        return;
+    }
+
+    public final boolean hasNext()
+    {
+        int $i0, $i1;
+        com.google.android.gms.internal.ads.zzgyb r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgyb;
+
+        $i1 = r0.<com.google.android.gms.internal.ads.zzgyb: int zzb>;
+
+        $i0 = r0.<com.google.android.gms.internal.ads.zzgyb: int zzc>;
+
+        if $i1 >= $i0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public final byte zza()
+    {
+        com.google.android.gms.internal.ads.zzgyb r0;
+        byte $b0;
+        int $i1, $i2;
+        com.google.android.gms.internal.ads.zzgyl $r1;
+        java.util.NoSuchElementException $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgyb;
+
+        $i1 = r0.<com.google.android.gms.internal.ads.zzgyb: int zzb>;
+
+        $i2 = r0.<com.google.android.gms.internal.ads.zzgyb: int zzc>;
+
+        if $i1 >= $i2 goto label1;
+
+        $i2 = $i1 + 1;
+
+        r0.<com.google.android.gms.internal.ads.zzgyb: int zzb> = $i2;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgyb: com.google.android.gms.internal.ads.zzgyl zza>;
+
+        $b0 = virtualinvoke $r1.<com.google.android.gms.internal.ads.zzgyl: byte zzb(int)>($i1);
+
+        return $b0;
+
+     label1:
+        $r2 = new java.util.NoSuchElementException;
+
+        specialinvoke $r2.<java.util.NoSuchElementException: void <init>()>();
+
+        throw $r2;
+    }
+}

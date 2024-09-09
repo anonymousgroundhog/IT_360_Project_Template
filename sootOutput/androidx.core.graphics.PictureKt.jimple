@@ -1,0 +1,53 @@
+public final class androidx.core.graphics.PictureKt extends java.lang.Object
+{
+
+    public static final android.graphics.Picture record(android.graphics.Picture, int, int, kotlin.jvm.functions.Function1)
+    {
+        java.lang.Throwable $r2;
+        android.graphics.Picture $r0;
+        int $i0, $i1;
+        kotlin.jvm.functions.Function1 $r1;
+        android.graphics.Canvas $r3;
+
+        $r0 := @parameter0: android.graphics.Picture;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r1 := @parameter3: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        $r3 = virtualinvoke $r0.<android.graphics.Picture: android.graphics.Canvas beginRecording(int,int)>($i0, $i1);
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r3, "beginRecording(width, height)");
+
+     label1:
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r3);
+
+     label2:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Picture: void endRecording()>();
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return $r0;
+
+     label3:
+        $r2 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Picture: void endRecording()>();
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+}

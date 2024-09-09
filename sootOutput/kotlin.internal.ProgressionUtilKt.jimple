@@ -1,0 +1,207 @@
+public final class kotlin.internal.ProgressionUtilKt extends java.lang.Object
+{
+
+    private static final int differenceModulo(int, int, int)
+    {
+        int $i0, $i1, $i2;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $i0 = staticinvoke <kotlin.internal.ProgressionUtilKt: int mod(int,int)>($i0, $i2);
+
+        $i1 = staticinvoke <kotlin.internal.ProgressionUtilKt: int mod(int,int)>($i1, $i2);
+
+        $i0 = $i0 - $i1;
+
+        $i0 = staticinvoke <kotlin.internal.ProgressionUtilKt: int mod(int,int)>($i0, $i2);
+
+        return $i0;
+    }
+
+    private static final long differenceModulo(long, long, long)
+    {
+        long $l0, $l1, $l2;
+
+        $l0 := @parameter0: long;
+
+        $l1 := @parameter1: long;
+
+        $l2 := @parameter2: long;
+
+        $l0 = staticinvoke <kotlin.internal.ProgressionUtilKt: long mod(long,long)>($l0, $l2);
+
+        $l1 = staticinvoke <kotlin.internal.ProgressionUtilKt: long mod(long,long)>($l1, $l2);
+
+        $l0 = $l0 - $l1;
+
+        $l0 = staticinvoke <kotlin.internal.ProgressionUtilKt: long mod(long,long)>($l0, $l2);
+
+        return $l0;
+    }
+
+    public static final int getProgressionLastElement(int, int, int)
+    {
+        int $i0, $i1, $i2;
+        java.lang.IllegalArgumentException $r0;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        if $i2 <= 0 goto label2;
+
+        if $i0 < $i1 goto label1;
+
+        goto label3;
+
+     label1:
+        $i0 = staticinvoke <kotlin.internal.ProgressionUtilKt: int differenceModulo(int,int,int)>($i1, $i0, $i2);
+
+        $i0 = $i1 - $i0;
+
+        return $i0;
+
+     label2:
+        if $i2 >= 0 goto label5;
+
+        if $i0 > $i1 goto label4;
+
+     label3:
+        return $i1;
+
+     label4:
+        $i2 = neg $i2;
+
+        $i0 = staticinvoke <kotlin.internal.ProgressionUtilKt: int differenceModulo(int,int,int)>($i0, $i1, $i2);
+
+        $i0 = $i0 + $i1;
+
+        return $i0;
+
+     label5:
+        $r0 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Step is zero.");
+
+        throw $r0;
+    }
+
+    public static final long getProgressionLastElement(long, long, long)
+    {
+        byte $b3;
+        int $i4;
+        long $l0, $l1, $l2;
+        java.lang.IllegalArgumentException $r0;
+
+        $l0 := @parameter0: long;
+
+        $l1 := @parameter1: long;
+
+        $l2 := @parameter2: long;
+
+        $b3 = $l2 cmp 0L;
+
+        $i4 = (int) $b3;
+
+        if $i4 <= 0 goto label2;
+
+        $b3 = $l0 cmp $l1;
+
+        $i4 = (int) $b3;
+
+        if $i4 < 0 goto label1;
+
+        goto label3;
+
+     label1:
+        $l0 = staticinvoke <kotlin.internal.ProgressionUtilKt: long differenceModulo(long,long,long)>($l1, $l0, $l2);
+
+        $l0 = $l1 - $l0;
+
+        return $l0;
+
+     label2:
+        $b3 = $l2 cmp 0L;
+
+        $i4 = (int) $b3;
+
+        if $i4 >= 0 goto label5;
+
+        $b3 = $l0 cmp $l1;
+
+        $i4 = (int) $b3;
+
+        if $i4 > 0 goto label4;
+
+     label3:
+        return $l1;
+
+     label4:
+        $l2 = neg $l2;
+
+        $l0 = staticinvoke <kotlin.internal.ProgressionUtilKt: long differenceModulo(long,long,long)>($l0, $l1, $l2);
+
+        $l0 = $l0 + $l1;
+
+        return $l0;
+
+     label5:
+        $r0 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Step is zero.");
+
+        throw $r0;
+    }
+
+    private static final int mod(int, int)
+    {
+        int $i0, $i1;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i0 = $i0 % $i1;
+
+        if $i0 < 0 goto label1;
+
+        return $i0;
+
+     label1:
+        $i0 = $i0 + $i1;
+
+        return $i0;
+    }
+
+    private static final long mod(long, long)
+    {
+        byte $b2;
+        int $i3;
+        long $l0, $l1;
+
+        $l0 := @parameter0: long;
+
+        $l1 := @parameter1: long;
+
+        $l0 = $l0 % $l1;
+
+        $b2 = $l0 cmp 0L;
+
+        $i3 = (int) $b2;
+
+        if $i3 < 0 goto label1;
+
+        return $l0;
+
+     label1:
+        $l0 = $l0 + $l1;
+
+        return $l0;
+    }
+}

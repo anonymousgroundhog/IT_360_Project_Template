@@ -1,0 +1,408 @@
+public class androidx.work.impl.constraints.trackers.NetworkStateTracker extends androidx.work.impl.constraints.trackers.ConstraintTracker
+{
+    static final java.lang.String TAG;
+    private androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver mBroadcastReceiver;
+    private final android.net.ConnectivityManager mConnectivityManager;
+    private androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateCallback mNetworkCallback;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+
+        $r0 = staticinvoke <androidx.work.Logger: java.lang.String tagWithPrefix(java.lang.String)>("NetworkStateTracker");
+
+        <androidx.work.impl.constraints.trackers.NetworkStateTracker: java.lang.String TAG> = $r0;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, androidx.work.impl.utils.taskexecutor.TaskExecutor)
+    {
+        android.net.ConnectivityManager $r4;
+        android.content.Context $r1;
+        androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateCallback $r5;
+        androidx.work.impl.constraints.trackers.NetworkStateTracker r0;
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r2;
+        androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver $r6;
+        java.lang.Object $r3;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.NetworkStateTracker;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.work.impl.utils.taskexecutor.TaskExecutor;
+
+        specialinvoke r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: void <init>(android.content.Context,androidx.work.impl.utils.taskexecutor.TaskExecutor)>($r1, $r2);
+
+        $r1 = r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: android.content.Context mAppContext>;
+
+        $r3 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("connectivity");
+
+        $r4 = (android.net.ConnectivityManager) $r3;
+
+        r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: android.net.ConnectivityManager mConnectivityManager> = $r4;
+
+        $z0 = staticinvoke <androidx.work.impl.constraints.trackers.NetworkStateTracker: boolean isNetworkCallbackSupported()>();
+
+        if $z0 == 0 goto label1;
+
+        $r5 = new androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateCallback;
+
+        specialinvoke $r5.<androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateCallback: void <init>(androidx.work.impl.constraints.trackers.NetworkStateTracker)>(r0);
+
+        r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateCallback mNetworkCallback> = $r5;
+
+        return;
+
+     label1:
+        $r6 = new androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver;
+
+        specialinvoke $r6.<androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver: void <init>(androidx.work.impl.constraints.trackers.NetworkStateTracker)>(r0);
+
+        r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver mBroadcastReceiver> = $r6;
+
+        return;
+    }
+
+    private static boolean isNetworkCallbackSupported()
+    {
+        int $i0;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 24 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    androidx.work.impl.constraints.NetworkState getActiveNetworkState()
+    {
+        android.net.ConnectivityManager r1;
+        androidx.work.impl.constraints.trackers.NetworkStateTracker r0;
+        android.net.NetworkInfo $r2;
+        androidx.work.impl.constraints.NetworkState $r3;
+        boolean z0, $z1, $z2, $z3, $z4;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.NetworkStateTracker;
+
+        r1 = r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: android.net.ConnectivityManager mConnectivityManager>;
+
+        $r2 = virtualinvoke r1.<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>();
+
+        z0 = 1;
+
+        if $r2 == null goto label1;
+
+        $z1 = virtualinvoke $r2.<android.net.NetworkInfo: boolean isConnected()>();
+
+        if $z1 == 0 goto label1;
+
+        $z1 = 1;
+
+        goto label2;
+
+     label1:
+        $z1 = 0;
+
+     label2:
+        $z2 = virtualinvoke r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: boolean isActiveNetworkValidated()>();
+
+        r1 = r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: android.net.ConnectivityManager mConnectivityManager>;
+
+        $z3 = staticinvoke <androidx.core.net.ConnectivityManagerCompat: boolean isActiveNetworkMetered(android.net.ConnectivityManager)>(r1);
+
+        if $r2 == null goto label3;
+
+        $z4 = virtualinvoke $r2.<android.net.NetworkInfo: boolean isRoaming()>();
+
+        if $z4 != 0 goto label3;
+
+        goto label4;
+
+     label3:
+        z0 = 0;
+
+     label4:
+        $r3 = new androidx.work.impl.constraints.NetworkState;
+
+        specialinvoke $r3.<androidx.work.impl.constraints.NetworkState: void <init>(boolean,boolean,boolean,boolean)>($z1, $z2, $z3, z0);
+
+        return $r3;
+    }
+
+    public androidx.work.impl.constraints.NetworkState getInitialState()
+    {
+        androidx.work.impl.constraints.trackers.NetworkStateTracker r0;
+        androidx.work.impl.constraints.NetworkState $r1;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.NetworkStateTracker;
+
+        $r1 = virtualinvoke r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: androidx.work.impl.constraints.NetworkState getActiveNetworkState()>();
+
+        return $r1;
+    }
+
+    public volatile java.lang.Object getInitialState()
+    {
+        androidx.work.impl.constraints.trackers.NetworkStateTracker r0;
+        androidx.work.impl.constraints.NetworkState $r1;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.NetworkStateTracker;
+
+        $r1 = virtualinvoke r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: androidx.work.impl.constraints.NetworkState getInitialState()>();
+
+        return $r1;
+    }
+
+    boolean isActiveNetworkValidated()
+    {
+        android.net.ConnectivityManager r1;
+        androidx.work.impl.constraints.trackers.NetworkStateTracker r0;
+        android.net.NetworkCapabilities $r3;
+        android.net.Network $r2;
+        androidx.work.Logger $r5;
+        java.lang.Throwable[] $r7;
+        int $i0;
+        java.lang.SecurityException r4;
+        java.lang.String $r6;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.NetworkStateTracker;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 >= 23 goto label1;
+
+        return 0;
+
+     label1:
+        r1 = r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: android.net.ConnectivityManager mConnectivityManager>;
+
+     label2:
+        $r2 = virtualinvoke r1.<android.net.ConnectivityManager: android.net.Network getActiveNetwork()>();
+
+     label3:
+        r1 = r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: android.net.ConnectivityManager mConnectivityManager>;
+
+     label4:
+        $r3 = virtualinvoke r1.<android.net.ConnectivityManager: android.net.NetworkCapabilities getNetworkCapabilities(android.net.Network)>($r2);
+
+     label5:
+        if $r3 == null goto label8;
+
+     label6:
+        $z0 = virtualinvoke $r3.<android.net.NetworkCapabilities: boolean hasCapability(int)>(16);
+
+     label7:
+        if $z0 == 0 goto label8;
+
+        return 1;
+
+     label8:
+        return 0;
+
+     label9:
+        r4 := @caughtexception;
+
+        $r5 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r6 = <androidx.work.impl.constraints.trackers.NetworkStateTracker: java.lang.String TAG>;
+
+        $r7 = newarray (java.lang.Throwable)[1];
+
+        $r7[0] = r4;
+
+        virtualinvoke $r5.<androidx.work.Logger: void error(java.lang.String,java.lang.String,java.lang.Throwable[])>($r6, "Unable to validate active network", $r7);
+
+        return 0;
+
+        catch java.lang.SecurityException from label2 to label3 with label9;
+        catch java.lang.SecurityException from label4 to label5 with label9;
+        catch java.lang.SecurityException from label6 to label7 with label9;
+    }
+
+    public void startTracking()
+    {
+        android.net.ConnectivityManager r4;
+        android.content.Context r7;
+        androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateCallback $r5;
+        androidx.work.impl.constraints.trackers.NetworkStateTracker r0;
+        android.content.IntentFilter $r9;
+        java.lang.RuntimeException r6;
+        androidx.work.Logger $r1;
+        java.lang.Throwable[] $r3;
+        androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver $r8;
+        java.lang.String $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.NetworkStateTracker;
+
+        $z0 = staticinvoke <androidx.work.impl.constraints.trackers.NetworkStateTracker: boolean isNetworkCallbackSupported()>();
+
+        if $z0 == 0 goto label11;
+
+     label01:
+        $r1 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+     label02:
+        $r2 = <androidx.work.impl.constraints.trackers.NetworkStateTracker: java.lang.String TAG>;
+
+        $r3 = newarray (java.lang.Throwable)[0];
+
+     label03:
+        virtualinvoke $r1.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>($r2, "Registering network callback", $r3);
+
+     label04:
+        r4 = r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: android.net.ConnectivityManager mConnectivityManager>;
+
+        $r5 = r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateCallback mNetworkCallback>;
+
+     label05:
+        virtualinvoke r4.<android.net.ConnectivityManager: void registerDefaultNetworkCallback(android.net.ConnectivityManager$NetworkCallback)>($r5);
+
+     label06:
+        goto label10;
+
+     label07:
+        r6 := @caughtexception;
+
+        goto label09;
+
+     label08:
+        r6 := @caughtexception;
+
+     label09:
+        $r1 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r2 = <androidx.work.impl.constraints.trackers.NetworkStateTracker: java.lang.String TAG>;
+
+        $r3 = newarray (java.lang.Throwable)[1];
+
+        $r3[0] = r6;
+
+        virtualinvoke $r1.<androidx.work.Logger: void error(java.lang.String,java.lang.String,java.lang.Throwable[])>($r2, "Received exception while registering network callback", $r3);
+
+     label10:
+        return;
+
+     label11:
+        $r1 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r2 = <androidx.work.impl.constraints.trackers.NetworkStateTracker: java.lang.String TAG>;
+
+        $r3 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r1.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>($r2, "Registering broadcast receiver", $r3);
+
+        r7 = r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: android.content.Context mAppContext>;
+
+        $r8 = r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver mBroadcastReceiver>;
+
+        $r9 = new android.content.IntentFilter;
+
+        specialinvoke $r9.<android.content.IntentFilter: void <init>(java.lang.String)>("android.net.conn.CONNECTIVITY_CHANGE");
+
+        virtualinvoke r7.<android.content.Context: android.content.Intent registerReceiver(android.content.BroadcastReceiver,android.content.IntentFilter)>($r8, $r9);
+
+        return;
+
+        catch java.lang.IllegalArgumentException from label01 to label02 with label08;
+        catch java.lang.IllegalArgumentException from label03 to label04 with label08;
+        catch java.lang.IllegalArgumentException from label05 to label06 with label08;
+        catch java.lang.SecurityException from label01 to label02 with label07;
+        catch java.lang.SecurityException from label03 to label04 with label07;
+        catch java.lang.SecurityException from label05 to label06 with label07;
+    }
+
+    public void stopTracking()
+    {
+        android.net.ConnectivityManager r4;
+        android.content.Context r7;
+        androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateCallback $r5;
+        androidx.work.impl.constraints.trackers.NetworkStateTracker r0;
+        java.lang.RuntimeException r6;
+        androidx.work.Logger $r1;
+        java.lang.Throwable[] $r3;
+        androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver $r8;
+        java.lang.String $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.NetworkStateTracker;
+
+        $z0 = staticinvoke <androidx.work.impl.constraints.trackers.NetworkStateTracker: boolean isNetworkCallbackSupported()>();
+
+        if $z0 == 0 goto label11;
+
+     label01:
+        $r1 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+     label02:
+        $r2 = <androidx.work.impl.constraints.trackers.NetworkStateTracker: java.lang.String TAG>;
+
+        $r3 = newarray (java.lang.Throwable)[0];
+
+     label03:
+        virtualinvoke $r1.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>($r2, "Unregistering network callback", $r3);
+
+     label04:
+        r4 = r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: android.net.ConnectivityManager mConnectivityManager>;
+
+        $r5 = r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateCallback mNetworkCallback>;
+
+     label05:
+        virtualinvoke r4.<android.net.ConnectivityManager: void unregisterNetworkCallback(android.net.ConnectivityManager$NetworkCallback)>($r5);
+
+     label06:
+        goto label10;
+
+     label07:
+        r6 := @caughtexception;
+
+        goto label09;
+
+     label08:
+        r6 := @caughtexception;
+
+     label09:
+        $r1 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r2 = <androidx.work.impl.constraints.trackers.NetworkStateTracker: java.lang.String TAG>;
+
+        $r3 = newarray (java.lang.Throwable)[1];
+
+        $r3[0] = r6;
+
+        virtualinvoke $r1.<androidx.work.Logger: void error(java.lang.String,java.lang.String,java.lang.Throwable[])>($r2, "Received exception while unregistering network callback", $r3);
+
+     label10:
+        return;
+
+     label11:
+        $r1 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r2 = <androidx.work.impl.constraints.trackers.NetworkStateTracker: java.lang.String TAG>;
+
+        $r3 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r1.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>($r2, "Unregistering broadcast receiver", $r3);
+
+        r7 = r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: android.content.Context mAppContext>;
+
+        $r8 = r0.<androidx.work.impl.constraints.trackers.NetworkStateTracker: androidx.work.impl.constraints.trackers.NetworkStateTracker$NetworkStateBroadcastReceiver mBroadcastReceiver>;
+
+        virtualinvoke r7.<android.content.Context: void unregisterReceiver(android.content.BroadcastReceiver)>($r8);
+
+        return;
+
+        catch java.lang.IllegalArgumentException from label01 to label02 with label08;
+        catch java.lang.IllegalArgumentException from label03 to label04 with label08;
+        catch java.lang.IllegalArgumentException from label05 to label06 with label08;
+        catch java.lang.SecurityException from label01 to label02 with label07;
+        catch java.lang.SecurityException from label03 to label04 with label07;
+        catch java.lang.SecurityException from label05 to label06 with label07;
+    }
+}

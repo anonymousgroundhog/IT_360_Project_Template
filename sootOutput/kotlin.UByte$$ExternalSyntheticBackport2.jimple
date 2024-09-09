@@ -1,0 +1,79 @@
+public final class kotlin.UByte$$ExternalSyntheticBackport2 extends java.lang.Object
+{
+
+    public static long m(long, long)
+    {
+        byte $b0;
+        int $i5;
+        long $l1, $l2, $l3, $l4;
+
+        $l1 := @parameter0: long;
+
+        $l2 := @parameter1: long;
+
+        $b0 = $l2 cmp 0L;
+
+        $i5 = (int) $b0;
+
+        if $i5 >= 0 goto label2;
+
+        $l3 = $l1 ^ -9223372036854775808L;
+
+        $l4 = -9223372036854775808L ^ $l2;
+
+        $b0 = $l3 cmp $l4;
+
+        $i5 = (int) $b0;
+
+        if $i5 >= 0 goto label1;
+
+        return $l1;
+
+     label1:
+        $l1 = $l1 - $l2;
+
+        return $l1;
+
+     label2:
+        $b0 = $l1 cmp 0L;
+
+        $i5 = (int) $b0;
+
+        if $i5 < 0 goto label3;
+
+        $l1 = $l1 % $l2;
+
+        return $l1;
+
+     label3:
+        $l3 = $l1 >>> 1;
+
+        $l3 = $l3 / $l2;
+
+        $l3 = $l3 << 1;
+
+        $l3 = $l3 * $l2;
+
+        $l1 = $l1 - $l3;
+
+        $l3 = $l1 ^ -9223372036854775808L;
+
+        $l4 = -9223372036854775808L ^ $l2;
+
+        $b0 = $l3 cmp $l4;
+
+        $i5 = (int) $b0;
+
+        if $i5 < 0 goto label4;
+
+        goto label5;
+
+     label4:
+        $l2 = 0L;
+
+     label5:
+        $l1 = $l1 - $l2;
+
+        return $l1;
+    }
+}

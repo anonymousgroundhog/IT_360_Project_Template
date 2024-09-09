@@ -1,0 +1,117 @@
+public final class androidx.core.text.SpannableStringKt extends java.lang.Object
+{
+
+    public static final void clearSpans(android.text.Spannable)
+    {
+        android.text.Spanned $r1;
+        java.lang.Object[] $r2;
+        android.text.Spannable $r0;
+        int $i0, $i1;
+        java.lang.Object r3;
+
+        $r0 := @parameter0: android.text.Spannable;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = (android.text.Spanned) $r0;
+
+        $i0 = interfaceinvoke $r1.<android.text.Spanned: int length()>();
+
+        $r2 = interfaceinvoke $r1.<android.text.Spanned: java.lang.Object[] getSpans(int,int,java.lang.Class)>(0, $i0, class "Ljava/lang/Object;");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r2, "getSpans(start, end, T::class.java)");
+
+        $i0 = lengthof $r2;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        r3 = $r2[$i1];
+
+        interfaceinvoke $r0.<android.text.Spannable: void removeSpan(java.lang.Object)>(r3);
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public static final void set(android.text.Spannable, int, int, java.lang.Object)
+    {
+        android.text.Spannable $r0;
+        int $i0, $i1;
+        java.lang.Object $r1;
+
+        $r0 := @parameter0: android.text.Spannable;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r1 := @parameter3: java.lang.Object;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "span");
+
+        interfaceinvoke $r0.<android.text.Spannable: void setSpan(java.lang.Object,int,int,int)>($r1, $i0, $i1, 17);
+
+        return;
+    }
+
+    public static final void set(android.text.Spannable, kotlin.ranges.IntRange, java.lang.Object)
+    {
+        android.text.Spannable $r0;
+        int $i0, $i1;
+        java.lang.Object $r2;
+        java.lang.Integer $r3;
+        kotlin.ranges.IntRange $r1;
+
+        $r0 := @parameter0: android.text.Spannable;
+
+        $r1 := @parameter1: kotlin.ranges.IntRange;
+
+        $r2 := @parameter2: java.lang.Object;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "range");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r2, "span");
+
+        $r3 = virtualinvoke $r1.<kotlin.ranges.IntRange: java.lang.Integer getStart()>();
+
+        $i0 = virtualinvoke $r3.<java.lang.Integer: int intValue()>();
+
+        $r3 = virtualinvoke $r1.<kotlin.ranges.IntRange: java.lang.Integer getEndInclusive()>();
+
+        $i1 = virtualinvoke $r3.<java.lang.Integer: int intValue()>();
+
+        interfaceinvoke $r0.<android.text.Spannable: void setSpan(java.lang.Object,int,int,int)>($r2, $i0, $i1, 17);
+
+        return;
+    }
+
+    public static final android.text.Spannable toSpannable(java.lang.CharSequence)
+    {
+        java.lang.CharSequence $r0;
+        android.text.SpannableString $r1;
+        android.text.Spannable $r2;
+
+        $r0 := @parameter0: java.lang.CharSequence;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = staticinvoke <android.text.SpannableString: android.text.SpannableString valueOf(java.lang.CharSequence)>($r0);
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r1, "valueOf(this)");
+
+        $r2 = (android.text.Spannable) $r1;
+
+        return $r2;
+    }
+}

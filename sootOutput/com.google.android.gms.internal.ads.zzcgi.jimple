@@ -1,0 +1,394 @@
+final class com.google.android.gms.internal.ads.zzcgi extends com.google.android.gms.internal.ads.zzfua
+{
+    private final android.hardware.SensorManager zzb;
+    private final java.lang.Object zzc;
+    private final android.view.Display zzd;
+    private final float[] zze;
+    private final float[] zzf;
+    private float[] zzg;
+    private android.os.Handler zzh;
+    private com.google.android.gms.internal.ads.zzcgh zzi;
+
+    void <init>(android.content.Context)
+    {
+        android.content.Context $r1;
+        android.hardware.SensorManager $r3;
+        com.google.android.gms.internal.ads.zzcgi r0;
+        android.view.WindowManager $r4;
+        android.view.Display $r5;
+        java.lang.Object $r2;
+        float[] $r6;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcgi;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<com.google.android.gms.internal.ads.zzfua: void <init>(java.lang.String,java.lang.String)>("OrientationMonitor", "ads");
+
+        $r2 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("sensor");
+
+        $r3 = (android.hardware.SensorManager) $r2;
+
+        r0.<com.google.android.gms.internal.ads.zzcgi: android.hardware.SensorManager zzb> = $r3;
+
+        $r2 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("window");
+
+        $r4 = (android.view.WindowManager) $r2;
+
+        $r5 = interfaceinvoke $r4.<android.view.WindowManager: android.view.Display getDefaultDisplay()>();
+
+        r0.<com.google.android.gms.internal.ads.zzcgi: android.view.Display zzd> = $r5;
+
+        $r6 = newarray (float)[9];
+
+        r0.<com.google.android.gms.internal.ads.zzcgi: float[] zze> = $r6;
+
+        $r6 = newarray (float)[9];
+
+        r0.<com.google.android.gms.internal.ads.zzcgi: float[] zzf> = $r6;
+
+        $r2 = new java.lang.Object;
+
+        specialinvoke $r2.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzcgi: java.lang.Object zzc> = $r2;
+
+        return;
+    }
+
+    public final void zza(android.hardware.SensorEvent)
+    {
+        java.lang.Throwable $r7, $r8;
+        com.google.android.gms.internal.ads.zzcgi r0;
+        com.google.android.gms.internal.ads.zzcgh $r6;
+        float[] $r2, $r4;
+        android.hardware.SensorEvent $r1;
+        byte $b1;
+        int $i0;
+        float $f0, $f1;
+        android.view.Display $r5;
+        java.lang.Object $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcgi;
+
+        $r1 := @parameter0: android.hardware.SensorEvent;
+
+        $r2 = $r1.<android.hardware.SensorEvent: float[] values>;
+
+        $f0 = $r2[0];
+
+        $b1 = $f0 cmpl 0.0F;
+
+        if $b1 != 0 goto label01;
+
+        $f0 = $r2[1];
+
+        $b1 = $f0 cmpl 0.0F;
+
+        if $b1 != 0 goto label01;
+
+        $f0 = $r2[2];
+
+        $b1 = $f0 cmpl 0.0F;
+
+        if $b1 == 0 goto label12;
+
+     label01:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzcgi: java.lang.Object zzc>;
+
+        entermonitor $r3;
+
+     label02:
+        $r4 = r0.<com.google.android.gms.internal.ads.zzcgi: float[] zzg>;
+
+        if $r4 != null goto label03;
+
+        $r4 = newarray (float)[9];
+
+        r0.<com.google.android.gms.internal.ads.zzcgi: float[] zzg> = $r4;
+
+     label03:
+        exitmonitor $r3;
+
+     label04:
+        $r4 = r0.<com.google.android.gms.internal.ads.zzcgi: float[] zze>;
+
+        staticinvoke <android.hardware.SensorManager: void getRotationMatrixFromVector(float[],float[])>($r4, $r2);
+
+        $r5 = r0.<com.google.android.gms.internal.ads.zzcgi: android.view.Display zzd>;
+
+        $i0 = virtualinvoke $r5.<android.view.Display: int getRotation()>();
+
+        lookupswitch($i0)
+        {
+            case 1: goto label08;
+            case 2: goto label07;
+            case 3: goto label06;
+            default: goto label05;
+        };
+
+     label05:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgi: float[] zze>;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzcgi: float[] zzf>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r2, 0, $r4, 0, 9);
+
+        goto label09;
+
+     label06:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgi: float[] zze>;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzcgi: float[] zzf>;
+
+        staticinvoke <android.hardware.SensorManager: boolean remapCoordinateSystem(float[],int,int,float[])>($r2, 130, 1, $r4);
+
+        goto label09;
+
+     label07:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgi: float[] zze>;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzcgi: float[] zzf>;
+
+        staticinvoke <android.hardware.SensorManager: boolean remapCoordinateSystem(float[],int,int,float[])>($r2, 129, 130, $r4);
+
+        goto label09;
+
+     label08:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgi: float[] zze>;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzcgi: float[] zzf>;
+
+        staticinvoke <android.hardware.SensorManager: boolean remapCoordinateSystem(float[],int,int,float[])>($r2, 2, 129, $r4);
+
+     label09:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgi: float[] zzf>;
+
+        $f0 = $r2[1];
+
+        $f1 = $r2[3];
+
+        $r2[1] = $f1;
+
+        $r2[3] = $f0;
+
+        $f0 = $r2[2];
+
+        $f1 = $r2[6];
+
+        $r2[2] = $f1;
+
+        $r2[6] = $f0;
+
+        $f0 = $r2[5];
+
+        $f1 = $r2[7];
+
+        $r2[5] = $f1;
+
+        $r2[7] = $f0;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzcgi: java.lang.Object zzc>;
+
+        entermonitor $r3;
+
+     label10:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgi: float[] zzf>;
+
+        $r4 = r0.<com.google.android.gms.internal.ads.zzcgi: float[] zzg>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r2, 0, $r4, 0, 9);
+
+        exitmonitor $r3;
+
+     label11:
+        $r6 = r0.<com.google.android.gms.internal.ads.zzcgi: com.google.android.gms.internal.ads.zzcgh zzi>;
+
+        if $r6 == null goto label19;
+
+        interfaceinvoke $r6.<com.google.android.gms.internal.ads.zzcgh: void zza()>();
+
+     label12:
+        return;
+
+     label13:
+        $r7 := @caughtexception;
+
+     label14:
+        exitmonitor $r3;
+
+     label15:
+        throw $r7;
+
+     label16:
+        $r8 := @caughtexception;
+
+     label17:
+        exitmonitor $r3;
+
+     label18:
+        throw $r8;
+
+     label19:
+        return;
+
+        catch java.lang.Throwable from label02 to label04 with label16;
+        catch java.lang.Throwable from label10 to label11 with label13;
+        catch java.lang.Throwable from label14 to label15 with label13;
+        catch java.lang.Throwable from label17 to label18 with label16;
+    }
+
+    final void zzb(com.google.android.gms.internal.ads.zzcgh)
+    {
+        com.google.android.gms.internal.ads.zzcgi r0;
+        com.google.android.gms.internal.ads.zzcgh $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcgi;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzcgh;
+
+        r0.<com.google.android.gms.internal.ads.zzcgi: com.google.android.gms.internal.ads.zzcgh zzi> = $r1;
+
+        return;
+    }
+
+    final void zzc()
+    {
+        android.hardware.SensorManager $r2;
+        com.google.android.gms.internal.ads.zzftt $r5;
+        com.google.android.gms.internal.ads.zzcgi r0;
+        android.os.HandlerThread $r4;
+        android.os.Handler $r1;
+        android.os.Looper $r6;
+        android.hardware.Sensor $r3;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcgi;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcgi: android.os.Handler zzh>;
+
+        if $r1 == null goto label1;
+
+        return;
+
+     label1:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgi: android.hardware.SensorManager zzb>;
+
+        $r3 = virtualinvoke $r2.<android.hardware.SensorManager: android.hardware.Sensor getDefaultSensor(int)>(11);
+
+        if $r3 != null goto label2;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzg(java.lang.String)>("No Sensor of TYPE_ROTATION_VECTOR");
+
+        return;
+
+     label2:
+        $r4 = new android.os.HandlerThread;
+
+        specialinvoke $r4.<android.os.HandlerThread: void <init>(java.lang.String)>("OrientationMonitor");
+
+        virtualinvoke $r4.<android.os.HandlerThread: void start()>();
+
+        $r5 = new com.google.android.gms.internal.ads.zzftt;
+
+        $r6 = virtualinvoke $r4.<android.os.HandlerThread: android.os.Looper getLooper()>();
+
+        specialinvoke $r5.<com.google.android.gms.internal.ads.zzftt: void <init>(android.os.Looper)>($r6);
+
+        r0.<com.google.android.gms.internal.ads.zzcgi: android.os.Handler zzh> = $r5;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgi: android.hardware.SensorManager zzb>;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcgi: android.os.Handler zzh>;
+
+        $z0 = virtualinvoke $r2.<android.hardware.SensorManager: boolean registerListener(android.hardware.SensorEventListener,android.hardware.Sensor,int,android.os.Handler)>(r0, $r3, 0, $r1);
+
+        if $z0 != 0 goto label3;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzg(java.lang.String)>("SensorManager.registerListener failed.");
+
+        virtualinvoke r0.<com.google.android.gms.internal.ads.zzcgi: void zzd()>();
+
+     label3:
+        return;
+    }
+
+    final void zzd()
+    {
+        android.hardware.SensorManager $r3;
+        com.google.android.gms.internal.ads.zzcgi r0;
+        com.google.android.gms.internal.ads.zzcgg $r1;
+        android.os.Handler $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcgi;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgi: android.os.Handler zzh>;
+
+        if $r2 != null goto label1;
+
+        return;
+
+     label1:
+        $r3 = r0.<com.google.android.gms.internal.ads.zzcgi: android.hardware.SensorManager zzb>;
+
+        virtualinvoke $r3.<android.hardware.SensorManager: void unregisterListener(android.hardware.SensorEventListener)>(r0);
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgi: android.os.Handler zzh>;
+
+        $r1 = new com.google.android.gms.internal.ads.zzcgg;
+
+        specialinvoke $r1.<com.google.android.gms.internal.ads.zzcgg: void <init>(com.google.android.gms.internal.ads.zzcgi)>(r0);
+
+        virtualinvoke $r2.<android.os.Handler: boolean post(java.lang.Runnable)>($r1);
+
+        r0.<com.google.android.gms.internal.ads.zzcgi: android.os.Handler zzh> = null;
+
+        return;
+    }
+
+    final boolean zze(float[])
+    {
+        java.lang.Throwable $r4;
+        com.google.android.gms.internal.ads.zzcgi r0;
+        java.lang.Object $r1;
+        float[] $r2, $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzcgi;
+
+        $r3 := @parameter0: float[];
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzcgi: java.lang.Object zzc>;
+
+        entermonitor $r1;
+
+     label1:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzcgi: float[] zzg>;
+
+        if $r2 != null goto label3;
+
+        exitmonitor $r1;
+
+     label2:
+        return 0;
+
+     label3:
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r2, 0, $r3, 0, 9);
+
+        exitmonitor $r1;
+
+     label4:
+        return 1;
+
+     label5:
+        $r4 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label6:
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label3 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+}

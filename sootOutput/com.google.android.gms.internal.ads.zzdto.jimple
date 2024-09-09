@@ -1,0 +1,191 @@
+public final class com.google.android.gms.internal.ads.zzdto extends java.lang.Object
+{
+    private android.content.Context zza;
+    private android.widget.PopupWindow zzb;
+
+    public void <init>()
+    {
+        com.google.android.gms.internal.ads.zzdto r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdto;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public final void zza(android.content.Context, android.view.View)
+    {
+        android.content.Context $r1;
+        com.google.android.gms.internal.ads.zzdto r0;
+        android.view.ViewGroup$LayoutParams $r9;
+        android.widget.FrameLayout $r8;
+        android.widget.PopupWindow $r6, $r10;
+        java.lang.Exception $r7;
+        android.view.View $r2, $r5;
+        android.app.Activity $r3;
+        android.view.Window $r4;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdto;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.view.View;
+
+        $z0 = staticinvoke <com.google.android.gms.common.util.PlatformVersion: boolean isAtLeastKitKat()>();
+
+        if $z0 == 0 goto label13;
+
+        $z0 = staticinvoke <com.google.android.gms.common.util.PlatformVersion: boolean isAtLeastLollipop()>();
+
+        if $z0 == 0 goto label01;
+
+        return;
+
+     label01:
+        $z0 = $r1 instanceof android.app.Activity;
+
+        if $z0 == 0 goto label02;
+
+        $r3 = (android.app.Activity) $r1;
+
+        $r4 = virtualinvoke $r3.<android.app.Activity: android.view.Window getWindow()>();
+
+        goto label03;
+
+     label02:
+        $r4 = null;
+
+     label03:
+        if $r4 == null goto label10;
+
+        $r5 = virtualinvoke $r4.<android.view.Window: android.view.View getDecorView()>();
+
+        if $r5 != null goto label04;
+
+        $r6 = null;
+
+        goto label11;
+
+     label04:
+        $r3 = (android.app.Activity) $r1;
+
+        $z0 = virtualinvoke $r3.<android.app.Activity: boolean isDestroyed()>();
+
+        if $z0 == 0 goto label05;
+
+        $r6 = null;
+
+        goto label11;
+
+     label05:
+        $r8 = new android.widget.FrameLayout;
+
+        specialinvoke $r8.<android.widget.FrameLayout: void <init>(android.content.Context)>($r1);
+
+        $r9 = new android.view.ViewGroup$LayoutParams;
+
+        specialinvoke $r9.<android.view.ViewGroup$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        virtualinvoke $r8.<android.widget.FrameLayout: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r9);
+
+        virtualinvoke $r8.<android.widget.FrameLayout: void addView(android.view.View,int,int)>($r2, -1, -1);
+
+        $r10 = new android.widget.PopupWindow;
+
+        $r6 = $r10;
+
+        specialinvoke $r10.<android.widget.PopupWindow: void <init>(android.view.View,int,int,boolean)>($r8, 1, 1, 0);
+
+        virtualinvoke $r10.<android.widget.PopupWindow: void setOutsideTouchable(boolean)>(1);
+
+        virtualinvoke $r10.<android.widget.PopupWindow: void setClippingEnabled(boolean)>(0);
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zze(java.lang.String)>("Displaying the 1x1 popup off the screen.");
+
+     label06:
+        $r2 = virtualinvoke $r4.<android.view.Window: android.view.View getDecorView()>();
+
+     label07:
+        virtualinvoke $r10.<android.widget.PopupWindow: void showAtLocation(android.view.View,int,int,int)>($r2, 0, -1, -1);
+
+     label08:
+        goto label11;
+
+     label09:
+        $r7 := @caughtexception;
+
+     label10:
+        $r6 = null;
+
+     label11:
+        r0.<com.google.android.gms.internal.ads.zzdto: android.widget.PopupWindow zzb> = $r6;
+
+        $r6 = r0.<com.google.android.gms.internal.ads.zzdto: android.widget.PopupWindow zzb>;
+
+        if $r6 != null goto label12;
+
+        $r1 = null;
+
+     label12:
+        r0.<com.google.android.gms.internal.ads.zzdto: android.content.Context zza> = $r1;
+
+     label13:
+        return;
+
+        catch java.lang.Exception from label06 to label07 with label09;
+        catch java.lang.Exception from label07 to label08 with label09;
+    }
+
+    public final void zzb()
+    {
+        android.content.Context $r1;
+        com.google.android.gms.internal.ads.zzdto r0;
+        android.widget.PopupWindow $r2;
+        android.app.Activity $r3;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzdto;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzdto: android.content.Context zza>;
+
+        if $r1 == null goto label4;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzdto: android.widget.PopupWindow zzb>;
+
+        if $r2 != null goto label1;
+
+        return;
+
+     label1:
+        $z0 = $r1 instanceof android.app.Activity;
+
+        if $z0 == 0 goto label2;
+
+        $r3 = (android.app.Activity) $r1;
+
+        $z0 = virtualinvoke $r3.<android.app.Activity: boolean isDestroyed()>();
+
+        if $z0 != 0 goto label3;
+
+     label2:
+        $r2 = r0.<com.google.android.gms.internal.ads.zzdto: android.widget.PopupWindow zzb>;
+
+        $z0 = virtualinvoke $r2.<android.widget.PopupWindow: boolean isShowing()>();
+
+        if $z0 == 0 goto label3;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzdto: android.widget.PopupWindow zzb>;
+
+        virtualinvoke $r2.<android.widget.PopupWindow: void dismiss()>();
+
+     label3:
+        r0.<com.google.android.gms.internal.ads.zzdto: android.content.Context zza> = null;
+
+        r0.<com.google.android.gms.internal.ads.zzdto: android.widget.PopupWindow zzb> = null;
+
+     label4:
+        return;
+    }
+}

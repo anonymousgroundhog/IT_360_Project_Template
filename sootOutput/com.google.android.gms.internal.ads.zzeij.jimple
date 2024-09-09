@@ -1,0 +1,81 @@
+public final class com.google.android.gms.internal.ads.zzeij extends java.lang.Object
+{
+    private androidx.privacysandbox.ads.adservices.java.measurement.MeasurementManagerFutures zza;
+    private final android.content.Context zzb;
+
+    void <init>(android.content.Context)
+    {
+        android.content.Context $r1;
+        com.google.android.gms.internal.ads.zzeij r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzeij;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzeij: android.content.Context zzb> = $r1;
+
+        return;
+    }
+
+    public final com.google.common.util.concurrent.ListenableFuture zza()
+    {
+        android.content.Context $r1;
+        java.lang.IllegalStateException $r3;
+        com.google.android.gms.internal.ads.zzeij r0;
+        com.google.common.util.concurrent.ListenableFuture $r4;
+        androidx.privacysandbox.ads.adservices.java.measurement.MeasurementManagerFutures $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzeij;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzeij: android.content.Context zzb>;
+
+        $r2 = staticinvoke <androidx.privacysandbox.ads.adservices.java.measurement.MeasurementManagerFutures: androidx.privacysandbox.ads.adservices.java.measurement.MeasurementManagerFutures 'from'(android.content.Context)>($r1);
+
+        r0.<com.google.android.gms.internal.ads.zzeij: androidx.privacysandbox.ads.adservices.java.measurement.MeasurementManagerFutures zza> = $r2;
+
+        $r2 = r0.<com.google.android.gms.internal.ads.zzeij: androidx.privacysandbox.ads.adservices.java.measurement.MeasurementManagerFutures zza>;
+
+        if $r2 != null goto label1;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("MeasurementManagerFutures is null");
+
+        $r4 = staticinvoke <com.google.android.gms.internal.ads.zzgen: com.google.common.util.concurrent.ListenableFuture zzg(java.lang.Throwable)>($r3);
+
+        return $r4;
+
+     label1:
+        $r4 = virtualinvoke $r2.<androidx.privacysandbox.ads.adservices.java.measurement.MeasurementManagerFutures: com.google.common.util.concurrent.ListenableFuture getMeasurementApiStatusAsync()>();
+
+        return $r4;
+    }
+
+    public final com.google.common.util.concurrent.ListenableFuture zzb(android.net.Uri, android.view.InputEvent)
+    {
+        com.google.android.gms.internal.ads.zzeij r0;
+        com.google.common.util.concurrent.ListenableFuture $r5;
+        android.view.InputEvent $r1;
+        android.net.Uri $r2;
+        androidx.privacysandbox.ads.adservices.java.measurement.MeasurementManagerFutures $r3;
+        java.lang.Object $r4;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzeij;
+
+        $r2 := @parameter0: android.net.Uri;
+
+        $r1 := @parameter1: android.view.InputEvent;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzeij: androidx.privacysandbox.ads.adservices.java.measurement.MeasurementManagerFutures zza>;
+
+        $r4 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>($r3);
+
+        $r3 = (androidx.privacysandbox.ads.adservices.java.measurement.MeasurementManagerFutures) $r4;
+
+        $r5 = virtualinvoke $r3.<androidx.privacysandbox.ads.adservices.java.measurement.MeasurementManagerFutures: com.google.common.util.concurrent.ListenableFuture registerSourceAsync(android.net.Uri,android.view.InputEvent)>($r2, $r1);
+
+        return $r5;
+    }
+}

@@ -1,0 +1,280 @@
+public abstract class androidx.work.impl.constraints.trackers.ConstraintTracker extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+    protected final android.content.Context mAppContext;
+    java.lang.Object mCurrentState;
+    private final java.util.Set mListeners;
+    private final java.lang.Object mLock;
+    protected final androidx.work.impl.utils.taskexecutor.TaskExecutor mTaskExecutor;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+
+        $r0 = staticinvoke <androidx.work.Logger: java.lang.String tagWithPrefix(java.lang.String)>("ConstraintTracker");
+
+        <androidx.work.impl.constraints.trackers.ConstraintTracker: java.lang.String TAG> = $r0;
+
+        return;
+    }
+
+    void <init>(android.content.Context, androidx.work.impl.utils.taskexecutor.TaskExecutor)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r2;
+        android.content.Context $r1;
+        androidx.work.impl.constraints.trackers.ConstraintTracker r0;
+        java.lang.Object $r3;
+        java.util.LinkedHashSet $r4;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.ConstraintTracker;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.work.impl.utils.taskexecutor.TaskExecutor;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = new java.lang.Object;
+
+        specialinvoke $r3.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.lang.Object mLock> = $r3;
+
+        $r4 = new java.util.LinkedHashSet;
+
+        specialinvoke $r4.<java.util.LinkedHashSet: void <init>()>();
+
+        r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.util.Set mListeners> = $r4;
+
+        $r1 = virtualinvoke $r1.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: android.content.Context mAppContext> = $r1;
+
+        r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: androidx.work.impl.utils.taskexecutor.TaskExecutor mTaskExecutor> = $r2;
+
+        return;
+    }
+
+    public void addListener(androidx.work.impl.constraints.ConstraintListener)
+    {
+        java.lang.Throwable $r11;
+        java.lang.Object[] $r7;
+        java.util.Set $r4;
+        androidx.work.impl.constraints.ConstraintListener r1;
+        androidx.work.Logger $r6;
+        java.lang.Throwable[] $r10;
+        int $i0;
+        androidx.work.impl.constraints.trackers.ConstraintTracker r0;
+        java.lang.Object $r2, $r5;
+        java.lang.Class $r8;
+        java.lang.String $r3, $r9;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.ConstraintTracker;
+
+        r1 := @parameter0: androidx.work.impl.constraints.ConstraintListener;
+
+        $r2 = r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.lang.Object mLock>;
+
+        entermonitor $r2;
+
+     label1:
+        $r4 = r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.util.Set mListeners>;
+
+        $z0 = interfaceinvoke $r4.<java.util.Set: boolean add(java.lang.Object)>(r1);
+
+        if $z0 == 0 goto label3;
+
+        $r4 = r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.util.Set mListeners>;
+
+        $i0 = interfaceinvoke $r4.<java.util.Set: int size()>();
+
+        if $i0 != 1 goto label2;
+
+        $r5 = virtualinvoke r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.lang.Object getInitialState()>();
+
+        r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.lang.Object mCurrentState> = $r5;
+
+        $r6 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r3 = <androidx.work.impl.constraints.trackers.ConstraintTracker: java.lang.String TAG>;
+
+        $r7 = newarray (java.lang.Object)[2];
+
+        $r8 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r9 = virtualinvoke $r8.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        $r7[0] = $r9;
+
+        $r5 = r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.lang.Object mCurrentState>;
+
+        $r7[1] = $r5;
+
+        $r9 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("%s: initial state = %s", $r7);
+
+        $r10 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r6.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>($r3, $r9, $r10);
+
+        virtualinvoke r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: void startTracking()>();
+
+     label2:
+        $r5 = r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.lang.Object mCurrentState>;
+
+        interfaceinvoke r1.<androidx.work.impl.constraints.ConstraintListener: void onConstraintChanged(java.lang.Object)>($r5);
+
+     label3:
+        exitmonitor $r2;
+
+     label4:
+        return;
+
+     label5:
+        $r11 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label6:
+        throw $r11;
+
+        catch java.lang.Throwable from label1 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    public abstract java.lang.Object getInitialState();
+
+    public void removeListener(androidx.work.impl.constraints.ConstraintListener)
+    {
+        java.lang.Throwable $r4;
+        androidx.work.impl.constraints.trackers.ConstraintTracker r0;
+        java.util.Set $r3;
+        java.lang.Object $r2;
+        androidx.work.impl.constraints.ConstraintListener r1;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.ConstraintTracker;
+
+        r1 := @parameter0: androidx.work.impl.constraints.ConstraintListener;
+
+        $r2 = r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.lang.Object mLock>;
+
+        entermonitor $r2;
+
+     label1:
+        $r3 = r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.util.Set mListeners>;
+
+        $z0 = interfaceinvoke $r3.<java.util.Set: boolean remove(java.lang.Object)>(r1);
+
+        if $z0 == 0 goto label2;
+
+        $r3 = r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.util.Set mListeners>;
+
+        $z0 = interfaceinvoke $r3.<java.util.Set: boolean isEmpty()>();
+
+        if $z0 == 0 goto label2;
+
+        virtualinvoke r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: void stopTracking()>();
+
+     label2:
+        exitmonitor $r2;
+
+     label3:
+        return;
+
+     label4:
+        $r4 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label5:
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+        catch java.lang.Throwable from label4 to label5 with label4;
+    }
+
+    public void setState(java.lang.Object)
+    {
+        java.lang.Throwable r9;
+        java.util.concurrent.Executor $r8;
+        androidx.work.impl.constraints.trackers.ConstraintTracker$1 $r3;
+        java.util.Set $r6;
+        java.util.ArrayList r5;
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r7;
+        androidx.work.impl.constraints.trackers.ConstraintTracker r0;
+        java.lang.Object r1, $r2, r4;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.constraints.trackers.ConstraintTracker;
+
+        r1 := @parameter0: java.lang.Object;
+
+        $r2 = r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.lang.Object mLock>;
+
+        entermonitor $r2;
+
+     label1:
+        r4 = r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.lang.Object mCurrentState>;
+
+        if r4 == r1 goto label4;
+
+        r4 = r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.lang.Object mCurrentState>;
+
+        if r4 == null goto label2;
+
+        r4 = r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.lang.Object mCurrentState>;
+
+        $z0 = virtualinvoke r4.<java.lang.Object: boolean equals(java.lang.Object)>(r1);
+
+        if $z0 == 0 goto label2;
+
+        goto label4;
+
+     label2:
+        r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.lang.Object mCurrentState> = r1;
+
+        r5 = new java.util.ArrayList;
+
+        $r6 = r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: java.util.Set mListeners>;
+
+        specialinvoke r5.<java.util.ArrayList: void <init>(java.util.Collection)>($r6);
+
+        $r7 = r0.<androidx.work.impl.constraints.trackers.ConstraintTracker: androidx.work.impl.utils.taskexecutor.TaskExecutor mTaskExecutor>;
+
+        $r8 = interfaceinvoke $r7.<androidx.work.impl.utils.taskexecutor.TaskExecutor: java.util.concurrent.Executor getMainThreadExecutor()>();
+
+        $r3 = new androidx.work.impl.constraints.trackers.ConstraintTracker$1;
+
+        specialinvoke $r3.<androidx.work.impl.constraints.trackers.ConstraintTracker$1: void <init>(androidx.work.impl.constraints.trackers.ConstraintTracker,java.util.List)>(r0, r5);
+
+        interfaceinvoke $r8.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($r3);
+
+        exitmonitor $r2;
+
+     label3:
+        return;
+
+     label4:
+        exitmonitor $r2;
+
+     label5:
+        return;
+
+     label6:
+        r9 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label7:
+        throw r9;
+
+        catch java.lang.Throwable from label1 to label3 with label6;
+        catch java.lang.Throwable from label4 to label5 with label6;
+        catch java.lang.Throwable from label6 to label7 with label6;
+    }
+
+    public abstract void startTracking();
+
+    public abstract void stopTracking();
+}

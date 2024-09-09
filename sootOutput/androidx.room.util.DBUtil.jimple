@@ -1,0 +1,255 @@
+public class androidx.room.util.DBUtil extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.room.util.DBUtil r0;
+
+        r0 := @this: androidx.room.util.DBUtil;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static android.os.CancellationSignal createCancellationSignal()
+    {
+        android.os.CancellationSignal $r0;
+
+        $r0 = new android.os.CancellationSignal;
+
+        specialinvoke $r0.<android.os.CancellationSignal: void <init>()>();
+
+        return $r0;
+    }
+
+    public static void dropFtsSyncTriggers(androidx.sqlite.db.SupportSQLiteDatabase)
+    {
+        java.lang.Throwable $r7;
+        java.util.Iterator $r4;
+        java.util.ArrayList r1;
+        androidx.sqlite.db.SupportSQLiteDatabase $r0;
+        java.lang.Object $r5;
+        java.lang.StringBuilder $r6;
+        java.lang.String $r3;
+        android.database.Cursor $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: androidx.sqlite.db.SupportSQLiteDatabase;
+
+        r1 = new java.util.ArrayList;
+
+        specialinvoke r1.<java.util.ArrayList: void <init>()>();
+
+        $r2 = interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteDatabase: android.database.Cursor query(java.lang.String)>("SELECT name FROM sqlite_master WHERE type = \'trigger\'");
+
+     label1:
+        $z0 = interfaceinvoke $r2.<android.database.Cursor: boolean moveToNext()>();
+
+     label2:
+        if $z0 == 0 goto label5;
+
+     label3:
+        $r3 = interfaceinvoke $r2.<android.database.Cursor: java.lang.String getString(int)>(0);
+
+        interfaceinvoke r1.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label4:
+        goto label1;
+
+     label5:
+        interfaceinvoke $r2.<android.database.Cursor: void close()>();
+
+        $r4 = interfaceinvoke r1.<java.util.List: java.util.Iterator iterator()>();
+
+     label6:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label7;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        $r3 = (java.lang.String) $r5;
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean startsWith(java.lang.String)>("room_fts_content_sync_");
+
+        if $z0 == 0 goto label6;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("DROP TRIGGER IF EXISTS ");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke $r0.<androidx.sqlite.db.SupportSQLiteDatabase: void execSQL(java.lang.String)>($r3);
+
+        goto label6;
+
+     label7:
+        return;
+
+     label8:
+        $r7 := @caughtexception;
+
+        interfaceinvoke $r2.<android.database.Cursor: void close()>();
+
+        throw $r7;
+
+        catch java.lang.Throwable from label1 to label2 with label8;
+        catch java.lang.Throwable from label3 to label4 with label8;
+    }
+
+    public static android.database.Cursor query(androidx.room.RoomDatabase, androidx.sqlite.db.SupportSQLiteQuery, boolean)
+    {
+        androidx.room.RoomDatabase $r0;
+        androidx.sqlite.db.SupportSQLiteQuery $r1;
+        boolean $z0;
+        android.database.Cursor $r2;
+
+        $r0 := @parameter0: androidx.room.RoomDatabase;
+
+        $r1 := @parameter1: androidx.sqlite.db.SupportSQLiteQuery;
+
+        $z0 := @parameter2: boolean;
+
+        $r2 = staticinvoke <androidx.room.util.DBUtil: android.database.Cursor query(androidx.room.RoomDatabase,androidx.sqlite.db.SupportSQLiteQuery,boolean,android.os.CancellationSignal)>($r0, $r1, $z0, null);
+
+        return $r2;
+    }
+
+    public static android.database.Cursor query(androidx.room.RoomDatabase, androidx.sqlite.db.SupportSQLiteQuery, boolean, android.os.CancellationSignal)
+    {
+        androidx.room.RoomDatabase $r0;
+        android.os.CancellationSignal $r2;
+        android.database.CursorWindow $r5;
+        androidx.sqlite.db.SupportSQLiteQuery $r1;
+        int $i0, $i1, $i2;
+        android.database.AbstractWindowedCursor r4;
+        boolean $z0;
+        android.database.Cursor $r3;
+
+        $r0 := @parameter0: androidx.room.RoomDatabase;
+
+        $r1 := @parameter1: androidx.sqlite.db.SupportSQLiteQuery;
+
+        $z0 := @parameter2: boolean;
+
+        $r2 := @parameter3: android.os.CancellationSignal;
+
+        $r3 = virtualinvoke $r0.<androidx.room.RoomDatabase: android.database.Cursor query(androidx.sqlite.db.SupportSQLiteQuery,android.os.CancellationSignal)>($r1, $r2);
+
+        if $z0 == 0 goto label4;
+
+        $z0 = $r3 instanceof android.database.AbstractWindowedCursor;
+
+        if $z0 == 0 goto label4;
+
+        r4 = (android.database.AbstractWindowedCursor) $r3;
+
+        $i0 = virtualinvoke r4.<android.database.AbstractWindowedCursor: int getCount()>();
+
+        $z0 = virtualinvoke r4.<android.database.AbstractWindowedCursor: boolean hasWindow()>();
+
+        if $z0 == 0 goto label1;
+
+        $r5 = virtualinvoke r4.<android.database.AbstractWindowedCursor: android.database.CursorWindow getWindow()>();
+
+        $i1 = virtualinvoke $r5.<android.database.CursorWindow: int getNumRows()>();
+
+        goto label2;
+
+     label1:
+        $i1 = $i0;
+
+     label2:
+        $i2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i2 < 23 goto label3;
+
+        if $i1 >= $i0 goto label4;
+
+     label3:
+        $r3 = staticinvoke <androidx.room.util.CursorUtil: android.database.Cursor copyAndClose(android.database.Cursor)>(r4);
+
+     label4:
+        return $r3;
+    }
+
+    public static int readVersion(java.io.File) throws java.io.IOException
+    {
+        java.lang.Throwable $r6;
+        java.io.IOException $r5;
+        java.io.FileInputStream r3;
+        java.io.File r0;
+        java.nio.ByteBuffer $r2;
+        int $i0;
+        java.nio.channels.FileChannel r1, $r4;
+
+        r0 := @parameter0: java.io.File;
+
+        r1 = null;
+
+     label01:
+        $r2 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer allocate(int)>(4);
+
+        r3 = new java.io.FileInputStream;
+
+        specialinvoke r3.<java.io.FileInputStream: void <init>(java.io.File)>(r0);
+
+        $r4 = virtualinvoke r3.<java.io.FileInputStream: java.nio.channels.FileChannel getChannel()>();
+
+     label02:
+        r1 = $r4;
+
+     label03:
+        virtualinvoke $r4.<java.nio.channels.FileChannel: java.nio.channels.FileLock tryLock(long,long,boolean)>(60L, 4L, 1);
+
+        virtualinvoke $r4.<java.nio.channels.FileChannel: java.nio.channels.FileChannel position(long)>(60L);
+
+        $i0 = virtualinvoke $r4.<java.nio.channels.FileChannel: int read(java.nio.ByteBuffer)>($r2);
+
+     label04:
+        if $i0 != 4 goto label07;
+
+     label05:
+        virtualinvoke $r2.<java.nio.ByteBuffer: java.nio.Buffer rewind()>();
+
+        $i0 = virtualinvoke $r2.<java.nio.ByteBuffer: int getInt()>();
+
+     label06:
+        if $r4 == null goto label10;
+
+        virtualinvoke $r4.<java.nio.channels.FileChannel: void close()>();
+
+        return $i0;
+
+     label07:
+        $r5 = new java.io.IOException;
+
+        specialinvoke $r5.<java.io.IOException: void <init>(java.lang.String)>("Bad database header, unable to read 4 bytes at offset 60");
+
+        throw $r5;
+
+     label08:
+        $r6 := @caughtexception;
+
+        if r1 == null goto label09;
+
+        virtualinvoke r1.<java.nio.channels.FileChannel: void close()>();
+
+     label09:
+        throw $r6;
+
+     label10:
+        return $i0;
+
+        catch java.lang.Throwable from label01 to label02 with label08;
+        catch java.lang.Throwable from label03 to label04 with label08;
+        catch java.lang.Throwable from label05 to label06 with label08;
+        catch java.lang.Throwable from label07 to label08 with label08;
+    }
+}

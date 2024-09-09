@@ -1,0 +1,308 @@
+public final class androidx.browser.trusted.TrustedWebActivityServiceConnection extends java.lang.Object
+{
+    private static final java.lang.String KEY_ACTIVE_NOTIFICATIONS;
+    private static final java.lang.String KEY_CHANNEL_NAME;
+    private static final java.lang.String KEY_NOTIFICATION;
+    private static final java.lang.String KEY_NOTIFICATION_SUCCESS;
+    private static final java.lang.String KEY_PLATFORM_ID;
+    private static final java.lang.String KEY_PLATFORM_TAG;
+    private final android.content.ComponentName mComponentName;
+    private final android.support.customtabs.trusted.ITrustedWebActivityService mService;
+
+    void <init>(android.support.customtabs.trusted.ITrustedWebActivityService, android.content.ComponentName)
+    {
+        android.content.ComponentName $r2;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection r0;
+        android.support.customtabs.trusted.ITrustedWebActivityService $r1;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection;
+
+        $r1 := @parameter0: android.support.customtabs.trusted.ITrustedWebActivityService;
+
+        $r2 := @parameter1: android.content.ComponentName;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection: android.support.customtabs.trusted.ITrustedWebActivityService mService> = $r1;
+
+        r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection: android.content.ComponentName mComponentName> = $r2;
+
+        return;
+    }
+
+    static void ensureBundleContains(android.os.Bundle, java.lang.String)
+    {
+        android.os.Bundle $r0;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r1;
+        java.lang.IllegalArgumentException $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.os.Bundle;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $z0 = virtualinvoke $r0.<android.os.Bundle: boolean containsKey(java.lang.String)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $r2 = new java.lang.IllegalArgumentException;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Bundle must contain ");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r1);
+
+        throw $r2;
+    }
+
+    private static android.support.customtabs.trusted.ITrustedWebActivityCallback wrapCallback(androidx.browser.trusted.TrustedWebActivityCallback)
+    {
+        androidx.browser.trusted.TrustedWebActivityCallback $r0;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$1 $r1;
+
+        $r0 := @parameter0: androidx.browser.trusted.TrustedWebActivityCallback;
+
+        if $r0 != null goto label1;
+
+        return null;
+
+     label1:
+        $r1 = new androidx.browser.trusted.TrustedWebActivityServiceConnection$1;
+
+        specialinvoke $r1.<androidx.browser.trusted.TrustedWebActivityServiceConnection$1: void <init>(androidx.browser.trusted.TrustedWebActivityCallback)>($r0);
+
+        return $r1;
+    }
+
+    public boolean areNotificationsEnabled(java.lang.String) throws android.os.RemoteException
+    {
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$NotificationsEnabledArgs r2;
+        android.os.Bundle $r3;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs $r5;
+        java.lang.String $r1;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection r0;
+        android.support.customtabs.trusted.ITrustedWebActivityService $r4;
+        boolean z0;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r2 = new androidx.browser.trusted.TrustedWebActivityServiceConnection$NotificationsEnabledArgs;
+
+        specialinvoke r2.<androidx.browser.trusted.TrustedWebActivityServiceConnection$NotificationsEnabledArgs: void <init>(java.lang.String)>($r1);
+
+        $r3 = virtualinvoke r2.<androidx.browser.trusted.TrustedWebActivityServiceConnection$NotificationsEnabledArgs: android.os.Bundle toBundle()>();
+
+        $r4 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection: android.support.customtabs.trusted.ITrustedWebActivityService mService>;
+
+        $r3 = interfaceinvoke $r4.<android.support.customtabs.trusted.ITrustedWebActivityService: android.os.Bundle areNotificationsEnabled(android.os.Bundle)>($r3);
+
+        $r5 = staticinvoke <androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs: androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs fromBundle(android.os.Bundle)>($r3);
+
+        z0 = $r5.<androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs: boolean success>;
+
+        return z0;
+    }
+
+    public void cancel(java.lang.String, int) throws android.os.RemoteException
+    {
+        android.os.Bundle $r3;
+        int $i0;
+        java.lang.String $r1;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection r0;
+        android.support.customtabs.trusted.ITrustedWebActivityService $r2;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs r4;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        r4 = new androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs;
+
+        specialinvoke r4.<androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs: void <init>(java.lang.String,int)>($r1, $i0);
+
+        $r3 = virtualinvoke r4.<androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs: android.os.Bundle toBundle()>();
+
+        $r2 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection: android.support.customtabs.trusted.ITrustedWebActivityService mService>;
+
+        interfaceinvoke $r2.<android.support.customtabs.trusted.ITrustedWebActivityService: void cancelNotification(android.os.Bundle)>($r3);
+
+        return;
+    }
+
+    public android.os.Parcelable[] getActiveNotifications() throws android.os.RemoteException
+    {
+        android.os.Bundle $r2;
+        android.os.Parcelable[] r4;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs $r3;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection r0;
+        android.support.customtabs.trusted.ITrustedWebActivityService r1;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection;
+
+        r1 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection: android.support.customtabs.trusted.ITrustedWebActivityService mService>;
+
+        $r2 = interfaceinvoke r1.<android.support.customtabs.trusted.ITrustedWebActivityService: android.os.Bundle getActiveNotifications()>();
+
+        $r3 = staticinvoke <androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs: androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs fromBundle(android.os.Bundle)>($r2);
+
+        r4 = $r3.<androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs: android.os.Parcelable[] notifications>;
+
+        return r4;
+    }
+
+    public android.content.ComponentName getComponentName()
+    {
+        android.content.ComponentName r1;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection r0;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection;
+
+        r1 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection: android.content.ComponentName mComponentName>;
+
+        return r1;
+    }
+
+    public android.graphics.Bitmap getSmallIconBitmap() throws android.os.RemoteException
+    {
+        android.os.Bundle $r2;
+        android.os.Parcelable $r3;
+        android.graphics.Bitmap $r4;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection r0;
+        android.support.customtabs.trusted.ITrustedWebActivityService $r1;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection;
+
+        $r1 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection: android.support.customtabs.trusted.ITrustedWebActivityService mService>;
+
+        $r2 = interfaceinvoke $r1.<android.support.customtabs.trusted.ITrustedWebActivityService: android.os.Bundle getSmallIconBitmap()>();
+
+        $r3 = virtualinvoke $r2.<android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>("android.support.customtabs.trusted.SMALL_ICON_BITMAP");
+
+        $r4 = (android.graphics.Bitmap) $r3;
+
+        return $r4;
+    }
+
+    public int getSmallIconId() throws android.os.RemoteException
+    {
+        int $i0;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection r0;
+        android.support.customtabs.trusted.ITrustedWebActivityService $r1;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection;
+
+        $r1 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection: android.support.customtabs.trusted.ITrustedWebActivityService mService>;
+
+        $i0 = interfaceinvoke $r1.<android.support.customtabs.trusted.ITrustedWebActivityService: int getSmallIconId()>();
+
+        return $i0;
+    }
+
+    public boolean notify(java.lang.String, int, android.app.Notification, java.lang.String) throws android.os.RemoteException
+    {
+        android.os.Bundle $r5;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs $r7;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs r4;
+        android.support.customtabs.trusted.ITrustedWebActivityService $r6;
+        int $i0;
+        android.app.Notification $r2;
+        java.lang.String $r1, $r3;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection r0;
+        boolean z0;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: android.app.Notification;
+
+        $r3 := @parameter3: java.lang.String;
+
+        r4 = new androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs;
+
+        specialinvoke r4.<androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs: void <init>(java.lang.String,int,android.app.Notification,java.lang.String)>($r1, $i0, $r2, $r3);
+
+        $r5 = virtualinvoke r4.<androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs: android.os.Bundle toBundle()>();
+
+        $r6 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection: android.support.customtabs.trusted.ITrustedWebActivityService mService>;
+
+        $r5 = interfaceinvoke $r6.<android.support.customtabs.trusted.ITrustedWebActivityService: android.os.Bundle notifyNotificationWithChannel(android.os.Bundle)>($r5);
+
+        $r7 = staticinvoke <androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs: androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs fromBundle(android.os.Bundle)>($r5);
+
+        z0 = $r7.<androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs: boolean success>;
+
+        return z0;
+    }
+
+    public android.os.Bundle sendExtraCommand(java.lang.String, android.os.Bundle, androidx.browser.trusted.TrustedWebActivityCallback) throws android.os.RemoteException
+    {
+        android.os.Bundle $r2;
+        android.support.customtabs.trusted.ITrustedWebActivityCallback $r4;
+        java.lang.String $r1;
+        androidx.browser.trusted.TrustedWebActivityCallback $r3;
+        android.os.IBinder r5;
+        androidx.browser.trusted.TrustedWebActivityServiceConnection r0;
+        android.support.customtabs.trusted.ITrustedWebActivityService $r6;
+
+        r0 := @this: androidx.browser.trusted.TrustedWebActivityServiceConnection;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: android.os.Bundle;
+
+        $r3 := @parameter2: androidx.browser.trusted.TrustedWebActivityCallback;
+
+        $r4 = staticinvoke <androidx.browser.trusted.TrustedWebActivityServiceConnection: android.support.customtabs.trusted.ITrustedWebActivityCallback wrapCallback(androidx.browser.trusted.TrustedWebActivityCallback)>($r3);
+
+        if $r4 != null goto label1;
+
+        r5 = null;
+
+        goto label2;
+
+     label1:
+        r5 = interfaceinvoke $r4.<android.support.customtabs.trusted.ITrustedWebActivityCallback: android.os.IBinder asBinder()>();
+
+     label2:
+        $r6 = r0.<androidx.browser.trusted.TrustedWebActivityServiceConnection: android.support.customtabs.trusted.ITrustedWebActivityService mService>;
+
+        $r2 = interfaceinvoke $r6.<android.support.customtabs.trusted.ITrustedWebActivityService: android.os.Bundle extraCommand(java.lang.String,android.os.Bundle,android.os.IBinder)>($r1, $r2, r5);
+
+        return $r2;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.browser.trusted.TrustedWebActivityServiceConnection: java.lang.String KEY_PLATFORM_TAG> = "android.support.customtabs.trusted.PLATFORM_TAG";
+
+        <androidx.browser.trusted.TrustedWebActivityServiceConnection: java.lang.String KEY_PLATFORM_ID> = "android.support.customtabs.trusted.PLATFORM_ID";
+
+        <androidx.browser.trusted.TrustedWebActivityServiceConnection: java.lang.String KEY_NOTIFICATION_SUCCESS> = "android.support.customtabs.trusted.NOTIFICATION_SUCCESS";
+
+        <androidx.browser.trusted.TrustedWebActivityServiceConnection: java.lang.String KEY_NOTIFICATION> = "android.support.customtabs.trusted.NOTIFICATION";
+
+        <androidx.browser.trusted.TrustedWebActivityServiceConnection: java.lang.String KEY_CHANNEL_NAME> = "android.support.customtabs.trusted.CHANNEL_NAME";
+
+        <androidx.browser.trusted.TrustedWebActivityServiceConnection: java.lang.String KEY_ACTIVE_NOTIFICATIONS> = "android.support.customtabs.trusted.ACTIVE_NOTIFICATIONS";
+
+        return;
+    }
+}

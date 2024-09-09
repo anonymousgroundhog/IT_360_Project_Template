@@ -1,0 +1,234 @@
+final class com.google.android.gms.internal.ads.zzfm extends android.content.BroadcastReceiver
+{
+    final com.google.android.gms.internal.ads.zzfn zza;
+
+    void <init>(com.google.android.gms.internal.ads.zzfn, com.google.android.gms.internal.ads.zzfl)
+    {
+        com.google.android.gms.internal.ads.zzfm r0;
+        com.google.android.gms.internal.ads.zzfn $r1;
+        com.google.android.gms.internal.ads.zzfl $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfm;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzfn;
+
+        $r2 := @parameter1: com.google.android.gms.internal.ads.zzfl;
+
+        r0.<com.google.android.gms.internal.ads.zzfm: com.google.android.gms.internal.ads.zzfn zza> = $r1;
+
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+
+        return;
+    }
+
+    public final void onReceive(android.content.Context, android.content.Intent)
+    {
+        android.content.Context $r1;
+        android.content.Intent $r2;
+        java.lang.NullPointerException r12;
+        byte $b0;
+        android.telephony.TelephonyManager $r8;
+        int $i1;
+        java.lang.SecurityException $r6;
+        boolean $z0;
+        android.net.ConnectivityManager $r4;
+        java.util.concurrent.Executor $r10;
+        com.google.android.gms.internal.ads.zzfm r0;
+        android.net.NetworkInfo $r5;
+        com.google.android.gms.internal.ads.zzfn $r7;
+        com.google.android.gms.internal.ads.zzfk $r9;
+        java.lang.RuntimeException $r11;
+        java.lang.Object $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfm;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        $r3 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("connectivity");
+
+        $r4 = (android.net.ConnectivityManager) $r3;
+
+        $b0 = 0;
+
+        if $r4 != null goto label01;
+
+        goto label16;
+
+     label01:
+        $r5 = virtualinvoke $r4.<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>();
+
+     label02:
+        if $r5 == null goto label14;
+
+        $z0 = virtualinvoke $r5.<android.net.NetworkInfo: boolean isConnected()>();
+
+        if $z0 != 0 goto label03;
+
+        $b0 = 1;
+
+        goto label16;
+
+     label03:
+        $i1 = virtualinvoke $r5.<android.net.NetworkInfo: int getType()>();
+
+        lookupswitch($i1)
+        {
+            case 0: goto label08;
+            case 1: goto label07;
+            case 2: goto label04;
+            case 3: goto label04;
+            case 4: goto label08;
+            case 5: goto label08;
+            case 6: goto label06;
+            case 7: goto label04;
+            case 8: goto label04;
+            case 9: goto label05;
+            default: goto label04;
+        };
+
+     label04:
+        $b0 = 8;
+
+        goto label16;
+
+     label05:
+        $b0 = 7;
+
+        goto label16;
+
+     label06:
+        $b0 = 5;
+
+        goto label16;
+
+     label07:
+        $b0 = 2;
+
+        goto label16;
+
+     label08:
+        $i1 = virtualinvoke $r5.<android.net.NetworkInfo: int getSubtype()>();
+
+        lookupswitch($i1)
+        {
+            case 1: goto label13;
+            case 2: goto label13;
+            case 3: goto label12;
+            case 4: goto label12;
+            case 5: goto label12;
+            case 6: goto label12;
+            case 7: goto label12;
+            case 8: goto label12;
+            case 9: goto label12;
+            case 10: goto label12;
+            case 11: goto label12;
+            case 12: goto label12;
+            case 13: goto label06;
+            case 14: goto label12;
+            case 15: goto label12;
+            case 16: goto label09;
+            case 17: goto label12;
+            case 18: goto label11;
+            case 19: goto label09;
+            case 20: goto label10;
+            default: goto label09;
+        };
+
+     label09:
+        $b0 = 6;
+
+        goto label16;
+
+     label10:
+        $i1 = <com.google.android.gms.internal.ads.zzfy: int zza>;
+
+        if $i1 < 29 goto label16;
+
+        $b0 = 9;
+
+        goto label16;
+
+     label11:
+        $b0 = 2;
+
+        goto label16;
+
+     label12:
+        $b0 = 4;
+
+        goto label16;
+
+     label13:
+        $b0 = 3;
+
+        goto label16;
+
+     label14:
+        $b0 = 1;
+
+        goto label16;
+
+     label15:
+        $r6 := @caughtexception;
+
+     label16:
+        $i1 = <com.google.android.gms.internal.ads.zzfy: int zza>;
+
+        if $i1 < 31 goto label24;
+
+        if $b0 != 5 goto label24;
+
+        $r7 = r0.<com.google.android.gms.internal.ads.zzfm: com.google.android.gms.internal.ads.zzfn zza>;
+
+     label17:
+        $r3 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("phone");
+
+        $r8 = (android.telephony.TelephonyManager) $r3;
+
+     label18:
+        if $r8 == null goto label21;
+
+        $r9 = new com.google.android.gms.internal.ads.zzfk;
+
+     label19:
+        specialinvoke $r9.<com.google.android.gms.internal.ads.zzfk: void <init>(com.google.android.gms.internal.ads.zzfn)>($r7);
+
+        $r10 = virtualinvoke $r1.<android.content.Context: java.util.concurrent.Executor getMainExecutor()>();
+
+        virtualinvoke $r8.<android.telephony.TelephonyManager: void registerTelephonyCallback(java.util.concurrent.Executor,android.telephony.TelephonyCallback)>($r10, $r9);
+
+        virtualinvoke $r8.<android.telephony.TelephonyManager: void unregisterTelephonyCallback(android.telephony.TelephonyCallback)>($r9);
+
+     label20:
+        return;
+
+     label21:
+        r12 = new java.lang.NullPointerException;
+
+     label22:
+        specialinvoke r12.<java.lang.NullPointerException: void <init>(java.lang.String)>("Null throw statement replaced by Soot");
+
+        throw r12;
+
+     label23:
+        $r11 := @caughtexception;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzfn: void zzc(com.google.android.gms.internal.ads.zzfn,int)>($r7, 5);
+
+        return;
+
+     label24:
+        $r7 = r0.<com.google.android.gms.internal.ads.zzfm: com.google.android.gms.internal.ads.zzfn zza>;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzfn: void zzc(com.google.android.gms.internal.ads.zzfn,int)>($r7, $b0);
+
+        return;
+
+        catch java.lang.SecurityException from label01 to label02 with label15;
+        catch java.lang.RuntimeException from label17 to label18 with label23;
+        catch java.lang.RuntimeException from label19 to label20 with label23;
+        catch java.lang.RuntimeException from label22 to label23 with label23;
+    }
+}

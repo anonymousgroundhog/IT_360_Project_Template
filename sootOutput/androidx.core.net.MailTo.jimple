@@ -1,0 +1,415 @@
+public final class androidx.core.net.MailTo extends java.lang.Object
+{
+    private static final java.lang.String BCC;
+    private static final java.lang.String BODY;
+    private static final java.lang.String CC;
+    private static final java.lang.String MAILTO;
+    public static final java.lang.String MAILTO_SCHEME;
+    private static final java.lang.String SUBJECT;
+    private static final java.lang.String TO;
+    private java.util.HashMap mHeaders;
+
+    private void <init>()
+    {
+        java.util.HashMap $r1;
+        androidx.core.net.MailTo r0;
+
+        r0 := @this: androidx.core.net.MailTo;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.HashMap;
+
+        specialinvoke $r1.<java.util.HashMap: void <init>()>();
+
+        r0.<androidx.core.net.MailTo: java.util.HashMap mHeaders> = $r1;
+
+        return;
+    }
+
+    public static boolean isMailTo(android.net.Uri)
+    {
+        android.net.Uri $r0;
+        java.lang.String $r1, $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.net.Uri;
+
+        if $r0 == null goto label1;
+
+        $r1 = "mailto";
+
+        $r2 = virtualinvoke $r0.<android.net.Uri: java.lang.String getScheme()>();
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>($r2);
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static boolean isMailTo(java.lang.String)
+    {
+        java.lang.String $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        if $r0 == null goto label1;
+
+        $z0 = virtualinvoke $r0.<java.lang.String: boolean startsWith(java.lang.String)>("mailto:");
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static androidx.core.net.MailTo parse(android.net.Uri) throws androidx.core.net.ParseException
+    {
+        android.net.Uri $r0;
+        java.lang.String $r1;
+        androidx.core.net.MailTo $r2;
+
+        $r0 := @parameter0: android.net.Uri;
+
+        $r1 = virtualinvoke $r0.<android.net.Uri: java.lang.String toString()>();
+
+        $r2 = staticinvoke <androidx.core.net.MailTo: androidx.core.net.MailTo parse(java.lang.String)>($r1);
+
+        return $r2;
+    }
+
+    public static androidx.core.net.MailTo parse(java.lang.String) throws androidx.core.net.ParseException
+    {
+        java.lang.String[] $r2, $r3;
+        java.util.HashMap $r6;
+        androidx.core.net.ParseException $r10;
+        java.util.Locale r4;
+        int $i0, $i1, i2;
+        java.lang.StringBuilder r7, $r9;
+        java.lang.String r0, r1, r5;
+        androidx.core.net.MailTo $r8;
+        boolean $z0;
+
+        r0 := @parameter0: java.lang.String;
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>(r0);
+
+        $z0 = staticinvoke <androidx.core.net.MailTo: boolean isMailTo(java.lang.String)>(r0);
+
+        if $z0 == 0 goto label11;
+
+        $i0 = virtualinvoke r0.<java.lang.String: int indexOf(int)>(35);
+
+        if $i0 == -1 goto label01;
+
+        r0 = virtualinvoke r0.<java.lang.String: java.lang.String substring(int,int)>(0, $i0);
+
+     label01:
+        $i0 = virtualinvoke r0.<java.lang.String: int indexOf(int)>(63);
+
+        r1 = "mailto:";
+
+        if $i0 != -1 goto label02;
+
+        $i0 = virtualinvoke r1.<java.lang.String: int length()>();
+
+        r0 = virtualinvoke r0.<java.lang.String: java.lang.String substring(int)>($i0);
+
+        r1 = staticinvoke <android.net.Uri: java.lang.String decode(java.lang.String)>(r0);
+
+        r0 = null;
+
+        goto label03;
+
+     label02:
+        $i1 = virtualinvoke r1.<java.lang.String: int length()>();
+
+        r1 = virtualinvoke r0.<java.lang.String: java.lang.String substring(int,int)>($i1, $i0);
+
+        r1 = staticinvoke <android.net.Uri: java.lang.String decode(java.lang.String)>(r1);
+
+        $i0 = $i0 + 1;
+
+        r0 = virtualinvoke r0.<java.lang.String: java.lang.String substring(int)>($i0);
+
+     label03:
+        $r8 = new androidx.core.net.MailTo;
+
+        specialinvoke $r8.<androidx.core.net.MailTo: void <init>()>();
+
+        if r0 == null goto label09;
+
+        $r2 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("&");
+
+        $i0 = lengthof $r2;
+
+        $i1 = 0;
+
+     label04:
+        if $i1 >= $i0 goto label09;
+
+        r0 = $r2[$i1];
+
+        $r3 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String,int)>("=", 2);
+
+        i2 = lengthof $r3;
+
+        if i2 != 0 goto label05;
+
+        goto label08;
+
+     label05:
+        r0 = $r3[0];
+
+        r0 = staticinvoke <android.net.Uri: java.lang.String decode(java.lang.String)>(r0);
+
+        r4 = <java.util.Locale: java.util.Locale ROOT>;
+
+        r0 = virtualinvoke r0.<java.lang.String: java.lang.String toLowerCase(java.util.Locale)>(r4);
+
+        i2 = lengthof $r3;
+
+        if i2 <= 1 goto label06;
+
+        r5 = $r3[1];
+
+        r5 = staticinvoke <android.net.Uri: java.lang.String decode(java.lang.String)>(r5);
+
+        goto label07;
+
+     label06:
+        r5 = null;
+
+     label07:
+        $r6 = $r8.<androidx.core.net.MailTo: java.util.HashMap mHeaders>;
+
+        virtualinvoke $r6.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(r0, r5);
+
+     label08:
+        $i1 = $i1 + 1;
+
+        goto label04;
+
+     label09:
+        r0 = virtualinvoke $r8.<androidx.core.net.MailTo: java.lang.String getTo()>();
+
+        if r0 == null goto label10;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        r7 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+
+        r7 = virtualinvoke r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", ");
+
+        r7 = virtualinvoke r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r0);
+
+        r1 = virtualinvoke r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label10:
+        $r6 = $r8.<androidx.core.net.MailTo: java.util.HashMap mHeaders>;
+
+        virtualinvoke $r6.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("to", r1);
+
+        return $r8;
+
+     label11:
+        $r10 = new androidx.core.net.ParseException;
+
+        specialinvoke $r10.<androidx.core.net.ParseException: void <init>(java.lang.String)>("Not a mailto scheme");
+
+        throw $r10;
+    }
+
+    public java.lang.String getBcc()
+    {
+        java.lang.Object $r1;
+        java.util.HashMap $r2;
+        java.lang.String $r3;
+        androidx.core.net.MailTo r0;
+
+        r0 := @this: androidx.core.net.MailTo;
+
+        $r2 = r0.<androidx.core.net.MailTo: java.util.HashMap mHeaders>;
+
+        $r1 = virtualinvoke $r2.<java.util.HashMap: java.lang.Object get(java.lang.Object)>("bcc");
+
+        $r3 = (java.lang.String) $r1;
+
+        return $r3;
+    }
+
+    public java.lang.String getBody()
+    {
+        java.lang.Object $r1;
+        java.util.HashMap $r2;
+        java.lang.String $r3;
+        androidx.core.net.MailTo r0;
+
+        r0 := @this: androidx.core.net.MailTo;
+
+        $r2 = r0.<androidx.core.net.MailTo: java.util.HashMap mHeaders>;
+
+        $r1 = virtualinvoke $r2.<java.util.HashMap: java.lang.Object get(java.lang.Object)>("body");
+
+        $r3 = (java.lang.String) $r1;
+
+        return $r3;
+    }
+
+    public java.lang.String getCc()
+    {
+        java.lang.Object $r1;
+        java.util.HashMap $r2;
+        java.lang.String $r3;
+        androidx.core.net.MailTo r0;
+
+        r0 := @this: androidx.core.net.MailTo;
+
+        $r2 = r0.<androidx.core.net.MailTo: java.util.HashMap mHeaders>;
+
+        $r1 = virtualinvoke $r2.<java.util.HashMap: java.lang.Object get(java.lang.Object)>("cc");
+
+        $r3 = (java.lang.String) $r1;
+
+        return $r3;
+    }
+
+    public java.util.Map getHeaders()
+    {
+        java.util.HashMap r1;
+        androidx.core.net.MailTo r0;
+
+        r0 := @this: androidx.core.net.MailTo;
+
+        r1 = r0.<androidx.core.net.MailTo: java.util.HashMap mHeaders>;
+
+        return r1;
+    }
+
+    public java.lang.String getSubject()
+    {
+        java.lang.Object $r1;
+        java.util.HashMap $r2;
+        java.lang.String $r3;
+        androidx.core.net.MailTo r0;
+
+        r0 := @this: androidx.core.net.MailTo;
+
+        $r2 = r0.<androidx.core.net.MailTo: java.util.HashMap mHeaders>;
+
+        $r1 = virtualinvoke $r2.<java.util.HashMap: java.lang.Object get(java.lang.Object)>("subject");
+
+        $r3 = (java.lang.String) $r1;
+
+        return $r3;
+    }
+
+    public java.lang.String getTo()
+    {
+        java.lang.Object $r1;
+        java.util.HashMap $r2;
+        java.lang.String $r3;
+        androidx.core.net.MailTo r0;
+
+        r0 := @this: androidx.core.net.MailTo;
+
+        $r2 = r0.<androidx.core.net.MailTo: java.util.HashMap mHeaders>;
+
+        $r1 = virtualinvoke $r2.<java.util.HashMap: java.lang.Object get(java.lang.Object)>("to");
+
+        $r3 = (java.lang.String) $r1;
+
+        return $r3;
+    }
+
+    public java.lang.String toString()
+    {
+        java.util.Map$Entry r6;
+        java.util.Iterator $r4;
+        java.util.Set $r3;
+        java.util.HashMap $r2;
+        java.lang.StringBuilder r1;
+        java.lang.Object $r5;
+        java.lang.String $r7;
+        androidx.core.net.MailTo r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.net.MailTo;
+
+        r1 = new java.lang.StringBuilder;
+
+        specialinvoke r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("mailto:");
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(63);
+
+        $r2 = r0.<androidx.core.net.MailTo: java.util.HashMap mHeaders>;
+
+        $r3 = virtualinvoke $r2.<java.util.HashMap: java.util.Set entrySet()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (java.util.Map$Entry) $r5;
+
+        $r5 = interfaceinvoke r6.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $r7 = (java.lang.String) $r5;
+
+        $r7 = staticinvoke <android.net.Uri: java.lang.String encode(java.lang.String)>($r7);
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(61);
+
+        $r5 = interfaceinvoke r6.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $r7 = (java.lang.String) $r5;
+
+        $r7 = staticinvoke <android.net.Uri: java.lang.String encode(java.lang.String)>($r7);
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(38);
+
+        goto label1;
+
+     label2:
+        $r7 = virtualinvoke r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r7;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.net.MailTo: java.lang.String TO> = "to";
+
+        <androidx.core.net.MailTo: java.lang.String SUBJECT> = "subject";
+
+        <androidx.core.net.MailTo: java.lang.String MAILTO_SCHEME> = "mailto:";
+
+        <androidx.core.net.MailTo: java.lang.String MAILTO> = "mailto";
+
+        <androidx.core.net.MailTo: java.lang.String CC> = "cc";
+
+        <androidx.core.net.MailTo: java.lang.String BODY> = "body";
+
+        <androidx.core.net.MailTo: java.lang.String BCC> = "bcc";
+
+        return;
+    }
+}

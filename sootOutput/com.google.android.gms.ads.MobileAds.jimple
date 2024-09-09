@@ -1,0 +1,396 @@
+public class com.google.android.gms.ads.MobileAds extends java.lang.Object
+{
+    public static final java.lang.String ERROR_DOMAIN;
+
+    private void <init>()
+    {
+        com.google.android.gms.ads.MobileAds r0;
+
+        r0 := @this: com.google.android.gms.ads.MobileAds;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void disableMediationAdapterInitialization(android.content.Context)
+    {
+        android.content.Context $r0;
+        com.google.android.gms.ads.internal.client.zzej $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        virtualinvoke $r1.<com.google.android.gms.ads.internal.client.zzej: void zzl(android.content.Context)>($r0);
+
+        return;
+    }
+
+    public static com.google.android.gms.ads.initialization.InitializationStatus getInitializationStatus()
+    {
+        com.google.android.gms.ads.initialization.InitializationStatus $r1;
+        com.google.android.gms.ads.internal.client.zzej $r0;
+
+        $r0 = staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        $r1 = virtualinvoke $r0.<com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.initialization.InitializationStatus zze()>();
+
+        return $r1;
+    }
+
+    private static java.lang.String getInternalVersion()
+    {
+        java.lang.String $r1;
+        com.google.android.gms.ads.internal.client.zzej $r0;
+
+        $r0 = staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        $r1 = virtualinvoke $r0.<com.google.android.gms.ads.internal.client.zzej: java.lang.String zzh()>();
+
+        return $r1;
+    }
+
+    public static com.google.android.gms.ads.RequestConfiguration getRequestConfiguration()
+    {
+        com.google.android.gms.ads.internal.client.zzej $r0;
+        com.google.android.gms.ads.RequestConfiguration $r1;
+
+        $r0 = staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        $r1 = virtualinvoke $r0.<com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.RequestConfiguration zzc()>();
+
+        return $r1;
+    }
+
+    public static com.google.android.gms.ads.VersionInfo getVersion()
+    {
+        com.google.android.gms.ads.VersionInfo $r1;
+        int $i0, $i1, $i2;
+        java.lang.String[] $r0;
+        java.lang.NumberFormatException $r3;
+        java.lang.String $r2;
+
+        staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        $r0 = staticinvoke <android.text.TextUtils: java.lang.String[] split(java.lang.String,java.lang.String)>("23.0.0", "\\.");
+
+        $i0 = lengthof $r0;
+
+        if $i0 == 3 goto label1;
+
+        $r1 = new com.google.android.gms.ads.VersionInfo;
+
+        specialinvoke $r1.<com.google.android.gms.ads.VersionInfo: void <init>(int,int,int)>(0, 0, 0);
+
+        return $r1;
+
+     label1:
+        $r1 = new com.google.android.gms.ads.VersionInfo;
+
+        $r2 = $r0[0];
+
+     label2:
+        $i0 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r2);
+
+     label3:
+        $r2 = $r0[1];
+
+     label4:
+        $i1 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r2);
+
+     label5:
+        $r2 = $r0[2];
+
+     label6:
+        $i2 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r2);
+
+        specialinvoke $r1.<com.google.android.gms.ads.VersionInfo: void <init>(int,int,int)>($i0, $i1, $i2);
+
+     label7:
+        return $r1;
+
+     label8:
+        $r3 := @caughtexception;
+
+        $r1 = new com.google.android.gms.ads.VersionInfo;
+
+        specialinvoke $r1.<com.google.android.gms.ads.VersionInfo: void <init>(int,int,int)>(0, 0, 0);
+
+        return $r1;
+
+        catch java.lang.NumberFormatException from label2 to label3 with label8;
+        catch java.lang.NumberFormatException from label4 to label5 with label8;
+        catch java.lang.NumberFormatException from label6 to label7 with label8;
+    }
+
+    public static void initialize(android.content.Context)
+    {
+        android.content.Context $r0;
+        com.google.android.gms.ads.internal.client.zzej $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        virtualinvoke $r1.<com.google.android.gms.ads.internal.client.zzej: void zzm(android.content.Context,java.lang.String,com.google.android.gms.ads.initialization.OnInitializationCompleteListener)>($r0, null, null);
+
+        return;
+    }
+
+    public static void initialize(android.content.Context, com.google.android.gms.ads.initialization.OnInitializationCompleteListener)
+    {
+        android.content.Context $r0;
+        com.google.android.gms.ads.initialization.OnInitializationCompleteListener $r1;
+        com.google.android.gms.ads.internal.client.zzej $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
+        $r2 = staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        virtualinvoke $r2.<com.google.android.gms.ads.internal.client.zzej: void zzm(android.content.Context,java.lang.String,com.google.android.gms.ads.initialization.OnInitializationCompleteListener)>($r0, null, $r1);
+
+        return;
+    }
+
+    public static void openAdInspector(android.content.Context, com.google.android.gms.ads.OnAdInspectorClosedListener)
+    {
+        android.content.Context $r0;
+        com.google.android.gms.ads.internal.client.zzej $r2;
+        com.google.android.gms.ads.OnAdInspectorClosedListener $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: com.google.android.gms.ads.OnAdInspectorClosedListener;
+
+        $r2 = staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        virtualinvoke $r2.<com.google.android.gms.ads.internal.client.zzej: void zzp(android.content.Context,com.google.android.gms.ads.OnAdInspectorClosedListener)>($r0, $r1);
+
+        return;
+    }
+
+    public static void openDebugMenu(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+        com.google.android.gms.ads.internal.client.zzej $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        virtualinvoke $r2.<com.google.android.gms.ads.internal.client.zzej: void zzq(android.content.Context,java.lang.String)>($r0, $r1);
+
+        return;
+    }
+
+    public static boolean putPublisherFirstPartyIdEnabled(boolean)
+    {
+        com.google.android.gms.ads.internal.client.zzej $r0;
+        boolean $z0;
+
+        $z0 := @parameter0: boolean;
+
+        $r0 = staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        $z0 = virtualinvoke $r0.<com.google.android.gms.ads.internal.client.zzej: boolean zzx(boolean)>($z0);
+
+        return $z0;
+    }
+
+    public static androidx.browser.customtabs.CustomTabsSession registerCustomTabsSession(android.content.Context, androidx.browser.customtabs.CustomTabsClient, java.lang.String, androidx.browser.customtabs.CustomTabsCallback)
+    {
+        com.google.android.gms.dynamic.IObjectWrapper $r5, $r6, $r7;
+        android.content.Context $r1;
+        androidx.browser.customtabs.CustomTabsCallback $r3;
+        androidx.browser.customtabs.CustomTabsSession $r9;
+        java.lang.Exception $r10;
+        com.google.android.gms.internal.ads.zzcct $r4;
+        java.lang.Object $r8;
+        java.lang.String $r0;
+        androidx.browser.customtabs.CustomTabsClient $r2;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.browser.customtabs.CustomTabsClient;
+
+        $r0 := @parameter2: java.lang.String;
+
+        $r3 := @parameter3: androidx.browser.customtabs.CustomTabsCallback;
+
+        staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        staticinvoke <com.google.android.gms.common.internal.Preconditions: void checkMainThread(java.lang.String)>("#008 Must be called on the main UI thread.");
+
+        $r4 = staticinvoke <com.google.android.gms.internal.ads.zzbxk: com.google.android.gms.internal.ads.zzcct zza(android.content.Context)>($r1);
+
+        if $r4 != null goto label1;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzg(java.lang.String)>("Internal error, query info generator is null.");
+
+        return null;
+
+     label1:
+        $r5 = staticinvoke <com.google.android.gms.dynamic.ObjectWrapper: com.google.android.gms.dynamic.IObjectWrapper wrap(java.lang.Object)>($r1);
+
+        $r6 = staticinvoke <com.google.android.gms.dynamic.ObjectWrapper: com.google.android.gms.dynamic.IObjectWrapper wrap(java.lang.Object)>($r2);
+
+        $r7 = staticinvoke <com.google.android.gms.dynamic.ObjectWrapper: com.google.android.gms.dynamic.IObjectWrapper wrap(java.lang.Object)>($r3);
+
+        $r5 = interfaceinvoke $r4.<com.google.android.gms.internal.ads.zzcct: com.google.android.gms.dynamic.IObjectWrapper zze(com.google.android.gms.dynamic.IObjectWrapper,com.google.android.gms.dynamic.IObjectWrapper,java.lang.String,com.google.android.gms.dynamic.IObjectWrapper)>($r5, $r6, $r0, $r7);
+
+        $r8 = staticinvoke <com.google.android.gms.dynamic.ObjectWrapper: java.lang.Object unwrap(com.google.android.gms.dynamic.IObjectWrapper)>($r5);
+
+     label2:
+        $r9 = (androidx.browser.customtabs.CustomTabsSession) $r8;
+
+        return $r9;
+
+     label3:
+        $r10 := @caughtexception;
+
+        goto label5;
+
+     label4:
+        $r10 := @caughtexception;
+
+     label5:
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzh(java.lang.String,java.lang.Throwable)>("Unable to register custom tabs session. Error: ", $r10);
+
+        return null;
+
+        catch android.os.RemoteException from label1 to label2 with label4;
+        catch java.lang.IllegalArgumentException from label1 to label2 with label3;
+    }
+
+    public static void registerRtbAdapter(java.lang.Class)
+    {
+        java.lang.Class $r0;
+        com.google.android.gms.ads.internal.client.zzej $r1;
+
+        $r0 := @parameter0: java.lang.Class;
+
+        $r1 = staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        virtualinvoke $r1.<com.google.android.gms.ads.internal.client.zzej: void zzr(java.lang.Class)>($r0);
+
+        return;
+    }
+
+    public static void registerWebView(android.webkit.WebView)
+    {
+        com.google.android.gms.dynamic.IObjectWrapper $r3;
+        android.content.Context $r1;
+        com.google.android.gms.internal.ads.zzcct $r2;
+        android.os.RemoteException $r4;
+        android.webkit.WebView $r0;
+
+        $r0 := @parameter0: android.webkit.WebView;
+
+        staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        staticinvoke <com.google.android.gms.common.internal.Preconditions: void checkMainThread(java.lang.String)>("#008 Must be called on the main UI thread.");
+
+        if $r0 != null goto label1;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzg(java.lang.String)>("The webview to be registered cannot be null.");
+
+        return;
+
+     label1:
+        $r1 = virtualinvoke $r0.<android.webkit.WebView: android.content.Context getContext()>();
+
+        $r2 = staticinvoke <com.google.android.gms.internal.ads.zzbxk: com.google.android.gms.internal.ads.zzcct zza(android.content.Context)>($r1);
+
+        if $r2 != null goto label2;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzg(java.lang.String)>("Internal error, query info generator is null.");
+
+        return;
+
+     label2:
+        $r3 = staticinvoke <com.google.android.gms.dynamic.ObjectWrapper: com.google.android.gms.dynamic.IObjectWrapper wrap(java.lang.Object)>($r0);
+
+        interfaceinvoke $r2.<com.google.android.gms.internal.ads.zzcct: void zzj(com.google.android.gms.dynamic.IObjectWrapper)>($r3);
+
+     label3:
+        return;
+
+     label4:
+        $r4 := @caughtexception;
+
+        staticinvoke <com.google.android.gms.internal.ads.zzcec: void zzh(java.lang.String,java.lang.Throwable)>("", $r4);
+
+        return;
+
+        catch android.os.RemoteException from label2 to label3 with label4;
+    }
+
+    public static void setAppMuted(boolean)
+    {
+        com.google.android.gms.ads.internal.client.zzej $r0;
+        boolean $z0;
+
+        $z0 := @parameter0: boolean;
+
+        $r0 = staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        virtualinvoke $r0.<com.google.android.gms.ads.internal.client.zzej: void zzs(boolean)>($z0);
+
+        return;
+    }
+
+    public static void setAppVolume(float)
+    {
+        float $f0;
+        com.google.android.gms.ads.internal.client.zzej $r0;
+
+        $f0 := @parameter0: float;
+
+        $r0 = staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        virtualinvoke $r0.<com.google.android.gms.ads.internal.client.zzej: void zzt(float)>($f0);
+
+        return;
+    }
+
+    private static void setPlugin(java.lang.String)
+    {
+        java.lang.String $r0;
+        com.google.android.gms.ads.internal.client.zzej $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        virtualinvoke $r1.<com.google.android.gms.ads.internal.client.zzej: void zzu(java.lang.String)>($r0);
+
+        return;
+    }
+
+    public static void setRequestConfiguration(com.google.android.gms.ads.RequestConfiguration)
+    {
+        com.google.android.gms.ads.internal.client.zzej $r1;
+        com.google.android.gms.ads.RequestConfiguration $r0;
+
+        $r0 := @parameter0: com.google.android.gms.ads.RequestConfiguration;
+
+        $r1 = staticinvoke <com.google.android.gms.ads.internal.client.zzej: com.google.android.gms.ads.internal.client.zzej zzf()>();
+
+        virtualinvoke $r1.<com.google.android.gms.ads.internal.client.zzej: void zzv(com.google.android.gms.ads.RequestConfiguration)>($r0);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.google.android.gms.ads.MobileAds: java.lang.String ERROR_DOMAIN> = "com.google.android.gms.ads";
+
+        return;
+    }
+}

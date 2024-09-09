@@ -1,0 +1,453 @@
+public final class androidx.core.os.HandlerCompat extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+
+    private void <init>()
+    {
+        androidx.core.os.HandlerCompat r0;
+
+        r0 := @this: androidx.core.os.HandlerCompat;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static android.os.Handler createAsync(android.os.Looper)
+    {
+        java.lang.Throwable $r10;
+        java.lang.Object[] r6;
+        java.lang.Error $r11;
+        java.lang.ReflectiveOperationException r13;
+        java.lang.reflect.Constructor $r5;
+        android.os.Looper $r0;
+        android.os.Handler $r1;
+        int i0;
+        java.lang.Boolean $r7;
+        boolean $z0;
+        java.lang.Class[] $r3;
+        java.lang.RuntimeException $r12;
+        java.lang.reflect.InvocationTargetException r9;
+        java.lang.Class r2, $r4;
+        java.lang.Object $r8;
+
+        $r0 := @parameter0: android.os.Looper;
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 28 goto label01;
+
+        $r1 = staticinvoke <androidx.core.os.HandlerCompat$Api28Impl: android.os.Handler createAsync(android.os.Looper)>($r0);
+
+        return $r1;
+
+     label01:
+        r2 = class "Landroid/os/Handler;";
+
+        $r3 = newarray (java.lang.Class)[3];
+
+        $r3[0] = class "Landroid/os/Looper;";
+
+        $r3[1] = class "Landroid/os/Handler$Callback;";
+
+        $r4 = <java.lang.Boolean: java.lang.Class TYPE>;
+
+        $r3[2] = $r4;
+
+     label02:
+        $r5 = virtualinvoke r2.<java.lang.Class: java.lang.reflect.Constructor getDeclaredConstructor(java.lang.Class[])>($r3);
+
+     label03:
+        r6 = newarray (java.lang.Object)[3];
+
+        r6[0] = $r0;
+
+        r6[1] = null;
+
+     label04:
+        $r7 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+     label05:
+        r6[2] = $r7;
+
+     label06:
+        $r8 = virtualinvoke $r5.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>(r6);
+
+     label07:
+        $r1 = (android.os.Handler) $r8;
+
+        return $r1;
+
+     label08:
+        r9 := @caughtexception;
+
+        $r10 = virtualinvoke r9.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getCause()>();
+
+        $z0 = $r10 instanceof java.lang.RuntimeException;
+
+        if $z0 != 0 goto label10;
+
+        $z0 = $r10 instanceof java.lang.Error;
+
+        if $z0 == 0 goto label09;
+
+        $r11 = (java.lang.Error) $r10;
+
+        throw $r11;
+
+     label09:
+        $r12 = new java.lang.RuntimeException;
+
+        specialinvoke $r12.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r10);
+
+        throw $r12;
+
+     label10:
+        $r12 = (java.lang.RuntimeException) $r10;
+
+        throw $r12;
+
+     label11:
+        r13 := @caughtexception;
+
+        goto label14;
+
+     label12:
+        r13 := @caughtexception;
+
+        goto label14;
+
+     label13:
+        r13 := @caughtexception;
+
+     label14:
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("HandlerCompat", "Unable to invoke Handler(Looper, Callback, boolean) constructor", r13);
+
+        $r1 = new android.os.Handler;
+
+        specialinvoke $r1.<android.os.Handler: void <init>(android.os.Looper)>($r0);
+
+        return $r1;
+
+        catch java.lang.IllegalAccessException from label02 to label03 with label13;
+        catch java.lang.IllegalAccessException from label04 to label05 with label13;
+        catch java.lang.IllegalAccessException from label06 to label07 with label13;
+        catch java.lang.InstantiationException from label02 to label03 with label12;
+        catch java.lang.InstantiationException from label04 to label05 with label12;
+        catch java.lang.InstantiationException from label06 to label07 with label12;
+        catch java.lang.NoSuchMethodException from label02 to label03 with label11;
+        catch java.lang.NoSuchMethodException from label04 to label05 with label11;
+        catch java.lang.NoSuchMethodException from label06 to label07 with label11;
+        catch java.lang.reflect.InvocationTargetException from label02 to label03 with label08;
+        catch java.lang.reflect.InvocationTargetException from label04 to label05 with label08;
+        catch java.lang.reflect.InvocationTargetException from label06 to label07 with label08;
+    }
+
+    public static android.os.Handler createAsync(android.os.Looper, android.os.Handler$Callback)
+    {
+        java.lang.Throwable $r11;
+        java.lang.Object[] r7;
+        java.lang.Error $r12;
+        java.lang.ReflectiveOperationException r14;
+        java.lang.reflect.Constructor $r6;
+        android.os.Looper $r0;
+        android.os.Handler $r2;
+        int i0;
+        java.lang.Boolean $r8;
+        boolean $z0;
+        android.os.Handler$Callback $r1;
+        java.lang.Class[] $r4;
+        java.lang.RuntimeException $r13;
+        java.lang.reflect.InvocationTargetException r10;
+        java.lang.Class r3, $r5;
+        java.lang.Object $r9;
+
+        $r0 := @parameter0: android.os.Looper;
+
+        $r1 := @parameter1: android.os.Handler$Callback;
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 28 goto label01;
+
+        $r2 = staticinvoke <androidx.core.os.HandlerCompat$Api28Impl: android.os.Handler createAsync(android.os.Looper,android.os.Handler$Callback)>($r0, $r1);
+
+        return $r2;
+
+     label01:
+        r3 = class "Landroid/os/Handler;";
+
+        $r4 = newarray (java.lang.Class)[3];
+
+        $r4[0] = class "Landroid/os/Looper;";
+
+        $r4[1] = class "Landroid/os/Handler$Callback;";
+
+        $r5 = <java.lang.Boolean: java.lang.Class TYPE>;
+
+        $r4[2] = $r5;
+
+     label02:
+        $r6 = virtualinvoke r3.<java.lang.Class: java.lang.reflect.Constructor getDeclaredConstructor(java.lang.Class[])>($r4);
+
+     label03:
+        r7 = newarray (java.lang.Object)[3];
+
+        r7[0] = $r0;
+
+        r7[1] = $r1;
+
+     label04:
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+     label05:
+        r7[2] = $r8;
+
+     label06:
+        $r9 = virtualinvoke $r6.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>(r7);
+
+     label07:
+        $r2 = (android.os.Handler) $r9;
+
+        return $r2;
+
+     label08:
+        r10 := @caughtexception;
+
+        $r11 = virtualinvoke r10.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getCause()>();
+
+        $z0 = $r11 instanceof java.lang.RuntimeException;
+
+        if $z0 != 0 goto label10;
+
+        $z0 = $r11 instanceof java.lang.Error;
+
+        if $z0 == 0 goto label09;
+
+        $r12 = (java.lang.Error) $r11;
+
+        throw $r12;
+
+     label09:
+        $r13 = new java.lang.RuntimeException;
+
+        specialinvoke $r13.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r11);
+
+        throw $r13;
+
+     label10:
+        $r13 = (java.lang.RuntimeException) $r11;
+
+        throw $r13;
+
+     label11:
+        r14 := @caughtexception;
+
+        goto label14;
+
+     label12:
+        r14 := @caughtexception;
+
+        goto label14;
+
+     label13:
+        r14 := @caughtexception;
+
+     label14:
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("HandlerCompat", "Unable to invoke Handler(Looper, Callback, boolean) constructor", r14);
+
+        $r2 = new android.os.Handler;
+
+        specialinvoke $r2.<android.os.Handler: void <init>(android.os.Looper,android.os.Handler$Callback)>($r0, $r1);
+
+        return $r2;
+
+        catch java.lang.IllegalAccessException from label02 to label03 with label13;
+        catch java.lang.IllegalAccessException from label04 to label05 with label13;
+        catch java.lang.IllegalAccessException from label06 to label07 with label13;
+        catch java.lang.InstantiationException from label02 to label03 with label12;
+        catch java.lang.InstantiationException from label04 to label05 with label12;
+        catch java.lang.InstantiationException from label06 to label07 with label12;
+        catch java.lang.NoSuchMethodException from label02 to label03 with label11;
+        catch java.lang.NoSuchMethodException from label04 to label05 with label11;
+        catch java.lang.NoSuchMethodException from label06 to label07 with label11;
+        catch java.lang.reflect.InvocationTargetException from label02 to label03 with label08;
+        catch java.lang.reflect.InvocationTargetException from label04 to label05 with label08;
+        catch java.lang.reflect.InvocationTargetException from label06 to label07 with label08;
+    }
+
+    public static boolean hasCallbacks(android.os.Handler, java.lang.Runnable)
+    {
+        java.lang.Throwable $r14;
+        java.lang.Object[] r5;
+        java.lang.NoSuchMethodException r10;
+        java.lang.Error $r15;
+        java.lang.Runnable $r1;
+        java.lang.NullPointerException r8;
+        android.os.Handler $r0;
+        int i0;
+        java.lang.Boolean r7;
+        java.lang.reflect.Method $r4;
+        boolean $z0;
+        java.lang.UnsupportedOperationException r12;
+        java.lang.IllegalAccessException r11;
+        java.lang.Class[] $r2;
+        java.lang.RuntimeException $r16;
+        java.lang.Exception r9;
+        java.lang.reflect.InvocationTargetException r13;
+        java.lang.Class r3;
+        java.lang.Object $r6;
+
+        $r0 := @parameter0: android.os.Handler;
+
+        $r1 := @parameter1: java.lang.Runnable;
+
+        i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i0 < 29 goto label01;
+
+        $z0 = staticinvoke <androidx.core.os.HandlerCompat$Api29Impl: boolean hasCallbacks(android.os.Handler,java.lang.Runnable)>($r0, $r1);
+
+        return $z0;
+
+     label01:
+        r3 = class "Landroid/os/Handler;";
+
+        $r2 = newarray (java.lang.Class)[1];
+
+     label02:
+        $r2[0] = class "Ljava/lang/Runnable;";
+
+     label03:
+        $r4 = virtualinvoke r3.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("hasCallbacks", $r2);
+
+     label04:
+        r5 = newarray (java.lang.Object)[1];
+
+     label05:
+        r5[0] = $r1;
+
+     label06:
+        $r6 = virtualinvoke $r4.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r0, r5);
+
+     label07:
+        r7 = (java.lang.Boolean) $r6;
+
+     label08:
+        $z0 = virtualinvoke r7.<java.lang.Boolean: boolean booleanValue()>();
+
+     label09:
+        return $z0;
+
+     label10:
+        r8 := @caughtexception;
+
+        r9 = r8;
+
+        goto label13;
+
+     label11:
+        r10 := @caughtexception;
+
+        r9 = r10;
+
+        goto label13;
+
+     label12:
+        r11 := @caughtexception;
+
+        r9 = r11;
+
+     label13:
+        r12 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke r12.<java.lang.UnsupportedOperationException: void <init>(java.lang.String,java.lang.Throwable)>("Failed to call Handler.hasCallbacks(), but there is no safe failure mode for this method. Raising exception.", r9);
+
+        throw r12;
+
+     label14:
+        r13 := @caughtexception;
+
+        $r14 = virtualinvoke r13.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getCause()>();
+
+        $z0 = $r14 instanceof java.lang.RuntimeException;
+
+        if $z0 != 0 goto label16;
+
+        $z0 = $r14 instanceof java.lang.Error;
+
+        if $z0 == 0 goto label15;
+
+        $r15 = (java.lang.Error) $r14;
+
+        throw $r15;
+
+     label15:
+        $r16 = new java.lang.RuntimeException;
+
+        specialinvoke $r16.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($r14);
+
+        throw $r16;
+
+     label16:
+        $r16 = (java.lang.RuntimeException) $r14;
+
+        throw $r16;
+
+        catch java.lang.reflect.InvocationTargetException from label03 to label04 with label14;
+        catch java.lang.reflect.InvocationTargetException from label06 to label07 with label14;
+        catch java.lang.reflect.InvocationTargetException from label08 to label09 with label14;
+        catch java.lang.IllegalAccessException from label03 to label04 with label12;
+        catch java.lang.IllegalAccessException from label06 to label07 with label12;
+        catch java.lang.IllegalAccessException from label08 to label09 with label12;
+        catch java.lang.NoSuchMethodException from label03 to label04 with label11;
+        catch java.lang.NoSuchMethodException from label06 to label07 with label11;
+        catch java.lang.NoSuchMethodException from label08 to label09 with label11;
+        catch java.lang.NullPointerException from label02 to label04 with label10;
+        catch java.lang.NullPointerException from label05 to label07 with label10;
+        catch java.lang.NullPointerException from label08 to label09 with label10;
+    }
+
+    public static boolean postDelayed(android.os.Handler, java.lang.Runnable, java.lang.Object, long)
+    {
+        android.os.Message $r3;
+        android.os.Handler $r0;
+        int i1;
+        java.lang.Object $r2;
+        long $l0;
+        java.lang.Runnable $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.os.Handler;
+
+        $r1 := @parameter1: java.lang.Runnable;
+
+        $r2 := @parameter2: java.lang.Object;
+
+        $l0 := @parameter3: long;
+
+        i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i1 < 28 goto label1;
+
+        $z0 = staticinvoke <androidx.core.os.HandlerCompat$Api28Impl: boolean postDelayed(android.os.Handler,java.lang.Runnable,java.lang.Object,long)>($r0, $r1, $r2, $l0);
+
+        return $z0;
+
+     label1:
+        $r3 = staticinvoke <android.os.Message: android.os.Message obtain(android.os.Handler,java.lang.Runnable)>($r0, $r1);
+
+        $r3.<android.os.Message: java.lang.Object obj> = $r2;
+
+        $z0 = virtualinvoke $r0.<android.os.Handler: boolean sendMessageDelayed(android.os.Message,long)>($r3, $l0);
+
+        return $z0;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.os.HandlerCompat: java.lang.String TAG> = "HandlerCompat";
+
+        return;
+    }
+}

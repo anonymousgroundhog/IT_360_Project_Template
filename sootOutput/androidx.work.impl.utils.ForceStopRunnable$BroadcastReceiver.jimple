@@ -1,0 +1,66 @@
+public class androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver extends android.content.BroadcastReceiver
+{
+    private static final java.lang.String TAG;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+
+        $r0 = staticinvoke <androidx.work.Logger: java.lang.String tagWithPrefix(java.lang.String)>("ForceStopRunnable$Rcvr");
+
+        <androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver: java.lang.String TAG> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver r0;
+
+        r0 := @this: androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver;
+
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        android.content.Context $r1;
+        android.content.Intent $r2;
+        androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver r0;
+        androidx.work.Logger $r5;
+        java.lang.Throwable[] $r6;
+        java.lang.String $r3, $r4;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        if $r2 == null goto label1;
+
+        $r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getAction()>();
+
+        $r4 = "ACTION_FORCE_STOP_RESCHEDULE";
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+        if $z0 == 0 goto label1;
+
+        $r5 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r3 = <androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver: java.lang.String TAG>;
+
+        $r6 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r5.<androidx.work.Logger: void verbose(java.lang.String,java.lang.String,java.lang.Throwable[])>($r3, "Rescheduling alarm that keeps track of force-stops.", $r6);
+
+        staticinvoke <androidx.work.impl.utils.ForceStopRunnable: void setAlarm(android.content.Context)>($r1);
+
+     label1:
+        return;
+    }
+}

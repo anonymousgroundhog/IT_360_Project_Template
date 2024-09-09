@@ -1,0 +1,147 @@
+public class androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder extends java.lang.Object
+{
+    private long mLatestTimestamp;
+    private final java.util.List mMessages;
+    private final java.lang.String mParticipant;
+    private android.app.PendingIntent mReadPendingIntent;
+    private androidx.core.app.RemoteInput mRemoteInput;
+    private android.app.PendingIntent mReplyPendingIntent;
+
+    public void <init>(java.lang.String)
+    {
+        java.lang.String $r1;
+        androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder r0;
+        java.util.ArrayList $r2;
+
+        r0 := @this: androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        r0.<androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder: java.util.List mMessages> = $r2;
+
+        r0.<androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder: java.lang.String mParticipant> = $r1;
+
+        return;
+    }
+
+    public androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder addMessage(java.lang.String)
+    {
+        java.util.List $r2;
+        java.lang.String $r1;
+        androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder: java.util.List mMessages>;
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r1);
+
+     label1:
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$CarExtender$UnreadConversation build()
+    {
+        java.lang.Object[] $r8;
+        long $l0;
+        java.lang.String[] $r7, $r10;
+        android.app.PendingIntent $r2, $r3;
+        androidx.core.app.NotificationCompat$CarExtender$UnreadConversation $r4;
+        androidx.core.app.RemoteInput $r1;
+        java.util.List r5, $r6;
+        androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder r0;
+        int $i1;
+        java.lang.String $r9;
+
+        r0 := @this: androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder;
+
+        r5 = r0.<androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder: java.util.List mMessages>;
+
+        $r6 = r0.<androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder: java.util.List mMessages>;
+
+        $i1 = interfaceinvoke $r6.<java.util.List: int size()>();
+
+        $r7 = newarray (java.lang.String)[$i1];
+
+        $r8 = interfaceinvoke r5.<java.util.List: java.lang.Object[] toArray(java.lang.Object[])>($r7);
+
+        $r7 = (java.lang.String[]) $r8;
+
+        $r9 = r0.<androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder: java.lang.String mParticipant>;
+
+        $r10 = newarray (java.lang.String)[1];
+
+        $r10[0] = $r9;
+
+        $r4 = new androidx.core.app.NotificationCompat$CarExtender$UnreadConversation;
+
+        $r1 = r0.<androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder: androidx.core.app.RemoteInput mRemoteInput>;
+
+        $r2 = r0.<androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder: android.app.PendingIntent mReplyPendingIntent>;
+
+        $r3 = r0.<androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder: android.app.PendingIntent mReadPendingIntent>;
+
+        $l0 = r0.<androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder: long mLatestTimestamp>;
+
+        specialinvoke $r4.<androidx.core.app.NotificationCompat$CarExtender$UnreadConversation: void <init>(java.lang.String[],androidx.core.app.RemoteInput,android.app.PendingIntent,android.app.PendingIntent,java.lang.String[],long)>($r7, $r1, $r2, $r3, $r10, $l0);
+
+        return $r4;
+    }
+
+    public androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder setLatestTimestamp(long)
+    {
+        long $l0;
+        androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder;
+
+        $l0 := @parameter0: long;
+
+        r0.<androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder: long mLatestTimestamp> = $l0;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder setReadPendingIntent(android.app.PendingIntent)
+    {
+        android.app.PendingIntent $r1;
+        androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder;
+
+        $r1 := @parameter0: android.app.PendingIntent;
+
+        r0.<androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder: android.app.PendingIntent mReadPendingIntent> = $r1;
+
+        return r0;
+    }
+
+    public androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder setReplyAction(android.app.PendingIntent, androidx.core.app.RemoteInput)
+    {
+        androidx.core.app.RemoteInput $r2;
+        android.app.PendingIntent $r1;
+        androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder r0;
+
+        r0 := @this: androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder;
+
+        $r1 := @parameter0: android.app.PendingIntent;
+
+        $r2 := @parameter1: androidx.core.app.RemoteInput;
+
+        r0.<androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder: androidx.core.app.RemoteInput mRemoteInput> = $r2;
+
+        r0.<androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder: android.app.PendingIntent mReplyPendingIntent> = $r1;
+
+        return r0;
+    }
+}

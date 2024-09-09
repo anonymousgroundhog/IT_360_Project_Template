@@ -1,0 +1,101 @@
+public final class androidx.core.os.PersistableBundleKt extends java.lang.Object
+{
+
+    public static final android.os.PersistableBundle persistableBundleOf()
+    {
+        android.os.PersistableBundle $r0;
+
+        $r0 = staticinvoke <androidx.core.os.PersistableBundleApi21ImplKt: android.os.PersistableBundle createPersistableBundle(int)>(0);
+
+        return $r0;
+    }
+
+    public static final transient android.os.PersistableBundle persistableBundleOf(kotlin.Pair[])
+    {
+        kotlin.Pair r1;
+        kotlin.Pair[] $r0;
+        int $i0, $i1;
+        android.os.PersistableBundle $r2;
+        java.lang.Object $r3;
+        java.lang.String r4;
+
+        $r0 := @parameter0: kotlin.Pair[];
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "pairs");
+
+        $i0 = lengthof $r0;
+
+        $r2 = staticinvoke <androidx.core.os.PersistableBundleApi21ImplKt: android.os.PersistableBundle createPersistableBundle(int)>($i0);
+
+        $i0 = lengthof $r0;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        r1 = $r0[$i1];
+
+        $r3 = virtualinvoke r1.<kotlin.Pair: java.lang.Object component1()>();
+
+        r4 = (java.lang.String) $r3;
+
+        $r3 = virtualinvoke r1.<kotlin.Pair: java.lang.Object component2()>();
+
+        staticinvoke <androidx.core.os.PersistableBundleApi21ImplKt: void putValue(android.os.PersistableBundle,java.lang.String,java.lang.Object)>($r2, r4, $r3);
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        return $r2;
+    }
+
+    public static final android.os.PersistableBundle toPersistableBundle(java.util.Map)
+    {
+        java.util.Map$Entry r5;
+        java.util.Iterator $r3;
+        java.util.Set $r2;
+        java.util.Map $r0;
+        int $i0;
+        android.os.PersistableBundle $r1;
+        java.lang.Object $r4;
+        java.lang.String r6;
+        boolean $z0;
+
+        $r0 := @parameter0: java.util.Map;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = interfaceinvoke $r0.<java.util.Map: int size()>();
+
+        $r1 = staticinvoke <androidx.core.os.PersistableBundleApi21ImplKt: android.os.PersistableBundle createPersistableBundle(int)>($i0);
+
+        $r2 = interfaceinvoke $r0.<java.util.Map: java.util.Set entrySet()>();
+
+        $r3 = interfaceinvoke $r2.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (java.util.Map$Entry) $r4;
+
+        $r4 = interfaceinvoke r5.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        r6 = (java.lang.String) $r4;
+
+        $r4 = interfaceinvoke r5.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        staticinvoke <androidx.core.os.PersistableBundleApi21ImplKt: void putValue(android.os.PersistableBundle,java.lang.String,java.lang.Object)>($r1, r6, $r4);
+
+        goto label1;
+
+     label2:
+        return $r1;
+    }
+}

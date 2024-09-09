@@ -1,0 +1,1590 @@
+public class androidx.work.impl.WorkManagerImpl extends androidx.work.WorkManager
+{
+    public static final int MAX_PRE_JOB_SCHEDULER_API_LEVEL;
+    public static final int MIN_JOB_SCHEDULER_API_LEVEL;
+    public static final java.lang.String REMOTE_WORK_MANAGER_CLIENT;
+    private static final java.lang.String TAG;
+    private static androidx.work.impl.WorkManagerImpl sDefaultInstance;
+    private static androidx.work.impl.WorkManagerImpl sDelegatedInstance;
+    private static final java.lang.Object sLock;
+    private androidx.work.Configuration mConfiguration;
+    private android.content.Context mContext;
+    private boolean mForceStopRunnableCompleted;
+    private androidx.work.impl.utils.PreferenceUtils mPreferenceUtils;
+    private androidx.work.impl.Processor mProcessor;
+    private volatile androidx.work.multiprocess.RemoteWorkManager mRemoteWorkManager;
+    private android.content.BroadcastReceiver$PendingResult mRescheduleReceiverResult;
+    private java.util.List mSchedulers;
+    private androidx.work.impl.WorkDatabase mWorkDatabase;
+    private androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor;
+
+    static void <clinit>()
+    {
+        java.lang.Object $r1;
+        java.lang.String $r0;
+
+        <androidx.work.impl.WorkManagerImpl: java.lang.String REMOTE_WORK_MANAGER_CLIENT> = "androidx.work.multiprocess.RemoteWorkManagerClient";
+
+        <androidx.work.impl.WorkManagerImpl: int MIN_JOB_SCHEDULER_API_LEVEL> = 23;
+
+        <androidx.work.impl.WorkManagerImpl: int MAX_PRE_JOB_SCHEDULER_API_LEVEL> = 22;
+
+        $r0 = staticinvoke <androidx.work.Logger: java.lang.String tagWithPrefix(java.lang.String)>("WorkManagerImpl");
+
+        <androidx.work.impl.WorkManagerImpl: java.lang.String TAG> = $r0;
+
+        <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl sDelegatedInstance> = null;
+
+        <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl sDefaultInstance> = null;
+
+        $r1 = new java.lang.Object;
+
+        specialinvoke $r1.<java.lang.Object: void <init>()>();
+
+        <androidx.work.impl.WorkManagerImpl: java.lang.Object sLock> = $r1;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, androidx.work.Configuration, androidx.work.impl.utils.taskexecutor.TaskExecutor)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r3;
+        android.content.Context $r1;
+        androidx.work.Configuration $r2;
+        int $i0;
+        androidx.work.impl.WorkManagerImpl r0;
+        android.content.res.Resources $r4;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.work.Configuration;
+
+        $r3 := @parameter2: androidx.work.impl.utils.taskexecutor.TaskExecutor;
+
+        $r4 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $i0 = <androidx.work.R$bool: int workmanager_test_configuration>;
+
+        $z0 = virtualinvoke $r4.<android.content.res.Resources: boolean getBoolean(int)>($i0);
+
+        specialinvoke r0.<androidx.work.impl.WorkManagerImpl: void <init>(android.content.Context,androidx.work.Configuration,androidx.work.impl.utils.taskexecutor.TaskExecutor,boolean)>($r1, $r2, $r3, $z0);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, androidx.work.Configuration, androidx.work.impl.utils.taskexecutor.TaskExecutor, androidx.work.impl.WorkDatabase)
+    {
+        android.content.Context $r1, $r6;
+        androidx.work.Logger$LogcatLogger r7;
+        androidx.work.impl.Processor r5;
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r3;
+        androidx.work.Configuration $r2;
+        java.util.List $r8;
+        androidx.work.impl.WorkDatabase $r4;
+        int $i0;
+        androidx.work.impl.WorkManagerImpl r0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.work.Configuration;
+
+        $r3 := @parameter2: androidx.work.impl.utils.taskexecutor.TaskExecutor;
+
+        $r4 := @parameter3: androidx.work.impl.WorkDatabase;
+
+        specialinvoke r0.<androidx.work.WorkManager: void <init>()>();
+
+        $r6 = virtualinvoke $r1.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        r7 = new androidx.work.Logger$LogcatLogger;
+
+        $i0 = virtualinvoke $r2.<androidx.work.Configuration: int getMinimumLoggingLevel()>();
+
+        specialinvoke r7.<androidx.work.Logger$LogcatLogger: void <init>(int)>($i0);
+
+        staticinvoke <androidx.work.Logger: void setLogger(androidx.work.Logger)>(r7);
+
+        $r8 = virtualinvoke r0.<androidx.work.impl.WorkManagerImpl: java.util.List createSchedulers(android.content.Context,androidx.work.Configuration,androidx.work.impl.utils.taskexecutor.TaskExecutor)>($r6, $r2, $r3);
+
+        r5 = new androidx.work.impl.Processor;
+
+        specialinvoke r5.<androidx.work.impl.Processor: void <init>(android.content.Context,androidx.work.Configuration,androidx.work.impl.utils.taskexecutor.TaskExecutor,androidx.work.impl.WorkDatabase,java.util.List)>($r1, $r2, $r3, $r4, $r8);
+
+        specialinvoke r0.<androidx.work.impl.WorkManagerImpl: void internalInit(android.content.Context,androidx.work.Configuration,androidx.work.impl.utils.taskexecutor.TaskExecutor,androidx.work.impl.WorkDatabase,java.util.List,androidx.work.impl.Processor)>($r1, $r2, $r3, $r4, $r8, r5);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, androidx.work.Configuration, androidx.work.impl.utils.taskexecutor.TaskExecutor, androidx.work.impl.WorkDatabase, java.util.List, androidx.work.impl.Processor)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r3;
+        android.content.Context $r1;
+        androidx.work.Configuration $r2;
+        java.util.List r5;
+        androidx.work.impl.WorkDatabase $r4;
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.work.impl.Processor $r6;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.work.Configuration;
+
+        $r3 := @parameter2: androidx.work.impl.utils.taskexecutor.TaskExecutor;
+
+        $r4 := @parameter3: androidx.work.impl.WorkDatabase;
+
+        r5 := @parameter4: java.util.List;
+
+        $r6 := @parameter5: androidx.work.impl.Processor;
+
+        specialinvoke r0.<androidx.work.WorkManager: void <init>()>();
+
+        specialinvoke r0.<androidx.work.impl.WorkManagerImpl: void internalInit(android.content.Context,androidx.work.Configuration,androidx.work.impl.utils.taskexecutor.TaskExecutor,androidx.work.impl.WorkDatabase,java.util.List,androidx.work.impl.Processor)>($r1, $r2, $r3, $r4, r5, $r6);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, androidx.work.Configuration, androidx.work.impl.utils.taskexecutor.TaskExecutor, boolean)
+    {
+        android.content.Context $r1, $r4;
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r3;
+        androidx.work.Configuration $r2;
+        androidx.work.impl.WorkDatabase $r6;
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.work.impl.utils.SerialExecutor $r5;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.work.Configuration;
+
+        $r3 := @parameter2: androidx.work.impl.utils.taskexecutor.TaskExecutor;
+
+        $z0 := @parameter3: boolean;
+
+        $r4 = virtualinvoke $r1.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        $r5 = interfaceinvoke $r3.<androidx.work.impl.utils.taskexecutor.TaskExecutor: androidx.work.impl.utils.SerialExecutor getBackgroundExecutor()>();
+
+        $r6 = staticinvoke <androidx.work.impl.WorkDatabase: androidx.work.impl.WorkDatabase create(android.content.Context,java.util.concurrent.Executor,boolean)>($r4, $r5, $z0);
+
+        specialinvoke r0.<androidx.work.impl.WorkManagerImpl: void <init>(android.content.Context,androidx.work.Configuration,androidx.work.impl.utils.taskexecutor.TaskExecutor,androidx.work.impl.WorkDatabase)>($r1, $r2, $r3, $r6);
+
+        return;
+    }
+
+    public static androidx.work.impl.WorkManagerImpl getInstance()
+    {
+        java.lang.Throwable $r2;
+        java.lang.Object $r0;
+        androidx.work.impl.WorkManagerImpl $r1;
+
+        $r0 = <androidx.work.impl.WorkManagerImpl: java.lang.Object sLock>;
+
+        entermonitor $r0;
+
+     label1:
+        $r1 = <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl sDelegatedInstance>;
+
+        if $r1 == null goto label3;
+
+        $r1 = <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl sDelegatedInstance>;
+
+        exitmonitor $r0;
+
+     label2:
+        return $r1;
+
+     label3:
+        $r1 = <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl sDefaultInstance>;
+
+        exitmonitor $r0;
+
+     label4:
+        return $r1;
+
+     label5:
+        $r2 := @caughtexception;
+
+        exitmonitor $r0;
+
+     label6:
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label3 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    public static androidx.work.impl.WorkManagerImpl getInstance(android.content.Context)
+    {
+        java.lang.Throwable r7;
+        android.content.Context r0;
+        java.lang.IllegalStateException $r6;
+        androidx.work.Configuration$Provider $r4;
+        androidx.work.Configuration $r5;
+        java.lang.Object $r1;
+        androidx.work.impl.WorkManagerImpl $r2, r3;
+        boolean $z0;
+
+        r0 := @parameter0: android.content.Context;
+
+        $r1 = <androidx.work.impl.WorkManagerImpl: java.lang.Object sLock>;
+
+        entermonitor $r1;
+
+     label1:
+        $r2 = staticinvoke <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl getInstance()>();
+
+        r3 = $r2;
+
+        if $r2 != null goto label3;
+
+        r0 = virtualinvoke r0.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        $z0 = r0 instanceof androidx.work.Configuration$Provider;
+
+        if $z0 == 0 goto label2;
+
+        $r4 = (androidx.work.Configuration$Provider) r0;
+
+        $r5 = interfaceinvoke $r4.<androidx.work.Configuration$Provider: androidx.work.Configuration getWorkManagerConfiguration()>();
+
+        staticinvoke <androidx.work.impl.WorkManagerImpl: void initialize(android.content.Context,androidx.work.Configuration)>(r0, $r5);
+
+        r3 = staticinvoke <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl getInstance(android.content.Context)>(r0);
+
+        goto label3;
+
+     label2:
+        $r6 = new java.lang.IllegalStateException;
+
+        specialinvoke $r6.<java.lang.IllegalStateException: void <init>(java.lang.String)>("WorkManager is not initialized properly.  You have explicitly disabled WorkManagerInitializer in your manifest, have not manually called WorkManager#initialize at this point, and your Application does not implement Configuration.Provider.");
+
+        throw $r6;
+
+     label3:
+        exitmonitor $r1;
+
+     label4:
+        return r3;
+
+     label5:
+        r7 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label6:
+        throw r7;
+
+        catch java.lang.Throwable from label1 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    public static void initialize(android.content.Context, androidx.work.Configuration)
+    {
+        java.lang.Throwable $r7;
+        android.content.Context r2;
+        java.lang.IllegalStateException $r4;
+        androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor $r5;
+        java.util.concurrent.Executor $r6;
+        androidx.work.Configuration r0;
+        java.lang.Object $r1;
+        androidx.work.impl.WorkManagerImpl $r3;
+
+        r2 := @parameter0: android.content.Context;
+
+        r0 := @parameter1: androidx.work.Configuration;
+
+        $r1 = <androidx.work.impl.WorkManagerImpl: java.lang.Object sLock>;
+
+        entermonitor $r1;
+
+     label1:
+        $r3 = <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl sDelegatedInstance>;
+
+        if $r3 == null goto label3;
+
+        $r3 = <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl sDefaultInstance>;
+
+        if $r3 != null goto label2;
+
+        goto label3;
+
+     label2:
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("WorkManager is already initialized.  Did you try to initialize it manually without disabling WorkManagerInitializer? See WorkManager#initialize(Context, Configuration) or the class level Javadoc for more information.");
+
+        throw $r4;
+
+     label3:
+        $r3 = <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl sDelegatedInstance>;
+
+        if $r3 != null goto label5;
+
+        r2 = virtualinvoke r2.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        $r3 = <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl sDefaultInstance>;
+
+        if $r3 != null goto label4;
+
+        $r3 = new androidx.work.impl.WorkManagerImpl;
+
+        $r5 = new androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor;
+
+        $r6 = virtualinvoke r0.<androidx.work.Configuration: java.util.concurrent.Executor getTaskExecutor()>();
+
+        specialinvoke $r5.<androidx.work.impl.utils.taskexecutor.WorkManagerTaskExecutor: void <init>(java.util.concurrent.Executor)>($r6);
+
+        specialinvoke $r3.<androidx.work.impl.WorkManagerImpl: void <init>(android.content.Context,androidx.work.Configuration,androidx.work.impl.utils.taskexecutor.TaskExecutor)>(r2, r0, $r5);
+
+        <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl sDefaultInstance> = $r3;
+
+     label4:
+        $r3 = <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl sDefaultInstance>;
+
+        <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl sDelegatedInstance> = $r3;
+
+     label5:
+        exitmonitor $r1;
+
+     label6:
+        return;
+
+     label7:
+        $r7 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label8:
+        throw $r7;
+
+        catch java.lang.Throwable from label1 to label6 with label7;
+        catch java.lang.Throwable from label7 to label8 with label7;
+    }
+
+    private void internalInit(android.content.Context, androidx.work.Configuration, androidx.work.impl.utils.taskexecutor.TaskExecutor, androidx.work.impl.WorkDatabase, java.util.List, androidx.work.impl.Processor)
+    {
+        android.content.Context $r6;
+        java.lang.IllegalStateException $r8;
+        androidx.work.impl.utils.PreferenceUtils $r7;
+        androidx.work.impl.Processor $r5;
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r2;
+        androidx.work.impl.utils.ForceStopRunnable $r9;
+        androidx.work.Configuration $r1;
+        java.util.List r4;
+        androidx.work.impl.WorkDatabase $r3;
+        int $i0;
+        androidx.work.impl.WorkManagerImpl r0;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r6 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: androidx.work.Configuration;
+
+        $r2 := @parameter2: androidx.work.impl.utils.taskexecutor.TaskExecutor;
+
+        $r3 := @parameter3: androidx.work.impl.WorkDatabase;
+
+        r4 := @parameter4: java.util.List;
+
+        $r5 := @parameter5: androidx.work.impl.Processor;
+
+        $r6 = virtualinvoke $r6.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        r0.<androidx.work.impl.WorkManagerImpl: android.content.Context mContext> = $r6;
+
+        r0.<androidx.work.impl.WorkManagerImpl: androidx.work.Configuration mConfiguration> = $r1;
+
+        r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor> = $r2;
+
+        r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkDatabase mWorkDatabase> = $r3;
+
+        r0.<androidx.work.impl.WorkManagerImpl: java.util.List mSchedulers> = r4;
+
+        r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.Processor mProcessor> = $r5;
+
+        $r7 = new androidx.work.impl.utils.PreferenceUtils;
+
+        specialinvoke $r7.<androidx.work.impl.utils.PreferenceUtils: void <init>(androidx.work.impl.WorkDatabase)>($r3);
+
+        r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.PreferenceUtils mPreferenceUtils> = $r7;
+
+        r0.<androidx.work.impl.WorkManagerImpl: boolean mForceStopRunnableCompleted> = 0;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 24 goto label2;
+
+        $z0 = virtualinvoke $r6.<android.content.Context: boolean isDeviceProtectedStorage()>();
+
+        if $z0 != 0 goto label1;
+
+        goto label2;
+
+     label1:
+        $r8 = new java.lang.IllegalStateException;
+
+        specialinvoke $r8.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Cannot initialize WorkManager in direct boot mode");
+
+        throw $r8;
+
+     label2:
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        $r9 = new androidx.work.impl.utils.ForceStopRunnable;
+
+        specialinvoke $r9.<androidx.work.impl.utils.ForceStopRunnable: void <init>(android.content.Context,androidx.work.impl.WorkManagerImpl)>($r6, r0);
+
+        interfaceinvoke $r2.<androidx.work.impl.utils.taskexecutor.TaskExecutor: void executeOnBackgroundThread(java.lang.Runnable)>($r9);
+
+        return;
+    }
+
+    public static void setDelegate(androidx.work.impl.WorkManagerImpl)
+    {
+        java.lang.Throwable $r2;
+        androidx.work.impl.WorkManagerImpl $r0;
+        java.lang.Object $r1;
+
+        $r0 := @parameter0: androidx.work.impl.WorkManagerImpl;
+
+        $r1 = <androidx.work.impl.WorkManagerImpl: java.lang.Object sLock>;
+
+        entermonitor $r1;
+
+     label1:
+        <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl sDelegatedInstance> = $r0;
+
+        exitmonitor $r1;
+
+     label2:
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label4:
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    private void tryInitializeMultiProcessSupport()
+    {
+        java.lang.Throwable r8;
+        android.content.Context $r5;
+        java.lang.Object[] $r4;
+        java.lang.Class[] $r2;
+        java.lang.reflect.Constructor $r3;
+        androidx.work.Logger $r9;
+        java.lang.Throwable[] $r11;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.Class $r1;
+        java.lang.Object $r6;
+        androidx.work.multiprocess.RemoteWorkManager $r7;
+        java.lang.String $r10;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+     label1:
+        $r1 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("androidx.work.multiprocess.RemoteWorkManagerClient");
+
+        $r2 = newarray (java.lang.Class)[2];
+
+        $r2[0] = class "Landroid/content/Context;";
+
+        $r2[1] = class "Landroidx/work/impl/WorkManagerImpl;";
+
+        $r3 = virtualinvoke $r1.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>($r2);
+
+        $r4 = newarray (java.lang.Object)[2];
+
+        $r5 = r0.<androidx.work.impl.WorkManagerImpl: android.content.Context mContext>;
+
+        $r4[0] = $r5;
+
+        $r4[1] = r0;
+
+        $r6 = virtualinvoke $r3.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r4);
+
+        $r7 = (androidx.work.multiprocess.RemoteWorkManager) $r6;
+
+        r0.<androidx.work.impl.WorkManagerImpl: androidx.work.multiprocess.RemoteWorkManager mRemoteWorkManager> = $r7;
+
+     label2:
+        return;
+
+     label3:
+        r8 := @caughtexception;
+
+        $r9 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        $r10 = <androidx.work.impl.WorkManagerImpl: java.lang.String TAG>;
+
+        $r11 = newarray (java.lang.Throwable)[1];
+
+        $r11[0] = r8;
+
+        virtualinvoke $r9.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>($r10, "Unable to initialize multi-process support", $r11);
+
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public androidx.work.WorkContinuation beginUniqueWork(java.lang.String, androidx.work.ExistingWorkPolicy, java.util.List)
+    {
+        java.util.List r3;
+        androidx.work.ExistingWorkPolicy $r2;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.String $r1;
+        java.lang.IllegalArgumentException $r5;
+        androidx.work.impl.WorkContinuationImpl $r4;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: androidx.work.ExistingWorkPolicy;
+
+        r3 := @parameter2: java.util.List;
+
+        $z0 = interfaceinvoke r3.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label1;
+
+        $r4 = new androidx.work.impl.WorkContinuationImpl;
+
+        specialinvoke $r4.<androidx.work.impl.WorkContinuationImpl: void <init>(androidx.work.impl.WorkManagerImpl,java.lang.String,androidx.work.ExistingWorkPolicy,java.util.List)>(r0, $r1, $r2, r3);
+
+        return $r4;
+
+     label1:
+        $r5 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("beginUniqueWork needs at least one OneTimeWorkRequest.");
+
+        throw $r5;
+    }
+
+    public androidx.work.WorkContinuation beginWith(java.util.List)
+    {
+        java.util.List r1;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.IllegalArgumentException $r3;
+        androidx.work.impl.WorkContinuationImpl $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        r1 := @parameter0: java.util.List;
+
+        $z0 = interfaceinvoke r1.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label1;
+
+        $r2 = new androidx.work.impl.WorkContinuationImpl;
+
+        specialinvoke $r2.<androidx.work.impl.WorkContinuationImpl: void <init>(androidx.work.impl.WorkManagerImpl,java.util.List)>(r0, r1);
+
+        return $r2;
+
+     label1:
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("beginWith needs at least one OneTimeWorkRequest.");
+
+        throw $r3;
+    }
+
+    public androidx.work.Operation cancelAllWork()
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r2;
+        androidx.work.Operation $r3;
+        androidx.work.impl.utils.CancelWorkRunnable $r1;
+        androidx.work.impl.WorkManagerImpl r0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 = staticinvoke <androidx.work.impl.utils.CancelWorkRunnable: androidx.work.impl.utils.CancelWorkRunnable forAll(androidx.work.impl.WorkManagerImpl)>(r0);
+
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        interfaceinvoke $r2.<androidx.work.impl.utils.taskexecutor.TaskExecutor: void executeOnBackgroundThread(java.lang.Runnable)>($r1);
+
+        $r3 = virtualinvoke $r1.<androidx.work.impl.utils.CancelWorkRunnable: androidx.work.Operation getOperation()>();
+
+        return $r3;
+    }
+
+    public androidx.work.Operation cancelAllWorkByTag(java.lang.String)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r3;
+        androidx.work.Operation $r4;
+        androidx.work.impl.utils.CancelWorkRunnable $r2;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = staticinvoke <androidx.work.impl.utils.CancelWorkRunnable: androidx.work.impl.utils.CancelWorkRunnable forTag(java.lang.String,androidx.work.impl.WorkManagerImpl)>($r1, r0);
+
+        $r3 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        interfaceinvoke $r3.<androidx.work.impl.utils.taskexecutor.TaskExecutor: void executeOnBackgroundThread(java.lang.Runnable)>($r2);
+
+        $r4 = virtualinvoke $r2.<androidx.work.impl.utils.CancelWorkRunnable: androidx.work.Operation getOperation()>();
+
+        return $r4;
+    }
+
+    public androidx.work.Operation cancelUniqueWork(java.lang.String)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r3;
+        androidx.work.Operation $r4;
+        androidx.work.impl.utils.CancelWorkRunnable $r2;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = staticinvoke <androidx.work.impl.utils.CancelWorkRunnable: androidx.work.impl.utils.CancelWorkRunnable forName(java.lang.String,androidx.work.impl.WorkManagerImpl,boolean)>($r1, r0, 1);
+
+        $r3 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        interfaceinvoke $r3.<androidx.work.impl.utils.taskexecutor.TaskExecutor: void executeOnBackgroundThread(java.lang.Runnable)>($r2);
+
+        $r4 = virtualinvoke $r2.<androidx.work.impl.utils.CancelWorkRunnable: androidx.work.Operation getOperation()>();
+
+        return $r4;
+    }
+
+    public androidx.work.Operation cancelWorkById(java.util.UUID)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r3;
+        androidx.work.Operation $r4;
+        androidx.work.impl.utils.CancelWorkRunnable $r2;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.util.UUID $r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.util.UUID;
+
+        $r2 = staticinvoke <androidx.work.impl.utils.CancelWorkRunnable: androidx.work.impl.utils.CancelWorkRunnable forId(java.util.UUID,androidx.work.impl.WorkManagerImpl)>($r1, r0);
+
+        $r3 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        interfaceinvoke $r3.<androidx.work.impl.utils.taskexecutor.TaskExecutor: void executeOnBackgroundThread(java.lang.Runnable)>($r2);
+
+        $r4 = virtualinvoke $r2.<androidx.work.impl.utils.CancelWorkRunnable: androidx.work.Operation getOperation()>();
+
+        return $r4;
+    }
+
+    public android.app.PendingIntent createCancelPendingIntent(java.util.UUID)
+    {
+        android.content.Context r2;
+        android.content.Intent $r4;
+        java.util.UUID $r1;
+        android.app.PendingIntent $r5;
+        int i0;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.String $r3;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.util.UUID;
+
+        r2 = r0.<androidx.work.impl.WorkManagerImpl: android.content.Context mContext>;
+
+        $r3 = virtualinvoke $r1.<java.util.UUID: java.lang.String toString()>();
+
+        $r4 = staticinvoke <androidx.work.impl.foreground.SystemForegroundDispatcher: android.content.Intent createCancelWorkIntent(android.content.Context,java.lang.String)>(r2, $r3);
+
+        i0 = 134217728;
+
+        $z0 = staticinvoke <androidx.core.os.BuildCompat: boolean isAtLeastS()>();
+
+        if $z0 == 0 goto label1;
+
+        i0 = 134217728 | 33554432;
+
+     label1:
+        r2 = r0.<androidx.work.impl.WorkManagerImpl: android.content.Context mContext>;
+
+        $r5 = staticinvoke <android.app.PendingIntent: android.app.PendingIntent getService(android.content.Context,int,android.content.Intent,int)>(r2, 0, $r4, i0);
+
+        return $r5;
+    }
+
+    public java.util.List createSchedulers(android.content.Context, androidx.work.Configuration, androidx.work.impl.utils.taskexecutor.TaskExecutor)
+    {
+        android.content.Context $r1;
+        androidx.work.impl.Scheduler[] $r4;
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r3;
+        androidx.work.Configuration $r2;
+        java.util.List $r7;
+        androidx.work.impl.Scheduler $r5;
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.work.impl.background.greedy.GreedyScheduler $r6;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: androidx.work.Configuration;
+
+        $r3 := @parameter2: androidx.work.impl.utils.taskexecutor.TaskExecutor;
+
+        $r4 = newarray (androidx.work.impl.Scheduler)[2];
+
+        $r5 = staticinvoke <androidx.work.impl.Schedulers: androidx.work.impl.Scheduler createBestAvailableBackgroundScheduler(android.content.Context,androidx.work.impl.WorkManagerImpl)>($r1, r0);
+
+        $r4[0] = $r5;
+
+        $r6 = new androidx.work.impl.background.greedy.GreedyScheduler;
+
+        specialinvoke $r6.<androidx.work.impl.background.greedy.GreedyScheduler: void <init>(android.content.Context,androidx.work.Configuration,androidx.work.impl.utils.taskexecutor.TaskExecutor,androidx.work.impl.WorkManagerImpl)>($r1, $r2, $r3, r0);
+
+        $r4[1] = $r6;
+
+        $r7 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r4);
+
+        return $r7;
+    }
+
+    public androidx.work.impl.WorkContinuationImpl createWorkContinuationForUniquePeriodicWork(java.lang.String, androidx.work.ExistingPeriodicWorkPolicy, androidx.work.PeriodicWorkRequest)
+    {
+        androidx.work.impl.WorkContinuationImpl $r4;
+        androidx.work.PeriodicWorkRequest $r3;
+        java.util.List $r5;
+        androidx.work.ExistingWorkPolicy r7;
+        androidx.work.ExistingPeriodicWorkPolicy $r2, r6;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: androidx.work.ExistingPeriodicWorkPolicy;
+
+        $r3 := @parameter2: androidx.work.PeriodicWorkRequest;
+
+        r6 = <androidx.work.ExistingPeriodicWorkPolicy: androidx.work.ExistingPeriodicWorkPolicy KEEP>;
+
+        if $r2 != r6 goto label1;
+
+        r7 = <androidx.work.ExistingWorkPolicy: androidx.work.ExistingWorkPolicy KEEP>;
+
+        goto label2;
+
+     label1:
+        r7 = <androidx.work.ExistingWorkPolicy: androidx.work.ExistingWorkPolicy REPLACE>;
+
+     label2:
+        $r4 = new androidx.work.impl.WorkContinuationImpl;
+
+        $r5 = staticinvoke <java.util.Collections: java.util.List singletonList(java.lang.Object)>($r3);
+
+        specialinvoke $r4.<androidx.work.impl.WorkContinuationImpl: void <init>(androidx.work.impl.WorkManagerImpl,java.lang.String,androidx.work.ExistingWorkPolicy,java.util.List)>(r0, $r1, r7, $r5);
+
+        return $r4;
+    }
+
+    public androidx.work.Operation enqueue(java.util.List)
+    {
+        java.util.List r1;
+        androidx.work.Operation $r3;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.IllegalArgumentException $r4;
+        androidx.work.impl.WorkContinuationImpl $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        r1 := @parameter0: java.util.List;
+
+        $z0 = interfaceinvoke r1.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label1;
+
+        $r2 = new androidx.work.impl.WorkContinuationImpl;
+
+        specialinvoke $r2.<androidx.work.impl.WorkContinuationImpl: void <init>(androidx.work.impl.WorkManagerImpl,java.util.List)>(r0, r1);
+
+        $r3 = virtualinvoke $r2.<androidx.work.impl.WorkContinuationImpl: androidx.work.Operation enqueue()>();
+
+        return $r3;
+
+     label1:
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("enqueue needs at least one WorkRequest.");
+
+        throw $r4;
+    }
+
+    public androidx.work.Operation enqueueUniquePeriodicWork(java.lang.String, androidx.work.ExistingPeriodicWorkPolicy, androidx.work.PeriodicWorkRequest)
+    {
+        androidx.work.PeriodicWorkRequest $r3;
+        androidx.work.Operation $r5;
+        androidx.work.ExistingPeriodicWorkPolicy $r2;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.String $r1;
+        androidx.work.impl.WorkContinuationImpl $r4;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: androidx.work.ExistingPeriodicWorkPolicy;
+
+        $r3 := @parameter2: androidx.work.PeriodicWorkRequest;
+
+        $r4 = virtualinvoke r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkContinuationImpl createWorkContinuationForUniquePeriodicWork(java.lang.String,androidx.work.ExistingPeriodicWorkPolicy,androidx.work.PeriodicWorkRequest)>($r1, $r2, $r3);
+
+        $r5 = virtualinvoke $r4.<androidx.work.impl.WorkContinuationImpl: androidx.work.Operation enqueue()>();
+
+        return $r5;
+    }
+
+    public androidx.work.Operation enqueueUniqueWork(java.lang.String, androidx.work.ExistingWorkPolicy, java.util.List)
+    {
+        java.util.List r3;
+        androidx.work.ExistingWorkPolicy $r2;
+        androidx.work.Operation $r4;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.String $r1;
+        androidx.work.impl.WorkContinuationImpl $r5;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: androidx.work.ExistingWorkPolicy;
+
+        r3 := @parameter2: java.util.List;
+
+        $r5 = new androidx.work.impl.WorkContinuationImpl;
+
+        specialinvoke $r5.<androidx.work.impl.WorkContinuationImpl: void <init>(androidx.work.impl.WorkManagerImpl,java.lang.String,androidx.work.ExistingWorkPolicy,java.util.List)>(r0, $r1, $r2, r3);
+
+        $r4 = virtualinvoke $r5.<androidx.work.impl.WorkContinuationImpl: androidx.work.Operation enqueue()>();
+
+        return $r4;
+    }
+
+    public android.content.Context getApplicationContext()
+    {
+        android.content.Context r1;
+        androidx.work.impl.WorkManagerImpl r0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        r1 = r0.<androidx.work.impl.WorkManagerImpl: android.content.Context mContext>;
+
+        return r1;
+    }
+
+    public androidx.work.Configuration getConfiguration()
+    {
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.work.Configuration r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        r1 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.Configuration mConfiguration>;
+
+        return r1;
+    }
+
+    public com.google.common.util.concurrent.ListenableFuture getLastCancelAllTimeMillis()
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r2;
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.work.impl.utils.PreferenceUtils r1;
+        androidx.work.impl.WorkManagerImpl$1 $r3;
+        androidx.work.impl.utils.futures.SettableFuture $r4;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r4 = staticinvoke <androidx.work.impl.utils.futures.SettableFuture: androidx.work.impl.utils.futures.SettableFuture create()>();
+
+        r1 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.PreferenceUtils mPreferenceUtils>;
+
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        $r3 = new androidx.work.impl.WorkManagerImpl$1;
+
+        specialinvoke $r3.<androidx.work.impl.WorkManagerImpl$1: void <init>(androidx.work.impl.WorkManagerImpl,androidx.work.impl.utils.futures.SettableFuture,androidx.work.impl.utils.PreferenceUtils)>(r0, $r4, r1);
+
+        interfaceinvoke $r2.<androidx.work.impl.utils.taskexecutor.TaskExecutor: void executeOnBackgroundThread(java.lang.Runnable)>($r3);
+
+        return $r4;
+    }
+
+    public androidx.lifecycle.LiveData getLastCancelAllTimeMillisLiveData()
+    {
+        androidx.lifecycle.LiveData $r1;
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.work.impl.utils.PreferenceUtils $r2;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.PreferenceUtils mPreferenceUtils>;
+
+        $r1 = virtualinvoke $r2.<androidx.work.impl.utils.PreferenceUtils: androidx.lifecycle.LiveData getLastCancelAllTimeMillisLiveData()>();
+
+        return $r1;
+    }
+
+    public androidx.work.impl.utils.PreferenceUtils getPreferenceUtils()
+    {
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.work.impl.utils.PreferenceUtils r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        r1 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.PreferenceUtils mPreferenceUtils>;
+
+        return r1;
+    }
+
+    public androidx.work.impl.Processor getProcessor()
+    {
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.work.impl.Processor r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        r1 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.Processor mProcessor>;
+
+        return r1;
+    }
+
+    public androidx.work.multiprocess.RemoteWorkManager getRemoteWorkManager()
+    {
+        java.lang.Throwable r6;
+        java.lang.IllegalStateException $r1;
+        androidx.work.Configuration r4;
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.work.multiprocess.RemoteWorkManager $r2;
+        java.lang.Object $r3;
+        java.lang.String $r5;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.multiprocess.RemoteWorkManager mRemoteWorkManager>;
+
+        if $r2 != null goto label7;
+
+        $r3 = <androidx.work.impl.WorkManagerImpl: java.lang.Object sLock>;
+
+        entermonitor $r3;
+
+     label1:
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.multiprocess.RemoteWorkManager mRemoteWorkManager>;
+
+        if $r2 != null goto label3;
+
+        specialinvoke r0.<androidx.work.impl.WorkManagerImpl: void tryInitializeMultiProcessSupport()>();
+
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.multiprocess.RemoteWorkManager mRemoteWorkManager>;
+
+        if $r2 != null goto label3;
+
+        r4 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.Configuration mConfiguration>;
+
+        $r5 = virtualinvoke r4.<androidx.work.Configuration: java.lang.String getDefaultProcessName()>();
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r5);
+
+        if $z0 == 0 goto label2;
+
+        goto label3;
+
+     label2:
+        $r1 = new java.lang.IllegalStateException;
+
+        specialinvoke $r1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Invalid multiprocess configuration. Define an `implementation` dependency on :work:work-multiprocess library");
+
+        throw $r1;
+
+     label3:
+        exitmonitor $r3;
+
+     label4:
+        goto label7;
+
+     label5:
+        r6 := @caughtexception;
+
+        exitmonitor $r3;
+
+     label6:
+        throw r6;
+
+     label7:
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.multiprocess.RemoteWorkManager mRemoteWorkManager>;
+
+        return $r2;
+
+        catch java.lang.Throwable from label1 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    public java.util.List getSchedulers()
+    {
+        androidx.work.impl.WorkManagerImpl r0;
+        java.util.List r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        r1 = r0.<androidx.work.impl.WorkManagerImpl: java.util.List mSchedulers>;
+
+        return r1;
+    }
+
+    public androidx.work.impl.WorkDatabase getWorkDatabase()
+    {
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.work.impl.WorkDatabase r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        r1 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkDatabase mWorkDatabase>;
+
+        return r1;
+    }
+
+    public com.google.common.util.concurrent.ListenableFuture getWorkInfoById(java.util.UUID)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r3;
+        com.google.common.util.concurrent.ListenableFuture $r5;
+        androidx.work.impl.utils.StatusRunnable $r2;
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.work.impl.utils.SerialExecutor $r4;
+        java.util.UUID $r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.util.UUID;
+
+        $r2 = staticinvoke <androidx.work.impl.utils.StatusRunnable: androidx.work.impl.utils.StatusRunnable forUUID(androidx.work.impl.WorkManagerImpl,java.util.UUID)>(r0, $r1);
+
+        $r3 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        $r4 = interfaceinvoke $r3.<androidx.work.impl.utils.taskexecutor.TaskExecutor: androidx.work.impl.utils.SerialExecutor getBackgroundExecutor()>();
+
+        virtualinvoke $r4.<androidx.work.impl.utils.SerialExecutor: void execute(java.lang.Runnable)>($r2);
+
+        $r5 = virtualinvoke $r2.<androidx.work.impl.utils.StatusRunnable: com.google.common.util.concurrent.ListenableFuture getFuture()>();
+
+        return $r5;
+    }
+
+    public androidx.lifecycle.LiveData getWorkInfoByIdLiveData(java.util.UUID)
+    {
+        androidx.lifecycle.LiveData $r7;
+        androidx.work.impl.model.WorkSpecDao $r4;
+        java.util.UUID $r1;
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r2;
+        java.util.List $r6;
+        androidx.work.impl.WorkDatabase r3;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.String $r5;
+        androidx.work.impl.WorkManagerImpl$2 $r8;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.util.UUID;
+
+        r3 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkDatabase mWorkDatabase>;
+
+        $r4 = virtualinvoke r3.<androidx.work.impl.WorkDatabase: androidx.work.impl.model.WorkSpecDao workSpecDao()>();
+
+        $r5 = virtualinvoke $r1.<java.util.UUID: java.lang.String toString()>();
+
+        $r6 = staticinvoke <java.util.Collections: java.util.List singletonList(java.lang.Object)>($r5);
+
+        $r7 = interfaceinvoke $r4.<androidx.work.impl.model.WorkSpecDao: androidx.lifecycle.LiveData getWorkStatusPojoLiveDataForIds(java.util.List)>($r6);
+
+        $r8 = new androidx.work.impl.WorkManagerImpl$2;
+
+        specialinvoke $r8.<androidx.work.impl.WorkManagerImpl$2: void <init>(androidx.work.impl.WorkManagerImpl)>(r0);
+
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        $r7 = staticinvoke <androidx.work.impl.utils.LiveDataUtils: androidx.lifecycle.LiveData dedupedMappedLiveDataFor(androidx.lifecycle.LiveData,androidx.arch.core.util.Function,androidx.work.impl.utils.taskexecutor.TaskExecutor)>($r7, $r8, $r2);
+
+        return $r7;
+    }
+
+    public com.google.common.util.concurrent.ListenableFuture getWorkInfos(androidx.work.WorkQuery)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r3;
+        androidx.work.WorkQuery $r1;
+        com.google.common.util.concurrent.ListenableFuture $r5;
+        androidx.work.impl.utils.StatusRunnable $r2;
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.work.impl.utils.SerialExecutor $r4;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: androidx.work.WorkQuery;
+
+        $r2 = staticinvoke <androidx.work.impl.utils.StatusRunnable: androidx.work.impl.utils.StatusRunnable forWorkQuerySpec(androidx.work.impl.WorkManagerImpl,androidx.work.WorkQuery)>(r0, $r1);
+
+        $r3 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        $r4 = interfaceinvoke $r3.<androidx.work.impl.utils.taskexecutor.TaskExecutor: androidx.work.impl.utils.SerialExecutor getBackgroundExecutor()>();
+
+        virtualinvoke $r4.<androidx.work.impl.utils.SerialExecutor: void execute(java.lang.Runnable)>($r2);
+
+        $r5 = virtualinvoke $r2.<androidx.work.impl.utils.StatusRunnable: com.google.common.util.concurrent.ListenableFuture getFuture()>();
+
+        return $r5;
+    }
+
+    androidx.lifecycle.LiveData getWorkInfosById(java.util.List)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r2;
+        androidx.lifecycle.LiveData $r5;
+        java.util.List r1;
+        androidx.work.impl.WorkDatabase r3;
+        androidx.work.impl.model.WorkSpecDao $r4;
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.arch.core.util.Function $r6;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        r1 := @parameter0: java.util.List;
+
+        r3 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkDatabase mWorkDatabase>;
+
+        $r4 = virtualinvoke r3.<androidx.work.impl.WorkDatabase: androidx.work.impl.model.WorkSpecDao workSpecDao()>();
+
+        $r5 = interfaceinvoke $r4.<androidx.work.impl.model.WorkSpecDao: androidx.lifecycle.LiveData getWorkStatusPojoLiveDataForIds(java.util.List)>(r1);
+
+        $r6 = <androidx.work.impl.model.WorkSpec: androidx.arch.core.util.Function WORK_INFO_MAPPER>;
+
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        $r5 = staticinvoke <androidx.work.impl.utils.LiveDataUtils: androidx.lifecycle.LiveData dedupedMappedLiveDataFor(androidx.lifecycle.LiveData,androidx.arch.core.util.Function,androidx.work.impl.utils.taskexecutor.TaskExecutor)>($r5, $r6, $r2);
+
+        return $r5;
+    }
+
+    public com.google.common.util.concurrent.ListenableFuture getWorkInfosByTag(java.lang.String)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r3;
+        com.google.common.util.concurrent.ListenableFuture $r5;
+        androidx.work.impl.utils.StatusRunnable $r2;
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.work.impl.utils.SerialExecutor $r4;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = staticinvoke <androidx.work.impl.utils.StatusRunnable: androidx.work.impl.utils.StatusRunnable forTag(androidx.work.impl.WorkManagerImpl,java.lang.String)>(r0, $r1);
+
+        $r3 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        $r4 = interfaceinvoke $r3.<androidx.work.impl.utils.taskexecutor.TaskExecutor: androidx.work.impl.utils.SerialExecutor getBackgroundExecutor()>();
+
+        virtualinvoke $r4.<androidx.work.impl.utils.SerialExecutor: void execute(java.lang.Runnable)>($r2);
+
+        $r5 = virtualinvoke $r2.<androidx.work.impl.utils.StatusRunnable: com.google.common.util.concurrent.ListenableFuture getFuture()>();
+
+        return $r5;
+    }
+
+    public androidx.lifecycle.LiveData getWorkInfosByTagLiveData(java.lang.String)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r2;
+        androidx.lifecycle.LiveData $r5;
+        androidx.work.impl.WorkDatabase r3;
+        androidx.work.impl.model.WorkSpecDao $r4;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.String $r1;
+        androidx.arch.core.util.Function $r6;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r3 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkDatabase mWorkDatabase>;
+
+        $r4 = virtualinvoke r3.<androidx.work.impl.WorkDatabase: androidx.work.impl.model.WorkSpecDao workSpecDao()>();
+
+        $r5 = interfaceinvoke $r4.<androidx.work.impl.model.WorkSpecDao: androidx.lifecycle.LiveData getWorkStatusPojoLiveDataForTag(java.lang.String)>($r1);
+
+        $r6 = <androidx.work.impl.model.WorkSpec: androidx.arch.core.util.Function WORK_INFO_MAPPER>;
+
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        $r5 = staticinvoke <androidx.work.impl.utils.LiveDataUtils: androidx.lifecycle.LiveData dedupedMappedLiveDataFor(androidx.lifecycle.LiveData,androidx.arch.core.util.Function,androidx.work.impl.utils.taskexecutor.TaskExecutor)>($r5, $r6, $r2);
+
+        return $r5;
+    }
+
+    public com.google.common.util.concurrent.ListenableFuture getWorkInfosForUniqueWork(java.lang.String)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r3;
+        com.google.common.util.concurrent.ListenableFuture $r5;
+        androidx.work.impl.utils.StatusRunnable $r2;
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.work.impl.utils.SerialExecutor $r4;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = staticinvoke <androidx.work.impl.utils.StatusRunnable: androidx.work.impl.utils.StatusRunnable forUniqueWork(androidx.work.impl.WorkManagerImpl,java.lang.String)>(r0, $r1);
+
+        $r3 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        $r4 = interfaceinvoke $r3.<androidx.work.impl.utils.taskexecutor.TaskExecutor: androidx.work.impl.utils.SerialExecutor getBackgroundExecutor()>();
+
+        virtualinvoke $r4.<androidx.work.impl.utils.SerialExecutor: void execute(java.lang.Runnable)>($r2);
+
+        $r5 = virtualinvoke $r2.<androidx.work.impl.utils.StatusRunnable: com.google.common.util.concurrent.ListenableFuture getFuture()>();
+
+        return $r5;
+    }
+
+    public androidx.lifecycle.LiveData getWorkInfosForUniqueWorkLiveData(java.lang.String)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r2;
+        androidx.lifecycle.LiveData $r5;
+        androidx.work.impl.WorkDatabase r3;
+        androidx.work.impl.model.WorkSpecDao $r4;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.String $r1;
+        androidx.arch.core.util.Function $r6;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r3 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkDatabase mWorkDatabase>;
+
+        $r4 = virtualinvoke r3.<androidx.work.impl.WorkDatabase: androidx.work.impl.model.WorkSpecDao workSpecDao()>();
+
+        $r5 = interfaceinvoke $r4.<androidx.work.impl.model.WorkSpecDao: androidx.lifecycle.LiveData getWorkStatusPojoLiveDataForName(java.lang.String)>($r1);
+
+        $r6 = <androidx.work.impl.model.WorkSpec: androidx.arch.core.util.Function WORK_INFO_MAPPER>;
+
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        $r5 = staticinvoke <androidx.work.impl.utils.LiveDataUtils: androidx.lifecycle.LiveData dedupedMappedLiveDataFor(androidx.lifecycle.LiveData,androidx.arch.core.util.Function,androidx.work.impl.utils.taskexecutor.TaskExecutor)>($r5, $r6, $r2);
+
+        return $r5;
+    }
+
+    public androidx.lifecycle.LiveData getWorkInfosLiveData(androidx.work.WorkQuery)
+    {
+        androidx.lifecycle.LiveData $r6;
+        androidx.work.impl.model.RawWorkInfoDao $r4;
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r2;
+        androidx.work.WorkQuery $r1;
+        androidx.sqlite.db.SupportSQLiteQuery $r5;
+        androidx.work.impl.WorkDatabase r3;
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.arch.core.util.Function $r7;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: androidx.work.WorkQuery;
+
+        r3 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkDatabase mWorkDatabase>;
+
+        $r4 = virtualinvoke r3.<androidx.work.impl.WorkDatabase: androidx.work.impl.model.RawWorkInfoDao rawWorkInfoDao()>();
+
+        $r5 = staticinvoke <androidx.work.impl.utils.RawQueries: androidx.sqlite.db.SupportSQLiteQuery workQueryToRawQuery(androidx.work.WorkQuery)>($r1);
+
+        $r6 = interfaceinvoke $r4.<androidx.work.impl.model.RawWorkInfoDao: androidx.lifecycle.LiveData getWorkInfoPojosLiveData(androidx.sqlite.db.SupportSQLiteQuery)>($r5);
+
+        $r7 = <androidx.work.impl.model.WorkSpec: androidx.arch.core.util.Function WORK_INFO_MAPPER>;
+
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        $r6 = staticinvoke <androidx.work.impl.utils.LiveDataUtils: androidx.lifecycle.LiveData dedupedMappedLiveDataFor(androidx.lifecycle.LiveData,androidx.arch.core.util.Function,androidx.work.impl.utils.taskexecutor.TaskExecutor)>($r6, $r7, $r2);
+
+        return $r6;
+    }
+
+    public androidx.work.impl.utils.taskexecutor.TaskExecutor getWorkTaskExecutor()
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor r1;
+        androidx.work.impl.WorkManagerImpl r0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        r1 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        return r1;
+    }
+
+    public void onForceStopRunnableCompleted()
+    {
+        java.lang.Throwable $r3;
+        android.content.BroadcastReceiver$PendingResult $r2;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.Object $r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 = <androidx.work.impl.WorkManagerImpl: java.lang.Object sLock>;
+
+        entermonitor $r1;
+
+     label1:
+        r0.<androidx.work.impl.WorkManagerImpl: boolean mForceStopRunnableCompleted> = 1;
+
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: android.content.BroadcastReceiver$PendingResult mRescheduleReceiverResult>;
+
+        if $r2 == null goto label2;
+
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: android.content.BroadcastReceiver$PendingResult mRescheduleReceiverResult>;
+
+        virtualinvoke $r2.<android.content.BroadcastReceiver$PendingResult: void finish()>();
+
+        r0.<androidx.work.impl.WorkManagerImpl: android.content.BroadcastReceiver$PendingResult mRescheduleReceiverResult> = null;
+
+     label2:
+        exitmonitor $r1;
+
+     label3:
+        return;
+
+     label4:
+        $r3 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label5:
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+        catch java.lang.Throwable from label4 to label5 with label4;
+    }
+
+    public androidx.work.Operation pruneWork()
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r3;
+        androidx.work.Operation $r2;
+        androidx.work.impl.WorkManagerImpl r0;
+        androidx.work.impl.utils.PruneWorkRunnable r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        r1 = new androidx.work.impl.utils.PruneWorkRunnable;
+
+        specialinvoke r1.<androidx.work.impl.utils.PruneWorkRunnable: void <init>(androidx.work.impl.WorkManagerImpl)>(r0);
+
+        $r3 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        interfaceinvoke $r3.<androidx.work.impl.utils.taskexecutor.TaskExecutor: void executeOnBackgroundThread(java.lang.Runnable)>(r1);
+
+        $r2 = virtualinvoke r1.<androidx.work.impl.utils.PruneWorkRunnable: androidx.work.Operation getOperation()>();
+
+        return $r2;
+    }
+
+    public void rescheduleEligibleWork()
+    {
+        android.content.Context $r1;
+        androidx.work.Configuration $r4;
+        java.util.List $r5;
+        androidx.work.impl.WorkDatabase $r2;
+        androidx.work.impl.model.WorkSpecDao $r3;
+        int $i0;
+        androidx.work.impl.WorkManagerImpl r0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 23 goto label1;
+
+        $r1 = virtualinvoke r0.<androidx.work.impl.WorkManagerImpl: android.content.Context getApplicationContext()>();
+
+        staticinvoke <androidx.work.impl.background.systemjob.SystemJobScheduler: void cancelAll(android.content.Context)>($r1);
+
+     label1:
+        $r2 = virtualinvoke r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkDatabase getWorkDatabase()>();
+
+        $r3 = virtualinvoke $r2.<androidx.work.impl.WorkDatabase: androidx.work.impl.model.WorkSpecDao workSpecDao()>();
+
+        interfaceinvoke $r3.<androidx.work.impl.model.WorkSpecDao: int resetScheduledState()>();
+
+        $r4 = virtualinvoke r0.<androidx.work.impl.WorkManagerImpl: androidx.work.Configuration getConfiguration()>();
+
+        $r2 = virtualinvoke r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkDatabase getWorkDatabase()>();
+
+        $r5 = virtualinvoke r0.<androidx.work.impl.WorkManagerImpl: java.util.List getSchedulers()>();
+
+        staticinvoke <androidx.work.impl.Schedulers: void schedule(androidx.work.Configuration,androidx.work.impl.WorkDatabase,java.util.List)>($r4, $r2, $r5);
+
+        return;
+    }
+
+    public void setReschedulePendingResult(android.content.BroadcastReceiver$PendingResult)
+    {
+        java.lang.Throwable $r3;
+        android.content.BroadcastReceiver$PendingResult $r1;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.Object $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: android.content.BroadcastReceiver$PendingResult;
+
+        $r2 = <androidx.work.impl.WorkManagerImpl: java.lang.Object sLock>;
+
+        entermonitor $r2;
+
+     label1:
+        r0.<androidx.work.impl.WorkManagerImpl: android.content.BroadcastReceiver$PendingResult mRescheduleReceiverResult> = $r1;
+
+        $z0 = r0.<androidx.work.impl.WorkManagerImpl: boolean mForceStopRunnableCompleted>;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = r0.<androidx.work.impl.WorkManagerImpl: android.content.BroadcastReceiver$PendingResult mRescheduleReceiverResult>;
+
+        virtualinvoke $r1.<android.content.BroadcastReceiver$PendingResult: void finish()>();
+
+        r0.<androidx.work.impl.WorkManagerImpl: android.content.BroadcastReceiver$PendingResult mRescheduleReceiverResult> = null;
+
+     label2:
+        exitmonitor $r2;
+
+     label3:
+        return;
+
+     label4:
+        $r3 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label5:
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+        catch java.lang.Throwable from label4 to label5 with label4;
+    }
+
+    public void startWork(java.lang.String)
+    {
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        virtualinvoke r0.<androidx.work.impl.WorkManagerImpl: void startWork(java.lang.String,androidx.work.WorkerParameters$RuntimeExtras)>($r1, null);
+
+        return;
+    }
+
+    public void startWork(java.lang.String, androidx.work.WorkerParameters$RuntimeExtras)
+    {
+        androidx.work.WorkerParameters$RuntimeExtras $r2;
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r3;
+        androidx.work.impl.utils.StartWorkRunnable $r4;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: androidx.work.WorkerParameters$RuntimeExtras;
+
+        $r3 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        $r4 = new androidx.work.impl.utils.StartWorkRunnable;
+
+        specialinvoke $r4.<androidx.work.impl.utils.StartWorkRunnable: void <init>(androidx.work.impl.WorkManagerImpl,java.lang.String,androidx.work.WorkerParameters$RuntimeExtras)>(r0, $r1, $r2);
+
+        interfaceinvoke $r3.<androidx.work.impl.utils.taskexecutor.TaskExecutor: void executeOnBackgroundThread(java.lang.Runnable)>($r4);
+
+        return;
+    }
+
+    public void stopForegroundWork(java.lang.String)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r2;
+        androidx.work.impl.utils.StopWorkRunnable $r3;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        $r3 = new androidx.work.impl.utils.StopWorkRunnable;
+
+        specialinvoke $r3.<androidx.work.impl.utils.StopWorkRunnable: void <init>(androidx.work.impl.WorkManagerImpl,java.lang.String,boolean)>(r0, $r1, 1);
+
+        interfaceinvoke $r2.<androidx.work.impl.utils.taskexecutor.TaskExecutor: void executeOnBackgroundThread(java.lang.Runnable)>($r3);
+
+        return;
+    }
+
+    public void stopWork(java.lang.String)
+    {
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r2;
+        androidx.work.impl.utils.StopWorkRunnable $r3;
+        androidx.work.impl.WorkManagerImpl r0;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor mWorkTaskExecutor>;
+
+        $r3 = new androidx.work.impl.utils.StopWorkRunnable;
+
+        specialinvoke $r3.<androidx.work.impl.utils.StopWorkRunnable: void <init>(androidx.work.impl.WorkManagerImpl,java.lang.String,boolean)>(r0, $r1, 0);
+
+        interfaceinvoke $r2.<androidx.work.impl.utils.taskexecutor.TaskExecutor: void executeOnBackgroundThread(java.lang.Runnable)>($r3);
+
+        return;
+    }
+}

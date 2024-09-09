@@ -1,0 +1,102 @@
+final class com.google.android.gms.internal.ads.zzfab extends java.lang.Object implements com.google.android.gms.internal.ads.zzexq
+{
+    private final org.json.JSONObject zza;
+
+    void <init>(android.content.Context)
+    {
+        android.content.Context $r2;
+        com.google.android.gms.internal.ads.zzfab r0;
+        org.json.JSONObject $r1;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfab;
+
+        $r2 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = staticinvoke <com.google.android.gms.internal.ads.zzbzo: org.json.JSONObject zzc(android.content.Context)>($r2);
+
+        r0.<com.google.android.gms.internal.ads.zzfab: org.json.JSONObject zza> = $r1;
+
+        return;
+    }
+
+    public final int zza()
+    {
+        com.google.android.gms.internal.ads.zzfab r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfab;
+
+        return 46;
+    }
+
+    public final com.google.common.util.concurrent.ListenableFuture zzb()
+    {
+        com.google.common.util.concurrent.ListenableFuture $r6;
+        com.google.android.gms.internal.ads.zzfaa $r7;
+        com.google.android.gms.internal.ads.zzezz $r5;
+        com.google.android.gms.internal.ads.zzbga $r2;
+        com.google.android.gms.internal.ads.zzbfu $r1;
+        java.lang.Boolean $r4;
+        java.lang.Object $r3;
+        com.google.android.gms.internal.ads.zzfab r0;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfab;
+
+        $r1 = <com.google.android.gms.internal.ads.zzbgc: com.google.android.gms.internal.ads.zzbfu zzlo>;
+
+        $r2 = staticinvoke <com.google.android.gms.ads.internal.client.zzba: com.google.android.gms.internal.ads.zzbga zzc()>();
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzbga: java.lang.Object zza(com.google.android.gms.internal.ads.zzbfu)>($r1);
+
+        $r4 = (java.lang.Boolean) $r3;
+
+        $z0 = virtualinvoke $r4.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label1;
+
+        $r5 = <com.google.android.gms.internal.ads.zzezz: com.google.android.gms.internal.ads.zzezz zza>;
+
+        $r6 = staticinvoke <com.google.android.gms.internal.ads.zzgen: com.google.common.util.concurrent.ListenableFuture zzh(java.lang.Object)>($r5);
+
+        return $r6;
+
+     label1:
+        $r7 = new com.google.android.gms.internal.ads.zzfaa;
+
+        specialinvoke $r7.<com.google.android.gms.internal.ads.zzfaa: void <init>(com.google.android.gms.internal.ads.zzfab)>(r0);
+
+        $r6 = staticinvoke <com.google.android.gms.internal.ads.zzgen: com.google.common.util.concurrent.ListenableFuture zzh(java.lang.Object)>($r7);
+
+        return $r6;
+    }
+
+    final void zzc(org.json.JSONObject)
+    {
+        org.json.JSONException $r3;
+        org.json.JSONObject $r1, $r2;
+        com.google.android.gms.internal.ads.zzfab r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzfab;
+
+        $r2 := @parameter0: org.json.JSONObject;
+
+        $r1 = r0.<com.google.android.gms.internal.ads.zzfab: org.json.JSONObject zza>;
+
+     label1:
+        virtualinvoke $r2.<org.json.JSONObject: org.json.JSONObject put(java.lang.String,java.lang.Object)>("gms_sdk_env", $r1);
+
+     label2:
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        staticinvoke <com.google.android.gms.ads.internal.util.zze: void zza(java.lang.String)>("Failed putting version constants.");
+
+        return;
+
+        catch org.json.JSONException from label1 to label2 with label3;
+    }
+}

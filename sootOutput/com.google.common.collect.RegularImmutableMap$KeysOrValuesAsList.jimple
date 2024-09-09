@@ -1,0 +1,82 @@
+final class com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList extends com.google.common.collect.ImmutableList
+{
+    private final transient java.lang.Object[] alternatingKeysAndValues;
+    private final transient int offset;
+    private final transient int size;
+
+    void <init>(java.lang.Object[], int, int)
+    {
+        java.lang.Object[] $r1;
+        com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList r0;
+        int $i0, $i1;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList;
+
+        $r1 := @parameter0: java.lang.Object[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        specialinvoke r0.<com.google.common.collect.ImmutableList: void <init>()>();
+
+        r0.<com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList: java.lang.Object[] alternatingKeysAndValues> = $r1;
+
+        r0.<com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList: int offset> = $i0;
+
+        r0.<com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList: int size> = $i1;
+
+        return;
+    }
+
+    public java.lang.Object get(int)
+    {
+        java.lang.Object[] $r2;
+        com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList r0;
+        int $i0, $i1;
+        java.lang.Object $r1;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList;
+
+        $i0 := @parameter0: int;
+
+        $i1 = r0.<com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList: int size>;
+
+        staticinvoke <com.google.common.base.Preconditions: int checkElementIndex(int,int)>($i0, $i1);
+
+        $r2 = r0.<com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList: java.lang.Object[] alternatingKeysAndValues>;
+
+        $i1 = $i0 * 2;
+
+        $i0 = r0.<com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList: int offset>;
+
+        $i0 = $i1 + $i0;
+
+        $r1 = $r2[$i0];
+
+        $r1 = staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>($r1);
+
+        return $r1;
+    }
+
+    boolean isPartialView()
+    {
+        com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList r0;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList;
+
+        return 1;
+    }
+
+    public int size()
+    {
+        int i0;
+        com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList r0;
+
+        r0 := @this: com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList;
+
+        i0 = r0.<com.google.common.collect.RegularImmutableMap$KeysOrValuesAsList: int size>;
+
+        return i0;
+    }
+}

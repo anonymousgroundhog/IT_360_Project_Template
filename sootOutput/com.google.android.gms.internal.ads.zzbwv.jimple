@@ -1,0 +1,36 @@
+public abstract class com.google.android.gms.internal.ads.zzbwv extends com.google.android.gms.internal.ads.zzayh implements com.google.android.gms.internal.ads.zzbww
+{
+
+    public static com.google.android.gms.internal.ads.zzbww zzb(android.os.IBinder)
+    {
+        com.google.android.gms.internal.ads.zzbww $r2;
+        com.google.android.gms.internal.ads.zzbwu $r3;
+        android.os.IInterface $r0;
+        android.os.IBinder $r1;
+        boolean $z0;
+
+        $r1 := @parameter0: android.os.IBinder;
+
+        if $r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $r0 = interfaceinvoke $r1.<android.os.IBinder: android.os.IInterface queryLocalInterface(java.lang.String)>("com.google.android.gms.ads.internal.overlay.client.IAdOverlayCreator");
+
+        $z0 = $r0 instanceof com.google.android.gms.internal.ads.zzbww;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = (com.google.android.gms.internal.ads.zzbww) $r0;
+
+        return $r2;
+
+     label2:
+        $r3 = new com.google.android.gms.internal.ads.zzbwu;
+
+        specialinvoke $r3.<com.google.android.gms.internal.ads.zzbwu: void <init>(android.os.IBinder)>($r1);
+
+        return $r3;
+    }
+}

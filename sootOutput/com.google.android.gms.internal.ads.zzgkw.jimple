@@ -1,0 +1,147 @@
+public final class com.google.android.gms.internal.ads.zzgkw extends java.lang.Object implements com.google.android.gms.internal.ads.zzgog
+{
+    public static final com.google.android.gms.internal.ads.zzgkw zza;
+
+    static void <clinit>()
+    {
+        com.google.android.gms.internal.ads.zzgkw $r0;
+
+        $r0 = new com.google.android.gms.internal.ads.zzgkw;
+
+        specialinvoke $r0.<com.google.android.gms.internal.ads.zzgkw: void <init>()>();
+
+        <com.google.android.gms.internal.ads.zzgkw: com.google.android.gms.internal.ads.zzgkw zza> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        com.google.android.gms.internal.ads.zzgkw r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgkw;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public final com.google.android.gms.internal.ads.zzggq zza(com.google.android.gms.internal.ads.zzgpc)
+    {
+        com.google.android.gms.internal.ads.zzgyl $r6;
+        java.security.GeneralSecurityException $r12;
+        int $i0;
+        java.lang.String $r4, $r13;
+        boolean $z0;
+        com.google.android.gms.internal.ads.zzgvz $r9, $r10;
+        com.google.android.gms.internal.ads.zzgvr $r8;
+        com.google.android.gms.internal.ads.zzgpc $r1;
+        java.lang.IllegalArgumentException $r16;
+        com.google.android.gms.internal.ads.zzgoy $r2, $r5;
+        com.google.android.gms.internal.ads.zzgku $r11;
+        com.google.android.gms.internal.ads.zzgkw r0;
+        com.google.android.gms.internal.ads.zzgzf $r7;
+        java.lang.StringBuilder $r14;
+        com.google.android.gms.internal.ads.zzhag $r15;
+        com.google.android.gms.internal.ads.zzguy $r3;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgkw;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzgpc;
+
+        $i0 = <com.google.android.gms.internal.ads.zzgkz: int zza>;
+
+        $r2 = (com.google.android.gms.internal.ads.zzgoy) $r1;
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzgoy: com.google.android.gms.internal.ads.zzguy zzc()>();
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzguy: java.lang.String zzh()>();
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("type.googleapis.com/google.crypto.tink.KmsAeadKey");
+
+        if $z0 == 0 goto label5;
+
+        $r5 = (com.google.android.gms.internal.ads.zzgoy) $r1;
+
+     label1:
+        $r3 = virtualinvoke $r5.<com.google.android.gms.internal.ads.zzgoy: com.google.android.gms.internal.ads.zzguy zzc()>();
+
+        $r6 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzguy: com.google.android.gms.internal.ads.zzgyl zzg()>();
+
+        $r7 = staticinvoke <com.google.android.gms.internal.ads.zzgzf: com.google.android.gms.internal.ads.zzgzf zza()>();
+
+        $r8 = staticinvoke <com.google.android.gms.internal.ads.zzgvr: com.google.android.gms.internal.ads.zzgvr zze(com.google.android.gms.internal.ads.zzgyl,com.google.android.gms.internal.ads.zzgzf)>($r6, $r7);
+
+     label2:
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzgoy: com.google.android.gms.internal.ads.zzguy zzc()>();
+
+        $r9 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzguy: com.google.android.gms.internal.ads.zzgvz zzf()>();
+
+        $r10 = <com.google.android.gms.internal.ads.zzgvz: com.google.android.gms.internal.ads.zzgvz zzd>;
+
+        if $r9 != $r10 goto label3;
+
+        $r4 = virtualinvoke $r8.<com.google.android.gms.internal.ads.zzgvr: java.lang.String zzf()>();
+
+        $r11 = staticinvoke <com.google.android.gms.internal.ads.zzgku: com.google.android.gms.internal.ads.zzgku zzb(java.lang.String)>($r4);
+
+        return $r11;
+
+     label3:
+        $r12 = new java.security.GeneralSecurityException;
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzgoy: com.google.android.gms.internal.ads.zzguy zzc()>();
+
+        $r9 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzguy: com.google.android.gms.internal.ads.zzgvz zzf()>();
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r9);
+
+        $r13 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r8);
+
+        $r14 = new java.lang.StringBuilder;
+
+        specialinvoke $r14.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Only key templates with RAW are accepted, but got ");
+
+        virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" with format ");
+
+        virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r13);
+
+        $r4 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r12.<java.security.GeneralSecurityException: void <init>(java.lang.String)>($r4);
+
+        throw $r12;
+
+     label4:
+        $r15 := @caughtexception;
+
+        $r12 = new java.security.GeneralSecurityException;
+
+        specialinvoke $r12.<java.security.GeneralSecurityException: void <init>(java.lang.String,java.lang.Throwable)>("Parsing KmsAeadKeyFormat failed: ", $r15);
+
+        throw $r12;
+
+     label5:
+        $r16 = new java.lang.IllegalArgumentException;
+
+        $r3 = virtualinvoke $r2.<com.google.android.gms.internal.ads.zzgoy: com.google.android.gms.internal.ads.zzguy zzc()>();
+
+        $r4 = virtualinvoke $r3.<com.google.android.gms.internal.ads.zzguy: java.lang.String zzh()>();
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r4);
+
+        $r13 = "Wrong type URL in call to LegacyKmsAeadProtoSerialization.parseParameters: ";
+
+        $r4 = virtualinvoke $r13.<java.lang.String: java.lang.String concat(java.lang.String)>($r4);
+
+        specialinvoke $r16.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r4);
+
+        throw $r16;
+
+        catch com.google.android.gms.internal.ads.zzhag from label1 to label2 with label4;
+    }
+}

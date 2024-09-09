@@ -1,0 +1,79 @@
+public interface  androidx.sqlite.db.SupportSQLiteDatabase extends java.lang.Object implements java.io.Closeable
+{
+
+    public abstract void beginTransaction();
+
+    public abstract void beginTransactionNonExclusive();
+
+    public abstract void beginTransactionWithListener(android.database.sqlite.SQLiteTransactionListener);
+
+    public abstract void beginTransactionWithListenerNonExclusive(android.database.sqlite.SQLiteTransactionListener);
+
+    public abstract androidx.sqlite.db.SupportSQLiteStatement compileStatement(java.lang.String);
+
+    public abstract int delete(java.lang.String, java.lang.String, java.lang.Object[]);
+
+    public abstract void disableWriteAheadLogging();
+
+    public abstract boolean enableWriteAheadLogging();
+
+    public abstract void endTransaction();
+
+    public abstract void execSQL(java.lang.String) throws android.database.SQLException;
+
+    public abstract void execSQL(java.lang.String, java.lang.Object[]) throws android.database.SQLException;
+
+    public abstract java.util.List getAttachedDbs();
+
+    public abstract long getMaximumSize();
+
+    public abstract long getPageSize();
+
+    public abstract java.lang.String getPath();
+
+    public abstract int getVersion();
+
+    public abstract boolean inTransaction();
+
+    public abstract long insert(java.lang.String, int, android.content.ContentValues) throws android.database.SQLException;
+
+    public abstract boolean isDatabaseIntegrityOk();
+
+    public abstract boolean isDbLockedByCurrentThread();
+
+    public abstract boolean isOpen();
+
+    public abstract boolean isReadOnly();
+
+    public abstract boolean isWriteAheadLoggingEnabled();
+
+    public abstract boolean needUpgrade(int);
+
+    public abstract android.database.Cursor query(androidx.sqlite.db.SupportSQLiteQuery);
+
+    public abstract android.database.Cursor query(androidx.sqlite.db.SupportSQLiteQuery, android.os.CancellationSignal);
+
+    public abstract android.database.Cursor query(java.lang.String);
+
+    public abstract android.database.Cursor query(java.lang.String, java.lang.Object[]);
+
+    public abstract void setForeignKeyConstraintsEnabled(boolean);
+
+    public abstract void setLocale(java.util.Locale);
+
+    public abstract void setMaxSqlCacheSize(int);
+
+    public abstract long setMaximumSize(long);
+
+    public abstract void setPageSize(long);
+
+    public abstract void setTransactionSuccessful();
+
+    public abstract void setVersion(int);
+
+    public abstract int update(java.lang.String, int, android.content.ContentValues, java.lang.String, java.lang.Object[]);
+
+    public abstract boolean yieldIfContendedSafely();
+
+    public abstract boolean yieldIfContendedSafely(long);
+}

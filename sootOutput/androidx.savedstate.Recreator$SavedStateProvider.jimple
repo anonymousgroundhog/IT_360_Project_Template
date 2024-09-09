@@ -1,0 +1,68 @@
+final class androidx.savedstate.Recreator$SavedStateProvider extends java.lang.Object implements androidx.savedstate.SavedStateRegistry$SavedStateProvider
+{
+    final java.util.Set mClasses;
+
+    void <init>(androidx.savedstate.SavedStateRegistry)
+    {
+        java.util.HashSet $r2;
+        androidx.savedstate.Recreator$SavedStateProvider r0;
+        androidx.savedstate.SavedStateRegistry $r1;
+
+        r0 := @this: androidx.savedstate.Recreator$SavedStateProvider;
+
+        $r1 := @parameter0: androidx.savedstate.SavedStateRegistry;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new java.util.HashSet;
+
+        specialinvoke $r2.<java.util.HashSet: void <init>()>();
+
+        r0.<androidx.savedstate.Recreator$SavedStateProvider: java.util.Set mClasses> = $r2;
+
+        virtualinvoke $r1.<androidx.savedstate.SavedStateRegistry: void registerSavedStateProvider(java.lang.String,androidx.savedstate.SavedStateRegistry$SavedStateProvider)>("androidx.savedstate.Restarter", r0);
+
+        return;
+    }
+
+    void add(java.lang.String)
+    {
+        androidx.savedstate.Recreator$SavedStateProvider r0;
+        java.util.Set $r2;
+        java.lang.String $r1;
+
+        r0 := @this: androidx.savedstate.Recreator$SavedStateProvider;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<androidx.savedstate.Recreator$SavedStateProvider: java.util.Set mClasses>;
+
+        interfaceinvoke $r2.<java.util.Set: boolean add(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public android.os.Bundle saveState()
+    {
+        androidx.savedstate.Recreator$SavedStateProvider r0;
+        android.os.Bundle r1;
+        java.util.Set $r3;
+        java.util.ArrayList $r2;
+
+        r0 := @this: androidx.savedstate.Recreator$SavedStateProvider;
+
+        r1 = new android.os.Bundle;
+
+        specialinvoke r1.<android.os.Bundle: void <init>()>();
+
+        $r2 = new java.util.ArrayList;
+
+        $r3 = r0.<androidx.savedstate.Recreator$SavedStateProvider: java.util.Set mClasses>;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>(java.util.Collection)>($r3);
+
+        virtualinvoke r1.<android.os.Bundle: void putStringArrayList(java.lang.String,java.util.ArrayList)>("classes_to_restore", $r2);
+
+        return r1;
+    }
+}

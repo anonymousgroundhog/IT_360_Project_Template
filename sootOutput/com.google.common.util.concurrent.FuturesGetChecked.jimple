@@ -1,0 +1,486 @@
+final class com.google.common.util.concurrent.FuturesGetChecked extends java.lang.Object
+{
+    private static final com.google.common.collect.Ordering WITH_STRING_PARAM_FIRST;
+
+    static void <clinit>()
+    {
+        com.google.common.util.concurrent.FuturesGetChecked$1 $r0;
+        com.google.common.collect.Ordering $r1;
+
+        $r1 = staticinvoke <com.google.common.collect.Ordering: com.google.common.collect.Ordering natural()>();
+
+        $r0 = new com.google.common.util.concurrent.FuturesGetChecked$1;
+
+        specialinvoke $r0.<com.google.common.util.concurrent.FuturesGetChecked$1: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<com.google.common.collect.Ordering: com.google.common.collect.Ordering onResultOf(com.google.common.base.Function)>($r0);
+
+        $r1 = virtualinvoke $r1.<com.google.common.collect.Ordering: com.google.common.collect.Ordering reverse()>();
+
+        <com.google.common.util.concurrent.FuturesGetChecked: com.google.common.collect.Ordering WITH_STRING_PARAM_FIRST> = $r1;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        com.google.common.util.concurrent.FuturesGetChecked r0;
+
+        r0 := @this: com.google.common.util.concurrent.FuturesGetChecked;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private static com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidator bestGetCheckedTypeValidator()
+    {
+        com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidator r0;
+
+        r0 = <com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidatorHolder: com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidator BEST_VALIDATOR>;
+
+        return r0;
+    }
+
+    static void checkExceptionClassValidity(java.lang.Class)
+    {
+        java.lang.Class r0;
+        boolean $z0;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $z0 = staticinvoke <com.google.common.util.concurrent.FuturesGetChecked: boolean isCheckedException(java.lang.Class)>(r0);
+
+        staticinvoke <com.google.common.base.Preconditions: void checkArgument(boolean,java.lang.String,java.lang.Object)>($z0, "Futures.getChecked exception type (%s) must not be a RuntimeException", r0);
+
+        $z0 = staticinvoke <com.google.common.util.concurrent.FuturesGetChecked: boolean hasConstructorUsableByGetChecked(java.lang.Class)>(r0);
+
+        staticinvoke <com.google.common.base.Preconditions: void checkArgument(boolean,java.lang.String,java.lang.Object)>($z0, "Futures.getChecked exception type (%s) must be an accessible class with an accessible constructor whose parameters (if any) must be of type String and/or Throwable", r0);
+
+        return;
+    }
+
+    static java.lang.Object getChecked(com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidator, java.util.concurrent.Future, java.lang.Class) throws java.lang.Exception
+    {
+        java.lang.Throwable $r5;
+        java.lang.AssertionError $r6;
+        java.lang.Exception $r9;
+        java.util.concurrent.ExecutionException r4;
+        java.util.concurrent.Future r1;
+        java.lang.InterruptedException r7;
+        com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidator $r0;
+        java.lang.Thread $r8;
+        java.lang.Class r2;
+        java.lang.Object $r3;
+
+        $r0 := @parameter0: com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidator;
+
+        r1 := @parameter1: java.util.concurrent.Future;
+
+        r2 := @parameter2: java.lang.Class;
+
+        interfaceinvoke $r0.<com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidator: void validateClass(java.lang.Class)>(r2);
+
+     label1:
+        $r3 = interfaceinvoke r1.<java.util.concurrent.Future: java.lang.Object get()>();
+
+     label2:
+        return $r3;
+
+     label3:
+        r4 := @caughtexception;
+
+        $r5 = virtualinvoke r4.<java.util.concurrent.ExecutionException: java.lang.Throwable getCause()>();
+
+        staticinvoke <com.google.common.util.concurrent.FuturesGetChecked: void wrapAndThrowExceptionOrError(java.lang.Throwable,java.lang.Class)>($r5, r2);
+
+        $r6 = new java.lang.AssertionError;
+
+        specialinvoke $r6.<java.lang.AssertionError: void <init>()>();
+
+        throw $r6;
+
+     label4:
+        r7 := @caughtexception;
+
+        $r8 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r8.<java.lang.Thread: void interrupt()>();
+
+        $r9 = staticinvoke <com.google.common.util.concurrent.FuturesGetChecked: java.lang.Exception newWithCause(java.lang.Class,java.lang.Throwable)>(r2, r7);
+
+        throw $r9;
+
+        catch java.lang.InterruptedException from label1 to label2 with label4;
+        catch java.util.concurrent.ExecutionException from label1 to label2 with label3;
+    }
+
+    static java.lang.Object getChecked(java.util.concurrent.Future, java.lang.Class) throws java.lang.Exception
+    {
+        java.util.concurrent.Future r0;
+        com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidator $r2;
+        java.lang.Class r1;
+        java.lang.Object $r3;
+
+        r0 := @parameter0: java.util.concurrent.Future;
+
+        r1 := @parameter1: java.lang.Class;
+
+        $r2 = staticinvoke <com.google.common.util.concurrent.FuturesGetChecked: com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidator bestGetCheckedTypeValidator()>();
+
+        $r3 = staticinvoke <com.google.common.util.concurrent.FuturesGetChecked: java.lang.Object getChecked(com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidator,java.util.concurrent.Future,java.lang.Class)>($r2, r0, r1);
+
+        return $r3;
+    }
+
+    static java.lang.Object getChecked(java.util.concurrent.Future, java.lang.Class, long, java.util.concurrent.TimeUnit) throws java.lang.Exception
+    {
+        java.lang.Throwable $r6;
+        java.util.concurrent.TimeoutException r8;
+        long $l0;
+        java.lang.AssertionError $r7;
+        java.lang.Exception $r9;
+        java.util.concurrent.TimeUnit $r2;
+        java.util.concurrent.ExecutionException r5;
+        java.util.concurrent.Future r0;
+        java.lang.InterruptedException r10;
+        com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidator $r3;
+        java.lang.Thread $r11;
+        java.lang.Class r1;
+        java.lang.Object $r4;
+
+        r0 := @parameter0: java.util.concurrent.Future;
+
+        r1 := @parameter1: java.lang.Class;
+
+        $l0 := @parameter2: long;
+
+        $r2 := @parameter3: java.util.concurrent.TimeUnit;
+
+        $r3 = staticinvoke <com.google.common.util.concurrent.FuturesGetChecked: com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidator bestGetCheckedTypeValidator()>();
+
+        interfaceinvoke $r3.<com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidator: void validateClass(java.lang.Class)>(r1);
+
+     label1:
+        $r4 = interfaceinvoke r0.<java.util.concurrent.Future: java.lang.Object get(long,java.util.concurrent.TimeUnit)>($l0, $r2);
+
+     label2:
+        return $r4;
+
+     label3:
+        r5 := @caughtexception;
+
+        $r6 = virtualinvoke r5.<java.util.concurrent.ExecutionException: java.lang.Throwable getCause()>();
+
+        staticinvoke <com.google.common.util.concurrent.FuturesGetChecked: void wrapAndThrowExceptionOrError(java.lang.Throwable,java.lang.Class)>($r6, r1);
+
+        $r7 = new java.lang.AssertionError;
+
+        specialinvoke $r7.<java.lang.AssertionError: void <init>()>();
+
+        throw $r7;
+
+     label4:
+        r8 := @caughtexception;
+
+        $r9 = staticinvoke <com.google.common.util.concurrent.FuturesGetChecked: java.lang.Exception newWithCause(java.lang.Class,java.lang.Throwable)>(r1, r8);
+
+        throw $r9;
+
+     label5:
+        r10 := @caughtexception;
+
+        $r11 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r11.<java.lang.Thread: void interrupt()>();
+
+        $r9 = staticinvoke <com.google.common.util.concurrent.FuturesGetChecked: java.lang.Exception newWithCause(java.lang.Class,java.lang.Throwable)>(r1, r10);
+
+        throw $r9;
+
+        catch java.lang.InterruptedException from label1 to label2 with label5;
+        catch java.util.concurrent.TimeoutException from label1 to label2 with label4;
+        catch java.util.concurrent.ExecutionException from label1 to label2 with label3;
+    }
+
+    private static boolean hasConstructorUsableByGetChecked(java.lang.Class)
+    {
+        java.lang.Class r0;
+        java.lang.Exception r1;
+
+        r0 := @parameter0: java.lang.Class;
+
+        r1 = new java.lang.Exception;
+
+     label1:
+        specialinvoke r1.<java.lang.Exception: void <init>()>();
+
+        staticinvoke <com.google.common.util.concurrent.FuturesGetChecked: java.lang.Exception newWithCause(java.lang.Class,java.lang.Throwable)>(r0, r1);
+
+     label2:
+        return 1;
+
+     label3:
+        r1 := @caughtexception;
+
+        return 0;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    static boolean isCheckedException(java.lang.Class)
+    {
+        java.lang.Class r0, $r1;
+        boolean $z0;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $r1 = class "Ljava/lang/RuntimeException;";
+
+        $z0 = virtualinvoke $r1.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(r0);
+
+        $z0 = $z0 ^ 1;
+
+        return $z0;
+    }
+
+    private static java.lang.Object newFromConstructor(java.lang.reflect.Constructor, java.lang.Throwable)
+    {
+        java.lang.Throwable $r1;
+        java.lang.IllegalAccessException r8;
+        java.lang.Object[] r3;
+        java.lang.Class[] $r2;
+        java.lang.IllegalArgumentException r10;
+        java.lang.reflect.Constructor r0;
+        java.lang.reflect.InvocationTargetException r7;
+        int i0, i1;
+        java.lang.InstantiationException r9;
+        java.lang.Class r4;
+        java.lang.Object $r6;
+        java.lang.String $r5;
+        boolean $z0;
+
+        r0 := @parameter0: java.lang.reflect.Constructor;
+
+        $r1 := @parameter1: java.lang.Throwable;
+
+        $r2 = virtualinvoke r0.<java.lang.reflect.Constructor: java.lang.Class[] getParameterTypes()>();
+
+        i0 = lengthof $r2;
+
+        r3 = newarray (java.lang.Object)[i0];
+
+        i0 = 0;
+
+     label01:
+        i1 = lengthof $r2;
+
+        if i0 >= i1 goto label05;
+
+        r4 = $r2[i0];
+
+        $z0 = virtualinvoke r4.<java.lang.Object: boolean equals(java.lang.Object)>(class "Ljava/lang/String;");
+
+        if $z0 == 0 goto label02;
+
+        $r5 = virtualinvoke $r1.<java.lang.Throwable: java.lang.String toString()>();
+
+        r3[i0] = $r5;
+
+        goto label03;
+
+     label02:
+        $z0 = virtualinvoke r4.<java.lang.Object: boolean equals(java.lang.Object)>(class "Ljava/lang/Throwable;");
+
+        if $z0 == 0 goto label04;
+
+        r3[i0] = $r1;
+
+     label03:
+        i0 = i0 + 1;
+
+        goto label01;
+
+     label04:
+        return null;
+
+     label05:
+        $r6 = virtualinvoke r0.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>(r3);
+
+     label06:
+        return $r6;
+
+     label07:
+        r7 := @caughtexception;
+
+        return null;
+
+     label08:
+        r8 := @caughtexception;
+
+        return null;
+
+     label09:
+        r9 := @caughtexception;
+
+        return null;
+
+     label10:
+        r10 := @caughtexception;
+
+        return null;
+
+        catch java.lang.IllegalArgumentException from label05 to label06 with label10;
+        catch java.lang.InstantiationException from label05 to label06 with label09;
+        catch java.lang.IllegalAccessException from label05 to label06 with label08;
+        catch java.lang.reflect.InvocationTargetException from label05 to label06 with label07;
+    }
+
+    private static java.lang.Exception newWithCause(java.lang.Class, java.lang.Throwable)
+    {
+        java.lang.Throwable $r1, $r9;
+        java.util.Iterator $r5;
+        java.lang.IllegalArgumentException $r10;
+        java.lang.reflect.Constructor r7;
+        java.lang.Exception r8;
+        java.lang.reflect.Constructor[] $r3;
+        java.util.List $r4;
+        int $i0;
+        java.lang.Class r0;
+        java.lang.StringBuilder $r2;
+        java.lang.Object $r6;
+        java.lang.String $r11, $r12;
+        boolean $z0;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $r1 := @parameter1: java.lang.Throwable;
+
+        $r3 = virtualinvoke r0.<java.lang.Class: java.lang.reflect.Constructor[] getConstructors()>();
+
+        $r4 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r3);
+
+        $r4 = staticinvoke <com.google.common.util.concurrent.FuturesGetChecked: java.util.List preferringStrings(java.util.List)>($r4);
+
+        $r5 = interfaceinvoke $r4.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        r7 = (java.lang.reflect.Constructor) $r6;
+
+        $r6 = staticinvoke <com.google.common.util.concurrent.FuturesGetChecked: java.lang.Object newFromConstructor(java.lang.reflect.Constructor,java.lang.Throwable)>(r7, $r1);
+
+        r8 = (java.lang.Exception) $r6;
+
+        if r8 == null goto label1;
+
+        $r9 = virtualinvoke r8.<java.lang.Exception: java.lang.Throwable getCause()>();
+
+        if $r9 != null goto label3;
+
+        virtualinvoke r8.<java.lang.Exception: java.lang.Throwable initCause(java.lang.Throwable)>($r1);
+
+        return r8;
+
+     label2:
+        $r10 = new java.lang.IllegalArgumentException;
+
+        $r11 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r0);
+
+        $r12 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r11);
+
+        $i0 = virtualinvoke $r12.<java.lang.String: int length()>();
+
+        $i0 = $i0 + 82;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(int)>($i0);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("No appropriate constructor for exception of type ");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r11);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" in response to chained exception");
+
+        $r11 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r10.<java.lang.IllegalArgumentException: void <init>(java.lang.String,java.lang.Throwable)>($r11, $r1);
+
+        throw $r10;
+
+     label3:
+        return r8;
+    }
+
+    private static java.util.List preferringStrings(java.util.List)
+    {
+        java.util.List r0;
+        com.google.common.collect.Ordering $r1;
+
+        r0 := @parameter0: java.util.List;
+
+        $r1 = <com.google.common.util.concurrent.FuturesGetChecked: com.google.common.collect.Ordering WITH_STRING_PARAM_FIRST>;
+
+        r0 = virtualinvoke $r1.<com.google.common.collect.Ordering: java.util.List sortedCopy(java.lang.Iterable)>(r0);
+
+        return r0;
+    }
+
+    static com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidator weakSetValidator()
+    {
+        com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidatorHolder$WeakSetValidator r0;
+
+        r0 = <com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidatorHolder$WeakSetValidator: com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidatorHolder$WeakSetValidator INSTANCE>;
+
+        return r0;
+    }
+
+    private static void wrapAndThrowExceptionOrError(java.lang.Throwable, java.lang.Class) throws java.lang.Exception
+    {
+        java.lang.Throwable $r0;
+        com.google.common.util.concurrent.UncheckedExecutionException $r3;
+        java.lang.Error $r5;
+        java.lang.Class r1;
+        com.google.common.util.concurrent.ExecutionError $r4;
+        java.lang.Exception $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: java.lang.Throwable;
+
+        r1 := @parameter1: java.lang.Class;
+
+        $z0 = $r0 instanceof java.lang.Error;
+
+        if $z0 != 0 goto label2;
+
+        $z0 = $r0 instanceof java.lang.RuntimeException;
+
+        if $z0 == 0 goto label1;
+
+        $r3 = new com.google.common.util.concurrent.UncheckedExecutionException;
+
+        specialinvoke $r3.<com.google.common.util.concurrent.UncheckedExecutionException: void <init>(java.lang.Throwable)>($r0);
+
+        throw $r3;
+
+     label1:
+        $r2 = staticinvoke <com.google.common.util.concurrent.FuturesGetChecked: java.lang.Exception newWithCause(java.lang.Class,java.lang.Throwable)>(r1, $r0);
+
+        throw $r2;
+
+     label2:
+        $r4 = new com.google.common.util.concurrent.ExecutionError;
+
+        $r5 = (java.lang.Error) $r0;
+
+        specialinvoke $r4.<com.google.common.util.concurrent.ExecutionError: void <init>(java.lang.Error)>($r5);
+
+        throw $r4;
+    }
+}

@@ -1,0 +1,263 @@
+final class androidx.activity.ImmLeaksCleaner extends java.lang.Object implements androidx.lifecycle.LifecycleEventObserver
+{
+    private static final int INIT_FAILED;
+    private static final int INIT_SUCCESS;
+    private static final int NOT_INITIALIAZED;
+    private static java.lang.reflect.Field sHField;
+    private static java.lang.reflect.Field sNextServedViewField;
+    private static int sReflectedFieldsInitialized;
+    private static java.lang.reflect.Field sServedViewField;
+    private android.app.Activity mActivity;
+
+    static void <clinit>()
+    {
+        <androidx.activity.ImmLeaksCleaner: int INIT_SUCCESS> = 1;
+
+        <androidx.activity.ImmLeaksCleaner: int INIT_FAILED> = 2;
+
+        <androidx.activity.ImmLeaksCleaner: int sReflectedFieldsInitialized> = 0;
+
+        return;
+    }
+
+    void <init>(android.app.Activity)
+    {
+        androidx.activity.ImmLeaksCleaner r0;
+        android.app.Activity $r1;
+
+        r0 := @this: androidx.activity.ImmLeaksCleaner;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.activity.ImmLeaksCleaner: android.app.Activity mActivity> = $r1;
+
+        return;
+    }
+
+    private static void initializeReflectiveFields()
+    {
+        java.lang.Class $r0;
+        java.lang.reflect.Field $r1;
+        java.lang.NoSuchFieldException $r2;
+
+        <androidx.activity.ImmLeaksCleaner: int sReflectedFieldsInitialized> = 2;
+
+        $r0 = class "Landroid/view/inputmethod/InputMethodManager;";
+
+     label01:
+        $r1 = virtualinvoke $r0.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("mServedView");
+
+     label02:
+        <androidx.activity.ImmLeaksCleaner: java.lang.reflect.Field sServedViewField> = $r1;
+
+        $r1 = <androidx.activity.ImmLeaksCleaner: java.lang.reflect.Field sServedViewField>;
+
+     label03:
+        virtualinvoke $r1.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label04:
+        $r0 = class "Landroid/view/inputmethod/InputMethodManager;";
+
+     label05:
+        $r1 = virtualinvoke $r0.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("mNextServedView");
+
+     label06:
+        <androidx.activity.ImmLeaksCleaner: java.lang.reflect.Field sNextServedViewField> = $r1;
+
+        $r1 = <androidx.activity.ImmLeaksCleaner: java.lang.reflect.Field sNextServedViewField>;
+
+     label07:
+        virtualinvoke $r1.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label08:
+        $r0 = class "Landroid/view/inputmethod/InputMethodManager;";
+
+     label09:
+        $r1 = virtualinvoke $r0.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("mH");
+
+     label10:
+        <androidx.activity.ImmLeaksCleaner: java.lang.reflect.Field sHField> = $r1;
+
+        $r1 = <androidx.activity.ImmLeaksCleaner: java.lang.reflect.Field sHField>;
+
+     label11:
+        virtualinvoke $r1.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label12:
+        <androidx.activity.ImmLeaksCleaner: int sReflectedFieldsInitialized> = 1;
+
+        return;
+
+     label13:
+        $r2 := @caughtexception;
+
+        return;
+
+        catch java.lang.NoSuchFieldException from label01 to label02 with label13;
+        catch java.lang.NoSuchFieldException from label03 to label04 with label13;
+        catch java.lang.NoSuchFieldException from label05 to label06 with label13;
+        catch java.lang.NoSuchFieldException from label07 to label08 with label13;
+        catch java.lang.NoSuchFieldException from label09 to label10 with label13;
+        catch java.lang.NoSuchFieldException from label11 to label12 with label13;
+    }
+
+    public void onStateChanged(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Lifecycle$Event)
+    {
+        java.lang.Throwable r11;
+        androidx.activity.ImmLeaksCleaner r0;
+        java.lang.ClassCastException r12;
+        android.view.inputmethod.InputMethodManager r6;
+        androidx.lifecycle.LifecycleOwner $r1;
+        int i0;
+        android.view.View r9;
+        boolean $z0;
+        java.lang.IllegalAccessException r10, r13, r14;
+        java.lang.reflect.Field r7;
+        androidx.lifecycle.Lifecycle$Event $r2, r3;
+        java.lang.Object $r5, $r8;
+        android.app.Activity r4;
+
+        r0 := @this: androidx.activity.ImmLeaksCleaner;
+
+        $r1 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        $r2 := @parameter1: androidx.lifecycle.Lifecycle$Event;
+
+        r3 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_DESTROY>;
+
+        if $r2 == r3 goto label01;
+
+        return;
+
+     label01:
+        i0 = <androidx.activity.ImmLeaksCleaner: int sReflectedFieldsInitialized>;
+
+        if i0 != 0 goto label02;
+
+        staticinvoke <androidx.activity.ImmLeaksCleaner: void initializeReflectiveFields()>();
+
+     label02:
+        i0 = <androidx.activity.ImmLeaksCleaner: int sReflectedFieldsInitialized>;
+
+        if i0 != 1 goto label29;
+
+        r4 = r0.<androidx.activity.ImmLeaksCleaner: android.app.Activity mActivity>;
+
+        $r5 = virtualinvoke r4.<android.app.Activity: java.lang.Object getSystemService(java.lang.String)>("input_method");
+
+        r6 = (android.view.inputmethod.InputMethodManager) $r5;
+
+        r7 = <androidx.activity.ImmLeaksCleaner: java.lang.reflect.Field sHField>;
+
+     label03:
+        $r5 = virtualinvoke r7.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>(r6);
+
+     label04:
+        if $r5 != null goto label05;
+
+        return;
+
+     label05:
+        entermonitor $r5;
+
+     label06:
+        r7 = <androidx.activity.ImmLeaksCleaner: java.lang.reflect.Field sServedViewField>;
+
+     label07:
+        $r8 = virtualinvoke r7.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>(r6);
+
+     label08:
+        r9 = (android.view.View) $r8;
+
+     label09:
+        if r9 != null goto label12;
+
+     label10:
+        exitmonitor $r5;
+
+     label11:
+        return;
+
+     label12:
+        $z0 = virtualinvoke r9.<android.view.View: boolean isAttachedToWindow()>();
+
+        if $z0 == 0 goto label14;
+
+        exitmonitor $r5;
+
+     label13:
+        return;
+
+     label14:
+        r7 = <androidx.activity.ImmLeaksCleaner: java.lang.reflect.Field sNextServedViewField>;
+
+     label15:
+        virtualinvoke r7.<java.lang.reflect.Field: void set(java.lang.Object,java.lang.Object)>(r6, null);
+
+     label16:
+        exitmonitor $r5;
+
+     label17:
+        virtualinvoke r6.<android.view.inputmethod.InputMethodManager: boolean isActive()>();
+
+        return;
+
+     label18:
+        r10 := @caughtexception;
+
+     label19:
+        exitmonitor $r5;
+
+     label20:
+        return;
+
+     label21:
+        r11 := @caughtexception;
+
+        goto label26;
+
+     label22:
+        r12 := @caughtexception;
+
+        exitmonitor $r5;
+
+     label23:
+        return;
+
+     label24:
+        r13 := @caughtexception;
+
+        exitmonitor $r5;
+
+     label25:
+        return;
+
+     label26:
+        exitmonitor $r5;
+
+     label27:
+        throw r11;
+
+     label28:
+        r14 := @caughtexception;
+
+     label29:
+        return;
+
+        catch java.lang.IllegalAccessException from label03 to label04 with label28;
+        catch java.lang.IllegalAccessException from label07 to label08 with label24;
+        catch java.lang.ClassCastException from label07 to label09 with label22;
+        catch java.lang.Throwable from label06 to label09 with label21;
+        catch java.lang.Throwable from label10 to label11 with label21;
+        catch java.lang.Throwable from label12 to label13 with label21;
+        catch java.lang.IllegalAccessException from label15 to label16 with label18;
+        catch java.lang.Throwable from label14 to label16 with label21;
+        catch java.lang.Throwable from label16 to label17 with label21;
+        catch java.lang.Throwable from label19 to label20 with label21;
+        catch java.lang.Throwable from label21 to label23 with label21;
+        catch java.lang.Throwable from label24 to label25 with label21;
+        catch java.lang.Throwable from label26 to label27 with label21;
+    }
+}

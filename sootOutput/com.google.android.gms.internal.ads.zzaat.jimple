@@ -1,0 +1,77 @@
+final class com.google.android.gms.internal.ads.zzaat extends java.lang.Object implements com.google.android.gms.internal.ads.zzaas
+{
+    private final android.view.WindowManager zza;
+
+    private void <init>(android.view.WindowManager)
+    {
+        android.view.WindowManager $r1;
+        com.google.android.gms.internal.ads.zzaat r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzaat;
+
+        $r1 := @parameter0: android.view.WindowManager;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzaat: android.view.WindowManager zza> = $r1;
+
+        return;
+    }
+
+    public static com.google.android.gms.internal.ads.zzaas zzc(android.content.Context)
+    {
+        android.content.Context $r1;
+        com.google.android.gms.internal.ads.zzaat $r3;
+        android.view.WindowManager $r2;
+        java.lang.Object $r0;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r0 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("window");
+
+        $r2 = (android.view.WindowManager) $r0;
+
+        if $r2 == null goto label1;
+
+        $r3 = new com.google.android.gms.internal.ads.zzaat;
+
+        specialinvoke $r3.<com.google.android.gms.internal.ads.zzaat: void <init>(android.view.WindowManager)>($r2);
+
+        return $r3;
+
+     label1:
+        return null;
+    }
+
+    public final void zza()
+    {
+        com.google.android.gms.internal.ads.zzaat r0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzaat;
+
+        return;
+    }
+
+    public final void zzb(com.google.android.gms.internal.ads.zzaap)
+    {
+        com.google.android.gms.internal.ads.zzaap $r2;
+        com.google.android.gms.internal.ads.zzaat r0;
+        android.view.WindowManager $r3;
+        android.view.Display $r1;
+        com.google.android.gms.internal.ads.zzaaw $r4;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzaat;
+
+        $r2 := @parameter0: com.google.android.gms.internal.ads.zzaap;
+
+        $r3 = r0.<com.google.android.gms.internal.ads.zzaat: android.view.WindowManager zza>;
+
+        $r4 = $r2.<com.google.android.gms.internal.ads.zzaap: com.google.android.gms.internal.ads.zzaaw zza>;
+
+        $r1 = interfaceinvoke $r3.<android.view.WindowManager: android.view.Display getDefaultDisplay()>();
+
+        staticinvoke <com.google.android.gms.internal.ads.zzaaw: void zzb(com.google.android.gms.internal.ads.zzaaw,android.view.Display)>($r4, $r1);
+
+        return;
+    }
+}

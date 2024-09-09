@@ -1,0 +1,928 @@
+public final class androidx.core.view.ViewKt extends java.lang.Object
+{
+
+    public static final void doOnAttach(android.view.View, kotlin.jvm.functions.Function1)
+    {
+        android.view.View $r0;
+        kotlin.jvm.functions.Function1 $r1;
+        android.view.View$OnAttachStateChangeListener $r3;
+        androidx.core.view.ViewKt$doOnAttach$1 $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "action");
+
+        $z0 = staticinvoke <androidx.core.view.ViewCompat: boolean isAttachedToWindow(android.view.View)>($r0);
+
+        if $z0 == 0 goto label1;
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+        return;
+
+     label1:
+        $r2 = new androidx.core.view.ViewKt$doOnAttach$1;
+
+        specialinvoke $r2.<androidx.core.view.ViewKt$doOnAttach$1: void <init>(android.view.View,kotlin.jvm.functions.Function1)>($r0, $r1);
+
+        $r3 = (android.view.View$OnAttachStateChangeListener) $r2;
+
+        virtualinvoke $r0.<android.view.View: void addOnAttachStateChangeListener(android.view.View$OnAttachStateChangeListener)>($r3);
+
+        return;
+    }
+
+    public static final void doOnDetach(android.view.View, kotlin.jvm.functions.Function1)
+    {
+        androidx.core.view.ViewKt$doOnDetach$1 $r2;
+        android.view.View $r0;
+        kotlin.jvm.functions.Function1 $r1;
+        android.view.View$OnAttachStateChangeListener $r3;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "action");
+
+        $z0 = staticinvoke <androidx.core.view.ViewCompat: boolean isAttachedToWindow(android.view.View)>($r0);
+
+        if $z0 != 0 goto label1;
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+        return;
+
+     label1:
+        $r2 = new androidx.core.view.ViewKt$doOnDetach$1;
+
+        specialinvoke $r2.<androidx.core.view.ViewKt$doOnDetach$1: void <init>(android.view.View,kotlin.jvm.functions.Function1)>($r0, $r1);
+
+        $r3 = (android.view.View$OnAttachStateChangeListener) $r2;
+
+        virtualinvoke $r0.<android.view.View: void addOnAttachStateChangeListener(android.view.View$OnAttachStateChangeListener)>($r3);
+
+        return;
+    }
+
+    public static final void doOnLayout(android.view.View, kotlin.jvm.functions.Function1)
+    {
+        androidx.core.view.ViewKt$doOnLayout$$inlined$doOnNextLayout$1 $r2;
+        android.view.View$OnLayoutChangeListener $r3;
+        android.view.View $r0;
+        kotlin.jvm.functions.Function1 $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "action");
+
+        $z0 = staticinvoke <androidx.core.view.ViewCompat: boolean isLaidOut(android.view.View)>($r0);
+
+        if $z0 == 0 goto label1;
+
+        $z0 = virtualinvoke $r0.<android.view.View: boolean isLayoutRequested()>();
+
+        if $z0 != 0 goto label1;
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+        return;
+
+     label1:
+        $r2 = new androidx.core.view.ViewKt$doOnLayout$$inlined$doOnNextLayout$1;
+
+        specialinvoke $r2.<androidx.core.view.ViewKt$doOnLayout$$inlined$doOnNextLayout$1: void <init>(kotlin.jvm.functions.Function1)>($r1);
+
+        $r3 = (android.view.View$OnLayoutChangeListener) $r2;
+
+        virtualinvoke $r0.<android.view.View: void addOnLayoutChangeListener(android.view.View$OnLayoutChangeListener)>($r3);
+
+        return;
+    }
+
+    public static final void doOnNextLayout(android.view.View, kotlin.jvm.functions.Function1)
+    {
+        android.view.View$OnLayoutChangeListener $r3;
+        androidx.core.view.ViewKt$doOnNextLayout$1 $r2;
+        android.view.View $r0;
+        kotlin.jvm.functions.Function1 $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "action");
+
+        $r2 = new androidx.core.view.ViewKt$doOnNextLayout$1;
+
+        specialinvoke $r2.<androidx.core.view.ViewKt$doOnNextLayout$1: void <init>(kotlin.jvm.functions.Function1)>($r1);
+
+        $r3 = (android.view.View$OnLayoutChangeListener) $r2;
+
+        virtualinvoke $r0.<android.view.View: void addOnLayoutChangeListener(android.view.View$OnLayoutChangeListener)>($r3);
+
+        return;
+    }
+
+    public static final androidx.core.view.OneShotPreDrawListener doOnPreDraw(android.view.View, kotlin.jvm.functions.Function1)
+    {
+        androidx.core.view.ViewKt$doOnPreDraw$1 $r3;
+        android.view.View $r0;
+        kotlin.jvm.functions.Function1 $r1;
+        androidx.core.view.OneShotPreDrawListener $r2;
+        java.lang.Runnable $r4;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "action");
+
+        $r3 = new androidx.core.view.ViewKt$doOnPreDraw$1;
+
+        specialinvoke $r3.<androidx.core.view.ViewKt$doOnPreDraw$1: void <init>(kotlin.jvm.functions.Function1,android.view.View)>($r1, $r0);
+
+        $r4 = (java.lang.Runnable) $r3;
+
+        $r2 = staticinvoke <androidx.core.view.OneShotPreDrawListener: androidx.core.view.OneShotPreDrawListener add(android.view.View,java.lang.Runnable)>($r0, $r4);
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r2, "View.doOnPreDraw(\n    cr\u2026dd(this) { action(this) }");
+
+        return $r2;
+    }
+
+    public static final android.graphics.Bitmap drawToBitmap(android.view.View, android.graphics.Bitmap$Config)
+    {
+        java.lang.IllegalStateException $r4;
+        android.graphics.Bitmap$Config $r1;
+        android.graphics.Bitmap $r3;
+        int $i0, $i1;
+        android.view.View $r0;
+        float $f0, $f1;
+        android.graphics.Canvas r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: android.graphics.Bitmap$Config;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "config");
+
+        $z0 = staticinvoke <androidx.core.view.ViewCompat: boolean isLaidOut(android.view.View)>($r0);
+
+        if $z0 == 0 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getWidth()>();
+
+        $i1 = virtualinvoke $r0.<android.view.View: int getHeight()>();
+
+        $r3 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createBitmap(int,int,android.graphics.Bitmap$Config)>($i0, $i1, $r1);
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r3, "createBitmap(width, height, config)");
+
+        r2 = new android.graphics.Canvas;
+
+        specialinvoke r2.<android.graphics.Canvas: void <init>(android.graphics.Bitmap)>($r3);
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getScrollX()>();
+
+        $f0 = (float) $i0;
+
+        $f0 = neg $f0;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getScrollY()>();
+
+        $f1 = (float) $i0;
+
+        $f1 = neg $f1;
+
+        virtualinvoke r2.<android.graphics.Canvas: void translate(float,float)>($f0, $f1);
+
+        virtualinvoke $r0.<android.view.View: void draw(android.graphics.Canvas)>(r2);
+
+        return $r3;
+
+     label1:
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("View needs to be laid out before calling drawToBitmap()");
+
+        throw $r4;
+    }
+
+    public static android.graphics.Bitmap drawToBitmap$default(android.view.View, android.graphics.Bitmap$Config, int, java.lang.Object)
+    {
+        android.graphics.Bitmap $r1;
+        int $i0;
+        android.view.View $r2;
+        java.lang.Object $r0;
+        android.graphics.Bitmap$Config $r3;
+
+        $r2 := @parameter0: android.view.View;
+
+        $r3 := @parameter1: android.graphics.Bitmap$Config;
+
+        $i0 := @parameter2: int;
+
+        $r0 := @parameter3: java.lang.Object;
+
+        $i0 = $i0 & 1;
+
+        if $i0 == 0 goto label1;
+
+        $r3 = <android.graphics.Bitmap$Config: android.graphics.Bitmap$Config ARGB_8888>;
+
+     label1:
+        $r1 = staticinvoke <androidx.core.view.ViewKt: android.graphics.Bitmap drawToBitmap(android.view.View,android.graphics.Bitmap$Config)>($r2, $r3);
+
+        return $r1;
+    }
+
+    public static final kotlin.sequences.Sequence getAllViews(android.view.View)
+    {
+        androidx.core.view.ViewKt$allViews$1 $r2;
+        kotlin.sequences.Sequence $r1;
+        android.view.View $r0;
+        kotlin.jvm.functions.Function2 $r3;
+
+        $r0 := @parameter0: android.view.View;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r2 = new androidx.core.view.ViewKt$allViews$1;
+
+        specialinvoke $r2.<androidx.core.view.ViewKt$allViews$1: void <init>(android.view.View,kotlin.coroutines.Continuation)>($r0, null);
+
+        $r3 = (kotlin.jvm.functions.Function2) $r2;
+
+        $r1 = staticinvoke <kotlin.sequences.SequencesKt: kotlin.sequences.Sequence sequence(kotlin.jvm.functions.Function2)>($r3);
+
+        return $r1;
+    }
+
+    public static final kotlin.sequences.Sequence getAncestors(android.view.View)
+    {
+        android.view.ViewParent $r1;
+        androidx.core.view.ViewKt$ancestors$1 $r2;
+        kotlin.sequences.Sequence $r4;
+        android.view.View $r0;
+        kotlin.jvm.functions.Function1 $r3;
+
+        $r0 := @parameter0: android.view.View;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.view.ViewParent getParent()>();
+
+        $r2 = <androidx.core.view.ViewKt$ancestors$1: androidx.core.view.ViewKt$ancestors$1 INSTANCE>;
+
+        $r3 = (kotlin.jvm.functions.Function1) $r2;
+
+        $r4 = staticinvoke <kotlin.sequences.SequencesKt: kotlin.sequences.Sequence generateSequence(java.lang.Object,kotlin.jvm.functions.Function1)>($r1, $r3);
+
+        return $r4;
+    }
+
+    public static final int getMarginBottom(android.view.View)
+    {
+        android.view.ViewGroup$LayoutParams $r1;
+        android.view.ViewGroup$MarginLayoutParams $r2;
+        int i0;
+        android.view.View $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $z0 = $r1 instanceof android.view.ViewGroup$MarginLayoutParams;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = (android.view.ViewGroup$MarginLayoutParams) $r1;
+
+        goto label2;
+
+     label1:
+        $r2 = null;
+
+     label2:
+        if $r2 == null goto label3;
+
+        i0 = $r2.<android.view.ViewGroup$MarginLayoutParams: int bottomMargin>;
+
+        return i0;
+
+     label3:
+        return 0;
+    }
+
+    public static final int getMarginEnd(android.view.View)
+    {
+        android.view.ViewGroup$LayoutParams $r1;
+        android.view.ViewGroup$MarginLayoutParams $r2;
+        int $i0;
+        android.view.View $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $z0 = $r1 instanceof android.view.ViewGroup$MarginLayoutParams;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = (android.view.ViewGroup$MarginLayoutParams) $r1;
+
+        $i0 = staticinvoke <androidx.core.view.MarginLayoutParamsCompat: int getMarginEnd(android.view.ViewGroup$MarginLayoutParams)>($r2);
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public static final int getMarginLeft(android.view.View)
+    {
+        android.view.ViewGroup$LayoutParams $r1;
+        android.view.ViewGroup$MarginLayoutParams $r2;
+        int i0;
+        android.view.View $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $z0 = $r1 instanceof android.view.ViewGroup$MarginLayoutParams;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = (android.view.ViewGroup$MarginLayoutParams) $r1;
+
+        goto label2;
+
+     label1:
+        $r2 = null;
+
+     label2:
+        if $r2 == null goto label3;
+
+        i0 = $r2.<android.view.ViewGroup$MarginLayoutParams: int leftMargin>;
+
+        return i0;
+
+     label3:
+        return 0;
+    }
+
+    public static final int getMarginRight(android.view.View)
+    {
+        android.view.ViewGroup$LayoutParams $r1;
+        android.view.ViewGroup$MarginLayoutParams $r2;
+        int i0;
+        android.view.View $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $z0 = $r1 instanceof android.view.ViewGroup$MarginLayoutParams;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = (android.view.ViewGroup$MarginLayoutParams) $r1;
+
+        goto label2;
+
+     label1:
+        $r2 = null;
+
+     label2:
+        if $r2 == null goto label3;
+
+        i0 = $r2.<android.view.ViewGroup$MarginLayoutParams: int rightMargin>;
+
+        return i0;
+
+     label3:
+        return 0;
+    }
+
+    public static final int getMarginStart(android.view.View)
+    {
+        android.view.ViewGroup$LayoutParams $r1;
+        android.view.ViewGroup$MarginLayoutParams $r2;
+        int $i0;
+        android.view.View $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $z0 = $r1 instanceof android.view.ViewGroup$MarginLayoutParams;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = (android.view.ViewGroup$MarginLayoutParams) $r1;
+
+        $i0 = staticinvoke <androidx.core.view.MarginLayoutParamsCompat: int getMarginStart(android.view.ViewGroup$MarginLayoutParams)>($r2);
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public static final int getMarginTop(android.view.View)
+    {
+        android.view.ViewGroup$LayoutParams $r1;
+        android.view.ViewGroup$MarginLayoutParams $r2;
+        int i0;
+        android.view.View $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r1 = virtualinvoke $r0.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $z0 = $r1 instanceof android.view.ViewGroup$MarginLayoutParams;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = (android.view.ViewGroup$MarginLayoutParams) $r1;
+
+        goto label2;
+
+     label1:
+        $r2 = null;
+
+     label2:
+        if $r2 == null goto label3;
+
+        i0 = $r2.<android.view.ViewGroup$MarginLayoutParams: int topMargin>;
+
+        return i0;
+
+     label3:
+        return 0;
+    }
+
+    public static final boolean isGone(android.view.View)
+    {
+        int $i0;
+        android.view.View $r0;
+
+        $r0 := @parameter0: android.view.View;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getVisibility()>();
+
+        if $i0 != 8 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final boolean isInvisible(android.view.View)
+    {
+        int $i0;
+        android.view.View $r0;
+
+        $r0 := @parameter0: android.view.View;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getVisibility()>();
+
+        if $i0 != 4 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final boolean isVisible(android.view.View)
+    {
+        int $i0;
+        android.view.View $r0;
+
+        $r0 := @parameter0: android.view.View;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getVisibility()>();
+
+        if $i0 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static final java.lang.Runnable postDelayed(android.view.View, long, kotlin.jvm.functions.Function0)
+    {
+        android.view.View $r0;
+        long $l0;
+        kotlin.jvm.functions.Function0 $r1;
+        java.lang.Runnable r3;
+        androidx.core.view.ViewKt$postDelayed$runnable$1 r2;
+
+        $r0 := @parameter0: android.view.View;
+
+        $l0 := @parameter1: long;
+
+        $r1 := @parameter2: kotlin.jvm.functions.Function0;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "action");
+
+        r2 = new androidx.core.view.ViewKt$postDelayed$runnable$1;
+
+        specialinvoke r2.<androidx.core.view.ViewKt$postDelayed$runnable$1: void <init>(kotlin.jvm.functions.Function0)>($r1);
+
+        r3 = (java.lang.Runnable) r2;
+
+        virtualinvoke $r0.<android.view.View: boolean postDelayed(java.lang.Runnable,long)>(r3, $l0);
+
+        return r3;
+    }
+
+    public static final java.lang.Runnable postOnAnimationDelayed(android.view.View, long, kotlin.jvm.functions.Function0)
+    {
+        androidx.core.view.ViewKt$postOnAnimationDelayed$runnable$1 r2;
+        android.view.View $r0;
+        long $l0;
+        kotlin.jvm.functions.Function0 $r1;
+        java.lang.Runnable r3;
+
+        $r0 := @parameter0: android.view.View;
+
+        $l0 := @parameter1: long;
+
+        $r1 := @parameter2: kotlin.jvm.functions.Function0;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "action");
+
+        r2 = new androidx.core.view.ViewKt$postOnAnimationDelayed$runnable$1;
+
+        specialinvoke r2.<androidx.core.view.ViewKt$postOnAnimationDelayed$runnable$1: void <init>(kotlin.jvm.functions.Function0)>($r1);
+
+        r3 = (java.lang.Runnable) r2;
+
+        virtualinvoke $r0.<android.view.View: void postOnAnimationDelayed(java.lang.Runnable,long)>(r3, $l0);
+
+        return r3;
+    }
+
+    public static final void setGone(android.view.View, boolean)
+    {
+        android.view.View $r0;
+        byte $b0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $z0 := @parameter1: boolean;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        if $z0 == 0 goto label1;
+
+        $b0 = 8;
+
+        goto label2;
+
+     label1:
+        $b0 = 0;
+
+     label2:
+        virtualinvoke $r0.<android.view.View: void setVisibility(int)>($b0);
+
+        return;
+    }
+
+    public static final void setInvisible(android.view.View, boolean)
+    {
+        android.view.View $r0;
+        byte $b0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $z0 := @parameter1: boolean;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        if $z0 == 0 goto label1;
+
+        $b0 = 4;
+
+        goto label2;
+
+     label1:
+        $b0 = 0;
+
+     label2:
+        virtualinvoke $r0.<android.view.View: void setVisibility(int)>($b0);
+
+        return;
+    }
+
+    public static final void setPadding(android.view.View, int)
+    {
+        int $i0;
+        android.view.View $r0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        virtualinvoke $r0.<android.view.View: void setPadding(int,int,int,int)>($i0, $i0, $i0, $i0);
+
+        return;
+    }
+
+    public static final void setVisible(android.view.View, boolean)
+    {
+        android.view.View $r0;
+        byte $b0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $z0 := @parameter1: boolean;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        if $z0 == 0 goto label1;
+
+        $b0 = 0;
+
+        goto label2;
+
+     label1:
+        $b0 = 8;
+
+     label2:
+        virtualinvoke $r0.<android.view.View: void setVisibility(int)>($b0);
+
+        return;
+    }
+
+    public static final void updateLayoutParams(android.view.View, kotlin.jvm.functions.Function1)
+    {
+        android.view.ViewGroup$LayoutParams $r2;
+        android.view.View $r0;
+        kotlin.jvm.functions.Function1 $r1;
+        java.lang.NullPointerException r3;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        $r2 = virtualinvoke $r0.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        if $r2 == null goto label1;
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r2);
+
+        virtualinvoke $r0.<android.view.View: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r2);
+
+        return;
+
+     label1:
+        r3 = new java.lang.NullPointerException;
+
+        specialinvoke r3.<java.lang.NullPointerException: void <init>(java.lang.String)>("null cannot be cast to non-null type android.view.ViewGroup.LayoutParams");
+
+        throw r3;
+    }
+
+    public static final void updateLayoutParamsTyped(android.view.View, kotlin.jvm.functions.Function1)
+    {
+        android.view.View $r0;
+        kotlin.jvm.functions.Function1 $r1;
+        android.view.ViewGroup$LayoutParams $r2;
+
+        $r0 := @parameter0: android.view.View;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        $r2 = virtualinvoke $r0.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void reifiedOperationMarker(int,java.lang.String)>(1, "T");
+
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r2);
+
+        virtualinvoke $r0.<android.view.View: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r2);
+
+        return;
+    }
+
+    public static final void updatePadding(android.view.View, int, int, int, int)
+    {
+        int $i0, $i1, $i2, $i3;
+        android.view.View $r0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        virtualinvoke $r0.<android.view.View: void setPadding(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+    }
+
+    public static void updatePadding$default(android.view.View, int, int, int, int, int, java.lang.Object)
+    {
+        int $i0, $i1, $i2, $i3, $i4, $i5;
+        android.view.View $r0;
+        java.lang.Object $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $i4 := @parameter5: int;
+
+        $r1 := @parameter6: java.lang.Object;
+
+        $i5 = $i4 & 1;
+
+        if $i5 == 0 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getPaddingLeft()>();
+
+     label1:
+        $i5 = $i4 & 2;
+
+        if $i5 == 0 goto label2;
+
+        $i1 = virtualinvoke $r0.<android.view.View: int getPaddingTop()>();
+
+     label2:
+        $i5 = $i4 & 4;
+
+        if $i5 == 0 goto label3;
+
+        $i2 = virtualinvoke $r0.<android.view.View: int getPaddingRight()>();
+
+     label3:
+        $i4 = $i4 & 8;
+
+        if $i4 == 0 goto label4;
+
+        $i3 = virtualinvoke $r0.<android.view.View: int getPaddingBottom()>();
+
+     label4:
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        virtualinvoke $r0.<android.view.View: void setPadding(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+    }
+
+    public static final void updatePaddingRelative(android.view.View, int, int, int, int)
+    {
+        int $i0, $i1, $i2, $i3;
+        android.view.View $r0;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        virtualinvoke $r0.<android.view.View: void setPaddingRelative(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+    }
+
+    public static void updatePaddingRelative$default(android.view.View, int, int, int, int, int, java.lang.Object)
+    {
+        int $i0, $i1, $i2, $i3, $i4, $i5;
+        android.view.View $r0;
+        java.lang.Object $r1;
+
+        $r0 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $i4 := @parameter5: int;
+
+        $r1 := @parameter6: java.lang.Object;
+
+        $i5 = $i4 & 1;
+
+        if $i5 == 0 goto label1;
+
+        $i0 = virtualinvoke $r0.<android.view.View: int getPaddingStart()>();
+
+     label1:
+        $i5 = $i4 & 2;
+
+        if $i5 == 0 goto label2;
+
+        $i1 = virtualinvoke $r0.<android.view.View: int getPaddingTop()>();
+
+     label2:
+        $i5 = $i4 & 4;
+
+        if $i5 == 0 goto label3;
+
+        $i2 = virtualinvoke $r0.<android.view.View: int getPaddingEnd()>();
+
+     label3:
+        $i4 = $i4 & 8;
+
+        if $i4 == 0 goto label4;
+
+        $i3 = virtualinvoke $r0.<android.view.View: int getPaddingBottom()>();
+
+     label4:
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        virtualinvoke $r0.<android.view.View: void setPaddingRelative(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+    }
+}

@@ -1,0 +1,50 @@
+public final class androidx.privacysandbox.ads.adservices.internal.AdServicesInfo extends java.lang.Object
+{
+    public static final androidx.privacysandbox.ads.adservices.internal.AdServicesInfo INSTANCE;
+
+    static void <clinit>()
+    {
+        androidx.privacysandbox.ads.adservices.internal.AdServicesInfo $r0;
+
+        $r0 = new androidx.privacysandbox.ads.adservices.internal.AdServicesInfo;
+
+        specialinvoke $r0.<androidx.privacysandbox.ads.adservices.internal.AdServicesInfo: void <init>()>();
+
+        <androidx.privacysandbox.ads.adservices.internal.AdServicesInfo: androidx.privacysandbox.ads.adservices.internal.AdServicesInfo INSTANCE> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.privacysandbox.ads.adservices.internal.AdServicesInfo r0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.internal.AdServicesInfo;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public final int version()
+    {
+        int $i0;
+        androidx.privacysandbox.ads.adservices.internal.AdServicesInfo$Extensions30Impl $r1;
+        androidx.privacysandbox.ads.adservices.internal.AdServicesInfo r0;
+
+        r0 := @this: androidx.privacysandbox.ads.adservices.internal.AdServicesInfo;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 30 goto label1;
+
+        $r1 = <androidx.privacysandbox.ads.adservices.internal.AdServicesInfo$Extensions30Impl: androidx.privacysandbox.ads.adservices.internal.AdServicesInfo$Extensions30Impl INSTANCE>;
+
+        $i0 = virtualinvoke $r1.<androidx.privacysandbox.ads.adservices.internal.AdServicesInfo$Extensions30Impl: int getAdServicesVersion()>();
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+}

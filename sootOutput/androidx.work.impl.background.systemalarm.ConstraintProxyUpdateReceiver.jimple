@@ -1,0 +1,148 @@
+public class androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver extends android.content.BroadcastReceiver
+{
+    static final java.lang.String ACTION;
+    static final java.lang.String KEY_BATTERY_CHARGING_PROXY_ENABLED;
+    static final java.lang.String KEY_BATTERY_NOT_LOW_PROXY_ENABLED;
+    static final java.lang.String KEY_NETWORK_STATE_PROXY_ENABLED;
+    static final java.lang.String KEY_STORAGE_NOT_LOW_PROXY_ENABLED;
+    static final java.lang.String TAG;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+
+        <androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver: java.lang.String KEY_STORAGE_NOT_LOW_PROXY_ENABLED> = "KEY_STORAGE_NOT_LOW_PROXY_ENABLED";
+
+        <androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver: java.lang.String KEY_NETWORK_STATE_PROXY_ENABLED> = "KEY_NETWORK_STATE_PROXY_ENABLED";
+
+        <androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver: java.lang.String KEY_BATTERY_NOT_LOW_PROXY_ENABLED> = "KEY_BATTERY_NOT_LOW_PROXY_ENABLED";
+
+        <androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver: java.lang.String KEY_BATTERY_CHARGING_PROXY_ENABLED> = "KEY_BATTERY_CHARGING_PROXY_ENABLED";
+
+        <androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver: java.lang.String ACTION> = "androidx.work.impl.background.systemalarm.UpdateProxies";
+
+        $r0 = staticinvoke <androidx.work.Logger: java.lang.String tagWithPrefix(java.lang.String)>("ConstrntProxyUpdtRecvr");
+
+        <androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver: java.lang.String TAG> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver r0;
+
+        r0 := @this: androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver;
+
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+
+        return;
+    }
+
+    public static android.content.Intent newConstraintProxyUpdateIntent(android.content.Context, boolean, boolean, boolean, boolean)
+    {
+        android.content.Context $r0;
+        android.content.ComponentName r2;
+        android.content.Intent r1, $r3;
+        boolean $z0, $z1, $z2, $z3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $z0 := @parameter1: boolean;
+
+        $z1 := @parameter2: boolean;
+
+        $z2 := @parameter3: boolean;
+
+        $z3 := @parameter4: boolean;
+
+        r1 = new android.content.Intent;
+
+        specialinvoke r1.<android.content.Intent: void <init>(java.lang.String)>("androidx.work.impl.background.systemalarm.UpdateProxies");
+
+        r2 = new android.content.ComponentName;
+
+        specialinvoke r2.<android.content.ComponentName: void <init>(android.content.Context,java.lang.Class)>($r0, class "Landroidx/work/impl/background/systemalarm/ConstraintProxyUpdateReceiver;");
+
+        virtualinvoke r1.<android.content.Intent: android.content.Intent setComponent(android.content.ComponentName)>(r2);
+
+        $r3 = virtualinvoke r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("KEY_BATTERY_NOT_LOW_PROXY_ENABLED", $z0);
+
+        $r3 = virtualinvoke $r3.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("KEY_BATTERY_CHARGING_PROXY_ENABLED", $z1);
+
+        $r3 = virtualinvoke $r3.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("KEY_STORAGE_NOT_LOW_PROXY_ENABLED", $z2);
+
+        virtualinvoke $r3.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("KEY_NETWORK_STATE_PROXY_ENABLED", $z3);
+
+        return r1;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        android.content.Context $r1;
+        java.lang.Object[] r6;
+        android.content.Intent $r2;
+        androidx.work.impl.utils.taskexecutor.TaskExecutor $r10;
+        androidx.work.Logger $r5;
+        android.content.BroadcastReceiver$PendingResult $r8;
+        java.lang.Throwable[] $r7;
+        androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver$1 $r11;
+        androidx.work.impl.WorkManagerImpl $r9;
+        java.lang.String $r3, r4;
+        androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver r0;
+        boolean $z0;
+
+        r0 := @this: androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        if $r2 == null goto label1;
+
+        $r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getAction()>();
+
+        goto label2;
+
+     label1:
+        $r3 = null;
+
+     label2:
+        r4 = "androidx.work.impl.background.systemalarm.UpdateProxies";
+
+        $z0 = virtualinvoke r4.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+        if $z0 != 0 goto label3;
+
+        $r5 = staticinvoke <androidx.work.Logger: androidx.work.Logger get()>();
+
+        r4 = <androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver: java.lang.String TAG>;
+
+        r6 = newarray (java.lang.Object)[1];
+
+        r6[0] = $r3;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Ignoring unknown action %s", r6);
+
+        $r7 = newarray (java.lang.Throwable)[0];
+
+        virtualinvoke $r5.<androidx.work.Logger: void debug(java.lang.String,java.lang.String,java.lang.Throwable[])>(r4, $r3, $r7);
+
+        return;
+
+     label3:
+        $r8 = virtualinvoke r0.<androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver: android.content.BroadcastReceiver$PendingResult goAsync()>();
+
+        $r9 = staticinvoke <androidx.work.impl.WorkManagerImpl: androidx.work.impl.WorkManagerImpl getInstance(android.content.Context)>($r1);
+
+        $r10 = virtualinvoke $r9.<androidx.work.impl.WorkManagerImpl: androidx.work.impl.utils.taskexecutor.TaskExecutor getWorkTaskExecutor()>();
+
+        $r11 = new androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver$1;
+
+        specialinvoke $r11.<androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver$1: void <init>(androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver,android.content.Intent,android.content.Context,android.content.BroadcastReceiver$PendingResult)>(r0, $r2, $r1, $r8);
+
+        interfaceinvoke $r10.<androidx.work.impl.utils.taskexecutor.TaskExecutor: void executeOnBackgroundThread(java.lang.Runnable)>($r11);
+
+        return;
+    }
+}

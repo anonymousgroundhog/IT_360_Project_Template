@@ -1,0 +1,151 @@
+final class com.google.common.reflect.Types$TypeVariableInvocationHandler extends java.lang.Object implements java.lang.reflect.InvocationHandler
+{
+    private static final com.google.common.collect.ImmutableMap typeVariableMethods;
+    private final com.google.common.reflect.Types$TypeVariableImpl typeVariableImpl;
+
+    static void <clinit>()
+    {
+        com.google.common.collect.ImmutableMap $r6;
+        com.google.common.collect.ImmutableMap$Builder $r1;
+        java.lang.reflect.Method[] $r3;
+        int $i0, $i1;
+        java.security.AccessControlException $r4;
+        java.lang.Class $r2;
+        java.lang.String $r5;
+        java.lang.reflect.Method r0;
+        boolean $z0;
+
+        $r1 = staticinvoke <com.google.common.collect.ImmutableMap: com.google.common.collect.ImmutableMap$Builder builder()>();
+
+        $r2 = class "Lcom/google/common/reflect/Types$TypeVariableImpl;";
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.reflect.Method[] getMethods()>();
+
+        $i0 = lengthof $r3;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label7;
+
+        r0 = $r3[$i1];
+
+        $r2 = virtualinvoke r0.<java.lang.reflect.Method: java.lang.Class getDeclaringClass()>();
+
+        $z0 = virtualinvoke $r2.<java.lang.Object: boolean equals(java.lang.Object)>(class "Lcom/google/common/reflect/Types$TypeVariableImpl;");
+
+        if $z0 == 0 goto label6;
+
+     label2:
+        virtualinvoke r0.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label3:
+        goto label5;
+
+     label4:
+        $r4 := @caughtexception;
+
+     label5:
+        $r5 = virtualinvoke r0.<java.lang.reflect.Method: java.lang.String getName()>();
+
+        virtualinvoke $r1.<com.google.common.collect.ImmutableMap$Builder: com.google.common.collect.ImmutableMap$Builder put(java.lang.Object,java.lang.Object)>($r5, r0);
+
+     label6:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label7:
+        $r6 = virtualinvoke $r1.<com.google.common.collect.ImmutableMap$Builder: com.google.common.collect.ImmutableMap buildKeepingLast()>();
+
+        <com.google.common.reflect.Types$TypeVariableInvocationHandler: com.google.common.collect.ImmutableMap typeVariableMethods> = $r6;
+
+        return;
+
+        catch java.security.AccessControlException from label2 to label3 with label4;
+    }
+
+    void <init>(com.google.common.reflect.Types$TypeVariableImpl)
+    {
+        com.google.common.reflect.Types$TypeVariableInvocationHandler r0;
+        com.google.common.reflect.Types$TypeVariableImpl r1;
+
+        r0 := @this: com.google.common.reflect.Types$TypeVariableInvocationHandler;
+
+        r1 := @parameter0: com.google.common.reflect.Types$TypeVariableImpl;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.common.reflect.Types$TypeVariableInvocationHandler: com.google.common.reflect.Types$TypeVariableImpl typeVariableImpl> = r1;
+
+        return;
+    }
+
+    static com.google.common.reflect.Types$TypeVariableImpl access$500(com.google.common.reflect.Types$TypeVariableInvocationHandler)
+    {
+        com.google.common.reflect.Types$TypeVariableInvocationHandler $r0;
+        com.google.common.reflect.Types$TypeVariableImpl r1;
+
+        $r0 := @parameter0: com.google.common.reflect.Types$TypeVariableInvocationHandler;
+
+        r1 = $r0.<com.google.common.reflect.Types$TypeVariableInvocationHandler: com.google.common.reflect.Types$TypeVariableImpl typeVariableImpl>;
+
+        return r1;
+    }
+
+    public java.lang.Object invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[]) throws java.lang.Throwable
+    {
+        java.lang.Throwable $r8;
+        java.lang.UnsupportedOperationException r9;
+        java.lang.Object[] $r3;
+        com.google.common.collect.ImmutableMap r5;
+        com.google.common.reflect.Types$TypeVariableImpl r6;
+        java.lang.reflect.InvocationTargetException r7;
+        com.google.common.reflect.Types$TypeVariableInvocationHandler r0;
+        java.lang.Object $r1;
+        java.lang.String $r4;
+        java.lang.reflect.Method $r2;
+
+        r0 := @this: com.google.common.reflect.Types$TypeVariableInvocationHandler;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.reflect.Method;
+
+        $r3 := @parameter2: java.lang.Object[];
+
+        $r4 = virtualinvoke $r2.<java.lang.reflect.Method: java.lang.String getName()>();
+
+        r5 = <com.google.common.reflect.Types$TypeVariableInvocationHandler: com.google.common.collect.ImmutableMap typeVariableMethods>;
+
+        $r1 = virtualinvoke r5.<com.google.common.collect.ImmutableMap: java.lang.Object get(java.lang.Object)>($r4);
+
+        $r2 = (java.lang.reflect.Method) $r1;
+
+        if $r2 == null goto label4;
+
+        r6 = r0.<com.google.common.reflect.Types$TypeVariableInvocationHandler: com.google.common.reflect.Types$TypeVariableImpl typeVariableImpl>;
+
+     label1:
+        $r1 = virtualinvoke $r2.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r6, $r3);
+
+     label2:
+        return $r1;
+
+     label3:
+        r7 := @caughtexception;
+
+        $r8 = virtualinvoke r7.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getCause()>();
+
+        throw $r8;
+
+     label4:
+        r9 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke r9.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>($r4);
+
+        throw r9;
+
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label3;
+    }
+}

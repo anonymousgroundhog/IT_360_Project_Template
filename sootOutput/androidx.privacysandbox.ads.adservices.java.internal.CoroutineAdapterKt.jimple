@@ -1,0 +1,100 @@
+public final class androidx.privacysandbox.ads.adservices.java.internal.CoroutineAdapterKt extends java.lang.Object
+{
+
+    public static java.lang.Object $r8$lambda$u17zFg4_yVVb03rPOrSamnVgzLA(kotlinx.coroutines.Deferred, java.lang.Object, androidx.concurrent.futures.CallbackToFutureAdapter$Completer)
+    {
+        java.lang.Object $r0;
+        androidx.concurrent.futures.CallbackToFutureAdapter$Completer $r1;
+        kotlinx.coroutines.Deferred $r2;
+
+        $r2 := @parameter0: kotlinx.coroutines.Deferred;
+
+        $r0 := @parameter1: java.lang.Object;
+
+        $r1 := @parameter2: androidx.concurrent.futures.CallbackToFutureAdapter$Completer;
+
+        $r0 = staticinvoke <androidx.privacysandbox.ads.adservices.java.internal.CoroutineAdapterKt: java.lang.Object asListenableFuture$lambda$0(kotlinx.coroutines.Deferred,java.lang.Object,androidx.concurrent.futures.CallbackToFutureAdapter$Completer)>($r2, $r0, $r1);
+
+        return $r0;
+    }
+
+    public static final com.google.common.util.concurrent.ListenableFuture asListenableFuture(kotlinx.coroutines.Deferred, java.lang.Object)
+    {
+        com.google.common.util.concurrent.ListenableFuture $r2;
+        kotlinx.coroutines.Deferred $r0;
+        androidx.privacysandbox.ads.adservices.java.internal.CoroutineAdapterKt$$ExternalSyntheticLambda0 $r3;
+        java.lang.Object $r1;
+
+        $r0 := @parameter0: kotlinx.coroutines.Deferred;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        $r3 = new androidx.privacysandbox.ads.adservices.java.internal.CoroutineAdapterKt$$ExternalSyntheticLambda0;
+
+        specialinvoke $r3.<androidx.privacysandbox.ads.adservices.java.internal.CoroutineAdapterKt$$ExternalSyntheticLambda0: void <init>(kotlinx.coroutines.Deferred,java.lang.Object)>($r0, $r1);
+
+        $r2 = staticinvoke <androidx.concurrent.futures.CallbackToFutureAdapter: com.google.common.util.concurrent.ListenableFuture getFuture(androidx.concurrent.futures.CallbackToFutureAdapter$Resolver)>($r3);
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullExpressionValue(java.lang.Object,java.lang.String)>($r2, "getFuture { completer ->\u2026        }\n    }\n    tag\n}");
+
+        return $r2;
+    }
+
+    public static com.google.common.util.concurrent.ListenableFuture asListenableFuture$default(kotlinx.coroutines.Deferred, java.lang.Object, int, java.lang.Object)
+    {
+        com.google.common.util.concurrent.ListenableFuture $r1;
+        kotlinx.coroutines.Deferred $r2;
+        int $i0;
+        java.lang.Object $r0, $r3;
+
+        $r2 := @parameter0: kotlinx.coroutines.Deferred;
+
+        $r3 := @parameter1: java.lang.Object;
+
+        $i0 := @parameter2: int;
+
+        $r0 := @parameter3: java.lang.Object;
+
+        $i0 = $i0 & 1;
+
+        if $i0 == 0 goto label1;
+
+        $r3 = "Deferred.asListenableFuture";
+
+     label1:
+        $r1 = staticinvoke <androidx.privacysandbox.ads.adservices.java.internal.CoroutineAdapterKt: com.google.common.util.concurrent.ListenableFuture asListenableFuture(kotlinx.coroutines.Deferred,java.lang.Object)>($r2, $r3);
+
+        return $r1;
+    }
+
+    private static final java.lang.Object asListenableFuture$lambda$0(kotlinx.coroutines.Deferred, java.lang.Object, androidx.concurrent.futures.CallbackToFutureAdapter$Completer)
+    {
+        androidx.concurrent.futures.CallbackToFutureAdapter$Completer $r2;
+        kotlinx.coroutines.Deferred $r0;
+        androidx.privacysandbox.ads.adservices.java.internal.CoroutineAdapterKt$asListenableFuture$1$1 $r3;
+        java.lang.Object $r1;
+        kotlin.jvm.functions.Function1 $r4;
+
+        $r0 := @parameter0: kotlinx.coroutines.Deferred;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        $r2 := @parameter2: androidx.concurrent.futures.CallbackToFutureAdapter$Completer;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "$this_asListenableFuture");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r2, "completer");
+
+        $r3 = new androidx.privacysandbox.ads.adservices.java.internal.CoroutineAdapterKt$asListenableFuture$1$1;
+
+        specialinvoke $r3.<androidx.privacysandbox.ads.adservices.java.internal.CoroutineAdapterKt$asListenableFuture$1$1: void <init>(androidx.concurrent.futures.CallbackToFutureAdapter$Completer,kotlinx.coroutines.Deferred)>($r2, $r0);
+
+        $r4 = (kotlin.jvm.functions.Function1) $r3;
+
+        interfaceinvoke $r0.<kotlinx.coroutines.Deferred: kotlinx.coroutines.DisposableHandle invokeOnCompletion(kotlin.jvm.functions.Function1)>($r4);
+
+        return $r1;
+    }
+}

@@ -1,0 +1,926 @@
+public final class androidx.core.graphics.CanvasKt extends java.lang.Object
+{
+
+    public static final void withClip(android.graphics.Canvas, float, float, float, float, kotlin.jvm.functions.Function1)
+    {
+        java.lang.Throwable $r2;
+        kotlin.jvm.functions.Function1 $r1;
+        int $i0;
+        float $f0, $f1, $f2, $f3;
+        android.graphics.Canvas $r0;
+
+        $r0 := @parameter0: android.graphics.Canvas;
+
+        $f0 := @parameter1: float;
+
+        $f1 := @parameter2: float;
+
+        $f2 := @parameter3: float;
+
+        $f3 := @parameter4: float;
+
+        $r1 := @parameter5: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        $i0 = virtualinvoke $r0.<android.graphics.Canvas: int save()>();
+
+        virtualinvoke $r0.<android.graphics.Canvas: boolean clipRect(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+     label1:
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+     label2:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static final void withClip(android.graphics.Canvas, int, int, int, int, kotlin.jvm.functions.Function1)
+    {
+        java.lang.Throwable $r2;
+        kotlin.jvm.functions.Function1 $r1;
+        int $i0, $i1, $i2, $i3, $i4;
+        android.graphics.Canvas $r0;
+
+        $r0 := @parameter0: android.graphics.Canvas;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $r1 := @parameter5: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        $i4 = virtualinvoke $r0.<android.graphics.Canvas: int save()>();
+
+        virtualinvoke $r0.<android.graphics.Canvas: boolean clipRect(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+     label1:
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+     label2:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i4);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i4);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static final void withClip(android.graphics.Canvas, android.graphics.Path, kotlin.jvm.functions.Function1)
+    {
+        java.lang.Throwable $r3;
+        android.graphics.Path $r1;
+        int $i0;
+        android.graphics.Canvas $r0;
+        kotlin.jvm.functions.Function1 $r2;
+
+        $r0 := @parameter0: android.graphics.Canvas;
+
+        $r1 := @parameter1: android.graphics.Path;
+
+        $r2 := @parameter2: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "clipPath");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r2, "block");
+
+        $i0 = virtualinvoke $r0.<android.graphics.Canvas: int save()>();
+
+        virtualinvoke $r0.<android.graphics.Canvas: boolean clipPath(android.graphics.Path)>($r1);
+
+     label1:
+        interfaceinvoke $r2.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+     label2:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static final void withClip(android.graphics.Canvas, android.graphics.Rect, kotlin.jvm.functions.Function1)
+    {
+        java.lang.Throwable $r3;
+        android.graphics.Rect $r1;
+        int $i0;
+        android.graphics.Canvas $r0;
+        kotlin.jvm.functions.Function1 $r2;
+
+        $r0 := @parameter0: android.graphics.Canvas;
+
+        $r1 := @parameter1: android.graphics.Rect;
+
+        $r2 := @parameter2: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "clipRect");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r2, "block");
+
+        $i0 = virtualinvoke $r0.<android.graphics.Canvas: int save()>();
+
+        virtualinvoke $r0.<android.graphics.Canvas: boolean clipRect(android.graphics.Rect)>($r1);
+
+     label1:
+        interfaceinvoke $r2.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+     label2:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static final void withClip(android.graphics.Canvas, android.graphics.RectF, kotlin.jvm.functions.Function1)
+    {
+        android.graphics.RectF $r1;
+        java.lang.Throwable $r3;
+        int $i0;
+        android.graphics.Canvas $r0;
+        kotlin.jvm.functions.Function1 $r2;
+
+        $r0 := @parameter0: android.graphics.Canvas;
+
+        $r1 := @parameter1: android.graphics.RectF;
+
+        $r2 := @parameter2: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "clipRect");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r2, "block");
+
+        $i0 = virtualinvoke $r0.<android.graphics.Canvas: int save()>();
+
+        virtualinvoke $r0.<android.graphics.Canvas: boolean clipRect(android.graphics.RectF)>($r1);
+
+     label1:
+        interfaceinvoke $r2.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+     label2:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static final void withMatrix(android.graphics.Canvas, android.graphics.Matrix, kotlin.jvm.functions.Function1)
+    {
+        java.lang.Throwable $r3;
+        int $i0;
+        android.graphics.Canvas $r0;
+        kotlin.jvm.functions.Function1 $r2;
+        android.graphics.Matrix $r1;
+
+        $r0 := @parameter0: android.graphics.Canvas;
+
+        $r1 := @parameter1: android.graphics.Matrix;
+
+        $r2 := @parameter2: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "matrix");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r2, "block");
+
+        $i0 = virtualinvoke $r0.<android.graphics.Canvas: int save()>();
+
+        virtualinvoke $r0.<android.graphics.Canvas: void concat(android.graphics.Matrix)>($r1);
+
+     label1:
+        interfaceinvoke $r2.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+     label2:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static void withMatrix$default(android.graphics.Canvas, android.graphics.Matrix, kotlin.jvm.functions.Function1, int, java.lang.Object)
+    {
+        java.lang.Throwable $r2;
+        int $i0;
+        android.graphics.Canvas $r0;
+        kotlin.jvm.functions.Function1 $r1;
+        java.lang.Object $r4;
+        android.graphics.Matrix $r3;
+
+        $r0 := @parameter0: android.graphics.Canvas;
+
+        $r3 := @parameter1: android.graphics.Matrix;
+
+        $r1 := @parameter2: kotlin.jvm.functions.Function1;
+
+        $i0 := @parameter3: int;
+
+        $r4 := @parameter4: java.lang.Object;
+
+        $i0 = $i0 & 1;
+
+        if $i0 == 0 goto label1;
+
+        $r3 = new android.graphics.Matrix;
+
+        specialinvoke $r3.<android.graphics.Matrix: void <init>()>();
+
+     label1:
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r3, "matrix");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        $i0 = virtualinvoke $r0.<android.graphics.Canvas: int save()>();
+
+        virtualinvoke $r0.<android.graphics.Canvas: void concat(android.graphics.Matrix)>($r3);
+
+     label2:
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+     label3:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label4:
+        $r2 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r2;
+
+        catch java.lang.Throwable from label2 to label3 with label4;
+    }
+
+    public static final void withRotation(android.graphics.Canvas, float, float, float, kotlin.jvm.functions.Function1)
+    {
+        java.lang.Throwable $r2;
+        int $i0;
+        float $f0, $f1, $f2;
+        android.graphics.Canvas $r0;
+        kotlin.jvm.functions.Function1 $r1;
+
+        $r0 := @parameter0: android.graphics.Canvas;
+
+        $f0 := @parameter1: float;
+
+        $f1 := @parameter2: float;
+
+        $f2 := @parameter3: float;
+
+        $r1 := @parameter4: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        $i0 = virtualinvoke $r0.<android.graphics.Canvas: int save()>();
+
+        virtualinvoke $r0.<android.graphics.Canvas: void rotate(float,float,float)>($f0, $f1, $f2);
+
+     label1:
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+     label2:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static void withRotation$default(android.graphics.Canvas, float, float, float, kotlin.jvm.functions.Function1, int, java.lang.Object)
+    {
+        java.lang.Throwable $r2;
+        kotlin.jvm.functions.Function1 $r1;
+        int $i0, i1;
+        float $f0, $f1, $f2;
+        android.graphics.Canvas $r0;
+        java.lang.Object r3;
+
+        $r0 := @parameter0: android.graphics.Canvas;
+
+        $f0 := @parameter1: float;
+
+        $f1 := @parameter2: float;
+
+        $f2 := @parameter3: float;
+
+        $r1 := @parameter4: kotlin.jvm.functions.Function1;
+
+        $i0 := @parameter5: int;
+
+        r3 := @parameter6: java.lang.Object;
+
+        i1 = $i0 & 1;
+
+        if i1 == 0 goto label1;
+
+        $f0 = 0.0F;
+
+     label1:
+        i1 = $i0 & 2;
+
+        if i1 == 0 goto label2;
+
+        $f1 = 0.0F;
+
+     label2:
+        $i0 = $i0 & 4;
+
+        if $i0 == 0 goto label3;
+
+        $f2 = 0.0F;
+
+     label3:
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        $i0 = virtualinvoke $r0.<android.graphics.Canvas: int save()>();
+
+        virtualinvoke $r0.<android.graphics.Canvas: void rotate(float,float,float)>($f0, $f1, $f2);
+
+     label4:
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+     label5:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label6:
+        $r2 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r2;
+
+        catch java.lang.Throwable from label4 to label5 with label6;
+    }
+
+    public static final void withSave(android.graphics.Canvas, kotlin.jvm.functions.Function1)
+    {
+        java.lang.Throwable $r2;
+        int $i0;
+        android.graphics.Canvas $r0;
+        kotlin.jvm.functions.Function1 $r1;
+
+        $r0 := @parameter0: android.graphics.Canvas;
+
+        $r1 := @parameter1: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        $i0 = virtualinvoke $r0.<android.graphics.Canvas: int save()>();
+
+     label1:
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+     label2:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static final void withScale(android.graphics.Canvas, float, float, float, float, kotlin.jvm.functions.Function1)
+    {
+        java.lang.Throwable $r2;
+        kotlin.jvm.functions.Function1 $r1;
+        int $i0;
+        float $f0, $f1, $f2, $f3;
+        android.graphics.Canvas $r0;
+
+        $r0 := @parameter0: android.graphics.Canvas;
+
+        $f0 := @parameter1: float;
+
+        $f1 := @parameter2: float;
+
+        $f2 := @parameter3: float;
+
+        $f3 := @parameter4: float;
+
+        $r1 := @parameter5: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        $i0 = virtualinvoke $r0.<android.graphics.Canvas: int save()>();
+
+        virtualinvoke $r0.<android.graphics.Canvas: void scale(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+     label1:
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+     label2:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static void withScale$default(android.graphics.Canvas, float, float, float, float, kotlin.jvm.functions.Function1, int, java.lang.Object)
+    {
+        java.lang.Throwable $r2;
+        kotlin.jvm.functions.Function1 $r1;
+        int $i0, i1;
+        float $f0, $f1, $f2, $f3;
+        android.graphics.Canvas $r0;
+        java.lang.Object r3;
+
+        $r0 := @parameter0: android.graphics.Canvas;
+
+        $f0 := @parameter1: float;
+
+        $f1 := @parameter2: float;
+
+        $f2 := @parameter3: float;
+
+        $f3 := @parameter4: float;
+
+        $r1 := @parameter5: kotlin.jvm.functions.Function1;
+
+        $i0 := @parameter6: int;
+
+        r3 := @parameter7: java.lang.Object;
+
+        i1 = $i0 & 1;
+
+        if i1 == 0 goto label1;
+
+        $f0 = 1.0F;
+
+     label1:
+        i1 = $i0 & 2;
+
+        if i1 == 0 goto label2;
+
+        $f1 = 1.0F;
+
+     label2:
+        i1 = $i0 & 4;
+
+        if i1 == 0 goto label3;
+
+        $f2 = 0.0F;
+
+     label3:
+        $i0 = $i0 & 8;
+
+        if $i0 == 0 goto label4;
+
+        $f3 = 0.0F;
+
+     label4:
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        $i0 = virtualinvoke $r0.<android.graphics.Canvas: int save()>();
+
+        virtualinvoke $r0.<android.graphics.Canvas: void scale(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+     label5:
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+     label6:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label7:
+        $r2 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r2;
+
+        catch java.lang.Throwable from label5 to label6 with label7;
+    }
+
+    public static final void withSkew(android.graphics.Canvas, float, float, kotlin.jvm.functions.Function1)
+    {
+        java.lang.Throwable $r2;
+        int $i0;
+        float $f0, $f1;
+        android.graphics.Canvas $r0;
+        kotlin.jvm.functions.Function1 $r1;
+
+        $r0 := @parameter0: android.graphics.Canvas;
+
+        $f0 := @parameter1: float;
+
+        $f1 := @parameter2: float;
+
+        $r1 := @parameter3: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        $i0 = virtualinvoke $r0.<android.graphics.Canvas: int save()>();
+
+        virtualinvoke $r0.<android.graphics.Canvas: void skew(float,float)>($f0, $f1);
+
+     label1:
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+     label2:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static void withSkew$default(android.graphics.Canvas, float, float, kotlin.jvm.functions.Function1, int, java.lang.Object)
+    {
+        java.lang.Throwable $r2;
+        kotlin.jvm.functions.Function1 $r1;
+        int $i0, i1;
+        float $f0, $f1;
+        android.graphics.Canvas $r0;
+        java.lang.Object r3;
+
+        $r0 := @parameter0: android.graphics.Canvas;
+
+        $f0 := @parameter1: float;
+
+        $f1 := @parameter2: float;
+
+        $r1 := @parameter3: kotlin.jvm.functions.Function1;
+
+        $i0 := @parameter4: int;
+
+        r3 := @parameter5: java.lang.Object;
+
+        i1 = $i0 & 1;
+
+        if i1 == 0 goto label1;
+
+        $f0 = 0.0F;
+
+     label1:
+        $i0 = $i0 & 2;
+
+        if $i0 == 0 goto label2;
+
+        $f1 = 0.0F;
+
+     label2:
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        $i0 = virtualinvoke $r0.<android.graphics.Canvas: int save()>();
+
+        virtualinvoke $r0.<android.graphics.Canvas: void skew(float,float)>($f0, $f1);
+
+     label3:
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+     label4:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label5:
+        $r2 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r2;
+
+        catch java.lang.Throwable from label3 to label4 with label5;
+    }
+
+    public static final void withTranslation(android.graphics.Canvas, float, float, kotlin.jvm.functions.Function1)
+    {
+        java.lang.Throwable $r2;
+        int $i0;
+        float $f0, $f1;
+        android.graphics.Canvas $r0;
+        kotlin.jvm.functions.Function1 $r1;
+
+        $r0 := @parameter0: android.graphics.Canvas;
+
+        $f0 := @parameter1: float;
+
+        $f1 := @parameter2: float;
+
+        $r1 := @parameter3: kotlin.jvm.functions.Function1;
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        $i0 = virtualinvoke $r0.<android.graphics.Canvas: int save()>();
+
+        virtualinvoke $r0.<android.graphics.Canvas: void translate(float,float)>($f0, $f1);
+
+     label1:
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+     label2:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static void withTranslation$default(android.graphics.Canvas, float, float, kotlin.jvm.functions.Function1, int, java.lang.Object)
+    {
+        java.lang.Throwable $r2;
+        kotlin.jvm.functions.Function1 $r1;
+        int $i0, i1;
+        float $f0, $f1;
+        android.graphics.Canvas $r0;
+        java.lang.Object r3;
+
+        $r0 := @parameter0: android.graphics.Canvas;
+
+        $f0 := @parameter1: float;
+
+        $f1 := @parameter2: float;
+
+        $r1 := @parameter3: kotlin.jvm.functions.Function1;
+
+        $i0 := @parameter4: int;
+
+        r3 := @parameter5: java.lang.Object;
+
+        i1 = $i0 & 1;
+
+        if i1 == 0 goto label1;
+
+        $f0 = 0.0F;
+
+     label1:
+        $i0 = $i0 & 2;
+
+        if $i0 == 0 goto label2;
+
+        $f1 = 0.0F;
+
+     label2:
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r0, "<this>");
+
+        staticinvoke <kotlin.jvm.internal.Intrinsics: void checkNotNullParameter(java.lang.Object,java.lang.String)>($r1, "block");
+
+        $i0 = virtualinvoke $r0.<android.graphics.Canvas: int save()>();
+
+        virtualinvoke $r0.<android.graphics.Canvas: void translate(float,float)>($f0, $f1);
+
+     label3:
+        interfaceinvoke $r1.<kotlin.jvm.functions.Function1: java.lang.Object invoke(java.lang.Object)>($r0);
+
+     label4:
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        return;
+
+     label5:
+        $r2 := @caughtexception;
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyStart(int)>(1);
+
+        virtualinvoke $r0.<android.graphics.Canvas: void restoreToCount(int)>($i0);
+
+        staticinvoke <kotlin.jvm.internal.InlineMarker: void finallyEnd(int)>(1);
+
+        throw $r2;
+
+        catch java.lang.Throwable from label3 to label4 with label5;
+    }
+}

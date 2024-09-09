@@ -1,0 +1,82 @@
+final class com.google.android.gms.internal.ads.zzgwt extends java.lang.Object implements com.google.android.gms.internal.ads.zzgwy
+{
+    private final com.google.android.gms.internal.ads.zzgxh zza;
+
+    void <init>(com.google.android.gms.internal.ads.zzgxh, com.google.android.gms.internal.ads.zzgws)
+    {
+        com.google.android.gms.internal.ads.zzgxh $r1;
+        com.google.android.gms.internal.ads.zzgwt r0;
+        com.google.android.gms.internal.ads.zzgws $r2;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgwt;
+
+        $r1 := @parameter0: com.google.android.gms.internal.ads.zzgxh;
+
+        $r2 := @parameter1: com.google.android.gms.internal.ads.zzgws;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.google.android.gms.internal.ads.zzgwt: com.google.android.gms.internal.ads.zzgxh zza> = $r1;
+
+        return;
+    }
+
+    public final java.lang.Object zza(java.lang.String) throws java.security.GeneralSecurityException
+    {
+        java.util.Iterator $r5;
+        com.google.android.gms.internal.ads.zzgwt r0;
+        java.lang.String[] $r3;
+        com.google.android.gms.internal.ads.zzgxh $r1;
+        java.lang.Exception $r8;
+        java.security.Provider $r7;
+        java.util.List $r4;
+        java.lang.Object $r6;
+        java.lang.String $r2;
+        boolean $z0;
+
+        r0 := @this: com.google.android.gms.internal.ads.zzgwt;
+
+        $r2 := @parameter0: java.lang.String;
+
+        $r3 = newarray (java.lang.String)[2];
+
+        $r3[0] = "GmsCore_OpenSSL";
+
+        $r3[1] = "AndroidOpenSSL";
+
+        $r4 = staticinvoke <com.google.android.gms.internal.ads.zzgwz: java.util.List zzb(java.lang.String[])>($r3);
+
+        $r5 = interfaceinvoke $r4.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label5;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        $r7 = (java.security.Provider) $r6;
+
+     label2:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgwt: com.google.android.gms.internal.ads.zzgxh zza>;
+
+        $r6 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzgxh: java.lang.Object zza(java.lang.String,java.security.Provider)>($r2, $r7);
+
+     label3:
+        return $r6;
+
+     label4:
+        $r8 := @caughtexception;
+
+        goto label1;
+
+     label5:
+        $r1 = r0.<com.google.android.gms.internal.ads.zzgwt: com.google.android.gms.internal.ads.zzgxh zza>;
+
+        $r6 = interfaceinvoke $r1.<com.google.android.gms.internal.ads.zzgxh: java.lang.Object zza(java.lang.String,java.security.Provider)>($r2, null);
+
+        return $r6;
+
+        catch java.lang.Exception from label2 to label3 with label4;
+    }
+}

@@ -1,0 +1,136 @@
+public final class com.google.android.gms.internal.ads.zzgxi extends java.lang.Object
+{
+
+    public static java.lang.String zza(byte[])
+    {
+        byte[] $r1;
+        char $c5;
+        short $s3;
+        byte $b2;
+        int $i0, $i1, $i4;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r0;
+
+        $r1 := @parameter0: byte[];
+
+        $r2 = new java.lang.StringBuilder;
+
+        $i0 = lengthof $r1;
+
+        $i1 = $i0 + $i0;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(int)>($i1);
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        $b2 = $r1[$i1];
+
+        $s3 = (short) $b2;
+
+        $s3 = $s3 & 255;
+
+        $i4 = (int) $s3;
+
+        $i4 = $i4 >> 4;
+
+        $r0 = "0123456789abcdef";
+
+        $c5 = virtualinvoke $r0.<java.lang.String: char charAt(int)>($i4);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>($c5);
+
+        $s3 = $s3 & 15;
+
+        $i4 = (int) $s3;
+
+        $c5 = virtualinvoke $r0.<java.lang.String: char charAt(int)>($i4);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>($c5);
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        $r0 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r0;
+    }
+
+    public static byte[] zzb(java.lang.String)
+    {
+        byte[] $r0;
+        char $c3;
+        java.lang.IllegalArgumentException $r2;
+        byte $b5;
+        int $i0, $i1, $i2, $i4;
+        java.lang.String $r1;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        $i0 = $i0 % 2;
+
+        if $i0 != 0 goto label3;
+
+        $i0 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        $i0 = $i0 / 2;
+
+        $r0 = newarray (byte)[$i0];
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label4;
+
+        $i2 = $i1 + $i1;
+
+        $c3 = virtualinvoke $r1.<java.lang.String: char charAt(int)>($i2);
+
+        $i4 = staticinvoke <java.lang.Character: int digit(char,int)>($c3, 16);
+
+        $i2 = $i2 + 1;
+
+        $c3 = virtualinvoke $r1.<java.lang.String: char charAt(int)>($i2);
+
+        $i2 = staticinvoke <java.lang.Character: int digit(char,int)>($c3, 16);
+
+        if $i4 == -1 goto label2;
+
+        if $i2 == -1 goto label2;
+
+        $i4 = $i4 * 16;
+
+        $i4 = $i4 + $i2;
+
+        $b5 = (byte) $i4;
+
+        $r0[$i1] = $b5;
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("input is not hexadecimal");
+
+        throw $r2;
+
+     label3:
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Expected a string of even length");
+
+        throw $r2;
+
+     label4:
+        return $r0;
+    }
+}

@@ -1,0 +1,332 @@
+public final class androidx.core.os.CancellationSignal extends java.lang.Object
+{
+    private boolean mCancelInProgress;
+    private java.lang.Object mCancellationSignalObj;
+    private boolean mIsCanceled;
+    private androidx.core.os.CancellationSignal$OnCancelListener mOnCancelListener;
+
+    public void <init>()
+    {
+        androidx.core.os.CancellationSignal r0;
+
+        r0 := @this: androidx.core.os.CancellationSignal;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private void waitForCancelFinishedLocked()
+    {
+        java.lang.InterruptedException $r1;
+        androidx.core.os.CancellationSignal r0;
+        boolean $z0;
+
+        r0 := @this: androidx.core.os.CancellationSignal;
+
+     label1:
+        $z0 = r0.<androidx.core.os.CancellationSignal: boolean mCancelInProgress>;
+
+        if $z0 == 0 goto label5;
+
+     label2:
+        virtualinvoke r0.<java.lang.Object: void wait()>();
+
+     label3:
+        goto label1;
+
+     label4:
+        $r1 := @caughtexception;
+
+        goto label1;
+
+     label5:
+        return;
+
+        catch java.lang.InterruptedException from label2 to label3 with label4;
+    }
+
+    public void cancel()
+    {
+        java.lang.Throwable $r2, $r4, $r5, r6;
+        androidx.core.os.CancellationSignal r0;
+        java.lang.Object r1;
+        androidx.core.os.CancellationSignal$OnCancelListener r3;
+        boolean z0;
+
+        r0 := @this: androidx.core.os.CancellationSignal;
+
+        entermonitor r0;
+
+     label01:
+        z0 = r0.<androidx.core.os.CancellationSignal: boolean mIsCanceled>;
+
+        if z0 == 0 goto label03;
+
+        exitmonitor r0;
+
+     label02:
+        return;
+
+     label03:
+        r0.<androidx.core.os.CancellationSignal: boolean mIsCanceled> = 1;
+
+        r0.<androidx.core.os.CancellationSignal: boolean mCancelInProgress> = 1;
+
+        r3 = r0.<androidx.core.os.CancellationSignal: androidx.core.os.CancellationSignal$OnCancelListener mOnCancelListener>;
+
+        r1 = r0.<androidx.core.os.CancellationSignal: java.lang.Object mCancellationSignalObj>;
+
+        exitmonitor r0;
+
+     label04:
+        if r3 == null goto label08;
+
+     label05:
+        interfaceinvoke r3.<androidx.core.os.CancellationSignal$OnCancelListener: void onCancel()>();
+
+     label06:
+        goto label08;
+
+     label07:
+        $r2 := @caughtexception;
+
+        goto label11;
+
+     label08:
+        if r1 == null goto label17;
+
+     label09:
+        staticinvoke <androidx.core.os.CancellationSignal$Api16Impl: void cancel(java.lang.Object)>(r1);
+
+     label10:
+        goto label17;
+
+     label11:
+        entermonitor r0;
+
+     label12:
+        r0.<androidx.core.os.CancellationSignal: boolean mCancelInProgress> = 0;
+
+        virtualinvoke r0.<java.lang.Object: void notifyAll()>();
+
+        exitmonitor r0;
+
+     label13:
+        throw $r2;
+
+     label14:
+        $r4 := @caughtexception;
+
+     label15:
+        exitmonitor r0;
+
+     label16:
+        throw $r4;
+
+     label17:
+        entermonitor r0;
+
+     label18:
+        r0.<androidx.core.os.CancellationSignal: boolean mCancelInProgress> = 0;
+
+        virtualinvoke r0.<java.lang.Object: void notifyAll()>();
+
+        exitmonitor r0;
+
+     label19:
+        return;
+
+     label20:
+        $r5 := @caughtexception;
+
+        exitmonitor r0;
+
+     label21:
+        throw $r5;
+
+     label22:
+        r6 := @caughtexception;
+
+     label23:
+        exitmonitor r0;
+
+     label24:
+        throw r6;
+
+        catch java.lang.Throwable from label01 to label02 with label22;
+        catch java.lang.Throwable from label03 to label04 with label22;
+        catch java.lang.Throwable from label05 to label06 with label07;
+        catch java.lang.Throwable from label09 to label10 with label07;
+        catch java.lang.Throwable from label12 to label13 with label14;
+        catch java.lang.Throwable from label15 to label16 with label14;
+        catch java.lang.Throwable from label18 to label19 with label20;
+        catch java.lang.Throwable from label20 to label21 with label20;
+        catch java.lang.Throwable from label23 to label24 with label22;
+    }
+
+    public java.lang.Object getCancellationSignalObject()
+    {
+        java.lang.Throwable $r3;
+        androidx.core.os.CancellationSignal r0;
+        android.os.CancellationSignal $r1;
+        java.lang.Object $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.core.os.CancellationSignal;
+
+        entermonitor r0;
+
+     label1:
+        $r2 = r0.<androidx.core.os.CancellationSignal: java.lang.Object mCancellationSignalObj>;
+
+        if $r2 != null goto label2;
+
+        $r1 = staticinvoke <androidx.core.os.CancellationSignal$Api16Impl: android.os.CancellationSignal createCancellationSignal()>();
+
+        r0.<androidx.core.os.CancellationSignal: java.lang.Object mCancellationSignalObj> = $r1;
+
+        $z0 = r0.<androidx.core.os.CancellationSignal: boolean mIsCanceled>;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = r0.<androidx.core.os.CancellationSignal: java.lang.Object mCancellationSignalObj>;
+
+        staticinvoke <androidx.core.os.CancellationSignal$Api16Impl: void cancel(java.lang.Object)>($r2);
+
+     label2:
+        $r2 = r0.<androidx.core.os.CancellationSignal: java.lang.Object mCancellationSignalObj>;
+
+        exitmonitor r0;
+
+     label3:
+        return $r2;
+
+     label4:
+        $r3 := @caughtexception;
+
+        exitmonitor r0;
+
+     label5:
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+        catch java.lang.Throwable from label4 to label5 with label4;
+    }
+
+    public boolean isCanceled()
+    {
+        java.lang.Throwable $r1;
+        androidx.core.os.CancellationSignal r0;
+        boolean z0;
+
+        r0 := @this: androidx.core.os.CancellationSignal;
+
+        entermonitor r0;
+
+     label1:
+        z0 = r0.<androidx.core.os.CancellationSignal: boolean mIsCanceled>;
+
+        exitmonitor r0;
+
+     label2:
+        return z0;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor r0;
+
+     label4:
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public void setOnCancelListener(androidx.core.os.CancellationSignal$OnCancelListener)
+    {
+        java.lang.Throwable $r3;
+        androidx.core.os.CancellationSignal r0;
+        androidx.core.os.CancellationSignal$OnCancelListener $r1, $r2;
+        boolean $z0;
+
+        r0 := @this: androidx.core.os.CancellationSignal;
+
+        $r1 := @parameter0: androidx.core.os.CancellationSignal$OnCancelListener;
+
+        entermonitor r0;
+
+     label1:
+        specialinvoke r0.<androidx.core.os.CancellationSignal: void waitForCancelFinishedLocked()>();
+
+        $r2 = r0.<androidx.core.os.CancellationSignal: androidx.core.os.CancellationSignal$OnCancelListener mOnCancelListener>;
+
+        if $r2 != $r1 goto label3;
+
+        exitmonitor r0;
+
+     label2:
+        return;
+
+     label3:
+        r0.<androidx.core.os.CancellationSignal: androidx.core.os.CancellationSignal$OnCancelListener mOnCancelListener> = $r1;
+
+        $z0 = r0.<androidx.core.os.CancellationSignal: boolean mIsCanceled>;
+
+        if $z0 == 0 goto label6;
+
+        if $r1 != null goto label4;
+
+        goto label6;
+
+     label4:
+        exitmonitor r0;
+
+     label5:
+        interfaceinvoke $r1.<androidx.core.os.CancellationSignal$OnCancelListener: void onCancel()>();
+
+        return;
+
+     label6:
+        exitmonitor r0;
+
+     label7:
+        return;
+
+     label8:
+        $r3 := @caughtexception;
+
+        exitmonitor r0;
+
+     label9:
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label8;
+        catch java.lang.Throwable from label3 to label5 with label8;
+        catch java.lang.Throwable from label6 to label7 with label8;
+        catch java.lang.Throwable from label8 to label9 with label8;
+    }
+
+    public void throwIfCanceled()
+    {
+        androidx.core.os.CancellationSignal r0;
+        boolean $z0;
+        androidx.core.os.OperationCanceledException $r1;
+
+        r0 := @this: androidx.core.os.CancellationSignal;
+
+        $z0 = virtualinvoke r0.<androidx.core.os.CancellationSignal: boolean isCanceled()>();
+
+        if $z0 != 0 goto label1;
+
+        return;
+
+     label1:
+        $r1 = new androidx.core.os.OperationCanceledException;
+
+        specialinvoke $r1.<androidx.core.os.OperationCanceledException: void <init>()>();
+
+        throw $r1;
+    }
+}

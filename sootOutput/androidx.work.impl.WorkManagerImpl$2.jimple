@@ -1,0 +1,69 @@
+class androidx.work.impl.WorkManagerImpl$2 extends java.lang.Object implements androidx.arch.core.util.Function
+{
+    final androidx.work.impl.WorkManagerImpl this$0;
+
+    void <init>(androidx.work.impl.WorkManagerImpl)
+    {
+        androidx.work.impl.WorkManagerImpl $r1;
+        androidx.work.impl.WorkManagerImpl$2 r0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl$2;
+
+        $r1 := @parameter0: androidx.work.impl.WorkManagerImpl;
+
+        r0.<androidx.work.impl.WorkManagerImpl$2: androidx.work.impl.WorkManagerImpl this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public androidx.work.WorkInfo apply(java.util.List)
+    {
+        java.util.List r1;
+        androidx.work.WorkInfo $r4;
+        androidx.work.impl.model.WorkSpec$WorkInfoPojo $r3;
+        int $i0;
+        java.lang.Object $r2;
+        androidx.work.impl.WorkManagerImpl$2 r0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl$2;
+
+        r1 := @parameter0: java.util.List;
+
+        if r1 == null goto label1;
+
+        $i0 = interfaceinvoke r1.<java.util.List: int size()>();
+
+        if $i0 <= 0 goto label1;
+
+        $r2 = interfaceinvoke r1.<java.util.List: java.lang.Object get(int)>(0);
+
+        $r3 = (androidx.work.impl.model.WorkSpec$WorkInfoPojo) $r2;
+
+        $r4 = virtualinvoke $r3.<androidx.work.impl.model.WorkSpec$WorkInfoPojo: androidx.work.WorkInfo toWorkInfo()>();
+
+        return $r4;
+
+     label1:
+        return null;
+    }
+
+    public volatile java.lang.Object apply(java.lang.Object)
+    {
+        androidx.work.WorkInfo $r1;
+        java.util.List $r3;
+        java.lang.Object $r2;
+        androidx.work.impl.WorkManagerImpl$2 r0;
+
+        r0 := @this: androidx.work.impl.WorkManagerImpl$2;
+
+        $r2 := @parameter0: java.lang.Object;
+
+        $r3 = (java.util.List) $r2;
+
+        $r1 = virtualinvoke r0.<androidx.work.impl.WorkManagerImpl$2: androidx.work.WorkInfo apply(java.util.List)>($r3);
+
+        return $r1;
+    }
+}

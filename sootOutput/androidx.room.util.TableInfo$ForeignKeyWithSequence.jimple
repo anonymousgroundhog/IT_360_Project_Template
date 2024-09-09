@@ -1,0 +1,80 @@
+class androidx.room.util.TableInfo$ForeignKeyWithSequence extends java.lang.Object implements java.lang.Comparable
+{
+    final java.lang.String mFrom;
+    final int mId;
+    final int mSequence;
+    final java.lang.String mTo;
+
+    void <init>(int, int, java.lang.String, java.lang.String)
+    {
+        int $i0, $i1;
+        androidx.room.util.TableInfo$ForeignKeyWithSequence r0;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: androidx.room.util.TableInfo$ForeignKeyWithSequence;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 := @parameter2: java.lang.String;
+
+        $r2 := @parameter3: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<androidx.room.util.TableInfo$ForeignKeyWithSequence: int mId> = $i0;
+
+        r0.<androidx.room.util.TableInfo$ForeignKeyWithSequence: int mSequence> = $i1;
+
+        r0.<androidx.room.util.TableInfo$ForeignKeyWithSequence: java.lang.String mFrom> = $r1;
+
+        r0.<androidx.room.util.TableInfo$ForeignKeyWithSequence: java.lang.String mTo> = $r2;
+
+        return;
+    }
+
+    public int compareTo(androidx.room.util.TableInfo$ForeignKeyWithSequence)
+    {
+        int $i0, $i1;
+        androidx.room.util.TableInfo$ForeignKeyWithSequence r0, $r1;
+
+        r0 := @this: androidx.room.util.TableInfo$ForeignKeyWithSequence;
+
+        $r1 := @parameter0: androidx.room.util.TableInfo$ForeignKeyWithSequence;
+
+        $i0 = r0.<androidx.room.util.TableInfo$ForeignKeyWithSequence: int mId>;
+
+        $i1 = $r1.<androidx.room.util.TableInfo$ForeignKeyWithSequence: int mId>;
+
+        $i0 = $i0 - $i1;
+
+        if $i0 != 0 goto label1;
+
+        $i1 = r0.<androidx.room.util.TableInfo$ForeignKeyWithSequence: int mSequence>;
+
+        $i0 = $r1.<androidx.room.util.TableInfo$ForeignKeyWithSequence: int mSequence>;
+
+        $i0 = $i1 - $i0;
+
+     label1:
+        return $i0;
+    }
+
+    public volatile int compareTo(java.lang.Object)
+    {
+        int $i0;
+        androidx.room.util.TableInfo$ForeignKeyWithSequence r0, $r2;
+        java.lang.Object $r1;
+
+        r0 := @this: androidx.room.util.TableInfo$ForeignKeyWithSequence;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (androidx.room.util.TableInfo$ForeignKeyWithSequence) $r1;
+
+        $i0 = virtualinvoke r0.<androidx.room.util.TableInfo$ForeignKeyWithSequence: int compareTo(androidx.room.util.TableInfo$ForeignKeyWithSequence)>($r2);
+
+        return $i0;
+    }
+}
