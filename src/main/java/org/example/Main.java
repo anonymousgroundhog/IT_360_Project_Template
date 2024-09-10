@@ -49,7 +49,7 @@ public class Main {
                         System.out.println(String.valueOf(sootMethod));
                         System.out.println(String.valueOf(thisBody));
                         System.out.println(String.valueOf(thisStmts));
-                        Local this_local = new Local("x","java.lang.Integer");
+//                        Local this_local = new Local("x","java.lang.Integer");
 
 //                        Local int_local = Jimple.v().newLocal("x", RefType.v("java.lang.Integer"));
 //                        AssignStmt IST=Jimple.v().newAssignStmt(int_local,Jimple.v().newStaticFieldRef(Scene.v().getField("<java.lang.integer>").makeRef()));
