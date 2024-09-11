@@ -3,11 +3,28 @@ package org.example;
 import soot.*;
 import soot.options.Options;
 import sootup.core.model.Body;
+import sootup.core.model.SootClass;
+import sootup.core.util.printer.JimplePrinter;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 
 public class Helper {
+    public static void printClassToJimple(SootClass sootClassToPrint) throws IOException {
 
+        String cwd=System.getProperty("user.dir");
+//        System.out.println("Current directory:"+cwd);
+//        System.setProperty("user.dir", cwd+"/sootOutput/");
+//        System.out.println("Current directory:"+System.getProperty("user.dir"));
+        JimplePrinter jimplePrinter = new JimplePrinter();
+        FileWriter fileWriter = new FileWriter(sootClassToPrint.getName()+".jimple");
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+        jimplePrinter.printTo(sootClassToPrint, printWriter);
+        printWriter.close();
+//        System.setProperty("user.dir", cwd);
+    }
     public static void prepareSoot(String App_Name) {
         soot.G.reset();
         Options.v().set_src_prec(Options.src_prec_apk);
